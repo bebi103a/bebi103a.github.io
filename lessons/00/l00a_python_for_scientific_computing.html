@@ -479,9 +479,14 @@ div.rendered_html tbody tr:hover {
 <ul class="simple">
 <li><p>If your notebook is idle for too long, you will get disconnected from your notebook. “Idle” means that cells are not being edited or executed. The idle timeout varies depending on the load on Google’s computers; I find that I almost always get disconnected if idle for an hour.</p></li>
 <li><p>Your virtual machine will disconnect if it is being used for too long. It typically will only available for 12 hours before disconnecting, though times can vary, again based on load.</p></li>
-<li><p>Colab instances have specific software installed, so you will need to install anything else you need in your notebook. This is not a major burden, and is discussed in the next section.</p></li>
 </ul>
 <p>These limitations are in place so that Google can offer Colab for free. If you want more cores, longer timeouts, etc., you might want to check out <a class="reference external" href="https://colab.research.google.com/signup">Colab Pro</a>. However, the free tier should work well for you in the course. You of course can always run on your own machine, and in fact are encouraged to do so except where collaboration is necessary.</p>
+<p>There are additional software-specific watchouts when using Colab.</p>
+<ul class="simple">
+<li><p>Later in the course, we will use <a class="reference external" href="http://holoviews.org/">HoloViews</a> for high-level plotting. Colab will not render HoloViews plots unless <code class="docutils literal notranslate"><span class="pre">hv.extension('bokeh')</span></code> is called <em>in each cell</em> that has a HoloViews plot.</p></li>
+<li><p>Colab does not allow for full functionality <a class="reference external" href="http://bokeh.pydata.org/">Bokeh</a> apps and some <a class="reference external" href="http://panel.holoviz.org/">Panel</a> functionality that we will use later in the course when we do dashboarding.</p></li>
+<li><p>Colab instances have specific software installed, so you will need to install anything else you need in your notebook. This is not a major burden, and is discussed in the next section.</p></li>
+</ul>
 <p>I recommend reading the <a class="reference external" href="https://research.google.com/colaboratory/faq.html">Colab FAQs</a> for more information about Colab.</p>
 </div>
 <div class="section" id="Software-in-Colab">
@@ -1023,7 +1028,7 @@ jupyterlab 2.2.6
       </span>
 
     </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fa8c60d7eb0> 
+  </div> <jinja2.runtime.BlockReference object at 0x7fb467d4dac0> 
 
 <p>© 2019 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -45,9 +45,16 @@
     "\n",
     "- If your notebook is idle for too long, you will get disconnected from your notebook. \"Idle\" means that cells are not being edited or executed. The idle timeout varies depending on the load on Google's computers; I find that I almost always get disconnected if idle for an hour.\n",
     "- Your virtual machine will disconnect if it is being used for too long. It typically will only available for 12 hours before disconnecting, though times can vary, again based on load.\n",
-    "- Colab instances have specific software installed, so you will need to install anything else you need in your notebook. This is not a major burden, and is discussed in the next section.\n",
     "\n",
     "These limitations are in place so that Google can offer Colab for free. If you want more cores, longer timeouts, etc., you might want to check out [Colab Pro](https://colab.research.google.com/signup). However, the free tier should work well for you in the course. You of course can always run on your own machine, and in fact are encouraged to do so except where collaboration is necessary.\n",
+    "\n",
+    "There are additional software-specific watchouts when using Colab.\n",
+    "\n",
+    "- Later in the course, we will use [HoloViews](http://holoviews.org/) for high-level plotting. Colab will not render HoloViews plots unless `hv.extension('bokeh')` is called *in each cell* that has a HoloViews plot.\n",
+    "- Colab does not allow for full functionality [Bokeh](http://bokeh.pydata.org/) apps and some [Panel](http://panel.holoviz.org/) functionality that we will use later in the course when we do dashboarding. \n",
+    "- Colab instances have specific software installed, so you will need to install anything else you need in your notebook. This is not a major burden, and is discussed in the next section.\n",
+    "\n",
+    "\n",
     "\n",
     "I recommend reading the [Colab FAQs](https://research.google.com/colaboratory/faq.html) for more information about Colab."
    ]

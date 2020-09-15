@@ -90,12 +90,16 @@
             
               <p class="caption"><span class="caption-text">Lessons</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="lessons/00/index.html">0. Preparing for the course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/00/index.html">0. Preparing computing resources for the course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/01/cycle_of_science.html">1. The cycle of science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/02/version_control_with_git.html">2. Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/03/index.html">3. Introduction to Python</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Schedule</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html#homework-due-dates">Homework due dates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html#lesson-exercise-due-dates">Lesson exercise due dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html#weekly-schedule">Weekly schedule</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Policies</span></p>
@@ -216,7 +220,7 @@ conflict and let the course instructors know.</p>
 </div>
 <div class="section" id="lessons-and-lesson-exercises">
 <h1>Lessons and lesson exercises<a class="headerlink" href="#lessons-and-lesson-exercises" title="Permalink to this headline">¶</a></h1>
-<p>Prior to each lab session, you must go through the lessons listed on the <a class="reference internal" href="schedule.html#weekly-schedule"><span class="std std-ref">schedule page</span></a> for the week. These will give you the requisite skills you need to work on the homework problems of the week. To verify completion of the lessons and to identify points of confusion ahead of time, you will individually need to commit a small exercise to the repository in the GitHub group. Place this in the <cite>lesson_exercises/</cite> directory in a file named <cite>l##_your_name.ipynb</cite>, where <cite>##</cite> is the number of the lesson. Lesson exercises are due at noon PDT on the Sunday before the lab session.</p>
+<p>Prior to each lab session, you must go through the lessons listed on the <a class="reference internal" href="schedule.html#weekly-schedule"><span class="std std-ref">schedule page</span></a> for the week. These will give you the requisite skills you need to work on the homework problems of the week. To verify completion of the lessons and to identify points of confusion ahead of time, you will individually need to commit a small exercise to the repository in the GitHub group. Place this in the <code class="docutils literal notranslate"><span class="pre">lesson_exercises/</span></code> directory in a file named <code class="docutils literal notranslate"><span class="pre">l##_your_name.ipynb</span></code>, where <code class="docutils literal notranslate"><span class="pre">##</span></code> is the number of the lesson. Lesson exercises are due at noon PDT on the Sunday before the lab session.</p>
 <p>The lesson exercises are not graded for correctness, but for thoughtfulness. A perfectly reasonable answer to a problem in a lesson exercise is, “I am really having trouble with this concept. Can you please go over it in class?”</p>
 </div>
 <div class="section" id="the-be-bi-103-github-group">
@@ -229,14 +233,15 @@ conflict and let the course instructors know.</p>
 <p>Data analysis is almost always a collaborative effort in both research and industry. Therefore, you will be assigned to teams of three (possibly with a couple teams of four depending on course enrollment). You will submit your homework as a team. The following homework policies apply.</p>
 <ul>
 <li><p>Each homework has a defined due date and time. For most homeworks, this is Friday evening at 11:59 pm PDT. Your team must tag your completed homework in your team’s homework repository before this time.</p></li>
-<li><p>The commit containing your final submission must be tagged with <cite>hw##_submission</cite>,” where <cite>##</cite> is the two-digit homework assignment number (e.g., 04). Failure to properly tag your homework will result in a 5% deduction from your point total. This sounds harsh, but we have a lot of problem sets to manage and have automated scripts to do it. These will fail if you do not properly name your files.</p></li>
+<li><p>The commit containing your final submission must be tagged with <code class="docutils literal notranslate"><span class="pre">hw##_submission</span></code>,” where <code class="docutils literal notranslate"><span class="pre">##</span></code> is the two-digit homework assignment number (e.g., 04). Failure to properly tag your homework will result in a 5% deduction from your point total. This sounds harsh, but we have a lot of problem sets to manage and have automated scripts to do it. These will fail if you do not properly name your files.</p></li>
 <li><p>Each homework <em>problem</em> must be committed as single Jupyter
-notebook. The file names must be <cite>hw##.#.ipynb</cite>. For example,
-homework problem 3.2 is in the file <cite>hw03.2.ipynb</cite>. If you
+notebook. The file names must be <code class="docutils literal notranslate"><span class="pre">hw##.#.ipynb</span></code>. For example,
+homework problem 3.2 is in the file <code class="docutils literal notranslate"><span class="pre">hw03.2.ipynb</span></code>. If you
 wrote any other files that are necessary for your homework,
 they should live in the same directory as your Jupyter
 notebook, and you should also display any code you wrote in
 external files within your Jupyter notebook.</p></li>
+<li><p>You must also submit an HTML rendering of your Jupyter notebook with file name <code class="docutils literal notranslate"><span class="pre">hw##.#.html</span></code>.</p></li>
 <li><p>All code you wrote to do your assignment must be included in
 the notebook. Code from imported packages that you did not
 write (e.g., modules distributed by the class instructors) need
@@ -244,14 +249,14 @@ not be displayed in the notebook. We will run the code in your
 notebook; all code must run to get credit.</p></li>
 <li><p>Since we are running your code to check it, you must have the
 following path structure for the data sets used in the
-homework. There must be a directory <cite>data/</cite> in the root of
+homework. There must be a directory <code class="docutils literal notranslate"><span class="pre">data/</span></code> in the root of
 your team’s repository. This directory contains any data files
 downloaded for the homework with the file names unaltered. If
 the data were distributed in a ZIP file, the file must have
-been unzipped in the <cite>data</cite> directory and the file names and
-file names unaltered. So, the path to the <cite>data/</cite> directory
-from your <cite>homework/</cite> is <cite>../data/</cite>.</p></li>
-<li><p>A tip: You should use Jupyter’s “Restart and Run All” option under the <cite>Run</cite> pulldown menu to make sure your notebook is in runnable, submittable form.</p></li>
+been unzipped in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory and the file names and
+file names unaltered. So, the path to the <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory
+from your <code class="docutils literal notranslate"><span class="pre">homework/</span></code> is <code class="docutils literal notranslate"><span class="pre">../data/</span></code>.</p></li>
+<li><p>A tip: You should use Jupyter’s “Restart and Run All” option under the <code class="docutils literal notranslate"><span class="pre">Run</span></code> pulldown menu to make sure your notebook is in runnable, submittable form.</p></li>
 <li><p>All of your results must be clearly explained and all graphics
 clearly presented and embedded in the Jupyter notebook.</p></li>
 <li><p>Any mathematics in your homework must render clearly and
@@ -367,11 +372,11 @@ alerts if necessary.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Sep 06, 2020.
+        Last updated on Sep 15, 2020.
       </span>
 
     </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fa7fae97cd0> 
+  </div> <jinja2.runtime.BlockReference object at 0x7ffe91e7ff10> 
 
 <p>© 2019 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

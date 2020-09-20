@@ -43,27 +43,29 @@ Data analysis is almost always a collaborative effort in both research and indus
 -  Each homework has a defined due date and time. For most homeworks, this is Friday evening at 11:59 pm PDT. Your team must tag your completed homework in your team's homework repository before this time.
 -  The commit containing your final submission must be tagged with ``hw##_submission``," where ``##`` is the two-digit homework assignment number (e.g., 04). Failure to properly tag your homework will result in a 5% deduction from your point total. This sounds harsh, but we have a lot of problem sets to manage and have automated scripts to do it. These will fail if you do not properly name your files.
 -  Each homework *problem* must be committed as single Jupyter
-   notebook. The file names must be ``hw##.#.ipynb``. For example,
-   homework problem 3.2 is in the file ``hw03.2.ipynb``. If you
+   notebook. The file names must be ``hw#.#.ipynb``. For example,
+   homework problem 3.2 is in the file ``hw3.2.ipynb``. If you
    wrote any other files that are necessary for your homework,
    they should live in the same directory as your Jupyter
    notebook, and you should also display any code you wrote in
    external files within your Jupyter notebook.
--  You must also submit an HTML rendering of your Jupyter notebook with file name ``hw##.#.html``.
+-  You must also submit an HTML rendering of your Jupyter notebook with file name ``hw#.#.html``.
 -  All code you wrote to do your assignment must be included in
    the notebook. Code from imported packages that you did not
    write (e.g., modules distributed by the class instructors) need
    not be displayed in the notebook. We will run the code in your
    notebook; all code must run to get credit.
--  Since we are running your code to check it, you must have the
-   following path structure for the data sets used in the
-   homework. There must be a directory ``data/`` in the root of
-   your team's repository. This directory contains any data files
-   downloaded for the homework with the file names unaltered. If
-   the data were distributed in a ZIP file, the file must have
-   been unzipped in the ``data`` directory and the file names and
-   file names unaltered. So, the path to the ``data/`` directory
-   from your ``homework/`` is ``../data/``. 
+-  Since we are running your code to check it, you must have the data sets be accessed in the   standard way for the class. That is to say, the following code (or something similar that sets up the correct directory structure) must be at the top of each submitted notebook that uses a data set.
+
+   .. code-block:: python
+
+      import os, sys
+      if "google.colab" in sys.modules:
+          data_path = "https://s3.amazonaws.com/bebi103.caltech.edu/data/"
+      else:
+          data_path = "../data/"
+
+   When accessing files without your notebooks, do it with something like this: ``filename = os.path.join(data_path, 'name_of_datafile.csv')``.
 -  A tip: You should use Jupyter's "Restart and Run All" option under the ``Run`` pulldown menu to make sure your notebook is in runnable, submittable form.
 -  All of your results must be clearly explained and all graphics
    clearly presented and embedded in the Jupyter notebook.

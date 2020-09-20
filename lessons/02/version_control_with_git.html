@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. Version control with Git &mdash; BE/Bi 103 a  documentation</title>
+  <title>Introduction to Git &mdash; BE/Bi 103 a  documentation</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3. Introduction to Python" href="../03/index.html" />
-    <link rel="prev" title="1. The cycle of science" href="../01/cycle_of_science.html" /> 
+    <link rel="next" title="Using GitHub with Google Colab" href="git_with_colab.html" />
+    <link rel="prev" title="2. Version control with Git" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,20 +93,33 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Version control with Git</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-git">Configuring Git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cloning-repositories">Cloning Repositories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pulling-in-changes">Pulling in changes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#relationships-among-your-local-machine-and-your-repository">Relationships among your local machine and your repository</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#a-note-on-commit-messages">A note on commit messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#what-to-do-in-case-of-a-fire">What to do in case of a fire</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Version control with Git</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction to Git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-git">Configuring Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-repositories">Cloning Repositories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pulling-in-changes">Pulling in changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#relationships-among-your-local-machine-and-your-repository">Relationships among your local machine and your repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#a-note-on-commit-messages">A note on commit messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-to-do-in-case-of-a-fire">What to do in case of a fire</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#gitignore">.gitignore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#additional-information-about-using-git">Additional information about using Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gitignore">.gitignore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-information-about-using-git">Additional information about using Git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="git_with_colab.html">Using GitHub with Google Colab</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/style.html">4: Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/data_storage_and_sharing.html">7. Data storage and sharing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Homework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -172,7 +185,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>2. Version control with Git</li>
+          <li><a href="index.html">2. Version control with Git</a> &raquo;</li>
+        
+      <li>Introduction to Git</li>
     
     
   <li class="wy-breadcrumbs-aside">
@@ -217,8 +232,8 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="version-control-with-git">
-<h1>2. Version control with Git<a class="headerlink" href="#version-control-with-git" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-git">
+<h1>Introduction to Git<a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
 <p>Keeping track of all of the changes in your project over time is good
 practice. How many times have you edited something in something you were
 writing and then wanted to go back and see what you had in the first
@@ -532,10 +547,10 @@ guides</a> to get you started.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../03/index.html" class="btn btn-neutral float-right" title="3. Introduction to Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="git_with_colab.html" class="btn btn-neutral float-right" title="Using GitHub with Google Colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../01/cycle_of_science.html" class="btn btn-neutral float-left" title="1. The cycle of science" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="2. Version control with Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -545,11 +560,11 @@ guides</a> to get you started.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Sep 15, 2020.
+        Last updated on Sep 20, 2020.
       </span>
 
     </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7ffea939b040> 
+  </div> <jinja2.runtime.BlockReference object at 0x7fb53233ad30> 
 
 <p>© 2019 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

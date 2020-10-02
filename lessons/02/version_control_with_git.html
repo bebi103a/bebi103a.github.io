@@ -357,10 +357,10 @@ git merge FETCH_HEAD
 </div>
 <p>In practice, you will use this a lot, but sometimes fetching and merging
 can be useful. Note that <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> is actually shorthand for</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull origin master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull origin main
 </pre></div>
 </div>
-<p>which is the more verbose way of saying that you want to pull the master
+<p>which is the more verbose way of saying that you want to pull the main
 <strong>branch</strong> from the remote repository named <code class="docutils literal notranslate"><span class="pre">origin</span></code>. We will not
 discuss branching in this course, but it is an important concept to
 learn about.</p>
@@ -408,8 +408,8 @@ want to add to the commit. You can do this by checking the status.</p>
 </pre></div>
 </div>
 <p>The result might look something like this.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
-<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/master&#39;</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
 
 <span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
   <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
@@ -454,12 +454,12 @@ the time of the commit. Now, the commit is still only on your local
 machine. In order for your collaborators (or the whole world, if it is a
 public repo) to have access to it (and in order for it to appear on
 GitHub), you need to <strong>``push``</strong> it. To do that, we do this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin main
 </pre></div>
 </div>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">origin</span></code> is a nickname for your remote repository. <code class="docutils literal notranslate"><span class="pre">master</span></code> is
+<p>Here, <code class="docutils literal notranslate"><span class="pre">origin</span></code> is a nickname for your remote repository. <code class="docutils literal notranslate"><span class="pre">main</span></code> is
 the name of the branch we are pushing to in the GitHub repository. I.e.,
-it is the master copy. (We will not really talk about branches or
+it is the main copy. (We will not really talk about branches or
 branching.)</p>
 <p>That is the basic set of operations to get your work into the repository
 and out to the remote for your teammates.</p>
@@ -483,7 +483,7 @@ protects your work. So, what do you do in case of a fire in your
 building?</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add *
 git commit -m <span class="s2">&quot;Building on fire, no time for meaningful commit message.&quot;</span>
-git push origin master
+git push origin main
 git out of the building
 </pre></div>
 </div>
@@ -568,7 +568,7 @@ guides</a> to get you started.</p>
       </span>
 
     </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fed5deea640> 
+  </div> <jinja2.runtime.BlockReference object at 0x7faf0dfa6940> 
 
 <p>© 2019 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1085,7 +1085,7 @@
     "However, the `expression_to_put_in_list` can be any valid Python expression. The following is a valid Python expression:\n",
     "\n",
     "```python\n",
-    "(\"Medicine\", name, nat) if cat == \"Physiology or Medicine\" else (cat, name, cat)\n",
+    "(\"Medicine\", name, nat) if cat == \"Physiology or Medicine\" else (cat, name, nat)\n",
     "```\n",
     "\n",
     "So, we can still use a list comprehension to build the list."
@@ -1099,19 +1099,19 @@
     {
      "data": {
       "text/plain": [
-       "[('Chemistry', 'Frances Arnold', 'Chemistry'),\n",
-       " ('Chemistry', 'George Smith', 'Chemistry'),\n",
-       " ('Chemistry', 'Gregory Winter', 'Chemistry'),\n",
-       " ('Literature', 'postponed', 'Literature'),\n",
-       " ('Peace', 'Denis Mukwege', 'Peace'),\n",
-       " ('Peace', 'Nadia Murad', 'Peace'),\n",
-       " ('Physics', 'Arthur Ashkin', 'Physics'),\n",
-       " ('Physics', 'Gérard Mourou', 'Physics'),\n",
-       " ('Physics', 'Donna Strickland', 'Physics'),\n",
+       "[('Chemistry', 'Frances Arnold', 'USA'),\n",
+       " ('Chemistry', 'George Smith', 'USA'),\n",
+       " ('Chemistry', 'Gregory Winter', 'UK'),\n",
+       " ('Literature', 'postponed', '---'),\n",
+       " ('Peace', 'Denis Mukwege', 'DRC'),\n",
+       " ('Peace', 'Nadia Murad', 'Iraq'),\n",
+       " ('Physics', 'Arthur Ashkin', 'USA'),\n",
+       " ('Physics', 'Gérard Mourou', 'France'),\n",
+       " ('Physics', 'Donna Strickland', 'Canada'),\n",
        " ('Medicine', 'James Allison', 'USA'),\n",
        " ('Medicine', 'Tasuku Honjo', 'Japan'),\n",
-       " ('Economics', 'William Nordhaus', 'Economics'),\n",
-       " ('Economics', 'Paul Romer', 'Economics')]"
+       " ('Economics', 'William Nordhaus', 'USA'),\n",
+       " ('Economics', 'Paul Romer', 'USA')]"
       ]
      },
      "execution_count": 27,
@@ -1121,7 +1121,7 @@
    ],
    "source": [
     "[\n",
-    "    (\"Medicine\", name, nat) if cat == \"Physiology or Medicine\" else (cat, name, cat)\n",
+    "    (\"Medicine\", name, nat) if cat == \"Physiology or Medicine\" else (cat, name, nat)\n",
     "    for name, nat, cat in zip(names, nationalities, categories)\n",
     "]"
    ]
@@ -1151,10 +1151,10 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPython 3.8.3\n",
-      "IPython 7.16.1\n",
+      "CPython 3.8.5\n",
+      "IPython 7.18.1\n",
       "\n",
-      "jupyterlab 2.1.5\n"
+      "jupyterlab 2.2.6\n"
      ]
     }
    ],
@@ -1180,7 +1180,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.3"
+   "version": "3.8.5"
   }
  },
  "nbformat": 4,

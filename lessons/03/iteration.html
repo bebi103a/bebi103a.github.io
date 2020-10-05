@@ -1315,7 +1315,7 @@ addition to being syntactically clunky, the above way of creating a list is inef
 </div>
 <p>Syntax error! This structure of a list comprehension does not match the template shown above. In the conditional expression of list comprehensions, you cannot have an else block.</p>
 <p>However, the <code class="docutils literal notranslate"><span class="pre">expression_to_put_in_list</span></code> can be any valid Python expression. The following is a valid Python expression:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">&quot;Medicine&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nat</span><span class="p">)</span> <span class="k">if</span> <span class="n">cat</span> <span class="o">==</span> <span class="s2">&quot;Physiology or Medicine&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="n">cat</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">&quot;Medicine&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nat</span><span class="p">)</span> <span class="k">if</span> <span class="n">cat</span> <span class="o">==</span> <span class="s2">&quot;Physiology or Medicine&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="n">cat</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nat</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>So, we can still use a list comprehension to build the list.</p>
@@ -1325,7 +1325,7 @@ addition to being syntactically clunky, the above way of creating a list is inef
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;Medicine&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nat</span><span class="p">)</span> <span class="k">if</span> <span class="n">cat</span> <span class="o">==</span> <span class="s2">&quot;Physiology or Medicine&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="n">cat</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+    <span class="p">(</span><span class="s2">&quot;Medicine&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nat</span><span class="p">)</span> <span class="k">if</span> <span class="n">cat</span> <span class="o">==</span> <span class="s2">&quot;Physiology or Medicine&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="n">cat</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nat</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">nat</span><span class="p">,</span> <span class="n">cat</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">nationalities</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
 <span class="p">]</span>
 </pre></div>
@@ -1337,19 +1337,19 @@ addition to being syntactically clunky, the above way of creating a list is inef
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Chemistry&#39;, &#39;Frances Arnold&#39;, &#39;Chemistry&#39;),
- (&#39;Chemistry&#39;, &#39;George Smith&#39;, &#39;Chemistry&#39;),
- (&#39;Chemistry&#39;, &#39;Gregory Winter&#39;, &#39;Chemistry&#39;),
- (&#39;Literature&#39;, &#39;postponed&#39;, &#39;Literature&#39;),
- (&#39;Peace&#39;, &#39;Denis Mukwege&#39;, &#39;Peace&#39;),
- (&#39;Peace&#39;, &#39;Nadia Murad&#39;, &#39;Peace&#39;),
- (&#39;Physics&#39;, &#39;Arthur Ashkin&#39;, &#39;Physics&#39;),
- (&#39;Physics&#39;, &#39;Gérard Mourou&#39;, &#39;Physics&#39;),
- (&#39;Physics&#39;, &#39;Donna Strickland&#39;, &#39;Physics&#39;),
+[(&#39;Chemistry&#39;, &#39;Frances Arnold&#39;, &#39;USA&#39;),
+ (&#39;Chemistry&#39;, &#39;George Smith&#39;, &#39;USA&#39;),
+ (&#39;Chemistry&#39;, &#39;Gregory Winter&#39;, &#39;UK&#39;),
+ (&#39;Literature&#39;, &#39;postponed&#39;, &#39;---&#39;),
+ (&#39;Peace&#39;, &#39;Denis Mukwege&#39;, &#39;DRC&#39;),
+ (&#39;Peace&#39;, &#39;Nadia Murad&#39;, &#39;Iraq&#39;),
+ (&#39;Physics&#39;, &#39;Arthur Ashkin&#39;, &#39;USA&#39;),
+ (&#39;Physics&#39;, &#39;Gérard Mourou&#39;, &#39;France&#39;),
+ (&#39;Physics&#39;, &#39;Donna Strickland&#39;, &#39;Canada&#39;),
  (&#39;Medicine&#39;, &#39;James Allison&#39;, &#39;USA&#39;),
  (&#39;Medicine&#39;, &#39;Tasuku Honjo&#39;, &#39;Japan&#39;),
- (&#39;Economics&#39;, &#39;William Nordhaus&#39;, &#39;Economics&#39;),
- (&#39;Economics&#39;, &#39;Paul Romer&#39;, &#39;Economics&#39;)]
+ (&#39;Economics&#39;, &#39;William Nordhaus&#39;, &#39;USA&#39;),
+ (&#39;Economics&#39;, &#39;Paul Romer&#39;, &#39;USA&#39;)]
 </pre></div></div>
 </div>
 <p>To be clear here, there is no conditional in the list comprehension; the conditional is in the expression to be added to the list, which we have called <code class="docutils literal notranslate"><span class="pre">expression_to_put_in_list</span></code>.</p>
@@ -1373,10 +1373,10 @@ addition to being syntactically clunky, the above way of creating a list is inef
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPython 3.8.3
-IPython 7.16.1
+CPython 3.8.5
+IPython 7.18.1
 
-jupyterlab 2.1.5
+jupyterlab 2.2.6
 </pre></div></div>
 </div>
 </div>
@@ -1403,11 +1403,11 @@ jupyterlab 2.1.5
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Oct 01, 2020.
+        Last updated on Oct 04, 2020.
       </span>
 
     </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7faf0eefb9a0> 
+  </div> <jinja2.runtime.BlockReference object at 0x7f93e1826850> 
 
 <p>© 2019 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,0 +1,223 @@
+Probability: definitions and interpretations
+--------------------------------------------
+
+I will be a little formal [1]_ for a moment here as we construct this
+mathematical notion of probability. First, we need to define the world
+of possibilities. We denote by :math:`\Omega` a **sample space**, which
+is the set of all **outcomes** we could observe in a given experiment.
+We define an **event** :math:`A` to be a subset of :math:`\Omega`
+(:math:`A\subseteq\Omega`). Two events, :math:`A_i` and :math:`A_j` are
+**disjoint**, also called **mutually exclusive**, if
+:math:`A_i \cap A_j = \emptyset`. That is to say that two events are
+disjoint if they do not overlap at all in the sample space; they do not
+share any outcomes. So, in common terms, the sample space :math:`\Omega`
+contains all possible outcomes of an experiment. An event :math:`A` is a
+given outcome or set of outcomes. Two events are disjoint if they are
+totally different from each other.
+
+We define the **probability of event** :math:`A` to be :math:`P(A)`,
+where :math:`P` is a **probability function**. It maps the event
+:math:`A` to a real number between zero and one. In order to be a
+probability, the function :math:`P` must satisfy the following axioms.
+
+#. The probability must be nonnegative; :math:`P(A) \ge 0` for all
+   :math:`A`.
+
+#. The probability that an event was drawn from the entire sample space
+   is one; :math:`P(\Omega) = 1`.
+
+#. The probability of the empty set is zero; :math:`P(\emptyset) = 0`.
+   Along with the previous axiom and the requirement that :math:`P(A)`
+   range from zero to one, this essentially says that only events in the
+   sample space are allowable outcomes.
+
+#. If :math:`A_1, A_2, \ldots` are disjoint events, then
+
+   .. math::
+
+      \begin{aligned}
+          P\left(\bigcup_i A_i\right) = \sum_i P(A_i).
+      \end{aligned}
+
+  This means that probability is additive. The probability of observing an event in the union of disjoint events is the sum of the probabilities of those events.
+
+Putting together these axioms, we see that probability consists of
+positive real numbers that are distributed among the events of a sample
+space. The sum total of these real numbers over all of the sample space
+is one. So, a probability function and a sample space go hand-in-hand. For many of our applications, the sample space consists of set of numbers like the real numbers, integers, and subsets of real numbers and integers.
+
+Interpretations of probability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before we go on to talk more about probability, it will help to be
+thinking about how we can apply it to understand measured data. To do
+that, we need to think about how probability is interpreted. Note that
+these are *interpretations* of probability, not definitions. We have
+already defined probability, and both of the two dominant
+interpretations below are valid.
+
+Frequentist probability.
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the *frequentist* interpretation of probability, the probability
+:math:`P(A)` represents a long-run frequency over a large number of
+identical repetitions of an experiment. These repetitions can be, and
+often are, hypothetical. The event :math:`A` is restricted to
+propositions about **random variables**, quantities that can very
+meaningfully from experiment to experiment. [2]_ So in the frequentist
+view, we are using probability to understand how the results of an
+experiment might vary from repetition to repetition.
+
+Bayesian probability.
+~~~~~~~~~~~~~~~~~~~~~
+
+Here, :math:`P(A)` is interpreted to directly represent the degree of
+belief, or plausibility, about :math:`A`. So, :math:`A` can be any
+logical proposition, not just a random variable.
+
+You may have heard about a split, or even a fight, between people who
+use Bayesian and frequentist interpretations of probability applied to
+statistical inference. There is no need for a fight. The two ways of
+approaching statistical inference differ in their interpretation of
+probability, the tool we use to quantify uncertainty. Both are valid.
+
+In my opinion, the Bayesian interpretation of probability is more
+intuitive to apply to scientific inference. It always starts with a
+simple probabilistic expression and proceeds to quantify plausibility.
+It is conceptually cleaner to me, since we can talk about plausibility
+of anything, including parameter values. In other words, Bayesian
+probability serves to quantify our own knowledge, or degree of
+certainty, about a hypothesis or parameter value. Conversely, in
+frequentist statistical inference, the parameter values are fixed (they
+are not random variables; they cannot vary meaningfully from experiment
+to experiment), and we can only study how repeated experiments will
+convert the real parameter value to an observation.
+
+That is my opinion, and I view fights over such things counterproductive. Frequentist methods are also very useful and powerful, and in this class, we will almost exclusively use them. Next term, we will use almost exclusively Bayesian methods.
+
+
+The sum rule, the product rule, and conditional probability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The *sum rule*, which may be derived from the axioms defining
+probability, says that the probability of *all* events must add to
+unity. Let :math:`A^c` be all events *except* :math:`A`, called the
+**complement** of :math:`A`. Then, the sum rule states that
+
+.. math::
+
+   \begin{aligned}
+     P(A) + P(A^c) = 1.\end{aligned}
+
+Now, let’s say that we are interested in event :math:`A` happening
+*given* that event :math:`B` happened. So, :math:`A` is **conditional**
+on :math:`B`. We denote this conditional probability as
+:math:`{P(A\mid B)}`. Given this notion of conditional probability, we
+can write the sum rule as
+
+.. math::
+
+    \begin{aligned}
+    \text{(sum rule)} \qquad P(A\mid B) + P(A^c \mid B) = 1,
+    \end{aligned}
+
+for any :math:`B`.
+
+The *product rule* states that
+
+.. math::
+
+   \begin{aligned}
+     P(A, B) = P(A\mid B)\, P(B),\end{aligned}
+
+where :math:`P(A,B)` is the probability of both :math:`A` *and*
+:math:`B` happening. (It could be written as :math:`P(A\cap B)`.) The
+product rule is also referred to as the **definition of conditional
+probability**. It can similarly be expanded as we did with the sum rule.
+
+.. math::
+
+  \begin{aligned}
+  \text{(product rule)} \qquad P(A, B\mid C) = P(A\mid B, C)\, P(B \mid C),
+  \end{aligned}
+
+for any :math:`C`.
+
+
+Bayes’s Theorem
+^^^^^^^^^^^^^^^
+
+Note that because “and” is commutative, :math:`P(A, B) = P(B, A)`. We apply the product rule to both sides of this seemingly trivial equality.
+
+.. math::
+
+    \begin{aligned}
+    P(A \mid B)\, P(B) =  P(A, B)
+     = P(B,A) = P(B \mid A)\, P(A).
+    \end{aligned}
+
+If we take the terms at the beginning and end of this equality and
+rearrange, we get
+
+.. math::
+
+   \begin{aligned}
+   \text{(Bayes's theorem)} \qquad  P(A \mid B) = \frac{P(B \mid A)\, P(A)}{P(B)}.
+   \end{aligned}
+
+This result is called **Bayes’s theorem**. This result holds for probability, regardless of how it is interpreted, frequentist, Bayesian, or otherwise.
+
+
+Marginalization
+^^^^^^^^^^^^^^^
+
+Let :math:`\{A_i\}` be a set of outcomes indexed by :math:`i`. Then,
+
+.. math::
+
+   \begin{aligned}
+   1 &= P(A_j\mid B) + P(A_j^c \mid B) \nonumber \\ 
+   &= P(A_j\mid B) + \sum_{i\ne j}P(A_i\mid B) \nonumber \\ 
+   &= \sum_iP(A_i\mid B).\end{aligned}
+
+Now, Bayes’s theorem gives us an expression for :math:`P(A_i\mid B)`, so we can compute the sum.
+
+.. math::
+
+   \begin{aligned}
+   \sum_iP(A_i\mid B) &= \sum_i\frac{P(B \mid A_i)\, P(A_i)}{P(B)} \nonumber \\
+   &= \frac{1}{P(B)}\sum_i P(B \mid A_i)\, P(A_i) \nonumber \\
+   &= 1.
+   \end{aligned}
+
+Therefore, we have
+
+.. math::
+
+   \begin{aligned}
+   P(B) = \sum_i P(B \mid A_i)\, P(A_i).\end{aligned}
+
+Using the definition of conditional probability, we also have
+
+.. math::
+
+   \begin{aligned}
+   P(B) = \sum_i P(B,A_i)
+   \end{aligned}
+
+This process of eliminating a variable (in this case the
+:math:`A_i`'s') in the joint distribution by summing is called
+**marginalization**. 
+
+
+
+
+----
+
+.. [1]
+   But not too formal. For example, we are not discussing :math:`\sigma`
+   algebras, measurability, etc.
+
+.. [2]
+   More formally, a random variable transforms the possible outcomes of
+   an experiment to real numbers.

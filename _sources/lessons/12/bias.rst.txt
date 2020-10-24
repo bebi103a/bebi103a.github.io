@@ -1,0 +1,127 @@
+Bias
+----
+
+The **bias** of an estimate is the difference between the expectation
+value of the point estimate and value of the parameter.
+
+.. math::
+
+    \begin{aligned}
+       \text{bias}_F(\hat{\theta}, \theta) = \langle \hat{\theta} \rangle - \theta
+       = \int\mathrm{d}x\, \hat{\theta}f(x) - T(F).
+    \end{aligned}
+
+Note that the expectation value of :math:`\hat{\theta}` is computed over the (unknown) generative distribution whose PDF is :math:`f(x)`.
+
+
+Bias of the plug-in estimate for the mean
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We often want a small bias because we want to choose estimates that
+give us back the parameters we expect. Let's first investigate the bias of the plug-in estimate of the mean. As a reminder, the plug-in estimate is
+
+.. math::
+
+    \begin{aligned}
+       \hat{\mu} = \bar{x},
+    \end{aligned}
+
+where :math:`\bar{x}` is the arithmetic mean of the observed data. To compute the bias of the plug-in estimate, we need to compute :math:`\langle \hat{\mu}\rangle` and compare it to :math:`\mu`.
+
+.. math::
+
+    \begin{aligned}
+       \langle \hat{\mu}\rangle = \langle \bar{x}\rangle = \frac{1}{n}\left\langle\sum_i x_i\right\rangle
+       = \frac{1}{n}\sum_i \left\langle x_i\right\rangle
+       = \langle x\rangle
+       = \mu.
+    \end{aligned}
+
+Because :math:`\langle \hat{\mu}\rangle = \mu`, the bias in the plug-in estimate for the mean is zero. It is said to be **unbiased**.
+
+
+Bias of the plug-in estimate for the variance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To compute the bias of the plug-in estimate for the variance, first recall that the variance, as the second central moment, is computed as
+
+.. math::
+
+    \begin{aligned}
+       \sigma^2 = \langle x^2 \rangle - \langle x\rangle^2.
+    \end{aligned}
+
+So, the expectation value of the plug-in estimate is
+
+.. math::
+
+  \begin{aligned}
+   \left\langle \hat{\sigma}^2 \right\rangle &= \left\langle\frac{1}{n}\sum_i x_i^2 - \bar{x}^2\right\rangle \\[1em]
+   &= \left\langle\frac{1}{n}\sum_i x_i^2\right\rangle - \left\langle\bar{x}^2\right\rangle\\[1em]
+   &= \frac{1}{n}\sum_i \left\langle x_i^2\right\rangle  - \left\langle\bar{x}^2\right\rangle \\[1em]
+   &= \langle x^2 \rangle - \left\langle\bar{x}^2\right\rangle\\[1em]
+   &= \mu^2 + \sigma^2 - \left\langle\bar{x}^2\right\rangle.
+  \end{aligned}
+
+We now need to compute :math:`\left\langle\bar{x}^2\right\rangle`,
+which is a little trickier. We will use the fact that the measurements
+are independent, so
+:math:`\left\langle x_i x_j\right\rangle = \langle x_i \rangle \langle x_j\rangle`
+for :math:`i\ne j`.
+
+.. math::
+
+    \begin{aligned}
+    \left\langle\bar{x}^2\right\rangle
+    &= \left\langle\left(\frac{1}{n}\sum_ix_i\right)^2\right\rangle \\[1em]
+    &= \frac{1}{n^2}\left\langle\left(\sum_ix_i\right)^2 \right\rangle \\[1em]
+    &= \frac{1}{n^2}\left\langle\sum_i x_i^2 + 2\sum_i\sum_{j>i}x_i x_j\right\rangle \nonumber \\[1em]
+    &= \frac{1}{n^2}\left(\sum_i \left\langle x_i^2\right\rangle
+    + 2\sum_i\sum_{j>i}\left\langle x_i x_j\right\rangle \right) \\[1em]
+    &= \frac{1}{n^2}\left(n(\sigma^2 + \mu^2)
+    + 2\sum_i\sum_{j>i}\langle x_i\rangle \langle x_j\rangle\right) \nonumber \\[1em]
+    &=\frac{1}{n^2}\left(n(\sigma^2 + \mu^2) + n(n-1)\langle x\rangle^2\right)\\[1em]
+    &= \frac{1}{n^2}\left(n\sigma^2 + n^2\mu^2\right) \\[1em]
+    &= \frac{\sigma^2}{n} + \mu^2.
+    \end{aligned}
+
+Thus, we have
+
+.. math::
+
+    \begin{aligned}
+    \left\langle \hat{\sigma}^2 \right\rangle = \left(1-\frac{1}{n}\right)\sigma^2.
+    \end{aligned}
+
+Therefore, the bias is
+
+.. math::
+
+    \begin{aligned}
+       \text{bias} = -\frac{\sigma^2}{n}.
+    \end{aligned}
+
+If :math:`\hat{\sigma}^2` is the plug-in estimate for the variance, an unbiased estimator would instead be
+
+.. math::
+
+    \begin{aligned}
+      \frac{n}{n-1}\,\hat{\sigma}^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2.
+    \end{aligned}
+
+
+Justification of using plug-in estimates.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Despite the apparent bias in the plug-in estimate for the variance, we
+will normally just use plug-in estimates going forward. (We will use the
+hat, e.g. :math:`\hat{\theta}`, to denote an estimate, which can be
+either a plug-in estimate or not.) Note that the bootstrap procedures we
+lay out in what follows do not *need* to use plug-in estimates, but we
+will use them for convenience. Why do this? The bias is typically small.
+We just saw that the biased and unbiased estimators of the variance
+differ by a factor of :math:`n/(n-1)`, which is negligible for large
+:math:`n`. In fact, plug-in estimates tend to have much smaller error
+than the confidence intervals for the parameter estimate, which we will
+discuss next.
+

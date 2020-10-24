@@ -1,0 +1,196 @@
+Building a generative model
+---------------------------
+
+The process of model building usually involves starting with a cartoon model, mathematizing it, and the forming that into a statistical model to model noise in measurement. Sometimes this process is very simple, and sometimes it involves careful and difficult modeling. 
+
+
+Examples of generative models
++++++++++++++++++++++++++++++
+
+It is often easiest to learn from example. I present here some examples of how we might come up with generative models.
+
+The size of eggs laid by *C. elegans*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The experiment here is repeated measurements of the length of eggs laid by *C. elegans* worms. We do not pretend to know much about how the process of egg generation sets its length. Surely many processes are involved, and we choose to model the egg length as being Normally distributed, as this story roughly matches what we would expect. We further assume that the length of each egg we measure is independent of all of the other eggs we measure, and further that the distribution we use to describe the egg length of any given egg is the same as any other. That is to say that the eggs are **independent and identically distributed**, abbreviated **i.i.d.**
+
+We can then write down the probability density function for the length of egg :math:`i`, :math:`y_i`, as
+
+.. math::
+
+    \begin{align}
+    f(y_i; \mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma^2}}\,\mathrm{e}^{-(y_i-\mu)^2/2\sigma^2},
+    \end{align}
+
+which is the PDF for a Normal distribution. Since each measurement is independent, the PDF for the joint distribution of all measurements, :math:`\mathbf{y} = \{y_1, y_2, \ldots, y_n\}`, is given by the product of the PDFs of the individual measurements.
+
+.. math::
+
+    \begin{align}
+       f(\mathbf{y}; \mu, \sigma) &= \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}}\,\mathrm{e}^{-(y_i-\mu)^2/2\sigma^2} \\
+       &= \left(\frac{1}{2\pi \sigma^2}\right)^{n/2}\,\exp\left[-\frac{1}{2\sigma^2}\sum_{i=1}^n(y_i-\mu)^2\right].
+    \end{align}
+
+The PDF has all of the information for the generative model. Importantly, **the statistical model dictates what parameters you are trying to estimate.** In this case, there are two parameters, :math:`\mu` and :math:`\sigma`. The generative model tells us that we can infer the characteristic egg length :math:`\mu` and the variance, :math:`\sigma^2`.
+
+In this, model, we skipped directly through the cartoon model, through mathematization, and directly to the generative statistical model, since the former two models are trivial.
+
+
+Short-hand model definition
+###########################
+
+Writing out the mathematical expression for the PDF can be cumbersome, even for a relatively simple model like we have here. In English, the model is, "The egg lengths are i.i.d. and are Normally distributed with mean :math:`\mu` and standard deviation :math:`\sigma`." A shorthand for this is
+
+.. math::
+
+    \begin{align}
+    y_i \sim \text{Norm}(\mu, \sigma) \;\forall i.
+    \end{align}
+
+This is read just like the English sentence describing the model. The tilde symbol means "is distributed as."
+
+
+
+The amount of time before microtubule catastrophe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In your homework, you have already built a model for the time to microtubule catastrophe. We started with a story: Catatstrophe occurs after the arrival of two different successive Poisson processes. The story here is the cartoon model. You derived the probability distribution function for the time it takes for a single catastrophe.
+
+.. math::
+
+    \begin{align}
+    f(t_i;\beta_1, \beta_2) = \frac{\beta_1 \beta_2}{\beta_2 - \beta_1}\left(\mathrm{e}^{-\beta_1 t_i} - \mathrm{e}^{-\beta_2 t_i}\right),
+    \end{align}
+
+where we have implicitly assumed that :math:`\beta_1 \ne \beta_2`. We could explicitly model some errors in measurement of catastrophe times, but the experiment is quite clean. It is obvious from the images when catastrophe occurs, so the mathematical model leads directly to the generative statistical model.
+
+If we again model the catastrophe events as i.i.d., we can write the joint PDF for a set of measured catastrophe times :math:`\mathbf{t} = \{t_1, t_2, \ldots, t_n\}`.
+
+.. math::
+
+    \begin{align}
+    f(\mathbf{t};\beta_1, \beta_2) = \left(\frac{\beta_1 \beta_2}{\beta_2 - \beta_1}\right)^n\prod_{i=1}^n\left(\mathrm{e}^{-\beta_1 t_i} - \mathrm{e}^{-\beta_2 t_i}\right).
+    \end{align}
+
+This model is more difficult to write in shorthand, but we can.
+
+.. math::
+
+    \begin{align}
+    &t'_i \sim \text{Expon}(\beta_1) \;\forall i,\\
+    &t_i - t'_i \sim \text{Expon}(\beta_2) \;\forall i.
+    \end{align}
+
+Note that this construction of the model has a **latent variable**, :math:`t_i'`, a random variable that we can define in the model, but we cannot measure.
+
+
+An alternative model for microtubule catastrophe
+################################################
+
+As an alternative model, we may consider the case where catastrophe is itself a Poisson process (or triggered by the arrival of a single Poisson process). In that case, our model is simpler.
+
+.. math::
+
+    \begin{align}
+    &t_i \sim \text{Expon}(\beta) \;\forall i.
+    \end{align}
+
+
+The change in bacterial mass over time
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You may be familiar with exponential microbial growth. When you put a single cell in growth media, it divides, and then you have two. Those two cells then grow and divide, giving four cells. This continues, and the number of cells grows exponentially with time.
+
+In an interesting paper (`PNAS, 2014 <https://doi.org/10.1073/pnas.1403232111>`_), Iyer-Biswas and coworkers addressed the question of whether or not a *single cell* exhibits exponential growth. That is, right after a division, does the total mass of a cell grow exponentially before dividing? Even if individual cells grow linearly, in bulk it is still exponential, so we cannot really tell from a growth experiment.
+
+Their clever experimental set-up allows imaging of single dividing cells in conditions that are identical through time. This is accomplished by taking advantage of a unique morphological feature of *Caulobacter*. The mother cell is adherent to the a surface through its stalk. Upon division, one of the daughter cells does not have a stalk and is mobile. The system is part of a microfluidic device that gives a constant flow. So, every time a mother cell divides, the un-stalked daughter cell gets washed away. In such a way, the dividing cells are never in a crowded environment and the buffer is always fresh. Using microscopy and image processing, they have many curves, starting from a single mother cell with its growth to division, to assess growth models.
+
+We can consider two models for growth of an individual cell, linear growth and exponential growth. 
+
+Linear growth
+#############
+
+We will start with linear growth; stating that the growth is linear is the cartoon model. More precisely, we model bacterial growth as a constant process for each bacterium; it grows at the same rate regardless of bacterial mass. We can mathematize our model as
+
+.. math::
+
+    \begin{align}
+    a(t) = a^0 + b t,
+    \end{align}
+
+where :math:`a(t)` is the area of the bacterium over time, and :math:`t` is the time since the last cell division. So, we now have our mathematical model. The growth rate is :math:`b`, and the area immediately after the last cell division is :math:`a^0`.
+
+For the statistical model, we need to model error in measurement. The idea is that the cell grows according to the above equation, but there will be some natural stochastic variation away from that curve. Furthermore, there are errors in measurement for the area at each time point. (We assume that we can measure the time exactly without error.) Thus, the measured area :math:`a_i` for a bacterium at time point :math:`t_i` is
+
+.. math::
+
+    \begin{align}
+    a_i = a^0 + b t_i + e_i,
+    \end{align}
+
+where :math:`e_i` is the variation in the measurement from the mathematical model, called a **residual**. To complete the statistical model, we need to specify how :math:`e_i` is distributed, and also the relationship between different time points. We first consider the latter. In time series analysis, the value (in this case the area) at time point :math:`t_{i+1}` may be influenced by some memory process by the value at time point :math:`t_i`. Nonetheless, we often model measurements at different time points as i.i.d., only being connected with those at previous times by virtue of the fact that there is explicit time dependence in the mathematical model. This is typically a reasonable assumption, as many processes are memoryless.
+
+Given that the measurements are i.i.d., we can model the residual, :math:`e_i`. This is commonly modeled as Normal with mean zero and some finite variance. If that variance is the same for all time points, the residuals are said to be **homoscedastic**. If the variance changes over time, we have **heteroscedasticity**. So, if we assume homoscedastic error, we could write
+
+
+.. math::
+
+    \begin{align}
+    f(e_i;\sigma) = \frac{1}{\sqrt{2\pi \sigma^2}} \mathrm{e}^{-e_i^2/2\sigma^2}\;\forall i.
+    \end{align}
+
+We can then write the PDF for the joint distribution of all of the measured data,
+
+
+.. math::
+
+    \begin{align}
+    f(a_i;t_i,a^0, b, \sigma) = \left(\frac{1}{2\pi\sigma^2}\right)^{n/2}\exp\left[\frac{1}{2\sigma^2}\sum_{i=1}^n(a_i - a^0-bt_i)^2\right].
+    \end{align}
+
+It is convenient to write this in shorthand.
+
+.. math::
+
+    \begin{align}
+    &a_i = a^0 + b t_i + e_i \;\forall i,\\
+    &e_i \sim \text{Norm}(0, \sigma)\;\forall i,
+    \end{align}
+
+or, equivalently,
+
+.. math::
+
+    \begin{align}
+    a_i \sim \text{Norm}(a^0 + b t_i, \sigma)\;\forall i.
+    \end{align}
+
+
+
+Exponential growth
+##################
+
+We can use exactly the same logic as above to write the model for Exponential growth.
+
+.. math::
+
+    \begin{align}
+    &a_i = a^0 \mathrm{e}^{kt} + e_i \;\forall i,\\
+    &e_i \sim \text{Norm}(0, \sigma)\;\forall i,
+    \end{align}
+
+or, equivalently,
+
+.. math::
+
+    \begin{align}
+    a_i \sim \text{Norm}(a^0 \mathrm{e}^{kt}, \sigma)\;\forall i.
+    \end{align}
+
+
+Important notes on generative modeling
+++++++++++++++++++++++++++++++++++++++
+
+In the three example models presented here, we used our best scientific and statistical insights to put forward a generative model. The model for linear growth of bacteria is in some sense "standard," in that it leads to linear regression, a widely-used statistical tool. Nonetheless, your modeling should be **bespoke**. You should choose models that are appropriate for the experiment and data your are analyzing.
+
+The bulk of next term is about parametric statistical models, how to build them, and how to assess them.

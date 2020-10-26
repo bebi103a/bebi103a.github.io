@@ -623,7 +623,7 @@ movement,” meaning that it is moving, but not moving violently.</p>
 <span class="sd">        Tidy DataFrame with all of the columns of the input file, plus:</span>
 <span class="sd">        - time: time in proper datetime format, based on the `sttime`</span>
 <span class="sd">          column of the inputted data file</span>
-<span class="sd">        - sleep : 1 if fish is asleep (activity = 0), and 0 otherwise.</span>
+<span class="sd">        - sleep : 1 if fish is asleep (activity &lt; wake_threshold), and 0 otherwise.</span>
 <span class="sd">          This is convenient for computing sleep when resampling.</span>
 <span class="sd">        - location: ID of the location of the animal. This is often</span>
 <span class="sd">          renamed to `fish`, but not by default.</span>
@@ -749,7 +749,7 @@ movement,” meaning that it is moving, but not moving violently.</p>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
 
     <span class="c1"># Compute sleep</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sleep&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;middur&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">wake_threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sleep&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;middur&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;burdur&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">wake_threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
     <span class="c1"># Get experimental time in units of hours (DEPRECATED)</span>
     <span class="c1"># df[&#39;exp_time&#39;] = df[&#39;start&#39;] / 3600</span>
@@ -994,11 +994,11 @@ movement,” meaning that it is moving, but not moving violently.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Oct 24, 2020.
+        Last updated on Oct 26, 2020.
       </span>
 
     </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fb82c361820> 
+  </div> <jinja2.runtime.BlockReference object at 0x7fb4fde1b2e0> 
 
 <p>© 2019 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

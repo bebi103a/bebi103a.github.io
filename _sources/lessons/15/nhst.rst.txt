@@ -1,7 +1,7 @@
 Null hypothesis significance testing
 ------------------------------------
 
-Imagine we do an experiment where we make repeated measurements under control conditions and another set of repeated measurements under test conditions. We may wish to evaluate a hypothesis that there is some similarity in the data generation processed between the control and test. If this similar data generating processes cannot produce the observed results, we might like to reject the hypothesis that they are similar. The procedure of **null hypothesis significance testing** (NHST) formalizes the procedure of evaluating hypotheses in this way.
+Imagine we do an experiment where we make repeated measurements under control conditions and another set of repeated measurements under test conditions. We may wish to evaluate a hypothesis that there is some similarity in the data generation process between the control and test. If this similar data generating processes cannot produce the observed results, we might like to reject the hypothesis that they are similar. The procedure of **null hypothesis significance testing** (NHST) formalizes the procedure of evaluating hypotheses in this way.
 
 Steps of a NHST
 ^^^^^^^^^^^^^^^
@@ -48,7 +48,7 @@ The above prescription of a NHST ends with a p-value. Many researchers do not en
 
 #. If the observed test statistic lies within the rejection region, reject the null hypothesis. Otherwise, do not reject it.
 
-We are free to choose the rejection region however we like; we just have to be explicit in how we do it. A common method is to choose a **significance level** :math:`\alpha`, such that values of the test statistic within the rejection region impart at a total probability mass of :math:`\alpha`, usually with :math:`\alpha` being small. This approach is equivalent to computing the p-value, and if it is less than :math:`\alpha`, the researcher decides to reject the null hypothesis. (I generally do not advocate such black and white decisions, described below.)
+We are free to choose the rejection region however we like; we just have to be explicit in how we do it. A common method is to choose a **significance level** :math:`\alpha`, such that values of the test statistic within the rejection region impart a total probability mass of :math:`\alpha`, usually with :math:`\alpha` being small. This approach is equivalent to computing the p-value, and if it is less than :math:`\alpha`, the researcher decides to reject the null hypothesis. (I generally do not advocate such black and white decisions, described below.)
 
 Importantly, note that the significance level (or more generally the means of computing the rejection region) is decided *before* simulating the null hypothesis.
 
@@ -71,8 +71,8 @@ the hypothesis, test statistic, and definition of extremeness.
 Performing tests using hacker stats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now, the real trick to doing a hypothesis test is step 3, in which you
-simulate the data acquisition assuming the null hypothesis was true. For some tests, that is some trios of null hypothesis, test statistic, and meaning of "at least as extreme as," simulation is unnecessary because analytical results exist. This is the case for many of the named tests. However, in many cases, these are not the hypotheses you wish you test. Because you have random number generation at your finger tips, you can test the hypotheses *you* want to test, not just the ones that have names.
+Now, the real trick to doing a hypothesis test is
+simulating data acquisition assuming the null hypothesis is true. For some tests, that is some trios of null hypothesis, test statistic, and meaning of "at least as extreme as," simulation is unnecessary because analytical results exist. This is the case for many of the named tests. However, in many cases, these are not the hypotheses you wish you test. Because you have random number generation at your finger tips, you can test the hypotheses *you* want to test, not just the ones that have names.
 
 I will demonstrate two hypothesis tests and how we can simulate them. For
 both examples, we will consider the commonly encountered problem of
@@ -87,8 +87,8 @@ Test and control come from the same distribution.
 Here, the null hypothesis is that the distribution :math:`F` of the
 control (wild type) measurements is the same as that :math:`G` of the
 test (mutant), or :math:`F = G`. To simulate this, we can do a
-**permutation test**. Say we have :math:`n` measurements from control
-and :math:`m` measurements from test. We then concatenate arrays of the
+**permutation test**. Say we have :math:`n` control measurements
+and :math:`m` test measurements. We concatenate arrays of the
 control and test measurements to get a single array with :math:`n + m`
 entries. We then randomly scramble the order of the entries (this is
 implemented in ``np.random.permuation()``). We take the first :math:`n`
@@ -97,8 +97,8 @@ this way, we are simulating the null hypothesis: whether or not a sample
 is test or control makes no difference.
 
 For this case, we might define our test statistic to be the difference
-of means, or the difference of medians. These can be computed from the
-two data sets and are a scalar value.
+of means, the difference of medians, or anything else that can be computed from the
+two data sets and has a scalar value.
 
 
 Test and control distributions have the same mean.
@@ -141,6 +141,6 @@ nonparametric hypothesis tests.
 
 
 Interpretation of the p-value
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The p-value is best interpreted by its definition. It is the probability of observing a test statistic under the null hypothesis that is at least as extreme as what was observed experimentally. That's it. It is important to interpret a p-value as what it is, and not anything else. Most importantly, it is *not* the probability that a null hypothesis is true. Even if it small, it is *not* a confirmation that another hypothesis you have in mind is true.

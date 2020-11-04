@@ -116,9 +116,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#test-and-control-distributions-have-the-same-mean">Test and control distributions have the same mean.</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#interpretation-of-the-p-value">Interpretation of the p-value</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#interpretation-of-the-p-value">Interpretation of the p-value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="opinions_about_nhst.html">Comments and opinions on NHST</a></li>
 </ul>
 </li>
@@ -255,7 +255,7 @@
 </style>
 <div class="section" id="null-hypothesis-significance-testing">
 <h1>Null hypothesis significance testing<a class="headerlink" href="#null-hypothesis-significance-testing" title="Permalink to this headline">¶</a></h1>
-<p>Imagine we do an experiment where we make repeated measurements under control conditions and another set of repeated measurements under test conditions. We may wish to evaluate a hypothesis that there is some similarity in the data generation processed between the control and test. If this similar data generating processes cannot produce the observed results, we might like to reject the hypothesis that they are similar. The procedure of <strong>null hypothesis significance testing</strong> (NHST) formalizes the procedure of evaluating hypotheses in this way.</p>
+<p>Imagine we do an experiment where we make repeated measurements under control conditions and another set of repeated measurements under test conditions. We may wish to evaluate a hypothesis that there is some similarity in the data generation process between the control and test. If this similar data generating processes cannot produce the observed results, we might like to reject the hypothesis that they are similar. The procedure of <strong>null hypothesis significance testing</strong> (NHST) formalizes the procedure of evaluating hypotheses in this way.</p>
 <div class="section" id="steps-of-a-nhst">
 <h2>Steps of a NHST<a class="headerlink" href="#steps-of-a-nhst" title="Permalink to this headline">¶</a></h2>
 <p>A typical hypothesis test consists of these steps.</p>
@@ -291,7 +291,7 @@ hypothesis is true. Do this many times, computing and storing the
 value of the test statistic each time. This is sampling out of the <strong>null distribution</strong>. That is the distribution of the values of the test statistic under the assumption that the null hypothesis is true.</p></li>
 <li><p>If the observed test statistic lies within the rejection region, reject the null hypothesis. Otherwise, do not reject it.</p></li>
 </ol>
-<p>We are free to choose the rejection region however we like; we just have to be explicit in how we do it. A common method is to choose a <strong>significance level</strong> <span class="math notranslate nohighlight">\(\alpha\)</span>, such that values of the test statistic within the rejection region impart at a total probability mass of <span class="math notranslate nohighlight">\(\alpha\)</span>, usually with <span class="math notranslate nohighlight">\(\alpha\)</span> being small. This approach is equivalent to computing the p-value, and if it is less than <span class="math notranslate nohighlight">\(\alpha\)</span>, the researcher decides to reject the null hypothesis. (I generally do not advocate such black and white decisions, described below.)</p>
+<p>We are free to choose the rejection region however we like; we just have to be explicit in how we do it. A common method is to choose a <strong>significance level</strong> <span class="math notranslate nohighlight">\(\alpha\)</span>, such that values of the test statistic within the rejection region impart a total probability mass of <span class="math notranslate nohighlight">\(\alpha\)</span>, usually with <span class="math notranslate nohighlight">\(\alpha\)</span> being small. This approach is equivalent to computing the p-value, and if it is less than <span class="math notranslate nohighlight">\(\alpha\)</span>, the researcher decides to reject the null hypothesis. (I generally do not advocate such black and white decisions, described below.)</p>
 <p>Importantly, note that the significance level (or more generally the means of computing the rejection region) is decided <em>before</em> simulating the null hypothesis.</p>
 </div>
 <div class="section" id="defining-a-test">
@@ -309,8 +309,8 @@ the hypothesis, test statistic, and definition of extremeness.</p>
 </div>
 <div class="section" id="performing-tests-using-hacker-stats">
 <h2>Performing tests using hacker stats<a class="headerlink" href="#performing-tests-using-hacker-stats" title="Permalink to this headline">¶</a></h2>
-<p>Now, the real trick to doing a hypothesis test is step 3, in which you
-simulate the data acquisition assuming the null hypothesis was true. For some tests, that is some trios of null hypothesis, test statistic, and meaning of “at least as extreme as,” simulation is unnecessary because analytical results exist. This is the case for many of the named tests. However, in many cases, these are not the hypotheses you wish you test. Because you have random number generation at your finger tips, you can test the hypotheses <em>you</em> want to test, not just the ones that have names.</p>
+<p>Now, the real trick to doing a hypothesis test is
+simulating data acquisition assuming the null hypothesis is true. For some tests, that is some trios of null hypothesis, test statistic, and meaning of “at least as extreme as,” simulation is unnecessary because analytical results exist. This is the case for many of the named tests. However, in many cases, these are not the hypotheses you wish you test. Because you have random number generation at your finger tips, you can test the hypotheses <em>you</em> want to test, not just the ones that have names.</p>
 <p>I will demonstrate two hypothesis tests and how we can simulate them. For
 both examples, we will consider the commonly encountered problem of
 performing the same measurements under two different conditions, control
@@ -321,8 +321,8 @@ for well-fed mothers versus starved mothers.</p>
 <p>Here, the null hypothesis is that the distribution <span class="math notranslate nohighlight">\(F\)</span> of the
 control (wild type) measurements is the same as that <span class="math notranslate nohighlight">\(G\)</span> of the
 test (mutant), or <span class="math notranslate nohighlight">\(F = G\)</span>. To simulate this, we can do a
-<strong>permutation test</strong>. Say we have <span class="math notranslate nohighlight">\(n\)</span> measurements from control
-and <span class="math notranslate nohighlight">\(m\)</span> measurements from test. We then concatenate arrays of the
+<strong>permutation test</strong>. Say we have <span class="math notranslate nohighlight">\(n\)</span> control measurements
+and <span class="math notranslate nohighlight">\(m\)</span> test measurements. We concatenate arrays of the
 control and test measurements to get a single array with <span class="math notranslate nohighlight">\(n + m\)</span>
 entries. We then randomly scramble the order of the entries (this is
 implemented in <code class="docutils literal notranslate"><span class="pre">np.random.permuation()</span></code>). We take the first <span class="math notranslate nohighlight">\(n\)</span>
@@ -330,8 +330,8 @@ to be labeled “control” and the last <span class="math notranslate nohighlig
 this way, we are simulating the null hypothesis: whether or not a sample
 is test or control makes no difference.</p>
 <p>For this case, we might define our test statistic to be the difference
-of means, or the difference of medians. These can be computed from the
-two data sets and are a scalar value.</p>
+of means, the difference of medians, or anything else that can be computed from the
+two data sets and has a scalar value.</p>
 </div>
 <div class="section" id="test-and-control-distributions-have-the-same-mean">
 <h3>Test and control distributions have the same mean.<a class="headerlink" href="#test-and-control-distributions-have-the-same-mean" title="Permalink to this headline">¶</a></h3>
@@ -363,10 +363,10 @@ distributions. Only the empirical distributions were used; these are
 nonparametric hypothesis tests.</p>
 </div>
 </div>
-</div>
 <div class="section" id="interpretation-of-the-p-value">
-<h1>Interpretation of the p-value<a class="headerlink" href="#interpretation-of-the-p-value" title="Permalink to this headline">¶</a></h1>
+<h2>Interpretation of the p-value<a class="headerlink" href="#interpretation-of-the-p-value" title="Permalink to this headline">¶</a></h2>
 <p>The p-value is best interpreted by its definition. It is the probability of observing a test statistic under the null hypothesis that is at least as extreme as what was observed experimentally. That’s it. It is important to interpret a p-value as what it is, and not anything else. Most importantly, it is <em>not</em> the probability that a null hypothesis is true. Even if it small, it is <em>not</em> a confirmation that another hypothesis you have in mind is true.</p>
+</div>
 </div>
 
 
@@ -390,11 +390,11 @@ nonparametric hypothesis tests.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Oct 29, 2020.
+        Last updated on Nov 03, 2020.
       </span>
 
     </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fb9414b0910> 
+  </div> <jinja2.runtime.BlockReference object at 0x7f97f2b20730> 
 
 <p>© 2019 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

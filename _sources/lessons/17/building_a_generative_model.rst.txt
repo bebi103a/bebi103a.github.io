@@ -139,13 +139,13 @@ Given that the measurements are i.i.d., we can model the residual, :math:`e_i`. 
     f(e_i;\sigma) = \frac{1}{\sqrt{2\pi \sigma^2}} \mathrm{e}^{-e_i^2/2\sigma^2}\;\forall i.
     \end{align}
 
-We can then write the PDF for the joint distribution of all of the measured data,
+We can then write the PDF for the joint distribution of all of the measured data, :math:`(\mathbf{t}, \mathbf{a})`,
 
 
 .. math::
 
     \begin{align}
-    f(a_i;t_i,a^0, b, \sigma) = \left(\frac{1}{2\pi\sigma^2}\right)^{n/2}\exp\left[\frac{1}{2\sigma^2}\sum_{i=1}^n(a_i - a^0-bt_i)^2\right].
+    f(\mathbf{a};\mathbf{t},a^0, b, \sigma) = \left(\frac{1}{2\pi\sigma^2}\right)^{n/2}\exp\left[\frac{1}{2\sigma^2}\sum_{i=1}^n(a_i - a^0-bt_i)^2\right].
     \end{align}
 
 It is convenient to write this in shorthand.

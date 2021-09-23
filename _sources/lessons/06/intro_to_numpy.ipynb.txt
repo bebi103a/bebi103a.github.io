@@ -12,7 +12,10 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "metadata": {},
+   "metadata": {
+    "nbsphinx": "hidden",
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "# Colab setup ------------------\n",
@@ -20,9 +23,15 @@
     "if \"google.colab\" in sys.modules:\n",
     "    cmd = \"pip install --upgrade watermark\"\n",
     "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)\n",
-    "    stdout, stderr = process.communicate()\n",
-    "# ------------------------------\n",
-    "\n",
+    "    stdout, stderr = process.communicate()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "import numpy as np\n",
     "import scipy.special"
    ]
@@ -33,7 +42,7 @@
    "source": [
     "<hr/>\n",
     "\n",
-    "In this lesson, you will learn about [**Numpy**](http://www.numpy.org), arguably *the* most important package for scientific computing, and Scipy, a package containing lots of goodies for scientific computing, like special functions and numerical integrators.  "
+    "In this lesson, you will learn about [Numpy](http://www.numpy.org), arguably *the* most important package for scientific computing, and Scipy, a package containing lots of goodies for scientific computing, like special functions and numerical integrators.  "
    ]
   },
   {
@@ -53,7 +62,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
@@ -62,7 +71,7 @@
        "array([1, 2, 3, 4])"
       ]
      },
-     "execution_count": 2,
+     "execution_count": 3,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -84,7 +93,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -93,7 +102,7 @@
        "dtype('int64')"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -105,7 +114,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -114,7 +123,7 @@
        "(4,)"
       ]
      },
-     "execution_count": 4,
+     "execution_count": 5,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -133,7 +142,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -142,7 +151,7 @@
        "array([1., 2., 3., 4.])"
       ]
      },
-     "execution_count": 5,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -155,12 +164,12 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "There are many others. For example, we can compute summary statistics about the entries in the array, very similar to what we have see with Pandas."
+    "There are many others. For example, we can compute summary statistics about the entries in the array."
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
@@ -192,7 +201,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [
     {
@@ -226,7 +235,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [
     {
@@ -235,7 +244,7 @@
        "array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 9,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -246,27 +255,6 @@
     "\n",
     "# Make a Numpy array of length n filled with zeros\n",
     "np.zeros(n)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 9,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])"
-      ]
-     },
-     "execution_count": 9,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "# Make a Numpy array of length n filled with ones\n",
-    "np.ones(n)"
    ]
   },
   {
@@ -286,10 +274,8 @@
     }
    ],
    "source": [
-    "# Make an empty Numpy array of length n without initializing entries\n",
-    "# (while it initially holds whatever values were previously in the memory\n",
-    "# locations assigned, ones will be displayed)\n",
-    "np.empty(n)"
+    "# Make a Numpy array of length n filled with ones\n",
+    "np.ones(n)"
    ]
   },
   {
@@ -300,11 +286,34 @@
     {
      "data": {
       "text/plain": [
+       "array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Make an empty Numpy array of length n without initializing entries\n",
+    "# (while it initially holds whatever values were previously in the memory\n",
+    "# locations assigned, ones will be displayed)\n",
+    "np.empty(n)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
        "array([[0, 0],\n",
        "       [0, 0]])"
       ]
      },
-     "execution_count": 11,
+     "execution_count": 12,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -324,27 +333,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.43211121, 0.17421526, 0.17094369, 0.82763225, 0.58717126,\n",
-       "       0.45935375, 0.82268476, 0.82154811, 0.30712025, 0.20089438,\n",
-       "       0.40323246, 0.94788933, 0.67754443, 0.6089751 , 0.67236337,\n",
-       "       0.00798261, 0.33655992, 0.35727233, 0.48605999, 0.87828242,\n",
-       "       0.75490869, 0.63046494, 0.37648369, 0.59016159])"
+       "array([0.72363619, 0.80625687, 0.75507222, 0.47529264, 0.21808614,\n",
+       "       0.10797734, 0.8419304 , 0.26319505, 0.56976174, 0.51605265,\n",
+       "       0.36873593, 0.06029085, 0.26310492, 0.01178828, 0.89250854,\n",
+       "       0.84298439, 0.8336817 , 0.1566005 , 0.21741298, 0.39289867,\n",
+       "       0.8466088 , 0.74271579, 0.06722195, 0.98538097])"
       ]
      },
-     "execution_count": 12,
+     "execution_count": 13,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
     "# Make an array of random numbers between zero and one\n",
-    "np.random.seed(103)\n",
+    "np.random.seed(3252)\n",
     "rand_array = np.random.random(24)\n",
     "\n",
     "rand_array"
@@ -361,20 +370,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 15,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.59016159, 0.37648369, 0.63046494, 0.75490869, 0.87828242,\n",
-       "       0.48605999, 0.35727233, 0.33655992, 0.00798261, 0.67236337,\n",
-       "       0.6089751 , 0.67754443, 0.94788933, 0.40323246, 0.20089438,\n",
-       "       0.30712025, 0.82154811, 0.82268476, 0.45935375, 0.58717126,\n",
-       "       0.82763225, 0.17094369, 0.17421526, 0.43211121])"
+       "array([0.98538097, 0.06722195, 0.74271579, 0.8466088 , 0.39289867,\n",
+       "       0.21741298, 0.1566005 , 0.8336817 , 0.84298439, 0.89250854,\n",
+       "       0.01178828, 0.26310492, 0.06029085, 0.36873593, 0.51605265,\n",
+       "       0.56976174, 0.26319505, 0.8419304 , 0.10797734, 0.21808614,\n",
+       "       0.47529264, 0.75507222, 0.80625687, 0.72363619])"
       ]
      },
-     "execution_count": 13,
+     "execution_count": 15,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -386,16 +395,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.82763225, 0.30712025, 0.6089751 , 0.48605999, 0.59016159])"
+       "array([0.47529264, 0.56976174, 0.01178828, 0.21741298, 0.98538097])"
       ]
      },
-     "execution_count": 14,
+     "execution_count": 16,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -407,18 +416,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.40323246, 0.94788933, 0.67754443, 0.6089751 , 0.67236337,\n",
-       "       0.00798261, 0.33655992, 0.35727233, 0.48605999, 0.87828242,\n",
-       "       0.75490869])"
+       "array([0.36873593, 0.06029085, 0.26310492, 0.01178828, 0.89250854,\n",
+       "       0.84298439, 0.8336817 , 0.1566005 , 0.21741298, 0.39289867,\n",
+       "       0.8466088 ])"
       ]
      },
-     "execution_count": 15,
+     "execution_count": 17,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -439,16 +448,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 19,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.17421526, 0.87828242, 0.82268476])"
+       "array([0.80625687, 0.39289867, 0.8419304 ])"
       ]
      },
-     "execution_count": 16,
+     "execution_count": 19,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -466,16 +475,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": 21,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.17421526, 0.87828242, 0.82268476])"
+       "array([0.80625687, 0.39289867, 0.8419304 ])"
       ]
      },
-     "execution_count": 17,
+     "execution_count": 21,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -493,18 +502,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 23,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([False, False, False,  True, False, False,  True,  True, False,\n",
-       "       False, False,  True, False, False, False, False, False, False,\n",
-       "       False,  True,  True, False, False, False])"
+       "array([ True,  True,  True, False, False, False,  True, False, False,\n",
+       "       False, False, False, False, False,  True,  True,  True, False,\n",
+       "       False, False,  True,  True, False,  True])"
       ]
      },
-     "execution_count": 18,
+     "execution_count": 23,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -522,17 +531,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
+   "execution_count": 25,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.82763225, 0.82268476, 0.82154811, 0.94788933, 0.87828242,\n",
-       "       0.75490869])"
+       "array([0.72363619, 0.80625687, 0.75507222, 0.8419304 , 0.89250854,\n",
+       "       0.84298439, 0.8336817 , 0.8466088 , 0.74271579, 0.98538097])"
       ]
      },
-     "execution_count": 19,
+     "execution_count": 25,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -551,16 +560,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
+   "execution_count": 27,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "(array([ 3,  6,  7, 11, 19, 20]),)"
+       "(array([ 0,  1,  2,  6, 14, 15, 16, 20, 21, 23]),)"
       ]
      },
-     "execution_count": 20,
+     "execution_count": 27,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -580,7 +589,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
+   "execution_count": 29,
    "metadata": {},
    "outputs": [
     {
@@ -589,7 +598,7 @@
        "array([1, 2, 6, 4])"
       ]
      },
-     "execution_count": 21,
+     "execution_count": 29,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -614,7 +623,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
+   "execution_count": 31,
    "metadata": {},
    "outputs": [
     {
@@ -623,7 +632,7 @@
        "array([1, 2, 6, 9])"
       ]
      },
-     "execution_count": 22,
+     "execution_count": 31,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -648,7 +657,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 23,
+   "execution_count": 33,
    "metadata": {},
    "outputs": [
     {
@@ -657,7 +666,7 @@
        "array([0.1, 0.2, 0.3, 0.4])"
       ]
      },
-     "execution_count": 23,
+     "execution_count": 33,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -701,7 +710,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": 35,
    "metadata": {},
    "outputs": [
     {
@@ -748,7 +757,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": 37,
    "metadata": {},
    "outputs": [
     {
@@ -757,7 +766,7 @@
        "False"
       ]
      },
-     "execution_count": 25,
+     "execution_count": 37,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -796,7 +805,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": 39,
    "metadata": {},
    "outputs": [
     {
@@ -805,7 +814,7 @@
        "array([5.        , 3.        , 2.33333333, 2.        ])"
       ]
      },
-     "execution_count": 26,
+     "execution_count": 39,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -817,20 +826,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
+   "execution_count": 40,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([-1.72844482, -0.69686105, -0.68377474, -3.31052899, -2.34868504,\n",
-       "       -1.83741498, -3.29073903, -3.28619244, -1.22848101, -0.8035775 ,\n",
-       "       -1.61292983, -3.79155733, -2.71017772, -2.43590042, -2.68945347,\n",
-       "       -0.03193044, -1.34623966, -1.42908934, -1.94423995, -3.51312967,\n",
-       "       -3.01963476, -2.52185978, -1.50593474, -2.36064638])"
+       "array([-2.89454476, -3.22502748, -3.02028886, -1.90117055, -0.87234457,\n",
+       "       -0.43190937, -3.36772162, -1.05278019, -2.27904696, -2.06421061,\n",
+       "       -1.47494371, -0.2411634 , -1.05241968, -0.0471531 , -3.57003416,\n",
+       "       -3.37193757, -3.3347268 , -0.62640202, -0.86965191, -1.5715947 ,\n",
+       "       -3.38643522, -2.97086315, -0.26888778, -3.94152387])"
       ]
      },
-     "execution_count": 27,
+     "execution_count": 40,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -842,21 +851,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": 41,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([1.86720094e-01, 3.03509579e-02, 2.92217435e-02, 6.84975137e-01,\n",
-       "       3.44770089e-01, 2.11005864e-01, 6.76810211e-01, 6.74941298e-01,\n",
-       "       9.43228489e-02, 4.03585502e-02, 1.62596415e-01, 8.98494186e-01,\n",
-       "       4.59066455e-01, 3.70850677e-01, 4.52072499e-01, 6.37220801e-05,\n",
-       "       1.13272577e-01, 1.27643521e-01, 2.36254311e-01, 7.71380007e-01,\n",
-       "       5.69887131e-01, 3.97486046e-01, 1.41739966e-01, 3.48290708e-01])"
+       "array([5.23649337e-01, 6.50050142e-01, 5.70134051e-01, 2.25903092e-01,\n",
+       "       4.75615653e-02, 1.16591066e-02, 7.08846805e-01, 6.92716325e-02,\n",
+       "       3.24628441e-01, 2.66310340e-01, 1.35966185e-01, 3.63498667e-03,\n",
+       "       6.92241987e-02, 1.38963448e-04, 7.96571494e-01, 7.10622684e-01,\n",
+       "       6.95025179e-01, 2.45237178e-02, 4.72684032e-02, 1.54369369e-01,\n",
+       "       7.16746467e-01, 5.51626742e-01, 4.51879002e-03, 9.70975652e-01])"
       ]
      },
-     "execution_count": 28,
+     "execution_count": 41,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -877,21 +886,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
+   "execution_count": 43,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([[0.43211121, 0.17421526, 0.17094369, 0.82763225],\n",
-       "       [0.58717126, 0.45935375, 0.82268476, 0.82154811],\n",
-       "       [0.30712025, 0.20089438, 0.40323246, 0.94788933],\n",
-       "       [0.67754443, 0.6089751 , 0.67236337, 0.00798261],\n",
-       "       [0.33655992, 0.35727233, 0.48605999, 0.87828242],\n",
-       "       [0.75490869, 0.63046494, 0.37648369, 0.59016159]])"
+       "array([[0.72363619, 0.80625687, 0.75507222, 0.47529264],\n",
+       "       [0.21808614, 0.10797734, 0.8419304 , 0.26319505],\n",
+       "       [0.56976174, 0.51605265, 0.36873593, 0.06029085],\n",
+       "       [0.26310492, 0.01178828, 0.89250854, 0.84298439],\n",
+       "       [0.8336817 , 0.1566005 , 0.21741298, 0.39289867],\n",
+       "       [0.8466088 , 0.74271579, 0.06722195, 0.98538097]])"
       ]
      },
-     "execution_count": 29,
+     "execution_count": 43,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -915,7 +924,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 45,
    "metadata": {},
    "outputs": [
     {
@@ -924,7 +933,7 @@
        "2"
       ]
      },
-     "execution_count": 30,
+     "execution_count": 45,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -946,16 +955,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 31,
+   "execution_count": 47,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "0.17421526319883063"
+       "0.8062568709113288"
       ]
      },
-     "execution_count": 31,
+     "execution_count": 47,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -973,16 +982,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": 49,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.30712025, 0.20089438, 0.40323246, 0.94788933])"
+       "array([0.56976174, 0.51605265, 0.36873593, 0.06029085])"
       ]
      },
-     "execution_count": 32,
+     "execution_count": 49,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1000,17 +1009,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": 50,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.82763225, 0.82268476, 0.82154811, 0.94788933, 0.87828242,\n",
-       "       0.75490869])"
+       "array([0.72363619, 0.80625687, 0.75507222, 0.8419304 , 0.89250854,\n",
+       "       0.84298439, 0.8336817 , 0.8466088 , 0.74271579, 0.98538097])"
       ]
      },
-     "execution_count": 33,
+     "execution_count": 50,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1028,16 +1037,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": 51,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "(array([0, 1, 1, 2, 4, 5]), array([3, 2, 3, 3, 3, 0]))"
+       "(array([0, 0, 0, 1, 3, 3, 4, 5, 5, 5]), array([0, 1, 2, 2, 2, 3, 0, 0, 1, 3]))"
       ]
      },
-     "execution_count": 34,
+     "execution_count": 51,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1055,17 +1064,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
+   "execution_count": 52,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.82763225, 0.82268476, 0.82154811, 0.94788933, 0.87828242,\n",
-       "       0.75490869])"
+       "array([0.47529264, 0.8419304 , 0.26319505, 0.06029085, 0.39289867,\n",
+       "       0.8466088 ])"
       ]
      },
-     "execution_count": 35,
+     "execution_count": 52,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1092,22 +1101,22 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 36,
+   "execution_count": 53,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.43211121, 0.17421526, 0.17094369, 0.82763225, 0.58717126,\n",
-       "       0.45935375, 0.82268476, 0.82154811, 0.30712025, 0.20089438,\n",
-       "       0.40323246, 0.94788933, 0.67754443, 0.6089751 , 0.67236337,\n",
-       "       0.00798261, 0.33655992, 0.35727233, 0.48605999, 0.87828242,\n",
-       "       0.75490869, 0.63046494, 0.37648369, 0.59016159, 0.73732874,\n",
-       "       0.59614645, 0.09247963, 0.40227096, 0.5896865 , 0.11541288,\n",
-       "       0.38819426, 0.05976145, 0.58395785, 0.1667254 ])"
+       "array([0.72363619, 0.80625687, 0.75507222, 0.47529264, 0.21808614,\n",
+       "       0.10797734, 0.8419304 , 0.26319505, 0.56976174, 0.51605265,\n",
+       "       0.36873593, 0.06029085, 0.26310492, 0.01178828, 0.89250854,\n",
+       "       0.84298439, 0.8336817 , 0.1566005 , 0.21741298, 0.39289867,\n",
+       "       0.8466088 , 0.74271579, 0.06722195, 0.98538097, 0.76464333,\n",
+       "       0.21468332, 0.46706424, 0.43516852, 0.218179  , 0.85635848,\n",
+       "       0.11666964, 0.19284475, 0.97663249, 0.51806187])"
       ]
      },
-     "execution_count": 36,
+     "execution_count": 53,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1132,20 +1141,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 37,
+   "execution_count": 54,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([1.54050642, 1.19031177, 1.18642393, 2.28789515, 1.79889261,\n",
-       "       1.5830506 , 2.27660377, 2.27401755, 1.35950444, 1.22249564,\n",
-       "       1.49665476, 2.58025784, 1.96903668, 1.83854611, 1.95886136,\n",
-       "       1.00801456, 1.40012276, 1.4294251 , 1.62589753, 2.40676234,\n",
-       "       2.12741726, 1.87848377, 1.45715177, 1.80427995])"
+       "array([2.06191712, 2.23950951, 2.12776518, 1.60848483, 1.2436942 ,\n",
+       "       1.1140225 , 2.32084282, 1.30108047, 1.7678458 , 1.67540119,\n",
+       "       1.44590573, 1.06214543, 1.30096321, 1.01185803, 2.44124594,\n",
+       "       2.32329025, 2.30177762, 1.1695283 , 1.24285727, 1.48126829,\n",
+       "       2.33172609, 2.10163537, 1.06953283, 2.67883224])"
       ]
      },
-     "execution_count": 37,
+     "execution_count": 54,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1157,20 +1166,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 38,
+   "execution_count": 55,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([-0.91039528,  0.4583782 ,  0.47654931,  0.46866401, -0.85371758,\n",
-       "       -0.96756536,  0.44098137,  0.43456032, -0.35124184,  0.30366765,\n",
-       "       -0.82078731,  0.94687491, -0.43968845, -0.774602  , -0.46868834,\n",
-       "        0.99874244, -0.51745317, -0.62412564, -0.99616665,  0.72153877,\n",
-       "        0.03083732, -0.68241463, -0.7136678 , -0.84378345])"
+       "array([-0.16489218,  0.34615756,  0.03186428, -0.98797431,  0.19917961,\n",
+       "        0.77855165,  0.54602806, -0.08281198, -0.90546344, -0.99491776,\n",
+       "       -0.67873582,  0.9291022 , -0.08224763,  0.99725823,  0.78046395,\n",
+       "        0.55156407,  0.50189441,  0.55373776,  0.20332268, -0.78199416,\n",
+       "        0.57041499, -0.04575207,  0.91212083,  0.99578438])"
       ]
      },
-     "execution_count": 38,
+     "execution_count": 55,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1182,20 +1191,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 39,
+   "execution_count": 56,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.65735166, 0.41739102, 0.41345337, 0.90974296, 0.76627101,\n",
-       "       0.67775641, 0.90701971, 0.90639291, 0.55418431, 0.44821242,\n",
-       "       0.63500587, 0.97359608, 0.82313087, 0.78036857, 0.81997766,\n",
-       "       0.08934546, 0.58013784, 0.59772262, 0.69718003, 0.93716723,\n",
-       "       0.86885482, 0.79401823, 0.61358266, 0.76821976])"
+       "array([0.85066809, 0.89791808, 0.86894891, 0.68941471, 0.46699694,\n",
+       "       0.32859906, 0.91756766, 0.51302539, 0.75482564, 0.71836805,\n",
+       "       0.6072363 , 0.24554195, 0.51293754, 0.10857383, 0.9447267 ,\n",
+       "       0.91814181, 0.91306172, 0.39572782, 0.46627565, 0.6268163 ,\n",
+       "       0.92011347, 0.8618096 , 0.25927195, 0.99266357])"
       ]
      },
-     "execution_count": 39,
+     "execution_count": 56,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1214,16 +1223,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 40,
+   "execution_count": 57,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "8.022575015024248"
+       "8.279227344296817"
       ]
      },
-     "execution_count": 40,
+     "execution_count": 57,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1241,7 +1250,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 41,
+   "execution_count": 58,
    "metadata": {},
    "outputs": [
     {
@@ -1250,7 +1259,7 @@
        "3.141592653589793"
       ]
      },
-     "execution_count": 41,
+     "execution_count": 58,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1274,20 +1283,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
+   "execution_count": 59,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([0.45886498, 0.19461005, 0.1910268 , 0.75817957, 0.59367917,\n",
-       "       0.48406507, 0.75535381, 0.75470136, 0.33595381, 0.22367204,\n",
-       "       0.43149647, 0.81992299, 0.66203431, 0.61088358, 0.65832729,\n",
-       "       0.00900722, 0.36590254, 0.38662333, 0.50816466, 0.78579255,\n",
-       "       0.71429997, 0.6273991 , 0.40557064, 0.59606522])"
+       "array([0.69386995, 0.74580509, 0.71440432, 0.49852153, 0.24223752,\n",
+       "       0.12136752, 0.7662166 , 0.29026648, 0.57962151, 0.53449285,\n",
+       "       0.39796154, 0.0679486 , 0.29017159, 0.01330103, 0.79312234,\n",
+       "       0.76680147, 0.7616034 , 0.17527083, 0.24151311, 0.42154482,\n",
+       "       0.76880477, 0.70644679, 0.07573775, 0.83654318])"
       ]
      },
-     "execution_count": 42,
+     "execution_count": 59,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1326,14 +1335,14 @@
    "source": [
     "### Interpreted and compiled languages\n",
     "\n",
-    "We have touched on the fact that Python is an **interpreted language**.  This means that the Python interpreter reads through your code, line by line, translates the commands into instructions that your computer's processor can execute, and then these are executed. It also does [**garbage collection**](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)), which manages memory usage in your programs for you. As an interpreted language, code is often much easier to write, and development time is much shorter. It is often easier to debug. By contrast, with **compiled languages** (the dominant ones being Fortran, C, and C++), your entire source code is translated into machine code before you ever run it. When you execute your program, it is already in machine code. As a result, compiled code is often much faster than interpreted code. The speed difference depends largely on the task at hand, but there is often over a 100-fold difference.\n",
+    "We have touched on the fact that Python is an **interpreted language**.  This means that the Python interpreter reads through your code, line by line, translates the commands into instructions that your computer's processor can execute, and then these are executed. It also does [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)), which manages memory usage in your programs for you. As an interpreted language, code is often much easier to write, and development time is much shorter. It is often easier to debug. By contrast, with **compiled languages** (the dominant ones being Fortran, C, and C++), your entire source code is translated into machine code before you ever run it. When you execute your program, it is already in machine code. As a result, compiled code is often much faster than interpreted code. The speed difference depends largely on the task at hand, but there is often over a 100-fold difference.\n",
     "\n",
     "First, we'll demonstrate the difference between compiled and interpreted languages by looking at a function to sum the elements of an array. Note that Python is [dynamically typed](http://stackoverflow.com/a/34004445/2320823), so the function below works for multiple data types, but the C function works only for [double precision floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) numbers."
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 43,
+   "execution_count": 60,
    "metadata": {},
    "outputs": [
     {
@@ -1389,14 +1398,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 44,
+   "execution_count": 61,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "1.79 ms ± 33.2 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)\n"
+      "1.21 ms ± 193 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)\n"
      ]
     }
    ],
@@ -1424,14 +1433,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 45,
+   "execution_count": 62,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "6.17 µs ± 32.9 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n"
+      "7.95 µs ± 478 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n"
      ]
     }
    ],
@@ -1466,19 +1475,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 46,
+   "execution_count": 63,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPython 3.8.5\n",
-      "IPython 7.18.1\n",
+      "Python implementation: CPython\n",
+      "Python version       : 3.8.11\n",
+      "IPython version      : 7.26.0\n",
       "\n",
-      "numpy 1.19.1\n",
-      "scipy 1.5.0\n",
-      "jupyterlab 2.2.6\n"
+      "numpy     : 1.20.3\n",
+      "scipy     : 1.6.2\n",
+      "jupyterlab: 3.1.7\n",
+      "\n"
      ]
     }
    ],
@@ -1505,7 +1516,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.5"
+   "version": "3.8.11"
   }
  },
  "nbformat": 4,

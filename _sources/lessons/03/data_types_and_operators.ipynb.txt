@@ -12,7 +12,10 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "metadata": {},
+   "metadata": {
+    "nbsphinx": "hidden",
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "# Colab setup ------------------\n",
@@ -27,8 +30,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<hr>\n",
-    "\n",
     "Whether you are programming in Python or pretty much any other language, you will be working with **variables**. While the precise definition of a variable will vary from language to language, we'll focus on Python variables here. Like many of the concepts in this course, though, the knowledge you gain about Python variables will translate to other languages.\n",
     "\n",
     "We will talk more about **objects** later, but a variable, like everything in Python, is an object.  For now, you can think of it this way. The following can be properties of a variable:\n",
@@ -1041,13 +1042,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Interestingly, we also demonstrated that the sum of the first $n$ cubes is equal to the sum of the first $n$ integers **squared**. Fun!"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
     "## Variables and assignment operators\n",
     "\n",
     "So far, we have essentially just used Python as an oversized desktop calculator. We would really like to be able to think about our computational problems symbolically. We mentioned **variables** at the beginning of the tutorial, but in practice we were just using numbers and strings directly. We would like to say that a variable, `a`, represents an integer and another variable `b` represents another integer. Then, we could do things like add `a` and `b`. So, we see immediately that the variables have to have a type associated with them so the Python interpreter knows what to do when we use operators with them. A variable should also have a **value** associated with it, so the interpreter knows, e.g., what to add.\n",
@@ -1108,7 +1102,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Now, we might be tempted to say, \"`a` is two.\" No. `a` is not two. `a` is a variable that *has a value of 2*. A variable in Python is not just its value. A variable carries with it a type. It also has more associated with it under the hood of the interpreter that we will not get into. So, you can think about a variable as a map to an address in RAM (called a [**pointer**](https://en.wikipedia.org/wiki/Pointer_(computer_programming)) in computer-speak) that stores information, including a type and a value."
+    "Now, we might be tempted to say, \"`a` is two.\" No. `a` is not two. `a` is a variable that *has a value of 2*. A variable in Python is not just its value. A variable carries with it a type. It also has more associated with it under the hood of the interpreter that we will not get into. So, you can think about a variable as a map to an address in RAM (called a [pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming)) in computer-speak) that stores information, including a type and a value."
    ]
   },
   {
@@ -2138,7 +2132,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Wait a minute! If we choose a string `'python'`, it occupies the same place in memory as another variable with the same value, but that was not the case for `'Hello, world.'`. This is a result of Python also doing [**string interning**](https://en.wikipedia.org/wiki/String_interning) which allows for (sometimes much more) efficient string processing. Whether two strings occupy the same place in memory depends on what the strings are.\n",
+    "Wait a minute! If we choose a string `'python'`, it occupies the same place in memory as another variable with the same value, but that was not the case for `'Hello, world.'`. This is a result of Python also doing [string interning](https://en.wikipedia.org/wiki/String_interning) which allows for (sometimes much more) efficient string processing. Whether two strings occupy the same place in memory depends on what the strings are.\n",
     "\n",
     "The caching and interning might be a problem, but you generally do not need to worry about it for **immutable** variables. Being immutable means that once the variables are created, their values cannot be changed. If we do change the value the variable gets a new place in memory. All variables we've encountered so far, `int`s, `float`s, and `str`s, are immutable. We will encounter mutable data types in a moment, in which case it really *does* matter practically to you as a programmer whether or not two variables are in the same location in memory."
    ]
@@ -2522,10 +2516,12 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPython 3.8.3\n",
-      "IPython 7.16.1\n",
+      "Python implementation: CPython\n",
+      "Python version       : 3.8.11\n",
+      "IPython version      : 7.26.0\n",
       "\n",
-      "jupyterlab 2.1.5\n"
+      "jupyterlab: 3.1.7\n",
+      "\n"
      ]
     }
    ],
@@ -2552,7 +2548,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.3"
+   "version": "3.8.11"
   }
  },
  "nbformat": 4,

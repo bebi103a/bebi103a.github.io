@@ -1,75 +1,40 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction to Git &mdash; BE/Bi 103 a  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Using GitHub with Google Colab" href="git_with_colab.html" />
     <link rel="prev" title="2. Version control with Git" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-          
-
-          
             <a href="../../index.html">
-          
-
-          
-            
             <img src="../../_static/logo.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,18 +42,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Lessons</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Preparing computing resources for the course</a></li>
@@ -98,6 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#configuring-git">Configuring Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cloning-repositories">Cloning Repositories</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pulling-in-changes">Pulling in changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-branch-name">Default branch name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#relationships-among-your-local-machine-and-your-repository">Relationships among your local machine and your repository</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#a-note-on-commit-messages">A note on commit messages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-to-do-in-case-of-a-fire">What to do in case of a fire</a></li>
@@ -111,54 +66,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/data_storage_and_sharing.html">7. Data storage and sharing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/overplotting.html">10. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../12/index.html">12. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/random_number_generation.html">13. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../17/index.html">17. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../21/reproducible_workflows.html">21. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../22/paper_of_the_future.html">22. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Statistical watchouts</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/index.html">R5. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/probability_review.html">R6. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/index.html">R8. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Practice with Numpy and plotting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -178,57 +96,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#course-communications">Course communications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#ediquette">“Ediquette”</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #827F7F" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">BE/Bi 103 a</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">2. Version control with Git</a> &raquo;</li>
-        
       <li>Introduction to Git</li>
-    
-    
   <li class="wy-breadcrumbs-aside">
     
         
@@ -240,13 +126,11 @@
   </li>
 
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -271,8 +155,8 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="introduction-to-git">
-<h1>Introduction to Git<a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
+<section id="introduction-to-git">
+<h1>Introduction to Git<a class="headerlink" href="#introduction-to-git" title="Permalink to this headline"></a></h1>
 <p>Keeping track of all of the changes in your project over time is good
 practice. How many times have you edited something in something you were
 writing and then wanted to go back and see what you had in the first
@@ -305,8 +189,7 @@ repositories (“repos” for short) hosted by services such as
 <a class="reference external" href="http://github.com/">GitHub</a>, <a class="reference external" href="http://gitlab.com/">GitLab</a> or
 <a class="reference external" href="http://bitbucket.org">Bitbucket</a>. These services provide
 university-affiliated people with a <code class="docutils literal notranslate"><span class="pre">.edu</span></code> email address with perks
-that include free private repositories. We will use GitHub for our
-bootcamp, and you should already have set up an account.</p>
+that include free private repositories. We will use GitHub for this class, and you should have already set up an account.</p>
 <p>Remote repositories are not only a great way for keeping your data safe
 and in the cloud. They are also an excellent tool for collaboration
 since Git allows multiple users to edit the shared files simultaneously
@@ -317,13 +200,10 @@ also serve as a vehicle to distribute code (or other files).</p>
 Here is an <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">excellent one-page (front-and-back)
 cheatsheet</a>.</p>
 <p>Let’s get started. You all should have a version of Git installed on
-your computers. Open the terminal and navigate into your <code class="docutils literal notranslate"><span class="pre">~/git</span></code>
-directory.</p>
-<div class="section" id="configuring-git">
-<h2>Configuring Git<a class="headerlink" href="#configuring-git" title="Permalink to this headline">¶</a></h2>
-<p>While you already used Git in the set-up lessons, you still have some
-configuring to do. For this, and everything else in this notebook, we’ll
-use the command line. We will do the configuration with <code class="docutils literal notranslate"><span class="pre">--global</span></code>
+your computers.</p>
+<section id="configuring-git">
+<h2>Configuring Git<a class="headerlink" href="#configuring-git" title="Permalink to this headline"></a></h2>
+<p>We will start by configuring Git on your computer. We will do the configuration with <code class="docutils literal notranslate"><span class="pre">--global</span></code>
 flags, which means these specifications work for all of your
 repositories. First, we’ll specify the name and email address of the
 person working with Git on your machine (that’s you!).</p>
@@ -335,14 +215,18 @@ git config --global user.email <span class="s2">&quot;YOUR EMAIL ADDRESS&quot;</
 Git requires a text editor. You can specify Atom as your text editor if you like. (I recommend this, since the default is vi, which can be quite difficult to use for those not accustomed to it.)
 
     git config --global core.editor "atom --wait"
---><p>Git is very well documented and help is easily available. If you need to
+--><p>We will not go into merge conflicts in too much depth now, but you need to tell Git how you want to handle situations when there are edits to the same file coming from two or more different computers (could be a collaborator, or could be you on your home computer and your work computer). I generally like to use Git’s default.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global pull.rebase <span class="nb">false</span>
+</pre></div>
+</div>
+<p>Git is very well documented and help is easily available. If you need to
 know more about <code class="docutils literal notranslate"><span class="pre">config</span></code>, for example, just enter:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git <span class="nb">help</span> config
 </pre></div>
 </div>
-</div>
-<div class="section" id="cloning-repositories">
-<h2>Cloning Repositories<a class="headerlink" href="#cloning-repositories" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cloning-repositories">
+<h2>Cloning Repositories<a class="headerlink" href="#cloning-repositories" title="Permalink to this headline"></a></h2>
 <p>Your team’s repository is already set up and hosted on GitHub. You will
 need to clone it from its URL; you will have access to that once the
 teams are finalized. To practice cloning, we will clone one of the
@@ -360,9 +244,9 @@ tickle-brained flap-dragon!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python insulter.py
 </pre></div>
 </div>
-</div>
-<div class="section" id="pulling-in-changes">
-<h2>Pulling in changes<a class="headerlink" href="#pulling-in-changes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pulling-in-changes">
+<h2>Pulling in changes<a class="headerlink" href="#pulling-in-changes" title="Permalink to this headline"></a></h2>
 <p>Actively developed repositories are constantly being updated. After you
 clone the repository, its authors (e.g., your teammates) may add or edit
 things in the repository. For you to get those changes, you need to
@@ -401,9 +285,13 @@ discuss branching in this course, but it is an important concept to
 learn about.</p>
 <p>Generally it is good practice to pull before you start working each day
 to make sure you pull in any updates your collaborators may have made.</p>
-</div>
-<div class="section" id="relationships-among-your-local-machine-and-your-repository">
-<h2>Relationships among your local machine and your repository<a class="headerlink" href="#relationships-among-your-local-machine-and-your-repository" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="default-branch-name">
+<h2>Default branch name<a class="headerlink" href="#default-branch-name" title="Permalink to this headline"></a></h2>
+<p>When you create a new repository in GitHub, the default branch name is <cite>main</cite>. This was changed from <cite>master</cite> beginning in late 2020. For existing repositories created before that time, the default branch is still called <cite>master</cite> unless it is explicitly changed to <cite>main</cite> (or whatever else the developers want to change it to). Renaming <cite>master</cite> to <cite>main</cite> can cause problems in maintaining repositories, and you will find the many software packages still have the default branch named <cite>master</cite> to avoid those difficulties. This should not be a problem with any of your work in this class; I bring it up so you are aware when you see many “main” branches called <cite>master</cite>.</p>
+</section>
+<section id="relationships-among-your-local-machine-and-your-repository">
+<h2>Relationships among your local machine and your repository<a class="headerlink" href="#relationships-among-your-local-machine-and-your-repository" title="Permalink to this headline"></a></h2>
 <p>Let us think about how we have things set up, referring to the excellent
 image below from <a class="reference external" href="http://jlord.us/">Jessica Lord</a>. For now, focus
 only on the blue portions on the right (ignore forking and the upstream
@@ -443,27 +331,27 @@ want to add to the commit. You can do this by checking the status.</p>
 </pre></div>
 </div>
 <p>The result might look something like this.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
-<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>On branch main
+Your branch is up to date with &#39;origin/main&#39;.
 
-<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
-  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
 
-    <span class="n">modified</span><span class="p">:</span>   <span class="n">my_file</span><span class="o">.</span><span class="n">py</span>
+    modified:   my_file.py
 
 
-<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
-  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
 
-    <span class="n">modified</span><span class="p">:</span>   <span class="n">another_file</span><span class="o">.</span><span class="n">py</span>
+    modified:   another_file.py
 
-<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
-  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 
-    <span class="n">yet_another_file</span><span class="o">.</span><span class="n">py</span>
+    yet_another_file.py
 
-<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </pre></div>
 </div>
 <p>In that status report from Git, it says the you modified a file called
@@ -498,8 +386,8 @@ it is the main copy. (We will not really talk about branches or
 branching.)</p>
 <p>That is the basic set of operations to get your work into the repository
 and out to the remote for your teammates.</p>
-<div class="section" id="a-note-on-commit-messages">
-<h3>A note on commit messages<a class="headerlink" href="#a-note-on-commit-messages" title="Permalink to this headline">¶</a></h3>
+<section id="a-note-on-commit-messages">
+<h3>A note on commit messages<a class="headerlink" href="#a-note-on-commit-messages" title="Permalink to this headline"></a></h3>
 <p>As just described, the <code class="docutils literal notranslate"><span class="pre">-m</span></code> after <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> specifies the
 <strong>commit message</strong>. This is a brief bit of text that describes what has
 changed in the repository. It is really important to write informative
@@ -508,11 +396,11 @@ commit messages</a>). By
 contrast, most <a class="reference external" href="http://ramiro.org/blog/most-frequent-github-commit-messages/">commit messages that people write are
 useless</a>.</p>
 <p>Note that good commit messages also require that you commit often for
-incremental changes. Good commit messages is unfortunately one of my
+incremental changes. Not writing good commit messages is unfortunately one of my
 greatest weaknesses. But it should not be yours.</p>
-</div>
-<div class="section" id="what-to-do-in-case-of-a-fire">
-<h3>What to do in case of a fire<a class="headerlink" href="#what-to-do-in-case-of-a-fire" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="what-to-do-in-case-of-a-fire">
+<h3>What to do in case of a fire<a class="headerlink" href="#what-to-do-in-case-of-a-fire" title="Permalink to this headline"></a></h3>
 <p>It is important to commit and push often. It helps collaboration and
 protects your work. So, what do you do in case of a fire in your
 building?</p>
@@ -522,10 +410,10 @@ git push origin main
 git out of the building
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="gitignore">
-<h2>.gitignore<a class="headerlink" href="#gitignore" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="gitignore">
+<h2>.gitignore<a class="headerlink" href="#gitignore" title="Permalink to this headline"></a></h2>
 <p>Notice in the sample output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> above, Git let us know
 that there was an untracked file in the directory. Sometimes you do want
 to have files in the directories of your repository, but not keep those
@@ -557,55 +445,42 @@ do not want to have binary files under version control. You usually only
 keep code under control. Typically only data sets used to test code are
 included in the repository. Version control is not really for data, but
 for code.</em>)</p>
-<p>Finally, since it begins with a <code class="docutils literal notranslate"><span class="pre">.</span></code>. When you put a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>
-file in a directory, the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file will not show up when you
+<p>Finally, since it begins with a <code class="docutils literal notranslate"><span class="pre">.</span></code>, the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file will not show up when you
 run <code class="docutils literal notranslate"><span class="pre">ls</span></code> at the command line without the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag.</p>
 <p>You have a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file already present in the repositories I set
 up for you. It is there to tell Git to ignore the files in the folder
 <code class="docutils literal notranslate"><span class="pre">data/</span></code>.</p>
-</div>
-<div class="section" id="additional-information-about-using-git">
-<h2>Additional information about using Git<a class="headerlink" href="#additional-information-about-using-git" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="additional-information-about-using-git">
+<h2>Additional information about using Git<a class="headerlink" href="#additional-information-about-using-git" title="Permalink to this headline"></a></h2>
 <p>This lecture gives a minimal introduction about Git/GitHub that you need
-for this class. You can get a bit more detailed view of this material
-from my bootcamp materials
-<a class="reference external" href="http://justinbois.github.io/bootcamp/2020/lessons/l12_version_control_with_git.html">here</a>.
-In recitation, the TAs will give you more tips and traps about using
-Git. Beyond that, there is much to learn about, in particular branching.
+for this class. In recitation, the TAs will give you more tips and traps about using
+Git. Beyond that, there is much to learn about using Git, branching in particular.
 For that and much more, there are plenty of great resources on the
 internet. GitHub has a good <a class="reference external" href="https://guides.github.com">series of
 guides</a> to get you started.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="git_with_colab.html" class="btn btn-neutral float-right" title="Using GitHub with Google Colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="2. Version control with Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="2. Version control with Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="git_with_colab.html" class="btn btn-neutral float-right" title="Using GitHub with Google Colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">
-        Last updated on Dec 03, 2020.
-      </span>
+      <span class="lastupdated">Last updated on Sep 22, 2021.
+      </span></p>
+  </div>
 
-    </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fb06eb60880> 
+   <jinja2.runtime.BlockReference object at 0x7fc1254a6580> 
 
-<p>© 2020 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 
@@ -618,37 +493,26 @@ guides</a> to get you started.</p>
  
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
-  
-  
-    
     <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54852702-1"></script>
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    ga('create', 'UA-54852702-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
-    
-    
+      gtag('config', 'UA-54852702-1', {
+          'anonymize_ip': false,
+      });
+    </script>  
 
   <style>
          .wy-nav-content { max-width: none; }

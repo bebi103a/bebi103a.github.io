@@ -1,75 +1,42 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Homework 2.1: The RNA Pol-II CTD and transcriptional bursting (35 pts) &mdash; BE/Bi 103 a  documentation</title>
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework 2.1: Fun with mutual information and Darwin (40 pts) &mdash; BE/Bi 103 a  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Homework 2.2: Microtubule catastrophe and ECDFs (30 pts)" href="hw2.2.html" />
-    <link rel="prev" title="2. Exploratory data analysis I" href="index.html" /> 
+    <link rel="next" title="Homework 2.2: Plotting an elephant (30 pts)" href="hw2.2.html" />
+    <link rel="prev" title="2. Practice with Numpy and plotting" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-          
-
-          
             <a href="../../index.html">
-          
-
-          
-            
             <img src="../../_static/logo.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,77 +44,29 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Lessons</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/03/index.html">3. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/05/index.html">5. Test-driven development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/06/index.html">6. Exploratory data analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/07/data_storage_and_sharing.html">7. Data storage and sharing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/08/index.html">8. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/09/index.html">9. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/10/overplotting.html">10. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/11/index.html">11. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/12/index.html">12. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/13/random_number_generation.html">13. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/14/index.html">14. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/15/index.html">15. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/16/index.html">16. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/17/index.html">17. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/18/index.html">18. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/19/index.html">19. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/21/reproducible_workflows.html">21. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/22/paper_of_the_future.html">22. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Statistical watchouts</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/index.html">R5. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/probability_review.html">R6. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/index.html">R8. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/06/index.html">6. Exploratory data analysis, part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/07/index.html">7. Exploratory data analysis, part 2</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Homework</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Configuring your team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/index.html">1. Practice with Python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Exploratory data analysis I</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 2.1: The RNA Pol-II CTD and transcriptional bursting (35 pts)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw2.2.html">Homework 2.2: Microtubule catastrophe and ECDFs (30 pts)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw2.3.html">Homework 2.3: Peter and Rosemary Grant and Darwin’s finches (45 pts)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Practice with Numpy and plotting</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 2.1: Fun with mutual information and Darwin (40 pts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.2.html">Homework 2.2: Plotting an elephant (30 pts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.3.html">Homework 2.3: Microtubule catastrophe and ECDFs [SOLO] (30 pts)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -167,75 +86,41 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#course-communications">Course communications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#ediquette">“Ediquette”</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #827F7F" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">BE/Bi 103 a</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">2. Exploratory data analysis I</a> &raquo;</li>
-        
-      <li>Homework 2.1: The RNA Pol-II CTD and transcriptional bursting (35 pts)</li>
-    
-    
+          <li><a href="index.html">2. Practice with Numpy and plotting</a> &raquo;</li>
+      <li>Homework 2.1: Fun with mutual information and Darwin (40 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
         
-            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/homework/02/hw2.1.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/homework/02/hw2.1.ipynb" download> Download notebook</a>
+            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/homework/02/hw2.1" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/homework/02/hw2.1" download> Download notebook</a>
         
       
     
   </li>
 
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -260,175 +145,46 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="Homework-2.1:-The-RNA-Pol-II-CTD-and-transcriptional-bursting-(35-pts)">
-<h1>Homework 2.1: The RNA Pol-II CTD and transcriptional bursting (35 pts)<a class="headerlink" href="#Homework-2.1:-The-RNA-Pol-II-CTD-and-transcriptional-bursting-(35-pts)" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_snapshot_parts.csv">Data set 1 download</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_frac_active_cells.csv">Data set 2 download</a></p>
-<hr><p>The largest subunit of RNA polymerase II (Pol II) has a disordered domain on its C-terminus, the so-called C-terminal domain, or CTD. The CTD consists of repeats of seven amino acids. The number of repeats ranges from five to sixty in various species. Each heptad is referred to as a CTD repeat, or CTDr.</p>
-<p>To investigate the effects of the number of CTDrs on transcriptional activity, Porfirio Quintero-Cadena and Paul Sternberg at Caltech, in collaboration with Tineke Lenstra at the Netherlands Cancer Institute, did a clever experiment (<a class="reference external" href="https://doi.org/10.1016/j.molcel.2020.05.030">Molec. Cell., 2020</a>). Pol II in wild type budding yeast <em>Saccharomyces cerevisiae</em> contains twenty-six CTDrs. Quintero-Cadena generated <em>cerevisiae</em> strains with varying number of CTDrs, starting as low as eight (the
-minimum number necessary for transcription). They also inserted several copies of a sequence that forms RNA hairpins upon transcription in the 5′ untranslated region (UTR) of the Gal10 gene. They also engineered the cells to have nuclear-expressed PP7, which binds RNA hairpins. The PP7 is fused with GFP, so when the gene of interest is being transcribed, a fluorescent dot will appear in the nucleus of the cell. A brighter dot corresponds to more active transcription. A schematic of the setup is
-shown below, taken from <a class="reference external" href="https://doi.org/10.1016/j.molcel.2020.05.030">the paper</a>.</p>
-<div style="margin: auto; width: 400px"><p><img alt="Quintero PP7 schematic" src="../../_images/quintero_pp7.png" /></p>
-</div><p>Conveniently, expression of Gal10 is induced by presence of galactose, enabling the experimenter to control when gene expression is turned on.</p>
-<p><strong>a)</strong> In one experiment, Quintero-Cadena induced transcription using galactose and then took snapshots of the cells with a fluorescence microscope. He used digital image processing techniques to locate, characterize, and quantify dots. The results of the image acquisition and analysis may be found here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_snapshot_parts.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_snapshot_parts.csv</a>. The data are tidy, and when you load the data frame, each row refers to a single dot in the image. Below is a brief
-description of the columns. (Many of the columns refer to parameters of the image acquisition and processing using <a class="reference external" href="http://soft-matter.github.io/trackpy/v0.4.2/">trackpy</a>.)</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 48%" />
-<col style="width: 52%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>column</p></th>
-<th class="head"><p>content</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>date</p></td>
-<td><p>date of the experiment</p></td>
-</tr>
-<tr class="row-odd"><td><p>ecc</p></td>
-<td><p>eccentricity of the dot</p></td>
-</tr>
-<tr class="row-even"><td><p>ep</p></td>
-<td><p>estimate of uncertainty in dot position</p></td>
-</tr>
-<tr class="row-odd"><td><p>frame</p></td>
-<td><p>which frame of the movie</p></td>
-</tr>
-<tr class="row-even"><td><p>laser power</p></td>
-<td><p>Laser power for image acquisition</p></td>
-</tr>
-<tr class="row-odd"><td><p>mass</p></td>
-<td><p>integrated fluorescent intensity of dot</p></td>
-</tr>
-<tr class="row-even"><td><p>mass_norm</p></td>
-<td><p>fluorescent intensity of dot normalized against nuclear fluorescent intensity</p></td>
-</tr>
-<tr class="row-odd"><td><p>mov_name</p></td>
-<td><p>name of movie snapshot was taken from</p></td>
-</tr>
-<tr class="row-even"><td><p>nuc_fluor</p></td>
-<td><p>fluorescence throughout the nucleus containing the dot</p></td>
-</tr>
-<tr class="row-odd"><td><p>particle</p></td>
-<td><p>identifier of particle</p></td>
-</tr>
-<tr class="row-even"><td><p>pid</p></td>
-<td><p>tag for image processing ID</p></td>
-</tr>
-<tr class="row-odd"><td><p>raw_mass</p></td>
-<td><p>total integrated intensity of the ROI</p></td>
-</tr>
-<tr class="row-even"><td><p>roi</p></td>
-<td><p>index of region of interest containing the dot</p></td>
-</tr>
-<tr class="row-odd"><td><p>signal</p></td>
-<td><p>measure of how bright the dot is in bandpass-filtered image</p></td>
-</tr>
-<tr class="row-even"><td><p>size</p></td>
-<td><p>radius of gyration of dot in image</p></td>
-</tr>
-<tr class="row-odd"><td><p>strain</p></td>
-<td><p>yeast strain</p></td>
-</tr>
-<tr class="row-even"><td><p>traj_len</p></td>
-<td><p>length of the trajectory tracing the dot</p></td>
-</tr>
-<tr class="row-odd"><td><p>x</p></td>
-<td><p>x-position of center of dot in image</p></td>
-</tr>
-<tr class="row-even"><td><p>y</p></td>
-<td><p>y-position of center of dot in image</p></td>
-</tr>
-<tr class="row-odd"><td><p>corrwideal</p></td>
-<td><p>correlation with ideal dot using a Gaussian process classifier</p></td>
-</tr>
-<tr class="row-even"><td><p>time_postinduction</p></td>
-<td><p>number of minutes after galactose induction</p></td>
-</tr>
-<tr class="row-odd"><td><p>CTDr</p></td>
-<td><p>number of CTDrs in the strain</p></td>
-</tr>
-</tbody>
-</table>
-<p>The columns of most interest to you are mass_norm, time_postinduction, and CTDr. The corrwideal is also important, since we do not want to consider spurious artifacts in the image. Quintero-Cadena only considered dots that had a correlation above 0.5 in his analysis.</p>
-<p>From this snapshot data set, make an informative plot or plots exploring how the fluorescent intensity varies with the number of CTD repeats. Be sure to comment on your findings.</p>
-<p><strong>b)</strong> Quintero-Cadena took another perspective on these data. He took snapshots and determined how many cells in the field of view were actively transcribing the target gene. A cell was deemed to be active if it met or exceeded a threshold number of fluorescent dots in its nucleus. Quintero-Cadena used a threshold of 7.</p>
-<p>You can download the data set with this analysis here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_frac_active_cells.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_frac_active_cells.csv</a></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 78%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>content</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>time_postinduction</p></td>
-<td><p>number of minutes after galactose induction</p></td>
-</tr>
-<tr class="row-odd"><td><p>mov_name</p></td>
-<td><p>name of movie snapshot was taken from</p></td>
-</tr>
-<tr class="row-even"><td><p>strain</p></td>
-<td><p>yeast strain</p></td>
-</tr>
-<tr class="row-odd"><td><p>no_TS</p></td>
-<td><p>total number of transcription sites in the image</p></td>
-</tr>
-<tr class="row-even"><td><p>no_cells</p></td>
-<td><p>number of cells in the image</p></td>
-</tr>
-<tr class="row-odd"><td><p>frac_active</p></td>
-<td><p>fraction of cells deemed active</p></td>
-</tr>
-<tr class="row-even"><td><p>thresh</p></td>
-<td><p>minimum number of dots required for a cell to be deemed active</p></td>
-</tr>
-<tr class="row-odd"><td><p>rep</p></td>
-<td><p>replicate of the experiment</p></td>
-</tr>
-<tr class="row-even"><td><p>date</p></td>
-<td><p>date of the experiment</p></td>
-</tr>
-<tr class="row-odd"><td><p>CTDr</p></td>
-<td><p>number of CTDrs in the strain</p></td>
-</tr>
-</tbody>
-</table>
-<p>Use these data to make an informative plot or plots exploring the effect of the number of CTDrs and the time after induction on the activity of cells.</p>
-<p><em>Porfirio Quintero-Cadena is a former student and TA of this course. He is also a believer in open access to (tidy) data. The data sets used in the paper are freely available and CC-0 licensed, which mean we may use them completely freely. If you want people to learn more from your hard-earned data, follow Porfirio’s example and</em><strong>make them freely available.</strong></p>
-</div>
+<section id="Homework-2.1:-Fun-with-mutual-information-and-Darwin-(40-pts)">
+<h1>Homework 2.1: Fun with mutual information and Darwin (40 pts)<a class="headerlink" href="#Homework-2.1:-Fun-with-mutual-information-and-Darwin-(40-pts)" title="Permalink to this headline"></a></h1>
+<p>In this problem, we will do an exercise that is useful for understanding how <a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_information">mutual information</a> works. This is an important concept in understanding cellular signaling in many contexts, including developmental and neuronal. You can read more about mutual information in <a class="reference external" href="http://www.inference.org.uk/mackay/itila/">David MacKay’s wonderful book</a> and applications in biology in <a class="reference external" href="https://press.princeton.edu/books/hardcover/9780691138916/biophysics">Bill Bialek’s
+book</a>.</p>
+<p>In this fun exercise, we will take English text and see how much we know about a letter with knowledge of the letter than precedes it. For example, we have a much high chance of following a <code class="docutils literal notranslate"><span class="pre">t</span></code> with an <code class="docutils literal notranslate"><span class="pre">h</span></code> than with an <code class="docutils literal notranslate"><span class="pre">f</span></code>. We will perform a similar analysis as was done to produce Figure 8B in <a class="reference external" href="https://mrazomej.github.io/phd/chapter_01/#entropy-information-and-the-math-behind-the-bit">Manuel Razo’s thesis</a> (another great resourse to read about mutual information in biology).</p>
+<p><strong>a)</strong> Download the entire text of Darwin’s <em>Origin of the Species</em> from Project Gutenberg here: <a class="reference external" href="https://www.gutenberg.org/files/2009/2009-0.txt">https://www.gutenberg.org/files/2009/2009-0.txt</a>. The text of the book starts after the line: <code class="docutils literal notranslate"><span class="pre">Sixth</span> <span class="pre">London</span> <span class="pre">Edition,</span> <span class="pre">with</span> <span class="pre">all</span> <span class="pre">Additions</span> <span class="pre">and</span> <span class="pre">Corrections.</span></code> The text of the book ends before the line: <code class="docutils literal notranslate"><span class="pre">***</span> <span class="pre">END</span> <span class="pre">OF</span> <span class="pre">THE</span> <span class="pre">PROJECT</span> <span class="pre">GUTENBERG</span> <span class="pre">EBOOK</span> <span class="pre">ON</span> <span class="pre">THE</span> <span class="pre">ORIGIN</span> <span class="pre">OF</span> <span class="pre">SPECIES</span> <span class="pre">***</span></code>. Produce a string that contains the text of the book.</p>
+<p><strong>b)</strong> Write a function that takes in text, and achieves the following:</p>
+<ol class="arabic simple">
+<li><p>Converts all carriage returns (<code class="docutils literal notranslate"><span class="pre">\r</span></code>), newline characters, hyphens (<code class="docutils literal notranslate"><span class="pre">-</span></code>), en dashes (<code class="docutils literal notranslate"><span class="pre">–</span></code>) and em dashes (<code class="docutils literal notranslate"><span class="pre">—</span></code>) to spaces.</p></li>
+<li><p>Converts all letters to lower case.</p></li>
+<li><p>Converts special characters as follows: <code class="docutils literal notranslate"><span class="pre">à</span> <span class="pre">⟶</span> <span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">ä</span> <span class="pre">⟶</span> <span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">æ</span> <span class="pre">⟶</span> <span class="pre">ae</span></code>, <code class="docutils literal notranslate"><span class="pre">è</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">é</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">ê</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">ë</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">ô</span> <span class="pre">⟶</span> <span class="pre">o</span></code>, <code class="docutils literal notranslate"><span class="pre">ö</span> <span class="pre">⟶</span> <span class="pre">o</span></code>, <code class="docutils literal notranslate"><span class="pre">ü</span> <span class="pre">⟶</span> <span class="pre">u</span></code>, <code class="docutils literal notranslate"><span class="pre">œ</span> <span class="pre">⟶</span> <span class="pre">oe</span></code>.</p></li>
+<li><p>Strips out all characters that are not either letters or spaces.</p></li>
+<li><p>Converts any set of consecutive spaces into a single space.</p></li>
+<li><p>Returns the resulting string.</p></li>
+</ol>
+<p>Use this function to produce a string for analysis.</p>
+<p><strong>c)</strong> Compute and print out the frequency of all 27 characters (the 26 letters and spaces). Can you see which characters are most common?</p>
+<p><strong>d)</strong> Compute and print out the frequency of all 27² = 729 two-character combinations. Do you see any striking two-letter combinations?</p>
+<p>After future lessons, you will know how to make a plot of these data, possibly as a <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_map">heat map</a>, or like Razo did in his thesis and MacKay in his book (see, e.g., Fig. 2.2).</p>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="hw2.2.html" class="btn btn-neutral float-right" title="Homework 2.2: Microtubule catastrophe and ECDFs (30 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="2. Exploratory data analysis I" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="2. Practice with Numpy and plotting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw2.2.html" class="btn btn-neutral float-right" title="Homework 2.2: Plotting an elephant (30 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">
-        Last updated on Dec 03, 2020.
-      </span>
+      <span class="lastupdated">Last updated on Sep 22, 2021.
+      </span></p>
+  </div>
 
-    </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fb067b9d100> 
+   <jinja2.runtime.BlockReference object at 0x7fc121968ee0> 
 
-<p>© 2020 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 
@@ -441,37 +197,26 @@ description of the columns. (Many of the columns refer to parameters of the imag
  
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
-  
-  
-    
     <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54852702-1"></script>
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    ga('create', 'UA-54852702-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
-    
-    
+      gtag('config', 'UA-54852702-1', {
+          'anonymize_ip': false,
+      });
+    </script>  
 
   <style>
          .wy-nav-content { max-width: none; }

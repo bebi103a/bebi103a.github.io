@@ -1,75 +1,42 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 1.3: Validating image files (50 pts) &mdash; BE/Bi 103 a  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Homework 1.4: Using Git/GitHub to submit this homework (15 pts)" href="hw1.4.html" />
     <link rel="prev" title="Homework 1.2: Reverse lookup (20 pts)" href="hw1.2.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-          
-
-          
             <a href="../../index.html">
-          
-
-          
-            
             <img src="../../_static/logo.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,58 +44,18 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Lessons</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/03/index.html">3. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/05/index.html">5. Test-driven development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/06/index.html">6. Exploratory data analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/07/data_storage_and_sharing.html">7. Data storage and sharing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/08/index.html">8. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/09/index.html">9. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/10/overplotting.html">10. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/11/index.html">11. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/12/index.html">12. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/13/random_number_generation.html">13. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/14/index.html">14. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/15/index.html">15. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/16/index.html">16. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/17/index.html">17. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/18/index.html">18. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/19/index.html">19. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/21/reproducible_workflows.html">21. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/22/paper_of_the_future.html">22. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Statistical watchouts</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/index.html">R5. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/probability_review.html">R6. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/index.html">R8. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/06/index.html">6. Exploratory data analysis, part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/07/index.html">7. Exploratory data analysis, part 2</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Homework</span></p>
 <ul class="current">
@@ -140,15 +67,7 @@
 <li class="toctree-l2"><a class="reference internal" href="hw1.4.html">Homework 1.4: Using Git/GitHub to submit this homework (15 pts)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/hw10.html">10. Course feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Practice with Numpy and plotting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -168,75 +87,41 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#course-communications">Course communications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#ediquette">“Ediquette”</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #827F7F" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">BE/Bi 103 a</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">1. Practice with Python</a> &raquo;</li>
-        
       <li>Homework 1.3: Validating image files (50 pts)</li>
-    
-    
   <li class="wy-breadcrumbs-aside">
     
         
         
-            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/homework/01/hw1.3.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/homework/01/hw1.3.ipynb" download> Download notebook</a>
+            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/homework/01/hw1.3" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/homework/01/hw1.3" download> Download notebook</a>
         
       
     
   </li>
 
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -261,13 +146,13 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="Homework-1.3:-Validating-image-files-(50-pts)">
-<h1>Homework 1.3: Validating image files (50 pts)<a class="headerlink" href="#Homework-1.3:-Validating-image-files-(50-pts)" title="Permalink to this headline">¶</a></h1>
+<section id="Homework-1.3:-Validating-image-files-(50-pts)">
+<h1>Homework 1.3: Validating image files (50 pts)<a class="headerlink" href="#Homework-1.3:-Validating-image-files-(50-pts)" title="Permalink to this headline"></a></h1>
 <p>In live microscope imaging, we often take time courses. In one such experiment, I injected half-micron fluorescent beads into a stage 9 Drosophila oocyte (see Box 2 of <a class="reference external" href="https://doi.org/10.1242/dev.032391">this paper</a> by Becalska and Gavis for an illustration). I performed this experiment on a Leica SP2 microscope at the <a class="reference external" href="https://alms.cnsi.ucla.edu">ALMS at UCLA</a>. The data from this experiment, as they were saved from the computer connected to the microscope, are in ZIP file
 <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/leica_tiffs.zip">https://s3.amazonaws.com/bebi103.caltech.edu/data/leica_tiffs.zip</a>. (Be sure to put the ZIP file in the <code class="docutils literal notranslate"><span class="pre">../data/</span></code> directory and unzip it there so that the folder is <code class="docutils literal notranslate"><span class="pre">../data/leica_tiffs/</span></code>.)</p>
 <p>In this experiment, I first took a DIC image of the egg chamber, which is saved as <code class="docutils literal notranslate"><span class="pre">stage9_Image003_ch00.tif</span></code>. The remainder of the image files in the directory are from a time course of 125 images.</p>
 <p><strong>a)</strong> The naming convention the Leica software used for storing the images is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name_Series</span><span class="c1">###_t##_z###_ch##.tif</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name_Series###_t##_z###_ch##.tif
 </pre></div>
 </div>
 <p>Let’s break down the respective fields in file name, or, as podcasters annoyingly like to say preceded with a pause and followed by filler music, “Let’s unpack this.”</p>
@@ -284,36 +169,27 @@ about them being the same for all image pairs is valid.</p>
 <p><em>Hint</em>: This encoding of the metadata file is not Unicode. You will need to use the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> keyword argument of <code class="docutils literal notranslate"><span class="pre">open()</span></code> to be able to read the file. This is likely CP 1252 encoded, so you can use <code class="docutils literal notranslate"><span class="pre">encoding='cp1252'</span></code>.</p>
 <p>This is an example of <strong>data validation</strong>. We need to make sure the images are in the proper order and that the time stamps are appropriate. We will talk more about data validation, and maybe even have another homework problem on it, later in the term.</p>
 <p>By <em>not</em> doing these things when I first did these experiments, I wasted over a month of time trying to figure out what was wrong with the microscope until I discovered I was not properly parsing the time points of the experiment. You get to learn from my mistake in this problem.</p>
-</div>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="hw1.4.html" class="btn btn-neutral float-right" title="Homework 1.4: Using Git/GitHub to submit this homework (15 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="hw1.2.html" class="btn btn-neutral float-left" title="Homework 1.2: Reverse lookup (20 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hw1.2.html" class="btn btn-neutral float-left" title="Homework 1.2: Reverse lookup (20 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw1.4.html" class="btn btn-neutral float-right" title="Homework 1.4: Using Git/GitHub to submit this homework (15 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">
-        Last updated on Dec 03, 2020.
-      </span>
+      <span class="lastupdated">Last updated on Sep 22, 2021.
+      </span></p>
+  </div>
 
-    </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fb0679d2790> 
+   <jinja2.runtime.BlockReference object at 0x7fc127ad3880> 
 
-<p>© 2020 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 
@@ -326,37 +202,26 @@ about them being the same for all image pairs is valid.</p>
  
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
-  
-  
-    
     <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54852702-1"></script>
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    ga('create', 'UA-54852702-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
-    
-    
+      gtag('config', 'UA-54852702-1', {
+          'anonymize_ip': false,
+      });
+    </script>  
 
   <style>
          .wy-nav-content { max-width: none; }

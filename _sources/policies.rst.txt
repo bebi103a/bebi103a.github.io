@@ -1,16 +1,11 @@
-*These are tentative policies that may change before the start of the course.*
+*These are tentative policies that may change before the start of the course. Specifically, we are currently planning on having the course in person, and we may change organization and policies if we to move to remote learning.*
 
 Meetings
 --------
 
-We have weekly lectures Wednesday mornings 9-9:50 am PDT. On Mondays, you may attend one of the
-three lab sessions, 9 am-noon, 1-4 pm, or 7-10 pm PDT. You should always attend the
-same lab session (either 9 am, 1 pm, or 7 pm) along with your teammates, unless you have a
-conflict and let the course instructors know.
+All times are Pacific. Attendance at lectures and lab sessions is required. You may attend either of the weekly lectures Wednesday mornings in Chen 100: 9-9:50 am or 10-10:50 am. On Mondays, you may attend one of the three lab sessions in Chen 130: 9 am-noon, 1-4 pm, or 7-10 pm. You should always attend the same lab session (either 9 am, 1 pm, or 7 pm) along with your teammates, unless you have a conflict and let the course instructors know.
 
-We also have TA recitations on Thursdays 3–4:30 pm PDT, homework help on Thursday 4:30–6 pm PDT, and instructor office hours 2:30–4 pm PDT. Attendance at these three activities is not required.
-
-All sessions are accessible via `this Zoom link <http://bebi103.caltech.edu/2020/a/zoom_links/bebi103_main>`_. Lectures and TA recitations will be recorded and posted in case you cannot attend.
+Timing of TA recitations and homework help will be posted close to the start of the term. Instructor office hours are 2:30–4 pm on Fridays. Attendance at these three activities is not required.
 
 
 Lab sessions
@@ -22,7 +17,7 @@ The lab sessions are spent working on the week's homework, which always includes
 Lessons and lesson exercises
 ----------------------------
 
-Prior to each lab session, you must go through the lessons listed on the :ref:`schedule page<Weekly schedule>` for the week. These will give you the requisite skills you need to work on the homework problems of the week. To verify completion of the lessons and to identify points of confusion ahead of time, you will individually need to commit a small exercise to the repository in the GitHub group. Place this in the ``lesson_exercises/`` directory in a file named ``l##_your_name.ipynb``, where ``##`` is the number of the lesson. Lesson exercises are due at noon PDT on the Sunday before the lab session.
+Prior to each lab session, you must go through the lessons listed on the :ref:`schedule page<Weekly schedule>` for the week. These will give you the requisite skills you need to work on the homework problems of the week. To verify completion of the lessons and to identify points of confusion ahead of time, you will individually need to commit a small exercise to the *team repository* in the GitHub group. Place this in the ``lesson_exercises/`` directory in a file named ``l##_your_name.ipynb``, where ``##`` is the number of the lesson. Lesson exercises are due at noon Pacific time on the Sunday before the lab session.
 
 The lesson exercises are not graded for correctness, but for thoughtfulness. A perfectly reasonable answer to a problem in a lesson exercise is, "I am really having trouble with this concept. Can you please go over it in class?"
 
@@ -38,24 +33,15 @@ Homework
 
 There are weekly homework assignments. These consist almost entirely of working up real data sets.
 
-Data analysis is almost always a collaborative effort in both research and industry. Therefore, you will be assigned to teams of three (possibly with a couple teams of four depending on course enrollment). You will submit your homework as a team. The following homework policies apply.
+Data analysis is almost always a collaborative effort in both research and industry. Therefore, you will be assigned to teams of three (possibly with a couple teams of four depending on course enrollment). For most problems, you will submit your homework as a team. For problems marked "solo," you will not collaborate with your team or other students in the class, but submit your own work. The following homework policies apply.
 
--  Each homework has a defined due date and time. For most homeworks, this is Friday evening at 11:59 pm PDT. Your team must tag your completed homework in your team's homework repository before this time.
+-  Each homework has a defined due date and time. For most homeworks, this is Friday evening at 11:59 pm PDT. Your team must tag your completed homework in your team's homework repository before this time. For solo submissions, you must tag your completed homework in your own repository before this time.
 -  The commit containing your final submission must be tagged with ``hw##_submission``," where ``##`` is the two-digit homework assignment number (e.g., 04). Failure to properly tag your homework will result in a 5% deduction from your point total. This sounds harsh, but we have a lot of problem sets to manage and have automated scripts to do it. These will fail if you do not properly name your files.
--  Each homework *problem* must be committed as single Jupyter
-   notebook. The file names must be ``hw#.#.ipynb``. For example,
-   homework problem 3.2 is in the file ``hw3.2.ipynb``. If you
-   wrote any other files that are necessary for your homework,
-   they should live in the same directory as your Jupyter
-   notebook, and you should also display any code you wrote in
-   external files within your Jupyter notebook.
--  You must also submit an HTML rendering of your Jupyter notebook with file name ``hw#.#.html``.
--  All code you wrote to do your assignment must be included in
-   the notebook. Code from imported packages that you did not
-   write (e.g., modules distributed by the class instructors) need
-   not be displayed in the notebook. We will run the code in your
-   notebook; all code must run to get credit.
--  Since we are running your code to check it, you must have the data sets be accessed in the   standard way for the class. That is to say, the following code (or something similar that sets up the correct directory structure) must be at the top of each submitted notebook that uses a data set.
+-  Each homework *problem* must be committed as both as single Jupyter notebook *and* as that notebook converted to HTML. (To convert a notebook to HTML, you can use Jupyter's menu: File ⟶ Export Notebook As… ⟶ Export Notebook to HTML.) The file names must be `hw#.#.ipynb` and `hw#.#.html`. For example, homework problem 3.2 is in the files `hw3.2.ipynb` and `hw3.2.html`.
+- When you submit an assignment, the notebook and the rendered HTML must match. Furthermore, the cells should be executed in order. A tip: You should use Jupyter's "Restart and Run All" option under the ``Run`` pulldown menu to make sure your notebook is in runnable, submittable form.
+- If you wrote any other files that are necessary for your homework, they should live in the same directory as your Jupyter notebook at HTML file, and you should also display any code you wrote in external files within your notebook.
+-  All code you wrote to do your assignment must be included in the notebook. Code from imported packages that you did not write (e.g., modules distributed by the class instructors) need not be displayed in the notebook. We will run the code in your notebook; all code must run to get credit.
+-  Since we are running your code to check it, you must have the data sets be accessed in the standard way for the class. That is to say, the following code (or something similar that sets up the correct directory structure) must be at the top of each submitted notebook that uses a data set.
 
    .. code-block:: python
 
@@ -66,19 +52,10 @@ Data analysis is almost always a collaborative effort in both research and indus
           data_path = "../data/"
 
    When accessing files without your notebooks, do it with something like this: ``filename = os.path.join(data_path, 'name_of_datafile.csv')``.
--  A tip: You should use Jupyter's "Restart and Run All" option under the ``Run`` pulldown menu to make sure your notebook is in runnable, submittable form.
--  All of your results must be clearly explained and all graphics
-   clearly presented and embedded in the Jupyter notebook.
--  Any mathematics in your homework must render clearly and
-   properly with MathJax. This essentially means that your
-   equations must be written in correct LaTeX.
--  Where appropriate, you need to give detailed discussion of
-   analysis choices you have made. As an example, you may choose
-   to display data as a jittered strip plot as opposed to, say, a
-   collection of ECDFs. You need to justify that choice.
--  To give a better guideline on how to construct your assignments
-   (and this is good practice in general in your own workflows),
-   you should follow these guidelines.
+-  All of your results must be clearly explained and all graphics clearly presented and embedded in the Jupyter notebook.
+-  Any mathematics in your homework must render clearly and properly with MathJax. This essentially means that your equations must be written in correct LaTeX.
+-  Where appropriate, you need to give detailed discussion of analysis choices you have made. As an example, you may choose to display data as a jittered strip plot as opposed to, say, a collection of ECDFs. You need to justify that choice.
+-  To give a better guideline on how to construct your assignments (and this is good practice in general in your own workflows), you should follow these guidelines.
 
    +  Each code cell should do only one task or define only one,
       simple function.
@@ -112,16 +89,16 @@ Data analysis is almost always a collaborative effort in both research and indus
    two days late, homework 6 three days late, and homework 8 one
    day late. After that, no more late homeworks will be accepted.
    No grace days may be applied to the last two homeworks due to
-   the end of term schedule. The instructor will not grant less than six grace days, but reserves the right to grant more grace days.
+   the end-of-term schedule. The instructor will not grant less than six grace days, but reserves the right to grant more grace days.
+- For solo assignments, you will have a total of two grace days for the term, again with no grace days applied to the last two homeworks.
 
 
 Grading
 -------
 
-80% of your grade is determined from homework. Everyone on your
-team will get the same grade on the homework.
+85% of your grade is determined from homework. Everyone on your team will get the same grade on the team homeworks, but naturally the solo homeworks may have different scores.
 
-20% of your grade is determined from submission of your lesson
+15% of your grade is determined from submission of your lesson
 exercises and participation in the lab sessions. You are expected
 to work together with your team members and course instructors
 with your full attention during the lab sessions.
@@ -140,8 +117,8 @@ not to distribute anywhere outside of this class.
 Since the homework is done in assigned teams, you obviously should
 collaborate heavily with the other members of your team. You are
 free to discuss the homework with other teams, including via
-`Ed <https://us.edstem.org/courses/2636/>`_, but the work you
-submit must be the work of your own team.
+`Ed <https://edstem.org/us/courses/7758/>`_, but the work you
+submit must be the work of your own team. Solo homework problems are to be done entirely on your own.
 
 You may not consult solutions of homework problems from previous
 editions of this course.
@@ -167,8 +144,22 @@ grace days. They must be requested from the course instructor.
 Course communications
 ---------------------
 
-You are free to contact the course staff via email at any
-time, but we encourage you to use the `class Ed page <https://us.edstem.org/courses/2636/>`_ for questions related to course topics and homework. Most of our mass communication with you will
-be through Ed, so be sure to set your Ed account to give you email
-alerts if necessary.
+You should use the `course Ed page <Solo homework problems are to be done entirely on your own.>`_ for all questions related to the course. Note that you may post private messages to course staff via Ed if you wish. If you need to communicate with course staff about a private matter, you should email the instructor.
 
+Most of our mass communication with you will be through Ed, so be sure to set your Ed account to give you email alerts if necessary.
+
+
+"Ediquette"
+-----------
+
+When posting on Ed, please follow these guidelines:
+
+- Appropriately tag your question or comment with the appropriate category (e.g., "Lesson12" or "HW5").
+- If you have a question about a coding bug make every attempt to provide a *minimal* example that demonstrates the problem. A minimal example strips out all other details beyond what is necessary to reproduce the problem or bug. Posting error messages without code is seldom helpful.
+- When posting code, do not post screen shots. You can post code in Ed by selecting `Code` instead of `Paragraph` at the top left of the text entry window when you are making a post.
+- If you feel that posting a minimal example will result in showing too much of your answer to your classmates, you can post your question on Ed privately so that only the course staff can see it.
+- While you are free to post anonymously to your classmates (course staff will always know who posts), we encourage you to post with your real name. This can spur discussions among students, which can be productive.
+- Course staff strives to answer questions quickly, but students should answer when they can.
+
+
+This also spurs more conversation and results in faster answers to questions.

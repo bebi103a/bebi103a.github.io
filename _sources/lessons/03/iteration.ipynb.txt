@@ -12,7 +12,10 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "metadata": {},
+   "metadata": {
+    "nbsphinx": "hidden",
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "# Colab setup ------------------\n",
@@ -27,8 +30,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<hr>\n",
-    "\n",
     "We often want a computer program to do a similar operation many times. For example, we may want to analyze many codons, one after another, and find the start and stop codons in order to determine the length of the open reading frame. Or, as a simpler example, we may wish to find the GC content of a specific sequence. We check each base to see if it is `G` or `C` and keep a count. Doing these repeated operations in a program is called **iteration**."
    ]
   },
@@ -168,7 +169,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Whoa!  It didn't seem to double any of the integers! This is because `my_integers` was converted to an **iterator** in the `for` clause, and the iterator returns a *copy* of the item, not a reference to it. Therefore, the `n` inside the `for` block is not a view into the original list, and doubling it does nothing meaningful.\n",
+    "Whoa! It didn't seem to double any of the integers! This is because `my_integers` was converted to an **iterator** in the `for` clause, and the iterator returns a *copy* of the item, not a reference to it. Therefore, the `n` inside the `for` block is not a view into the original list, and doubling it does nothing meaningful.\n",
     "\n",
     "We've seen how to change individual list elements with indexing:"
    ]
@@ -575,24 +576,32 @@
     }
    ],
    "source": [
-    "names = ('Frances Arnold', 'George Smith', 'Gregory Winter', \n",
-    "         'postponed',\n",
-    "         'Denis Mukwege', 'Nadia Murad', \n",
-    "         'Arthur Ashkin', 'Gérard Mourou', 'Donna Strickland', \n",
-    "         'James Allison', 'Tasuku Honjo',\n",
-    "         'William Nordhaus', 'Paul Romer')\n",
-    "nationalities = ('USA', 'USA', 'UK',\n",
-    "                 '---',\n",
-    "                 'DRC', 'Iraq',\n",
-    "                 'USA', 'France', 'Canada',\n",
-    "                 'USA', 'Japan',\n",
-    "                 'USA', 'USA')\n",
-    "categories = ('Chemistry', 'Chemistry', 'Chemistry',\n",
-    "              'Literature',\n",
-    "              'Peace', 'Peace',\n",
-    "              'Physics', 'Physics', 'Physics',\n",
-    "              'Physiology or Medicine', 'Physiology or Medicine',\n",
-    "              'Economics', 'Economics')\n",
+    "names = (\n",
+    "    'Frances Arnold', 'George Smith', 'Gregory Winter', \n",
+    "    'postponed',\n",
+    "    'Denis Mukwege', 'Nadia Murad', \n",
+    "    'Arthur Ashkin', 'Gérard Mourou', 'Donna Strickland', \n",
+    "    'James Allison', 'Tasuku Honjo',\n",
+    "    'William Nordhaus', 'Paul Romer'\n",
+    ")\n",
+    "\n",
+    "nationalities = (\n",
+    "    'USA', 'USA', 'UK',\n",
+    "    '---',\n",
+    "    'DRC', 'Iraq',\n",
+    "    'USA', 'France', 'Canada',\n",
+    "    'USA', 'Japan',\n",
+    "    'USA', 'USA'\n",
+    ")\n",
+    "\n",
+    "categories = (\n",
+    "    'Chemistry', 'Chemistry', 'Chemistry',\n",
+    "    'Literature',\n",
+    "    'Peace', 'Peace',\n",
+    "    'Physics', 'Physics', 'Physics',\n",
+    "    'Physiology or Medicine', 'Physiology or Medicine',\n",
+    "    'Economics', 'Economics'\n",
+    ")\n",
     "\n",
     "for name, nat, cat in zip(names, nationalities, categories):\n",
     "    print(cat, end=': ')\n",
@@ -742,7 +751,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "This does not equal the codon we're interested in, so the `while` loop keeps going. Forever. This is called an **infinite loop**, and you definitely to not want these in your code! We can fix it by making a conditional that will evaluate to `False` if we reach the end of the string."
+    "This does not equal the codon we're interested in, so the `while` loop keeps going forever. This is called an **infinite loop**, and you definitely to not want these in your code! We can fix it by making a conditional that will evaluate to `False` if we reach the end of the string."
    ]
   },
   {
@@ -957,7 +966,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We can also nest iterators. For example, let's say the the chemistry and medicine prize winners got together in Sweden and wanted to play against each other in basketball. There are three chemistry winners, but only two medicine winners. Now, saw we want to make a list of all possible pairs of chemistry winners."
+    "We can also nest iterators. For example, let's say the the chemistry and medicine prize winners got together in Sweden and wanted to play against each other in basketball. There are three chemistry winners, but only two medicine winners, so they will have to play two-on-two. Now, say we want to make a list of all possible pairs of chemistry winners so that we can get all possible Chemistry teams for the basketball game."
    ]
   },
   {
@@ -1051,7 +1060,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "This leaves out all of the other prizes. So, we need an `else` statement. (Note here that we split the list comprehension over many lines for readability, which is perfectly legal.) To incllude all prizes, we might try it like this."
+    "This leaves out all of the other prizes. So, we need an `else` statement. (Note here that we split the list comprehension over many lines for readability, which is perfectly legal.) To include all prizes, we might try it like this."
    ]
   },
   {
@@ -1151,10 +1160,12 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPython 3.8.5\n",
-      "IPython 7.18.1\n",
+      "Python implementation: CPython\n",
+      "Python version       : 3.8.11\n",
+      "IPython version      : 7.26.0\n",
       "\n",
-      "jupyterlab 2.2.6\n"
+      "jupyterlab: 3.1.7\n",
+      "\n"
      ]
     }
    ],
@@ -1180,7 +1191,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.5"
+   "version": "3.8.11"
   }
  },
  "nbformat": 4,

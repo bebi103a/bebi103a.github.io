@@ -6,7 +6,7 @@
    "source": [
     "# File I/O\n",
     "\n",
-    "**[Data set download](https://s3.amazonaws.com/bebi103.caltech.edu/data/1OLG.pdb)**\n",
+    "[Data set download](https://s3.amazonaws.com/bebi103.caltech.edu/data/1OLG.pdb)\n",
     "\n",
     "<hr>"
    ]
@@ -14,19 +14,28 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "metadata": {},
+   "metadata": {
+    "nbsphinx": "hidden",
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "# Colab setup ------------------\n",
     "import os, sys, subprocess\n",
     "if \"google.colab\" in sys.modules:\n",
     "    cmd = \"pip install --upgrade watermark\"\n",
-    "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)\n",
-    "# ------------------------------\n",
+    "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import glob\n",
     "\n",
-    "data_path = \"../data\"\n",
-    "\n",
-    "import glob"
+    "data_path = \"../data\""
    ]
   },
   {
@@ -35,7 +44,7 @@
    "source": [
     "<hr>\n",
     "\n",
-    "Reading data in from files and then writing your results out again is one of the most common practices in scientific computing.  In this tutorial, we will learn about some of Python's File I/O capabilities. We will use a PDB file as an example. The PDB file contains the crystal structure for the tetramerization domain of [p53](https://en.wikipedia.org/wiki/P53).  Note that `1OLG` is its unique [Protein Databank](https://www.rcsb.org/structure/1olg) identifier.\n",
+    "Reading data in from files and then writing your results out again is one of the most common practices in scientific computing.  In this lesson, we will learn about some of Python's File I/O capabilities. We will use a PDB file as an example. The PDB file contains the crystal structure for the tetramerization domain of [p53](https://en.wikipedia.org/wiki/P53). Note that `1OLG` is its unique [Protein Databank](https://www.rcsb.org/structure/1olg) identifier.\n",
     "\n",
     "You can download the PDB file [here](https://s3.amazonaws.com/bebi103.caltech.edu/data/1OLG.pdb). To use the file in this notebook, you will need to have the file in the directory `../data/`. This is the directory structure you use when doing your homework.\n",
     "\n",
@@ -53,7 +62,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
@@ -118,7 +127,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -127,7 +136,7 @@
        "'HEADER    ANTI-ONCOGENE                           13-JUN-94   1OLG              \\nTITLE     HIGH-RESOLUTION SOLUTION STRUCTURE OF THE OLIGOMERIZATION             \\nTITLE    2 DOMAIN OF P53 BY MULTI-DIMENSIONAL NMR                               \\nCOMPND    MOL_ID: 1;                                                            \\nCOMPND   2 MOLECULE: TUMOR SUPPRESSOR P53 (OLIGOMERIZATION DOMAIN);             \\nCOMPND   3 CHAIN: A, B, C, D;                                                   \\nCOMPND   4 ENGINEERED: YES                                                      \\nSOURCE    MOL_ID: 1;                                                            \\nSOURCE   2 ORGANISM_SCIENTIFIC: HOMO SAPIENS;                                   \\nSOURCE   3 ORGANISM_COMMON: HUMAN;                                              \\nSOURCE   4 ORGANISM_TAXID: 9606                                                 \\nKEYWDS    ANTI-ONCOGENE                                                         \\nEXPDTA    SOLUTION NMR      '"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -152,7 +161,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -170,7 +179,7 @@
        " 'SOURCE   3 ORGANISM_COMMON: HUMAN;                                              \\n']"
       ]
      },
-     "execution_count": 4,
+     "execution_count": 5,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -193,7 +202,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -202,7 +211,7 @@
        "'HEADER    ANTI-ONCOGENE                           13-JUN-94   1OLG'"
       ]
      },
-     "execution_count": 5,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -222,7 +231,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
@@ -261,7 +270,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [
     {
@@ -308,7 +317,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [
     {
@@ -317,7 +326,7 @@
        "True"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 9,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -335,21 +344,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "ename": "RuntimeError",
-     "evalue": "knowledge.txt already exists.",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mRuntimeError\u001b[0m                              Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-9-d3c7f41e3b51>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;32mif\u001b[0m \u001b[0mos\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpath\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0misfile\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'knowledge.txt'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m     \u001b[0;32mraise\u001b[0m \u001b[0mRuntimeError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'knowledge.txt already exists.'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;32mwith\u001b[0m \u001b[0mopen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'knowledge.txt'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'w'\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mf\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m     \u001b[0mf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwrite\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"...as we know, there are known knowns;\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31mRuntimeError\u001b[0m: knowledge.txt already exists."
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "if os.path.isfile('knowledge.txt'):\n",
     "    raise RuntimeError('knowledge.txt already exists.')\n",
@@ -372,22 +369,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "...as we know, there are known knowns;\n",
-      "there are things we know we know.\n",
-      "We also know there are known unknowns;\n",
-      "that is to say we know there are some things we do not know.\n",
-      "But there are also unknown unknowns,\n",
-      "the ones we don't know we don't know."
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "!cat knowledge.txt"
    ]
@@ -401,22 +385,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "...as we know, there are known knowns;\n",
-      "there are things we know we know.\n",
-      "We also know there are known unknowns;\n",
-      "that is to say we know there are some things we do not know.\n",
-      "But there are also unknown unknowns,\n",
-      "the ones we don't know we don't know."
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "with open('knowledge.txt', 'w') as f:\n",
     "    f.write(\"...as we know, there are known knowns;\\n\")\n",
@@ -438,21 +409,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "ename": "TypeError",
-     "evalue": "write() argument must be str, not float",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-12-9265e8a96772>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;32mwith\u001b[0m \u001b[0mopen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'gimme_phi.txt'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'w'\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mf\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m     \u001b[0mf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwrite\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'The golden ratio is φ = '\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 4\u001b[0;31m     \u001b[0mf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwrite\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m1.61803398875\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-      "\u001b[0;31mTypeError\u001b[0m: write() argument must be str, not float"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# This will result in an exception\n",
     "with open('gimme_phi.txt', 'w') as f:\n",
@@ -469,17 +428,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "The golden ratio is φ = 1.61803399"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "with open('gimme_phi.txt', 'w') as f:\n",
     "    f.write('The golden ratio is φ = ')\n",
@@ -510,7 +461,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -530,7 +481,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 22,
    "metadata": {},
    "outputs": [
     {
@@ -556,7 +507,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 23,
    "metadata": {},
    "outputs": [
     {
@@ -600,7 +551,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": 24,
    "metadata": {},
    "outputs": [
     {
@@ -612,7 +563,7 @@
        " '../data/2ERK.pdb']"
       ]
      },
-     "execution_count": 17,
+     "execution_count": 24,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -632,7 +583,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 25,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -667,7 +618,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
+   "execution_count": 26,
    "metadata": {},
    "outputs": [
     {
@@ -676,7 +627,7 @@
        "'ASP-GLU-ASP-GLU-THR-THR-ALA-LEU-VAL-CYS-ASP-ASN-GLY-SER-GLY-LEU-VAL-LYS-ALA-GLY-PHE-ALA-GLY-ASP-ASP-ALA-PRO-ARG-ALA-VAL-PHE-PRO-SER-ILE-VAL-GLY-ARG-PRO-ARG-HIS-GLN-GLY-VAL-MET-VAL-GLY-MET-GLY-GLN-LYS-ASP-SER-TYR-VAL-GLY-ASP-GLU-ALA-GLN-SER-LYS-ARG-GLY-ILE-LEU-THR-LEU-LYS-TYR-PRO-ILE-GLU-HIC-GLY-ILE-ILE-THR-ASN-TRP-ASP-ASP-MET-GLU-LYS-ILE-TRP-HIS-HIS-THR-PHE-TYR-ASN-GLU-LEU-ARG-VAL-ALA-PRO-GLU-GLU-HIS-PRO-THR-LEU-LEU-THR-GLU-ALA-PRO-LEU-ASN-PRO-LYS-ALA-ASN-ARG-GLU-LYS-MET-THR-GLN-ILE-MET-PHE-GLU-THR-PHE-ASN-VAL-PRO-ALA-MET-TYR-VAL-ALA-ILE-GLN-ALA-VAL-LEU-SER-LEU-TYR-ALA-SER-GLY-ARG-THR-THR-GLY-ILE-VAL-LEU-ASP-SER-GLY-ASP-GLY-VAL-THR-HIS-ASN-VAL-PRO-ILE-TYR-GLU-GLY-TYR-ALA-LEU-PRO-HIS-ALA-ILE-MET-ARG-LEU-ASP-LEU-ALA-GLY-ARG-ASP-LEU-THR-ASP-TYR-LEU-MET-LYS-ILE-LEU-THR-GLU-ARG-GLY-TYR-SER-PHE-VAL-THR-THR-ALA-GLU-ARG-GLU-ILE-VAL-ARG-ASP-ILE-LYS-GLU-LYS-LEU-CYS-TYR-VAL-ALA-LEU-ASP-PHE-GLU-ASN-GLU-MET-ALA-THR-ALA-ALA-SER-SER-SER-SER-LEU-GLU-LYS-SER-TYR-GLU-LEU-PRO-ASP-GLY-GLN-VAL-ILE-THR-ILE-GLY-ASN-GLU-ARG-PHE-ARG-CYS-PRO-GLU-THR-LEU-PHE-GLN-PRO-SER-PHE-ILE-GLY-MET-GLU-SER-ALA-GLY-ILE-HIS-GLU-THR-THR-TYR-ASN-SER-ILE-MET-LYS-CYS-ASP-ILE-ASP-ILE-ARG-LYS-ASP-LEU-TYR-ALA-ASN-ASN-VAL-MET-SER-GLY-GLY-THR-THR-MET-TYR-PRO-GLY-ILE-ALA-ASP-ARG-MET-GLN-LYS-GLU-ILE-THR-ALA-LEU-ALA-PRO-SER-THR-MET-LYS-ILE-LYS-ILE-ILE-ALA-PRO-PRO-GLU-ARG-LYS-TYR-SER-VAL-TRP-ILE-GLY-GLY-SER-ILE-LEU-ALA-SER-LEU-SER-THR-PHE-GLN-GLN-MET-TRP-ILE-THR-LYS-GLN-GLU-TYR-ASP-GLU-ALA-GLY-PRO-SER-ILE-VAL-HIS-ARG-LYS-CYS-PHE'"
       ]
      },
-     "execution_count": 19,
+     "execution_count": 26,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -694,17 +645,19 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
+   "execution_count": 27,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPython 3.8.3\n",
-      "IPython 7.16.1\n",
+      "Python implementation: CPython\n",
+      "Python version       : 3.8.11\n",
+      "IPython version      : 7.26.0\n",
       "\n",
-      "jupyterlab 2.1.5\n"
+      "jupyterlab: 3.1.7\n",
+      "\n"
      ]
     }
    ],
@@ -731,7 +684,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.3"
+   "version": "3.8.11"
   }
  },
  "nbformat": 4,

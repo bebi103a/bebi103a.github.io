@@ -1,75 +1,42 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testing and test-driven development &mdash; BE/Bi 103 a  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="More details of TDD" href="more_ttd.html" />
     <link rel="prev" title="5. Test-driven development" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-          
-
-          
             <a href="../../index.html">
-          
-
-          
-            
             <img src="../../_static/logo.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,24 +44,14 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Lessons</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Test-driven development</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Testing and test-driven development</a><ul>
@@ -112,52 +69,14 @@
 <li class="toctree-l2"><a class="reference internal" href="more_ttd.html">More details of TDD</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/data_storage_and_sharing.html">7. Data storage and sharing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/overplotting.html">10. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../12/index.html">12. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/random_number_generation.html">13. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../17/index.html">17. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../21/reproducible_workflows.html">21. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../22/paper_of_the_future.html">22. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Statistical watchouts</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/index.html">R5. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/probability_review.html">R6. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/index.html">R8. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Practice with Numpy and plotting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -177,95 +96,75 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#course-communications">Course communications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#ediquette">“Ediquette”</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #827F7F" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">BE/Bi 103 a</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">5. Test-driven development</a> &raquo;</li>
-        
       <li>Testing and test-driven development</li>
-    
-    
   <li class="wy-breadcrumbs-aside">
     
         
         
-            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/lessons/05/testing_and_tdd.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/lessons/05/testing_and_tdd.ipynb" download> Download notebook</a>
+            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/lessons/05/testing_and_tdd" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/lessons/05/testing_and_tdd" download> Download notebook</a>
         
       
     
   </li>
 
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -366,7 +265,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -432,6 +331,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -501,12 +401,12 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Testing-and-test-driven-development">
-<h1>Testing and test-driven development<a class="headerlink" href="#Testing-and-test-driven-development" title="Permalink to this headline">¶</a></h1>
+<section id="Testing-and-test-driven-development">
+<h1>Testing and test-driven development<a class="headerlink" href="#Testing-and-test-driven-development" title="Permalink to this headline"></a></h1>
 <p><em>Note that because this lesson requires writing and editing separate .py files, it will not run on Google Colab without first mounting drives and other considerations.</em></p>
 <hr><p><strong>Test-driven development</strong>, or <strong>TDD</strong>, is a paradigm for developing software. The idea is that a programmer thinks about a design specification for a bit of code, usually a function. I.e., she lays out what the input and output should be. She then writes a test (that will fail) for the bit of code. She then writes or updates the code to pass the test. She does this <strong>incrementally</strong> as she builds her code. Let’s try this by example.</p>
-<div class="section" id="An-example-of-TDD">
-<h2>An example of TDD<a class="headerlink" href="#An-example-of-TDD" title="Permalink to this headline">¶</a></h2>
+<section id="An-example-of-TDD">
+<h2>An example of TDD<a class="headerlink" href="#An-example-of-TDD" title="Permalink to this headline"></a></h2>
 <p>We will write a function that computes the number of negatively charged residues in a protein. In other words, we count up the number of glutamate (<code class="docutils literal notranslate"><span class="pre">E</span></code>) and aspartate (<code class="docutils literal notranslate"><span class="pre">D</span></code>) residues.</p>
 <p>We’ll call the function <code class="docutils literal notranslate"><span class="pre">number_negatives()</span></code>, and will just make an empty function for now as a placeholder.</p>
 <div class="nbinput nblast docutils container">
@@ -690,9 +590,9 @@ True
 </div>
 <p>Great! This works now.</p>
 <p>You can see how the cycle proceeds. Right now we might be happy with our function, but use cases we have not thought of might creep up as we use the function in different contexts. For every unexpected behavior or bug you find, <em>write another test that covers it</em>. Importantly, <em>any time</em> you update your code, you need to run <em>all</em> of your tests to make sure the function is still performing in all cases after the update!</p>
-</div>
-<div class="section" id="The-assert-statement">
-<h2>The assert statement<a class="headerlink" href="#The-assert-statement" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="The-assert-statement">
+<h2>The assert statement<a class="headerlink" href="#The-assert-statement" title="Permalink to this headline"></a></h2>
 <p>In our example, we used a bunch of print statements to check our tests. Conveniently, Python has a built-in way to do your tests using the <code class="docutils literal notranslate"><span class="pre">assert</span></code> keyword. For example, our first test using <code class="docutils literal notranslate"><span class="pre">assert</span></code> is as follows.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -772,14 +672,14 @@ testing.</p>
 </div>
 <p>Excellent! Everything passed!</p>
 <p>It might be a little <strong>underwhelming</strong> that Python exits silently when all our tests pass. Fortunately, someone else felt that way, too, and implemented a testing tool that is more into positive reinforcement.</p>
-</div>
-<div class="section" id="Introducing-pytest">
-<h2>Introducing pytest<a class="headerlink" href="#Introducing-pytest" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Introducing-pytest">
+<h2>Introducing pytest<a class="headerlink" href="#Introducing-pytest" title="Permalink to this headline"></a></h2>
 <p>The <a class="reference external" href="https://docs.pytest.org/en/latest/">py.test</a> (a.k.a. pytest) package comes with a standard Anaconda installation and is useful tool for automating our testing. It gives detailed feedback on tests and you can read its documentation <a class="reference external" href="http://pytest.org">here</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">unittest</span></code> module from the standard library and <code class="docutils literal notranslate"><span class="pre">nose</span></code> are two other major testing packages for Python. All three are in common usage. We use <code class="docutils literal notranslate"><span class="pre">pytest</span></code> here because I think it is the easiest to use and understand and most modern packages use it.</p>
 <p>Pytest is not only a package but also a command line application that searches for tests in your code, runs them and let you know if they fail, and if they pass; finally some positive reinforcement.</p>
-<div class="section" id="Using-pytest">
-<h3>Using pytest<a class="headerlink" href="#Using-pytest" title="Permalink to this headline">¶</a></h3>
+<section id="Using-pytest">
+<h3>Using pytest<a class="headerlink" href="#Using-pytest" title="Permalink to this headline"></a></h3>
 <p>To take the most advantage of pytest, we should take a step back and write the functions we have been working with in this lesson to a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file. Using a text editor, we’ll write a file <code class="docutils literal notranslate"><span class="pre">seq_features_and_tests.py</span></code> with the following contents.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">number_negatives</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Number of negative residues a protein sequence&quot;&quot;&quot;</span>
@@ -816,7 +716,7 @@ testing.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-bold">============================= test session starts ==============================</span>
-platform darwin -- Python 3.7.4, pytest-5.1.2, py-1.8.0, pluggy-0.13.0
+platform darwin -- Python 3.8.11, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
 hypothesis profile &#39;default&#39; -&gt; database=DirectoryBasedExampleDatabase(&#39;/Users/Justin/Dropbox/git/bebi103_course/2019/a/content/lecture_notes/lecture_02/.hypothesis/examples&#39;)
 rootdir: /Users/Justin/Dropbox/git/bebi103_course
 plugins: hypothesis-4.36.2
@@ -843,7 +743,7 @@ seq_features_and_tests.py <span class="ansi-green-fg">.</span><span class="ansi-
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-bold">============================= test session starts ==============================</span>
-platform darwin -- Python 3.7.4, pytest-5.1.2, py-1.8.0, pluggy-0.13.0 -- /Users/Justin/anaconda3/bin/python
+platform darwin -- Python 3.8.11, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/Justin/anaconda3/bin/python
 cachedir: .pytest_cache
 hypothesis profile &#39;default&#39; -&gt; database=DirectoryBasedExampleDatabase(&#39;/Users/Justin/Dropbox/git/bebi103_course/2019/a/content/lecture_notes/lecture_02/.hypothesis/examples&#39;)
 rootdir: /Users/Justin/Dropbox/git/bebi103_course
@@ -855,9 +755,9 @@ seq_features_and_tests.py::test_number_negatives <span class="ansi-green-fg">PAS
 <span class="ansi-green-intense-fg ansi-bold">============================== 1 passed in 0.01s ===============================</span>
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Separating-tests-in-functional-units">
-<h3>Separating tests in functional units<a class="headerlink" href="#Separating-tests-in-functional-units" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Separating-tests-in-functional-units">
+<h3>Separating tests in functional units<a class="headerlink" href="#Separating-tests-in-functional-units" title="Permalink to this headline"></a></h3>
 <p>In more complicated sets of tests, it is a good idea to separate the tests by meaningful functional units, so when something breaks, we can easily find the problem and fix it.</p>
 <p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> allows us to build multiple test functions with different names that indicates what they are testing. The only stipulation is that the functions to be used for tests start with <code class="docutils literal notranslate"><span class="pre">test_</span></code>. For example, let’s change the content of the file <code class="docutils literal notranslate"><span class="pre">seq_feature_and_tests.py</span></code> to this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">number_negatives</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
@@ -907,7 +807,7 @@ seq_features_and_tests.py::test_number_negatives <span class="ansi-green-fg">PAS
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-bold">============================= test session starts ==============================</span>
-platform darwin -- Python 3.7.4, pytest-5.1.2, py-1.8.0, pluggy-0.13.0
+platform darwin -- Python 3.8.11, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
 hypothesis profile &#39;default&#39; -&gt; database=DirectoryBasedExampleDatabase(&#39;/Users/Justin/Dropbox/git/bebi103_course/2019/a/content/lecture_notes/lecture_02/.hypothesis/examples&#39;)
 rootdir: /Users/Justin/Dropbox/git/bebi103_course
 plugins: hypothesis-4.36.2
@@ -934,7 +834,7 @@ seq_features_and_tests.py <span class="ansi-green-fg">.</span><span class="ansi-
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-bold">============================= test session starts ==============================</span>
-platform darwin -- Python 3.7.4, pytest-5.1.2, py-1.8.0, pluggy-0.13.0 -- /Users/Justin/anaconda3/bin/python
+platform darwin -- Python 3.8.11, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/Justin/anaconda3/bin/python
 cachedir: .pytest_cache
 hypothesis profile &#39;default&#39; -&gt; database=DirectoryBasedExampleDatabase(&#39;/Users/Justin/Dropbox/git/bebi103_course/2019/a/content/lecture_notes/lecture_02/.hypothesis/examples&#39;)
 rootdir: /Users/Justin/Dropbox/git/bebi103_course
@@ -949,9 +849,9 @@ seq_features_and_tests.py::test_number_negatives_for_lowercase <span class="ansi
 <span class="ansi-green-intense-fg ansi-bold">============================== 4 passed in 0.01s ===============================</span>
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="pytest-is-smart">
-<h3>pytest is smart<a class="headerlink" href="#pytest-is-smart" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pytest-is-smart">
+<h3>pytest is smart<a class="headerlink" href="#pytest-is-smart" title="Permalink to this headline"></a></h3>
 <p>Pytest is such a smart application that you don’t even need to tell it explicitly which file it should look at. By default, pytest will search for files starting with <code class="docutils literal notranslate"><span class="pre">test_</span></code> and ending with <code class="docutils literal notranslate"><span class="pre">.py</span></code> in the whole directory tree.</p>
 <p>It is also a good idea, for the sake of clarity, to keep the tests in separate files from the code. So let’s make another file, named <code class="docutils literal notranslate"><span class="pre">test_seq_features.py</span></code> and place just the test functions with the assert statements. We’ll delete the tests from <code class="docutils literal notranslate"><span class="pre">seq_features_and_tests.py</span></code> and rename that file to <code class="docutils literal notranslate"><span class="pre">seq_features.py</span></code>.</p>
 <p>The directory now has these two files:</p>
@@ -1007,7 +907,7 @@ seq_features_and_tests.py::test_number_negatives_for_lowercase <span class="ansi
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-bold">============================= test session starts ==============================</span>
-platform darwin -- Python 3.7.4, pytest-5.1.2, py-1.8.0, pluggy-0.13.0 -- /Users/Justin/anaconda3/bin/python
+platform darwin -- Python 3.8.11, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/Justin/anaconda3/bin/python
 cachedir: .pytest_cache
 hypothesis profile &#39;default&#39; -&gt; database=DirectoryBasedExampleDatabase(&#39;/Users/Justin/Dropbox/git/bebi103_course/2019/a/content/lecture_notes/lecture_02/.hypothesis/examples&#39;)
 rootdir: /Users/Justin/Dropbox/git/bebi103_course
@@ -1024,10 +924,10 @@ test_seq_features.py::test_number_negatives_for_lowercase <span class="ansi-gree
 </div>
 <p>The obvious thing to do next is to test some other cases. Think: what else could go wrong? What if there is an invalid residue in the sequence? How we expect our code to behave?</p>
 <p>These and other semi-existential questions will be addressed next.</p>
-</div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
@@ -1043,45 +943,36 @@ test_seq_features.py::test_number_negatives_for_lowercase <span class="ansi-gree
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPython 3.7.4
-IPython 7.1.1
+CPython 3.8.11
+IPython 7.26.0
 
-pytest 5.1.2
-jupyterlab 1.1.4
+pytest 6.2.4
+jupyterlab 3.1.7
 </pre></div></div>
 </div>
 <p><em>Copyright note: In addition to the copyright shown below, Davi Ortega contributed to this lecture.</em></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="more_ttd.html" class="btn btn-neutral float-right" title="More details of TDD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="5. Test-driven development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="5. Test-driven development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="more_ttd.html" class="btn btn-neutral float-right" title="More details of TDD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">
-        Last updated on Dec 03, 2020.
-      </span>
+      <span class="lastupdated">Last updated on Sep 22, 2021.
+      </span></p>
+  </div>
 
-    </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fb0e6c43670> 
+   <jinja2.runtime.BlockReference object at 0x7fc10e5cfd60> 
 
-<p>© 2020 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 
@@ -1094,37 +985,26 @@ jupyterlab 1.1.4
  
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
-  
-  
-    
     <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54852702-1"></script>
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    ga('create', 'UA-54852702-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
-    
-    
+      gtag('config', 'UA-54852702-1', {
+          'anonymize_ip': false,
+      });
+    </script>  
 
   <style>
          .wy-nav-content { max-width: none; }

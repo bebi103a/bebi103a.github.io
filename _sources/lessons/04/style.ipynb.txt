@@ -12,16 +12,25 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "metadata": {},
+   "metadata": {
+    "nbsphinx": "hidden",
+    "tags": []
+   },
    "outputs": [],
    "source": [
     "# Colab setup ------------------\n",
     "import os, sys, subprocess\n",
     "if \"google.colab\" in sys.modules:\n",
     "    cmd = \"pip install --upgrade watermark blackcellmagic\"\n",
-    "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)\n",
-    "# ------------------------------\n",
-    "\n",
+    "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "%load_ext blackcellmagic\n",
     "\n",
     "import numpy as np"
@@ -58,7 +67,9 @@
     "\n",
     "(We will talk about how to make beautiful plots like the one here when we talk about data visualization.)\n",
     "\n",
-    "The same arguments about style are true for code. Style matters! We already discussed how important documentation is, but having a well-defined style also helps keep your code clean, easy to read, and therefore easier to debug and share."
+    "The same arguments about style are true for code. Style matters! We already discussed how important documentation is, but having a well-defined style also helps keep your code clean, easy to read, and therefore easier to debug and share.\n",
+    "\n",
+    "*Note*: If you want to explore the data set of the Keeling Curve, you can get the data from the Muana Loa Observatory [here](https://scrippsco2.ucsd.edu/data/atmospheric_co2/mlo.html)."
    ]
   },
   {
@@ -87,7 +98,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
@@ -138,21 +149,22 @@
    "metadata": {},
    "source": [
     "## Key points of PEP 8\n",
+    "\n",
     "PEP 8 is extensive, but here are some key points for you to keep in mind as you are being style-conscious.\n",
     "\n",
     "* Variable names need to be descriptive.\n",
     "* Variable names are all lower case with underscores separating words.\n",
     "* Do not name variables `l`, `O`, or `I` because they are hard to distinguish from ones and zeros.\n",
     "* Function names are lower case and may use underscores.\n",
-    "* Class names are in PascalCase, where every word in the name of the class has the first letter capitalized and there are no spaces between words. (We are not explicitly covering classes in this course). You will come across PascalCase objects in other packages, which usually means you are instantiating a class.)\n",
-    "* Module names are short and lower case.  Underscores should be avoided unless necessary for readability.\n",
+    "* Class names are in PascalCase, where every word in the name of the class has the first letter capitalized and there are no spaces between words. (We are not explicitly covering class in thie course.) You will come across PascalCase objects in many packages, which usually means you are instantiating a class.\n",
+    "* Module names are short and lower case. Underscores should be avoided unless necessary for readability.\n",
     "* Lines are maximally 79 characters long.\n",
     "* Lines in doc strings are maximally 72 characters long.\n",
     "* Avoid in-line comments; put the comment directly above the code.\n",
     "* Avoid excessive comments that state the obvious.\n",
-    "* Generally, put single spaces around binary operators, unless omitting space improves readability.  For example, `x**2 + y**2`.  Low precedence operators should have space.\n",
-    "* Assignment operators should always have single spaces around them *except* when in keyword arguments.  E.g., no space in `f(x, y=4)`.\n",
-    "* Put spaces after commas in function definitions and calls.  This also applies for lists, tuples, NumPy arrays, etc.\n",
+    "* Generally, put single spaces around binary operators, unless omitting space improves readability.  For example, `x**2 + y**2`. Low precedence operators should have space.\n",
+    "* Assignment operators should always have single spaces around them *except* when in keyword arguments. E.g., no space in `f(x, y=4)`.\n",
+    "* Put spaces after commas in function definitions and calls. This also applies for lists, tuples, NumPy arrays, etc.\n",
     "* Avoid excessive spaces within parentheses, braces, and brackets.\n",
     "* Use a single blank line to separate logical sections of your code.\n",
     "* Put two blank lines between functions in a `.py` file.\n",
@@ -172,7 +184,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -202,7 +214,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -237,7 +249,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -253,7 +265,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -290,7 +302,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -307,7 +319,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [
     {
@@ -316,7 +328,7 @@
        "(3.0, -1.5)"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 9,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -334,7 +346,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -359,7 +371,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [
     {
@@ -368,7 +380,7 @@
        "(3.0, -1.5)"
       ]
      },
-     "execution_count": 10,
+     "execution_count": 11,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -392,7 +404,7 @@
    "source": [
     "## Black\n",
     "\n",
-    "I have found [Black](https://github.com/python/black) to be a very useful tool for style. It's self-ascribed adjective is \"uncompromising.\" Black does not pay any attention at all to the formatting you chose, but will apply its style to your code. It adheres quite closely to PEP 8, with one of the most notable differences being a default line width of 88 characters. Code that is formatted using Black is said to be \"blackened.\"\n",
+    "I have found [Black](https://black.readthedocs.io/) to be a very useful tool for style. It's self-ascribed adjective is \"uncompromising.\" Black does not pay any attention at all to the formatting you chose, but will apply its style to your code. It adheres quite closely to PEP 8, with one of the most notable differences being a default line width of 88 characters. Code that is formatted using Black is said to be \"blackened.\"\n",
     "\n",
     "The Black package is installable with conda, and you should have it already installed. There are several packages for using Black in Jupyter notebooks. I prefer blackcellmagic, which you should also have installed. *Note, though, that Black and blackcellmagic will not work in Google Colab.*\n",
     "\n",
@@ -419,7 +431,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [
     {
@@ -466,7 +478,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [
     {
@@ -494,7 +506,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Black liked must of what we did, but it changed the spacing in our slicing of `seq`. I personally do not like this choice by Black, but [Black is strictly adhering to PEP 8 on this](https://github.com/python/black#slices). So, I'll accept it."
+    "Black liked must of what we did, but it changed the spacing in our slicing of `seq`. I personally do not like this choice by Black, but [Black is strictly adhering to PEP 8 on this](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#slices). So, I'll accept it."
    ]
   },
   {
@@ -515,19 +527,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPython 3.8.5\n",
-      "IPython 7.18.1\n",
+      "Python implementation: CPython\n",
+      "Python version       : 3.8.11\n",
+      "IPython version      : 7.26.0\n",
       "\n",
-      "numpy 1.19.1\n",
-      "black 19.10b0\n",
-      "jupyterlab 2.2.6\n"
+      "numpy     : 1.20.3\n",
+      "black     : 19.10b0\n",
+      "jupyterlab: 3.1.7\n",
+      "\n"
      ]
     }
    ],
@@ -554,7 +568,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.5"
+   "version": "3.8.11"
   }
  },
  "nbformat": 4,

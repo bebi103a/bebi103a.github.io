@@ -1,75 +1,42 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tidy data and split-apply-combine &mdash; BE/Bi 103 a  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Introduction to plotting with Bokeh" href="intro_to_plotting_with_bokeh.html" />
     <link rel="prev" title="Introduction to data frames" href="intro_to_pandas.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-          
-
-          
             <a href="../../index.html">
-          
-
-          
-            
             <img src="../../_static/logo.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,27 +44,17 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Lessons</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Exploratory data analysis</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Exploratory data analysis, part 1</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="exploratory_data_analysis.html">Exploratory data analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_to_numpy.html">Introduction to Numpy and Scipy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_to_pandas.html">Introduction to data frames</a></li>
@@ -116,59 +73,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="intro_to_plotting_with_bokeh.html">Introduction to plotting with Bokeh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_smooth_curves.html">Plotting smooth curves</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categorical_axes_bokeh.html">Plots with categorical axes with Bokeh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro_to_holoviews.html">Introduction to high-level plotting with HoloViews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categorical_axes_and_holoviews.html">Categorical axes and HoloViews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="visualizing_distributions.html">Visualizing distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="iqplot.html">iqplot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06_exercise.html">Exercise</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../07/data_storage_and_sharing.html">7. Data storage and sharing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/overplotting.html">10. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../12/index.html">12. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/random_number_generation.html">13. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../17/index.html">17. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../21/reproducible_workflows.html">21. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../22/paper_of_the_future.html">22. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Statistical watchouts</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/index.html">R5. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/probability_review.html">R6. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/index.html">R8. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Practice with Numpy and plotting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -188,95 +101,75 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#course-communications">Course communications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#ediquette">“Ediquette”</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #827F7F" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">BE/Bi 103 a</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">6. Exploratory data analysis</a> &raquo;</li>
-        
+          <li><a href="index.html">6. Exploratory data analysis, part 1</a> &raquo;</li>
       <li>Tidy data and split-apply-combine</li>
-    
-    
   <li class="wy-breadcrumbs-aside">
     
         
         
-            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/lessons/06/tidy_data.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/lessons/06/tidy_data.ipynb" download> Download notebook</a>
+            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/lessons/06/tidy_data" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/lessons/06/tidy_data" download> Download notebook</a>
         
       
     
   </li>
 
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -377,7 +270,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -443,6 +336,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -512,33 +406,22 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Tidy-data-and-split-apply-combine">
-<h1>Tidy data and split-apply-combine<a class="headerlink" href="#Tidy-data-and-split-apply-combine" title="Permalink to this headline">¶</a></h1>
+<section id="Tidy-data-and-split-apply-combine">
+<h1>Tidy data and split-apply-combine<a class="headerlink" href="#Tidy-data-and-split-apply-combine" title="Permalink to this headline"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Colab setup ------------------</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">subprocess</span>
-<span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;pip install --upgrade watermark&quot;</span>
-    <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
-    <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
-    <span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;https://s3.amazonaws.com/bebi103.caltech.edu/data/&quot;</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;../data/&quot;</span>
-<span class="c1"># ------------------------------</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 <hr /><p>We have dipped our toe into Pandas to see its power. In this lesson, we will continue to harness the power of Pandas to pull out subsets of data we are interested in, and of vital importance, will introduce the concept of <strong>tidy data</strong>. I suspect this will be a demarcation in your life. You will have the times in your life before tidy data and after. Welcome to your bright tomorrow.</p>
-<div class="section" id="Tidy-data">
-<h2>Tidy data<a class="headerlink" href="#Tidy-data" title="Permalink to this headline">¶</a></h2>
+<section id="Tidy-data">
+<h2>Tidy data<a class="headerlink" href="#Tidy-data" title="Permalink to this headline"></a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Hadley_Wickham">Hadley Wickham</a> wrote a <a class="reference external" href="http://dx.doi.org/10.18637/jss.v059.i10">great article</a> in favor of “tidy data.” Tidy data frames follow the rules: 1. Each variable is a column. 2. Each observation is a row. 3. Each type of observation has its own separate data frame.</p>
 <p>This is less pretty to visualize as a table, but we rarely look at data in tables. Indeed, the representation of data which is convenient for visualization is different from that which is convenient for analysis. A tidy data frame is almost always <strong>much</strong> easier to work with than non-tidy formats.</p>
 <p>You may raise some objections about tidy data. Here are a few, and my responses.</p>
@@ -556,12 +439,12 @@ possibility of misinterpretation or mistakes.</p>
 <p><strong>Objection:</strong> Once it’s tidy, we pretty much have to use Boolean indexing to get what we want, and that can be slower than other methods of accessing data. What about performance?</p>
 <p><strong>Response:</strong> See the previous response. Speed of access really only becomes a problem with big, high-throughput data sets. In those cases, there are often many things you need to be clever about beyond organization of your data.</p>
 <p><strong>Conclusion:</strong> I really think that tidying a data set allows for fluid exploration. We will focus on tidy data sets going forward. The techniques for bringing untidy data into tidy format use many of Pandas’s functions, and we will explore them in future lessons.</p>
-</div>
-<div class="section" id="The-data-set">
-<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="The-data-set">
+<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this headline"></a></h2>
 <p>We will again use the data set from the <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al. paper</a> on facial matching under sleep deprivation. Let’s load in the original data set and add the column on insomnia as we did in <a class="reference internal" href="intro_to_pandas.html"><span class="doc">previous part of this lesson</span></a>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -575,7 +458,7 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -716,9 +599,9 @@ possibility of misinterpretation or mistakes.</p>
 </div></div>
 </div>
 <p>This data set is in tidy format. Each row represents a single test on a single participant. The aspects of that person’s test are given in each column. We already saw the power of having the data in this format when we did Boolean indexing in the last lesson. Now, we will see how this format allows use to easily do an operation we do again and again with data sets, <strong>split-apply-combine</strong>.</p>
-</div>
-<div class="section" id="Split-apply-combine">
-<h2>Split-apply-combine<a class="headerlink" href="#Split-apply-combine" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Split-apply-combine">
+<h2>Split-apply-combine<a class="headerlink" href="#Split-apply-combine" title="Permalink to this headline"></a></h2>
 <p>Let’s say we want to compute the median percent correct face matchings for subjects with insomnia and the median percent correct face matchings for those without. Ignoring for the second the mechanics of how we would do this with Python, let’s think about it in English. What do we need to do?</p>
 <ol class="arabic simple">
 <li><p><strong>Split</strong> the data set up according to the <code class="docutils literal notranslate"><span class="pre">'insomnia'</span></code> field, i.e., split it up so we have a separate data set for the two classes of subjects, those with insomnia and those without.</p></li>
@@ -728,11 +611,11 @@ possibility of misinterpretation or mistakes.</p>
 <p>We see that the strategy we want is a <strong>split-apply-combine</strong> strategy. This idea was put forward by Hadley Wickham in <a class="reference external" href="http://dx.doi.org/10.18637/jss.v040.i01">this paper</a>. It turns out that this is a strategy we want to use <em>very</em> often. Split the data in terms of some criterion. Apply some function to the split-up data. Combine the results into a new data frame.</p>
 <p>Note that if the data are tidy, this procedure makes a lot of sense. Choose the column you want to use to split by. All rows with like entries in the splitting column are then grouped into a new data set. You can then apply any function you want into these new data sets. You can then combine the results into a new data frame.</p>
 <p>Pandas’s split-apply-combine operations are achieved using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method. You can think of <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> as the splitting part. You can then apply functions to the resulting <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. The <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">Pandas documentation on split-apply-combine</a> is excellent and worth reading through. It is extensive though, so don’t let yourself get intimidated by it.</p>
-<div class="section" id="Aggregation:-Median-percent-correct">
-<h3>Aggregation: Median percent correct<a class="headerlink" href="#Aggregation:-Median-percent-correct" title="Permalink to this headline">¶</a></h3>
+<section id="Aggregation:-Median-percent-correct">
+<h3>Aggregation: Median percent correct<a class="headerlink" href="#Aggregation:-Median-percent-correct" title="Permalink to this headline"></a></h3>
 <p>Let’s go ahead and do our first split-apply-combine on this tidy data set. First, we will split the data set up by insomnia condition.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -744,17 +627,17 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f807f5e5a30&gt;
+&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fa644c4ac40&gt;
 </pre></div></div>
 </div>
 <p>There is not much to see in the <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object that resulted. But there is a lot we can do with this object. Typing <code class="docutils literal notranslate"><span class="pre">grouped.</span></code> and hitting tab will show you the many possibilities. For most of these possibilities, the apply and combine steps happen together and a new data frame is returned. The <code class="docutils literal notranslate"><span class="pre">grouped.median()</span></code> method is exactly what we want.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -766,7 +649,7 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -824,10 +707,10 @@ possibility of misinterpretation or mistakes.</p>
   <tbody>
     <tr>
       <th>False</th>
-      <td>54</td>
-      <td>36</td>
-      <td>90</td>
-      <td>80</td>
+      <td>54.0</td>
+      <td>36.0</td>
+      <td>90.0</td>
+      <td>80.0</td>
       <td>85.0</td>
       <td>74.5</td>
       <td>55.5</td>
@@ -835,16 +718,16 @@ possibility of misinterpretation or mistakes.</p>
       <td>59.0</td>
       <td>75.0</td>
       <td>59.25</td>
-      <td>26</td>
-      <td>4</td>
-      <td>6</td>
+      <td>26.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>True</th>
-      <td>46</td>
-      <td>39</td>
-      <td>90</td>
-      <td>75</td>
+      <td>46.0</td>
+      <td>39.0</td>
+      <td>90.0</td>
+      <td>75.0</td>
       <td>75.0</td>
       <td>76.5</td>
       <td>72.0</td>
@@ -852,9 +735,9 @@ possibility of misinterpretation or mistakes.</p>
       <td>68.5</td>
       <td>77.0</td>
       <td>65.00</td>
-      <td>14</td>
-      <td>9</td>
-      <td>7</td>
+      <td>14.0</td>
+      <td>9.0</td>
+      <td>7.0</td>
     </tr>
   </tbody>
 </table>
@@ -862,7 +745,7 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 <p>The outputted data frame has the medians of all quantities, including the <code class="docutils literal notranslate"><span class="pre">percent</span> <span class="pre">correct</span></code> that we wanted. Note that this data frame has <code class="docutils literal notranslate"><span class="pre">insomnia</span></code> as the name of the row index. If we want to instead keep <code class="docutils literal notranslate"><span class="pre">insomnia</span></code> (which, remember, is what we used to split up the data set before we computed the summary statistics) as a column, we can use the <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> method.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -871,7 +754,7 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -914,10 +797,10 @@ possibility of misinterpretation or mistakes.</p>
     <tr>
       <th>0</th>
       <td>False</td>
-      <td>54</td>
-      <td>36</td>
-      <td>90</td>
-      <td>80</td>
+      <td>54.0</td>
+      <td>36.0</td>
+      <td>90.0</td>
+      <td>80.0</td>
       <td>85.0</td>
       <td>74.5</td>
       <td>55.5</td>
@@ -925,17 +808,17 @@ possibility of misinterpretation or mistakes.</p>
       <td>59.0</td>
       <td>75.0</td>
       <td>59.25</td>
-      <td>26</td>
-      <td>4</td>
-      <td>6</td>
+      <td>26.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>True</td>
-      <td>46</td>
-      <td>39</td>
-      <td>90</td>
-      <td>75</td>
+      <td>46.0</td>
+      <td>39.0</td>
+      <td>90.0</td>
+      <td>75.0</td>
       <td>75.0</td>
       <td>76.5</td>
       <td>72.0</td>
@@ -943,9 +826,9 @@ possibility of misinterpretation or mistakes.</p>
       <td>68.5</td>
       <td>77.0</td>
       <td>65.00</td>
-      <td>14</td>
-      <td>9</td>
-      <td>7</td>
+      <td>14.0</td>
+      <td>9.0</td>
+      <td>7.0</td>
     </tr>
   </tbody>
 </table>
@@ -953,7 +836,7 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 <p>We can also use multiple columns in our <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> operation. For example, we may wish to look at four groups, male insomniacs, female insomniacs, male non-insomniacs, and female non-insomniacs. To do this, we simply pass in a list of columns into <code class="docutils literal notranslate"><span class="pre">df.groupby()</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -962,7 +845,7 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1084,13 +967,13 @@ possibility of misinterpretation or mistakes.</p>
 </div></div>
 </div>
 <p>This type of operation is called an <strong>aggregation</strong>. That is, we split the data set up into groups, and then computed a summary statistic for each group, in this case the median.</p>
-</div>
-</div>
-<div class="section" id="Transformation">
-<h2>Transformation<a class="headerlink" href="#Transformation" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="Transformation">
+<h2>Transformation<a class="headerlink" href="#Transformation" title="Permalink to this headline"></a></h2>
 <p>Instead of summarizing data in a group with single summary statistics by aggregation, we can also do a <strong>transformation</strong> in which each row gets a new entry within a given group. As a simple example, we could generate a column that gives the rank of each participate in terms of percent correct for an insomniac group versus non-insomniac groups. That is, we perform a rank ordering with the insomniac group and within the non-insomniac group.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1099,7 +982,7 @@ possibility of misinterpretation or mistakes.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1113,8 +996,8 @@ Name: percent correct, dtype: float64
 </pre></div></div>
 </div>
 <p>This gave us a column of ranks with the indexing of the original data frame preserved. We can put this column into the data frame.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1125,156 +1008,9 @@ Name: percent correct, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>participant number</th>
-      <th>gender</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-      <th>insomnia</th>
-      <th>rank grouped by insomnia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>8</td>
-      <td>f</td>
-      <td>39</td>
-      <td>65</td>
-      <td>80</td>
-      <td>72.5</td>
-      <td>91.0</td>
-      <td>90.0</td>
-      <td>93.0</td>
-      <td>83.5</td>
-      <td>93.0</td>
-      <td>90.0</td>
-      <td>9</td>
-      <td>13</td>
-      <td>2</td>
-      <td>True</td>
-      <td>11.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>16</td>
-      <td>m</td>
-      <td>42</td>
-      <td>90</td>
-      <td>90</td>
-      <td>90.0</td>
-      <td>75.5</td>
-      <td>55.5</td>
-      <td>70.5</td>
-      <td>50.0</td>
-      <td>75.0</td>
-      <td>50.0</td>
-      <td>4</td>
-      <td>11</td>
-      <td>7</td>
-      <td>True</td>
-      <td>21.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>18</td>
-      <td>f</td>
-      <td>31</td>
-      <td>90</td>
-      <td>95</td>
-      <td>92.5</td>
-      <td>89.5</td>
-      <td>90.0</td>
-      <td>86.0</td>
-      <td>81.0</td>
-      <td>89.0</td>
-      <td>88.0</td>
-      <td>10</td>
-      <td>9</td>
-      <td>3</td>
-      <td>True</td>
-      <td>23.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>22</td>
-      <td>f</td>
-      <td>35</td>
-      <td>100</td>
-      <td>75</td>
-      <td>87.5</td>
-      <td>89.5</td>
-      <td>NaN</td>
-      <td>71.0</td>
-      <td>80.0</td>
-      <td>88.0</td>
-      <td>80.0</td>
-      <td>13</td>
-      <td>8</td>
-      <td>20</td>
-      <td>True</td>
-      <td>19.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>27</td>
-      <td>f</td>
-      <td>74</td>
-      <td>60</td>
-      <td>65</td>
-      <td>62.5</td>
-      <td>68.5</td>
-      <td>49.0</td>
-      <td>61.0</td>
-      <td>49.0</td>
-      <td>65.0</td>
-      <td>49.0</td>
-      <td>13</td>
-      <td>9</td>
-      <td>12</td>
-      <td>True</td>
-      <td>3.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
 <p>To verify that this worked correctly, and also to show some nice sorting properties of <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, we will sort the data frame by <code class="docutils literal notranslate"><span class="pre">insomnia</span></code> and then by <code class="docutils literal notranslate"><span class="pre">percent</span> <span class="pre">correct</span></code> and make sure the ranks worked accordingly.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1285,114 +1021,14 @@ Name: percent correct, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>insomnia</th>
-      <th>percent correct</th>
-      <th>rank grouped by insomnia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>81</th>
-      <td>False</td>
-      <td>40.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>False</td>
-      <td>55.0</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>False</td>
-      <td>57.5</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>False</td>
-      <td>60.0</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>False</td>
-      <td>60.0</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>True</td>
-      <td>90.0</td>
-      <td>21.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>True</td>
-      <td>90.0</td>
-      <td>22.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>True</td>
-      <td>92.5</td>
-      <td>23.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>True</td>
-      <td>95.0</td>
-      <td>24.0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>True</td>
-      <td>97.5</td>
-      <td>25.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>102 rows × 3 columns</p>
-</div></div>
-</div>
 <p>Indeed it worked!</p>
-</div>
-<div class="section" id="Aggregating-and-transforming-with-custom-functions">
-<h2>Aggregating and transforming with custom functions<a class="headerlink" href="#Aggregating-and-transforming-with-custom-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Aggregating-and-transforming-with-custom-functions">
+<h2>Aggregating and transforming with custom functions<a class="headerlink" href="#Aggregating-and-transforming-with-custom-functions" title="Permalink to this headline"></a></h2>
 <p>Let’s say we want to compute the coefficient of variation (CoV, the standard deviation divided by the mean) of data in columns of groups in the data frame. There is no built-in function to do this. We have to write our own function to compute the CoV and then use it with the <code class="docutils literal notranslate"><span class="pre">agg()</span></code> method of a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. In the function below, the values of each column are denoted by <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <p>To compute the coefficient of variation, we will use one more Numpy function beyond <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> that you have already seen, <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1403,8 +1039,8 @@ Name: percent correct, dtype: float64
 </div>
 </div>
 <p>Now we can apply it as an aggregating function.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1412,106 +1048,11 @@ Name: percent correct, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>participant number</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-    </tr>
-    <tr>
-      <th>insomnia</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>False</th>
-      <td>0.586191</td>
-      <td>0.384262</td>
-      <td>0.166784</td>
-      <td>0.184061</td>
-      <td>0.138785</td>
-      <td>0.195978</td>
-      <td>0.350286</td>
-      <td>0.204312</td>
-      <td>0.298216</td>
-      <td>0.187304</td>
-      <td>0.262509</td>
-      <td>0.175245</td>
-      <td>0.577869</td>
-      <td>0.571566</td>
-    </tr>
-    <tr>
-      <th>True</th>
-      <td>0.536117</td>
-      <td>0.313853</td>
-      <td>0.218834</td>
-      <td>0.325760</td>
-      <td>0.171856</td>
-      <td>0.156219</td>
-      <td>0.225440</td>
-      <td>0.222827</td>
-      <td>0.211512</td>
-      <td>0.160061</td>
-      <td>0.197484</td>
-      <td>0.381907</td>
-      <td>0.299741</td>
-      <td>0.681514</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
 <p>We can take a similar approach with a transformation, which you will explore for <a class="reference external" href="https://en.wikipedia.org/wiki/Empirical_distribution_function">ECDFs</a> in your homework.</p>
 <p>You now have tremendous power in your hands. When your data are tidy, you can rapidly accelerate the ubiquitous split-apply-combine methods. Importantly, you now have a logical framework to think about how you slice and dice your data. As a final, simple example, I will show you how to go start to finish after loading the data set into a data frame, splitting by insomnia and gender, and then getting the quartiles and extrema, in addition to the mean and standard deviation, in the percent of
 correct facial matchings.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1520,7 +1061,7 @@ correct facial matchings.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1617,12 +1158,12 @@ correct facial matchings.</p>
 </div></div>
 </div>
 <p>Yes, that’s right. One single, clean, easy to read line of code. In coming tutorials, we will see how to use tidy data to quickly generate plots.</p>
-</div>
-<div class="section" id="Looping-over-a-GroupBy-object">
-<h2>Looping over a GroupBy object<a class="headerlink" href="#Looping-over-a-GroupBy-object" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Looping-over-a-GroupBy-object">
+<h2>Looping over a GroupBy object<a class="headerlink" href="#Looping-over-a-GroupBy-object" title="Permalink to this headline"></a></h2>
 <p>While the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> methods we have learned so far (like <code class="docutils literal notranslate"><span class="pre">transform()</span></code> and <code class="docutils literal notranslate"><span class="pre">agg()</span></code>) are useful and lead to concise code, we sometimes want to loop over the groups of a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object. This often comes up in plotting applications, as we will see in future lessons. As an example, I will compute the median percent correct for female and males, insomniacs and not (which we already computed using <code class="docutils literal notranslate"><span class="pre">describe()</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1643,11 +1184,11 @@ correct facial matchings.</p>
 </pre></div></div>
 </div>
 <p>By using the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object as an iterator, it yields the name of the group (which I assigned as <code class="docutils literal notranslate"><span class="pre">name</span></code>) and the corresponding sub-data frame (which I assigned <code class="docutils literal notranslate"><span class="pre">group</span></code>).</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1661,45 +1202,38 @@ correct facial matchings.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPython 3.8.5
-IPython 7.18.1
+Python implementation: CPython
+Python version       : 3.8.11
+IPython version      : 7.26.0
 
-numpy 1.19.1
-pandas 1.1.1
-jupyterlab 2.2.6
+numpy     : 1.20.3
+pandas    : 1.3.1
+jupyterlab: 3.1.7
+
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="intro_to_plotting_with_bokeh.html" class="btn btn-neutral float-right" title="Introduction to plotting with Bokeh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="intro_to_pandas.html" class="btn btn-neutral float-left" title="Introduction to data frames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro_to_pandas.html" class="btn btn-neutral float-left" title="Introduction to data frames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="intro_to_plotting_with_bokeh.html" class="btn btn-neutral float-right" title="Introduction to plotting with Bokeh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">
-        Last updated on Dec 03, 2020.
-      </span>
+      <span class="lastupdated">Last updated on Sep 22, 2021.
+      </span></p>
+  </div>
 
-    </p>
-  </div> <jinja2.runtime.BlockReference object at 0x7fb0d8cfa1c0> 
+   <jinja2.runtime.BlockReference object at 0x7fc1269cf910> 
 
-<p>© 2020 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 
@@ -1712,37 +1246,26 @@ jupyterlab 2.2.6
  
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
-  
-  
-    
     <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54852702-1"></script>
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    ga('create', 'UA-54852702-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
-    
-    
+      gtag('config', 'UA-54852702-1', {
+          'anonymize_ip': false,
+      });
+    </script>  
 
   <style>
          .wy-nav-content { max-width: none; }

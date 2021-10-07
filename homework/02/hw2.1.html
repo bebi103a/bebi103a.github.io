@@ -62,6 +62,7 @@
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
@@ -71,7 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="hw2.0.html">Homework 2.0 [SOLO]: Setting up your private repository (0 pts)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 2.1: Fun with mutual information and Darwin (40 pts)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw2.2.html">Homework 2.2: Plotting an elephant (30 pts)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw2.3.html">Homework 2.3: Microtubule catastrophe and ECDFs [SOLO] (30 pts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.3.html">Homework 2.3 [SOLO]: Microtubule catastrophe and ECDFs (30 pts)</a></li>
 </ul>
 </li>
 </ul>
@@ -156,8 +157,8 @@
 <h1>Homework 2.1: Fun with mutual information and Darwin (40 pts)<a class="headerlink" href="#Homework-2.1:-Fun-with-mutual-information-and-Darwin-(40-pts)" title="Permalink to this headline"></a></h1>
 <p>In this problem, we will do an exercise that is useful for understanding how <a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_information">mutual information</a> works. This is an important concept in understanding cellular signaling in many contexts, including developmental and neuronal. You can read more about mutual information in <a class="reference external" href="http://www.inference.org.uk/mackay/itila/">David MacKay’s wonderful book</a> and applications in biology in <a class="reference external" href="https://press.princeton.edu/books/hardcover/9780691138916/biophysics">Bill Bialek’s
 book</a>.</p>
-<p>In this fun exercise, we will take English text and see how much we know about a letter with knowledge of the letter than precedes it. For example, we have a much high chance of following a <code class="docutils literal notranslate"><span class="pre">t</span></code> with an <code class="docutils literal notranslate"><span class="pre">h</span></code> than with an <code class="docutils literal notranslate"><span class="pre">f</span></code>. We will perform a similar analysis as was done to produce Figure 8B in <a class="reference external" href="https://mrazomej.github.io/phd/chapter_01/#entropy-information-and-the-math-behind-the-bit">Manuel Razo’s thesis</a> (another great resourse to read about mutual information in biology).</p>
-<p><strong>a)</strong> Download the entire text of Darwin’s <em>Origin of the Species</em> from Project Gutenberg here: <a class="reference external" href="https://www.gutenberg.org/files/2009/2009-0.txt">https://www.gutenberg.org/files/2009/2009-0.txt</a>. The text of the book starts after the line: <code class="docutils literal notranslate"><span class="pre">Sixth</span> <span class="pre">London</span> <span class="pre">Edition,</span> <span class="pre">with</span> <span class="pre">all</span> <span class="pre">Additions</span> <span class="pre">and</span> <span class="pre">Corrections.</span></code> The text of the book ends before the line: <code class="docutils literal notranslate"><span class="pre">***</span> <span class="pre">END</span> <span class="pre">OF</span> <span class="pre">THE</span> <span class="pre">PROJECT</span> <span class="pre">GUTENBERG</span> <span class="pre">EBOOK</span> <span class="pre">ON</span> <span class="pre">THE</span> <span class="pre">ORIGIN</span> <span class="pre">OF</span> <span class="pre">SPECIES</span> <span class="pre">***</span></code>. Produce a string that contains the text of the book.</p>
+<p>In this fun exercise, we will take English text and see how much we know about a letter with knowledge of the letter that precedes it. For example, we have a much higher chance of following a <code class="docutils literal notranslate"><span class="pre">t</span></code> with an <code class="docutils literal notranslate"><span class="pre">h</span></code> than with an <code class="docutils literal notranslate"><span class="pre">f</span></code>. We will perform a similar analysis as was done to produce Figure 8B in <a class="reference external" href="https://mrazomej.github.io/phd/chapter_01/#entropy-information-and-the-math-behind-the-bit">Manuel Razo’s thesis</a> (another great resource to read about mutual information in biology).</p>
+<p><strong>a)</strong> Download the entire text of Darwin’s <em>On the Origin of the Species</em> from Project Gutenberg here: <a class="reference external" href="https://www.gutenberg.org/files/2009/2009-0.txt">https://www.gutenberg.org/files/2009/2009-0.txt</a>. The text of the book starts after the line: <code class="docutils literal notranslate"><span class="pre">Sixth</span> <span class="pre">London</span> <span class="pre">Edition,</span> <span class="pre">with</span> <span class="pre">all</span> <span class="pre">Additions</span> <span class="pre">and</span> <span class="pre">Corrections.</span></code> The text of the book ends before the line: <code class="docutils literal notranslate"><span class="pre">***</span> <span class="pre">END</span> <span class="pre">OF</span> <span class="pre">THE</span> <span class="pre">PROJECT</span> <span class="pre">GUTENBERG</span> <span class="pre">EBOOK</span> <span class="pre">ON</span> <span class="pre">THE</span> <span class="pre">ORIGIN</span> <span class="pre">OF</span> <span class="pre">SPECIES</span> <span class="pre">***</span></code>. Produce a string that contains the text of the book.</p>
 <p><strong>b)</strong> Write a function that takes in text, and achieves the following:</p>
 <ol class="arabic simple">
 <li><p>Converts all carriage returns (<code class="docutils literal notranslate"><span class="pre">\r</span></code>), newline characters, hyphens (<code class="docutils literal notranslate"><span class="pre">-</span></code>), en dashes (<code class="docutils literal notranslate"><span class="pre">–</span></code>) and em dashes (<code class="docutils literal notranslate"><span class="pre">—</span></code>) to spaces.</p></li>
@@ -185,11 +186,11 @@ book</a>.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2021.
+      <span class="lastupdated">Last updated on Oct 07, 2021.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7f9a8a2f6c40> 
+   <jinja2.runtime.BlockReference object at 0x7fc42962e070> 
 
 <p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -59,7 +59,7 @@ Rather, the probability that of outcome :math:`y` lying between
    P(y_0\le y \le y_1) = F(y_1) - F(y_0) = \int_{y_0}^{y_1}\mathrm{d}y\,f(y).
    \end{aligned}
 
-Note that with this defintion of the probability density function, satisfaction of the axiom that all probabilities sum to zero (equivalently stated as :math:`F(y\to\infty) = 1`) necessitates that the probability density function is **normalized**. That is,
+Note that with this defintion of the probability density function, satisfaction of the axiom that all probabilities sum to one (equivalently stated as :math:`F(y\to\infty) = 1`) necessitates that the probability density function is **normalized**. That is,
 
 .. math::
 
@@ -92,10 +92,26 @@ example, :math:`n` is the outcome of the roll of a fair die
 Joint and conditional distributions and Bayes’s theorem for PDFs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We have defined a PDF as :math:`f(x)`, that is, describing a single
-variable :math:`x`. We can have **joint distributions** with a PDF
-:math:`f(x,y)`. The joint CDF is not well-defined, so we restrict our
-discussions of CDFs to the univariate case.
+We have defined a CDF as :math:`F(x)`, that is, describing a single
+variable :math:`x`. We can have **joint distributions** with a CDF
+:math:`F(x,y)`, defined as
+
+.. math::
+
+   \begin{aligned}
+   F(x, y) = P(\text{having outcome that is both } \le x\text{ and } \le y).
+   \end{aligned}
+
+We can conversely have joint PDFs and PMFs, :math:`f(x, y)`, such that, for the case of continuous :math:`x` and :math:`y`,
+
+.. math::
+
+   \begin{aligned}
+   F(x, y) = \int_{-\infty}^x \mathrm{d}x'\,\int_{-\infty}^y \mathrm{d}y' \, f(x', y'),
+   \end{aligned}
+
+with integrals replaced by sums for the discrete case.
+
 
 We may also have **conditional distributions** that have PDF
 :math:`f(x\mid y)`. This is interpreted similarly to conditional
@@ -120,7 +136,7 @@ probabilities. [1]_
 .. math::
 
    \begin{aligned}
-   f(\theta\mid y) = \frac{f(y\mid \theta)\,f(\theta)}{f(y)}.
+   f(x\mid y) = \frac{f(y\mid x)\,f(x)}{f(y)}.
    \end{aligned}
 
 

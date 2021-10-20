@@ -220,7 +220,7 @@ Rather, the probability that of outcome <span class="math notranslate nohighligh
 \[\begin{aligned}
 P(y_0\le y \le y_1) = F(y_1) - F(y_0) = \int_{y_0}^{y_1}\mathrm{d}y\,f(y).
 \end{aligned}\]</div>
-<p>Note that with this defintion of the probability density function, satisfaction of the axiom that all probabilities sum to zero (equivalently stated as <span class="math notranslate nohighlight">\(F(y\to\infty) = 1\)</span>) necessitates that the probability density function is <strong>normalized</strong>. That is,</p>
+<p>Note that with this defintion of the probability density function, satisfaction of the axiom that all probabilities sum to one (equivalently stated as <span class="math notranslate nohighlight">\(F(y\to\infty) = 1\)</span>) necessitates that the probability density function is <strong>normalized</strong>. That is,</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
 \int_{-\infty}^\infty \mathrm{d}y\, f(y) = 1.
@@ -244,10 +244,19 @@ die roll. b) The corresponding probability mass function.</span><a class="header
 </figure>
 <section id="joint-and-conditional-distributions-and-bayess-theorem-for-pdfs">
 <h2>Joint and conditional distributions and Bayes’s theorem for PDFs<a class="headerlink" href="#joint-and-conditional-distributions-and-bayess-theorem-for-pdfs" title="Permalink to this headline"></a></h2>
-<p>We have defined a PDF as <span class="math notranslate nohighlight">\(f(x)\)</span>, that is, describing a single
-variable <span class="math notranslate nohighlight">\(x\)</span>. We can have <strong>joint distributions</strong> with a PDF
-<span class="math notranslate nohighlight">\(f(x,y)\)</span>. The joint CDF is not well-defined, so we restrict our
-discussions of CDFs to the univariate case.</p>
+<p>We have defined a CDF as <span class="math notranslate nohighlight">\(F(x)\)</span>, that is, describing a single
+variable <span class="math notranslate nohighlight">\(x\)</span>. We can have <strong>joint distributions</strong> with a CDF
+<span class="math notranslate nohighlight">\(F(x,y)\)</span>, defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+F(x, y) = P(\text{having outcome that is both } \le x\text{ and } \le y).
+\end{aligned}\]</div>
+<p>We can conversely have joint PDFs and PMFs, <span class="math notranslate nohighlight">\(f(x, y)\)</span>, such that, for the case of continuous <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+F(x, y) = \int_{-\infty}^x \mathrm{d}x'\,\int_{-\infty}^y \mathrm{d}y' \, f(x', y'),
+\end{aligned}\]</div>
+<p>with integrals replaced by sums for the discrete case.</p>
 <p>We may also have <strong>conditional distributions</strong> that have PDF
 <span class="math notranslate nohighlight">\(f(x\mid y)\)</span>. This is interpreted similarly to conditional
 probabilities we have already seen. <span class="math notranslate nohighlight">\(f(x\mid y)\)</span> is the
@@ -265,7 +274,7 @@ will not carefully derive why this holds, but state it without proof.</p>
 probabilities. <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-f(\theta\mid y) = \frac{f(y\mid \theta)\,f(\theta)}{f(y)}.
+f(x\mid y) = \frac{f(y\mid x)\,f(x)}{f(y)}.
 \end{aligned}\]</div>
 </section>
 <section id="change-of-variables-formula-for-continuous-distributions">
@@ -334,11 +343,11 @@ subtleties.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 19, 2021.
+      <span class="lastupdated">Last updated on Oct 20, 2021.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fca705bb1c0> 
+   <jinja2.runtime.BlockReference object at 0x7f975cc755e0> 
 
 <p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 5.2: A dashboard for frog tongue strikes (70 pts) &mdash; BE/Bi 103 a  documentation</title>
+  <title>Homework 5.2: A dashboard for microarray data &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Schedule overview" href="../../schedule.html" />
-    <link rel="prev" title="Homework 5.1: Opening an Open Ephys file (30 points)" href="hw5.1.html" /> 
+    <link rel="prev" title="Homework 5.1 [SOLO]: Opening an Open Ephys file (30 points)" href="hw5.1.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -82,8 +82,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Exploratory data analysis I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Exploratory data analysis II</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Dashboards</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hw5.1.html">Homework 5.1: Opening an Open Ephys file (30 points)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 5.2: A dashboard for frog tongue strikes (70 pts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw5.1.html">Homework 5.1 [SOLO]: Opening an Open Ephys file (30 points)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 5.2: A dashboard for microarray data</a></li>
 </ul>
 </li>
 </ul>
@@ -123,7 +123,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">5. Dashboards</a> &raquo;</li>
-      <li>Homework 5.2: A dashboard for frog tongue strikes (70 pts)</li>
+      <li>Homework 5.2: A dashboard for microarray data</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -142,6 +142,252 @@
              
   
 <style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
@@ -164,21 +410,371 @@
     text-align: unset;
 }
 </style>
-<section id="Homework-5.2:-A-dashboard-for-frog-tongue-strikes-(70-pts)">
-<h1>Homework 5.2: A dashboard for frog tongue strikes (70 pts)<a class="headerlink" href="#Homework-5.2:-A-dashboard-for-frog-tongue-strikes-(70-pts)" title="Permalink to this headline"></a></h1>
-<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_tongue_adhesion.csv">Dataset download</a></p>
-<hr /><p>Your task in this homework problem is to build a dashboard to explore the data set from <a class="reference external" href="https://dx.doi.org/10.1038%2Fsrep05225">Kleinteich and Gorb</a> on strikes of a frog on a target. You already saw this data set when we were <a class="reference external" href="../lessons/10/merging_dataframes.ipynb">learning about concatenating and merging data frames</a>. Note that there are several aspects to each strike, as well as metadata about each frog.</p>
-<p>For convenience, you can create a data frame with the metadata like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;ID&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;II&quot;</span><span class="p">,</span> <span class="s2">&quot;III&quot;</span><span class="p">,</span> <span class="s2">&quot;IV&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;adult&quot;</span><span class="p">,</span> <span class="s2">&quot;adult&quot;</span><span class="p">,</span> <span class="s2">&quot;juvenile&quot;</span><span class="p">,</span> <span class="s2">&quot;juvenile&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;SVL (mm)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">63</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span>
-        <span class="s2">&quot;weight (g)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">63.1</span><span class="p">,</span> <span class="mf">72.7</span><span class="p">,</span> <span class="mf">12.7</span><span class="p">,</span> <span class="mf">12.7</span><span class="p">],</span>
-        <span class="s2">&quot;species&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cross&quot;</span><span class="p">,</span> <span class="s2">&quot;cross&quot;</span><span class="p">,</span> <span class="s2">&quot;cranwelli&quot;</span><span class="p">,</span> <span class="s2">&quot;cranwelli&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-<span class="p">)</span>
+<section id="Homework-5.2:-A-dashboard-for-microarray-data">
+<h1>Homework 5.2: A dashboard for microarray data<a class="headerlink" href="#Homework-5.2:-A-dashboard-for-microarray-data" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/x.txt">Data set download 1</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/E-MTAB-1681.sdrf.txt">Dataset download 2</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/430_2.0_probeset_annotation.txt">Dataset download 3</a></p>
+<hr><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<p>In <a class="reference external" href="where_we_will_go.rst">our introductory lesson on Python</a>, we saw a plot of some microarray data advertising that you will soon have the skill to make such a plot. Now is your chance to not only make a single plot, but to make a dashboard to explore microarray data!</p>
+<p>As a reminder, the data come from <code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">paper</span> <span class="pre">&lt;https://doi.org/10.1038/ncb2881&gt;</span></code>_ by Ohnishi, et al., published in <em>Nature Cell Biology</em> in 2014. The abstract reproduced below describes their experiment.</p>
+<blockquote>
+<div><p>It is now recognized that extensive expression heterogeneities among cells precede the emergence of lineages in the early mammalian embryo. To establish a map of pluripotent epiblast (EPI) versus primitive endoderm (PrE) lineage segregation within the inner cell mass (ICM) of the mouse blastocyst, we characterized the gene expression profiles of individual ICM cells. Clustering analysis of the transcriptomes of 66 cells demonstrated that initially they are non-distinguishable. Early in the
+segregation, lineage-specific marker expression exhibited no apparent correlation, and a hierarchical relationship was established only in the late blastocyst. Fgf4 exhibited a bimodal expression at the earliest stage analysed, and in its absence, the differentiation of PrE and EPI was halted, indicating that Fgf4 drives, and is required for, ICM lineage segregation. These data lead us to propose a model where stochastic cell-to-cell expression heterogeneity followed by signal reinforcement
+underlies ICM lineage segregation by antagonistically separating equivalent cells.</p>
+</div></blockquote>
+<p>So, they determined that <a class="reference external" href="https://en.wikipedia.org/wiki/FGF4">Fgf4</a> expression precedes differentiation of stem cell lineages. In their study, they performed <a class="reference external" href="https://en.wikipedia.org/wiki/DNA_microarray">microarray analysis</a> to investigate expression levels of genes in 101 different cells harvested from wild type and Fgf4ᐨᐟᐨ mouse blastocysts and various times in embryonic development.</p>
+<p>They deposited the microarray data to the ArrayExpress database with the accession number E-MTAB-1681, available <a class="reference external" href="https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-1681/">here</a>. The processed data are available as a ZIP file <a class="reference external" href="https://www.ebi.ac.uk/arrayexpress/files/E-MTAB-1681/E-MTAB-1681.processed.1.zip">here</a>. Upon unzipping the processed data file, you get a file, <code class="docutils literal notranslate"><span class="pre">x.txt</span></code>, which has the observed expression levels based on each of the 45,000+ probes they used.</p>
+<p>As a starting point for the dashboard, you have available the following files.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/x.txt">ohnishi_2014/x.txt</a>: The intensities for each sample.</p></li>
+<li><p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/E-MTAB-1681.sdrf.txt">ohnishi_2014/E-MTAB-1681.sdrf.txt</a>: Important metadata about the samples.</p></li>
+<li><p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/430_2.0_probeset_annotation.txt">ohnishi_2014/430_2.0_probeset_annotation.txt</a>: Annotation of the probeset, important giving which gene each probe corresponds to.</p></li>
+</ul>
+<p>When you download these data, be sure to store them all in a <code class="docutils literal notranslate"><span class="pre">../data/ohnishi_2014/</span></code> directory.</p>
+<p>Your task is to build a dashboard to explore this data set. There 101 samples used in the microarray study, 35 of which are Fgf-4 knock-outs. Of the 66 wild type cells, 36 are pre-differentiated, 15 are PrE, and 15 are EPI cells. The cells were extracted at 3.25, 3.5, and 4.5 days in embryonic development. Over 45,000 probe sets were used, for a total of over 19,000 genes.</p>
+<p>Prior to building your dashboard, you may take the wrangling steps I now work through.</p>
+<p>We will load in data frames with the log₂ intensity for each probeset in each sample (<code class="docutils literal notranslate"><span class="pre">df</span></code>), characteristics for each sample (<code class="docutils literal notranslate"><span class="pre">df_char</span></code>) and the probeset annotation (<code class="docutils literal notranslate"><span class="pre">df_annotation</span></code>).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Data frame with intensity values from microarray</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;ohnishi_2014/x.txt&quot;</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Characteristics of each sample</span>
+<span class="n">df_char</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;ohnishi_2014/E-MTAB-1681.sdrf.txt&quot;</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Annotation of probe set</span>
+<span class="n">df_annotation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;ohnishi_2014/430_2.0_probeset_annotation.txt&quot;</span><span class="p">),</span>
+    <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">skiprows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Convert to single level</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The main data frame contains the different samples as columns and each probeset as rows.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hybridization REF</th>
+      <th>H_1_C32_IN</th>
+      <th>H_2_C32_IN</th>
+      <th>H_3_C32_IN</th>
+      <th>H_4_C32_IN</th>
+      <th>H_5_C32_IN</th>
+      <th>H_6_C32_IN</th>
+      <th>H_7_C32_IN</th>
+      <th>H_8_C32_IN</th>
+      <th>H_9_C32_IN</th>
+      <th>...</th>
+      <th>H_126_e4.5_KO</th>
+      <th>H_127_e4.5_KO</th>
+      <th>H_128_e4.5_KO</th>
+      <th>H_129_e4.5_KO</th>
+      <th>H_130_e4.5_KO</th>
+      <th>H_131_e4.5_KO</th>
+      <th>H_132_e4.5_KO</th>
+      <th>H_133_e4.5_KO</th>
+      <th>H_134_e4.5_KO</th>
+      <th>H_135_e4.5_KO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1415670_at</td>
+      <td>4.910459</td>
+      <td>7.526672</td>
+      <td>6.956328</td>
+      <td>6.424048</td>
+      <td>5.105808</td>
+      <td>5.856685</td>
+      <td>5.059961</td>
+      <td>4.574661</td>
+      <td>8.123073</td>
+      <td>...</td>
+      <td>8.359740</td>
+      <td>9.575871</td>
+      <td>6.179409</td>
+      <td>8.601108</td>
+      <td>8.051324</td>
+      <td>4.911292</td>
+      <td>3.801598</td>
+      <td>8.360182</td>
+      <td>7.999680</td>
+      <td>8.193070</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1415671_at</td>
+      <td>9.768979</td>
+      <td>9.144228</td>
+      <td>9.295010</td>
+      <td>11.059831</td>
+      <td>9.376749</td>
+      <td>9.681017</td>
+      <td>7.665886</td>
+      <td>9.325743</td>
+      <td>9.724729</td>
+      <td>...</td>
+      <td>11.175453</td>
+      <td>9.591774</td>
+      <td>9.518947</td>
+      <td>10.526221</td>
+      <td>10.770072</td>
+      <td>6.375060</td>
+      <td>11.130234</td>
+      <td>8.052922</td>
+      <td>7.425286</td>
+      <td>9.148713</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1415672_at</td>
+      <td>10.411893</td>
+      <td>10.918942</td>
+      <td>9.495738</td>
+      <td>10.317996</td>
+      <td>11.143684</td>
+      <td>10.234943</td>
+      <td>10.642970</td>
+      <td>9.304958</td>
+      <td>11.037632</td>
+      <td>...</td>
+      <td>10.885286</td>
+      <td>9.339838</td>
+      <td>9.370398</td>
+      <td>7.787682</td>
+      <td>10.084626</td>
+      <td>8.773603</td>
+      <td>10.768072</td>
+      <td>10.327700</td>
+      <td>7.729140</td>
+      <td>10.283193</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1415673_at</td>
+      <td>5.618108</td>
+      <td>6.439416</td>
+      <td>6.730465</td>
+      <td>4.914527</td>
+      <td>5.619778</td>
+      <td>7.188673</td>
+      <td>6.395441</td>
+      <td>6.405085</td>
+      <td>6.542729</td>
+      <td>...</td>
+      <td>4.957310</td>
+      <td>5.652768</td>
+      <td>6.910332</td>
+      <td>6.694354</td>
+      <td>6.104253</td>
+      <td>5.313348</td>
+      <td>4.872900</td>
+      <td>8.932054</td>
+      <td>5.028091</td>
+      <td>4.505772</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1415674_a_at</td>
+      <td>7.541891</td>
+      <td>8.380285</td>
+      <td>8.480580</td>
+      <td>7.977363</td>
+      <td>8.650312</td>
+      <td>8.639637</td>
+      <td>7.645431</td>
+      <td>5.265520</td>
+      <td>6.748849</td>
+      <td>...</td>
+      <td>8.592410</td>
+      <td>5.954694</td>
+      <td>8.159053</td>
+      <td>9.041147</td>
+      <td>8.667740</td>
+      <td>8.028946</td>
+      <td>5.790260</td>
+      <td>9.019782</td>
+      <td>5.045660</td>
+      <td>8.652528</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 102 columns</p>
+</div></div>
+</div>
+<p>We would like to also have a column with gene names. We could do the following, where we do Boolean indexing in the annotation data frame each time to find the probeset of interest.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def probeset_to_gene(probeset):
+    try:
+        gene = df_annotation.loc[
+            df_annotation[&quot;Probeset ID&quot;] == probeset, &quot;Gene Symbol&quot;
+        ]
+        gene = gene.iloc[0].lower()
+    except:
+        gene = &quot;none&quot;
+
+    return gene
+
+
+df[&quot;gene&quot;] = df[&quot;Hybridization REF&quot;].apply(lambda x: probeset_to_gene(x))
+</pre></div>
+</div>
+<p>This is very slow, since we have to do tens of thousands of reverse lookups. It is faster to first create a dictionary linking probeset names to gene names, which may be constructed in one or two passes through the annotation data frame, and then use that to populated the gene names.</p>
+<p>While we are at it, we will make another dictionary allowing us to look up probesets corresponding to each gene,just in case you may want to use it later.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Dictionary to look up genes by probeset</span>
+<span class="n">genes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">df_annotation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Probeset ID&quot;</span><span class="p">]:</span> <span class="n">df_annotation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Gene Symbol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">df_annotation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Gene Symbol&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">str</span>
+    <span class="k">else</span> <span class="s2">&quot;none&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_annotation</span><span class="o">.</span><span class="n">index</span>
+<span class="p">}</span>
+
+<span class="c1"># Dictionary to look up probesets by gene</span>
+<span class="n">probesets</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">gene</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">df_annotation</span><span class="p">[</span><span class="s2">&quot;Gene Symbol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">gene</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span>
+<span class="p">}</span>
+<span class="n">probesets</span><span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_annotation</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">df_annotation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Gene Symbol&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">probesets</span><span class="p">[</span><span class="n">df_annotation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Gene Symbol&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">df_annotation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Probeset ID&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">probesets</span><span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_annotation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Probeset ID&quot;</span><span class="p">])</span>
+
+
+<span class="c1"># Fill in the Affymetrix probesets</span>
+<span class="n">probesets</span><span class="p">[</span><span class="s2">&quot;AFFX&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">probeset</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Hybridization REF&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;AFFX&quot;</span><span class="p">),</span> <span class="s2">&quot;Hybridization REF&quot;</span>
+<span class="p">]:</span>
+    <span class="n">genes</span><span class="p">[</span><span class="n">probeset</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;AFFX&quot;</span>
+    <span class="n">probesets</span><span class="p">[</span><span class="s2">&quot;AFFX&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">probeset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>With the <code class="docutils literal notranslate"><span class="pre">genes</span></code> dictionary available, we can more quickly make a column with the gene name.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;gene&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hybridization REF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">genes</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Many of the genes have multiple probes associated with them. There are many ways to treat this when analyzing microarray data to get the expression level of a given gene. We will take a simple approach and use the median intensity over all probesets for a given gene. Noe that we are overwriting the data frame in the following operation, losing information about each individual probeset. If we wanted to preserve or explore that information, we should not do this.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Now, our task is to tidy the data frame. We want each row to be an observation, that is measures of intensity for a single mouse tissue.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Make tidy by transposing and renaming columns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;Source Name&quot;</span><span class="p">})</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Source Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Source Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<p>Next, we can clean up the <code class="docutils literal notranslate"><span class="pre">df_char</span></code> data frame, which was information about each sample.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Clean up some of the data in the characteristics data frame</span>
+<span class="c1"># Short stage name</span>
+<span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;stage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;Characteristics[developmental stage]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Short genotype</span>
+<span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;genotype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;Characteristics[genotype]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;KO&quot;</span> <span class="k">if</span> <span class="s2">&quot;KO&quot;</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="s2">&quot;WT&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Short cell type</span>
+<span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;celltype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;Source Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;celltype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_char</span><span class="p">[</span><span class="s2">&quot;celltype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;PrE&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;PE&quot;</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, we can merge <code class="docutils literal notranslate"><span class="pre">df</span></code> and <code class="docutils literal notranslate"><span class="pre">df_char</span></code> to have a single, tidy data frame to work with.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_char</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </section>
 
@@ -186,7 +782,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="hw5.1.html" class="btn btn-neutral float-left" title="Homework 5.1: Opening an Open Ephys file (30 points)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw5.1.html" class="btn btn-neutral float-left" title="Homework 5.1 [SOLO]: Opening an Open Ephys file (30 points)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../../schedule.html" class="btn btn-neutral float-right" title="Schedule overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -194,11 +790,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 20, 2021.
+      <span class="lastupdated">Last updated on Oct 22, 2021.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fcb0c073dc0> 
+   <jinja2.runtime.BlockReference object at 0x7ff41a54e220> 
 
 <p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

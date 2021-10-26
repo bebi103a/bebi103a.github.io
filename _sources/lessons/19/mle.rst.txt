@@ -1,0 +1,182 @@
+Maximum likelihood estimation
+-----------------------------
+
+Once we have written down our statistical model, we would like to get estimates for the parameters of the model. By far the most often used method for parameter estimation is **maximum likelihood estimation**. (The second-most widely used is probably the `method of moments <https://en.wikipedia.org/wiki/Method_of_moments_(statistics)>`_, which we will not discuss.) To understand how this works, we first need to define what a **likelihood** is. *Note: Here we are specifically talking about the likelihood function in a frequentist setting, not the likelihood in a Bayesian context.*
+
+The likelihood function
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Say we have some data :math:`\mathbf{y}` that we are modeling parametrically. The generative distribution is parametrized by a set of parameters :math:`\theta`. Thus, the PDF for the generative distribution of all of the data is :math:`f(\mathbf{y};\theta)`.
+
+We define the **likelihood function** :math:`L(\theta;\mathbf{y})` as
+
+.. math::
+
+    \begin{align}
+    L(\theta;\mathbf{y}) = f(\mathbf{y}; \theta).
+    \end{align}
+
+This may look weird, but it is easier understood as the PDF of the generative distribution, except where it is a function of the parameters :math:`\theta` and not of the data :math:`\mathbf{y}`. The likelihood is therefore not a probability nor is it a probability density.
+
+We can define :math:`\ell(\theta;\mathbf{y}) = \ln L(\theta;\mathbf{y})` as the **log-likelihood function**, which we will find is often useful to work with.
+
+
+Maximum likelihood estimate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The set of parameter values :math:`\theta^*` for which the likelihood function (and therefore also the log-likelihood function) is maximal is called the **maximum likelihood estimate**, or **MLE**. Generically, we can denote the parameter values that maximize the likelihood function as :math:`\theta^*`. That is,
+
+.. math::
+
+    \begin{align}
+    \theta^* = \mathrm{arg\;max}_\theta\; L(\theta;\mathbf{y}) = \mathrm{arg\;max}_\theta \;\ell(\theta;\mathbf{y}).
+    \end{align}
+
+
+The MLE is **not** the true value of the parameter. Instead, it is an *estimate* of the true parameter acquired by the procedure of finding the maximizer of the likelihood function.
+
+The MLE has some nice properties, which is probably why it is so widely used to estimate parameters. We will not prove these properties here, but will instead state them.
+
+1. As the number of measurements gets very large, the MLE converges to the true parameter value. This is called **consistency**.
+2. Also as the number of measurements gets large, the MLE has the smallest variance among all well-behaved estimators for parameters. This is called **asymptotic optimality**.
+3. If :math:`\theta^*` is an MLE for the parameters :math:`\theta`, then :math:`g(\theta^*)` is the MLE for the parameters :math:`g(\theta)`, where :math:`g` is an arbitrary function. This is called **equivariance**.
+
+
+Confidence intervals for MLEs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The MLE is not the true value of the parameter, but it is rather an estimate of it computed from data. Therefore, the MLE *is* a random variable. It can vary meaningfully from experiment to experiment, so we can compute confidence intervals for the MLE using bootstrapping. In essence, we can resample the data set to get a bootstrap sample. We use this bootstrap sample in our procedure for computing the MLE. The MLE computed from the bootstrap sample is a replicate. We gather many replicates and can then compute a bootstrap confidence interval as we have done in the nonparametric setting.
+
+We will explore the practicalities of computing confidence intervals for MLEs in detail in forthcoming lessons.
+
+
+Computing an MLE
+^^^^^^^^^^^^^^^^
+
+Computing an MLE involves writing down the likelihood function (or, more often the log-likelihood function) and finding its maximizer. For all but the simplest of models, this is done numerically, and we will learn about how to do that in coming lessons.
+
+However, it is often quite useful to make analytical progress in characterizing or computing MLEs. The numerical calculation can be difficult for many reasons, including high-dimensionality of the likelihood function, or multiple local maxima. In some cases, we can directly compute the MLE analytically, which can save numerical headaches. We will compute the MLE for two of the models we considered earlier in this lecture.
+
+
+MLE for rate of arrival of a Poisson process
+############################################
+
+We modeled the time to catastrophe as Exponentially distributed when we considered it to be the result of the arrival of a single Poisson process. So, imagine we have a data set containing :math:`n` times to catastrophe. Assuming that these times are i.i.d. and Exponentially distributed, the joint PDF is
+
+.. math::
+
+    \begin{align}
+    f(\mathbf{t};\beta) = \prod_{i=1}^n \beta\,\mathrm{e}^{-\beta t_i} = \beta^n\,\exp\left[\beta\sum_{i=1}^n t_i\right].
+    \end{align}
+
+The log-likelihood function is then
+
+.. math::
+
+    \begin{align}
+    \ell(\beta; \mathbf{t}) =  n\ln \beta - \beta\sum_{i=1}^n t_i =  n\ln \beta - n \, \beta\,\bar{t},
+    \end{align}
+
+where :math:`\bar{t}` is the arithmetic mean of the measured catastrophe times. The log-likelihood is maximal when its first derivative vanishes, or
+
+.. math::
+
+    \begin{align}
+    \frac{\mathrm{d}}{\mathrm{d}\beta}\,\ell(\beta; \mathbf{t}) = \frac{n}{\beta^*} - n \bar{t} = 0.
+    \end{align}
+
+This tells us that the MLE is :math:`\beta^* = 1/\bar{t}`.
+
+Recall that the mean of an Exponential distribution is :math:`1/\beta`, and also that the plug-in estimate for the mean is :math:`\bar{t}`. This means that for the Exponential distribution, the plug-in estimate for the mean also gives the maximum likelihood estimate for :math:`\beta` via the equivariance property of the MLE.  (That is, the MLE of :math:`1/\beta` is :math:`1/\beta^*`.)
+
+
+Note that this may not be a good model. We assume the model is true, and *under that assumption*, we find the parameters that maximize the likelihood function. Within the context of the model, we get the (possibly scientifically irrelevant if the model is wrong) maximum likelihood estimate.
+
+
+MLE for the mean and variance of a Normal distribution
+######################################################
+
+As a second example, consider the length of *C. elegans* eggs, modeled as Normally distributed and i.i.d.. In this case, the generative joint PDF, as we have previously written down, is
+
+.. math::
+
+    \begin{align}
+       f(\mathbf{y}; \mu, \sigma) &= \left(\frac{1}{2\pi \sigma^2}\right)^{n/2}\,\exp\left[-\frac{1}{2\sigma^2}\sum_{i=1}^n(y_i-\mu)^2\right].
+    \end{align}
+
+After some algebraic grunge, which I will skip here, it can be shown that
+
+.. math::
+
+    \begin{align}
+    \sum_{i=1}^n(y_i-\mu)^2 = n(\bar{y} - \mu)^2 + n\hat{\sigma}^2,
+    \end{align}
+
+where
+
+.. math::
+
+    \begin{align}
+    \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (y_i - \bar{y})^2
+    \end{align}
+
+is the plug-in estimate for the variance. Thus, the joint PDF is
+
+.. math::
+
+    \begin{align}
+       f(\mathbf{y}; \mu, \sigma) &= \left(\frac{1}{2\pi \sigma^2}\right)^{n/2}\,\exp\left[-\frac{n(\bar{y} - \mu)^2 + n\hat{\sigma}^2}{2\sigma^2}\right].
+    \end{align}
+
+The log-likelihood function is then
+
+.. math::
+
+    \begin{align}
+       \ell(\mu, \sigma; \mathbf{y}) &= \text{constant} -n\ln \sigma - \frac{n(\bar{y} - \mu)^2 + n\hat{\sigma}^2}{2\sigma^2}.
+    \end{align}
+
+The log-likelihood is maximal when
+
+.. math::
+
+    \begin{align}
+       \frac{\partial\ell}{\partial \mu} &= 0 ,\\
+       \frac{\partial\ell}{\partial \sigma} &= 0.
+    \end{align}
+
+Evaluating the first expression,
+
+.. math::
+
+    \begin{align}
+       \frac{\partial\ell}{\partial \mu} = -\frac{n}{(\sigma^*)^2}(\bar{y}-\mu^*) = 0.
+    \end{align}
+
+The only solution is :math:`\mu^* = \bar{y}`. So, as was the case with the Exponential distribution, the plug-in estimate for the mean gives the MLE for the mean of the Normal distribution.
+
+Next, to compute the MLE for :math:`\sigma`, we consider the second equation.
+
+.. math::
+
+    \begin{align}
+       \frac{\partial\ell}{\partial \sigma} &= - \frac{n}{\sigma^*} + \frac{n(\bar{y} - \mu^*)^2 + n\hat{\sigma}^2}{(\sigma^*)^3} = 0.
+    \end{align}
+
+We already found, though, that :math:`\mu^* = \bar{y}`, so we have
+
+.. math::
+
+    \begin{align}
+    - \frac{n}{\sigma^*} + \frac{n\hat{\sigma}^2}{(\sigma^*)^3} = 0.
+    \end{align}
+
+Solving, we get that :math:`(\sigma^*)^2 = \hat{\sigma}^2`, which says that the MLE of the variance is also given by its plug-in estimate. This result reveals that the MLE can have bias, as did the plug-in estimate.
+
+In all three parameters we estimated (the rate parameter of the Exponential, and the location and scale parameters of the Normal), the MLE was given by the plug-in estimate for the statistical functional whose value is given by the parameter. *Note, though, that this is not generally the case*.
+
+
+Next steps
+^^^^^^^^^^
+
+In the next lessons, you will learn how to numerically compute MLEs for more complicated models, as well as bootstrap confidence intervals for the MLE. We will then proceed to learn about checking validity of models.

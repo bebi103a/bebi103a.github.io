@@ -1,0 +1,119 @@
+Confidence intervals
+--------------------
+
+
+The frequentist interpretation of probability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before we start taking about confidence intervals, it is important to recall the frequentist interpretation of probability. Under this interpretation, the probability :math:`P(A)`
+represents a long-run frequency of event :math:`A` over a large number
+of identical repetitions of an experiment. In our calculation of confidence intervals and in performance of null hypothesis significance tests, we will directly apply this
+interpretation of probability again and again, using our computers to
+“repeat” experiments many times and tally the frequencies of what we
+see.
+
+
+
+Confidence intervals
+^^^^^^^^^^^^^^^^^^^^
+
+Consider the following question. If I were to do the experiment again,
+what value might I expect for my plug-in estimate for my functional?
+What if I did it again and again and again? These are reasonable
+questions because the plug-in estimate is something that can vary
+meaningfully from experiment to experiment. Remember, with the
+frequentist interpretation of probability, we cannot assign a
+probability to a parameter value. A parameter has one value, and that’s
+that. We *can* describe the long-term frequency of observing results
+about random variables. Because a plug-in estimate for a statistical functional does vary from experiment to experiment, it is a random variable. So, we can define a 95% **confidence interval**
+as follows.
+
+   If an experiment is repeated over and over again, the estimate I
+   compute for a parameter, :math:`\hat{\theta}`, will lie between the
+   bounds of the 95% confidence interval for 95% of the experiments.
+
+While this is a correct definition of a confidence interval, some
+statisticians prefer another. To quote Larry Wasserman from his book, `All of Statistics <https://link.springer.com/book/10.1007/978-0-387-21736-9>`_,
+
+   [The above definition] is correct but useless since we rarely repeat
+   the same experiment over and over. A better interpretation is this:
+   On day 1, you collect data and construct a 95 percent confidence
+   interval for a parameter :math:`\theta_1`. On day 2, you collect new
+   data and construct a 95 percent confidence interval for an unrelated
+   parameter :math:`\theta_2`. On day 3, you collect new data and
+   construct a 95 percent confidence interval for an unrelated parameter
+   :math:`\theta_3`. You continue this way constructing confidence
+   intervals for a sequence of unrelated parameters
+   :math:`\theta_1, \theta_2, \ldots`. Then 95 percent of your intervals
+   will trap the true parameter value. There us no need to introduce the
+   idea of repeating the same experiment over and over.
+
+In other words, the confidence interval describes the construction of
+the confidence interval itself. 95% of the time, it will contain the
+true (unknown) parameter value. Wasserman’s description contains a
+reference to the *true* parameter value, so if you are going to talk
+about the true parameter value, this description is useful. However, the
+first definition of the confidence interval is quite useful if you want
+to think about how repeated experiments will end up.
+
+We will use the first definition in thinking about how to construct a
+confidence interval. To construct the confidence interval, then, we will
+repeat the experiment over and over again, each time computing
+:math:`\hat{\theta}`. We will then generate an ECDF of our
+:math:`\hat{\theta}` values, and report the 2.5th and 97.5th percentile
+to get our 95% confidence interval. But wait, how will we repeat the
+experiment so many times?
+
+
+Bootstrap confidence intervals
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remember that the data come from a generative distribution with CDF
+:math:`F(x)`. Doing an experiment where we make :math:`n` measurements
+amounts to drawing :math:`n` numbers out of :math:`F(x)`\  [1]_. So, we
+could draw out of :math:`F(x)` over and over again. The problem is, we
+do now know what :math:`F(x)` is. However, we do have an empirical
+approximation for :math:`F(x)`, namely :math:`\hat{F}(x)`. So, we could
+draw :math:`n` samples out of :math:`\hat{F}(x)`, compute
+:math:`\hat{\theta}` from these samples, and repeat. This procedure is
+called **bootstrapping**.
+
+To get the terminology down, a **bootstrap sample**,
+:math:`\mathbf{x}^*`, is a set of :math:`n` :math:`x` values drawn from
+:math:`\hat{F}(x)`. A **bootstrap replicate** is the estimate
+:math:`\hat{\theta}^*` obtained from the bootstrap sample
+:math:`\mathbf{x}^*`. To generate a bootstrap sample, consider an array
+of measured values :math:`\mathbf{x}`. We draw :math:`n` values out of
+this array *with replacement* to give us :math:`\mathbf{x}^*`. This is equivalent to sampling out of
+:math:`\hat{F}(x)`.
+
+So, the recipe for generating a bootstrap confidence interval is as
+follows.
+
+#. Generate :math:`B` independent bootstrap samples. Each one is
+   generated by drawing :math:`n` values out of the data array with
+   replacement.
+
+#. Compute :math:`\hat{\theta}^*` for each bootstrap sample to get the
+   bootstrap replicates.
+
+#. The central :math:`100 (1-\alpha)` percent confidence interval consists of
+   the percentiles :math:`100\alpha/2` and :math:`100(1-\alpha/2)` of
+   the bootstrap replicates.
+
+This procedure works for any estimate :math:`\hat{\theta}`, be it the
+mean, median, variance, skewness, kurtosis, or any other thing
+you can think of. Note that we use the empirical distribution, so there
+is never any assumption of an underlying "true" distribution. We are employing the plug-in principle for repeating experiments. Instead of sampling out of the generative distribution (which is what performing an experiment is), we plug-in the empirical distribution and sample out of it, instead. Thus, we
+are doing *nonparametric inference* on what we would expect for
+parameters coming out of unknown distributions; we only know the data.
+
+There are plenty of subtleties and improvements to this procedure, but
+this is most of the story. We will discuss the mechanics of how to programmatically generate bootstrap replicates in forthcoming lessons, but we have already covered the main idea.
+
+----
+
+.. [1]
+   We’re being loose with language here. We’re drawing out of the
+   distribution that has CDF :math:`F(x)`, but we’re saying “draw out of
+   F” for short.

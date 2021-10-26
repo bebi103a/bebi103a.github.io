@@ -1,0 +1,157 @@
+Plug-in estimates
+-----------------
+
+When we make measurements, we are observing samples out of an underlying, typically unknown, **generative distribution**. Take as an example measurements of the count of RNA transcripts of a given gene in individual cells. We are likely to observe counts where the probability mass function of the generative distribution are is high and unlikely to observe counts where the PMF of the generative distribution is low.
+
+If we have a full understanding of the generative distribution, we have learned how the data were generated, and thereby have an understanding of the physical, chemical, or biological phenomena we are studying. **Statistical inference** involves deducing properties of these (unknown) generative distributions.
+
+In this lecture, we will start with **nonparametric inference**, which is statistical inference where no model is assumed; conclusions are drawn from the data alone. The approach we will take is heavily inspired by Allen Downey’s
+wonderful book, `Think Stats <http://greenteapress.com/thinkstats2/index.html>`_ and from
+Larry Wasserman’s book `All of Statistics <https://link.springer.com/book/10.1007/978-0-387-21736-9>`_. 
+
+
+
+The plug-in principle
+^^^^^^^^^^^^^^^^^^^^^
+
+Let’s first think about how to get an estimate for a parameter
+value, given the data. While what we are about to do is general, for now
+it is useful to have in your mind a concrete example. Imagine we have a
+data set that is a set of repeated measurements, such as the repeated
+measurements of lengths of eggs laid by *C. elegans* worms of a given
+genotype. 
+
+We *could* have a generative model in mind, and we will do this in coming lessons. Instead, we will assume we only know that there *is* a generative distribution, but nothing about what it may be. Let :math:`F(x)` be the cumulative distribution function (CDF) for the generative distribution.
+
+A **statistical functional** is a functional of the CDF, :math:`T(F)`. A
+parameter :math:`\theta` of a probability distribution can be defined
+from a functional, :math:`\theta = T(F)`. For example, the mean,
+variance, and median are all statistical functionals.
+
+.. math::
+
+   \begin{aligned}
+       &\text{mean} \equiv \mu = \int_{-\infty}^\infty \mathrm{d}x\,x\,f(x) = \int_{-\infty}^\infty \mathrm{d}F(x)\,x, \\[1em]
+       &\text{variance} \equiv \sigma^2 = \int_{-\infty}^\infty \mathrm{d}x\,(x-\mu)^2\,f(x) = \int_{-\infty}^\infty \mathrm{d}F(x)\,(x-\mu)^2, \\[1em]
+       &\text{median} \equiv m = F^{-1}(1/2).\end{aligned}
+
+Now, say we made a set of :math:`n` measurements,
+:math:`\{x_1, x_2, \ldots x_n\}`. You can think of this as a set of *C. elegans* egg lengths if you want to have an example in your mind. We define the **empirical cumulative distribution function**,
+:math:`\hat{F}(x)` from our data as
+
+.. math::
+
+    \begin{aligned}
+       \hat{F}(x) = \frac{1}{n}\sum_{i=1}^n I(x_i \le x),
+    \end{aligned}
+
+with
+
+.. math::
+
+    \begin{aligned}
+       I(x_i \le x) = \left\{
+       \begin{array}{ccl}
+           1 && x_i \le x \\[0.5em]
+           0 && x_i > x.
+       \end{array}
+       \right.
+    \end{aligned}
+
+We have already seen this form of the ECDF when we were studying
+exploratory data analysis. Remember that the probability density function (PDF), :math:`f(x)`, is related to the CDF by
+
+.. math::
+
+    \begin{aligned}
+       f(x) = \frac{\mathrm{d}F}{\mathrm{d}x}.
+    \end{aligned}
+
+We can then differentiate the ECDF to get the **empirical density function**, :math:`\hat{f}(x)` as
+
+.. math::
+
+    \begin{aligned}
+       \hat{f}(x) = \frac{1}{n}\sum_{i=1}^n \delta(x - x_i),
+    \end{aligned}
+
+where :math:`\delta(x)` is the Dirac delta function.
+
+With the ECDF (and empirical density function), we have now defined an empirical distribution that is dependent only on the data. We now define a **plug-in estimate** of a parameter
+:math:`\theta` as
+
+.. math::
+
+    \begin{aligned}
+       \hat{\theta} = T(\hat{F}).
+    \end{aligned}
+
+In other words, to get a plug-in estimate a parameter :math:`\theta`,
+we need only to compute the functional using the *empirical*
+distribution. That is, we simply “plug in” the empirical CDF for the
+actual CDF.
+
+The plug-in estimate for the median is easy to calculate.
+
+.. math::
+
+    \begin{aligned}
+       \hat{m} = \hat{F}^{-1}(1/2),
+    \end{aligned}
+
+or the middle-ranked data point. The plug-in estimate for the mean or
+variance seem at face to be a bit more difficult to calculate, but the
+following general theorem will help. Consider a functional of the form of an expectation value, :math:`r(x)`.
+
+.. math::
+
+    \begin{aligned}
+       \int\mathrm{d}\hat{F}(x)\,r(x) &= \int \mathrm{d}x \,r(x)\, \hat{f}(x)
+       = \int \mathrm{d}x\, r(x) \left[\frac{1}{n}\sum_{i=1}^n\delta(x - x_i)\right] \nonumber \\[1em]
+       &= \frac{1}{n}\sum_{i=1}^n\int \mathrm{d}x \,r(x) \delta(x-x_i)
+       = \frac{1}{n}\sum_{i=1}^n r(x_i).
+    \end{aligned}
+
+A functional of this form is called a **linear statistical functional**. The result above means that the plug-in estimate for a linear functional of a
+distribution is the arithmetic mean of the observed :math:`r(x)` themselves.
+The plug-in estimate of the mean, which has :math:`r(x) = x`, is
+
+.. math::
+
+    \begin{aligned}
+       \hat{\mu} = \frac{1}{n}\sum_{i=1}^n x_i \equiv \bar{x},
+    \end{aligned}
+
+where we have defined :math:`\bar{x}` as the traditional sample mean
+(the arithmetic mean of the measured data), which we have just shown is
+the plug-in estimate. This plug-in estimate is implemented in the
+``np.mean()`` function. The plug-in estimate for the variance is
+
+.. math::
+
+    \begin{aligned}
+       \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2
+       = \frac{1}{n}\sum_{i=1}^n x_i^2 - \bar{x}^2.
+    \end{aligned}
+
+This plug-in estimate is implemented in the ``np.var()`` function.
+
+Note that we are denoting the mean and variance as :math:`\mu` and :math:`\sigma^2`, but these are *not* in general the parameters with the same common name and symbols from a Normal distribution. Any distribution has a first moment (called a mean) and a second central moment (called a variance), unless they do not exist, as is the case, e.g., with a Cauchy distribution. In this context, we denote by :math:`\mu` and :math:`\sigma^2` the mean and variance of the unknown underlying univariate generative distribution.
+
+We can compute plug-in estimates for more complicated parameters as
+well. For example, for a bivariate distribution, the correlation between
+the two variables :math:`x` and :math:`y`, is defined with
+
+.. math::
+
+    \begin{aligned}
+       \rho = \frac{\left\langle (x-\mu_x)(y-\mu_y)\right\rangle}{\sigma_x \sigma_y},
+    \end{aligned}
+
+where the expectation in the numerator is called the **covariance** between :math:`x` and :math:`y`. It is of large magnitude of :math:`x` and :math:`y` vary together and close to zero if they are nearly independent of each other. The plug-in estimate for the correlation is
+
+.. math::
+
+    \begin{aligned}
+       \hat{\rho} = \frac{\sum_i(x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\left(\sum_i(x_i-\bar{x})^2\right)\left(\sum_i(y_i-\bar{y})^2\right)}}.
+    \end{aligned}

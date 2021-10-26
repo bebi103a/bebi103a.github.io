@@ -1,0 +1,54 @@
+Model comparison with the Akaike information criterion
+------------------------------------------------------
+
+We have seen that we can assess models graphically. There are many non-graphical ways to assess models, including `likelihood-ratio tests <https://en.wikipedia.org/wiki/Likelihood-ratio_test>`_ and `cross-validation <https://en.wikipedia.org/wiki/Cross-validation_(statistics)>`_. Both of these are involved topics (especially cross-validation; there is a *lot* to learn there), and we will not cover them in much depth here. 
+
+We will go into much more depth on model selection next term.
+
+
+The Akaike information criterion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For now, we will consider a metric for model selection called the `Akaike information criterion <https://en.wikipedia.org/wiki/Akaike_information_criterion>`_, or AIC. We will not show it, but the AIC can be loosely interpreted as an estimate of a quantity related to the distance between the true generative distribution and the model distribution. (I am speaking loosely here, there are important details missing, and in fact I have abused some language.) Given two models, the one with the lesser AIC is likely closer to the true generative distribution.
+
+For a set of parameters :math:`\theta` with MLE :math:`\theta^*` and a model with log-likelihood :math:`\ell(\theta;\text{data})`, the AIC is given by
+
+.. math::
+
+    \begin{align}
+    \text{AIC} = -2\ell(\theta^*;\text{data}) + 2p,
+    \end{align}
+
+where :math:`p` is the number of free parameters in a model. Thus, more complicated models, those with more parameters, are penalized for having too many parameters. Furthermore, models where the likelihood function is broad, meaning that many parameter values are viable, have a lower log likelihood and are also penalized. So, models with few, meaningful parameters and a high likelihood function at the MLE have lower AIC and are favored.
+
+
+Akaike weights
+^^^^^^^^^^^^^^
+
+If we compare two models, say model 1 and model 2, then the **Akaike weight** for model 1 is
+
+.. math::
+
+    \begin{align}
+    w_1 = \frac{\mathrm{e}^{-\text{AIC}_1/2}}{\mathrm{e}^{-\text{AIC}_1/2} +     \mathrm{e}^{-\text{AIC}_2/2}}.
+    \end{align}
+
+Because the values of the AIC can be large, it is more numerically stable to compute the Akaike weight as
+
+.. math::
+
+    \begin{align}
+    w_1 = \frac{\mathrm{e}^{-(\text{AIC}_1 -     \text{AIC}_\mathrm{max})/2}}{\mathrm{e}^{-(\text{AIC}_1 -     \text{AIC}_\mathrm{max})/2}+\mathrm{e}^{-(\text{AIC}_2 - \text{AIC}_\mathrm{max})/2}},
+    \end{align}
+
+where :math:`\text{AIC}_\mathrm{max}` is the maximum of the two AICs. More generally, the Akaike weight of model :math:`i` among many is
+
+.. math::
+
+    \begin{align}
+    w_i = \frac{\mathrm{e}^{-(\text{AIC}_i -     \text{AIC}_\mathrm{max})/2}}{\sum_j\mathrm{e}^{-(\text{AIC}_j -     \text{AIC}_\mathrm{max})/2}}.
+    \end{align}
+
+Interpretation of the Akaike weights is lacking a consensus, but we can loosely interpret the Akaike weight as the probability that a model will give the best predictions of new data, assuming that we have considered all possible models.
+
+Importantly, computing the AIC and the Akaike weights is trivial once the MLE calculation is complete. You simply evaluate the log-likelihood at the MLE (which you had to do anyway to perform the optimization to find the MLE), multiply by negative two, and then add twice the number of parameters to it!

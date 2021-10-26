@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 5.2: A dashboard for microarray data &mdash; BE/Bi 103 a  documentation</title>
+  <title>Homework 5.2: A dashboard for microarray data (70 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Schedule overview" href="../../schedule.html" />
+    <link rel="next" title="6. Random number generation and probability distributions" href="../06/index.html" />
     <link rel="prev" title="Homework 5.1 [SOLO]: Opening an Open Ephys file (30 points)" href="hw5.1.html" /> 
 </head>
 
@@ -66,6 +66,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 11</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/12/overplotting.html">12. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/13/index.html">13. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/14/index.html">14. Plug-in estimates and confidence intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/15/random_number_generation.html">15. Random number generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/16/prob_dists.html">16. Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 16</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/17/index.html">17. Null hypothesis significance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/18/index.html">18. Nonparametric inference with hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 18</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/19/index.html">19. Parametric inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 20</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Model assessment</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
@@ -83,9 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Exploratory data analysis II</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Dashboards</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="hw5.1.html">Homework 5.1 [SOLO]: Opening an Open Ephys file (30 points)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 5.2: A dashboard for microarray data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 5.2: A dashboard for microarray data (70 pts)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Random number generation and probability distributions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -123,7 +135,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">5. Dashboards</a> &raquo;</li>
-      <li>Homework 5.2: A dashboard for microarray data</li>
+      <li>Homework 5.2: A dashboard for microarray data (70 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -410,8 +422,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Homework-5.2:-A-dashboard-for-microarray-data">
-<h1>Homework 5.2: A dashboard for microarray data<a class="headerlink" href="#Homework-5.2:-A-dashboard-for-microarray-data" title="Permalink to this headline"></a></h1>
+<section id="Homework-5.2:-A-dashboard-for-microarray-data-(70-pts)">
+<h1>Homework 5.2: A dashboard for microarray data (70 pts)<a class="headerlink" href="#Homework-5.2:-A-dashboard-for-microarray-data-(70-pts)" title="Permalink to this headline"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/x.txt">Data set download 1</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/E-MTAB-1681.sdrf.txt">Dataset download 2</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ohnishi_2014/430_2.0_probeset_annotation.txt">Dataset download 3</a></p>
 <hr><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -783,18 +795,18 @@ df[&quot;gene&quot;] = df[&quot;Hybridization REF&quot;].apply(lambda x: probese
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="hw5.1.html" class="btn btn-neutral float-left" title="Homework 5.1 [SOLO]: Opening an Open Ephys file (30 points)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../schedule.html" class="btn btn-neutral float-right" title="Schedule overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../06/index.html" class="btn btn-neutral float-right" title="6. Random number generation and probability distributions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 22, 2021.
+      <span class="lastupdated">Last updated on Oct 26, 2021.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7ff41a54e220> 
+   <jinja2.runtime.BlockReference object at 0x7f8a4bcd8340> 
 
 <p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

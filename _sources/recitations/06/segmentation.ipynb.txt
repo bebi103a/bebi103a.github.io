@@ -1,0 +1,599 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Basic image quantification\n",
+    "\n",
+    "*This recitation was written by Justin Bois with updates and other minor changes by Sophie Miller.*\n",
+    "\n",
+    "**[Dataset download](https://s3.amazonaws.com/bebi103.caltech.edu/data/HG105_images/)**\n",
+    "\n",
+    "<hr>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Colab setup ------------------\n",
+    "import os, sys, subprocess\n",
+    "if \"google.colab\" in sys.modules:\n",
+    "    cmd = \"pip install --upgrade colorcet bebi103 watermark\"\n",
+    "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)\n",
+    "    stdout, stderr = process.communicate()\n",
+    "    data_path = \"https://s3.amazonaws.com/bebi103.caltech.edu/data/\"\n",
+    "else:\n",
+    "    data_path = \"../data/\"\n",
+    "# ------------------------------\n",
+    "\n",
+    "import numpy as np\n",
+    "\n",
+    "# Our image processing tools\n",
+    "import skimage.filters\n",
+    "import skimage.io\n",
+    "import skimage.measure\n",
+    "import skimage.morphology\n",
+    "import skimage.segmentation\n",
+    "\n",
+    "import bebi103\n",
+    "\n",
+    "import iqplot\n",
+    "\n",
+    "import holoviews as hv\n",
+    "hv.extension('bokeh')\n",
+    "\n",
+    "import bokeh.io\n",
+    "bokeh.io.output_notebook()\n",
+    "\n",
+    "import panel as pn\n",
+    "pn.extension()\n",
+    "\n",
+    "bebi103.hv.set_defaults()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr>\n",
+    "\n",
+    "Now that we have learned how to do basic segmentation, we continue our image processing lessons to learn how to obtain quantitative data from images.\n",
+    "\n",
+    "In this lesson, we will expand on what we learned in the first image processing tutorial and develop some further skills to help us with segmentation of images. The images we will use were acquired by [Griffin Chure](https://gchure.github.io), a former graduate student in Rob Phillips' lab here at Caltech. The bacteria are the HG105 *E. coli* strain, developed for [an earlier paper from the Phillips lab](https://doi.org/10.1073/pnas.1015616108).  The strain is wild type, except the LacZYA genes are deleted.  It features a YFP gene hooked up to the Lac promoter.  Thus, the fluorescent signal is a measure of gene expression governed by the Lac promoter in the absence of several of its repressors.\n",
+    "\n",
+    "In the first part of this lesson, we made strong arguments for performing segmentation on images of bacteria constitutively expressing a fluorescent protein. The main motivation is that the haloing effect from phase contrast images makes segmenting bacteria in large clumps very difficult. However, for the images we are analyzing here, we do not have a constitutive fluorescent protein. It is a bad idea to use the fluorescent signal we are measuring to do the segmentation, since this could introduce bias, especially when we have very low fluorescent signal for some cells. So, in this experiment, we will do the segmentation using the phase image and then use the fluorescent image to get a measure of the fluorescence intensity for each bacterium. It is important to have a dilute field of bacteria so that we do not have clumps of bacteria that make segmentation difficult.\n",
+    "\n",
+    "Importantly, we are free to manipulate the brightfield image as we like in order to get good segmentation. After we have identified which pixels below to which cells, we have to be very careful adjusting the fluorescent images as the pixel values in these images are the signal we are measuring. We will only employ a median filter with a very small structuring element to deal with the known camera issue of occasional rogue high intensity pixels."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Inspecting the images\n",
+    "\n",
+    "Let's start by just getting a look at the images to see what we're dealing with here. A collection of images can be found in `data/HG105_images` which will be used for this lesson and the following practice section. The specific images we will be looking at here will be `noLac_phase_0000.tif` and `noLac_FITC_0000.tif`. Since we are not quantifying the shape of these cells, and for ease, we will not scale the axes and instead leave them in units of pixels."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Load the images\n",
+    "im_phase = skimage.io.imread(os.path.join(data_path, 'HG105_images/noLac_phase_0004.tif'))\n",
+    "im_fl = skimage.io.imread(os.path.join(data_path, 'HG105_images/noLac_FITC_0004.tif'))\n",
+    "\n",
+    "# Set up display options\n",
+    "height_pixels, width_pixels = im_phase.shape\n",
+    "bounds = [0, 0, *im_phase.shape]\n",
+    "frame_height = 200\n",
+    "frame_width = im_phase.shape[1] * frame_height // im_phase.shape[0]\n",
+    "\n",
+    "opts = dict(\n",
+    "    frame_height=frame_height,\n",
+    "    frame_width=frame_width,\n",
+    "    xlabel='',\n",
+    "    ylabel='',\n",
+    ")\n",
+    "\n",
+    "# Display side-by-side\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_fl, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "]\n",
+    "\n",
+    "pn.Row(*plots)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Argh. We can see a few issues in these images. First, it appears that the illumination in the phase contrast image is not uniform and is darker at the top than on the bottom. Additionally, we can see again a couple rogue pixels are ruining viewing the fluorescent image. They also present a problem with the phase image, so we'll do a quick median filter on it to clean things up before we try to conquer the issue of uneven illumination."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Structuring element\n",
+    "selem = skimage.morphology.square(3)\n",
+    "\n",
+    "# Perform median filter\n",
+    "im_phase_filt = skimage.filters.median(im_phase, selem)\n",
+    "im_fl_filt = skimage.filters.median(im_fl, selem)\n",
+    "\n",
+    "# Show the images again\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase_filt, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_fl_filt, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "]\n",
+    "\n",
+    "pn.Row(*plots)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "So, we will proceed to segment in phase and then use the fluorescence data to quantify expression levels. Before we begin our thresholding, however, we should correct our illumination issues in the phase contrast image which are likely caused by improper [Köhler illumination](https://en.wikipedia.org/wiki/Köhler_illumination)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Background Subtraction\n",
+    "\n",
+    "We can correct for this non-uniform illumination by performing a **Gaussian background subtraction**. It is important for us to notice that the uneven illumination spans across a distance much greater than that of a single bacterium. In a Gaussian background subtraction, small variations in pixel value across the image are blurred using a two-dimensional Gaussian function leaving only large-scale variations in intensity. To correct for the non-uniformity of the illumination, we can simply subtract our Gaussian blurred image from our original."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Apply a Gaussian blur with a 50 pixel radius. \n",
+    "im_phase_gauss = skimage.filters.gaussian(im_phase_filt, 50.0)\n",
+    "\n",
+    "# Show the images side-by-side\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase_filt, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_phase_gauss, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "]\n",
+    "\n",
+    "pn.Row(*plots)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "While our input image has a `uint16` data type, our Gaussian filtered image is actually a `float64`. This means in order to have any substantive effect, our original image must also be converted to a `float64` before subtraction. We can use the `skimage.img_as_float()` function to perform this conversion. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Convert the median-filtered phase image to a float64\n",
+    "im_phase_float = skimage.img_as_float(im_phase_filt)\n",
+    "\n",
+    "# Subtract our gaussian blurred image from the original.\n",
+    "im_phase_sub = im_phase_float - im_phase_gauss\n",
+    "\n",
+    "# Show our original image and background subtracted image side-by-side.\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase_float, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_phase_sub, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "]\n",
+    "\n",
+    "pn.Row(*plots)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Voilà! The pixel values appear much more uniform across the background of the image, meaning our segmentation safari can begin. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Segmenting the bacteria\n",
+    "\n",
+    "As we go about doing the segmentation, it will be instructive to zoom in on a region of the image with some interesting features. We define the indices of the subimage for use going forward. The `np.s_` trick of NumPy is a useful way to do this. It makes a tuple that you can use to easily slice NumPy arrays (remember, images are represented as NumPy arrays when you load them)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Indices of subimage\n",
+    "slc = np.s_[0:350, 50:517]\n",
+    "\n",
+    "# Look at subimage\n",
+    "hv.Image(data=im_phase_sub[slc]).opts(cmap=\"viridis\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The image is littered with small dots. These are the result of condensation of water vapor on the glass in front of the CCD of the camera. This is a difficult issue in the particular lab space where this image was taken; there are issues with the air conditioning. (Yes, that's right, the *air conditioning* can affect your data!)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Denoising the image\n",
+    "\n",
+    "As we prepare for segmentation, we should begin by denoising the image. We already did a median filter to get rid of occasional bad pixels.\n",
+    "\n",
+    "We may also want to get rid of all the dots on the camera glass. These are the little circles in the image. We can use a **total variation filter** for this purpose. These filters compute local derivatives in the image and try to limit them. The result is flatter, sometimes \"cartoon-like\" images. We will not use this going forward, but only show it here for illustrative purposes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Perform a Chambolle total variation filter.\n",
+    "im_phase_tv = skimage.restoration.denoise_tv_chambolle(\n",
+    "                                            im_phase_sub, weight=0.005)\n",
+    "\n",
+    "# Look at result\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase_filt[slc]).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_phase_tv[slc]).opts(cmap=\"viridis\", **opts),\n",
+    "]\n",
+    "\n",
+    "pn.Row(*plots)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Going forward, we will use the median filtered image."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Segmenting the bacteria with good ol' thresholding\n",
+    "\n",
+    "Assuming we have taken care of any illumination issues that would preclude us from using a global thresholding method, we will go ahead and use a global threshold on the phase images to separate bacteria from background. Note that this is one of many ways of segmenting the bacteria, and many more sophisticated and powerful methods are possible."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Compute Otsu threshold value for median filtered image\n",
+    "thresh_otsu = skimage.filters.threshold_otsu(im_phase_sub)\n",
+    "\n",
+    "# Construct thresholded image\n",
+    "im_bw = im_phase_sub < thresh_otsu\n",
+    "\n",
+    "# Display images\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase_filt).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_bw).opts(cmap=\"gray\", **opts),\n",
+    "    hv.Image(data=im_phase_filt[slc]).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_bw[slc]).opts(cmap=\"gray\", **opts),\n",
+    "]\n",
+    "\n",
+    "pn.GridBox(*plots, ncols=2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We see that we have some tiny particles that are not considered background. We will deal with those explicitly in a moment. Otherwise, we have effectively separated bacteria from background.\n",
+    "\n",
+    "Since we will be quantifying fluorescent intensity in individual bacteria, we want to make sure only whole bacteria are considered. Therefore, we should clear off any bacteria that are touching the border of the image. There is a very convenient way to do this. The `skimage.segmentation.clear_border()` function takes a binary (black and white image) and clear out any white \"island\" that touches a border of the image."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Clear border with 5 pixel buffer\n",
+    "im_bw = skimage.segmentation.clear_border(im_bw, buffer_size=5)\n",
+    "\n",
+    "# Display images\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase_filt).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_bw).opts(cmap=\"gray\", **opts)\n",
+    "]\n",
+    "\n",
+    "pn.GridBox(*plots, ncols=2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Quantifying the segmented regions\n",
+    "\n",
+    "We have many white regions in the image, but only some of them are bacteria. We would like to be able to identify what is bacteria and what is noise. To this end, we need to compute the number of pixels in each white \"island\" in the thresholded image. We can use the `skimage.measure.regionprops()` function to do this (and, as we will see, so much more!).  Before we can use it, we have to **label** the image. That is, we need to assign a unique label to each white region in the thresholded region."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Label binary image; background kwarg says value in im_bw to be background\n",
+    "im_labeled, n_labels = skimage.measure.label(\n",
+    "    im_bw, background=0, return_num=True\n",
+    ")\n",
+    "\n",
+    "# Show number of regions\n",
+    "print(\"Number of individual regions = \", n_labels)\n",
+    "\n",
+    "# See result (one of the few times it's ok to use rainbow colormap!)\n",
+    "hv.Image(data=im_labeled, bounds=bounds).opts(cmap=\"rainbow\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We have 24 regions, but only 19 of these are bacteria, as we can see by hand counting.  We want to eliminate the small ones, so we will calculate the area of all of the regions. Note that this is a very clean image and we still ended up picking small bits of stuff in the background. `skimage.measure.regionprops()` computes the area of each region, in addition to lots of other useful statistics. Conveniently, through the `intensity_image` keyword argument, we can specify a corresponding intensity image, in this case the fluorescent image. When an intensity image is specified, `skimage.measure.regionprops()` then also, among other things, calculates average intensity for each of the regions. Ultimately, we want the average intensity."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Extract region props\n",
+    "im_props = skimage.measure.regionprops(\n",
+    "    im_labeled, \n",
+    "    intensity_image=im_fl_filt,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "That's it! That's pretty much all there is to it! We now need to eliminate regions that are too small to be bacteria. First, let's get an estimate for how big a bacterium is. We can get that estimate by zooming in on an image and counting pixels. I would estimate the bacteria are about 30 pixels long and 10 pixels wide, which is a bit of an underestimate. So, let's say the cutoff for being a bacterium is about half that, or 150 pixels. We can use all of the data conveniently stored in `im_props` to clear up our image."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Make a filtered black and white image\n",
+    "im_bw_filt = im_labeled > 0\n",
+    "\n",
+    "# Define cutoff size\n",
+    "cutoff = 150\n",
+    "\n",
+    "# Loop through image properties and delete small objects\n",
+    "n_regions = 0\n",
+    "for prop in im_props:\n",
+    "    if prop.area < cutoff:\n",
+    "        im_bw_filt[im_labeled==prop.label] = 0\n",
+    "    else:\n",
+    "        n_regions += 1\n",
+    "        \n",
+    "# Show number of regions\n",
+    "print('Number of individual regions = ', n_regions)\n",
+    "\n",
+    "# Look at result\n",
+    "hv.Image(data=im_bw_filt, bounds=bounds).opts(cmap=\"gray\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Hmm, we were expecting 19 bacteria but got 20 individual regions.  I do still see a small region towards the center of the image that I know (from the phase contrast images above) is not a bacterium.  Let's increase our cutoff size to be 200 pixels."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Make a filtered black and white image\n",
+    "im_bw_filt = im_labeled > 0\n",
+    "\n",
+    "# Define cutoff size\n",
+    "cutoff = 200\n",
+    "\n",
+    "# Loop through image properties and delete small objects\n",
+    "n_regions = 0\n",
+    "for prop in im_props:\n",
+    "    if prop.area < cutoff:\n",
+    "        im_bw_filt[im_labeled==prop.label] = 0\n",
+    "    else:\n",
+    "        n_regions += 1\n",
+    "        \n",
+    "# Show number of regions\n",
+    "print('Number of individual regions = ', n_regions)\n",
+    "\n",
+    "# Look at result\n",
+    "hv.Image(data=im_bw_filt, bounds=bounds).opts(cmap=\"gray\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "That's better.  By considering only these larger features in the image, we have found the bacteria.\n",
+    "\n",
+    "Now, there is still the issue of regions that contain two bacteria. Again, we look at our zoomed in region."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Show zoomed in image\n",
+    "hv.Image(data=im_bw_filt[slc]).opts(cmap=\"gray\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The bacteria in the upper left appear to be two different bacteria that may or may not be sisters. The region to the right is either a bacterium that is dividing, or has just divided. Depending on your experiment, you may want to treat these as a single bacterium or two. For this lesson, we will try to eliminate cells that are side-by-side and only keep the \"lonely\" cells. \n",
+    "\n",
+    "So, we can test for bacteria that are side-by-side, versus those that are in line with each other, as would be the case for a dividing bacterium. We can use the eccentricity measure of the region. According to the [skimage documentation](http://scikit-image.org/docs/dev/api/skimage.measure.html#skimage.measure.regionprops),\n",
+    "\n",
+    ">Eccentricity of the ellipse that has the same second-moments as the region. The eccentricity is the ratio of the distance between its minor and major axis length. The value is between 0 and 1.\n",
+    "\n",
+    "So, we only want objects with large eccentricity, say above 0.85."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Loop through image properties and delete small objects and round objects\n",
+    "n_regions = 0\n",
+    "for prop in im_props:\n",
+    "    if prop.area < cutoff or prop.eccentricity < 0.85:\n",
+    "        im_bw_filt[im_labeled==prop.label] = 0\n",
+    "    else:\n",
+    "        n_regions += 1\n",
+    "\n",
+    "# Show number of regions\n",
+    "print('Number of individual regions = ', n_regions)\n",
+    "\n",
+    "# Look at result\n",
+    "hv.Image(data=im_bw_filt[slc]).opts(cmap=\"gray\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Voilà!  But... wait!  Now it says our number of individual regions has gone down to 14.  Scrolling to the full image above, before we did this eccentricity-based filtering, there were only two regions containing two cells.  So I would have expected there to be 17 regions now.  What happened?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Look at full image\n",
+    "hv.Image(data=im_bw_filt).opts(cmap=\"gray\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ah!  In addition to these 2 two-cell regions, we also lost 3 other individual cells, all of which were previously towards the bottom of the image.  This is the price we pay for using a relatively simple methodology rather than a more accurate but complex one, several of which exist.  In general, though, it's better to err on the side of throwing out a few good data points rather than keep undesirable or potentially confounding ones.\n",
+    "\n",
+    "With that in mind, we will choose to continue with our analysis despite having lost some bacteria.  Let's go ahead and compute the mean intensity of all regions we are interested in."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Initialize list of intensities of individual bacteria\n",
+    "mean_intensity = []\n",
+    "\n",
+    "# Loop through regions and compute mean intensity of bacteria\n",
+    "for prop in im_props:\n",
+    "    if prop.area > cutoff and prop.eccentricity > 0.85:\n",
+    "        mean_intensity.append(prop.mean_intensity)\n",
+    "\n",
+    "# Convert list to NumPy array\n",
+    "mean_intensity = np.array(mean_intensity)\n",
+    "\n",
+    "# Take a look\n",
+    "mean_intensity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The mean intensities differ by about a factor of two from the lowest to the highest."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Computing environment"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%load_ext watermark\n",
+    "%watermark -v -p numpy,skimage,bokeh,holoviews,iqplot,panel,bebi103,jupyterlab"
+   ]
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

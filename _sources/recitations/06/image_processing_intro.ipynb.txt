@@ -1,0 +1,678 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Introduction to image processing with scikit-image\n",
+    "\n",
+    "*This recitation was written by Justin Bois with updates and other minor changes by Sophie Miller.*\n",
+    "\n",
+    "**[Image 1 download](https://s3.amazonaws.com/bebi103.caltech.edu/data/bsub_100x_phase.tif)**, **[Image 2 download](https://s3.amazonaws.com/bebi103.caltech.edu/data/bsub_100x_cfp.tif)**\n",
+    "\n",
+    "<hr>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Colab setup ------------------\n",
+    "import os, sys, subprocess\n",
+    "if \"google.colab\" in sys.modules:\n",
+    "    cmd = \"pip install --upgrade colorcet bebi103 watermark\"\n",
+    "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)\n",
+    "    stdout, stderr = process.communicate()\n",
+    "    data_path = \"https://s3.amazonaws.com/bebi103.caltech.edu/data/\"\n",
+    "else:\n",
+    "    data_path = \"../data/\"\n",
+    "# ------------------------------\n",
+    "\n",
+    "import numpy as np\n",
+    "\n",
+    "# Our image processing tools\n",
+    "import skimage.filters\n",
+    "import skimage.io\n",
+    "import skimage.morphology\n",
+    "\n",
+    "import bebi103\n",
+    "\n",
+    "import iqplot\n",
+    "\n",
+    "import holoviews as hv\n",
+    "hv.extension('bokeh')\n",
+    "\n",
+    "import bokeh.io\n",
+    "bokeh.io.output_notebook()\n",
+    "\n",
+    "import panel as pn\n",
+    "pn.extension()\n",
+    "\n",
+    "bebi103.hv.set_defaults()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr>\n",
+    "\n",
+    "In this tutorial, we will learn some basic techniques for image processing using [scikit-image](http://scikit-image.org) with Python."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Image processing tools for Python\n",
+    "\n",
+    "There are many image processing tools available for Python. Some of them, such as ITK and OpenCV are mature image processing packages that have bindings for Python, allowing easy use of their functionality. Others were developed specifically for Python. Some of the many packages are\n",
+    "\n",
+    "* [scikit-image](http://scikit-image.org)\n",
+    "* [scipy.ndimage](http://docs.scipy.org/doc/scipy/reference/ndimage.html)\n",
+    "* [Open CV](http://opencv.org) (extensive computer vision package)\n",
+    "* [Cell Profiler](http://www.cellprofiler.org) (Broad Institute at MIT)\n",
+    "* [Insight Segmentation and Registration Toolkit](http://www.itk.org) (ITK, used in medical imaging, supported by the NIH)\n",
+    "* [Fiji](http://fiji.sc) and [ImageJ](http://developer.imagej.net) support [Jython](http://www.jython.org) scripting\n",
+    "\n",
+    "The first two packages are standard with Anaconda. They provide a set of basic image processing tools, with more sophisticated packages such as ITK and Fiji supplying many more bells and whistles. If in the future you have more demanding image processing requirements, the other packages can prove very useful. \n",
+    "\n",
+    "These days, there are lots of machine learning based packages for image segmentation, but few of these are mature packages at the moment. In future versions of this course (or - more likely - in not-yet-existing future Caltech courses), as these techniques and packages mature, we may use them.\n",
+    "\n",
+    "We will almost exclusively use `scikit-image` along with the standard tools from NumPy. The package `scipy.ndimage` is quite useful, but we will use `scikit-image`, since it has expanded functionality. A potential annoyance with `skimage` is that the main package has minimal functionality, and you must import subpackages as needed. For example, to load and view images, you will need to import `skimage.io`. Importantly, `skimage` is well-documented, and you can access the documentation at [http://scikit-image.org/](http://scikit-image.org/).\n",
+    "\n",
+    "We will explore `skimage`’s capabilities and some basic image processing techniques through example. In this lesson, we will take a brightfield and a fluorescent image of bacteria and perform **segmentation**, that is the identification of each pixel in the image as being bacterial or background."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Loading and viewing images\n",
+    "\n",
+    "We will now load and view the test images we will use for segmentation.  We load the image using the `skimage.io.imread()`.  The image is stored as a NumPy array.  Each entry in the array is a pixel value.  This is an important point: **a digital image is data**!  It is a set of numbers with spatial positions.\n",
+    "\n",
+    "Today, we'll be looking at some images of  *Bacillus subtilis*, a gram-positive bacterium famous for its ability to enter [a form of \"suspended animation\" known as sporulation](https://en.wikipedia.org/wiki/Sporulation_in_Bacillus_subtilis) when environmental conditions get rough. In these images, all cells have been engineered to express Cyan Fluorescent Protein (CFP) once they enter a particular genetic state known as [competence](https://en.wikipedia.org/wiki/Natural_competence). These cells have been imaged under phase contrast (`bsub_100x_phase.tif`) and epifluorescence (`bsub_100x_cfp.tif`) microscopy. These images were acquired by former Caltech graduate student [Griffin Chure](https://gchure.github.io).\n",
+    "\n",
+    "Let's go ahead and load an image."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Load the phase contrast image.\n",
+    "im_phase = skimage.io.imread(os.path.join(data_path, 'bsub_100x_phase.tif'))\n",
+    "\n",
+    "# Take a look\n",
+    "im_phase"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We indeed have a NumPy array of integer values. To properly display images, we also need to specify the **interpixel distance**, the physical distance corresponding to neighboring pixels in an image. Interpixel distances are calibrated for an optical setup by various means. For this particular setup, the interpixel distance was 62.6 nm."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Store the interpixel distance in units of microns\n",
+    "ip_distance = 0.0626"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now that we have the image loaded, and know the interpixel distance, we would like to view it. Really, I should say \"plot it\" because, *an image is data*."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Viewing images with HoloViews\n",
+    "\n",
+    "The `Image` element of HoloViews enables easy viewing of images."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hv.Image(\n",
+    "    data=im_phase\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The image is displayed with HoloView's default colormap (more on that in a moment), and is roughly square by default. The axes also are scaled to be of unit length. We would rather have the axes marked in units of microns so we know the physical distances. We can specify that with the `bounds` kwarg for `hv.Image`, which consists of a list of numerical values to use for the [left, bottom, right, top] of the image. We can make that for this image using our value of the interpixel distance."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "height_pixels, width_pixels = im_phase.shape\n",
+    "\n",
+    "bounds = [0, 0, width_pixels*ip_distance, height_pixels*ip_distance]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The representations of the pixels are also not square (they need not be; an image is data!), but aesthetically, we prefer that. To enforce that, we need to set the width and height of the display. We can set the height, and then the width of the figure is computed from the height to give approximately square pixels. We will specify a rather small image, since later on we will compare images side by side and we want room for that."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame_height = 200\n",
+    "frame_width = im_phase.shape[1] * frame_height // im_phase.shape[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Finally, we might want to look at the image with a grayscale colormap."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hv.Image(\n",
+    "    data=im_phase,\n",
+    "    bounds=bounds,\n",
+    ").opts(\n",
+    "    frame_height=frame_height,\n",
+    "    frame_width=frame_width,\n",
+    "    cmap='gray',\n",
+    "    xlabel='µm',\n",
+    "    ylabel='µm',\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Conveniently, the image is fully interactive; we can zoom to our heart's content. For future image display, we will save some of the options for ease of access. We will vary the colormap, so we will not include the `cmap` kwarg."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "opts = dict(\n",
+    "    frame_height=frame_height,\n",
+    "    frame_width=frame_width,\n",
+    "    xlabel=\"µm\",\n",
+    "    ylabel=\"µm\",\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Lookup tables\n",
+    "\n",
+    "\n",
+    "In the above image, we used a gray colormap. Following are a few different colormaps we could use instead. As I discuss momentarily, you will *almost always* want to use Viridis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cmaps = [\"gray\", \"viridis\", \"fire\", \"coolwarm\"]\n",
+    "\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase, bounds=bounds).opts(cmap=cmap, title=cmap, **opts)\n",
+    "    for cmap in cmaps\n",
+    "]\n",
+    "\n",
+    "pn.GridBox(*plots, ncols=2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In image processing, a colormap is called a **lookup table** (LUT). A LUT is a mapping of pixel values to a color. This sometimes helps visualize images, especially when we use false coloring. Remember, a digital image is data, and false coloring an image is **not** manipulation of data. It is simply a different way of plotting it.\n",
+    "\n",
+    "As we just saw, we specify a lookup table with a **colormap**. There is lots of debate about that the best colormaps (LUTs) are. The data visualization community seems to universally reject using rainbow colormaps. See, e.g., [D. Borland and R. M. Taylor, Rainbow Color Map (Still) Considered Harmful, IEEE Computer Graphics and Applications, 27,14-17, 2007](http://doi.ieeecomputersociety.org/10.1109/MCG.2007.46). In the lower right example, I use a hue-diverging colorscale, which goes from blue to red, as people accustomed to rainbow colormaps expect, but in a perceptually ordered fashion. Viridis [has been designed](http://bids.github.io/colormap/) to be perceptually flat across a large range of values.\n",
+    "\n",
+    "Importantly, the false coloring helps use see that the intensity of the pixel values in the middle of cell clusters are similar to those of the background which will become an issue, as we will see, as we begin our segmentation."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Introductory segmentation\n",
+    "\n",
+    "As mentioned before, **segmentation** is the process by which we separate regions of an image according to their identity for easier analysis. E.g., if we have an image of bacteria and we want to determine what is \"bacteria\" and what is \"not bacteria,\" we would do some segmentation. We will use bacterial test images for this purpose."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Histograms\n",
+    "\n",
+    "As we begin segmentation, remember that viewing an image is just a way of plotting the digital image data.  We can also plot a **histogram**. This helps use see some patterns in the pixel values and is often an important first step toward segmentation.\n",
+    "\n",
+    "The histogram of an image is simply a list of counts of pixel values. When we plot the histogram, we can often readily see breaks in which pixel values are most frequently encountered. There are many ways of looking at histograms. The `histogram()` function of Bokeh-catplot can be used to conveniently display a histogram by using the `bins='integer'` kwarg. Importantly, the image needs to be flattened (converted to one dimension) to be used in the data frame required by Bokeh-catplot."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "p = iqplot.histogram(\n",
+    "    data=im_phase.flatten(),\n",
+    "    q='intensity',\n",
+    "    bins='integer'\n",
+    ")\n",
+    "\n",
+    "bokeh.io.show(p)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We see that there are is some structure in the histogram of the phase image. While our eyes are drawn to the large peak around 380, we should keep in mind that our bacteria are black on a bright background and occupy only a small area of the image. We can see a smaller peak in the vicinity of 200 which likely represent our bugs of interest. The peak to the right is brighter, so likely represents the background. Therefore, if we can find where the valley between the two peaks is, we may take pixels with intensity below that value to be bacteria and those above to be background. Eyeballing it, I think this critical pixel value is about 300."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Thresholding\n",
+    "\n",
+    "The process of taking pixels above or below a certain value is called **thresholding**. It is one of the simplest ways to segment an image. We call every pixel with a value below 300 part of a bacterium and everything above *not* part of a bacterium."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Threshold value, as obtained by eye\n",
+    "thresh_phase = 300\n",
+    "\n",
+    "# Generate thresholded image\n",
+    "im_phase_bw = im_phase < thresh_phase\n",
+    "\n",
+    "# Display phase and thresholded image\n",
+    "plots = [\n",
+    "    hv.Image(data=im_phase, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_phase_bw * im_phase.max(), bounds=bounds).opts(\n",
+    "        cmap=\"gray\", **opts\n",
+    "    ),\n",
+    "]\n",
+    "\n",
+    "pn.Row(*plots)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can overlay these images to get a good view.  To do this, we will make an RGB image, and saturate the green channel where the thresholded image is white. We can then display it with a HoloView RGB element."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Build RGB image by stacking grayscale images\n",
+    "im_phase_rgb = np.dstack(3 * [im_phase / im_phase.max()])\n",
+    "\n",
+    "# Saturate green channel wherever there are white pixels in thresh image\n",
+    "im_phase_rgb[im_phase_bw, 1] = 1.0\n",
+    "\n",
+    "# Show the result\n",
+    "hv.RGB(data=im_phase_rgb, bounds=bounds).opts(**opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We see that we did a decent job finding bacteria, but we also pick up quite a bit of garbage sitting around the cells. We can also see that in some of the bigger clusters, we do not effectively label the bacteria in the middle of colonies. This is because of the \"halo\" of high intensity signal near boundaries of the bacteria that we get from using phase contrast microscopy."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Using the CFP channel\n",
+    "\n",
+    "One way around these issues is to use bacteria that constitutively express a fluorescent protein and to segment in using the fluorescent channel. Let's try the same procedure with the CFP channel. First, let's look at the image."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Load image\n",
+    "im_cfp = skimage.io.imread(os.path.join(data_path, 'bsub_100x_CFP.tif'))\n",
+    "\n",
+    "# Display the image\n",
+    "hv.Image(data=im_cfp, bounds=bounds).opts(cmap=\"viridis\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We see that the bacteria are typically brighter than the background (which is impressively uniform), so this might help us in segmentation."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Filtering noise: the median filter\n",
+    "\n",
+    "While it may not be obvious from this image, the non-bacterial pixels are not completely dark due to autofluorescence of the immobilization substrate as well as some issues in our camera. In fact, the camera on which these images were acquired has a handful of \"bad\" pixels which are always much higher than the \"real\" value. This could cause issues in situations where we would want to make quantitative measurements of intensity. We can zoom in on one of these \"bad\" pixels below (ignoring in the display below the axes). "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hv.Image(data=im_cfp[150:250, 450:550]).opts(cmap=\"viridis\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We see a single bright pixel. In addition to throwing off our colormap a bit, this could alter the measured intensity of a cell if there happen to be any other bad pixels hiding within the bacteria. We can remove this noise by using a **median filter**. The concept is simple. We take a shape of pixels, called a **structuring element**, and pass it over the image. The value of the center pixel in the max is replaced by the median value of all pixels in the mask. To do this, we first need to construct a mask. This is done using the `skimage.morphology` module. The filtering is then done using `skimage.filters.rank.median()`. Let’s try it with a 3$\\times$3 square mask."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Make the structuring element\n",
+    "selem = skimage.morphology.square(3)\n",
+    "\n",
+    "# Perform the median filter\n",
+    "im_cfp_filt = skimage.filters.median(im_cfp, selem)\n",
+    "\n",
+    "# Display image\n",
+    "hv.Image(data=im_cfp_filt, bounds=bounds).opts(cmap=\"viridis\", **opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now that we have dealt with the noisy pixels, we can now see more clearly that some cells are very bright compared with others."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Thresholding in the CFP channel\n",
+    "\n",
+    "We'll proceed by plotting the histogram and finding the threshold value."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "p = iqplot.histogram(\n",
+    "    data=im_cfp_filt.flatten(),\n",
+    "    q='intensity',\n",
+    "    bins='integer'\n",
+    ")\n",
+    "\n",
+    "bokeh.io.show(p)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Yeesh. There are lots of bright pixels, but it is kind of hard to see where (or even if) there is valley in the histogram. It sometimes helps to plot the histogram with the y-axis on a log scale. When we do this, we can eyeball the threshold value to be about 140."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "p = iqplot.histogram(\n",
+    "    data=im_cfp_filt.flatten(),\n",
+    "    q='intensity',\n",
+    "    bins='integer',\n",
+    "    y_axis_type='log',\n",
+    "    y_range=[1e2, 1e6]\n",
+    ")\n",
+    "\n",
+    "bokeh.io.show(p)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now let's try thresholding the image."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Threshold value, as obtained by eye\n",
+    "thresh_cfp = 140\n",
+    "\n",
+    "# Generate thresholded image\n",
+    "im_cfp_bw = im_cfp_filt > thresh_cfp\n",
+    "\n",
+    "# Display\n",
+    "plots = [\n",
+    "    hv.Image(data=im_cfp, bounds=bounds).opts(cmap=\"viridis\", **opts),\n",
+    "    hv.Image(data=im_cfp_bw, bounds=bounds).opts(\n",
+    "        cmap=\"gray\", **opts\n",
+    "    ),\n",
+    "]\n",
+    "\n",
+    "pn.Row(*plots)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Looks like we're doing much better!  Let's try overlapping the images now."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Build RGB image by stacking grayscale images\n",
+    "im_rgb = np.dstack(3 * [im_phase / im_phase.max()])\n",
+    "\n",
+    "# Saturate green channel wherever there are white pixels in thresh image\n",
+    "im_rgb[im_cfp_bw, 1] = 1.0\n",
+    "\n",
+    "# Show the result\n",
+    "hv.RGB(data=im_rgb, bounds=bounds).opts(**opts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Very nice! In general, it is often much easier to segment bacteria with fluorescence."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Otsu's method for thresholding\n",
+    "\n",
+    "It turns out that there is an automated way to find the threshold value, as opposed to eyeballing it like we have been doing. [Otsu's method](https://en.wikipedia.org/wiki/Otsu%27s_method) provides this functionality."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Compute Otsu thresholds for phase and cfp\n",
+    "thresh_phase_otsu = skimage.filters.threshold_otsu(im_phase)\n",
+    "thresh_cfp_otsu = skimage.filters.threshold_otsu(im_cfp_filt)\n",
+    "\n",
+    "# Compare results to eyeballing it\n",
+    "print(\"Phase by eye: \", thresh_phase, \"   CFP by eye: \", thresh_cfp)\n",
+    "print(\"Phase by Otsu:\", thresh_phase_otsu, \"   CFP by Otsu:\", thresh_cfp_otsu)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We see that for the CFP channel, the Otsu method did very well. However, for phase, we see a big difference. This is because the Otsu method assumes a bimodal distribution of pixels. If we look at the histograms on a log scale, we see more clearly that the phase image has a long tail, which will trip up the Otsu algorithm. The moral of the story is that you can use automated thresholding, but you should always do sanity checks to make sure it is working as expected."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Determining the bacterial area\n",
+    "\n",
+    "Now that we have a thresholded image, we can determine the total area taken up by bacteria.  It's as simple as summing up the pixel values of the thresholded image!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Compute bacterial area\n",
+    "bacterial_area_pix = (im_cfp_filt > thresh_cfp_otsu).sum()\n",
+    "\n",
+    "# Print out the result\n",
+    "print('bacterial area =', bacterial_area_pix, 'pixels')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If we want to get the total area that is bacterial in units of µm, we could use the interpixel distances to get the area represented by each pixel. For this setup, the interpixel distance is 0.0636 µm. We can then compute the bacterial area as follows."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Compute bacterial area\n",
+    "bacterial_area_micron = bacterial_area_pix * ip_distance**2\n",
+    "\n",
+    "# Print total area\n",
+    "print('bacterial area =', bacterial_area_micron, 'square microns')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Computing environment"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%load_ext watermark\n",
+    "%watermark -v -p numpy,skimage,bokeh,holoviews,iqplot,panel,bebi103,jupyterlab"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

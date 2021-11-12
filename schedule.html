@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Meetings" href="policies.html" />
-    <link rel="prev" title="Homework 7.3: Bootstrapping theory with… bootstrapping! (15 pts)" href="homework/07/hw7.3.html" /> 
+    <link rel="prev" title="Homework 8.3 [SOLO]: Modeling and parameter estimation for Boolean data (35 pts)" href="homework/08/hw8.3.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -75,6 +75,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lessons/20/index.html">20. Maximum likelihood estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_08.html">E8. To be completed after lesson 20</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/21/index.html">21. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/22/index.html">22. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_09.html">E9. To be completed after lesson 22</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
@@ -84,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recitations/05/probability_review.html">R5. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recitations/06/index.html">R6. Intro to image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -95,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="homework/05/index.html">5. Dashboards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="homework/06/index.html">6. Random number generation and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="homework/07/index.html">7. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="homework/08/index.html">8. Parametric inference</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul class="current">
@@ -209,7 +213,7 @@
 <li><p><a class="reference internal" href="homework/04/index.html#exploratory-data-analysis-ii"><span class="std std-ref">Homework 4</span></a>: due 5 pm, October 23</p></li>
 <li><p><a class="reference internal" href="homework/05/index.html#dashboards"><span class="std std-ref">Homework 5</span></a>: due 5 pm, October 30</p></li>
 <li><p><a class="reference internal" href="homework/06/index.html#random-number-generation-and-probability-distributions"><span class="std std-ref">Homework 6</span></a>: due 5 pm, November 6</p></li>
-<li><p>Homework 7: due 5 pm, November 13</p></li>
+<li><p><a class="reference internal" href="homework/07/index.html#nonparametric-hacker-stats"><span class="std std-ref">Homework 7</span></a>: due 5 pm, November 13</p></li>
 <li><p>Homework 8: due 5 pm, November 20</p></li>
 <li><p>Homework 9: due 5 pm, December 4</p></li>
 <li><p>Homework 10: due 5 pm, December 8</p></li>
@@ -221,14 +225,14 @@
 <h1>Lesson exercise due dates<a class="headerlink" href="#lesson-exercise-due-dates" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="lesson_exercises/exercise_01.html#E1.-To-be-completed-after-lesson-3"><span class="std std-ref">Lesson exercise 1</span></a>: due 5 pm, October 3</p></li>
-<li><p><a class="reference internal" href="lesson_exercises/exercise_02_soultion.html#E2.-To-be-completed-after-lesson-6"><span class="std std-ref">Lesson exercise 2</span></a>: due 5 pm, October 3</p></li>
+<li><p><a class="reference internal" href="lesson_exercises/exercise_02.html#E2.-To-be-completed-after-lesson-6"><span class="std std-ref">Lesson exercise 2</span></a>: due 5 pm, October 3</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_03.html#E3.-To-be-completed-after-lesson-7"><span class="std std-ref">Lesson exercise 3</span></a>: due 5 pm, October 10</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_04.html#E4.-To-be-completed-after-lesson-10"><span class="std std-ref">Lesson exercise 4</span></a>: due 5 pm, October 17</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_05.html#E5.-To-be-completed-after-lesson-11"><span class="std std-ref">Lesson exercise 5</span></a>: due 5 pm, October 24</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_06.html#E6.-To-be-completed-after-lesson-16"><span class="std std-ref">Lesson exercise 6</span></a>: due 5 pm, October 31</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_07.html#E7.-To-be-completed-after-lesson-18"><span class="std std-ref">Lesson exercise 7</span></a>: due 5 pm, November 7</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_08.html#E8.-To-be-completed-after-lesson-20"><span class="std std-ref">Lesson exercise 8</span></a>: due 5 pm, November 14</p></li>
-<li><p><span class="xref std std-ref">Lesson exercise 9</span>: due 5 pm, November 21</p></li>
+<li><p><a class="reference internal" href="lesson_exercises/exercise_09.html#E9.-To-be-completed-after-lesson-22"><span class="std std-ref">Lesson exercise 9</span></a>: due 5 pm, November 21</p></li>
 <li><p><span class="xref std std-ref">Lesson exercise 10</span>: due 5 pm, November 28</p></li>
 </ul>
 </section>
@@ -309,7 +313,7 @@
 <dt><strong>Week 7</strong></dt><dd><ul>
 <li><p>M 11/08: <a class="reference internal" href="lessons/18/index.html#nonparametric-inference-with-hacker-stats"><span class="std std-ref">Lesson 18</span></a>: Nonparametric inference with hacker stats</p></li>
 <li><p>W 11/10: <a class="reference internal" href="lessons/19/index.html#parametric-inference"><span class="std std-ref">Lesson 19</span></a>: Parametric inference (lecture)</p></li>
-<li><p>Th 11/11: <span class="xref std std-ref">Recitation 07</span>: Topics in bootstrapping</p></li>
+<li><p>Th 11/11: <a class="reference internal" href="recitations/07/topics_in_bootstrapping.html#R7.-Topics-in-bootstrapping"><span class="std std-ref">Recitation 07</span></a>: Topics in bootstrapping</p></li>
 </ul>
 </dd>
 </dl>
@@ -325,7 +329,7 @@
 </li>
 <li><dl class="simple">
 <dt><strong>Week 9</strong></dt><dd><ul>
-<li><p>M 11/22: <span class="xref std std-ref">Lesson 22</span>: Regression</p></li>
+<li><p>M 11/22: <a class="reference internal" href="lessons/22/index.html#regression"><span class="std std-ref">Lesson 22</span></a>: Regression</p></li>
 <li><p>W 11/24: <span class="xref std std-ref">Lesson 23</span>: Reproducible workflows (guest lecture by <a class="reference external" href="https://gchure.github.io">Griffin Chure</a>)</p></li>
 <li><p>W 11/24: <span class="xref std std-ref">Lesson 24</span>: The paper of the future (guest lecture by <a class="reference external" href="https://gchure.github.io">Griffin Chure</a>, <strong>special time, 10 AM PST</strong>)</p></li>
 <li><p>Th 11/25: No recitation, Thanksgiving Day</p></li>
@@ -350,7 +354,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="homework/07/hw7.3.html" class="btn btn-neutral float-left" title="Homework 7.3: Bootstrapping theory with… bootstrapping! (15 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="homework/08/hw8.3.html" class="btn btn-neutral float-left" title="Homework 8.3 [SOLO]: Modeling and parameter estimation for Boolean data (35 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="policies.html" class="btn btn-neutral float-right" title="Meetings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -358,11 +362,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 04, 2021.
+      <span class="lastupdated">Last updated on Nov 11, 2021.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7f9767b8b250> 
+   <jinja2.runtime.BlockReference object at 0x7f9914e246d0> 
 
 <p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

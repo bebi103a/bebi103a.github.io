@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 2.1: Fun with mutual information and Darwin (40 pts) &mdash; BE/Bi 103 a  documentation</title>
+  <title>HW 2.1: Beetle hypnotists (40 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -16,17 +16,18 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Homework 2.2: Plotting an elephant (30 pts)" href="hw2.2.html" />
-    <link rel="prev" title="Homework 2.0 [SOLO]: Setting up your private repository (0 pts)" href="hw2.0.html" /> 
+    <link rel="next" title="Homework 2.2: A temperature controlled Gal4-UAS system (60 pts)" href="hw2.2.html" />
+    <link rel="prev" title="2. Exploratory data analysis II" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,74 +52,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/03/index.html">3. Introduction to Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/07/index.html">7. Exploratory data analysis, part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/10/index.html">10. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/11/index.html">11. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 11</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/12/overplotting.html">12. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/13/index.html">13. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/12/random_number_generation.html">12. Random number generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/13/prob_dists.html">13. Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/14/index.html">14. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/15/random_number_generation.html">15. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/16/prob_dists.html">16. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 16</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/17/index.html">17. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/18/index.html">18. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 18</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/19/index.html">19. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 20</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/22/index.html">22. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 22</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/23/reproducible_workflows.html">23. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/24/paper_of_the_future.html">24. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/25/mixture_models.html">25. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_10.html">E10. To be completed after lesson 26</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/27/index.html">27. Statistical watchouts</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/probability_review.html">R5. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/mle_review.html">R8. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/10/index.html">R10. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/15/index.html">15. Nonparametric inference with hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/16/index.html">16. Null hypothesis significance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/18/index.html">18. Parametric inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/19/index.html">19. Numerical MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Configuring your team</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01/index.html">1. Practice with Python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Practice with Numpy and plotting</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hw2.0.html">Homework 2.0 [SOLO]: Setting up your private repository (0 pts)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 2.1: Fun with mutual information and Darwin (40 pts)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw2.2.html">Homework 2.2: Plotting an elephant (30 pts)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw2.3.html">Homework 2.3 [SOLO]: Microtubule catastrophe and ECDFs (30 pts)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/index.html">1. Practice with Python tools and EDA I</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Exploratory data analysis II</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HW 2.1: Beetle hypnotists (40 pts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.2.html">Homework 2.2: A temperature controlled Gal4-UAS system (60 pts)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/index.html">10. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/hw11.html">11. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -155,8 +120,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">2. Practice with Numpy and plotting</a> &raquo;</li>
-      <li>Homework 2.1: Fun with mutual information and Darwin (40 pts)</li>
+          <li><a href="index.html">2. Exploratory data analysis II</a> &raquo;</li>
+      <li>HW 2.1: Beetle hypnotists (40 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -197,46 +162,65 @@
     text-align: unset;
 }
 </style>
-<section id="Homework-2.1:-Fun-with-mutual-information-and-Darwin-(40-pts)">
-<h1>Homework 2.1: Fun with mutual information and Darwin (40 pts)<a class="headerlink" href="#Homework-2.1:-Fun-with-mutual-information-and-Darwin-(40-pts)" title="Permalink to this headline"></a></h1>
-<p>In this problem, we will do an exercise that is useful for understanding how <a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_information">mutual information</a> works. This is an important concept in understanding cellular signaling in many contexts, including developmental and neuronal. You can read more about mutual information in <a class="reference external" href="http://www.inference.org.uk/mackay/itila/">David MacKay’s wonderful book</a> and applications in biology in <a class="reference external" href="https://press.princeton.edu/books/hardcover/9780691138916/biophysics">Bill Bialek’s
-book</a>.</p>
-<p>In this fun exercise, we will take English text and see how much we know about a letter with knowledge of the letter that precedes it. For example, we have a much higher chance of following a <code class="docutils literal notranslate"><span class="pre">t</span></code> with an <code class="docutils literal notranslate"><span class="pre">h</span></code> than with an <code class="docutils literal notranslate"><span class="pre">f</span></code>. We will perform a similar analysis as was done to produce Figure 8B in <a class="reference external" href="https://mrazomej.github.io/phd/chapter_01/#entropy-information-and-the-math-behind-the-bit">Manuel Razo’s thesis</a> (another great resource to read about mutual information in biology).</p>
-<p><strong>a)</strong> Download the entire text of Darwin’s <em>On the Origin of the Species</em> from Project Gutenberg here: <a class="reference external" href="https://www.gutenberg.org/files/2009/2009-0.txt">https://www.gutenberg.org/files/2009/2009-0.txt</a>. The text of the book starts after the line: <code class="docutils literal notranslate"><span class="pre">Sixth</span> <span class="pre">London</span> <span class="pre">Edition,</span> <span class="pre">with</span> <span class="pre">all</span> <span class="pre">Additions</span> <span class="pre">and</span> <span class="pre">Corrections.</span></code> The text of the book ends before the line: <code class="docutils literal notranslate"><span class="pre">***</span> <span class="pre">END</span> <span class="pre">OF</span> <span class="pre">THE</span> <span class="pre">PROJECT</span> <span class="pre">GUTENBERG</span> <span class="pre">EBOOK</span> <span class="pre">ON</span> <span class="pre">THE</span> <span class="pre">ORIGIN</span> <span class="pre">OF</span> <span class="pre">SPECIES</span> <span class="pre">***</span></code>. Produce a string that contains the text of the book.</p>
-<p><strong>b)</strong> Write a function that takes in text, and achieves the following:</p>
-<ol class="arabic simple">
-<li><p>Converts all carriage returns (<code class="docutils literal notranslate"><span class="pre">\r</span></code>), newline characters, hyphens (<code class="docutils literal notranslate"><span class="pre">-</span></code>), en dashes (<code class="docutils literal notranslate"><span class="pre">–</span></code>) and em dashes (<code class="docutils literal notranslate"><span class="pre">—</span></code>) to spaces.</p></li>
-<li><p>Converts all letters to lower case.</p></li>
-<li><p>Converts special characters as follows: <code class="docutils literal notranslate"><span class="pre">à</span> <span class="pre">⟶</span> <span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">ä</span> <span class="pre">⟶</span> <span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">æ</span> <span class="pre">⟶</span> <span class="pre">ae</span></code>, <code class="docutils literal notranslate"><span class="pre">è</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">é</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">ê</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">ë</span> <span class="pre">⟶</span> <span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">ô</span> <span class="pre">⟶</span> <span class="pre">o</span></code>, <code class="docutils literal notranslate"><span class="pre">ö</span> <span class="pre">⟶</span> <span class="pre">o</span></code>, <code class="docutils literal notranslate"><span class="pre">ü</span> <span class="pre">⟶</span> <span class="pre">u</span></code>, <code class="docutils literal notranslate"><span class="pre">œ</span> <span class="pre">⟶</span> <span class="pre">oe</span></code>.</p></li>
-<li><p>Strips out all characters that are not either letters or spaces.</p></li>
-<li><p>Converts any set of consecutive spaces into a single space.</p></li>
-<li><p>Returns the resulting string.</p></li>
-</ol>
-<p>Use this function to produce a string for analysis.</p>
-<p><strong>c)</strong> Compute and print out the frequency of all 27 characters (the 26 letters and spaces). Can you see which characters are most common?</p>
-<p><strong>d)</strong> Compute and print out the frequency of all 27² = 729 two-character combinations. Do you see any striking two-letter combinations?</p>
-<p>After future lessons, you will know how to make a plot of these data, possibly as a <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_map">heat map</a>, or like Razo did in his thesis and MacKay in his book (see, e.g., Fig. 2.2).</p>
-</section>
+<section id="HW-2.1:-Beetle-hypnotists-(40-pts)">
+<h1>HW 2.1: Beetle hypnotists (40 pts)<a class="headerlink" href="#HW-2.1:-Beetle-hypnotists-(40-pts)" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ant_joint_locations.zip">Data set download</a></p>
+<hr/><p>The <a class="reference external" href="https://www.beetles.caltech.edu">Parker lab</a> at Caltech studies rove beetles that can infiltrate ant colonies. In one of their experiments, they place a rove beetle and an ant in a circular area and track the movements of the ants. They do this by using a <a class="reference external" href="https://en.wikipedia.org/wiki/Deep_learning">deep learning</a> algorithm to identify the head, thorax, abdomen, and right and left antennae. While deep learning applied to biological images is a beautiful and useful topic, we will not
+cover it in this course (be on the lookout for future courses that do!). We will instead work with a data set that is the output of the deep learning algorithm.</p>
+<p>For the experiment you are considering in this problem, an ant and a beetle were placed in a circular arena and recorded with video at a frame rate of 28 frames per second. The positions of the body parts of the ant were tracked throughout the video recording. You can download the data set <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ant_joint_locations.zip">here</a>. <em>Pro tip</em>: Pandas’s <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function will automatically load in a zip file, so you do not need to unzip it. Be sure
+to use the <code class="docutils literal notranslate"><span class="pre">comment='#'</span></code> kwarg, though, since there are header comments on the top of the data file.</p>
+<p>To save you from having to unzip and read the comments for the data file, here they are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># This data set was kindly donated by Julian Wagner from Joe Parker&#39;s lab at
+# Caltech. In the experiment, an ant and a beetle were placed in a circular
+# arena and recorded with video at a frame rate of 28 frames per second.
+# The positions of the body parts the ant are tracked throughout the video
+# recording.
+#
+# The experiment aims to distinguish the ant behavior in the presence of
+# a beetle from the genus Sceptobius, which secretes a chemical that modifies
+# the behavior of the ant, versus in the presence of a beetle from the species
+# Dalotia, which does not.
+#
+# The data set has the following columns.
+#  frame : frame number from the video acquisition
+#  beetle_treatment : Either dalotia or sceptobius
+#  ID : The unique integer identifier of the ant in the experiment
+#  bodypart : The body part being tracked in the experiment. Possible values
+#             are head, thorax, abdomen, antenna_left, antenna_right.
+#  x_coord : x-coordinate of the body part in units of pixels
+#  y_coord : y-coordinate of the body part in units of pixels
+#  likelihood : A rating, ranging from zero to one, given by the deep learning
+#               algorithm that approximately quantifies confidence that the
+#               body part was correctly identified.
+#
+# The interpixel distance for this experiment was 0.8 millimeters.
+</pre></div>
+</div>
+<p>Your task in this problem is to extract records of interest out of the tidy data frame containing the data from the experiment, perform calculations on the data, and make informative plots.</p>
+<p><strong>a)</strong> The columns <code class="docutils literal notranslate"><span class="pre">x_coord</span></code> and <code class="docutils literal notranslate"><span class="pre">y_coord</span></code> give the coordinates of the ant’s body parts in units of pixels. Create a column <code class="docutils literal notranslate"><span class="pre">'x</span> <span class="pre">(mm)'</span></code> and a column <code class="docutils literal notranslate"><span class="pre">'y</span> <span class="pre">(mm)'</span></code> in the data frame that has the coordinates in units of millimeters. Also create a column <code class="docutils literal notranslate"><span class="pre">'time</span> <span class="pre">(sec)'</span></code> that gives the time since recording started in minutes.</p>
+<p><strong>b)</strong> Make a plot displaying the position over time of the thorax of an ant or ants placed in an arena with a <em>Dalotia</em> beetle and position over time of an ant or ants with a <em>Sceptobius</em> beetle. I am intentionally not giving more specification for your plot. You need to make decisions about how to effectively extract and display the data. Think carefully about your visualizations. This is in many ways how you let your data speak.</p>
+<p><strong>c)</strong> From this quick graphical exploratory analysis, what would you say about the relative activities of ants with <em>Dalotia</em> versus <em>Sceptobius</em> rove beetles?</p>
+<hr /></section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="hw2.0.html" class="btn btn-neutral float-left" title="Homework 2.0 [SOLO]: Setting up your private repository (0 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="hw2.2.html" class="btn btn-neutral float-right" title="Homework 2.2: Plotting an elephant (30 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="2. Exploratory data analysis II" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw2.2.html" class="btn btn-neutral float-right" title="Homework 2.2: A temperature controlled Gal4-UAS system (60 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Dec 02, 2021.
+      <span class="lastupdated">Last updated on Sep 23, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fea7e857760> 
+   <jinja2.runtime.BlockReference object at 0x7fb725e42280> 
 
-<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>File I/O &mdash; BE/Bi 103 a  documentation</title>
@@ -16,16 +16,17 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="E1. To be completed after lesson 3" href="../../lesson_exercises/exercise_01.html" />
+    <link rel="next" title="4. Style" href="../04/style.html" />
     <link rel="prev" title="Errors and Exception handling" href="exceptions_and_error_handling.html" /> 
 </head>
 
@@ -51,7 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Introduction to Python</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="where_we_will_go.html">Where we will soon be</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notes_on_python_review.html">Notes on our Python review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_types_and_operators.html">Data types and operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lists_tuples.html">Lists and tuples</a></li>
@@ -75,68 +76,34 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/index.html">10. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 11</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../12/overplotting.html">12. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/index.html">13. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/random_number_generation.html">12. Random number generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13/prob_dists.html">13. Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../15/random_number_generation.html">15. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../16/prob_dists.html">16. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 16</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../17/index.html">17. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 18</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 20</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../22/index.html">22. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 22</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../23/reproducible_workflows.html">23. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../24/paper_of_the_future.html">24. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../25/mixture_models.html">25. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_10.html">E10. To be completed after lesson 26</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../27/index.html">27. Statistical watchouts</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/probability_review.html">R5. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/mle_review.html">R8. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/10/index.html">R10. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Nonparametric inference with hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Null hypothesis significance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Parametric inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Numerical MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Practice with Numpy and plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/index.html">10. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/11/hw11.html">11. Course feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -401,11 +368,12 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -414,10 +382,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -429,12 +401,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -462,14 +437,13 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="File-I/O">
-<h1>File I/O<a class="headerlink" href="#File-I/O" title="Permalink to this headline"></a></h1>
+<h1>File I/O<a class="headerlink" href="#File-I/O" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/1OLG.pdb">Data set download</a></p>
 <hr><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">glob</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;../data&quot;</span>
 </pre></div>
@@ -479,14 +453,13 @@ div.rendered_html tbody tr:hover {
 <p>You can download the PDB file <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/1OLG.pdb">here</a>. To use the file in this notebook, you will need to have the file in the directory <code class="docutils literal notranslate"><span class="pre">../data/</span></code>. This is the directory structure you use when doing your homework.</p>
 <p><strong>Note</strong>: Using the built-in <code class="docutils literal notranslate"><span class="pre">open</span></code> function will not work for opening files via URL. Therefore, if you are running this notebook in Google Colab, you will not be able to open the data file.</p>
 <section id="File-objects">
-<h2>File objects<a class="headerlink" href="#File-objects" title="Permalink to this headline"></a></h2>
+<h2>File objects<a class="headerlink" href="#File-objects" title="Permalink to this heading"></a></h2>
 <p>To open a file, we use the built-in <code class="docutils literal notranslate"><span class="pre">open()</span></code> function. When opening files, we should do this using <strong>context management</strong>. I will demonstrate how to open a file and then describe the syntax.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;1OLG.pdb&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;1OLG.pdb&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -507,10 +480,6 @@ chance to close the file, it won’t get closed and you could be in trouble. If 
 <p>Let’s focus for a moment on the variable <code class="docutils literal notranslate"><span class="pre">f</span></code> in the above code cell. It is a Python <code class="docutils literal notranslate"><span class="pre">file</span></code> object, which has methods and attributes, just like any other object. We’ll explore those in a moment, but first, let’s look at how we opened the file. The first argument to <code class="docutils literal notranslate"><span class="pre">open()</span></code> is a string that has the name of the file, with the full path if necessary. The second argument is a string that says what we will be doing with the file. I.e., are we reading or writing to the file? The possible strings
 for this second argument are</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 54%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>string</p></th>
 <th class="head"><p>meaning</p></th>
@@ -539,13 +508,9 @@ for this second argument are</p>
 <p>Trying to open an existing file with <code class="docutils literal notranslate"><span class="pre">'w'</span></code> will wipe it out and create a new file.</p>
 </div>
 <section id="Reading-data-out-of-the-file-with-file-object-methods">
-<h3>Reading data out of the file with file object methods<a class="headerlink" href="#Reading-data-out-of-the-file-with-file-object-methods" title="Permalink to this headline"></a></h3>
+<h3>Reading data out of the file with file object methods<a class="headerlink" href="#Reading-data-out-of-the-file-with-file-object-methods" title="Permalink to this heading"></a></h3>
 <p>We will focus on the methods <code class="docutils literal notranslate"><span class="pre">f.read()</span></code> and <code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code>. What do they do?</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 47%" />
-<col style="width: 53%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>method</p></th>
 <th class="head"><p>task</p></th>
@@ -565,8 +530,7 @@ for this second argument are</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Read file into string</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read file into string</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f_str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
@@ -590,8 +554,7 @@ for this second argument are</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Read contents of the file in as a list</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read contents of the file in as a list</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f_list</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
@@ -623,8 +586,7 @@ for this second argument are</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">f_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -639,14 +601,13 @@ for this second argument are</p>
 </div>
 </section>
 <section id="Reading-line-by-line">
-<h3>Reading line-by-line<a class="headerlink" href="#Reading-line-by-line" title="Permalink to this headline"></a></h3>
+<h3>Reading line-by-line<a class="headerlink" href="#Reading-line-by-line" title="Permalink to this heading"></a></h3>
 <p>What if we do not want to read the entire file into a list? For example, if a file is several gigabytes, we do not want to spend all of our RAM storing a list. Instead, we can read it line-by-line. Conveniently, the file object can be used as an iterator.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Print the first ten lines of the file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the first ten lines of the file</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
@@ -678,8 +639,7 @@ SOURCE   4 ORGANISM_TAXID: 9606
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Print the first ten lines of the file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the first ten lines of the file</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
@@ -709,14 +669,13 @@ SOURCE   3 ORGANISM_COMMON: HUMAN;
 </section>
 </section>
 <section id="Writing-to-a-file">
-<h2>Writing to a file<a class="headerlink" href="#Writing-to-a-file" title="Permalink to this headline"></a></h2>
+<h2>Writing to a file<a class="headerlink" href="#Writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Writing to a file has similar syntax. We already saw how to open a file for writing. Again, context management is useful. However, before trying to open a file, we should check to make sure a file of the same name does not exist before opening it. The <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module is useful. The function <code class="docutils literal notranslate"><span class="pre">os.path.isfile()</span></code> function checks to see if a file exists.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -731,11 +690,10 @@ True
 </div>
 <p>Now that we know how to check existence of a file so we do not overwrite it, we can open and write a file.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;knowledge.txt&#39;</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;knowledge.txt&#39;</span><span class="p">):</span>
     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;knowledge.txt already exists.&#39;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;knowledge.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -749,22 +707,28 @@ True
 </div>
 </div>
 <p>Note that we can use the <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> method to write strings to a file. Let’s look at the file contents.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat knowledge.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat knowledge.txt
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+...as we know, there are known knowns;there are things we know we know.We also know there are known unknowns;that is to say we know there are some things we do not know.But there are also unknown unknowns,the ones we don&#39;t know we don&#39;t know.
+</pre></div></div>
 </div>
 <p>Ah! There are no newlines! When writing to a file, unlike when you use the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function, you must include the newline characters. Let’s try again, intentionally obliterating our first attempt.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;knowledge.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;knowledge.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;...as we know, there are known knowns;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;there are things we know we know.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;We also know there are known unknowns;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -776,26 +740,52 @@ True
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+...as we know, there are known knowns;
+there are things we know we know.
+We also know there are known unknowns;
+that is to say we know there are some things we do not know.
+But there are also unknown unknowns,
+the ones we don&#39;t know we don&#39;t know.
+</pre></div></div>
+</div>
 <p>That’s better. Note also that <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> <strong>only</strong> takes strings as arguments. You cannot pass numbers. They must be converted to strings first.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># This will result in an exception</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will result in an exception</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gimme_phi.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;The golden ratio is φ = &#39;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mf">1.61803398875</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [13]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span style="color: rgb(0,135,0)">open</span>(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">gimme_phi.txt</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">w</span><span style="color: rgb(175,0,0)">&#39;</span>) <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> f:
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     f<span style="color: rgb(98,98,98)">.</span>write(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">The golden ratio is φ = </span><span style="color: rgb(175,0,0)">&#39;</span>)
+<span class="ansi-green-fg">----&gt; 4</span>     <span class="ansi-yellow-bg">f</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">write</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1.61803398875</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: write() argument must be str, not float
+</pre></div></div>
+</div>
 <p>Yup. It must be a string. Let’s try again.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gimme_phi.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;gimme_phi.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;The golden ratio is φ = &#39;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{phi:.8f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="mf">1.61803398875</span><span class="p">))</span>
 
@@ -803,19 +793,26 @@ True
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The golden ratio is φ = 1.61803399
+</pre></div></div>
+</div>
 <p>That works!</p>
 </section>
 <section id="An-exercise:-extract-atomic-coordinates-for-first-chain-in-tetramer">
-<h2>An exercise: extract atomic coordinates for first chain in tetramer<a class="headerlink" href="#An-exercise:-extract-atomic-coordinates-for-first-chain-in-tetramer" title="Permalink to this headline"></a></h2>
+<h2>An exercise: extract atomic coordinates for first chain in tetramer<a class="headerlink" href="#An-exercise:-extract-atomic-coordinates-for-first-chain-in-tetramer" title="Permalink to this heading"></a></h2>
 <p>As an example on how to do file I/O, we will take the PDB file and extract only the <code class="docutils literal notranslate"><span class="pre">ATOM</span></code> records for the first chain of the tetramer and write only those entries to a new file.</p>
 <p>It is useful to know that according to the <a class="reference external" href="http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html#ATOM">PDB format specification</a>, column 21 in the <code class="docutils literal notranslate"><span class="pre">ATOM</span></code> entry gives the ID of the chain.</p>
 <p>We also conveniently use the fact that we can have multiple files open in our <code class="docutils literal notranslate"><span class="pre">with</span></code> block, separating them with commas.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;atoms_chain_A.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/1OLG.pdb&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;atoms_chain_A.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
     <span class="c1"># Put the ATOM lines from chain A in new file</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">21</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ATOM&#39;</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
@@ -825,11 +822,10 @@ True
 </div>
 <p>Let’s see how we did!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>head -10 atoms_chain_A.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head -10 atoms_chain_A.txt
 </pre></div>
 </div>
 </div>
@@ -851,11 +847,10 @@ ATOM     10  H1  LYS A 319      18.414  24.606  11.281  1.00  5.09           H
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>tail -10 atoms_chain_A.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tail -10 atoms_chain_A.txt
 </pre></div>
 </div>
 </div>
@@ -879,22 +874,21 @@ ATOM    698  HA3 GLY A 360      -4.341  28.288   9.386  1.00  6.05           H
 <p>Nice!</p>
 </section>
 <section id="Finding-files-and-with-glob">
-<h2>Finding files and with glob<a class="headerlink" href="#Finding-files-and-with-glob" title="Permalink to this headline"></a></h2>
+<h2>Finding files and with glob<a class="headerlink" href="#Finding-files-and-with-glob" title="Permalink to this heading"></a></h2>
 <p>In the above snippet of code, we extracted all atom records from a PDB file. We might want to do this (or some other operation) for many files. For example, the directory <code class="docutils literal notranslate"><span class="pre">~/git/data/</span></code> has four PDB files in it. For the present discussion, let’s say we want to pull the sequence of chain A out of each PDB file.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">glob</span></code> module from the standard library enables us to get a list of all files that match a pattern. In our case, we want all files matching <code class="docutils literal notranslate"><span class="pre">data/*.pdb</span></code>, where <code class="docutils literal notranslate"><span class="pre">*</span></code> is a <strong>wild card character</strong>, meaning that any matches of characters where <code class="docutils literal notranslate"><span class="pre">*</span></code> appears are allowed. Let’s see what <code class="docutils literal notranslate"><span class="pre">glob.glob()</span></code> gives us.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../data/*.pdb&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../data/*.pdb&#39;</span><span class="p">)</span>
 
 <span class="n">file_list</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -907,11 +901,10 @@ ATOM    698  HA3 GLY A 360      -4.341  28.288   9.386  1.00  6.05           H
 </div>
 <p>We have the four PDB files. We can now loop over them and pull out the sequences.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Dictionary to hold sequences</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary to hold sequences</span>
 <span class="n">seqs</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="c1"># Loop through all matching files</span>
@@ -936,16 +929,15 @@ ATOM    698  HA3 GLY A 360      -4.341  28.288   9.386  1.00  6.05           H
 </div>
 <p>Let’s take a look at what we got. We’ll look at actin.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">seqs</span><span class="p">[</span><span class="s1">&#39;1J6Z&#39;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seqs</span><span class="p">[</span><span class="s1">&#39;1J6Z&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -955,13 +947,12 @@ ATOM    698  HA3 GLY A 360      -4.341  28.288   9.386  1.00  6.05           H
 </div>
 </section>
 <section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this headline"></a></h2>
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
 <span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab
 </pre></div>
 </div>
@@ -972,10 +963,10 @@ ATOM    698  HA3 GLY A 360      -4.341  28.288   9.386  1.00  6.05           H
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.8.11
-IPython version      : 7.26.0
+Python version       : 3.9.12
+IPython version      : 8.4.0
 
-jupyterlab: 3.1.7
+jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
@@ -987,20 +978,20 @@ jupyterlab: 3.1.7
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="exceptions_and_error_handling.html" class="btn btn-neutral float-left" title="Errors and Exception handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../lesson_exercises/exercise_01.html" class="btn btn-neutral float-right" title="E1. To be completed after lesson 3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../04/style.html" class="btn btn-neutral float-right" title="4. Style" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Dec 02, 2021.
+      <span class="lastupdated">Last updated on Sep 23, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fea7f3940d0> 
+   <jinja2.runtime.BlockReference object at 0x7fb788db85e0> 
 
-<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

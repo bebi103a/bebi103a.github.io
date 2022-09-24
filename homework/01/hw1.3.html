@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 1.3: Validating image files (50 pts) &mdash; BE/Bi 103 a  documentation</title>
+  <title>Homework 1.3: Microtubule catastrophe and ECDFs (35 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -16,17 +16,18 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Homework 1.4: Using Git/GitHub to submit this homework (15 pts)" href="hw1.4.html" />
-    <link rel="prev" title="Homework 1.2: Reverse lookup (20 pts)" href="hw1.2.html" /> 
+    <link rel="prev" title="Homework 1.2: Plotting an elephant (35 pts)" href="hw1.2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,74 +52,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/03/index.html">3. Introduction to Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/07/index.html">7. Exploratory data analysis, part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/10/index.html">10. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/11/index.html">11. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 11</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/12/overplotting.html">12. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/13/index.html">13. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/12/random_number_generation.html">12. Random number generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/13/prob_dists.html">13. Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/14/index.html">14. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/15/random_number_generation.html">15. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/16/prob_dists.html">16. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 16</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/17/index.html">17. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/18/index.html">18. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 18</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/19/index.html">19. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 20</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/22/index.html">22. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 22</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/23/reproducible_workflows.html">23. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/24/paper_of_the_future.html">24. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/25/mixture_models.html">25. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_10.html">E10. To be completed after lesson 26</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/27/index.html">27. Statistical watchouts</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/probability_review.html">R5. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/mle_review.html">R8. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/10/index.html">R10. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/15/index.html">15. Nonparametric inference with hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/16/index.html">16. Null hypothesis significance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/18/index.html">18. Parametric inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/19/index.html">19. Numerical MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Configuring your team</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. Practice with Python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. Practice with Python tools and EDA I</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="hw1.1.html">Homework 1.1: Your goals (15 pts)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw1.2.html">Homework 1.2: Reverse lookup (20 pts)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 1.3: Validating image files (50 pts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw1.2.html">Homework 1.2: Plotting an elephant (35 pts)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 1.3: Microtubule catastrophe and ECDFs (35 pts)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw1.4.html">Homework 1.4: Using Git/GitHub to submit this homework (15 pts)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Practice with Numpy and plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/index.html">10. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/hw11.html">11. Course feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Exploratory data analysis II</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -155,8 +122,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">1. Practice with Python</a> &raquo;</li>
-      <li>Homework 1.3: Validating image files (50 pts)</li>
+          <li><a href="index.html">1. Practice with Python tools and EDA I</a> &raquo;</li>
+      <li>Homework 1.3: Microtubule catastrophe and ECDFs (35 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -197,36 +164,54 @@
     text-align: unset;
 }
 </style>
-<section id="Homework-1.3:-Validating-image-files-(50-pts)">
-<h1>Homework 1.3: Validating image files (50 pts)<a class="headerlink" href="#Homework-1.3:-Validating-image-files-(50-pts)" title="Permalink to this headline"></a></h1>
-<p>In live microscope imaging, we often take time courses. In one such experiment, I injected half-micron fluorescent beads into a stage 9 Drosophila oocyte (see Box 2 of <a class="reference external" href="https://doi.org/10.1242/dev.032391">this paper</a> by Becalska and Gavis for an illustration). I performed this experiment on a Leica SP2 microscope at the <a class="reference external" href="https://alms.cnsi.ucla.edu">ALMS at UCLA</a>. The data from this experiment, as they were saved from the computer connected to the microscope, are in ZIP file
-<a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/leica_tiffs.zip">https://s3.amazonaws.com/bebi103.caltech.edu/data/leica_tiffs.zip</a>. (Be sure to put the ZIP file in the <code class="docutils literal notranslate"><span class="pre">../data/</span></code> directory and unzip it there so that the folder is <code class="docutils literal notranslate"><span class="pre">../data/leica_tiffs/</span></code>.)</p>
-<p>In this experiment, I first took a DIC image of the egg chamber, which is saved as <code class="docutils literal notranslate"><span class="pre">stage9_Image003_ch00.tif</span></code>. The remainder of the image files in the directory are from a time course of 125 images.</p>
-<p><strong>a)</strong> The naming convention the Leica software used for storing the images is</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name_Series###_t##_z###_ch##.tif
-</pre></div>
-</div>
-<p>Let’s break down the respective fields in file name, or, as podcasters annoyingly like to say preceded with a pause and followed by filler music, “Let’s unpack this.”</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> is a user-suppled name of the images.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Series###</span></code> gives the number of the series of images. In this case, it’s <code class="docutils literal notranslate"><span class="pre">Series006</span></code>.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">t##</span></code> field gives the number of the image in the time series. For example, <code class="docutils literal notranslate"><span class="pre">t00</span></code> is the first image, and <code class="docutils literal notranslate"><span class="pre">t05</span></code> is the sixth. Importantly, though, the number of digits after the <code class="docutils literal notranslate"><span class="pre">t</span></code> can grow; <code class="docutils literal notranslate"><span class="pre">t105</span></code> is the 106th image.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">z###</span></code> gives the level of the z-stack. In this case, I was only imaging in one plane, so it’s <code class="docutils literal notranslate"><span class="pre">z000</span></code> for all images.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">ch##</span></code> is the number of the fluorescent channel. I used a single channel here, so it’s <code class="docutils literal notranslate"><span class="pre">ch00</span></code> for all images.</p></li>
-</ul>
-<p>Your first task in parsing this directory of images is to create a list of file names where the file names are in order of the time course. You should also identify any dropped (missing) frames.</p>
-<p><strong>b)</strong> The file <code class="docutils literal notranslate"><span class="pre">stage9.txt</span></code> contains metadata generated by the instrument about the images. Importantly, it has the time stamps of the images. In my analysis of these images, I was working under the assumption that the time between images was the same for each pair of successive images in the experiment. First, look at the metadata file so that you understand its structure and then programmatically parse out the time stamps and compute the time between frames to verify that my assumption
-about them being the same for all image pairs is valid.</p>
-<p><em>Hint</em>: This encoding of the metadata file is not Unicode. You will need to use the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> keyword argument of <code class="docutils literal notranslate"><span class="pre">open()</span></code> to be able to read the file. This is likely CP 1252 encoded, so you can use <code class="docutils literal notranslate"><span class="pre">encoding='cp1252'</span></code>.</p>
-<p>This is an example of <strong>data validation</strong>. We need to make sure the images are in the proper order and that the time stamps are appropriate. We will talk more about data validation, and maybe even have another homework problem on it, later in the term.</p>
-<p>By <em>not</em> doing these things when I first did these experiments, I wasted over a month of time trying to figure out what was wrong with the microscope until I discovered I was not properly parsing the time points of the experiment. You get to learn from my mistake in this problem.</p>
+<section id="Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(35-pts)">
+<h1>Homework 1.3: Microtubule catastrophe and ECDFs (35 pts)<a class="headerlink" href="#Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(35-pts)" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv">Data set download</a></p>
+<hr /><p>In a <a class="reference external" href="../../lessons/07/iqplot.iypnb">future lesson</a>, you will learn about <strong>emprical cumulative distribution functions</strong>, or ECDFs. These are useful ways to visualize how measured data are distributed. An ECDF evaluated at point <em>x</em> is defined as</p>
+<p>ECDF(<em>x</em>) = fraction of data points ≤ <em>x</em>.</p>
+<p>The ECDF is defined on the entire real number line, with <span class="math notranslate nohighlight">\(\mathrm{ECDF}(x\to-\infty) = 0\)</span> and <span class="math notranslate nohighlight">\(\mathrm{ECDF}(x\to\infty) = 1\)</span>. However, the ECDF is often plotted as discrete points, <span class="math notranslate nohighlight">\(\{(x_i, y_i)\}\)</span>, where for point <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span> is the value of the measured quantity and <span class="math notranslate nohighlight">\(y_i\)</span> is <span class="math notranslate nohighlight">\(\mathrm{ECDF}(x_i)\)</span>. For example, if I have a set of measured data with values (1.1, –6.7, 2.3, 9.8, 2.3), the points on the ECDF plot are</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>–6.7</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.1</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-even"><td><p>2.3</p></td>
+<td><p>0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.3</p></td>
+<td><p>0.8</p></td>
+</tr>
+<tr class="row-even"><td><p>9.8</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>In this problem, you will use you newly acquired skills using Numpy and Bokeh to compute ECDFs from a real data set and plot them.</p>
+<p><a class="reference external" href="http://dx.doi.org/10.1016/j.cell.2011.10.037">Gardner, Zanic, and coworkers</a> investigated the dynamics of microtubule catastrophe, the switching of a microtubule from a growing to a shrinking state. In particular, they were interested in the time between the start of growth of a microtubule and the catastrophe event. They monitored microtubules by using tubulin (the monomer that comprises a microtubule) that was labeled with a fluorescent marker. As a control to make sure that fluorescent
+labels and exposure to laser light did not affect the microtubule dynamics, they performed a similar experiment using differential interference contrast (DIC) microscopy. They measured the time until catastrophe with labeled and unlabeled tubulin.</p>
+<p>We will look at the data used to generate Fig. 2a of their paper. In the end, you will generate a plot similar to that figure.</p>
+<p><strong>a)</strong> Write a function with the call signature <code class="docutils literal notranslate"><span class="pre">ecdfvals(data)</span></code>, which takes a one-dimensional Numpy array (or Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>; the same construction of your function will work for both) of data and returns the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> values for plotting the ECDF in the “dots” style, as in Fig. 2a of the Gardner, Zanic, et al. paper. As a reminder,</p>
+<blockquote>
+<div><p>ECDF(<em>x</em>) = fraction of data points ≤ x.</p>
+</div></blockquote>
+<p>When you write this function, you may only use base Python and the standard library, in addition to Numpy and Pandas.</p>
+<p><strong>b)</strong> Use the <code class="docutils literal notranslate"><span class="pre">ecdfvals()</span></code> function that you wrote to plot the ECDFs shown in Fig. 2a of the Gardner, Zanic, et al. paper. By looking this plot, do you think that the fluorescent labeling makes a difference in the onset of catastrophe? (We will do a more careful statistical inference later in the course, but for now, does it pass the eye test? Eye tests are an important part of EDA, but certainly not an end point.) You can access the data set here:
+<a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv</a></p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="hw1.2.html" class="btn btn-neutral float-left" title="Homework 1.2: Reverse lookup (20 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw1.2.html" class="btn btn-neutral float-left" title="Homework 1.2: Plotting an elephant (35 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="hw1.4.html" class="btn btn-neutral float-right" title="Homework 1.4: Using Git/GitHub to submit this homework (15 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -234,13 +219,13 @@ about them being the same for all image pairs is valid.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Dec 02, 2021.
+      <span class="lastupdated">Last updated on Sep 23, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fea153861f0> 
+   <jinja2.runtime.BlockReference object at 0x7fb723322a00> 
 
-<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

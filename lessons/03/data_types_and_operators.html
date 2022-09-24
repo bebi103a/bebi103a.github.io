@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Variables, operators, and types &mdash; BE/Bi 103 a  documentation</title>
@@ -16,17 +16,18 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Conditionals" href="conditionals.html" />
-    <link rel="prev" title="Where we will soon be" href="where_we_will_go.html" /> 
+    <link rel="prev" title="Notes on our basic Python programming review" href="notes_on_python_review.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,7 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Version control with Git</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Introduction to Python</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="where_we_will_go.html">Where we will soon be</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notes_on_python_review.html">Notes on our Python review</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Data types and operators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Determining-the-type">Determining the type</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#A-note-on-strings">A note on strings</a></li>
@@ -95,68 +96,34 @@
 <li class="toctree-l2"><a class="reference internal" href="file_io.html">File I/O</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/index.html">10. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Intro to probability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 11</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../12/overplotting.html">12. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/index.html">13. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/random_number_generation.html">12. Random number generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13/prob_dists.html">13. Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Plug-in estimates and confidence intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../15/random_number_generation.html">15. Random number generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../16/prob_dists.html">16. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 16</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../17/index.html">17. Null hypothesis significance testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 18</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 20</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../22/index.html">22. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 22</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../23/reproducible_workflows.html">23. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../24/paper_of_the_future.html">24. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../25/mixture_models.html">25. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_10.html">E10. To be completed after lesson 26</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../27/index.html">27. Statistical watchouts</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/git_and_github_tips.html">R2. Git/Github tips and traps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/time_series.html">R3. Time series and data smoothing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/manipuluating_dfs.html">R4. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/probability_review.html">R5. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/mle_review.html">R8. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/index.html">R9. Wild and residual bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/10/index.html">R10. Packaging and package management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Nonparametric inference with hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Null hypothesis significance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Parametric inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Numerical MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Practice with Numpy and plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Exploratory data analysis I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Random number generation and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Parametric inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/index.html">10. Model comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/11/hw11.html">11. Course feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -421,11 +388,12 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -434,10 +402,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -449,12 +421,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -482,7 +457,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Variables,-operators,-and-types">
-<h1>Variables, operators, and types<a class="headerlink" href="#Variables,-operators,-and-types" title="Permalink to this headline"></a></h1>
+<h1>Variables, operators, and types<a class="headerlink" href="#Variables,-operators,-and-types" title="Permalink to this heading"></a></h1>
 <hr><p>Whether you are programming in Python or pretty much any other language, you will be working with <strong>variables</strong>. While the precise definition of a variable will vary from language to language, we’ll focus on Python variables here. Like many of the concepts in this course, though, the knowledge you gain about Python variables will translate to other languages.</p>
 <p>We will talk more about <strong>objects</strong> later, but a variable, like everything in Python, is an object. For now, you can think of it this way. The following can be properties of a variable:</p>
 <ol class="arabic simple">
@@ -491,14 +466,13 @@ div.rendered_html tbody tr:hover {
 </ol>
 <p>Depending on the type of the variable, you can do different things to it and other variables of similar type. This, as with most things, is best explored by example. We’ll go through some of the properties of variables and things you can do to them in this tutorial.</p>
 <section id="Determining-the-type">
-<h2>Determining the type<a class="headerlink" href="#Determining-the-type" title="Permalink to this headline"></a></h2>
+<h2>Determining the type<a class="headerlink" href="#Determining-the-type" title="Permalink to this heading"></a></h2>
 <p>First, we will use Python’s built-in <code class="docutils literal notranslate"><span class="pre">type()</span></code> function to determine the type of some variables.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -515,8 +489,7 @@ int
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -533,8 +506,7 @@ float
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Hello, world.&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Hello, world.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -553,8 +525,7 @@ str
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="mf">4.5e-7</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">4.5e-7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -568,7 +539,7 @@ float
 </pre></div></div>
 </div>
 <section id="A-note-on-strings">
-<h3>A note on strings<a class="headerlink" href="#A-note-on-strings" title="Permalink to this headline"></a></h3>
+<h3>A note on strings<a class="headerlink" href="#A-note-on-strings" title="Permalink to this heading"></a></h3>
 <p>We just saw that strings can be enclosed in single quotes. In Python, we can equivalently enclose them in double quotes. E.g.,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;my string&#39;
 </pre></div>
@@ -589,8 +560,7 @@ float
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># A multi-line string</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A multi-line string</span>
 <span class="n">my_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;It was the best of times,</span>
 <span class="s2">it was the worst of times...&quot;&quot;&quot;</span>
 
@@ -612,8 +582,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># This is a SyntaxError</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a SyntaxError</span>
 <span class="n">my_str</span> <span class="o">=</span> <span class="s1">&#39;It was the best of times,</span>
 <span class="n">it</span> <span class="n">was</span> <span class="n">the</span> <span class="n">worst</span> <span class="n">of</span> <span class="n">times</span><span class="o">...</span><span class="s1">&#39;</span>
 </pre></div>
@@ -624,7 +593,7 @@ it was the worst of times...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-7-2cc9f4015bb6&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
+<span class="ansi-cyan-fg">  Input </span><span class="ansi-green-fg">In [7]</span>
 <span class="ansi-red-fg">    my_str = &#39;It was the best of times,</span>
                                        ^
 <span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> EOL while scanning string literal
@@ -634,13 +603,9 @@ it was the worst of times...
 </section>
 </section>
 <section id="Arithmetic-operators">
-<h2>Arithmetic operators<a class="headerlink" href="#Arithmetic-operators" title="Permalink to this headline"></a></h2>
+<h2>Arithmetic operators<a class="headerlink" href="#Arithmetic-operators" title="Permalink to this heading"></a></h2>
 <p><strong>Operators</strong> allow you to do things with variables, like add them. They are represented by special symbols, like <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code>. For now, we will focus on <strong>arithmetic</strong> operators. Python’s arithmetic operators are</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 64%" />
-<col style="width: 36%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>action</p></th>
 <th class="head"><p>operator</p></th>
@@ -675,8 +640,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">10</span><span class="o">^</span><span class="mi">200</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="o">^</span><span class="mi">200</span>
 </pre></div>
 </div>
 </div>
@@ -691,11 +655,6 @@ it was the worst of times...
 </div>
 <p>Instead of raising 10 to the 200th power, Python performed a bitwise XOR as illustrated below:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 48%" />
-<col style="width: 28%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>a</p></th>
 <th class="head"><p>Binary</p></th>
@@ -722,8 +681,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s2">&quot;</span><span class="si">{0:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">194</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;</span><span class="si">{0:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">194</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -737,14 +695,13 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <section id="Operations-on-integers">
-<h3>Operations on integers<a class="headerlink" href="#Operations-on-integers" title="Permalink to this headline"></a></h3>
+<h3>Operations on integers<a class="headerlink" href="#Operations-on-integers" title="Permalink to this heading"></a></h3>
 <p>Let’s see how these operators work on integers.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -761,8 +718,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -779,8 +735,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -797,8 +752,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -815,8 +769,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -833,8 +786,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span> <span class="o">%</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">%</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -851,8 +803,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span> <span class="o">//</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">//</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -867,14 +818,13 @@ it was the worst of times...
 </div>
 </section>
 <section id="Operations-on-floats">
-<h3>Operations on floats<a class="headerlink" href="#Operations-on-floats" title="Permalink to this headline"></a></h3>
+<h3>Operations on floats<a class="headerlink" href="#Operations-on-floats" title="Permalink to this heading"></a></h3>
 <p>Let’s try floats.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">+</span> <span class="mf">3.2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">+</span> <span class="mf">3.2</span>
 </pre></div>
 </div>
 </div>
@@ -892,8 +842,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">-</span> <span class="mf">3.2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">-</span> <span class="mf">3.2</span>
 </pre></div>
 </div>
 </div>
@@ -910,8 +859,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Very very close to zero because of finite precision</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Very very close to zero because of finite precision</span>
 <span class="mf">5.3</span> <span class="o">-</span> <span class="p">(</span><span class="mf">2.1</span> <span class="o">+</span> <span class="mf">3.2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -929,8 +877,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">*</span> <span class="mf">3.2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">*</span> <span class="mf">3.2</span>
 </pre></div>
 </div>
 </div>
@@ -947,8 +894,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">/</span> <span class="mf">3.2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">/</span> <span class="mf">3.2</span>
 </pre></div>
 </div>
 </div>
@@ -965,8 +911,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span><span class="o">**</span><span class="mf">3.2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span><span class="o">**</span><span class="mf">3.2</span>
 </pre></div>
 </div>
 </div>
@@ -983,8 +928,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">%</span> <span class="mf">3.2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">%</span> <span class="mf">3.2</span>
 </pre></div>
 </div>
 </div>
@@ -1001,8 +945,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">//</span> <span class="mf">3.2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">//</span> <span class="mf">3.2</span>
 </pre></div>
 </div>
 </div>
@@ -1020,8 +963,7 @@ it was the worst of times...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">/</span> <span class="mf">0.0</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">/</span> <span class="mf">0.0</span>
 </pre></div>
 </div>
 </div>
@@ -1032,50 +974,35 @@ it was the worst of times...
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-25-2f8acfa4b142&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-cyan-fg">2.1</span> <span class="ansi-blue-fg">/</span> <span class="ansi-cyan-fg">0.0</span>
+Input <span class="ansi-green-fg">In [25]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg" style="color: rgb(98,98,98)">2.1</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">/</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0.0</span>
 
 <span class="ansi-red-fg">ZeroDivisionError</span>: float division by zero
 </pre></div></div>
 </div>
 <p>We can’t do it with <code class="docutils literal notranslate"><span class="pre">int</span></code>s, either.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">/</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Operations-on-integers-and-floats">
+<h3>Operations on integers and floats<a class="headerlink" href="#Operations-on-integers-and-floats" title="Permalink to this heading"></a></h3>
+<p>This proceeds as we think it should.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">2</span> <span class="o">/</span> <span class="mi">0</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">+</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-26-8b4ac6d3a3e1&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-cyan-fg">2</span> <span class="ansi-blue-fg">/</span> <span class="ansi-cyan-fg">0</span>
-
-<span class="ansi-red-fg">ZeroDivisionError</span>: division by zero
-</pre></div></div>
-</div>
-</section>
-<section id="Operations-on-integers-and-floats">
-<h3>Operations on integers and floats<a class="headerlink" href="#Operations-on-integers-and-floats" title="Permalink to this headline"></a></h3>
-<p>This proceeds as we think it should.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">+</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1084,16 +1011,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">-</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">-</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1102,16 +1028,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">*</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1120,16 +1045,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">/</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">/</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1138,16 +1062,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span><span class="o">**</span><span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span><span class="o">**</span><span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1156,16 +1079,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">%</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">%</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1174,16 +1096,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span><span class="o">**</span><span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span><span class="o">**</span><span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1194,19 +1115,18 @@ it was the worst of times...
 <p>And again we have the rounding errors, but everything is otherwise intuitive.</p>
 </section>
 <section id="Operations-on-strings">
-<h3>Operations on strings<a class="headerlink" href="#Operations-on-strings" title="Permalink to this headline"></a></h3>
+<h3>Operations on strings<a class="headerlink" href="#Operations-on-strings" title="Permalink to this heading"></a></h3>
 <p>Now let’s try some of these operations on strings. This idea of applying mathematical operations to strings seems strange, but let’s just mess around and see what we get.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;Hello, &#39;</span> <span class="o">+</span> <span class="s1">&#39;world.&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello, &#39;</span> <span class="o">+</span> <span class="s1">&#39;world.&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1216,11 +1136,10 @@ it was the worst of times...
 </div>
 <p>Ah! Adding strings together concatenates them! This is also intuitive. How about subtracting strings?</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;Hello, &#39;</span> <span class="o">-</span> <span class="s1">&#39;world&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello, &#39;</span> <span class="o">-</span> <span class="s1">&#39;world&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1231,24 +1150,23 @@ it was the worst of times...
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-35-75667588e15f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-blue-fg">&#39;Hello, &#39;</span> <span class="ansi-blue-fg">-</span> <span class="ansi-blue-fg">&#39;world&#39;</span>
+Input <span class="ansi-green-fg">In [34]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Hello, </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">-</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">world</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span>
 
 <span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;
 </pre></div></div>
 </div>
 <p>That stands to reason. Subtracting strings does not make sense. Python was kind enough to give us a nice error message saying that we can’t have a <code class="docutils literal notranslate"><span class="pre">str</span></code> and a <code class="docutils literal notranslate"><span class="pre">str</span></code> operand type for the subtraction operation. It also makes sense that we can’t do multiplication, raising of power, etc., with two strings. How about multiplying a string by an integer?</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;Hello, world.&#39;</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello, world.&#39;</span> <span class="o">*</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1259,16 +1177,15 @@ it was the worst of times...
 <p>Yes, this makes sense! Multiplication by an integer is the same thing as just adding multiple times, so Python concatenates the string several times.</p>
 <p>As a final note on operators with strings, watch out for this:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;4&#39;</span> <span class="o">+</span> <span class="s1">&#39;2&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;4&#39;</span> <span class="o">+</span> <span class="s1">&#39;2&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1279,13 +1196,9 @@ it was the worst of times...
 <p>The result is <em>not</em> <code class="docutils literal notranslate"><span class="pre">6</span></code>, but it is a string containing the characters <code class="docutils literal notranslate"><span class="pre">'4'</span></code> and <code class="docutils literal notranslate"><span class="pre">'2'</span></code>.</p>
 </section>
 <section id="Order-of-operations">
-<h3>Order of operations<a class="headerlink" href="#Order-of-operations" title="Permalink to this headline"></a></h3>
+<h3>Order of operations<a class="headerlink" href="#Order-of-operations" title="Permalink to this heading"></a></h3>
 <p>The order of operations is also as we would expect. Exponentiation comes first, followed by multiplication and division, floor division, and modulo. Next comes addition and subtraction. In order of precedence, our arithmetic operator table is</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 27%" />
-<col style="width: 73%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>precedence</p></th>
 <th class="head"><p>operators</p></th>
@@ -1305,16 +1218,15 @@ it was the worst of times...
 </table>
 <p>You can also group operations with parentheses. Operations within parentheses is are always evaluated first. Let’s practice.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span><span class="o">**</span><span class="mi">2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1323,16 +1235,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span><span class="o">/</span><span class="mi">2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1341,16 +1252,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">1</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="o">**</span><span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="o">**</span><span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1359,16 +1269,15 @@ it was the worst of times...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1379,23 +1288,22 @@ it was the worst of times...
 </section>
 </section>
 <section id="Variables-and-assignment-operators">
-<h2>Variables and assignment operators<a class="headerlink" href="#Variables-and-assignment-operators" title="Permalink to this headline"></a></h2>
+<h2>Variables and assignment operators<a class="headerlink" href="#Variables-and-assignment-operators" title="Permalink to this heading"></a></h2>
 <p>So far, we have essentially just used Python as an oversized desktop calculator. We would really like to be able to think about our computational problems symbolically. We mentioned <strong>variables</strong> at the beginning of the tutorial, but in practice we were just using numbers and strings directly. We would like to say that a variable, <code class="docutils literal notranslate"><span class="pre">a</span></code>, represents an integer and another variable <code class="docutils literal notranslate"><span class="pre">b</span></code> represents another integer. Then, we could do things like add <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>. So, we see immediately that the
 variables have to have a type associated with them so the Python interpreter knows what to do when we use operators with them. A variable should also have a <strong>value</strong> associated with it, so the interpreter knows, e.g., what to add.</p>
 <p>In order to create, or <strong>instantiate</strong>, a variable, we can use an <strong>assignment operator</strong>. This operator is the equals sign. So, let’s make variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> and add them.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1405,16 +1313,15 @@ variables have to have a type associated with them so the Python interpreter kno
 </div>
 <p>Great! We get what we expect! And we still have <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1425,14 +1332,13 @@ variables have to have a type associated with them so the Python interpreter kno
 <p>Now, we might be tempted to say, “<code class="docutils literal notranslate"><span class="pre">a</span></code> is two.” No. <code class="docutils literal notranslate"><span class="pre">a</span></code> is not two. <code class="docutils literal notranslate"><span class="pre">a</span></code> is a variable that <em>has a value of 2</em>. A variable in Python is not just its value. A variable carries with it a type. It also has more associated with it under the hood of the interpreter that we will not get into. So, you can think about a variable as a map to an address in RAM (called a <a class="reference external" href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointer</a> in computer-speak) that stores information, including a
 type and a value.</p>
 <section id="Assignment/increment-operators">
-<h3>Assignment/increment operators<a class="headerlink" href="#Assignment/increment-operators" title="Permalink to this headline"></a></h3>
+<h3>Assignment/increment operators<a class="headerlink" href="#Assignment/increment-operators" title="Permalink to this heading"></a></h3>
 <p>Now, let’s say we wanted to update the value of <code class="docutils literal notranslate"><span class="pre">a</span></code> by adding <code class="docutils literal notranslate"><span class="pre">4.1</span></code> to it. Python will do some magic for us.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">a</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">a</span><span class="p">)</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mf">4.1</span>
 
@@ -1452,18 +1358,17 @@ type and a value.</p>
 <p>We see that <code class="docutils literal notranslate"><span class="pre">a</span></code> was initially an integer with a value of 2. But we added <code class="docutils literal notranslate"><span class="pre">4.1</span></code> to it, so the Python interpreter knew to change its type to a <code class="docutils literal notranslate"><span class="pre">float</span></code> and update its value.</p>
 <p>This operation of updating a value can also be accomplished with an <strong>increment operator</strong>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span> <span class="o">+=</span> <span class="mf">4.1</span>
 <span class="n">a</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1473,18 +1378,17 @@ type and a value.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">+=</span></code> operator told the interpreter to take the value of <code class="docutils literal notranslate"><span class="pre">a</span></code> and add <code class="docutils literal notranslate"><span class="pre">4.1</span></code> to it, changing the type of <code class="docutils literal notranslate"><span class="pre">a</span></code> in the intuitive way if need be. The other six arithmetic operators have similar constructions for the associated increment operators, <code class="docutils literal notranslate"><span class="pre">-=</span></code>, <code class="docutils literal notranslate"><span class="pre">*=</span></code>, <code class="docutils literal notranslate"><span class="pre">/=</span></code>, <code class="docutils literal notranslate"><span class="pre">//=</span></code>, <code class="docutils literal notranslate"><span class="pre">%=</span></code>, and <code class="docutils literal notranslate"><span class="pre">**=</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span> <span class="o">**=</span> <span class="mi">3</span>
 <span class="n">a</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1495,22 +1399,21 @@ type and a value.</p>
 </section>
 </section>
 <section id="Relational-operators">
-<h2>Relational operators<a class="headerlink" href="#Relational-operators" title="Permalink to this headline"></a></h2>
+<h2>Relational operators<a class="headerlink" href="#Relational-operators" title="Permalink to this heading"></a></h2>
 <p>Suppose we want to compare the values of two numbers. We may want to know if they are equal for example. The operator used to test for equality is <code class="docutils literal notranslate"><span class="pre">==</span></code>, an example of a <strong>relational operator</strong> (also called a <strong>comparison operator</strong>).</p>
 <section id="The-equality-relational-operator">
-<h3>The equality relational operator<a class="headerlink" href="#The-equality-relational-operator" title="Permalink to this headline"></a></h3>
+<h3>The equality relational operator<a class="headerlink" href="#The-equality-relational-operator" title="Permalink to this heading"></a></h3>
 <p>Let’s test out the <code class="docutils literal notranslate"><span class="pre">==</span></code> to see how it works.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1519,16 +1422,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1538,16 +1440,15 @@ False
 </div>
 <p>Notice that using the operator gives either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. These are important keywords in Python that indicate truth. <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> have a special type, called <code class="docutils literal notranslate"><span class="pre">bool</span></code>, short for <strong>Boolean</strong>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1556,16 +1457,15 @@ bool
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1575,11 +1475,10 @@ bool
 </div>
 <p>The equality operator, like all relational operators in Python, also works with variables, testing for equality of their <em>values</em>. Equality of the variables themselves uses <strong>identity operators</strong>, described <a class="reference external" href="#Identity-operators">below</a>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mi">4</span>
 
@@ -1588,7 +1487,7 @@ bool
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1597,16 +1496,15 @@ False
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span><span class="o">==</span><span class="n">c</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">==</span><span class="n">c</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1616,16 +1514,15 @@ True
 </div>
 <p>Now, let’s try it out with some floats.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">5.3</span> <span class="o">==</span> <span class="mf">5.3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">5.3</span> <span class="o">==</span> <span class="mf">5.3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1634,16 +1531,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.1</span> <span class="o">+</span> <span class="mf">3.2</span> <span class="o">==</span> <span class="mf">5.3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.1</span> <span class="o">+</span> <span class="mf">3.2</span> <span class="o">==</span> <span class="mf">5.3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1653,16 +1549,15 @@ False
 </div>
 <p>Yikes! Python is telling us that <code class="docutils literal notranslate"><span class="pre">2.1</span> <span class="pre">+</span> <span class="pre">3.2</span></code> is not <code class="docutils literal notranslate"><span class="pre">5.3</span></code>. This is floating point arithmetic haunting us. Note that floating point numbers that can be exactly represented with binary numbers do not have this problem.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">2.2</span> <span class="o">+</span> <span class="mf">3.2</span> <span class="o">==</span> <span class="mf">5.4</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.2</span> <span class="o">+</span> <span class="mf">3.2</span> <span class="o">==</span> <span class="mf">5.4</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1676,13 +1571,9 @@ True
 </div>
 </section>
 <section id="Other-relational-operators">
-<h3>Other relational operators<a class="headerlink" href="#Other-relational-operators" title="Permalink to this headline"></a></h3>
+<h3>Other relational operators<a class="headerlink" href="#Other-relational-operators" title="Permalink to this heading"></a></h3>
 <p>As you might expect, there are other relational operators. The relational operators are</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 82%" />
-<col style="width: 18%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>English</p></th>
 <th class="head"><p>Python</p></th>
@@ -1711,16 +1602,15 @@ True
 </table>
 <p>We can try some of them out!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">5</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1729,16 +1619,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mf">5.7</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">5.7</span> <span class="o">&lt;=</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1747,16 +1636,15 @@ False
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;michael jordan&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;lebron james&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;michael jordan&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;lebron james&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1767,19 +1655,18 @@ True
 <p>Whoa. What happened on that last one? The Python interpreter has weighed in on the debate about the greater basketball player of all time. It clearly thinks Michael Jordan is better than LeBron James, but that seems kind of subjective. To understand what the interpreter is doing, we need to understand how it compares strings.</p>
 </section>
 <section id="A-brief-aside-on-Unicode">
-<h3>A brief aside on Unicode<a class="headerlink" href="#A-brief-aside-on-Unicode" title="Permalink to this headline"></a></h3>
+<h3>A brief aside on Unicode<a class="headerlink" href="#A-brief-aside-on-Unicode" title="Permalink to this heading"></a></h3>
 <p>In Python, characters are encoded with <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>. This is a standardized library of characters from many languages around the world that contains over 100,000 characters. Each character has a unique number associated with it. We can access what number is assigned to a character using Python’s built-in <code class="docutils literal notranslate"><span class="pre">ord()</span></code> function.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1788,16 +1675,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;λ&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;λ&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1808,11 +1694,27 @@ True
 <p>The relational operators on characters compare the values that the <code class="docutils literal notranslate"><span class="pre">ord</span></code> function returns. So, using a relational operator on <code class="docutils literal notranslate"><span class="pre">'a'</span></code> and <code class="docutils literal notranslate"><span class="pre">'b'</span></code> means you are comparing <code class="docutils literal notranslate"><span class="pre">ord('a')</span></code> and <code class="docutils literal notranslate"><span class="pre">ord('b')</span></code>. When comparing strings, the interpreter first compares the first character of each string. If they are equal, it compares the second character, and so on. So, the reason that <code class="docutils literal notranslate"><span class="pre">'michael</span> <span class="pre">jordan'</span> <span class="pre">&gt;</span> <span class="pre">'lebron</span> <span class="pre">james'</span></code> gives a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> is because <code class="docutils literal notranslate"><span class="pre">ord('m')</span> <span class="pre">&gt;</span> <span class="pre">ord('l')</span></code>.</p>
 <p>Note that a result of this scheme is that testing for equality of strings means that <strong>all</strong> characters must be equal. This is the most common use case for relational operators with strings.</p>
 <div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;lebron&#39;</span> <span class="o">==</span> <span class="s1">&#39;lebron james&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;lebron&#39;</span> <span class="o">==</span> <span class="s1">&#39;lebron james&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;lebron&#39;</span> <span class="o">==</span> <span class="s1">&#39;LeBron&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1829,31 +1731,12 @@ False
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;lebron&#39;</span> <span class="o">==</span> <span class="s1">&#39;LeBron&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;LeBron James&#39;</span> <span class="o">==</span> <span class="s1">&#39;LeBron James&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-False
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;LeBron James&#39;</span> <span class="o">==</span> <span class="s1">&#39;LeBron James&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1862,16 +1745,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="s1">&#39;AGTCACAGTA&#39;</span> <span class="o">==</span> <span class="s1">&#39;AGTCACAGCA&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;AGTCACAGTA&#39;</span> <span class="o">==</span> <span class="s1">&#39;AGTCACAGCA&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1881,19 +1763,18 @@ False
 </div>
 </section>
 <section id="Chaining-relational-operators">
-<h3>Chaining relational operators<a class="headerlink" href="#Chaining-relational-operators" title="Permalink to this headline"></a></h3>
+<h3>Chaining relational operators<a class="headerlink" href="#Chaining-relational-operators" title="Permalink to this heading"></a></h3>
 <p>Python allow chaining of relational operators.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">6</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&lt;</span> <span class="mf">9.3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">6</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&lt;</span> <span class="mf">9.3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1902,16 +1783,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&lt;</span> <span class="mi">6</span> <span class="o">&lt;</span> <span class="mf">9.3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&lt;</span> <span class="mi">6</span> <span class="o">&lt;</span> <span class="mf">9.3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1921,16 +1801,15 @@ False
 </div>
 <p>This is convenient do to. However, it is important not to do the following, even though it is legal.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&gt;</span> <span class="mi">5</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&gt;</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1940,16 +1819,15 @@ True
 </div>
 <p>In other words, do not mix the direction of the relational operators. You could run into trouble because, in this case, <code class="docutils literal notranslate"><span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">4</span></code> are never compared. An expression with different relations among all three numbers also returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&gt;</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mf">6.1</span> <span class="o">&gt;</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1963,19 +1841,18 @@ True
 </div>
 </section>
 <section id="The-numerical-values-of-True-and-False">
-<h3>The numerical values of True and False<a class="headerlink" href="#The-numerical-values-of-True-and-False" title="Permalink to this headline"></a></h3>
+<h3>The numerical values of True and False<a class="headerlink" href="#The-numerical-values-of-True-and-False" title="Permalink to this heading"></a></h3>
 <p>As we move to conditionals, it is important to take a moment to evaluate the numerical values of the keywords <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>. They have numerical values of <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code>, respectively.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kc">True</span> <span class="o">==</span> <span class="mi">1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">==</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1984,16 +1861,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kc">False</span> <span class="o">==</span> <span class="mi">0</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2003,16 +1879,15 @@ True
 </div>
 <p>You can do arithmetic on <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>, but you will get implicit type conversion.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kc">True</span> <span class="o">+</span> <span class="kc">False</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">+</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2021,16 +1896,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span> <span class="o">+</span> <span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span> <span class="o">+</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2041,13 +1915,9 @@ int
 </section>
 </section>
 <section id="Identity-operators">
-<h2>Identity operators<a class="headerlink" href="#Identity-operators" title="Permalink to this headline"></a></h2>
+<h2>Identity operators<a class="headerlink" href="#Identity-operators" title="Permalink to this heading"></a></h2>
 <p>Identity operators check to see if two variables occupy the same space in memory; i.e., they are the same object. This is different that the equality relational operator, <code class="docutils literal notranslate"><span class="pre">==</span></code>, which checks to see if two variables have the same <strong>value</strong>. The two identity operators are in the table below.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 69%" />
-<col style="width: 31%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>English</p></th>
 <th class="head"><p>Python</p></th>
@@ -2064,11 +1934,10 @@ int
 </table>
 <p>The operators are pretty much the same as English! Let’s see these operators in action and get at the difference between <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">is</span></code>. Let’s use the <code class="docutils literal notranslate"><span class="pre">is</span></code> operator to investigate how Python stores variables in memory, starting with <code class="docutils literal notranslate"><span class="pre">float</span></code>s.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[73]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">5.6</span>
 
 <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
@@ -2076,7 +1945,7 @@ int
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[73]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2086,11 +1955,10 @@ int
 </div>
 <p>Even though <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> have the same value, they are stored in different places in memory. They can occupy the same place in memory if we do a <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code> assignment.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[73]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 
 <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
@@ -2098,7 +1966,7 @@ int
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[73]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2108,11 +1976,10 @@ int
 </div>
 <p>Because we assigned <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code>, they necessarily have the same (immutable) value. So, the two variables occupy the same place in memory for efficiency.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">6.1</span>
 
@@ -2121,7 +1988,7 @@ int
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2132,11 +1999,10 @@ int
 <p>In the last two examples, we see that assigning <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code>, where <code class="docutils literal notranslate"><span class="pre">a</span></code> is a <code class="docutils literal notranslate"><span class="pre">float</span></code> in this case, means that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> occupy the same memory. However, reassigning the value of <code class="docutils literal notranslate"><span class="pre">a</span></code> resulted in the interpreter placing <code class="docutils literal notranslate"><span class="pre">a</span></code> in a new space in memory. We can double check the values.</p>
 <p>Integers sometimes do not behave the same way, however.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
@@ -2144,7 +2010,7 @@ int
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2154,11 +2020,10 @@ int
 </div>
 <p>Even though we assigned <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> separately, they occupy the same place in memory. This is because Python employs <strong>integer caching</strong> for all integers between <code class="docutils literal notranslate"><span class="pre">-5</span></code> and <code class="docutils literal notranslate"><span class="pre">256</span></code>. This caching does not happen for more negative or larger integers.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">350</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">350</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">350</span>
 
 <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
@@ -2166,7 +2031,7 @@ int
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2176,11 +2041,10 @@ False
 </div>
 <p>Now, let’s look at strings.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello, world.&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello, world.&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;Hello, world.&#39;</span>
 
 <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
@@ -2188,7 +2052,7 @@ False
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2198,11 +2062,10 @@ False
 </div>
 <p>So, even though <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> have the same <em>value</em>, they do not occupy the same place in memory. If we do a <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code> assignment, we get similar results as with <code class="docutils literal notranslate"><span class="pre">float</span></code>s.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello, world.&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello, world.&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 
 <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
@@ -2210,7 +2073,7 @@ False
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2220,11 +2083,10 @@ False
 </div>
 <p>Let’s try string assignment again with a different string.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
 
 <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
@@ -2232,7 +2094,7 @@ False
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2245,13 +2107,9 @@ False
 whether or not two variables are in the same location in memory.</p>
 </section>
 <section id="Logical-operators">
-<h2>Logical operators<a class="headerlink" href="#Logical-operators" title="Permalink to this headline"></a></h2>
+<h2>Logical operators<a class="headerlink" href="#Logical-operators" title="Permalink to this heading"></a></h2>
 <p><strong>Logical operators</strong> can be used to connect relational and identity operators. Python has three logical operators.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 42%" />
-<col style="width: 58%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Logic</p></th>
 <th class="head"><p>Python</p></th>
@@ -2272,16 +2130,15 @@ whether or not two variables are in the same location in memory.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">and</span></code> operator means that if both operands are <code class="docutils literal notranslate"><span class="pre">True</span></code>, return <code class="docutils literal notranslate"><span class="pre">True</span></code>. The <code class="docutils literal notranslate"><span class="pre">or</span></code> operator gives <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>either</em> of the operands are <code class="docutils literal notranslate"><span class="pre">True</span></code>. Finally, the <code class="docutils literal notranslate"><span class="pre">not</span></code> operator negates the logical result.</p>
 <p>That might be as clear as mud to you. It is easier to learn this, as usual, by example.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">True</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2290,11 +2147,27 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -2304,15 +2177,14 @@ True
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-False
+True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>
@@ -2329,8 +2201,7 @@ True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">True</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="kc">False</span> <span class="ow">and</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>
@@ -2347,8 +2218,7 @@ True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="ow">not</span> <span class="kc">False</span> <span class="ow">and</span> <span class="kc">True</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span><span class="p">(</span><span class="kc">False</span> <span class="ow">and</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2365,8 +2235,7 @@ True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[86]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="ow">not</span><span class="p">(</span><span class="kc">False</span> <span class="ow">and</span> <span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="kc">False</span> <span class="ow">or</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>
@@ -2383,8 +2252,7 @@ True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="ow">not</span> <span class="kc">False</span> <span class="ow">or</span> <span class="kc">True</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="p">(</span><span class="kc">False</span> <span class="ow">or</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2394,38 +2262,19 @@ True
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-True
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="ow">not</span> <span class="p">(</span><span class="kc">False</span> <span class="ow">or</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
 False
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">7</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">or</span> <span class="mf">7.6</span> <span class="o">==</span> <span class="mf">9.1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">or</span> <span class="mf">7.6</span> <span class="o">==</span> <span class="mf">9.1</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2434,16 +2283,15 @@ True
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="mi">7</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> <span class="mf">7.6</span> <span class="o">==</span> <span class="mf">9.1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> <span class="mf">7.6</span> <span class="o">==</span> <span class="mf">9.1</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2462,10 +2310,6 @@ False
 </div>
 <p>With these new types of operators in hand, we can construct a more complete table of operator precedence.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 86%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>precedence</p></th>
 <th class="head"><p>operators</p></th>
@@ -2500,18 +2344,17 @@ False
 </table>
 </section>
 <section id="Operators-we-left-out">
-<h2>Operators we left out<a class="headerlink" href="#Operators-we-left-out" title="Permalink to this headline"></a></h2>
+<h2>Operators we left out<a class="headerlink" href="#Operators-we-left-out" title="Permalink to this heading"></a></h2>
 <p>We have left out a few operators in Python. Two that we left out are the <strong>membership operators</strong>, <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code>, which we will visit in a forthcoming lesson. The others we left out are <strong>bitwise operators</strong> and operators on <strong>sets</strong>, which we will not be directly covering.</p>
 </section>
 <section id="Type-conversion">
-<h2>Type conversion<a class="headerlink" href="#Type-conversion" title="Permalink to this headline"></a></h2>
+<h2>Type conversion<a class="headerlink" href="#Type-conversion" title="Permalink to this heading"></a></h2>
 <p>Suppose you have a variable of one type, and you want to convert it to another. For example, say you have a string, <code class="docutils literal notranslate"><span class="pre">'42'</span></code>, and you want to convert it to an integer. This would happen if you were reading information from a text file, which by definition is full of strings, and you wanted to convert some string to a number. This is done as follows.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">my_str</span> <span class="o">=</span> <span class="s1">&#39;42&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_str</span> <span class="o">=</span> <span class="s1">&#39;42&#39;</span>
 <span class="n">my_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">my_str</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">my_int</span><span class="p">))</span>
 </pre></div>
@@ -2527,16 +2370,15 @@ False
 </div>
 <p>Conversely, we can convert an <code class="docutils literal notranslate"><span class="pre">int</span></code> back to a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">str</span><span class="p">(</span><span class="n">my_int</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">my_int</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2546,16 +2388,15 @@ False
 </div>
 <p>When converting a <code class="docutils literal notranslate"><span class="pre">float</span></code> to an <code class="docutils literal notranslate"><span class="pre">int</span></code>, the interpreter does not round the result, but gives the floor.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[93]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">int</span><span class="p">(</span><span class="mf">2.9</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mf">2.9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[93]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2565,11 +2406,10 @@ False
 </div>
 <p>Also consider our string concatenation warning/example from above:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[93]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;4&#39;</span> <span class="o">+</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;4&#39;</span> <span class="o">+</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2585,13 +2425,12 @@ False
 </div>
 </section>
 <section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this headline"></a></h2>
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[95]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
 <span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab
 </pre></div>
 </div>
@@ -2602,10 +2441,10 @@ False
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.8.11
-IPython version      : 7.26.0
+Python version       : 3.9.12
+IPython version      : 8.4.0
 
-jupyterlab: 3.1.7
+jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
@@ -2616,7 +2455,7 @@ jupyterlab: 3.1.7
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="where_we_will_go.html" class="btn btn-neutral float-left" title="Where we will soon be" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="notes_on_python_review.html" class="btn btn-neutral float-left" title="Notes on our basic Python programming review" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="conditionals.html" class="btn btn-neutral float-right" title="Conditionals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -2624,13 +2463,13 @@ jupyterlab: 3.1.7
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Dec 02, 2021.
+      <span class="lastupdated">Last updated on Sep 23, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7feacda32dc0> 
+   <jinja2.runtime.BlockReference object at 0x7fb727273f70> 
 
-<p>© 2021 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

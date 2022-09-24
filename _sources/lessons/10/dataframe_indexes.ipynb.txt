@@ -269,8 +269,8 @@
      "traceback": [
       "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
       "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m/var/folders/j_/c5r9ch0913v3h1w4bdwzm0lh0000gn/T/ipykernel_8695/2521182721.py\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mindex\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m7\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'index 7'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-      "\u001b[0;32m~/opt/anaconda3/lib/python3.8/site-packages/pandas/core/indexes/base.py\u001b[0m in \u001b[0;36m__setitem__\u001b[0;34m(self, key, value)\u001b[0m\n\u001b[1;32m   4583\u001b[0m     \u001b[0;34m@\u001b[0m\u001b[0mfinal\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   4584\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m__setitem__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mkey\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mvalue\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 4585\u001b[0;31m         \u001b[0;32mraise\u001b[0m \u001b[0mTypeError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Index does not support mutable operations\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   4586\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   4587\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m__getitem__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mkey\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "Input \u001b[0;32mIn [4]\u001b[0m, in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0m df\u001b[38;5;241m.\u001b[39mindex[\u001b[38;5;241m7\u001b[39m] \u001b[38;5;241m=\u001b[39m \u001b[38;5;124m'\u001b[39m\u001b[38;5;124mindex 7\u001b[39m\u001b[38;5;124m'\u001b[39m\n",
+      "File \u001b[0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:5021\u001b[0m, in \u001b[0;36mIndex.__setitem__\u001b[0;34m(self, key, value)\u001b[0m\n\u001b[1;32m   5019\u001b[0m \u001b[38;5;129m@final\u001b[39m\n\u001b[1;32m   5020\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21m__setitem__\u001b[39m(\u001b[38;5;28mself\u001b[39m, key, value):\n\u001b[0;32m-> 5021\u001b[0m     \u001b[38;5;28;01mraise\u001b[39;00m \u001b[38;5;167;01mTypeError\u001b[39;00m(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mIndex does not support mutable operations\u001b[39m\u001b[38;5;124m\"\u001b[39m)\n",
       "\u001b[0;31mTypeError\u001b[0m: Index does not support mutable operations"
      ]
     }
@@ -737,7 +737,7 @@
    "source": [
     "Note that when we index this way, we get a series where the columns of the data frame now comprise the index of the series.\n",
     "\n",
-    "If we wish to make the index into a column (or columns in the case of Multiindexes, which we will discuss next) of the data frame, we can use the `reset_index()` method."
+    "If we wish to make the index into a column (or columns in the case of multiindexes, which we will discuss next) of the data frame, we can use the `reset_index()` method."
    ]
   },
   {
@@ -1396,8 +1396,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "96.4 µs ± 1.8 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n",
-      "242 µs ± 4.36 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)\n"
+      "102 µs ± 570 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)\n",
+      "235 µs ± 8.28 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)\n"
      ]
     }
    ],
@@ -2405,7 +2405,7 @@
    "source": [
     "## Column names are also indexes\n",
     "\n",
-    "The concepts we have laid out for indexes applied to rows also apply to columns. The current state of our data frame has multiindexed rows with single index column names. The column names represent the various aspects of the test (such as percent correct and sleep quality scores) and the row multiindex are gender and participant number. By doing a transpose operation, we can swap the column and rows, giving a data frame where each _column_ represents a single experiment, indexed by gender and participant number. (Note that this is not a tidy data frame, since for tidy data each _row_ represented a single observation/experiment and each column represents an aspect of the observation. We are looking at an untidy data frame here for illustrative purposes about indexes.)"
+    "The concepts we have laid out for indexes applied to rows also apply to columns. The current state of our data frame has multiindexed rows with single index column names. The column names represent the various aspects of the test (such as percent correct and sleep quality scores) and the row multiindex are gender and participant number. By doing a transpose operation, we can swap the column and rows, giving a data frame where each _column_ represents a single experiment, indexed by gender and participant number. (Note that this is not a tidy data frame, since for tidy data each _row_ represents a single observation/experiment and each column represents an aspect of the observation. We are looking at an untidy data frame here for illustrative purposes about indexes.)"
    ]
   },
   {
@@ -2908,7 +2908,7 @@
    "source": [
     "## When to use direct vs Boolean indexing\n",
     "\n",
-    "I generally only use direct indexing when I need the speed. As we will see, it is sometimes useful to set up multiindexes when wrangling en route to a tidy data frame that can be indexed with Boolean indexing. But aside from those two uses, I generally advocate using simple data frames with a range index for the rows (which is ignored) and a standard (not multi-) index for column names. Importantly, most high-level plotting libraries, including HoloViews, do not recognize indexes as data, and therefore the indexes cannot be conveniently used in making plots.\n",
+    "I generally only use direct indexing when I need the speed. As we will see, it is sometimes useful to set up multiindexes when wrangling en route to a tidy data frame that can be indexed with Boolean indexing. But aside from those two uses, I generally advocate using simple data frames with a range index for the rows (which is ignored) and a standard (not multi-) index for column names. Importantly, many high-level plotting libraries do not recognize indexes as data, and therefore the indexes cannot be conveniently used in making plots.\n",
     "\n",
     "Nonetheless, it is important to know how indexes work, since you will often encounter them while wrangling and reading documentation."
    ]
@@ -2930,11 +2930,11 @@
      "output_type": "stream",
      "text": [
       "Python implementation: CPython\n",
-      "Python version       : 3.8.11\n",
-      "IPython version      : 7.26.0\n",
+      "Python version       : 3.9.13\n",
+      "IPython version      : 8.4.0\n",
       "\n",
-      "pandas    : 1.3.2\n",
-      "jupyterlab: 3.1.7\n",
+      "pandas    : 1.4.3\n",
+      "jupyterlab: 3.4.4\n",
       "\n"
      ]
     }
@@ -2961,7 +2961,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.11"
+   "version": "3.9.13"
   }
  },
  "nbformat": 4,

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 3.3: Wnt signaling and SMPD3 in the cranial neural crest (not assigned) &mdash; BE/Bi 103 a  documentation</title>
+  <title>Homework 3.2: Screening enzyme activity with a colorimetric assay (not assigned) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -83,7 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Configuring your team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">3. Wrangling and EDA III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">3. Wrangling, EDA III, and Normal approximations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -120,7 +120,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Homework 3.3: Wnt signaling and SMPD3 in the cranial neural crest (not assigned)</li>
+      <li>Homework 3.2: Screening enzyme activity with a colorimetric assay (not assigned)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -161,61 +161,42 @@
     text-align: unset;
 }
 </style>
-<section id="Homework-3.3:-Wnt-signaling-and-SMPD3-in-the-cranial-neural-crest-(not-assigned)">
-<h1>Homework 3.3: Wnt signaling and SMPD3 in the cranial neural crest (not assigned)<a class="headerlink" href="#Homework-3.3:-Wnt-signaling-and-SMPD3-in-the-cranial-neural-crest-(not-assigned)" title="Permalink to this heading"></a></h1>
-<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/SMPD3_knockout.zip">Dataset download</a></p>
-<p><em>This homework was written in collaboration with</em><a class="reference external" href="https://piacentinolab.com">Mike Piacentino</a><em>and Cece Andrews.</em></p>
-<hr /><p>The <a class="reference external" href="http://www.bronnerlab.com">Bronner lab</a> has found that SMPD3 is enriched in cranial neural crest cells in early development (≈36 hours post-fertilization) of chick embryos (as published <a class="reference external" href="https://dx.doi.org/10.1101%2Fgr.161182.113">here</a>). In subsequent experiments, published in <a class="reference external" href="https://doi.org/10.1101/2020.10.18.344523">this preprint</a>, Mike Piacentino and Cece Andrews investigated the role the enzyme nSMase2 (the gene product of SMPD3) may play in Wnt signaling during neural crest
-cell development in the chick embryo. To address this, Mike performed CRISPR-mediated knockouts of SMPD3 on the right side of developing chick embryos, with a non-binding guide RNA on the left side as a control.</p>
-<p>In the experiment, Mike co-electroporated the cells of the cranial neural crest with three molecular species.</p>
-<ul class="simple">
-<li><p>Guide RNA: Either a guide RNA allowing for CRISPR knockout of SMPD3 or a control non-binding guide RNA.</p></li>
-<li><p>pCIG: A vector containing a nuclear localization sequence GFP (nls-GFP), which is used to determine electroporation efficiency.</p></li>
-<li><p>TCF/Lef::H2B-RFP: A fluorophore whose expression is turned on by Wnt signaling. The fluorescent intensity of this fluorophore is used as a direct readout of Wnt signaling strength.</p></li>
-</ul>
-<p>He then fixed the cells and use antibody staining for Laminin (maker of the basal lamina) and Pax7 (a neural crest marker).</p>
-<p>The images below show a typical output of the microscopy experiment. The top image depicts the cells being analyzed. Those showing strong Pax7 signal (green) are cranial neural crest cells and the white Laminin signal shows the basal lamina, essentially serving to provide an outline of the cells. The right side of the image was electroporated with the guide RNA for SMPD3 knockout, and the left side was electroporated with the control non-binding guide RNA. The middle image shows the efficacy of
-the electroporation; brighter signal means better more effective electroporation. The bottom image shows a readout of Wnt signaling strength, with brighter signal corresponding to stronger Wnt signaling. (Scale bar 100 µm.)</p>
-<div style="width: 650px; margin: auto;"><img alt="Piacentino image" src="../../_images/SMPD3_crispr.png" />
-</div><p>To analyze the images, Mike used <a class="reference external" href="https://imagej.net/Welcome">ImageJ</a> to hand-draw a closed curve around a given region of interest (ROI). For example, when analyzing the control cells, he drew a closed curve around the collection of cells with strong Pax7 signal on the left half of the image. He also drew ROIs around regions of the image away from the embryo to establish the background fluorescence in the respective channels. He then ran a script based on these drawn ROIs, also with ImageJ,
-to sum up the relevant pixel values within the ROIs. For each image stack (three images, one from each channel (Pax7, nls-GFP, and TCF/Lef::H2B-RFP)) ImageJ saves a CSV file with the results.</p>
-<p>Your job in this problem is to parse multiple CSV files from a collection of images into a single data frame, and then use that data frame to make an instructive graphic of the results. The CSV files can be downloaded <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/SMPD3_knockout.zip">here</a> as a ZIP file.</p>
-<p>The file naming convention of the CSV files encodes metadata for each experiment, separated by underscores. The convention is best seen by considering one of the files as an example. For the file <code class="docutils literal notranslate"><span class="pre">20180616_SMPD3crispr_Pax7,Laminin,TCFLefRFP,pCIG_Emb1_9ss_20x_sec1.csv</span></code>, the respective fields have the following meaning.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">20190616</span></code>: The date of the experiment</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SMPD3crispr</span></code>: Treatment</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Pax7,Laminin,TCFLefRFP,pCIG</span></code>: The species that represented in the fluorescent channels of the images.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Emb1</span></code>: Embryo number</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">9ss</span></code>: The somite stage (this is an agreed-upon scale for quantifying the age of the embryo).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">20x</span></code>: The magnification</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sec1</span></code>: Section number</p></li>
-</ul>
-<p>Each row of the CSV corresponds to a single region of interest (ROI) of the image. Each CSV file has the following columns.</p>
-<ul class="simple">
-<li><p>The index (unnamed in the header row). (Some CSV files explicitly have a column for the index, and this is an example of such a file.)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Label</span></code>. This is an annotation of which ROI was used for the values in the row.</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">TCFLef:Cntl</span></code>: TCF/Lef::H2B-RFP channel on the control (left) side of the cranial neural crest.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TCFLef:Expt</span></code>: TCF/Lef::H2B-RFP channel on the knockout (right) side of the cranial neural crest.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TCFLef:background</span></code>: TCF/Lef::H2B-RFP channel with an ROI from a portion of the image that is outside of the embryo.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pCIG:Cntl</span></code>: nls-GFP channel on the control (left) side of the cranial neural crest.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pCIG:Expt</span></code>: nls-GFP channel on the knockout (right) side of the cranial neural crest.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pCIG:background</span></code>: nls-GFP channel with an ROI from a portion of the image that is outside of the embryo.</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Area</span></code>. The area of the ROI in units of square pixels.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Mean</span></code>. The mean intensity for each pixel within the ROI.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">IntDen</span></code>. The product of the <code class="docutils literal notranslate"><span class="pre">Area</span></code> and <code class="docutils literal notranslate"><span class="pre">Mean</span></code> columns.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RawIntDen</span></code>. The sum of the values of all pixels in the ROI prior to image preprocessing (this may be ignored).</p></li>
-</ul>
-<p><strong>a)</strong> For each treatment (control or knockout) in each image, do the following.</p>
-<ol class="arabic simple">
-<li><p>Compute the mean intensity of the background pixels.</p></li>
-<li><p>Subtract this mean background intensity from both the control and experiment mean pixel intensity.</p></li>
-<li><p>Compute the ratio of the background-subtracted mean intensity. That is, compute <span class="math notranslate nohighlight">\((I_\mathrm{TCFLef} - I_\mathrm{TCFLef}^\mathrm{background})/(I_\mathrm{pCIG} - I^\mathrm{background}_\mathrm{pCIG})\)</span>, where <span class="math notranslate nohighlight">\(I\)</span> stands for intensity.</p></li>
-</ol>
-<p>Thus, for each image, you get two of these ratios, one for the control (left side) and one for the knockout (right side). (The reason we compute a ratio is because we are scaling the signal by the electroporation efficiency.) Put these processed results in their own data frame.</p>
-<p><strong>b)</strong> Make an informative plot showing the results you computed in part (a).</p>
+<section id="Homework-3.2:-Screening-enzyme-activity-with-a-colorimetric-assay-(not-assigned)">
+<h1>Homework 3.2: Screening enzyme activity with a colorimetric assay (not assigned)<a class="headerlink" href="#Homework-3.2:-Screening-enzyme-activity-with-a-colorimetric-assay-(not-assigned)" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/TrpB_parent_start.xlsx">Dataset 1 download</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/TrpB_parent_end.xlsx">Dataset 2 download</a></p>
+<p><em>This problem was primarily written by</em><a class="reference external" href="https://orcid.org/0000-0003-0977-841X">Patrick Almhjell</a><em>, who also acquired the data set.</em></p>
+<hr><section id="Directed-evolution">
+<h2>Directed evolution<a class="headerlink" href="#Directed-evolution" title="Permalink to this heading"></a></h2>
+<p>Directed evolution is an iterative approach to protein engineering that relies on the ability to develop a method for quantifying and comparing protein activity. This means that your starting protein (the “parent”) must have some starting activity, and it must be detectable and reproducible during screening. The process looks this this:</p>
+<div style="width: 600px; margin: auto;"><img alt="directed evolution schematic" src="../../_images/DE.png" />
+</div><p>Ideally the screening method is high throughput, allowing the user to analyze on the order of 1000 protein variants per day (or more). When there is a detectable absorbance or fluorescence change due to protein activity over time, this allows for the use of a plate reader (such as the <a class="reference external" href="https://lifesciences.tecan.com/plate_readers/infinite_200_pro">Tecan Infinite 200</a>) to collect data from a 96-well plate in ≈1 minute. If the absorbance or fluorescence value can be assumed to be proportional
+to enzyme activity, then one can screen the activity of ≈100 enzyme variants per minute (with some down-time when exchanging plates).</p>
+</section>
+<section id="Processing-pipelines-from-the-plate-reader">
+<h2>Processing pipelines from the plate reader<a class="headerlink" href="#Processing-pipelines-from-the-plate-reader" title="Permalink to this heading"></a></h2>
+<p>Unfortunately, the Tecan returns human-readable MS Excel files, which stymie automated processing. As such, data wrangling and visualization pipelines are necessary to streamline the analysis and make use of the instrument more efficiently. Developing code to do these processing pipelines are beneficial you and anyone else in the lab who uses the instrument. (This is true for all shared lab instrumentation.)</p>
+</section>
+<section id="Your-plate-reader-data-set">
+<h2>Your plate reader data set<a class="headerlink" href="#Your-plate-reader-data-set" title="Permalink to this heading"></a></h2>
+<p>The data you will be working with comes from screening variants of the beta-subunit Tryptophan Synthase (TrpB) for activity on a non-natural substrate. TrpB plays an important role in biological systems, catalyzing the final step of tryptophan synthesis for the cell. It does so by combining indole—the sidechain of tryptophan—and the natural amino acid serine in a single step, releasing water as the only byproduct and forming a new carbon–carbon bond. Indole is strongly absorbing in the near-UV
+region, but undergoes a very slight red-shift in absorbance when it is converted to tryptophan:</p>
+<div style="width: 300px; margin: auto;"><img alt="Indole redshift" src="../../_images/redshift.png" />
+</div><p>This red-shift occurs for the conversion of all indole analogues to the corresponding tryptophan analogue, allowing the same type of colorimetric screening method to be used to evolve non-natural activity; we just look for an increase in absorbance over time.</p>
+<p>You can download the data sets here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/TrpB_parent_start.xlsx">start</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/TrpB_parent_end.xlsx">end</a>.</p>
+</section>
+<section id="Your-tasks">
+<h2>Your tasks<a class="headerlink" href="#Your-tasks" title="Permalink to this heading"></a></h2>
+<p>We will be looking at some screening development data for the indole analogue 4-bromoindole, using the wavelength 300 nm. In this step, we fill a 96-well plate with 92 copies of our parent TrpB enzyme, along with four controls. Your goal is to ensure that this colormetric screen works, and we see an increase in absorbance from <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">end</span></code> that is similar across all parents.</p>
+<p>Control wells are specified as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">controls</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sterile&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;E12&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Negative&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;F12&#39;</span><span class="p">,</span> <span class="s1">&#39;G12&#39;</span><span class="p">,</span> <span class="s1">&#39;H12&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>a)</strong> Create a function that can wrangle and tidy the Tecan data. Your final function should return a tidy DataFrame with the plate-reader data, metadata, and the provided control information. Important metadata might include the date, the mode of data collection, wavelength, the bandwidth, the number of flashes, etc.</p>
+<p><strong>b)</strong> Once you are able to get the data in tidy format, explore ways of visualizing it. A format similar to what is shown above (a 96-well plate) is an obvious choice, but you may choose to make additional plots. <em>Hint</em>: If you want to have a categorical axis in Bokeh, you can create one, e.g., by using the <code class="docutils literal notranslate"><span class="pre">y_range</span> <span class="pre">=</span> <span class="pre">list('ABCDEFGH[::-1]')</span></code> kwarg when making a figure using <code class="docutils literal notranslate"><span class="pre">bokeh.plotting.figure()</span></code>.</p>
+</section>
 </section>
 
 
@@ -231,7 +212,7 @@ to sum up the relevant pixel values within the ROIs. For each image stack (three
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fa1d3712d60> 
+   <jinja2.runtime.BlockReference object at 0x7fac5c7e40a0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

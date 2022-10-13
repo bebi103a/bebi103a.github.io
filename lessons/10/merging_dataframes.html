@@ -110,6 +110,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Intro to image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -774,7 +775,7 @@ if (force === true) {
 <h3>The data files<a class="headerlink" href="#The-data-files" title="Permalink to this heading"></a></h3>
 <p>I pulled data files from the <a class="reference external" href="https://dx.doi.org/10.1038%2Fsrep05225">Kleinteich and Gorb paper</a>. You can download the data files here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip">https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip</a>.</p>
 <p>There are four files, one for each of the four frogs, labeled with IDs I, II, III, and IV, that were studied. To see the format of the files, we can look at the content of the file for frog I. You can use</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>head -n 20 ../data/frog_tongue_adhesion.csv
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>head -n 20 ../data/frog_strikes_I.csv
 </pre></div>
 </div>
 <p>from the command line. Here is the content of the first data file.</p>
@@ -1918,7 +1919,7 @@ array([[63. , 63.1],
        [31. , 12.7]])
 </pre></div></div>
 </div>
-<p>To make this into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we again create <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> instance, but this time we also specify the <code class="docutils literal notranslate"><span class="pre">column</span></code> keyword argument.</p>
+<p>To make this into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we again create <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> instance, but this time we also specify the <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword argument.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
@@ -2022,7 +2023,6 @@ array([[63. , 63.1],
         <span class="c1"># Body weight, assume units given as g</span>
         <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
         <span class="n">body_weight</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">line</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
 
         <span class="c1"># Species (either cranwelli or cross)</span>
         <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
@@ -2635,11 +2635,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2022.
+      <span class="lastupdated">Last updated on Oct 13, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7facd41ce580> 
+   <jinja2.runtime.BlockReference object at 0x7f9b65405e20> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

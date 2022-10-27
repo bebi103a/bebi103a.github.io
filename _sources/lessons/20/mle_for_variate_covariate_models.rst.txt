@@ -155,7 +155,7 @@ To show this, since :math:`y(x;\theta)` is linear in :math:`\theta`, we can writ
 .. math::
 
 	\begin{align}
-	\text{RSS} = \sum_i (y_i - \theta^\mathsf{T} \mathbf{z})^2,
+	\text{RSS} = \sum_i (y_i - \theta^\mathsf{T} \mathbf{z}_i)^2,
 	\end{align}
 
 where we have omitted the :math:`\cdot` symbol, and will continue to do so for notational concision. We can write this in a more convenient form by defining :math:`\mathbf{y} = (y_1, y_2, \ldots y_n)^\mathsf{T}`. Further, for each :math:`x_i`, there is a `z_i`. We define the matrix
@@ -197,7 +197,7 @@ Setting this equal to zero and solving for :math:`\theta^*` (the value of :math:
 	\theta^* = (\mathsf{Z}^\mathsf{T} \mathsf{Z})^{-1}\mathsf{Z}^\mathsf{T}\mathbf{y}.
 	\end{align}
 
-Provided the matrix :math:`\mathsf{Z}\mathsf{Z}^\mathsf{T}` is nonsingular, this linear system has a unique solution.
+Provided the matrix :math:`\mathsf{Z}^\mathsf{T}\mathsf{Z}` is nonsingular, this linear system has a unique solution.
 
 This is referred to as **ordinary least squares**, or OLS, and is a subject in many introductory linear algebra courses. Though :math:`\theta^*` may be computed using matrix operations according to the above formula, in practice it is often simply calculated using the Levenberg-Marquardt algorithm, which is typically more numerically stable. Because of what we have just shown, whatever local minimum the algorithm finds is, in fact, a global minimum and therefore the unique MLE for :math:`\theta`.
 

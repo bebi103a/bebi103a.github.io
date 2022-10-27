@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Intro to image processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -282,7 +283,7 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 <p>To show this, since <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in <span class="math notranslate nohighlight">\(\theta\)</span>, we can write it in the form <span class="math notranslate nohighlight">\(y(x;\theta) = \theta^\mathsf{T} \cdot \mathbf{z}\)</span>. <a class="footnote-reference brackets" href="#f2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For example, if <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is a second order polynomial, <span class="math notranslate nohighlight">\(y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2\)</span>, then <span class="math notranslate nohighlight">\(\mathsf{z} = (1, x, x^2)^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}\)</span>. Residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(y_i - \theta^\mathsf{T}\cdot \mathbf{z}\)</span>, and the residual sum of squares is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-\text{RSS} = \sum_i (y_i - \theta^\mathsf{T} \mathbf{z})^2,
+\text{RSS} = \sum_i (y_i - \theta^\mathsf{T} \mathbf{z}_i)^2,
 \end{align}\]</div>
 <p>where we have omitted the <span class="math notranslate nohighlight">\(\cdot\)</span> symbol, and will continue to do so for notational concision. We can write this in a more convenient form by defining <span class="math notranslate nohighlight">\(\mathbf{y} = (y_1, y_2, \ldots y_n)^\mathsf{T}\)</span>. Further, for each <span class="math notranslate nohighlight">\(x_i\)</span>, there is a <cite>z_i</cite>. We define the matrix</p>
 <div class="math notranslate nohighlight">
@@ -311,7 +312,7 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 \[\begin{align}
 \theta^* = (\mathsf{Z}^\mathsf{T} \mathsf{Z})^{-1}\mathsf{Z}^\mathsf{T}\mathbf{y}.
 \end{align}\]</div>
-<p>Provided the matrix <span class="math notranslate nohighlight">\(\mathsf{Z}\mathsf{Z}^\mathsf{T}\)</span> is nonsingular, this linear system has a unique solution.</p>
+<p>Provided the matrix <span class="math notranslate nohighlight">\(\mathsf{Z}^\mathsf{T}\mathsf{Z}\)</span> is nonsingular, this linear system has a unique solution.</p>
 <p>This is referred to as <strong>ordinary least squares</strong>, or OLS, and is a subject in many introductory linear algebra courses. Though <span class="math notranslate nohighlight">\(\theta^*\)</span> may be computed using matrix operations according to the above formula, in practice it is often simply calculated using the Levenberg-Marquardt algorithm, which is typically more numerically stable. Because of what we have just shown, whatever local minimum the algorithm finds is, in fact, a global minimum and therefore the unique MLE for <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p>Note that this is not generally true! There may be local minima of the RSS as a function of <span class="math notranslate nohighlight">\(\theta\)</span> (and therefore local minima of the log likelihood) is <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is nonlinear in the parameters <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <aside class="footnote brackets" id="f1" role="note">
@@ -337,11 +338,11 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 24, 2022.
+      <span class="lastupdated">Last updated on Oct 27, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7f8304c27310> 
+   <jinja2.runtime.BlockReference object at 0x7fa97020e520> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

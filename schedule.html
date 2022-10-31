@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Meetings" href="policies.html" />
-    <link rel="prev" title="Homework 5.2: Hacker stats with Darwin’s finches (55 pts)" href="homework/05/hw5.2.html" /> 
+    <link rel="prev" title="Homework 7.2: MLE of microtubule catastrophe data (60 pts)" href="homework/07/hw7.2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -77,6 +77,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/22/reproducible_workflows.html">22. Reproducible workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/23/paper_of_the_future.html">23. The paper of the future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/24/variate_covariate_implementation.html">24. Implementation of MLE for variate-covariate models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
@@ -94,6 +96,8 @@
 <li class="toctree-l1"><a class="reference internal" href="homework/03/index.html">3. Wrangling, EDA III, and Normal approximations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="homework/06/index.html">6. Parametric and nonparametric inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="homework/07/index.html">7. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul class="current">
@@ -207,8 +211,8 @@
 <li><p><a class="reference internal" href="homework/03/index.html#wrangling-eda-iii-and-normal-approximations"><span class="std std-ref">Homework 3</span></a>: due 5 pm, October 21</p></li>
 <li><p><a class="reference internal" href="homework/04/index.html#working-with-probability-distributions"><span class="std std-ref">Homework 4</span></a>: due 5 pm, October 28</p></li>
 <li><p><a class="reference internal" href="homework/05/index.html#nonparametric-hacker-stats"><span class="std std-ref">Homework 5</span></a>: due 5 pm, November 4</p></li>
-<li><p><span class="xref std std-ref">Homework 6</span>: due 5 pm, November 11</p></li>
-<li><p><span class="xref std std-ref">Homework 7</span>: due 5 pm, November 18</p></li>
+<li><p><a class="reference internal" href="homework/06/index.html#parametric-and-nonparametric-inference"><span class="std std-ref">Homework 6</span></a>: due 5 pm, November 11</p></li>
+<li><p><a class="reference internal" href="homework/07/index.html#maximum-likelihood-estimation-i"><span class="std std-ref">Homework 7</span></a>: due 5 pm, November 18</p></li>
 <li><p><span class="xref std std-ref">Homework 8</span>: due 11:59 pm, December 2</p></li>
 <li><p><span class="xref std std-ref">Homework 9</span>: due 5 pm, December 8</p></li>
 <li><p><span class="xref std std-ref">Homework 10</span>: due 5 pm, December 9</p></li>
@@ -225,6 +229,7 @@
 <li><p><a class="reference internal" href="lesson_exercises/exercise_05.html#E5.-To-be-completed-after-lesson-17"><span class="std std-ref">Lesson exercise 5</span></a>: due noon, October 30</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_06.html#E6.-To-be-completed-after-lesson-19"><span class="std std-ref">Lesson exercise 6</span></a>: due noon, November 6</p></li>
 <li><p><a class="reference internal" href="lesson_exercises/exercise_07.html#E7.-To-be-completed-after-lesson-21"><span class="std std-ref">Lesson exercise 7</span></a>: due noon, November 13</p></li>
+<li><p><a class="reference internal" href="lesson_exercises/exercise_08.html#E8.-To-be-completed-after-lesson-24"><span class="std std-ref">Lesson exercise 8</span></a>: due noon, November 14</p></li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -322,7 +327,7 @@
 </li>
 <li><dl class="simple">
 <dt><strong>Week 9</strong></dt><dd><ul>
-<li><p>M 11/21: <span class="xref std std-ref">Lesson 24</span>: Implementation of variate-covariate models</p></li>
+<li><p>M 11/21: <a class="reference internal" href="lessons/24/variate_covariate_implementation.html#24.-Implementation-of-MLE-for-variate-covariate-models"><span class="std std-ref">Lesson 24</span></a>: Implementation of variate-covariate models</p></li>
 <li><p>W 11/23: <span class="xref std std-ref">Lesson 25</span>: Model assessment and information criteria (lecture)</p></li>
 <li><p>Th 11/24: No recitation, Thanksgiving Day</p></li>
 </ul>
@@ -346,7 +351,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="homework/05/hw5.2.html" class="btn btn-neutral float-left" title="Homework 5.2: Hacker stats with Darwin’s finches (55 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="homework/07/hw7.2.html" class="btn btn-neutral float-left" title="Homework 7.2: MLE of microtubule catastrophe data (60 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="policies.html" class="btn btn-neutral float-right" title="Meetings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -354,11 +359,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 27, 2022.
+      <span class="lastupdated">Last updated on Oct 31, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fa986a58220> 
+   <jinja2.runtime.BlockReference object at 0x7f8f1f029970> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

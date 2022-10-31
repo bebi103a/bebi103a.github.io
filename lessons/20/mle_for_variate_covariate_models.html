@@ -92,6 +92,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22/reproducible_workflows.html">22. Reproducible workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../23/paper_of_the_future.html">23. The paper of the future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/variate_covariate_implementation.html">24. Implementation of MLE for variate-covariate models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
@@ -109,6 +111,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and Normal approximations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Parametric and nonparametric inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -280,12 +284,12 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 <section id="theoretical-functions-that-are-linear-in-the-parameters">
 <h2>Theoretical functions that are linear in the parameters<a class="headerlink" href="#theoretical-functions-that-are-linear-in-the-parameters" title="Permalink to this heading"></a></h2>
 <p>Like other optimization algorithms we have seen so far, the Levenberg-Marquardt algorithm will only provide a <em>local</em> minimizer; it is not guaranteed to find a global minimum. That said, if the function <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in the parameters <span class="math notranslate nohighlight">\(\theta\)</span>, it can be shown that, under certain restrictions, the minimizer <span class="math notranslate nohighlight">\(\theta^*\)</span> of the RSS is unique, and therefore a local minimum is also a global minimum.</p>
-<p>To show this, since <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in <span class="math notranslate nohighlight">\(\theta\)</span>, we can write it in the form <span class="math notranslate nohighlight">\(y(x;\theta) = \theta^\mathsf{T} \cdot \mathbf{z}\)</span>. <a class="footnote-reference brackets" href="#f2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For example, if <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is a second order polynomial, <span class="math notranslate nohighlight">\(y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2\)</span>, then <span class="math notranslate nohighlight">\(\mathsf{z} = (1, x, x^2)^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}\)</span>. Residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(y_i - \theta^\mathsf{T}\cdot \mathbf{z}\)</span>, and the residual sum of squares is</p>
+<p>To show this, since <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in <span class="math notranslate nohighlight">\(\theta\)</span>, we can write it in the form <span class="math notranslate nohighlight">\(y(x;\theta) = \theta^\mathsf{T} \cdot \mathbf{z}\)</span>. <a class="footnote-reference brackets" href="#f2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For example, if <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is a second order polynomial, <span class="math notranslate nohighlight">\(y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2\)</span>, then <span class="math notranslate nohighlight">\(\mathbf{z} = (1, x, x^2)^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}\)</span>. Residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(y_i - \theta^\mathsf{T}\cdot \mathbf{z}\)</span>, and the residual sum of squares is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 \text{RSS} = \sum_i (y_i - \theta^\mathsf{T} \mathbf{z}_i)^2,
 \end{align}\]</div>
-<p>where we have omitted the <span class="math notranslate nohighlight">\(\cdot\)</span> symbol, and will continue to do so for notational concision. We can write this in a more convenient form by defining <span class="math notranslate nohighlight">\(\mathbf{y} = (y_1, y_2, \ldots y_n)^\mathsf{T}\)</span>. Further, for each <span class="math notranslate nohighlight">\(x_i\)</span>, there is a <cite>z_i</cite>. We define the matrix</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{z}_i = (1, x_i, x_i^2)\)</span> for the second order polynomial example, and we have omitted the <span class="math notranslate nohighlight">\(\cdot\)</span> symbol, and will continue to do so for notational concision. We can write this in a more convenient form by defining <span class="math notranslate nohighlight">\(\mathbf{y} = (y_1, y_2, \ldots y_n)^\mathsf{T}\)</span>. Further, for each data point <span class="math notranslate nohighlight">\(i\)</span>, there is a <span class="math notranslate nohighlight">\(z_i\)</span>. We define the matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \mathsf{Z} = \begin{pmatrix}
@@ -338,11 +342,11 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 27, 2022.
+      <span class="lastupdated">Last updated on Oct 31, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fa97020e520> 
+   <jinja2.runtime.BlockReference object at 0x7f8fa56ae5b0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

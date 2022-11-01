@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 6.2: Heredity in Darwin’s finches, the parametric way (50 pts) &mdash; BE/Bi 103 a  documentation</title>
+  <title>Homework 6.2: Heredity in Darwin’s finches (50 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7. Maximum likelihood estimation I" href="../07/index.html" />
-    <link rel="prev" title="Homework 6.1: Heredity in Darwin’s finches, the nonparametric way (50 pts)" href="hw6.1.html" /> 
+    <link rel="next" title="Schedule overview" href="../../schedule.html" />
+    <link rel="prev" title="Homework 6.1: Modeling and parameter estimation for Boolean data (50 pts)" href="hw6.1.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -98,12 +98,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Wrangling, EDA III, and Normal approximations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Nonparametric hacker stats</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Parametric and nonparametric inference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hw6.1.html">Homework 6.1: Heredity in Darwin’s finches, the nonparametric way (50 pts)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 6.2: Heredity in Darwin’s finches, the parametric way (50 pts)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Maximum likelihood estimation I</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hw6.1.html">Homework 6.1: Modeling and parameter estimation for Boolean data (50 pts)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 6.2: Heredity in Darwin’s finches (50 pts)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -140,8 +139,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">6. Parametric and nonparametric inference</a> &raquo;</li>
-      <li>Homework 6.2: Heredity in Darwin’s finches, the parametric way (50 pts)</li>
+          <li><a href="index.html">6. Maximum likelihood estimation I</a> &raquo;</li>
+      <li>Homework 6.2: Heredity in Darwin’s finches (50 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -182,11 +181,22 @@
     text-align: unset;
 }
 </style>
-<section id="Homework-6.2:-Heredity-in-Darwin’s-finches,-the-parametric-way-(50-pts)">
-<h1>Homework 6.2: Heredity in Darwin’s finches, the parametric way (50 pts)<a class="headerlink" href="#Homework-6.2:-Heredity-in-Darwin’s-finches,-the-parametric-way-(50-pts)" title="Permalink to this heading"></a></h1>
+<section id="Homework-6.2:-Heredity-in-Darwin’s-finches-(50-pts)">
+<h1>Homework 6.2: Heredity in Darwin’s finches (50 pts)<a class="headerlink" href="#Homework-6.2:-Heredity-in-Darwin’s-finches-(50-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/fortis_beak_depth_heredity.csv">Fortis heredity download</a></p>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/scandens_beak_depth_heredity.csv">Scandens heredity download</a></p>
-<hr /><p>In the previous problem we looked at introgressize hybridization from a nonparametric perspective, computing plug-in estimates for the heritability, <span class="math notranslate nohighlight">\(h^2\)</span>. Now, we will take a parametric approach. We model parental and offspring beak depth as a Bivariate Normal distribution. To be clear, we define <span class="math notranslate nohighlight">\(\mathbf{y} = (b_p, b_o)^\mathsf{T}\)</span> a 2-vector containing the parental and offspring beak depths. Our model is</p>
+<hr /><p>We continue working with Peter and Rosemary Grant’s wonderful data set about Darwin’s finches.</p>
+<p>Introgressive hybridization occurs when a <em>G. scandens</em> bird mates with a <em>G. fortis</em> bird, and then the offspring mates again with pure bred <em>G. scandens</em> bird. This brings traits from <em>G. fortis</em> into the <em>G. scandens</em> genome. As this may be a mode by which beak geometries of <em>G. scandens</em> change over time, it is useful to know how <strong>heritable</strong> a trait is. Narrow-sense heritability (just “heritability” for short) is defined as the ratio of the covariance between parents and offsprings to the
+variance of the parents alone. To be clear, the heritability is defined as follows.</p>
+<ol class="arabic simple">
+<li><p>Compute the average value of a trait in a pair of parents.</p></li>
+<li><p>Compute the average value of that trait among the offspring of those parents.</p></li>
+<li><p>Do this for each set of parents/offspring. Using this data set, compute the covariance between the average offspring and average parents and the variance among all average parents.</p></li>
+<li><p>The heritability, <span class="math notranslate nohighlight">\(h^2\)</span>, is the ratio of the covariance between parents and offspring to the variance of the parents, <span class="math notranslate nohighlight">\(h^2 = \sigma_{po}/\sigma_p^2\)</span>.</p></li>
+</ol>
+<p>This is a more apt definition than, say, the bivariate correlation <span class="math notranslate nohighlight">\(\rho\)</span>, because it is a direct comparison between parents and offspring.</p>
+<p>Heritability data for beak depth for <em>G. fortis</em> and <em>G. scandens</em> can be found <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/fortis_beak_depth_heredity.csv">here</a> and <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/scandens_beak_depth_heredity.csv">here</a>, respectively. (Be sure to look at the files before reading them in; they do have different formats.)</p>
+<p>We will take a parametric approach and model parental and offspring beak depth as a Bivariate Normal distribution. To be clear, we define <span class="math notranslate nohighlight">\(\mathbf{y} = (b_p, b_o)^\mathsf{T}\)</span> a 2-vector containing the parental and offspring beak depths. Our model is</p>
 <p><span class="math">\begin{align}
 \mathbf{y}_i \sim \text{Norm}(\boldsymbol{\mu}, \mathsf{\Sigma})\;\;\;\forall i,
 \end{align}</span></p>
@@ -200,15 +210,14 @@
 <p>You can read about the Multivariate Normal distribution in the <a class="reference external" href="https://distribution-explorer.github.io/multivariate_continuous/multivariate_normal.html">Distribution Explorer</a>. Note that there are five scalar parameters in this model, <span class="math notranslate nohighlight">\(\mu_p\)</span>, <span class="math notranslate nohighlight">\(\mu_o\)</span>, <span class="math notranslate nohighlight">\(\sigma_p\)</span>, <span class="math notranslate nohighlight">\(\sigma_o\)</span>, and <span class="math notranslate nohighlight">\(\sigma_{op}\)</span>. In the context of this model, the heritability is defined as <span class="math notranslate nohighlight">\(h^2 = \sigma_{op} / \sigma_p^2\)</span>.</p>
 <p><strong>a)</strong> Obtain a parametric maximum likelihood estimate for the heritability with a parametric confidence interval. You should fully justify the choices you made in the approach you took to do this calculation.</p>
 <p><strong>b)</strong> Perform a nonparametric null hypothesis significance test of your choosing.</p>
-<p><strong>c)</strong> Are your results similar to what you got in the previous problem? Comment on why you think you see similarities and/or differences.</p>
 <hr /></section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="hw6.1.html" class="btn btn-neutral float-left" title="Homework 6.1: Heredity in Darwin’s finches, the nonparametric way (50 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../07/index.html" class="btn btn-neutral float-right" title="7. Maximum likelihood estimation I" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hw6.1.html" class="btn btn-neutral float-left" title="Homework 6.1: Modeling and parameter estimation for Boolean data (50 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../schedule.html" class="btn btn-neutral float-right" title="Schedule overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -219,7 +228,7 @@
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7f8f92fc9070> 
+   <jinja2.runtime.BlockReference object at 0x7f8b78ff4a90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

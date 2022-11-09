@@ -91,6 +91,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/mixture_models.html">26. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/index.html">27. Implementation of model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/index.html">28. Statistical watchouts</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
@@ -110,6 +115,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -1144,7 +1152,6 @@ Timing for MLE by least_squares:
 <li><p>Generate a bootstrap sample of your data set where the <span class="math notranslate nohighlight">\(j\)</span>th data point <span class="math notranslate nohighlight">\((x_j, \hat{y}_j + \epsilon_j)\)</span>.</p></li>
 <li><p>Recompute the MLE for <span class="math notranslate nohighlight">\(\theta\)</span> from this bootstrap sample.</p></li>
 </ol>
-<p>If you wish, you can also obtain bootstrap replicates of <span class="math notranslate nohighlight">\(\sigma^*\)</span>.</p>
 <p><strong>Wild bootstrap</strong>: In wild bootstrap, the residuals are resampled parametrically. If residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(\epsilon_i = y_i - \hat{y}_i\)</span>, then a new residual applied to data point <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(\epsilon_i\,v_i\)</span>, where <span class="math notranslate nohighlight">\(v_i\)</span> is drawn from a Normal distribution with mean zero and variance one. Thus, data point <span class="math notranslate nohighlight">\(i\)</span> in the bootstrap sample is <span class="math notranslate nohighlight">\((x_i, \hat{y}_i + \epsilon_i\,v_i)\)</span>. The MLE for <span class="math notranslate nohighlight">\(\theta\)</span> is then computed from this bootstrap sample.</p>
 <section id="Why-I-do-not-advocate-for-using-these-other-methods">
 <h3>Why I do not advocate for using these other methods<a class="headerlink" href="#Why-I-do-not-advocate-for-using-these-other-methods" title="Permalink to this heading"></a></h3>
@@ -1199,11 +1206,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 02, 2022.
+      <span class="lastupdated">Last updated on Nov 08, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fc8fe9dcf10> 
+   <jinja2.runtime.BlockReference object at 0x7f8091c28280> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

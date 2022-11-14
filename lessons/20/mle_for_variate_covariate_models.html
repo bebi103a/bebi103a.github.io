@@ -222,7 +222,7 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma_i).
 \[\begin{align}
 L(\theta, \{\sigma_i\}; \{x_i\}, \{y_i\}) = \prod_i \frac{1}{\sqrt{2\pi\sigma_i^2}}\,\exp\left[-\frac{(y_i - y(x_i;\theta))^2}{2\sigma_i^2}\right],
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\{\sigma_i\}\)</span>, <span class="math notranslate nohighlight">\(\{x_i\}\)</span>, and <span class="math notranslate nohighlight">\(\{y_i\}\)</span> represent the sets of :math:<cite>sigma</cite>, <span class="math notranslate nohighlight">\(x\)</span> and :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>y: values, respectively. The log-likelihood is then</p>
+<p>where <span class="math notranslate nohighlight">\(\{\sigma_i\}\)</span>, <span class="math notranslate nohighlight">\(\{x_i\}\)</span>, and <span class="math notranslate nohighlight">\(\{y_i\}\)</span> represent the sets of :math:<cite>sigma</cite>, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>: values, respectively. The log-likelihood is then</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 \ell(\theta, \{\sigma_i\}; \{x_i\}, \{y_i\}) = -\frac{n}{2}\,\ln 2\pi - \sum_i \ln \sigma_i - \frac{1}{2}\sum_i \left(\frac{y_i - y(x_i;\theta)}{\sigma_i}\right)^2.
@@ -247,7 +247,7 @@ L(\theta, \{\sigma_i\}; \{x_i\}, \{y_i\}) = \prod_i \frac{1}{\sqrt{2\pi\sigma_i^
 \[\begin{align}
 \arg \min_z \sum_i \left(f_i(z)\right)^2,
 \end{align}\]</div>
-<p>with each <span class="math notranslate nohighlight">\(f_i\)</span> being scalar-valued and <span class="math notranslate nohighlight">\(z\)</span> being scalar or vector-valued. <a class="footnote-reference brackets" href="#f1" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> The maximum likelihood estimation problem is of this form, with <span class="math notranslate nohighlight">\(z = \theta\)</span> and</p>
+<p>with each <span class="math notranslate nohighlight">\(f_i\)</span> being scalar-valued and <span class="math notranslate nohighlight">\(z\)</span> being scalar or vector-valued. <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> The maximum likelihood estimation problem is of this form, with <span class="math notranslate nohighlight">\(z = \theta\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 f_i(\theta) = \left(\frac{y_i - y(x_i;\theta)}{\sigma_i}\right)^2.
@@ -293,10 +293,10 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 <section id="theoretical-functions-that-are-linear-in-the-parameters">
 <h2>Theoretical functions that are linear in the parameters<a class="headerlink" href="#theoretical-functions-that-are-linear-in-the-parameters" title="Permalink to this heading"></a></h2>
 <p>Like other optimization algorithms we have seen so far, the Levenberg-Marquardt algorithm will only provide a <em>local</em> minimizer; it is not guaranteed to find a global minimum. That said, if the function <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in the parameters <span class="math notranslate nohighlight">\(\theta\)</span>, it can be shown that, under certain restrictions, the minimizer <span class="math notranslate nohighlight">\(\theta^*\)</span> of the RSS is unique, and therefore a local minimum is also a global minimum.</p>
-<p>To show this, since <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in <span class="math notranslate nohighlight">\(\theta\)</span>, we can write it in the form <span class="math notranslate nohighlight">\(y(x;\theta) = \theta^\mathsf{T} \cdot \mathbf{z}\)</span>. <a class="footnote-reference brackets" href="#f2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For example, if <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is a second order polynomial, <span class="math notranslate nohighlight">\(y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2\)</span>, then <span class="math notranslate nohighlight">\(\mathbf{z} = (1, x, x^2)^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}\)</span>. Residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(y_i - \theta^\mathsf{T}\cdot \mathbf{z}\)</span>, and the residual sum of squares is</p>
+<p>To show this, since <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in <span class="math notranslate nohighlight">\(\theta\)</span>, we can write it in the form <span class="math notranslate nohighlight">\(y(x;\theta) = \mathbf{z} \cdot \theta\)</span>. <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For example, if <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is a second order polynomial, <span class="math notranslate nohighlight">\(y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2\)</span>, then <span class="math notranslate nohighlight">\(\mathbf{z} = (1, x, x^2)\)</span> and <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}\)</span>. Residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(y_i - \mathbf{z}_i \cdot \theta\)</span>, and the residual sum of squares is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-\text{RSS} = \sum_i (y_i - \theta^\mathsf{T} \mathbf{z}_i)^2,
+\text{RSS} = \sum_i (y_i - \mathbf{z}_i \theta)^2,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{z}_i = (1, x_i, x_i^2)\)</span> for the second order polynomial example, and we have omitted the <span class="math notranslate nohighlight">\(\cdot\)</span> symbol, and will continue to do so for notational concision. We can write this in a more convenient form by defining <span class="math notranslate nohighlight">\(\mathbf{y} = (y_1, y_2, \ldots y_n)^\mathsf{T}\)</span>. Further, for each data point <span class="math notranslate nohighlight">\(i\)</span>, there is a <span class="math notranslate nohighlight">\(z_i\)</span>. We define the matrix</p>
 <div class="math notranslate nohighlight">
@@ -329,11 +329,11 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 <p>This is referred to as <strong>ordinary least squares</strong>, or OLS, and is a subject in many introductory linear algebra courses. Though <span class="math notranslate nohighlight">\(\theta^*\)</span> may be computed using matrix operations according to the above formula, in practice it is often simply calculated using the Levenberg-Marquardt algorithm, which is typically more numerically stable. Because of what we have just shown, whatever local minimum the algorithm finds is, in fact, a global minimum and therefore the unique MLE for <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p>Note that this is not generally true! There may be local minima of the RSS as a function of <span class="math notranslate nohighlight">\(\theta\)</span> (and therefore local minima of the log likelihood) is <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is nonlinear in the parameters <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <aside class="footnote brackets" id="f1" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Note, though, in the implementation we will use in <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares()</span></code>, <span class="math notranslate nohighlight">\(z\)</span> must be entered as an array, even for a single parameter.</p>
 </aside>
 <aside class="footnote brackets" id="f2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>In most books and other literature on the subject, the vector we have defined as <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. I find that variables named <span class="math notranslate nohighlight">\(x\)</span> abound and the symbol is overloaded, which is why I defined it as <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> and the design matrix as <span class="math notranslate nohighlight">\(\mathsf{Z}\)</span> instead of <span class="math notranslate nohighlight">\(\mathsf{X}\)</span> (though the design matrix is often also denoted by <span class="math notranslate nohighlight">\(\mathsf{A}\)</span>).</p>
 </aside>
 </section>
@@ -351,11 +351,11 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 09, 2022.
+      <span class="lastupdated">Last updated on Nov 14, 2022.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fbebad29b20> 
+   <jinja2.runtime.BlockReference object at 0x7fe1b10a2670> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

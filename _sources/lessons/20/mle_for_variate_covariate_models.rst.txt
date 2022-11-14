@@ -35,7 +35,7 @@ Actually, this is not the most general case, since in general :math:`x_i` may be
 	L(\theta, \{\sigma_i\}; \{x_i\}, \{y_i\}) = \prod_i \frac{1}{\sqrt{2\pi\sigma_i^2}}\,\exp\left[-\frac{(y_i - y(x_i;\theta))^2}{2\sigma_i^2}\right],
 	\end{align}
 
-where :math:`\{\sigma_i\}`, :math:`\{x_i\}`, and :math:`\{y_i\}` represent the sets of :\math:`\sigma`, :math:`x` and :math:`y: values, respectively. The log-likelihood is then
+where :math:`\{\sigma_i\}`, :math:`\{x_i\}`, and :math:`\{y_i\}` represent the sets of :\math:`\sigma`, :math:`x` and :math:`y`: values, respectively. The log-likelihood is then
 
 .. math::
 
@@ -150,12 +150,12 @@ Theoretical functions that are linear in the parameters
 
 Like other optimization algorithms we have seen so far, the Levenberg-Marquardt algorithm will only provide a *local* minimizer; it is not guaranteed to find a global minimum. That said, if the function :math:`y(x;\theta)` is linear in the parameters :math:`\theta`, it can be shown that, under certain restrictions, the minimizer :math:`\theta^*` of the RSS is unique, and therefore a local minimum is also a global minimum.
 
-To show this, since :math:`y(x;\theta)` is linear in :math:`\theta`, we can write it in the form :math:`y(x;\theta) = \theta^\mathsf{T} \cdot \mathbf{z}`. [#f2]_ For example, if :math:`y(x;\theta)` is a second order polynomial, :math:`y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2`, then :math:`\mathbf{z} = (1, x, x^2)^\mathsf{T}` and :math:`\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}`. Residual :math:`i` is :math:`y_i - \theta^\mathsf{T}\cdot \mathbf{z}`, and the residual sum of squares is
+To show this, since :math:`y(x;\theta)` is linear in :math:`\theta`, we can write it in the form :math:`y(x;\theta) = \mathbf{z} \cdot \theta`. [#f2]_ For example, if :math:`y(x;\theta)` is a second order polynomial, :math:`y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2`, then :math:`\mathbf{z} = (1, x, x^2)` and :math:`\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}`. Residual :math:`i` is :math:`y_i - \mathbf{z}_i \cdot \theta`, and the residual sum of squares is
 
 .. math::
 
 	\begin{align}
-	\text{RSS} = \sum_i (y_i - \theta^\mathsf{T} \mathbf{z}_i)^2,
+	\text{RSS} = \sum_i (y_i - \mathbf{z}_i \theta)^2,
 	\end{align}
 
 where :math:`\mathbf{z}_i = (1, x_i, x_i^2)` for the second order polynomial example, and we have omitted the :math:`\cdot` symbol, and will continue to do so for notational concision. We can write this in a more convenient form by defining :math:`\mathbf{y} = (y_1, y_2, \ldots y_n)^\mathsf{T}`. Further, for each data point :math:`i`, there is a :math:`z_i`. We define the matrix

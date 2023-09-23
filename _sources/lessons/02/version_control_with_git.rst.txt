@@ -9,9 +9,7 @@ made them?
 
 A **version control system** facilitates this process of keeping track
 of changes over time. Beyond that, it allows multiple people to
-collaborate and work on parts of the same project simultaneously. We
-will use version control extensively in class, both for collaboration
-among teammates, and for homework submission and grading.
+collaborate and work on parts of the same project simultaneously.
 
 There are many version control systems. The four most prominent, in
 order of age, oldest to youngest, are
@@ -39,7 +37,7 @@ repositories ("repos" for short) hosted by services such as
 `GitHub <http://github.com/>`__, `GitLab <http://gitlab.com/>`__ or
 `Bitbucket <http://bitbucket.org>`__. These services provide
 university-affiliated people with a ``.edu`` email address with perks
-that include free private repositories. We will use GitHub for this class, and you should have already set up an account.
+that include free private repositories. I use GitHub, but it is up to you and your collaborators to choose where you want to host your repositories.
 
 Remote repositories are not only a great way for keeping your data safe
 and in the cloud. They are also an excellent tool for collaboration
@@ -52,8 +50,34 @@ You can find more information about Git
 Here is an `excellent one-page (front-and-back)
 cheatsheet <https://education.github.com/git-cheat-sheet-education.pdf>`__.
 
-Let’s get started. You all should have a version of Git installed on
-your computers.
+Let’s get started. 
+
+
+Installing Git
+--------------
+
+How you install Git depends on the particulars of your system. Here is how I suggest installing Git on macOS and Windows.
+
+
+macOS
+^^^^^
+
+If you are using macOS, you should install Command Line Tools. This is a set of utilities, such as compilers and Git. You could install it along with the very bloated software XCode, but I would not recommend doing that in order to save on the ≈35 GB of disk space that XCode will consume.
+
+To install Command Line Tools, open the Terminal application. It is typically in the ``/Applications/Utilities`` folder. Otherwise, hit ``⌘-space bar`` and type ``terminal`` in the search box, and select the Terminal Application. Once you have a prompt in the Terminal application, type
+
+.. code:: bash
+
+   xcode-select -install
+
+and hit enter. You will be prompted for the installation, and you should go ahead with it. It may take several minutes for the installation to complete.
+
+
+Windows
+^^^^^^^
+
+Follow the instructions `here <https://gitforwindows.org/>`__.
+
 
 
 Configuring Git
@@ -94,9 +118,7 @@ know more about ``config``, for example, just enter:
 Cloning Repositories
 --------------------
 
-Your team’s repository is already set up and hosted on GitHub. You will
-need to clone it from its URL; you will have access to that once the
-teams are finalized. To practice cloning, we will clone one of the
+To practice cloning, we will clone one of the
 zillions of public repositories that are hosted on GitHub. We will clone
 a simple package, called ``insulter`` that will hurl Shakespearean
 insults at you. Enter the following on the command line.
@@ -121,7 +143,7 @@ Pulling in changes
 ------------------
 
 Actively developed repositories are constantly being updated. After you
-clone the repository, its authors (e.g., your teammates) may add or edit
+clone the repository, its authors (e.g., your collaborators) may add or edit
 things in the repository. For you to get those changes, you need to
 **fetch** them and then **merge** them into what you have locally.
 
@@ -167,17 +189,11 @@ can be useful. Note that ``git pull`` is actually shorthand for
 
 which is the more verbose way of saying that you want to pull the main
 **branch** from the remote repository named ``origin``. We will not
-discuss branching in this course, but it is an important concept to
+discuss branching here, but it is an important concept to
 learn about.
 
 Generally it is good practice to pull before you start working each day
 to make sure you pull in any updates your collaborators may have made.
-
-
-Default branch name
--------------------
-
-When you create a new repository in GitHub, the default branch name is `main`. This was changed from `master` beginning in late 2020. For existing repositories created before that time, the default branch is still called `master` unless it is explicitly changed to `main` (or whatever else the developers want to change it to). Renaming `master` to `main` can cause problems in maintaining repositories, and you will find the many software packages still have the default branch named `master` to avoid those difficulties. This should not be a problem with any of your work in this class; I bring it up so you are aware when you see many "main" branches called `master`.
 
 
 
@@ -187,8 +203,7 @@ Relationships among your local machine and your repository
 Let us think about how we have things set up, referring to the excellent
 image below from `Jessica Lord <http://jlord.us/>`__. For now, focus
 only on the blue portions on the right (ignore forking and the upstream
-repository). **Remotely**, in our case on GitHub, lives the repository
-that I created for your team.
+repository).
 
 .. image:: jessica_lord_git_diagram.png
   :width: 500
@@ -204,12 +219,11 @@ changes and want it to keep them under version control. You then
 **commit** your changes, which tells Git to create a snapshot of exactly
 what the repository looked like when you did the commit. Associated with
 a commit is a **commit message**, which briefly describes what you
-changed on that commit. When you **push** your commits, they go to your
-team’s repository.
+changed on that commit. When you **push** your commits, they go to your repository.
 
 So, here is how the command line would look if you wanted to work on a
 file called ``my_file.py`` in your repository. First, pull in any
-possible updates from your teammates. Actually, let me say this more
+possible updates from your collaborators. Actually, let me say this more
 forcefully.
 
 .. container:: alert alert-info
@@ -311,7 +325,7 @@ it is the main copy. (We will not really talk about branches or
 branching.)
 
 That is the basic set of operations to get your work into the repository
-and out to the remote for your teammates.
+and out to the remote for your collaborators.
 
 
 A note on commit messages
@@ -397,8 +411,7 @@ up for you. It is there to tell Git to ignore the files in the folder
 Additional information about using Git
 --------------------------------------
 
-This lecture gives a minimal introduction about Git/GitHub that you need
-for this class. In recitation, the TAs will give you more tips and traps about using
+This lecture gives a minimal introduction about Git/GitHub. We may have a recitation in which the TAs will give you more tips and traps about using
 Git. Beyond that, there is much to learn about using Git, branching in particular.
 For that and much more, there are plenty of great resources on the
 internet. GitHub has a good `series of

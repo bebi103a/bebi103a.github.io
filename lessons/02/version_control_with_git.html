@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction to Git &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -33,12 +32,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -50,15 +53,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Version control with Git</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction to Git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-git">Installing Git</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-git">Configuring Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cloning-repositories">Cloning Repositories</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pulling-in-changes">Pulling in changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#default-branch-name">Default branch name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#relationships-among-your-local-machine-and-your-repository">Relationships among your local machine and your repository</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#a-note-on-commit-messages">A note on commit messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-to-do-in-case-of-a-fire">What to do in case of a fire</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#relationships-among-your-local-machine-and-your-repository">Relationships among your local machine and your repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gitignore">.gitignore</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-information-about-using-git">Additional information about using Git</a></li>
 </ul>
@@ -102,31 +105,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28/index.html">28. Statistical watchouts</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/mle_review.html">R8. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/HPC.html">R9. Best Practices when using the Resnick High Performance Computing Center and other related topics</a></li>
-</ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and Normal approximations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -139,8 +121,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html">Meetings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lab-sessions">Lab sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#submission-of-assignments">Submission of assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lessons-and-lesson-exercises">Lessons and lesson exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../policies.html#the-be-bi-103-github-group">The BE/Bi 103 GitHub group</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#homework">Homework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#grading">Grading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
@@ -162,9 +144,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">2. Version control with Git</a> &raquo;</li>
-      <li>Introduction to Git</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">2. Version control with Git</a></li>
+      <li class="breadcrumb-item active">Introduction to Git</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -181,31 +163,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="introduction-to-git">
+  <div class="section" id="introduction-to-git">
 <h1>Introduction to Git<a class="headerlink" href="#introduction-to-git" title="Permalink to this heading"></a></h1>
 <p>Keeping track of all of the changes in your project over time is good
 practice. How many times have you edited something in something you were
@@ -214,9 +172,7 @@ place? Wouldn’t it be great to know what changes you made and when you
 made them?</p>
 <p>A <strong>version control system</strong> facilitates this process of keeping track
 of changes over time. Beyond that, it allows multiple people to
-collaborate and work on parts of the same project simultaneously. We
-will use version control extensively in class, both for collaboration
-among teammates, and for homework submission and grading.</p>
+collaborate and work on parts of the same project simultaneously.</p>
 <p>There are many version control systems. The four most prominent, in
 order of age, oldest to youngest, are
 <a class="reference external" href="https://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a>,
@@ -230,7 +186,7 @@ Torvalds</a>, the person
 who developed the Linux operating system. He named Linux after himself,
 and he decided to also name Git after himself (“git” is British slang
 for a stupid person). Try typing</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>man git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>man<span class="w"> </span>git
 </pre></div>
 </div>
 <p>on the command line and read what the <code class="docutils literal notranslate"><span class="pre">NAME</span></code> of the software is.</p>
@@ -239,7 +195,7 @@ repositories (“repos” for short) hosted by services such as
 <a class="reference external" href="http://github.com/">GitHub</a>, <a class="reference external" href="http://gitlab.com/">GitLab</a> or
 <a class="reference external" href="http://bitbucket.org">Bitbucket</a>. These services provide
 university-affiliated people with a <code class="docutils literal notranslate"><span class="pre">.edu</span></code> email address with perks
-that include free private repositories. We will use GitHub for this class, and you should have already set up an account.</p>
+that include free private repositories. I use GitHub, but it is up to you and your collaborators to choose where you want to host your repositories.</p>
 <p>Remote repositories are not only a great way for keeping your data safe
 and in the cloud. They are also an excellent tool for collaboration
 since Git allows multiple users to edit the shared files simultaneously
@@ -249,16 +205,32 @@ also serve as a vehicle to distribute code (or other files).</p>
 <a class="reference external" href="https://git-scm.com/documentation">here</a>. It is well documented.
 Here is an <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">excellent one-page (front-and-back)
 cheatsheet</a>.</p>
-<p>Let’s get started. You all should have a version of Git installed on
-your computers.</p>
-<section id="configuring-git">
+<p>Let’s get started.</p>
+<div class="section" id="installing-git">
+<h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this heading"></a></h2>
+<p>How you install Git depends on the particulars of your system. Here is how I suggest installing Git on macOS and Windows.</p>
+<div class="section" id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Permalink to this heading"></a></h3>
+<p>If you are using macOS, you should install Command Line Tools. This is a set of utilities, such as compilers and Git. You could install it along with the very bloated software XCode, but I would not recommend doing that in order to save on the ≈35 GB of disk space that XCode will consume.</p>
+<p>To install Command Line Tools, open the Terminal application. It is typically in the <code class="docutils literal notranslate"><span class="pre">/Applications/Utilities</span></code> folder. Otherwise, hit <code class="docutils literal notranslate"><span class="pre">⌘-space</span> <span class="pre">bar</span></code> and type <code class="docutils literal notranslate"><span class="pre">terminal</span></code> in the search box, and select the Terminal Application. Once you have a prompt in the Terminal application, type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xcode-select<span class="w"> </span>-install
+</pre></div>
+</div>
+<p>and hit enter. You will be prompted for the installation, and you should go ahead with it. It may take several minutes for the installation to complete.</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<p>Follow the instructions <a class="reference external" href="https://gitforwindows.org/">here</a>.</p>
+</div>
+</div>
+<div class="section" id="configuring-git">
 <h2>Configuring Git<a class="headerlink" href="#configuring-git" title="Permalink to this heading"></a></h2>
 <p>We will start by configuring Git on your computer. We will do the configuration with <code class="docutils literal notranslate"><span class="pre">--global</span></code>
 flags, which means these specifications work for all of your
 repositories. First, we’ll specify the name and email address of the
 person working with Git on your machine (that’s you!).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;YOUR NAME&quot;</span>
-git config --global user.email <span class="s2">&quot;YOUR EMAIL ADDRESS&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;YOUR NAME&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;YOUR EMAIL ADDRESS&quot;</span>
 </pre></div>
 </div>
 <!--
@@ -266,24 +238,22 @@ Git requires a text editor. You can specify Atom as your text editor if you like
 
     git config --global core.editor "atom --wait"
 --><p>We will not go into merge conflicts in too much depth now, but you need to tell Git how you want to handle situations when there are edits to the same file coming from two or more different computers (could be a collaborator, or could be you on your home computer and your work computer). I generally like to use Git’s default.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global pull.rebase <span class="nb">false</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>pull.rebase<span class="w"> </span><span class="nb">false</span>
 </pre></div>
 </div>
 <p>Git is very well documented and help is easily available. If you need to
 know more about <code class="docutils literal notranslate"><span class="pre">config</span></code>, for example, just enter:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git <span class="nb">help</span> config
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span><span class="nb">help</span><span class="w"> </span>config
 </pre></div>
 </div>
-</section>
-<section id="cloning-repositories">
+</div>
+<div class="section" id="cloning-repositories">
 <h2>Cloning Repositories<a class="headerlink" href="#cloning-repositories" title="Permalink to this heading"></a></h2>
-<p>Your team’s repository is already set up and hosted on GitHub. You will
-need to clone it from its URL; you will have access to that once the
-teams are finalized. To practice cloning, we will clone one of the
+<p>To practice cloning, we will clone one of the
 zillions of public repositories that are hosted on GitHub. We will clone
 a simple package, called <code class="docutils literal notranslate"><span class="pre">insulter</span></code> that will hurl Shakespearean
 insults at you. Enter the following on the command line.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://gist.github.com/3165396.git insulter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://gist.github.com/3165396.git<span class="w"> </span>insulter
 </pre></div>
 </div>
 <p>Note that the insulter package is now on your local machine. You have a
@@ -291,18 +261,18 @@ copy of it on your own hard drive. You do not need to be connected to
 the internet to use it.</p>
 <p>Now, <code class="docutils literal notranslate"><span class="pre">cd</span></code> to <code class="docutils literal notranslate"><span class="pre">insulter</span></code> and you can start using it, thou wayward
 tickle-brained flap-dragon!</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python insulter.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>insulter.py
 </pre></div>
 </div>
-</section>
-<section id="pulling-in-changes">
+</div>
+<div class="section" id="pulling-in-changes">
 <h2>Pulling in changes<a class="headerlink" href="#pulling-in-changes" title="Permalink to this heading"></a></h2>
 <p>Actively developed repositories are constantly being updated. After you
-clone the repository, its authors (e.g., your teammates) may add or edit
+clone the repository, its authors (e.g., your collaborators) may add or edit
 things in the repository. For you to get those changes, you need to
 <strong>fetch</strong> them and then <strong>merge</strong> them into what you have locally.</p>
 <p>To fetch the updated repository, you guessed it, you do:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git fetch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>fetch
 </pre></div>
 </div>
 <p>The result is stored in a hidden directory, <code class="docutils literal notranslate"><span class="pre">.git/FETCH_HEAD</span></code>.
@@ -311,42 +281,37 @@ you type <code class="docutils literal notranslate"><span class="pre">ls</span><
 <p>Now that there are changes, you would like to update your local
 repository. Provided you do not have any local edits, this is seamless.
 You just do</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git merge FETCH_HEAD
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>FETCH_HEAD
 </pre></div>
 </div>
 <p>Now your repository will be up to date.</p>
 <p>A shortcut for the commands</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git fetch
-git merge FETCH_HEAD
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>fetch
+git<span class="w"> </span>merge<span class="w"> </span>FETCH_HEAD
 </pre></div>
 </div>
 <p>run in succession is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
 </pre></div>
 </div>
 <p>In practice, you will use this a lot, but sometimes fetching and merging
 can be useful. Note that <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> is actually shorthand for</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull origin main
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
 <p>which is the more verbose way of saying that you want to pull the main
 <strong>branch</strong> from the remote repository named <code class="docutils literal notranslate"><span class="pre">origin</span></code>. We will not
-discuss branching in this course, but it is an important concept to
+discuss branching here, but it is an important concept to
 learn about.</p>
 <p>Generally it is good practice to pull before you start working each day
 to make sure you pull in any updates your collaborators may have made.</p>
-</section>
-<section id="default-branch-name">
-<h2>Default branch name<a class="headerlink" href="#default-branch-name" title="Permalink to this heading"></a></h2>
-<p>When you create a new repository in GitHub, the default branch name is <cite>main</cite>. This was changed from <cite>master</cite> beginning in late 2020. For existing repositories created before that time, the default branch is still called <cite>master</cite> unless it is explicitly changed to <cite>main</cite> (or whatever else the developers want to change it to). Renaming <cite>master</cite> to <cite>main</cite> can cause problems in maintaining repositories, and you will find the many software packages still have the default branch named <cite>master</cite> to avoid those difficulties. This should not be a problem with any of your work in this class; I bring it up so you are aware when you see many “main” branches called <cite>master</cite>.</p>
-</section>
-<section id="relationships-among-your-local-machine-and-your-repository">
+</div>
+<div class="section" id="relationships-among-your-local-machine-and-your-repository">
 <h2>Relationships among your local machine and your repository<a class="headerlink" href="#relationships-among-your-local-machine-and-your-repository" title="Permalink to this heading"></a></h2>
 <p>Let us think about how we have things set up, referring to the excellent
 image below from <a class="reference external" href="http://jlord.us/">Jessica Lord</a>. For now, focus
 only on the blue portions on the right (ignore forking and the upstream
-repository). <strong>Remotely</strong>, in our case on GitHub, lives the repository
-that I created for your team.</p>
+repository).</p>
 <a class="reference internal image-reference" href="../../_images/jessica_lord_git_diagram.png"><img alt="Jessica Lord Git diagram" class="align-center" src="../../_images/jessica_lord_git_diagram.png" style="width: 500px;" /></a>
 <p>When you <strong>cloned</strong> your repository, you pulled it down from GitHub and
 put it on your <strong>local</strong> machine (probably your laptop). Whenever you
@@ -356,28 +321,27 @@ changes and want it to keep them under version control. You then
 <strong>commit</strong> your changes, which tells Git to create a snapshot of exactly
 what the repository looked like when you did the commit. Associated with
 a commit is a <strong>commit message</strong>, which briefly describes what you
-changed on that commit. When you <strong>push</strong> your commits, they go to your
-team’s repository.</p>
+changed on that commit. When you <strong>push</strong> your commits, they go to your repository.</p>
 <p>So, here is how the command line would look if you wanted to work on a
 file called <code class="docutils literal notranslate"><span class="pre">my_file.py</span></code> in your repository. First, pull in any
-possible updates from your teammates. Actually, let me say this more
+possible updates from your collaborators. Actually, let me say this more
 forcefully.</p>
 <div class="alert alert-info docutils container">
 <center><p>Always <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> when you start working.</p>
 </center></div>
 <p>The first thing you do on the command line is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
 </pre></div>
 </div>
 <p>Now that you have an updated repository to work with, you go to work and
 you edit <code class="docutils literal notranslate"><span class="pre">my_file.py</span></code>, let say by cleaning up some of the data
 wrangling procedures. You then need to tell Git add the file.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add my_file.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>my_file.py
 </pre></div>
 </div>
 <p>You might want to check to make sure you didn’t have other edits you
 want to add to the commit. You can do this by checking the status.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
 </pre></div>
 </div>
 <p>The result might look something like this.</p>
@@ -408,18 +372,18 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
 <code class="docutils literal notranslate"><span class="pre">another_file.py</span></code> that is already under version control (it has been
 added and included in a commit before), but you have not added it for
 this commit. If you want to add it, you would do</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add another_file.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>another_file.py
 </pre></div>
 </div>
 <p>There is another file, <code class="docutils literal notranslate"><span class="pre">yet_another_file.py</span></code> that exists in the
 directory that you have never added, so Git is not tracking it. You can
 also add that for this commit.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add yet_another_file.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>yet_another_file.py
 </pre></div>
 </div>
 <p>Now everything is ready to commit. To commit with a commit message, do
 the following.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -m <span class="s2">&quot;Updated wrangling methods in my_file.py.&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Updated wrangling methods in my_file.py.&quot;</span>
 </pre></div>
 </div>
 <p>Git now has a snapshot of exactly what your repository looked like at
@@ -427,7 +391,7 @@ the time of the commit. Now, the commit is still only on your local
 machine. In order for your collaborators (or the whole world, if it is a
 public repo) to have access to it (and in order for it to appear on
 GitHub), you need to <strong>``push``</strong> it. To do that, we do this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin main
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">origin</span></code> is a nickname for your remote repository. <code class="docutils literal notranslate"><span class="pre">main</span></code> is
@@ -435,9 +399,7 @@ the name of the branch we are pushing to in the GitHub repository. I.e.,
 it is the main copy. (We will not really talk about branches or
 branching.)</p>
 <p>That is the basic set of operations to get your work into the repository
-and out to the remote for your teammates.</p>
-<section id="a-note-on-commit-messages">
-<h3>A note on commit messages<a class="headerlink" href="#a-note-on-commit-messages" title="Permalink to this heading"></a></h3>
+and out to the remote for your collaborators.</p>
 <p>As just described, the <code class="docutils literal notranslate"><span class="pre">-m</span></code> after <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> specifies the
 <strong>commit message</strong>. This is a brief bit of text that describes what has
 changed in the repository. It is really important to write informative
@@ -448,21 +410,17 @@ useless</a>.</p>
 <p>Note that good commit messages also require that you commit often for
 incremental changes. Not writing good commit messages is unfortunately one of my
 greatest weaknesses. But it should not be yours.</p>
-</section>
-<section id="what-to-do-in-case-of-a-fire">
-<h3>What to do in case of a fire<a class="headerlink" href="#what-to-do-in-case-of-a-fire" title="Permalink to this heading"></a></h3>
 <p>It is important to commit and push often. It helps collaboration and
 protects your work. So, what do you do in case of a fire in your
 building?</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add *
-git commit -m <span class="s2">&quot;Building on fire, no time for meaningful commit message.&quot;</span>
-git push origin main
-git out of the building
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>*
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Building on fire, no time for meaningful commit message.&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>out<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>building
 </pre></div>
 </div>
-</section>
-</section>
-<section id="gitignore">
+</div>
+<div class="section" id="gitignore">
 <h2>.gitignore<a class="headerlink" href="#gitignore" title="Permalink to this heading"></a></h2>
 <p>Notice in the sample output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> above, Git let us know
 that there was an untracked file in the directory. Sometimes you do want
@@ -500,17 +458,16 @@ run <code class="docutils literal notranslate"><span class="pre">ls</span></code
 <p>You have a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file already present in the repositories I set
 up for you. It is there to tell Git to ignore the files in the folder
 <code class="docutils literal notranslate"><span class="pre">data/</span></code>.</p>
-</section>
-<section id="additional-information-about-using-git">
+</div>
+<div class="section" id="additional-information-about-using-git">
 <h2>Additional information about using Git<a class="headerlink" href="#additional-information-about-using-git" title="Permalink to this heading"></a></h2>
-<p>This lecture gives a minimal introduction about Git/GitHub that you need
-for this class. In recitation, the TAs will give you more tips and traps about using
+<p>This lecture gives a minimal introduction about Git/GitHub. We may have a recitation in which the TAs will give you more tips and traps about using
 Git. Beyond that, there is much to learn about using Git, branching in particular.
 For that and much more, there are plenty of great resources on the
 internet. GitHub has a good <a class="reference external" href="https://guides.github.com">series of
 guides</a> to get you started.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -524,11 +481,11 @@ guides</a> to get you started.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 30, 2022.
+      <span class="lastupdated">Last updated on Sep 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fa82929d940> 
+   <jinja2.runtime.BlockReference object at 0x10a89d610> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

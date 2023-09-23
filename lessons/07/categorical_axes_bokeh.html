@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plots with categorical variables &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -70,6 +74,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="visualizing_distributions.html">Visualizing distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="iqplot.html">iqplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styling_bokeh.html">Styling Bokeh plots</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
@@ -102,31 +107,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28/index.html">28. Statistical watchouts</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Intro to image processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/topics_in_bootstrapping.html">R7. Topics in bootstrapping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/mle_review.html">R8. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/09/HPC.html">R9. Best Practices when using the Resnick High Performance Computing Center and other related topics</a></li>
-</ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/00/index.html">0. Configuring your team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and Normal approximations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -139,8 +123,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html">Meetings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lab-sessions">Lab sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#submission-of-assignments">Submission of assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lessons-and-lesson-exercises">Lessons and lesson exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../policies.html#the-be-bi-103-github-group">The BE/Bi 103 GitHub group</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#homework">Homework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#grading">Grading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
@@ -162,14 +146,14 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">7. Exploratory data analysis, part 2</a> &raquo;</li>
-      <li>Plots with categorical variables</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">7. Exploratory data analysis, part 2</a></li>
+      <li class="breadcrumb-item active">Plots with categorical variables</li>
   <li class="wy-breadcrumbs-aside">
     
         
         
-            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/master/lessons/07/categorical_axes_bokeh.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/master/lessons/07/categorical_axes_bokeh.ipynb" download> Download notebook</a>
+            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/main/lessons/07/categorical_axes_bokeh.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/main/lessons/07/categorical_axes_bokeh.ipynb" download> Download notebook</a>
         
       
     
@@ -181,285 +165,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Plots-with-categorical-variables">
+  <div class="section" id="Plots-with-categorical-variables">
 <h1>Plots with categorical variables<a class="headerlink" href="#Plots-with-categorical-variables" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
@@ -479,9 +185,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="bk-root">
-        <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
-        <span id="1002">Loading BokehJS ...</span>
+<style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="dd96a900-5f5a-4c3d-a058-3e7a32d20fac">Loading BokehJS ...</span>
     </div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -648,7 +362,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("1002");
+    const el = document.getElementById("dd96a900-5f5a-4c3d-a058-3e7a32d20fac");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -731,7 +445,7 @@ const JS_MIME_TYPE = 'application/javascript';
     document.body.appendChild(element);
   }
 
-  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.3.min.js"];
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.2.1.min.js"];
   const css_urls = [];
 
   const inline_js = [    function(Bokeh) {
@@ -754,7 +468,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("1002")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("dd96a900-5f5a-4c3d-a058-3e7a32d20fac")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -771,7 +485,7 @@ if (force === true) {
 }(window));
 </script></div>
 </div>
-<hr/><section id="Types-of-data-for-plots">
+<hr/><div class="section" id="Types-of-data-for-plots">
 <h2>Types of data for plots<a class="headerlink" href="#Types-of-data-for-plots" title="Permalink to this heading"></a></h2>
 <p>Let us first consider the different kinds of data we may encounter as we think about constructing a plot.</p>
 <ul class="simple">
@@ -786,11 +500,11 @@ if (force === true) {
 <p>Note that this kind of plot is commonly encountered in the biological sciences. We repeat a measurement many times for given test conditions and wish to compare the results. The different conditions are the categories, and the axis along which the conditions are represented is called a categorical axis. The quantitative axis contains the result of the measurements from each condition.</p>
 <hr /><p><em>The rest of this lesson is mostly for reference so you can see how to handle categorical axes with Bokeh. In practice, we will mostly be using</em><a class="reference external" href="http://iqplot.github.io/">iqplot</a><em>to do this and it is done for your automatically. You may therefore skip the rest of this notebook if you like.</em></p>
 <p><em>That said, for some plotting applications, you may need to adjust details or do things outside of iqplot’s capabilities, so the contents of this lesson can be useful.</em></p>
-</section>
-<section id="Making-a-bar-graph-with-Bokeh">
+</div>
+<div class="section" id="Making-a-bar-graph-with-Bokeh">
 <h2>Making a bar graph with Bokeh<a class="headerlink" href="#Making-a-bar-graph-with-Bokeh" title="Permalink to this heading"></a></h2>
 <p>To demonstrate how to set up a categorical axis with Bokeh, I will make a bar graph of the mean percent correct for insomniacs and normal sleepers. But before I even begin this, I will give you the following piece of advice: <em>Don’t make bar graphs.</em> More on that in a moment.</p>
-<section id="Setting-up-a-data-frame-for-plotting">
+<div class="section" id="Setting-up-a-data-frame-for-plotting">
 <h3>Setting up a data frame for plotting<a class="headerlink" href="#Setting-up-a-data-frame-for-plotting" title="Permalink to this heading"></a></h3>
 <p>Before making a plot, we need to set up a data frame amenable for the type of plot we want. We start by reading in the data set and computing the <code class="docutils literal notranslate"><span class="pre">'insomnia'</span></code> column, which gives <code class="docutils literal notranslate"><span class="pre">True</span></code>s and <code class="docutils literal notranslate"><span class="pre">False</span></code>s, as we’ve done in the preceding parts of this lesson.</p>
 <div class="nbinput nblast docutils container">
@@ -867,8 +581,8 @@ if (force === true) {
 </div></div>
 </div>
 <p>Now we’re ready to make the bar graph. Note that we now have only two data points that we are showing on the plot. We have decided to throw out a <strong>lot</strong> of information from the data we collected to display only two values. Does this strike you as a terrible idea? It should. <strong>Don’t do this.</strong> We’re just doing it to show how categorical axes are set up using Bokeh.</p>
-</section>
-<section id="Setting-up-categorical-axes">
+</div>
+<div class="section" id="Setting-up-categorical-axes">
 <h3>Setting up categorical axes<a class="headerlink" href="#Setting-up-categorical-axes" title="Permalink to this heading"></a></h3>
 <p>To set up a categorical axis, you need to specify the <code class="docutils literal notranslate"><span class="pre">x_range</span></code> (or <code class="docutils literal notranslate"><span class="pre">y_range</span></code> if you want the y-axis to be categorical) as a list with the categories you want on the axis when you instantiate the figure. I will make a horizontal bar graph, so I will specify <code class="docutils literal notranslate"><span class="pre">y_range</span></code>. I also want my quantitative axis (x in this case) to go from zero to 100, since it signifies a percent. Also, when I instantiate this figure, because it is not very tall and I do not want the reset tool cut off, I will also
 explicitly set the tools I want in the toolbar.</p>
@@ -911,7 +625,7 @@ explicitly set the tools I want in the toolbar.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="bk-root" id="03f99a2f-bce9-4b26-82bb-0836aa3bc4f9" data-root-id="1003"></div></div>
+<div id="c0b3cbf1-489f-4eb9-8419-6c0762b0a03a" data-root-id="p1001" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -922,8 +636,8 @@ explicitly set the tools I want in the toolbar.</p>
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"5741f889-fc68-4a51-bab2-44e0d191fc08":{"defs":[],"roots":{"references":[{"attributes":{"below":[{"id":"1012"}],"center":[{"id":"1015"},{"id":"1018"}],"height":200,"left":[{"id":"1016"}],"renderers":[{"id":"1027"}],"title":{"id":"1029"},"toolbar":{"id":"1020"},"width":400,"x_range":{"id":"1004"},"x_scale":{"id":"1008"},"y_range":{"id":"1006"},"y_scale":{"id":"1010"}},"id":"1003","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1017","type":"CategoricalTicker"},{"attributes":{"axis":{"id":"1016"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1018","type":"Grid"},{"attributes":{},"id":"1033","type":"AllLabels"},{"attributes":{"coordinates":null,"formatter":{"id":"1032"},"group":null,"major_label_policy":{"id":"1033"},"ticker":{"id":"1017"}},"id":"1016","type":"CategoricalAxis"},{"attributes":{"axis":{"id":"1012"},"coordinates":null,"group":null,"ticker":null},"id":"1015","type":"Grid"},{"attributes":{},"id":"1035","type":"BasicTickFormatter"},{"attributes":{},"id":"1013","type":"BasicTicker"},{"attributes":{},"id":"1032","type":"CategoricalTickFormatter"},{"attributes":{},"id":"1008","type":"LinearScale"},{"attributes":{},"id":"1010","type":"CategoricalScale"},{"attributes":{"data":{"index":[0,1],"percent correct":{"__ndarray__":"ZmZmZmYGU0AH9o6pgV1UQA==","dtype":"float64","order":"little","shape":[2]},"sleeper":["insomniac","normal"]},"selected":{"id":"1038"},"selection_policy":{"id":"1037"}},"id":"1022","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.2},"height":{"value":0.6},"line_alpha":{"value":0.2},"line_color":{"value":"#1f77b4"},"right":{"field":"percent correct"},"y":{"field":"sleeper"}},"id":"1026","type":"HBar"},{"attributes":{"factors":["insomniac","normal"]},"id":"1006","type":"FactorRange"},{"attributes":{"axis_label":"percent correct","coordinates":null,"formatter":{"id":"1035"},"group":null,"major_label_policy":{"id":"1036"},"ticker":{"id":"1013"}},"id":"1012","type":"LinearAxis"},{"attributes":{},"id":"1037","type":"UnionRenderers"},{"attributes":{"coordinates":null,"data_source":{"id":"1022"},"glyph":{"id":"1024"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1026"},"nonselection_glyph":{"id":"1025"},"view":{"id":"1028"}},"id":"1027","type":"GlyphRenderer"},{"attributes":{"coordinates":null,"group":null},"id":"1029","type":"Title"},{"attributes":{},"id":"1038","type":"Selection"},{"attributes":{},"id":"1019","type":"SaveTool"},{"attributes":{"tools":[{"id":"1019"}]},"id":"1020","type":"Toolbar"},{"attributes":{"source":{"id":"1022"}},"id":"1028","type":"CDSView"},{"attributes":{"end":100},"id":"1004","type":"Range1d"},{"attributes":{},"id":"1036","type":"AllLabels"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.1},"height":{"value":0.6},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"right":{"field":"percent correct"},"y":{"field":"sleeper"}},"id":"1025","type":"HBar"},{"attributes":{"fill_color":{"value":"#1f77b4"},"height":{"value":0.6},"line_color":{"value":"#1f77b4"},"right":{"field":"percent correct"},"y":{"field":"sleeper"}},"id":"1024","type":"HBar"}],"root_ids":["1003"]},"title":"Bokeh Application","version":"2.4.3"}};
-  const render_items = [{"docid":"5741f889-fc68-4a51-bab2-44e0d191fc08","root_ids":["1003"],"roots":{"1003":"03f99a2f-bce9-4b26-82bb-0836aa3bc4f9"}}];
+  const docs_json = {"f6a1cb2e-3637-4c2a-abe5-3eaa8a1c1eee":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1001","attributes":{"width":400,"height":200,"x_range":{"type":"object","name":"Range1d","id":"p1010","attributes":{"end":100}},"y_range":{"type":"object","name":"FactorRange","id":"p1011","attributes":{"factors":["insomniac","normal"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1012"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1013"},"title":{"type":"object","name":"Title","id":"p1008"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1034","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1025","attributes":{"selected":{"type":"object","name":"Selection","id":"p1026","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1027"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAA="},"shape":[2],"dtype":"int32","order":"little"}],["sleeper",{"type":"ndarray","array":["insomniac","normal"],"shape":[2],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"ZmZmZmYGU0AH9o6pgV1UQA=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1035","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1036"}}},"glyph":{"type":"object","name":"HBar","id":"p1031","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"HBar","id":"p1032","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"HBar","id":"p1033","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1009","attributes":{"tools":[{"type":"object","name":"SaveTool","id":"p1024"}]}},"left":[{"type":"object","name":"CategoricalAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1020"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1021"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1022"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1014","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1015","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1016"},"axis_label":"percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1017"}}}],"center":[{"type":"object","name":"Grid","id":"p1018","attributes":{"axis":{"id":"p1014"}}},{"type":"object","name":"Grid","id":"p1023","attributes":{"dimension":1,"axis":{"id":"p1019"},"grid_line_color":null}}]}}]}};
+  const render_items = [{"docid":"f6a1cb2e-3637-4c2a-abe5-3eaa8a1c1eee","roots":{"p1001":"c0b3cbf1-489f-4eb9-8419-6c0762b0a03a"},"root_ids":["p1001"]}];
   root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
@@ -976,7 +690,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="bk-root" id="bb1505af-6a22-42e6-a508-8debf449b217" data-root-id="1089"></div></div>
+<div id="af6bcc3b-bf34-48d1-afa5-844acc412cfb" data-root-id="p1039" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -987,8 +701,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"5cb6f395-8960-422f-827c-9d0524968ffb":{"defs":[],"roots":{"references":[{"attributes":{"below":[{"id":"1098"}],"center":[{"id":"1100"},{"id":"1104"}],"height":250,"left":[{"id":"1101"}],"renderers":[{"id":"1124"}],"title":{"id":"1136"},"toolbar":{"id":"1112"},"width":250,"x_range":{"id":"1090"},"x_scale":{"id":"1094"},"y_range":{"id":"1092"},"y_scale":{"id":"1096"}},"id":"1089","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1144","type":"UnionRenderers"},{"attributes":{"data":{"index":[0,1],"percent correct":{"__ndarray__":"ZmZmZmYGU0AH9o6pgV1UQA==","dtype":"float64","order":"little","shape":[2]},"sleeper":["insomniac","normal"]},"selected":{"id":"1145"},"selection_policy":{"id":"1144"}},"id":"1119","type":"ColumnDataSource"},{"attributes":{},"id":"1110","type":"HelpTool"},{"attributes":{},"id":"1145","type":"Selection"},{"attributes":{},"id":"1105","type":"PanTool"},{"attributes":{"overlay":{"id":"1111"}},"id":"1107","type":"BoxZoomTool"},{"attributes":{"tools":[{"id":"1105"},{"id":"1106"},{"id":"1107"},{"id":"1108"},{"id":"1109"},{"id":"1110"}]},"id":"1112","type":"Toolbar"},{"attributes":{"coordinates":null,"data_source":{"id":"1119"},"glyph":{"id":"1121"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1123"},"nonselection_glyph":{"id":"1122"},"view":{"id":"1125"}},"id":"1124","type":"GlyphRenderer"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.1},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"percent correct"},"width":{"value":0.6},"x":{"field":"sleeper"}},"id":"1122","type":"VBar"},{"attributes":{"factors":["normal","insomniac"]},"id":"1090","type":"FactorRange"},{"attributes":{"axis":{"id":"1101"},"coordinates":null,"dimension":1,"group":null,"ticker":null},"id":"1104","type":"Grid"},{"attributes":{},"id":"1094","type":"CategoricalScale"},{"attributes":{},"id":"1096","type":"LinearScale"},{"attributes":{"coordinates":null,"formatter":{"id":"1142"},"group":null,"major_label_policy":{"id":"1143"},"ticker":{"id":"1099"}},"id":"1098","type":"CategoricalAxis"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.2},"line_alpha":{"value":0.2},"line_color":{"value":"#1f77b4"},"top":{"field":"percent correct"},"width":{"value":0.6},"x":{"field":"sleeper"}},"id":"1123","type":"VBar"},{"attributes":{"end":100},"id":"1092","type":"Range1d"},{"attributes":{},"id":"1099","type":"CategoricalTicker"},{"attributes":{},"id":"1106","type":"WheelZoomTool"},{"attributes":{"axis_label":"average percent correct","coordinates":null,"formatter":{"id":"1139"},"group":null,"major_label_policy":{"id":"1140"},"ticker":{"id":"1102"}},"id":"1101","type":"LinearAxis"},{"attributes":{},"id":"1139","type":"BasicTickFormatter"},{"attributes":{},"id":"1108","type":"SaveTool"},{"attributes":{"coordinates":null,"group":null},"id":"1136","type":"Title"},{"attributes":{},"id":"1109","type":"ResetTool"},{"attributes":{},"id":"1140","type":"AllLabels"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1111","type":"BoxAnnotation"},{"attributes":{},"id":"1142","type":"CategoricalTickFormatter"},{"attributes":{"fill_color":{"value":"#1f77b4"},"line_color":{"value":"#1f77b4"},"top":{"field":"percent correct"},"width":{"value":0.6},"x":{"field":"sleeper"}},"id":"1121","type":"VBar"},{"attributes":{},"id":"1143","type":"AllLabels"},{"attributes":{"axis":{"id":"1098"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1100","type":"Grid"},{"attributes":{"source":{"id":"1119"}},"id":"1125","type":"CDSView"},{"attributes":{},"id":"1102","type":"BasicTicker"}],"root_ids":["1089"]},"title":"Bokeh Application","version":"2.4.3"}};
-  const render_items = [{"docid":"5cb6f395-8960-422f-827c-9d0524968ffb","root_ids":["1089"],"roots":{"1089":"bb1505af-6a22-42e6-a508-8debf449b217"}}];
+  const docs_json = {"f34f9bde-1da9-4dae-b9d2-3c97437b5a51":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1039","attributes":{"width":250,"height":250,"x_range":{"type":"object","name":"FactorRange","id":"p1048","attributes":{"factors":["normal","insomniac"]}},"y_range":{"type":"object","name":"Range1d","id":"p1049","attributes":{"end":100}},"x_scale":{"type":"object","name":"CategoricalScale","id":"p1050"},"y_scale":{"type":"object","name":"LinearScale","id":"p1051"},"title":{"type":"object","name":"Title","id":"p1046"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1078","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1069","attributes":{"selected":{"type":"object","name":"Selection","id":"p1070","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1071"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAA="},"shape":[2],"dtype":"int32","order":"little"}],["sleeper",{"type":"ndarray","array":["insomniac","normal"],"shape":[2],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"ZmZmZmYGU0AH9o6pgV1UQA=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1079","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1080"}}},"glyph":{"type":"object","name":"VBar","id":"p1075","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"VBar","id":"p1076","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"VBar","id":"p1077","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1047","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1062"},{"type":"object","name":"WheelZoomTool","id":"p1063"},{"type":"object","name":"BoxZoomTool","id":"p1064","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1065","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1066"},{"type":"object","name":"ResetTool","id":"p1067"},{"type":"object","name":"HelpTool","id":"p1068"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1057","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1058","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1059"},"axis_label":"average percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1060"}}}],"below":[{"type":"object","name":"CategoricalAxis","id":"p1052","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1053"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1054"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1055"}}}],"center":[{"type":"object","name":"Grid","id":"p1056","attributes":{"axis":{"id":"p1052"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1061","attributes":{"dimension":1,"axis":{"id":"p1057"}}}]}}]}};
+  const render_items = [{"docid":"f34f9bde-1da9-4dae-b9d2-3c97437b5a51","roots":{"p1039":"af6bcc3b-bf34-48d1-afa5-844acc412cfb"},"root_ids":["p1039"]}];
   root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
@@ -1011,9 +725,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-</section>
-<section id="Nested-categorical-axes">
+</div>
+</div>
+<div class="section" id="Nested-categorical-axes">
 <h2>Nested categorical axes<a class="headerlink" href="#Nested-categorical-axes" title="Permalink to this heading"></a></h2>
 <p>We may wish to make a bar graph where we have four bars, normal and insomniac for males and also normal and insomniac for females. To start, we will have to re-make the <code class="docutils literal notranslate"><span class="pre">df_mean</span></code> data frame, now grouping by gender and sleeper. Furthermore, it will be nicer to label the categories as “female” and “male” instead of “f” and “m”.</p>
 <div class="nbinput docutils container">
@@ -1216,7 +930,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="bk-root" id="3c48a936-2524-4b7e-a6d7-f71b8ff64d66" data-root-id="1203"></div></div>
+<div id="b98e56dd-b470-4145-9123-cb192927fe33" data-root-id="p1084" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -1227,8 +941,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"7bc792a1-65e4-46a0-9f95-10c729d5d2af":{"defs":[],"roots":{"references":[{"attributes":{"below":[{"id":"1211"}],"center":[{"id":"1214"},{"id":"1217"}],"height":200,"left":[{"id":"1215"}],"renderers":[{"id":"1226"}],"title":{"id":"1249"},"toolbar":{"id":"1219"},"width":400,"x_range":{"id":"1204"},"x_scale":{"id":"1207"},"y_range":{"id":"1202"},"y_scale":{"id":"1209"}},"id":"1203","subtype":"Figure","type":"Plot"},{"attributes":{"axis":{"id":"1215"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1217","type":"Grid"},{"attributes":{"data":{"cats":[["female","insomniac"],["female","normal"],["male","insomniac"],["male","normal"]],"gender":["female","female","male","male"],"index":[0,1,2,3],"percent correct":{"__ndarray__":"ymsor6F8UkCjiy666IJUQKuqqqqqulRAAAAAAAAAVEA=","dtype":"float64","order":"little","shape":[4]},"sleeper":["insomniac","normal","insomniac","normal"]},"selected":{"id":"1258"},"selection_policy":{"id":"1257"}},"id":"1221","type":"ColumnDataSource"},{"attributes":{"fill_color":{"value":"#1f77b4"},"height":{"value":0.6},"line_color":{"value":"#1f77b4"},"right":{"field":"percent correct"},"y":{"field":"cats"}},"id":"1223","type":"HBar"},{"attributes":{},"id":"1253","type":"AllLabels"},{"attributes":{},"id":"1218","type":"SaveTool"},{"attributes":{"source":{"id":"1221"}},"id":"1227","type":"CDSView"},{"attributes":{},"id":"1258","type":"Selection"},{"attributes":{},"id":"1255","type":"BasicTickFormatter"},{"attributes":{"axis_label":"average percent correct","coordinates":null,"formatter":{"id":"1255"},"group":null,"major_label_policy":{"id":"1256"},"ticker":{"id":"1212"}},"id":"1211","type":"LinearAxis"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.2},"height":{"value":0.6},"line_alpha":{"value":0.2},"line_color":{"value":"#1f77b4"},"right":{"field":"percent correct"},"y":{"field":"cats"}},"id":"1225","type":"HBar"},{"attributes":{},"id":"1207","type":"LinearScale"},{"attributes":{"axis":{"id":"1211"},"coordinates":null,"group":null,"ticker":null},"id":"1214","type":"Grid"},{"attributes":{"end":100},"id":"1204","type":"Range1d"},{"attributes":{},"id":"1212","type":"BasicTicker"},{"attributes":{},"id":"1256","type":"AllLabels"},{"attributes":{"coordinates":null,"formatter":{"id":"1252"},"group":null,"major_label_policy":{"id":"1253"},"ticker":{"id":"1216"}},"id":"1215","type":"CategoricalAxis"},{"attributes":{"coordinates":null,"data_source":{"id":"1221"},"glyph":{"id":"1223"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1225"},"nonselection_glyph":{"id":"1224"},"view":{"id":"1227"}},"id":"1226","type":"GlyphRenderer"},{"attributes":{},"id":"1257","type":"UnionRenderers"},{"attributes":{},"id":"1209","type":"CategoricalScale"},{"attributes":{},"id":"1252","type":"CategoricalTickFormatter"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.1},"height":{"value":0.6},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"right":{"field":"percent correct"},"y":{"field":"cats"}},"id":"1224","type":"HBar"},{"attributes":{"tools":[{"id":"1218"}]},"id":"1219","type":"Toolbar"},{"attributes":{},"id":"1216","type":"CategoricalTicker"},{"attributes":{"coordinates":null,"group":null},"id":"1249","type":"Title"},{"attributes":{"factors":[["female","normal"],["female","insomniac"],["male","normal"],["male","insomniac"]]},"id":"1202","type":"FactorRange"}],"root_ids":["1203"]},"title":"Bokeh Application","version":"2.4.3"}};
-  const render_items = [{"docid":"7bc792a1-65e4-46a0-9f95-10c729d5d2af","root_ids":["1203"],"roots":{"1203":"3c48a936-2524-4b7e-a6d7-f71b8ff64d66"}}];
+  const docs_json = {"86eabef4-4634-483f-9546-f605494ada60":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1084","attributes":{"width":400,"height":200,"x_range":{"type":"object","name":"Range1d","id":"p1093","attributes":{"end":100}},"y_range":{"type":"object","name":"FactorRange","id":"p1083","attributes":{"factors":[["female","normal"],["female","insomniac"],["male","normal"],["male","insomniac"]]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1094"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1095"},"title":{"type":"object","name":"Title","id":"p1091"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1116","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1107","attributes":{"selected":{"type":"object","name":"Selection","id":"p1108","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1109"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAACAAAAAwAAAA=="},"shape":[4],"dtype":"int32","order":"little"}],["gender",{"type":"ndarray","array":["female","female","male","male"],"shape":[4],"dtype":"object","order":"little"}],["sleeper",{"type":"ndarray","array":["insomniac","normal","insomniac","normal"],"shape":[4],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"ymsor6F8UkCjiy666IJUQKuqqqqqulRAAAAAAAAAVEA="},"shape":[4],"dtype":"float64","order":"little"}],["cats",{"type":"ndarray","array":[["female","insomniac"],["female","normal"],["male","insomniac"],["male","normal"]],"shape":[4],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1117","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1118"}}},"glyph":{"type":"object","name":"HBar","id":"p1113","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"HBar","id":"p1114","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"HBar","id":"p1115","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1092","attributes":{"tools":[{"type":"object","name":"SaveTool","id":"p1106"}]}},"left":[{"type":"object","name":"CategoricalAxis","id":"p1101","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1102"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1103"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1104"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1096","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1097","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1098"},"axis_label":"average percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1099"}}}],"center":[{"type":"object","name":"Grid","id":"p1100","attributes":{"axis":{"id":"p1096"}}},{"type":"object","name":"Grid","id":"p1105","attributes":{"dimension":1,"axis":{"id":"p1101"},"grid_line_color":null}}]}}]}};
+  const render_items = [{"docid":"86eabef4-4634-483f-9546-f605494ada60","roots":{"p1084":"b98e56dd-b470-4145-9123-cb192927fe33"},"root_ids":["p1084"]}];
   root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
@@ -1251,8 +965,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -1269,17 +983,17 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.9.12
-IPython version      : 8.4.0
+Python version       : 3.11.5
+IPython version      : 8.15.0
 
-pandas    : 1.4.3
-bokeh     : 2.4.3
-jupyterlab: 3.4.4
+pandas    : 2.0.3
+bokeh     : 3.2.1
+jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1293,11 +1007,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 30, 2022.
+      <span class="lastupdated">Last updated on Sep 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fa8290ffd90> 
+   <jinja2.runtime.BlockReference object at 0x10b024810> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

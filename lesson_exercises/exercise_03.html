@@ -71,9 +71,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#Exercise-3.1">Exercise 3.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Exercise-3.2">Exercise 3.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Exercise-3.3">Exercise 3.3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Exercise-3.4">Exercise 3.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Exercise-3.5">Exercise 3.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Exercise-3.6">Exercise 3.6</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../lessons/14/index.html">14. Plug-in estimates and confidence intervals</a></li>
@@ -88,20 +85,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../lessons/20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_07.html">E7. To be completed after lesson 21</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/22/reproducible_workflows.html">22. Reproducible workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/23/paper_of_the_future.html">23. The paper of the future</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/24/variate_covariate_implementation.html">24. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/25/mixture_models.html">25. Mixture models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/26/index.html">26. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/27/index.html">27. Implementation of model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/26/index.html">26. Statistical watchouts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_09.html">E9. To be completed after lesson 27</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/28/index.html">28. Statistical watchouts</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../homework/02/index.html">2. Exploratory data analysis II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../homework/04/index.html">4. Working with probability distributions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -159,21 +152,10 @@
 <h1>E3. To be completed after lesson 13<a class="headerlink" href="#E3.-To-be-completed-after-lesson-13" title="Permalink to this heading"></a></h1>
 <hr /><div class="section" id="Exercise-3.1">
 <h2>Exercise 3.1<a class="headerlink" href="#Exercise-3.1" title="Permalink to this heading"></a></h2>
-<p>What is the relationship between a cumul ative distribution function (CDF) and a probability density function (PDF)? What is the relationship between as CDF and a probability mass function (PMF)?</p>
+<p>What is the relationship between a cumulative distribution function (CDF) and a probability density function (PDF)? What is the relationship between as CDF and a probability mass function (PMF)?</p>
 </div>
 <div class="section" id="Exercise-3.2">
 <h2>Exercise 3.2<a class="headerlink" href="#Exercise-3.2" title="Permalink to this heading"></a></h2>
-<p>Say I am interested in modeling the time it takes for a certain process to happen in a cell. For reasons that you will understand in future lessons, we might model the time <span class="math notranslate nohighlight">\(t\)</span> to be Exponentially distributed, having probability density function</p>
-<p><span class="math">\begin{align}
-f(t) = \beta \mathrm{e}^{-\beta t}.
-\end{align}</span></p>
-<ol class="arabic simple">
-<li><p>Write down the CDF, <span class="math notranslate nohighlight">\(F(t)\)</span>.</p></li>
-<li><p>Say you are interested instead in the reciprocal time, <span class="math notranslate nohighlight">\(k = 1/t\)</span>. Write down the PDF for <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
-</ol>
-</div>
-<div class="section" id="Exercise-3.3">
-<h2>Exercise 3.3<a class="headerlink" href="#Exercise-3.3" title="Permalink to this heading"></a></h2>
 <p>How would you expect each of the following to be distributed?</p>
 <p><strong>a)</strong> The amount of time between repressor-operator binding events.</p>
 <p><strong>b)</strong> The number of times a repressor binds its operator in a given hour.</p>
@@ -182,22 +164,8 @@ f(t) = \beta \mathrm{e}^{-\beta t}.
 <p><strong>e)</strong> The winning times of the Belmont Stakes.</p>
 <p>To answer this question, try to match these stories to the stories of named distributions. For those of you not familiar with baseball, a no-hitter is a game in which a team concedes no hits to the opposing team. There have only been a few hundred no-hitters in over 200,000 MLB games. The Belmont Stakes is a major horse race that has been run each year for over 150 years.</p>
 </div>
-<div class="section" id="Exercise-3.4">
-<h2>Exercise 3.4<a class="headerlink" href="#Exercise-3.4" title="Permalink to this heading"></a></h2>
-<p>Say I have three distributions:</p>
-<ul class="simple">
-<li><p>Exponential, β=1</p></li>
-<li><p>Normal, μ=1, σ=1</p></li>
-<li><p>Cauchy, µ=1, σ=1</p></li>
-</ul>
-<p>Say I draw numbers out of each of these distributions. Rank order the distributions, lowest to highest, in terms of how likely I am do draw a number greater than 10. You do not need to calculate anything to answer this question.</p>
-</div>
-<div class="section" id="Exercise-3.5">
-<h2>Exercise 3.5<a class="headerlink" href="#Exercise-3.5" title="Permalink to this heading"></a></h2>
-<p>Now draw a million numbers out of each of the three distributions in Exercise 3.4. Which, if any, had numbers greater than ten? Was your intuition from exercise 3.4 correct?</p>
-</div>
-<div class="section" id="Exercise-3.6">
-<h2>Exercise 3.6<a class="headerlink" href="#Exercise-3.6" title="Permalink to this heading"></a></h2>
+<div class="section" id="Exercise-3.3">
+<h2>Exercise 3.3<a class="headerlink" href="#Exercise-3.3" title="Permalink to this heading"></a></h2>
 <p>Write down any questions or points of confusion that you have.</p>
 </div>
 </div>
@@ -214,11 +182,11 @@ f(t) = \beta \mathrm{e}^{-\beta t}.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 23, 2023.
+      <span class="lastupdated">Last updated on Oct 03, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1169d5d90> 
+   <jinja2.runtime.BlockReference object at 0x10fc514d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

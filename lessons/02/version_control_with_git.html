@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction to Git &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -95,15 +96,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -111,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -165,7 +174,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="introduction-to-git">
+  <section id="introduction-to-git">
 <h1>Introduction to Git<a class="headerlink" href="#introduction-to-git" title="Permalink to this heading"></a></h1>
 <p>Keeping track of all of the changes in your project over time is good
 practice. How many times have you edited something in something you were
@@ -208,10 +217,10 @@ also serve as a vehicle to distribute code (or other files).</p>
 Here is an <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">excellent one-page (front-and-back)
 cheatsheet</a>.</p>
 <p>Let’s get started.</p>
-<div class="section" id="installing-git">
+<section id="installing-git">
 <h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this heading"></a></h2>
 <p>How you install Git depends on the particulars of your system. Here is how I suggest installing Git on macOS and Windows.</p>
-<div class="section" id="macos">
+<section id="macos">
 <h3>macOS<a class="headerlink" href="#macos" title="Permalink to this heading"></a></h3>
 <p>If you are using macOS, you should install Command Line Tools. This is a set of utilities, such as compilers and Git. You could install it along with the very bloated software XCode, but I would not recommend doing that in order to save on the ≈35 GB of disk space that XCode will consume.</p>
 <p>To install Command Line Tools, open the Terminal application. It is typically in the <code class="docutils literal notranslate"><span class="pre">/Applications/Utilities</span></code> folder. Otherwise, hit <code class="docutils literal notranslate"><span class="pre">⌘-space</span> <span class="pre">bar</span></code> and type <code class="docutils literal notranslate"><span class="pre">terminal</span></code> in the search box, and select the Terminal Application. Once you have a prompt in the Terminal application, type</p>
@@ -219,13 +228,13 @@ cheatsheet</a>.</p>
 </pre></div>
 </div>
 <p>and hit enter. You will be prompted for the installation, and you should go ahead with it. It may take several minutes for the installation to complete.</p>
-</div>
-<div class="section" id="windows">
+</section>
+<section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
 <p>Follow the instructions <a class="reference external" href="https://gitforwindows.org/">here</a>.</p>
-</div>
-</div>
-<div class="section" id="configuring-git">
+</section>
+</section>
+<section id="configuring-git">
 <h2>Configuring Git<a class="headerlink" href="#configuring-git" title="Permalink to this heading"></a></h2>
 <p>We will start by configuring Git on your computer. We will do the configuration with <code class="docutils literal notranslate"><span class="pre">--global</span></code>
 flags, which means these specifications work for all of your
@@ -248,8 +257,8 @@ know more about <code class="docutils literal notranslate"><span class="pre">con
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span><span class="nb">help</span><span class="w"> </span>config
 </pre></div>
 </div>
-</div>
-<div class="section" id="cloning-repositories">
+</section>
+<section id="cloning-repositories">
 <h2>Cloning Repositories<a class="headerlink" href="#cloning-repositories" title="Permalink to this heading"></a></h2>
 <p>To practice cloning, we will clone one of the
 zillions of public repositories that are hosted on GitHub. We will clone
@@ -266,8 +275,8 @@ tickle-brained flap-dragon!</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>insulter.py
 </pre></div>
 </div>
-</div>
-<div class="section" id="pulling-in-changes">
+</section>
+<section id="pulling-in-changes">
 <h2>Pulling in changes<a class="headerlink" href="#pulling-in-changes" title="Permalink to this heading"></a></h2>
 <p>Actively developed repositories are constantly being updated. After you
 clone the repository, its authors (e.g., your collaborators) may add or edit
@@ -307,8 +316,8 @@ discuss branching here, but it is an important concept to
 learn about.</p>
 <p>Generally it is good practice to pull before you start working each day
 to make sure you pull in any updates your collaborators may have made.</p>
-</div>
-<div class="section" id="relationships-among-your-local-machine-and-your-repository">
+</section>
+<section id="relationships-among-your-local-machine-and-your-repository">
 <h2>Relationships among your local machine and your repository<a class="headerlink" href="#relationships-among-your-local-machine-and-your-repository" title="Permalink to this heading"></a></h2>
 <p>Let us think about how we have things set up, referring to the excellent
 image below from <a class="reference external" href="http://jlord.us/">Jessica Lord</a>. For now, focus
@@ -421,8 +430,8 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 git<span class="w"> </span>out<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>building
 </pre></div>
 </div>
-</div>
-<div class="section" id="gitignore">
+</section>
+<section id="gitignore">
 <h2>.gitignore<a class="headerlink" href="#gitignore" title="Permalink to this heading"></a></h2>
 <p>Notice in the sample output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> above, Git let us know
 that there was an untracked file in the directory. Sometimes you do want
@@ -460,16 +469,16 @@ run <code class="docutils literal notranslate"><span class="pre">ls</span></code
 <p>You have a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file already present in the repositories I set
 up for you. It is there to tell Git to ignore the files in the folder
 <code class="docutils literal notranslate"><span class="pre">data/</span></code>.</p>
-</div>
-<div class="section" id="additional-information-about-using-git">
+</section>
+<section id="additional-information-about-using-git">
 <h2>Additional information about using Git<a class="headerlink" href="#additional-information-about-using-git" title="Permalink to this heading"></a></h2>
 <p>This lecture gives a minimal introduction about Git/GitHub. We may have a recitation in which the TAs will give you more tips and traps about using
 Git. Beyond that, there is much to learn about using Git, branching in particular.
 For that and much more, there are plenty of great resources on the
 internet. GitHub has a good <a class="reference external" href="https://guides.github.com">series of
 guides</a> to get you started.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -483,11 +492,11 @@ guides</a> to get you started.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1184fc7d0> 
+   <jinja2.runtime.BlockReference object at 0x115cde190> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

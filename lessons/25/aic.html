@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model comparison with the AIC &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -25,7 +26,9 @@
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="E9. To be completed after lesson 27" href="../../lesson_exercises/exercise_09.html" />
+    <link rel="prev" title="Graphical model assessment: Predictive regression" href="predictive_regression.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,7 +52,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Version control with Git</a></li>
@@ -79,15 +82,35 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">25. Implementation of model assessment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="implementation_of_graphical_model_selection.html">Q-Q plots and predictive ECDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predictive_regression.html">Predictive regressions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Model comparison with the AIC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#AIC-for-mRNA-counts">AIC for mRNA counts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Caveat">Caveat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#AIC-for-the-spindle-model">AIC for the spindle model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Computing-environment">Computing environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -95,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -131,6 +155,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">25. Implementation of model assessment</a></li>
       <li class="breadcrumb-item active">Model comparison with the AIC</li>
   <li class="wy-breadcrumbs-aside">
     
@@ -148,7 +173,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Model-comparison-with-the-AIC">
+  <section id="Model-comparison-with-the-AIC">
 <h1>Model comparison with the AIC<a class="headerlink" href="#Model-comparison-with-the-AIC" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">mRNA count dataset download</a></p>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/good_invitro_droplet_data.csv">Spindle length dataset download</a></p>
@@ -479,7 +504,7 @@ if (force === true) {
 w_i = \frac{\mathrm{e}^{-(\text{AIC}_i - \text{AIC}_\mathrm{max})/2}}{\sum_j\mathrm{e}^{-(\text{AIC}_j - \text{AIC}_\mathrm{max})/2}}.
 \end{align}</span></p>
 <p>To begin, we will use the AIC to compare a single Negative Binomial model to a mixture of two Negative Binomials for smFISH data from Singer, et al.</p>
-<div class="section" id="AIC-for-mRNA-counts">
+<section id="AIC-for-mRNA-counts">
 <h2>AIC for mRNA counts<a class="headerlink" href="#AIC-for-mRNA-counts" title="Permalink to this heading"></a></h2>
 <p>Let us now compare the single Negative Binomial to the mixture model for mRNA counts. We again need our functions for computing the MLE and computing the log-likelihood from previous lessons.</p>
 <div class="nbinput nblast docutils container">
@@ -1122,13 +1147,13 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>Rex1 clearly is bimodal, and Nanog appears to have a second inflection point where the ECDF reaches a value of about 0.4, which is what we see in the MLE estimates in the mixture model. Rest and Prdm14 both appear to be unimodal, agreeing with what we saw with the AIC analysis.</p>
 <p>Note that this underscores something we’ve been stressing all term. You should do good exploratory data analysis first, and the EDA often tells much of the story!</p>
-<div class="section" id="Caveat">
+<section id="Caveat">
 <h3>Caveat<a class="headerlink" href="#Caveat" title="Permalink to this heading"></a></h3>
 <p>Remember, though, that we did <em>not</em> take into account that the measurements of the four genes were done in the same cells. We modeled that when we presented the mixture models at the beginning of this lesson. The analysis of a more complicated model with MLE proved to be out of reach due to computational difficulty. So, we should not make strong conclusions about what the relative quality of the mixture of single Negative Binomial models mean in this context. We will address these kinds of
 modeling issues in the sequel of this course.</p>
-</div>
-</div>
-<div class="section" id="AIC-for-the-spindle-model">
+</section>
+</section>
+<section id="AIC-for-the-spindle-model">
 <h2>AIC for the spindle model<a class="headerlink" href="#AIC-for-the-spindle-model" title="Permalink to this heading"></a></h2>
 <p>We can do a similar analysis for the two competing models for mitotic spindle size. We need our functions from earlier.</p>
 <div class="nbinput nblast docutils container">
@@ -1285,8 +1310,8 @@ dtype: float64
 </pre></div></div>
 </div>
 <p>Model 1 is completely out of the question, with a tiny Akaike weight!</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -1316,23 +1341,26 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="predictive_regression.html" class="btn btn-neutral float-left" title="Graphical model assessment: Predictive regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../lesson_exercises/exercise_09.html" class="btn btn-neutral float-right" title="E9. To be completed after lesson 27" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x13cf4fe90> 
+   <jinja2.runtime.BlockReference object at 0x16c507810> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Melting a data frame &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -100,15 +101,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -116,6 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -170,7 +179,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Melting-a-data-frame">
+  <section id="Melting-a-data-frame">
 <h1>Melting a data frame<a class="headerlink" href="#Melting-a-data-frame" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx">Data set download</a></p>
 <hr/><div class="nbinput nblast docutils container">
@@ -513,7 +522,7 @@ if (force === true) {
 <li><p>Parsing column names to extract useful metadata en route to tidy data</p></li>
 <li><p>Performing a melt operation to efficiently tidy a data set.</p></li>
 </ul>
-<div class="section" id="The-data-set">
+<section id="The-data-set">
 <h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
 <p>We will use a data set from <a class="reference external" href="http://www.stathlab.caltech.edu">Angela Stathopoulos’s lab</a>, acquired to study morphogen profiles in developing fruit fly embryos. The original paper is <a class="reference external" href="https://doi.org/10.1016/j.devcel.2011.12.007">Reeves, Trisnadi, et al., Dorsal-ventral gene expression in the Drosophila embryo reflects the dynamics and precision of the Dorsal nuclear gradient, Dev. Cell., 22, 544-557, 2012</a>, and the data set may be downloaded here:
 <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx">https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx</a>.</p>
@@ -526,8 +535,8 @@ Dorsal-Venus construct rescues wild type behavior, so they could use this constr
 <p>To quantify the gradient, Reeves, Trisnadi, and coworkers had to first choose a metric for describing it. They chose to fit the measured profile of fluorescence intensity with a Gaussian peak (plus background) and use the standard deviation of that Gaussian as a metric for the width of the Dorsal gradient.</p>
 <p>In this lesson, we will use the gradient widths as outputted from this procedure. The units of the widths are dimensionless, consistent with the coordinate system shown in the image above. I asked one of the authors for the data sets used in making the figures. She sent me a MS Excel file that had a separate sheet for each of several figures in the paper that I asked about. We will focus on the data used for Fig. 1F of the paper. In this figure, the authors seek to demonstrate that live imaging
 with their Venus-Dorsal construct gives a Dorsal gradient of similar width as would be obtained by fixing wild type cells and doing Dorsal antibody staining (the gold standard). These wild type embryos were analyzed as whole mounts and also as cross sections. They also tried anti-Dorsal staining and anti-Venus staining in the Venus-Dorsal construct. Finally, they also measured gradient widths of a GFP-Dorsal construct that fails to complete development.</p>
-</div>
-<div class="section" id="Loading-in-an-Excel-sheet">
+</section>
+<section id="Loading-in-an-Excel-sheet">
 <h2>Loading in an Excel sheet<a class="headerlink" href="#Loading-in-an-Excel-sheet" title="Permalink to this heading"></a></h2>
 <p>Generally, you should store your data sets in portable formats, like CSV, JSON, XML, HDF5, OME-TIFF, etc., and not proprietary formats. Nonetheless, software like Microsoft Excel is widely used, and you will often receive data sets in this format. Fortunately, Pandas can read Excel files, provided they are from fairly recent versions of Excel.</p>
 <p>To read in this data set, we will use <code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code>. Importantly, because an Excel document may have many sheets, we need to specify the sheet name we want, in this case <code class="docutils literal notranslate"><span class="pre">'Fig</span> <span class="pre">1F'</span></code>.</p>
@@ -636,8 +645,8 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 </div>
 <p>The data frame is not tidy. Each <em>entry</em> corresponds to one observation, not each row. The column headings contain important metadata, the genotype (wt, dl1/+dl-venus/+, or dl1/+dl-GFP/+) and the method (wholemounts, cross-sections, anti-Dorsal, anti-gfp, Venus (live), and GFP (live)).</p>
 <p>The data set has other issues we need to clean up. The column <code class="docutils literal notranslate"><span class="pre">'anti-gfp</span> <span class="pre">dl1/+dl-venus/+'</span></code> is mislabeled; it should be <code class="docutils literal notranslate"><span class="pre">'anti-Venus</span> <span class="pre">dl1/+dl-venus/+'</span></code>. We would also like to clean up the genotypes, putting in a semicolon to separate the chromosomes. The wild type columns have the genotype first (<code class="docutils literal notranslate"><span class="pre">'wt'</span></code>) followed by the method, whereas the other columns have the method first, followed by genotype.</p>
-</div>
-<div class="section" id="Parsing-the-column-names">
+</section>
+<section id="Parsing-the-column-names">
 <h2>Parsing the column names<a class="headerlink" href="#Parsing-the-column-names" title="Permalink to this heading"></a></h2>
 <p>We will start our process of tidying this data set by changing the column names. They are pretty messy, so this is best done by hand in this case. We will rename the columns with tuples to more easily delineate genotypes and methods.</p>
 <div class="nbinput docutils container">
@@ -865,8 +874,8 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 </div></div>
 </div>
 <p>This is looking better; we have consistent naming of the genotypes and methods and they are organized as a multiindex.</p>
-</div>
-<div class="section" id="Melting-the-data-frame">
+</section>
+<section id="Melting-the-data-frame">
 <h2>Melting the data frame<a class="headerlink" href="#Melting-the-data-frame" title="Permalink to this heading"></a></h2>
 <p>When we melt the data frame, the data within it, called <strong>values</strong>, become a single column. The column names, called <strong>variables</strong> also become new columns. So, to melt it, we need to specify what we want to call the values and what we want to call the variable. The <code class="docutils literal notranslate"><span class="pre">melt()</span></code> method does the rest!</p>
 <div class="nbinput docutils container">
@@ -944,7 +953,7 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 </div>
 <p>Nice! We now have a tidy data frame.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">pd.melt()</span></code> has other options. For example, you can specify columns that do not comprise data, but should still be included in the melted data frame using the <code class="docutils literal notranslate"><span class="pre">id_vars</span></code> keyword argument. That does not apply to this data frame, but comes up often.</p>
-<div class="section" id="Deleting-NaN's">
+<section id="Deleting-NaN's">
 <h3>Deleting NaN’s<a class="headerlink" href="#Deleting-NaN's" title="Permalink to this heading"></a></h3>
 <p>The only problem is that it has many NaNs because there were many of them in the data set due to the unequal column lengths in the original spreadsheet. We can see this by looking at the tail of the data frame.</p>
 <div class="nbinput docutils container">
@@ -1028,8 +1037,8 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 </div>
 </div>
 <p>…and we are good to do with a tidy data frame and we can make, e.g., a nifty strip plot.</p>
-</div>
-<div class="section" id="Using-the-data-frame">
+</section>
+<section id="Using-the-data-frame">
 <h3>Using the data frame<a class="headerlink" href="#Using-the-data-frame" title="Permalink to this heading"></a></h3>
 <p>Let’s make a plot like Fig. 1F of the <a class="reference external" href="https://doi.org/10.1016/j.devcel.2011.12.007">Reeves, Trisnadi, et al. paper</a>, but not with boxes, rather as a strip plot.</p>
 <div class="nbinput docutils container">
@@ -1089,9 +1098,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -1118,8 +1127,8 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1133,11 +1142,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11844d510> 
+   <jinja2.runtime.BlockReference object at 0x16c3758d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

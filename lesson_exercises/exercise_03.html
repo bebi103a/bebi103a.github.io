@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E3. To be completed after lesson 13 &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -85,15 +86,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../lessons/20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -101,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -154,13 +163,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="E3.-To-be-completed-after-lesson-13">
+  <section id="E3.-To-be-completed-after-lesson-13">
 <h1>E3. To be completed after lesson 13<a class="headerlink" href="#E3.-To-be-completed-after-lesson-13" title="Permalink to this heading"></a></h1>
-<hr /><div class="section" id="Exercise-3.1">
+<hr /><section id="Exercise-3.1">
 <h2>Exercise 3.1<a class="headerlink" href="#Exercise-3.1" title="Permalink to this heading"></a></h2>
 <p>What is the relationship between a cumulative distribution function (CDF) and a probability density function (PDF)? What is the relationship between as CDF and a probability mass function (PMF)?</p>
-</div>
-<div class="section" id="Exercise-3.2">
+</section>
+<section id="Exercise-3.2">
 <h2>Exercise 3.2<a class="headerlink" href="#Exercise-3.2" title="Permalink to this heading"></a></h2>
 <p>How would you expect each of the following to be distributed?</p>
 <p><strong>a)</strong> The amount of time between repressor-operator binding events.</p>
@@ -169,12 +178,12 @@
 <p><strong>d)</strong> The number of no-hitters in a Major League Baseball season.</p>
 <p><strong>e)</strong> The winning times of the Belmont Stakes.</p>
 <p>To answer this question, try to match these stories to the stories of named distributions. For those of you not familiar with baseball, a no-hitter is a game in which a team concedes no hits to the opposing team. There have only been a few hundred no-hitters in over 200,000 MLB games. The Belmont Stakes is a major horse race that has been run each year for over 150 years.</p>
-</div>
-<div class="section" id="Exercise-3.3">
+</section>
+<section id="Exercise-3.3">
 <h2>Exercise 3.3<a class="headerlink" href="#Exercise-3.3" title="Permalink to this heading"></a></h2>
 <p>Write down any questions or points of confusion that you have.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -188,11 +197,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11823d2d0> 
+   <jinja2.runtime.BlockReference object at 0x16d2c3a90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

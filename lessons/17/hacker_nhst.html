@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>17. Hacker’s approach to NHST &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -88,15 +89,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -104,6 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -157,7 +166,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="17.-Hacker's-approach-to-NHST">
+  <section id="17.-Hacker's-approach-to-NHST">
 <h1>17. Hacker’s approach to NHST<a class="headerlink" href="#17.-Hacker's-approach-to-NHST" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/bee_sperm.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -680,7 +689,7 @@ if (force === true) {
 </pre></div>
 </div>
 </div>
-<div class="section" id="Permutation-hypothesis-tests">
+<section id="Permutation-hypothesis-tests">
 <h2>Permutation hypothesis tests<a class="headerlink" href="#Permutation-hypothesis-tests" title="Permalink to this heading"></a></h2>
 <p>Recall the steps for performing a NHST.</p>
 <ol class="arabic simple">
@@ -787,8 +796,8 @@ p-value = 3.27e-05
 </pre></div></div>
 </div>
 <p>So, our p-value is quite small, less than <span class="math notranslate nohighlight">\(10^{-4}\)</span>. This means that the probability of getting a difference of means as extreme as was observed under the null hypothesis that the control and test samples were drawn from identical distribution is quite small.</p>
-</div>
-<div class="section" id="Permutation-hypothesis-test-for-correlation">
+</section>
+<section id="Permutation-hypothesis-test-for-correlation">
 <h2>Permutation hypothesis test for correlation<a class="headerlink" href="#Permutation-hypothesis-test-for-correlation" title="Permalink to this heading"></a></h2>
 <p>As we continue to explore the data set, we might want to consider a hypothesis: dead and alive sperm counts are uncorrelated. It is possible that under this hypothesis, we could see correlation at the same level observed in the real data. We can test this hypothesis by permutation. In this case, we scramble the labels “dead” and “alive” and see what correlation we get. We will do 10 million permutation replicates. This will take a while to compute.</p>
 <div class="nbinput docutils container">
@@ -835,8 +844,8 @@ p-value pesticide: 1.100e-06
 </div>
 <p>Note that here we used the absolute value of the permutation replicates. We did this because we are interested to see if we get correlation at all, including anticorrelation. This is another essential piece of a hypothesis test: you need to define what it means to be more extreme.</p>
 <p>The p-value for both is tiny; not one in 10 million permutations for the control sample gave a correlation as high as was observed, and only 10 or so of the pesticide treated group. So, we would report something like <span class="math notranslate nohighlight">\(p &lt; 10^{-6}\)</span> for control and <span class="math notranslate nohighlight">\(p &lt; 10^{-5}\)</span> for pesticide.</p>
-</div>
-<div class="section" id="Bootstrap-hypothesis-tests">
+</section>
+<section id="Bootstrap-hypothesis-tests">
 <h2>Bootstrap hypothesis tests<a class="headerlink" href="#Bootstrap-hypothesis-tests" title="Permalink to this heading"></a></h2>
 <p>Permutation tests are great: they exactly simulate the null hypothesis that the two samples are identically distributed. But they are limited to this specific null hypothesis. What if we had a different hypothesis, say only that the means of the two distributions we are comparing are equal, but other properties of the distributions need not be identical? In this case, we cannot use the permutations to simulate the null hypothesis.</p>
 <p>Instead, we can simulate the null hypothesis by <em>shifting</em> the means of the control and test distributions so that they are equal. We then take a bootstrap sample out of each of the shifted data sets. We compute our test statistic from these two bootstrap samples to get a bootstrap replicate. Then, the number of bootstrap replicates that are at least as extreme as the test statistic computed from the original data is used to compute the p-value. Let’s see this in action. First, we’ll see how to
@@ -1013,13 +1022,13 @@ p-value = 8.1e-06
 </pre></div></div>
 </div>
 <p>This p-value is of similar magnitude as what we got from the permutation test.</p>
-</div>
-<div class="section" id="Simulating-a-hypothesis:-challenging-and-rewarding">
+</section>
+<section id="Simulating-a-hypothesis:-challenging-and-rewarding">
 <h2>Simulating a hypothesis: challenging and rewarding<a class="headerlink" href="#Simulating-a-hypothesis:-challenging-and-rewarding" title="Permalink to this heading"></a></h2>
 <p>As you can see from the above examples with permutation and bootstrap hypothesis tests, the part of the procedure that requires the most thought and care is simulating the null hypothesis. For a test where we are comparing means, we needed to shift the distributions so that all other aspects of the distribution remain the same, and then resample from the shifted distribution.</p>
 <p>The strength of doing these kinds of hypothesis tests is that they are entirely nonparametric. There is no need to specify a probability distribution for the null hypothesis; you can just make statements about how the two distributions you are comparing are related.</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -1048,8 +1057,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1063,11 +1072,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x118035610> 
+   <jinja2.runtime.BlockReference object at 0x16d546910> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

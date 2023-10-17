@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nonidentifiable models &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -81,7 +82,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">26. Statistical watchouts</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="olkin_petkau_zidek.html">MLE fragility with the Olkin-Petkau-Zidek example</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Nonidentifiability</a><ul>
@@ -98,13 +104,15 @@
 <li class="toctree-l2"><a class="reference internal" href="dancing.html">Dancing statistics</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -112,6 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -166,7 +175,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Nonidentifiable-models">
+  <section id="Nonidentifiable-models">
 <h1>Nonidentifiable models<a class="headerlink" href="#Nonidentifiable-models" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/hiv_data.csv">Data set download</a></p>
 <hr><div class="nbinput docutils container">
@@ -488,7 +497,7 @@ if (force === true) {
 </script></div>
 </div>
 <hr><p>In this portion of the lesson, we will show how nonidentifiability can be lurking in an analysis.</p>
-<div class="section" id="The-theoretical-model">
+<section id="The-theoretical-model">
 <h2>The theoretical model<a class="headerlink" href="#The-theoretical-model" title="Permalink to this heading"></a></h2>
 <p>A human immunodeficiency virus (HIV) is a virus that causes host organisms to develop a weaker, and sometimes ineffective, immune system. HIV inserts its viral RNA into a target cell of the immune system. This virus gets reverse transcribed into DNA and integrated into the host cell’s chromosomes. The host cell will then transcribe the integrated DNA into mRNA for the production of viral proteins and produce new HIV. Newly created viruses then exit the cell by budding off from the host. HIV
 carries the danger of ongoing replication and cell infection without termination or immunological control. Because CD4 T cells, which communicate with other immune cells to activate responses to foreign pathogens, are the targets for viral infection and production, their infection leads to reductions in healthy CD4 T cell production, causing the immune system to weaken. This reduction in the immune response becomes particularly concerning after remaining infected for longer periods of time,
@@ -506,8 +515,8 @@ we initially have a viral load of <span class="math notranslate nohighlight">\(V
 <p><span class="math">\begin{align}
 V(t;V_0,c,\delta) = V_0e^{-ct} + \frac{cV_0}{c-\delta}\left[\frac{c}{c-\delta}(e^{-{\delta}t} - e^{-ct}) - {\delta}te^{-ct}\right].
 \end{align}</span></p>
-</div>
-<div class="section" id="The-data-set">
+</section>
+<section id="The-data-set">
 <h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
 <p>We will take viral load data from a real patient (which you can download <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/hiv_data.csv">here</a>). The patient was treated with the drug Ritonavir, a protease inhibitor that serves to clear the viruses; i.e., it modulates <span class="math notranslate nohighlight">\(c\)</span>. So, in the context of the model, <span class="math notranslate nohighlight">\(c\)</span> is a good parameter to use to understand the efficacy of a drug.</p>
 <p>Let us take a quick look at the data set.</p>
@@ -569,16 +578,16 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>After some noisy viral RNA levels early on, the virus begins to be cleared after about a day, bringing the viral load down.</p>
-</div>
-<div class="section" id="The-statistical-model">
+</section>
+<section id="The-statistical-model">
 <h2>The statistical model<a class="headerlink" href="#The-statistical-model" title="Permalink to this heading"></a></h2>
 <p>For our statistical model (which we will later see is nonidentifiable), we will assume that residual <span class="math notranslate nohighlight">\(i\)</span> is Normally distributed with scale parameter <span class="math notranslate nohighlight">\(\sigma_i = \sigma_0 V(t_i;V_0, v, \delta)\)</span>. That is, we assume that the variability scales with the size of the measurement.</p>
 <p><span class="math">\begin{align}
 &\mu_i = V(t_i;V_0,c,\delta) = V_0e^{-ct_i} + \frac{cV_0}{c-\delta}\left[\frac{c}{c-\delta}(e^{-{\delta}t_i} - e^{-ct_i}) - {\delta}t_ie^{-ct_i}\right] \;\forall i, \\[1em]
 &V_i \sim \text{Norm}(\mu_i, \sigma_0 \mu_i) \;\forall i.
 \end{align}</span></p>
-</div>
-<div class="section" id="Performing-a-regression-to-determine-the-parameters-δ-and-c">
+</section>
+<section id="Performing-a-regression-to-determine-the-parameters-δ-and-c">
 <h2>Performing a regression to determine the parameters δ and c<a class="headerlink" href="#Performing-a-regression-to-determine-the-parameters-δ-and-c" title="Permalink to this heading"></a></h2>
 <p>The most common procedure to characterize the parameters δ and c is to minimize the sum of the square of the residuals between the theoretical equation given above and the measured data. As we showed in one of the homeworks, this is equivalent to finding the MAP parameter values for a model with a homoscedastic Gaussian likelihood and Uniform priors. Let’s proceed to do this MAP calculation.</p>
 <p>In the viral load model, we need to make sure that we don’t get a divide by zero error when <span class="math notranslate nohighlight">\(c \approx \delta\)</span>. We will use the fact that</p>
@@ -739,8 +748,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Graphical-model-check">
+</section>
+<section id="Graphical-model-check">
 <h2>Graphical model check<a class="headerlink" href="#Graphical-model-check" title="Permalink to this heading"></a></h2>
 <p>We’ll now perform a quick graphical model check, using our generative model parametrized by the MLE to generate data sets. First, we’ll code up a function to generate samples and then generate them.</p>
 <div class="nbinput nblast docutils container">
@@ -821,8 +830,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This looks ok, with most measured points falling within the middle 95th percentile of the generated data sets.</p>
-</div>
-<div class="section" id="Confidence-intervals-of-parameters">
+</section>
+<section id="Confidence-intervals-of-parameters">
 <h2>Confidence intervals of parameters<a class="headerlink" href="#Confidence-intervals-of-parameters" title="Permalink to this heading"></a></h2>
 <p>We can proceed to compute confidence intervals for the parameters. We will use our usual method of parametrically drawing new data sets out of the generative distribution parametrized by the MLE. WE first have to write a function to generate new data sets out of the model with the requisite call signature for <code class="docutils literal notranslate"><span class="pre">bebi103.bootstrap.draw_bs_reps_mle()</span></code>.</p>
 <div class="nbinput docutils container">
@@ -974,8 +983,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Most samples are below 10, but we see 20% of them are well above 10, some positively enormous. This could be a solver issue, or it could be a lurking nonidentifiability. Let’s investigate.</p>
-</div>
-<div class="section" id="Plotting-the-log-likelihood-function">
+</section>
+<section id="Plotting-the-log-likelihood-function">
 <h2>Plotting the log likelihood function<a class="headerlink" href="#Plotting-the-log-likelihood-function" title="Permalink to this heading"></a></h2>
 <p>To diagnose the issue, we will look at the likelihood function. To start with, we will fix the values of <span class="math notranslate nohighlight">\(V_0\)</span>, <span class="math notranslate nohighlight">\(\delta\)</span>, and <span class="math notranslate nohighlight">\(\sigma_0\)</span> to their MLEs and plot the likelihood function as a function of <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <div class="nbinput docutils container">
@@ -1183,8 +1192,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 <p>There is the nonidentifiability! The faint tail at <span class="math notranslate nohighlight">\(\delta \approx 0.4\)</span> days<span class="math notranslate nohighlight">\(^{-1}\)</span> goes off to infinity. If we have <span class="math notranslate nohighlight">\(\delta \approx 0.4\)</span>, then <em>any</em> value of <span class="math notranslate nohighlight">\(c\)</span> will give roughly the same likelihood. From our estimates, we expect <span class="math notranslate nohighlight">\(\delta\)</span> to lie somewhere near 0.4 days<span class="math notranslate nohighlight">\(^{-1}\)</span>, so this nonidentifiability is something we can likely encounter. It tells us that we cannot actually know <span class="math notranslate nohighlight">\(c\)</span> for sure, that is unless we had an independent measurement for
 <span class="math notranslate nohighlight">\(\delta\)</span>. We would have no way of knowing this if we just solved the least squares problem and reported our values.</p>
 <p>Computing the predictive regression and the confidence interval of the MLEs is the <em>minimum</em> you should do with your model. Next term, we will discuss principled modeling techniques that will help protect you from these pathologies that are encountered a lot more than we know.</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
@@ -1215,8 +1224,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1230,11 +1239,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11823e310> 
+   <jinja2.runtime.BlockReference object at 0x115c4b590> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

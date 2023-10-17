@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maneuvering directories (i.e. folders) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -80,9 +81,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul class="current">
@@ -101,6 +108,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -108,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -162,11 +171,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Maneuvering-directories-(i.e.-folders)">
+  <section id="Maneuvering-directories-(i.e.-folders)">
 <h1>Maneuvering directories (i.e. folders)<a class="headerlink" href="#Maneuvering-directories-(i.e.-folders)" title="Permalink to this heading"></a></h1>
 <p>To get some practice with the command line, we will use an example directory with some files in it. You can download a ZIP file containing the directory <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/command_line_recitation.zip">here</a>.</p>
 <p>And we said we would use the terminal in Jupyter Lab, so let us open a terminal (another one!) and type <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>. If you do not have Jupyter Lab installed, just use your normal terminal and install it after the class. Once Jupyter Lab opens in your browser you can open <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">New</span> <span class="pre">-&gt;</span> <span class="pre">Terminal</span></code>.</p>
-<div class="section" id="pwd-and-ls">
+<section id="pwd-and-ls">
 <h2>pwd and ls<a class="headerlink" href="#pwd-and-ls" title="Permalink to this heading"></a></h2>
 <p>When the shell is ready for your input it will display a <code class="docutils literal notranslate"><span class="pre">$</span></code> at the beginning of the line, which means that you are a normal user (not an admin) and the terminal is ready. Let’s start out by using the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> command to figure out what directory we’re in.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pwd
@@ -177,8 +186,8 @@
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
-</div>
-<div class="section" id="cd:-change-directory">
+</section>
+<section id="cd:-change-directory">
 <h2>cd: change directory<a class="headerlink" href="#cd:-change-directory" title="Permalink to this heading"></a></h2>
 <p>Let’s make sure we are in the home directory:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd
@@ -199,8 +208,8 @@
 </pre></div>
 </div>
 <p>This will get you back to the previous directory quickly and without specifying the path.</p>
-</div>
-<div class="section" id="mkdir-and-rmdir">
+</section>
+<section id="mkdir-and-rmdir">
 <h2>mkdir and rmdir<a class="headerlink" href="#mkdir-and-rmdir" title="Permalink to this heading"></a></h2>
 <p>To make a directory, the command is <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, hence the name <strong>m</strong>a<strong>k</strong>e <strong>dir</strong>ectory. followed by the name of the directory you want to create. For example, to make a directory called <code class="docutils literal notranslate"><span class="pre">rec01</span></code>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir rec01
@@ -215,8 +224,8 @@
 </pre></div>
 </div>
 <p><em>Copyright note: In addition to the copyright shown below, this recitation was developed based on materials from Axel Müller.</em></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -230,11 +239,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117730fd0> 
+   <jinja2.runtime.BlockReference object at 0x11520efd0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

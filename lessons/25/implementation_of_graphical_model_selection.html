@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Graphical model assessment for univariate models &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -25,7 +26,9 @@
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Graphical model assessment: Predictive regression" href="predictive_regression.html" />
+    <link rel="prev" title="25. Implementation of model assessment" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,7 +52,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Version control with Git</a></li>
@@ -79,15 +82,42 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">25. Implementation of model assessment</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Q-Q plots and predictive ECDFs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Graphical-model-assessment">Graphical model assessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Likelihood-calculators">Likelihood calculators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Constructing-a-Q-Q-plot">Constructing a Q-Q plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Q-Q-plot-for-the-mixture-model">Q-Q plot for the mixture model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Predictive-ECDFs">Predictive ECDFs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Comparing-with-data">Comparing with data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Using-predictive-ECDFs-in-the-bebi103-package">Using predictive ECDFs in the bebi103 package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ECDF-difference">ECDF difference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Computing-environment">Computing environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="predictive_regression.html">Predictive regressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aic.html">Model comparison with the AIC</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -95,6 +125,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -131,6 +162,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">25. Implementation of model assessment</a></li>
       <li class="breadcrumb-item active">Graphical model assessment for univariate models</li>
   <li class="wy-breadcrumbs-aside">
     
@@ -148,7 +180,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Graphical-model-assessment-for-univariate-models">
+  <section id="Graphical-model-assessment-for-univariate-models">
 <h1>Graphical model assessment for univariate models<a class="headerlink" href="#Graphical-model-assessment-for-univariate-models" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -469,7 +501,7 @@ if (force === true) {
 }(window));
 </script></div>
 </div>
-<hr ><div class="section" id="Graphical-model-assessment">
+<hr ><section id="Graphical-model-assessment">
 <h2>Graphical model assessment<a class="headerlink" href="#Graphical-model-assessment" title="Permalink to this heading"></a></h2>
 <p>We have already <a class="reference external" href="../25/graphical_model_assessment.rst">discussed model assessment</a>. In this lesson, we will discuss implementation of graphical model assessment.</p>
 <p>We will use the transcript counts from Singer, et al., this time focusing on the Rex1 gene, which shows clear biomodality. As a reminder, here is the ECDF for the transcript counts.</p>
@@ -527,8 +559,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Before we can proceed to the model assessments, we need to write functions to calculate the MLE.</p>
-</div>
-<div class="section" id="Likelihood-calculators">
+</section>
+<section id="Likelihood-calculators">
 <h2>Likelihood calculators<a class="headerlink" href="#Likelihood-calculators" title="Permalink to this heading"></a></h2>
 <p>In this and the following parts of this lesson, we will need the functions we have written to perform maximum likelihood estimation for a Negative Binomial distribution and for a mixture of two Negative Binomials. These are copied directly from the <a class="reference external" href="../26/mixture_models.ipynb">lesson on mixture models</a>, so you do not need to focus on this rather long code cell.</p>
 <div class="nbinput nblast docutils container">
@@ -636,8 +668,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Constructing-a-Q-Q-plot">
+</section>
+<section id="Constructing-a-Q-Q-plot">
 <h2>Constructing a Q-Q plot<a class="headerlink" href="#Constructing-a-Q-Q-plot" title="Permalink to this heading"></a></h2>
 <p>We will start by making a <a class="reference external" href="graphical_model_assessment.rst#Q-Q-plots">Q-Q plot</a> for the single Negative-Binomial case. The function <code class="docutils literal notranslate"><span class="pre">bebi103.viz.qqplot()</span></code> generates Q-Q plots. In order to provide the function with samples out of the generative distribution, let’s draw out of a single Negative Binomial with our <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(b\)</span> parametrization.</p>
 <div class="nbinput nblast docutils container">
@@ -708,7 +740,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Clearly, the generative model cannot produce the observed transcript bounds, since the Q-Q plot shows strong separation of the generative quantiles from the observed quantiles.</p>
-<div class="section" id="Q-Q-plot-for-the-mixture-model">
+<section id="Q-Q-plot-for-the-mixture-model">
 <h3>Q-Q plot for the mixture model<a class="headerlink" href="#Q-Q-plot-for-the-mixture-model" title="Permalink to this heading"></a></h3>
 <p>We can also make a Q-Q plot for the mixture model. We need to write a function to generate data out of the mixture model. As we did in a previous lesson, we first randomly choose a cell type with weight <span class="math notranslate nohighlight">\(w\)</span>, and then draw out of a Negative Binomial distribution with parameters corresponding to that cell type.</p>
 <div class="nbinput nblast docutils container">
@@ -792,9 +824,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The Q-Q plot shows a much stronger agreement between the theoretical distribution and the observed.</p>
-</div>
-</div>
-<div class="section" id="Predictive-ECDFs">
+</section>
+</section>
+<section id="Predictive-ECDFs">
 <h2>Predictive ECDFs<a class="headerlink" href="#Predictive-ECDFs" title="Permalink to this heading"></a></h2>
 <p>If we wish to accept a model with the MLE for the parameters as a good representation of the true generative model, we would like to see how data generated from that model would look. We can do a parametric bootstrap to generate data sets and then plot confidence intervals of the resulting ECDFs. We call ECDFs that come from the generative model <strong>predictive ECDFs</strong>. We can try that for the single Negative Binomial model.</p>
 <p>Given the samples (which we already computed and stored in <code class="docutils literal notranslate"><span class="pre">single_samples</span></code>), we can then compute the predictive ECDFs for each of these samples. We want the values of the predictive ECDF at each possible value of <span class="math notranslate nohighlight">\(n\)</span>, which requires us to compute the value of the ECDF at an arbitrary value. The function below accomplishes this.</p>
@@ -889,7 +921,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This is a predictive ECDF. Is is the envelope in which we would expect 95% of the data points to lie if the generative model were true.</p>
-<div class="section" id="Comparing-with-data">
+<section id="Comparing-with-data">
 <h3>Comparing with data<a class="headerlink" href="#Comparing-with-data" title="Permalink to this heading"></a></h3>
 <p>We can overlay the ECDF of the data to see if it falls within this envelope.</p>
 <div class="nbinput docutils container">
@@ -943,8 +975,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>The Negative Binomial model generated some counts that were quite large, which is why the plot extends past counts of 1000. If you zoom in on the region where the data lie, the deviation of the measured ECDF from the ECDF generated by the model is clear.</p>
 <p>We can also compare with the mixture model.</p>
-</div>
-<div class="section" id="Using-predictive-ECDFs-in-the-bebi103-package">
+</section>
+<section id="Using-predictive-ECDFs-in-the-bebi103-package">
 <h3>Using predictive ECDFs in the bebi103 package<a class="headerlink" href="#Using-predictive-ECDFs-in-the-bebi103-package" title="Permalink to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">bebi103</span></code> package enables automated generation of predictive ECDFs. To demonstrate its usage, we can generate samples from the mixture model and plot a predictive ECDF.</p>
 <div class="nbinput docutils container">
@@ -1000,8 +1032,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Here we see that the predictive ECDF captures the measured data much better. If you zoom into the plot, you will notice that the <code class="docutils literal notranslate"><span class="pre">bebi103.viz.predictive_ecdf()</span></code> function plots quantiles in various shades of blue. By default, the outermost region (lightest blue) contains the middle 95% of the generated ECDFs, and the next one in captures the middle 68%. The median ECDF from the generative model is a dark blue line in the middle.</p>
-</div>
-<div class="section" id="ECDF-difference">
+</section>
+<section id="ECDF-difference">
 <h3>ECDF difference<a class="headerlink" href="#ECDF-difference" title="Permalink to this heading"></a></h3>
 <p>While the predictive ECDF plot is useful, it is perhaps more illuminating to plot the <em>difference</em> between the predictive ECDF and the measured ECDF. We can do this with the <code class="docutils literal notranslate"><span class="pre">diff='ecdf'</span></code> kwarg.</p>
 <div class="nbinput docutils container">
@@ -1056,9 +1088,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>It is now clear that very few of the 279 data points lie outside the 95% envelope of the predictive ECDF. We might expect more to lie outside; it is conceivable that the model is too flexible.</p>
-</div>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
@@ -1088,23 +1120,26 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="25. Implementation of model assessment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="predictive_regression.html" class="btn btn-neutral float-right" title="Graphical model assessment: Predictive regression" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1176a1790> 
+   <jinja2.runtime.BlockReference object at 0x115862590> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

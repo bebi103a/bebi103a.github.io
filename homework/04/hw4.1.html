@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 4.1: Normal approximations (40 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -80,15 +81,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
@@ -100,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="hw4.2.html">Homework 4.2: Simulating distributions (team problem, 60 pts)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -154,7 +163,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Homework-4.1:-Normal-approximations-(40-pts)">
+  <section id="Homework-4.1:-Normal-approximations-(40-pts)">
 <h1>Homework 4.1: Normal approximations (40 pts)<a class="headerlink" href="#Homework-4.1:-Normal-approximations-(40-pts)" title="Permalink to this heading"></a></h1>
 <hr /><p><strong>a)</strong> Imagine I have a univariate continuous distribution with PDF <span class="math notranslate nohighlight">\(f(y)\)</span> that has a maximum at <span class="math notranslate nohighlight">\(y^*\)</span>. Assume that the first and second derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span> are defined and continuous near <span class="math notranslate nohighlight">\(y^*\)</span>. Show by expanding the log PDF of this distribution in a Taylor series about <span class="math notranslate nohighlight">\(y^*\)</span> that the distribution is locally Normal near the maximum.</p>
 <p>In performing the Taylor series, how is the scale parameter <span class="math notranslate nohighlight">\(\sigma\)</span> of the Normal approximation of the distribution related to the log PDF of the distribution it is approximating?</p>
@@ -171,7 +180,7 @@
 <li><p>Binomial with <em>N</em> = 10 and <em>θ</em> = 0.1.</p></li>
 </ul>
 <p>Comment on what you see.</p>
-<!--I do not ask for CDF for Binomial because plotting CDFs for discrete distributions means you have to make staircases, which is kind of tricky. --></div>
+<!--I do not ask for CDF for Binomial because plotting CDFs for discrete distributions means you have to make staircases, which is kind of tricky. --></section>
 
 
            </div>
@@ -185,11 +194,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x13d0aa450> 
+   <jinja2.runtime.BlockReference object at 0x16d722ed0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

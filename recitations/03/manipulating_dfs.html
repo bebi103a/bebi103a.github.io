@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R3. Manipulating data frames &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -26,7 +27,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1. Practice with Python tools and EDA I" href="../../homework/01/index.html" />
+    <link rel="next" title="R4. Probability review" href="../04/probability_review.html" />
     <link rel="prev" title="R2. Extra help for new programmers" href="../02/index.html" /> 
 </head>
 
@@ -81,9 +82,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lessons/28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul class="current">
@@ -98,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Computing-Environment">Computing Environment</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -105,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -158,7 +167,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="R3.-Manipulating-data-frames">
+  <section id="R3.-Manipulating-data-frames">
 <h1>R3. Manipulating data frames<a class="headerlink" href="#R3.-Manipulating-data-frames" title="Permalink to this heading"></a></h1>
 <p><em>This recitation was written by Sanjana Kulkarni with edits by Justin Bois.</em></p>
 <hr><div class="nbinput docutils container">
@@ -483,7 +492,7 @@ if (force === true) {
 }(window));
 </script></div>
 </div>
-<div class="section" id="Data-from-Plate-Readers">
+<section id="Data-from-Plate-Readers">
 <h2>Data from Plate Readers<a class="headerlink" href="#Data-from-Plate-Readers" title="Permalink to this heading"></a></h2>
 <p>In this recitation, we will practice some of the reshaping techniques you have been using in your homework with another example of 96-well plate reader data. Plate readers generally output Excel files, after which the data is tediously copy-pasted into Prism (or another Excel file) for plotting and analysis. We will use various Python functions to manipulate our data into tidy format and analyze them. You can download the data files here:</p>
 <ul class="simple">
@@ -1264,8 +1273,8 @@ if (force === true) {
 </table>
 </div></div>
 </div>
-</div>
-<div class="section" id="Reshaping-the-data-set">
+</section>
+<section id="Reshaping-the-data-set">
 <h2>Reshaping the data set<a class="headerlink" href="#Reshaping-the-data-set" title="Permalink to this heading"></a></h2>
 <p>The first and last columns and the first row can be removed, and we will rename the columns to be the antibody concentrations from our list. We then rename the index and the column header (the name for all of the columns) to useful labels, and we melt!</p>
 <div class="nbinput docutils container">
@@ -1723,8 +1732,8 @@ if (force === true) {
 </div></div>
 </div>
 <p>And now we’re done! Everything is tidy, so each absorbance value is associated with a single antigen, antibody, and antibody concentration. Note that the antigen concentrations are all the same (1 μg/mL) in each plate. We can take a look at the mean and standard deviation of the absorbances and verify that they make some sense and we haven’t accidentally reordered things in the data frame—larger antibody concentrations are associated with larger absorbances.</p>
-</div>
-<div class="section" id="Computing-summary-statistics">
+</section>
+<section id="Computing-summary-statistics">
 <h2>Computing summary statistics<a class="headerlink" href="#Computing-summary-statistics" title="Permalink to this heading"></a></h2>
 <p>You can also apply methods to groups within a data frame. This is done using the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method of a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object. An apply operation can take a long time with larger sets of data and many levels, so you can time how long an apply operation will take using <a class="reference external" href="https://tqdm.github.io/">tqdm</a>. The following will be helpful to get going:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tqdm</span>
@@ -2016,8 +2025,8 @@ if (force === true) {
 <p>240 rows × 6 columns</p>
 </div></div>
 </div>
-</div>
-<div class="section" id="Generating-plots">
+</section>
+<section id="Generating-plots">
 <h2>Generating plots<a class="headerlink" href="#Generating-plots" title="Permalink to this heading"></a></h2>
 <p>In this experiment, we are interested in determining if the different antigen variants bind differently to the same antibody. So we will plot each antibody on a separate plot and color the antigen variants to see the dose-response curve. ELISA data is normally plotted with x axis on a log scale.</p>
 <div class="nbinput docutils container">
@@ -2104,8 +2113,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Estimation-of-the-EC50">
+</section>
+<section id="Estimation-of-the-EC50">
 <h2>Estimation of the EC50<a class="headerlink" href="#Estimation-of-the-EC50" title="Permalink to this heading"></a></h2>
 <p>From ELISA data, we also typically want the half maximal effective concentration, or <strong>EC50</strong>. It tells you how much antibody concentration you need to reach half of the maximum OD450. This is typically accomplished by obtaining a maximum likelihood estimate (MLE) of parameters of a Hill function,</p>
 <p><span class="math">\begin{align}
@@ -2380,8 +2389,8 @@ dtype: float64
 <p>We’ve almost completely recreated the ELISA plotting in Prism, a common subscription software used by biologists to plot all sorts of data. We also didn’t have to copy and paste columns and rows from Excel over and over again.</p>
 <p>In EC50 values, we are interested in the smaller numbers because they indicate that LESS antibody was required to achieve the same signal. It appears that our mutants have a mix of larger and smaller EC50 values relative to the wild-type strains.</p>
 <p>We could also plot the regression lines on the same plots with the points to do a visual test of the EC50 estimates. We do not do this here, opting instead to wait for the discussion on MLE and visualization of the results later in the course.</p>
-</div>
-<div class="section" id="Computing-Environment">
+</section>
+<section id="Computing-Environment">
 <h2>Computing Environment<a class="headerlink" href="#Computing-Environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -2409,26 +2418,26 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../02/index.html" class="btn btn-neutral float-left" title="R2. Extra help for new programmers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../homework/01/index.html" class="btn btn-neutral float-right" title="1. Practice with Python tools and EDA I" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../04/probability_review.html" class="btn btn-neutral float-right" title="R4. Probability review" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117ddaf10> 
+   <jinja2.runtime.BlockReference object at 0x115c6a290> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

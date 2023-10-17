@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Performing bootstrap calculations &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -96,15 +97,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -112,6 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -166,7 +175,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Performing-bootstrap-calculations">
+  <section id="Performing-bootstrap-calculations">
 <h1>Performing bootstrap calculations<a class="headerlink" href="#Performing-bootstrap-calculations" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/bee_sperm.csv">Dataset download</a></p>
 <hr><div class="nbinput nblast docutils container">
@@ -190,7 +199,7 @@
 over how we implement this in practice. We will work with some real data on the reproductive health of male bees that have been treated with pesticide.</p>
 <p>It is important as you go through this lesson to remember that you do not know what the generative distribution is. We are only approximating it using the plug-in principle. Since we do not know what <span class="math notranslate nohighlight">\(F\)</span> is, we do not know what its parameters are, so we therefore cannot estimate them. Rather, we can study <strong>summary statistics</strong>, which are plug-in estimates for statistical functionals of the generative distribution, such as means, variances, or even the ECDF itself, and how they may vary
 from experiment to experiment. In this sense, we are doing <strong>nonparametric inference</strong>.</p>
-<div class="section" id="The-data-set">
+<section id="The-data-set">
 <h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
 <p>Neonicotinoid pesticides are thought to have inadvertent effects on service-providing insects such as bees. A study of this was <a class="reference external" href="http://www.nytimes.com/2016/07/29/science/neonicotinoid-insecticide-bee-sperm.html">featured in the New York Times</a>. The original paper by Straub and coworkers may be found <a class="reference external" href="http://dx.doi.org/10.1098/rspb.2016.0506">here</a>. The authors put their <a class="reference external" href="http://dx.doi.org/10.5061/dryad.bs515">data in the Dryad repository</a>, which means that it is free to all to work
 with!</p>
@@ -409,8 +418,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The visual inspection of the ECDFs suggests that indeed the control drones have more alive sperm than those treated with pesticide. But how variable would these ECDFs be if we repeated the experiment?</p>
-</div>
-<div class="section" id="Bootstrap-samples-and-ECDFs">
+</section>
+<section id="Bootstrap-samples-and-ECDFs">
 <h2>Bootstrap samples and ECDFs<a class="headerlink" href="#Bootstrap-samples-and-ECDFs" title="Permalink to this heading"></a></h2>
 <p>To address this question, we can generate bootstrap samples from the experimental data and make lots of ECDFs. We can then plot them all to see how the ECDF might vary. Recall that a bootstrap sample from a data set of <span class="math notranslate nohighlight">\(n\)</span> repeated measurements is generated by drawing <span class="math notranslate nohighlight">\(n\)</span> data points out of the original data set with replacement. The <code class="docutils literal notranslate"><span class="pre">rg.choice()</span></code> function enables random draws of elements out of an array. Let’s generate 100 bootstrap samples and plot their ECDFs to visualize how
 our data set might change as we repeat the experiment.</p>
@@ -481,8 +490,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>From this graphical display, we can already see that the ECDFs do not strongly overlap in 100 bootstrap samples, so there is likely a real difference between the two treatments.</p>
-</div>
-<div class="section" id="Speeding-up-sampling-with-Numba">
+</section>
+<section id="Speeding-up-sampling-with-Numba">
 <h2>Speeding up sampling with Numba<a class="headerlink" href="#Speeding-up-sampling-with-Numba" title="Permalink to this heading"></a></h2>
 <p>We can make sampling faster (though note that the slowness in generating the above plot is not in resampling, but in adding glyphs to the plot) by employing <strong>just-in-time compilation</strong>, wherein the Python code is compiled at runtime into machine code. This results in a substantial speed boost. <a class="reference external" href="http://numba.pydata.org">Numba</a> is a powerful tool for this purpose, and we will use it. Bear in mind, though, that not all Python code is Numba-able. Random number generation is supported, but as of
 Numba version 0.56, only the Mersenne Twister bit generator is <a class="reference external" href="https://en.wikipedia.org/wiki/Thread_safety">thread safe</a>, so we will use it in Numba’d code.</p>
@@ -533,8 +542,8 @@ Using a Numba&#39;d Mersenne Twister:
 </pre></div></div>
 </div>
 <p>That’s a factor of 7 or so increase. That can make a big difference when generating lots of bootstrap samples.</p>
-</div>
-<div class="section" id="Bootstrap-replicates-and-confidence-intervals">
+</section>
+<section id="Bootstrap-replicates-and-confidence-intervals">
 <h2>Bootstrap replicates and confidence intervals<a class="headerlink" href="#Bootstrap-replicates-and-confidence-intervals" title="Permalink to this heading"></a></h2>
 <p>We have plotted the ECDF of the data, which is instructive, but we would also like to get plug-in estimates for the generative distribution. Remember, when doing nonparametric plug-in estimates, we plug in the ECDF for the CDF. We do not need to specify what the distribution (described mathematically by the CDF, or equivalently by the PDF) is, just that we approximate it by the empirical distribution.</p>
 <p>We have laid out the procedure to compute a confidence interval.</p>
@@ -618,7 +627,7 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.50]
 
 </pre></div></div>
 </div>
-<div class="section" id="Display-of-confidence-intervals">
+<section id="Display-of-confidence-intervals">
 <h3>Display of confidence intervals<a class="headerlink" href="#Display-of-confidence-intervals" title="Permalink to this heading"></a></h3>
 <p>While the textual confidence intervals shown above are useful, it is often desired to display confidence intervals graphically. The <a class="reference external" href="https://bebi103.github.io/">bebi103 package</a> has a utility to do this. It requires as input a list of dictionaries where each dictionary contains an estimate, a confidence interval, and a label.</p>
 <div class="nbinput docutils container">
@@ -673,8 +682,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="ECDF-of-bootstrap-replicates">
+</section>
+<section id="ECDF-of-bootstrap-replicates">
 <h3>ECDF of bootstrap replicates<a class="headerlink" href="#ECDF-of-bootstrap-replicates" title="Permalink to this heading"></a></h3>
 <p>We can also use the bootstrap replicates to plot the probability distribution of mean alive sperm count. <em>Remember</em>: This is not a confidence interval on a parameter value. That does not make sense in frequentist statistics, and furthermore we have not assumed any parametric model. It is the confidence interval describing what we would get as a plug-in estimate for the mean if we did the experiment over and over again.</p>
 <p>When we plot the ECDF of the bootstrap replicates, we will thin them so as not to choke the browser with too many points. Since we will do this again, we write a quick function to do it.</p>
@@ -821,9 +830,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>The results are similar, and we clearly see clear non-normality in the ECDFs.</p>
 <p>Note that plotting ECDFs of bootstrap replicates is not a normal reporting mechanism for bootstrap confidence intervals. We show them here to illustrate how bootstrapping works.</p>
-</div>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -852,8 +861,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -867,11 +876,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117b25fd0> 
+   <jinja2.runtime.BlockReference object at 0x16d7dd2d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

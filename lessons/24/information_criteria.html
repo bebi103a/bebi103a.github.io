@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model comparison with the Akaike information criterion &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -24,7 +25,9 @@
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="25. Implementation of model assessment" href="../25/index.html" />
+    <link rel="prev" title="Graphical model assessment" href="graphical_model_assessment.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,7 +51,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Lessons</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../00/index.html">0. Preparing computing resources for the course</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/cycle_of_science.html">1. The cycle of science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Version control with Git</a></li>
@@ -78,15 +81,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">24. Model assessment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graphical_model_assessment.html">Graphical model assessment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Model comparison with the Akaike information criterion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-akaike-information-criterion">The Akaike information criterion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#akaike-weights">Akaike weights</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -94,6 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -130,6 +149,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">24. Model assessment</a></li>
       <li class="breadcrumb-item active">Model comparison with the Akaike information criterion</li>
   <li class="wy-breadcrumbs-aside">
     
@@ -147,11 +167,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="model-comparison-with-the-akaike-information-criterion">
+  <section id="model-comparison-with-the-akaike-information-criterion">
 <h1>Model comparison with the Akaike information criterion<a class="headerlink" href="#model-comparison-with-the-akaike-information-criterion" title="Permalink to this heading"></a></h1>
 <p>We have seen that we can assess models graphically. There are many non-graphical ways to assess models, including <a class="reference external" href="https://en.wikipedia.org/wiki/Likelihood-ratio_test">likelihood-ratio tests</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">cross-validation</a>. Both of these are involved topics (especially cross-validation; there is a <em>lot</em> to learn there), and we will not cover them in much depth here.</p>
 <p>We will go into much more depth on model selection in the sequel of this course.</p>
-<div class="section" id="the-akaike-information-criterion">
+<section id="the-akaike-information-criterion">
 <h2>The Akaike information criterion<a class="headerlink" href="#the-akaike-information-criterion" title="Permalink to this heading"></a></h2>
 <p>For now, we will consider a metric for model selection called the <a class="reference external" href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike information criterion</a>, or AIC. We will not show it, but the AIC can be loosely interpreted as an estimate of a quantity related to the distance between the true generative distribution and the model distribution. (I am speaking loosely here, there are important details missing, and in fact I have abused some language.) Given two models, the one with the lesser AIC is likely closer to the true generative distribution.</p>
 <p>For a set of parameters <span class="math notranslate nohighlight">\(\theta\)</span> with MLE <span class="math notranslate nohighlight">\(\theta^*\)</span> and a model with log-likelihood <span class="math notranslate nohighlight">\(\ell(\theta;\text{data})\)</span>, the AIC is given by</p>
@@ -160,8 +180,8 @@
 \text{AIC} = -2\ell(\theta^*;\text{data}) + 2p,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(p\)</span> is the number of free parameters in a model. Thus, more complicated models, those with more parameters, are penalized for having too many parameters. Furthermore, models where the likelihood function is broad, meaning that many parameter values are viable, have a lower log likelihood and are also penalized. So, models with few, meaningful parameters and a high likelihood function at the MLE have lower AIC and are favored.</p>
-</div>
-<div class="section" id="akaike-weights">
+</section>
+<section id="akaike-weights">
 <h2>Akaike weights<a class="headerlink" href="#akaike-weights" title="Permalink to this heading"></a></h2>
 <p>If we compare two models, say model 1 and model 2, then the <strong>Akaike weight</strong> for model 1 is</p>
 <div class="math notranslate nohighlight">
@@ -180,23 +200,26 @@ w_i = \frac{\mathrm{e}^{-(\text{AIC}_i -     \text{AIC}_\mathrm{max})/2}}{\sum_j
 \end{align}\]</div>
 <p>Interpretation of the Akaike weights is lacking a consensus, but we can loosely interpret the Akaike weight as the probability that a model will give the best predictions of new data, assuming that we have considered all possible models.</p>
 <p>Importantly, computing the AIC and the Akaike weights is trivial once the MLE calculation is complete. You simply evaluate the log-likelihood at the MLE (which you had to do anyway to perform the optimization to find the MLE), multiply by negative two, and then add twice the number of parameters to it!</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="graphical_model_assessment.html" class="btn btn-neutral float-left" title="Graphical model assessment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../25/index.html" class="btn btn-neutral float-right" title="25. Implementation of model assessment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117bf52d0> 
+   <jinja2.runtime.BlockReference object at 0x16c8938d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

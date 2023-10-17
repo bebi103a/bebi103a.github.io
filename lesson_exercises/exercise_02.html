@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E2. To be completed after lesson 10 &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -89,15 +90,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../lessons/20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_07.html">E7. To be completed after lesson 21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_08.html">E8. To be completed after lesson 24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/23/mixture_models.html">23. Mixture models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/24/index.html">24. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/25/index.html">25. Implementation of model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/26/index.html">26. Statistical watchouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/27/reproducible_workflows.html">27. Reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lessons/28/paper_of_the_future.html">28. The paper of the future</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../recitations/01/index.html">R1. The command line and Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recitations/02/index.html">R2. Extra help for new programmers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -105,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -158,7 +167,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="E2.-To-be-completed-after-lesson-10">
+  <section id="E2.-To-be-completed-after-lesson-10">
 <h1>E2. To be completed after lesson 10<a class="headerlink" href="#E2.-To-be-completed-after-lesson-10" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">Data set download</a></p>
 <hr /><div class="nbinput nblast docutils container">
@@ -169,7 +178,7 @@
 </pre></div>
 </div>
 </div>
-<hr /><div class="section" id="Exercise-2.1">
+<hr /><section id="Exercise-2.1">
 <h2>Exercise 2.1<a class="headerlink" href="#Exercise-2.1" title="Permalink to this heading"></a></h2>
 <p>In the lesson exercise, we will again work with a subset of the Palmer penguin data set. I will load it and view it now.</p>
 <div class="nbinput docutils container">
@@ -597,24 +606,24 @@ File <span class="ansi-green-fg">~/opt/anaconda3/envs/bebi103_build/lib/python3.
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Exercise-2.2">
+</section>
+<section id="Exercise-2.2">
 <h2>Exercise 2.2<a class="headerlink" href="#Exercise-2.2" title="Permalink to this heading"></a></h2>
 <p>What is the difference between merging and concatenating data frames?</p>
-</div>
-<div class="section" id="Exercise-2.3">
+</section>
+<section id="Exercise-2.3">
 <h2>Exercise 2.3<a class="headerlink" href="#Exercise-2.3" title="Permalink to this heading"></a></h2>
 <p>Describe the difference between categorical and quantitative variables. How are they fundamentally different in the way we plot them?</p>
-</div>
-<div class="section" id="Exercise-2.4">
+</section>
+<section id="Exercise-2.4">
 <h2>Exercise 2.4<a class="headerlink" href="#Exercise-2.4" title="Permalink to this heading"></a></h2>
 <p>Give pros and cons for using a histogram for display of repeated measurements. Then give pros and cons for using an ECDF.</p>
-</div>
-<div class="section" id="Exercise-2.5">
+</section>
+<section id="Exercise-2.5">
 <h2>Exercise 2.5<a class="headerlink" href="#Exercise-2.5" title="Permalink to this heading"></a></h2>
 <p>Write down any questions or points of confusion that you have.</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -625,8 +634,8 @@ File <span class="ansi-green-fg">~/opt/anaconda3/envs/bebi103_build/lib/python3.
 </pre></div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -640,11 +649,11 @@ File <span class="ansi-green-fg">~/opt/anaconda3/envs/bebi103_build/lib/python3.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 12, 2023.
+      <span class="lastupdated">Last updated on Oct 17, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x13ce50ed0> 
+   <jinja2.runtime.BlockReference object at 0x16d3b07d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Structure of a data frame &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -122,6 +121,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -176,7 +178,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Structure-of-a-data-frame">
+  <div class="section" id="Structure-of-a-data-frame">
 <h1>Structure of a data frame<a class="headerlink" href="#Structure-of-a-data-frame" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput nblast docutils container">
@@ -335,7 +337,7 @@
 </table>
 </div></div>
 </div>
-<section id="The-components-of-a-data-frame">
+<div class="section" id="The-components-of-a-data-frame">
 <h2>The components of a data frame<a class="headerlink" href="#The-components-of-a-data-frame" title="Permalink to this heading"></a></h2>
 <p>Thus far, we have talked about Pandas data frames, and have not carefully explained what they are. To do so, it helps to start by thinking about a Pandas <strong>series</strong>. A series is a collection of data, with each datum having associated with it an <strong>index</strong>. This sounds an awful lot like a dictionary, where the indices are the keys and the data are the values. Like keys of a dictionary, the index of a series is immutable. Like the values of a dictionary, the data are mutable. A key difference,
 though, is that the indices do not have to be unique.</p>
@@ -359,7 +361,7 @@ though, is that the indices do not have to be unique.</p>
 pandas.core.series.Series
 </pre></div></div>
 </div>
-<section id="A-note-on-the-words-%22index,%22-%22indexes,%22-and-%22indices%22">
+<div class="section" id="A-note-on-the-words-%22index,%22-%22indexes,%22-and-%22indices%22">
 <h3>A note on the words “index,” “indexes,” and “indices”<a class="headerlink" href="#A-note-on-the-words-%22index,%22-%22indexes,%22-and-%22indices%22" title="Permalink to this heading"></a></h3>
 <p>At this point, we should clarify some language. When we say “the index of a series,” we are referring to the set of “keys” for that series. For example, the index for the series given by the participant number column of the facial recognition data frame is a range index, going from zero to 101, inclusive.</p>
 <div class="nbinput docutils container">
@@ -429,8 +431,8 @@ Name: participant number, dtype: int64
 </div>
 </div>
 <p>We would say, “<code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code> have the same index,” or “The indexes of <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">s1</span></code> are the same.”</p>
-</section>
-<section id="Columns-are-indexes">
+</div>
+<div class="section" id="Columns-are-indexes">
 <h3>Columns are indexes<a class="headerlink" href="#Columns-are-indexes" title="Permalink to this heading"></a></h3>
 <p>Internally to Pandas, the column names of a data frame collectively comprise an index.</p>
 <div class="nbinput docutils container">
@@ -456,9 +458,9 @@ pandas.core.indexes.base.Index
 <li><p>A Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> is an index-data set pair, where the data-set is one-dimensional.</p></li>
 <li><p>A Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a collection of <code class="docutils literal notranslate"><span class="pre">Series</span></code>, all of which have the same index. Each of these series is a column of the data frame. The names of the columns themselves comprise an <code class="docutils literal notranslate"><span class="pre">Index</span></code>.</p></li>
 </ul>
-</section>
-</section>
-<section id="Computing-environment">
+</div>
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -483,8 +485,8 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -498,11 +500,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16d39c310> 
+   <jinja2.runtime.BlockReference object at 0x139277390> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

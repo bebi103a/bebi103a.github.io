@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 5.2: Modeling and parameter estimation for Boolean data (45 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -26,7 +25,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Schedule overview" href="../../schedule.html" />
+    <link rel="next" title="6. Maximum likelihood estimation I" href="../06/index.html" />
     <link rel="prev" title="Homework 5.1: Confidence intervals for microtubule catastrophe (team problem, 55 pts)" href="hw5.1.html" /> 
 </head>
 
@@ -109,6 +108,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 5.2: Modeling and parameter estimation for Boolean data (45 pts)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -163,7 +165,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-5.2:-Modeling-and-parameter-estimation-for-Boolean-data-(45-pts)">
+  <div class="section" id="Homework-5.2:-Modeling-and-parameter-estimation-for-Boolean-data-(45-pts)">
 <h1>Homework 5.2: Modeling and parameter estimation for Boolean data (45 pts)<a class="headerlink" href="#Homework-5.2:-Modeling-and-parameter-estimation-for-Boolean-data-(45-pts)" title="Permalink to this heading"></a></h1>
 <hr><p>In this problem, we will work with data of the True/False type. Lots of data sets in the biological sciences are like this. For example, we might look at a certain mutation in <em>Drosophila</em> that affects development and we might check whether or not eggs hatch.</p>
 <p>The data we will use comes from an experiment we have done for the last few years in <a class="reference external" href="http://bi1x.caltech.edu/">Bi 1x</a> here at Caltech. The experiment was developed by Meaghan Sullivan in collaboration with Ravi Nath. Sophie Walton further developed strains that were used in the 2019 experiment, which we study here. We studied a neural circuit in <em>C. elegans</em> using optogenetics.</p>
@@ -178,6 +180,12 @@ stimulation will cause the worm to exhibit aversion behavior and reverse.</p>
 <p>We also studied an AVA strain that has channelrhodopsin expressed only in the AVA command interneuron. Our goal is to quantify the effects of stimulating this neuron in terms of reversals compared to the ASH neuron and to wild type.</p>
 <p>The True/False data here are the whether or not the worms undergo a reversal. Here is what the students observed in 2019, the last year we did this experiment.</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 16%" />
+<col style="width: 24%" />
+<col style="width: 36%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Strain</p></th>
 <th class="head"><p>Year</p></th>
@@ -219,25 +227,25 @@ stimulation will cause the worm to exhibit aversion behavior and reverse.</p>
 <p><strong>b)</strong> If possible, derive an analytical expression for the maximum likelihood estimate of <span class="math notranslate nohighlight">\(\theta\)</span>. If you have the expression, compute the MLE for <span class="math notranslate nohighlight">\(\theta\)</span> for each of the three strains. If not, numerically compute the MLE for <span class="math notranslate nohighlight">\(\theta\)</span> for each of the three strains.</p>
 <p><strong>c)</strong> Compute confidence intervals for your estimates of <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p><strong>d)</strong> Comment on the results and conduct any other analyses you think may help you understand the results of this experiment.</p>
-</section>
+</div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="hw5.1.html" class="btn btn-neutral float-left" title="Homework 5.1: Confidence intervals for microtubule catastrophe (team problem, 55 pts)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../schedule.html" class="btn btn-neutral float-right" title="Schedule overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../06/index.html" class="btn btn-neutral float-right" title="6. Maximum likelihood estimation I" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16d47b1d0> 
+   <jinja2.runtime.BlockReference object at 0x13932ead0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

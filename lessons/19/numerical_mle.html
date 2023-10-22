@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Numerical maximum likelihood estimation &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -123,6 +122,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -177,7 +179,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Numerical-maximum-likelihood-estimation">
+  <div class="section" id="Numerical-maximum-likelihood-estimation">
 <h1>Numerical maximum likelihood estimation<a class="headerlink" href="#Numerical-maximum-likelihood-estimation" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -499,15 +501,15 @@ if (force === true) {
 </script></div>
 </div>
 <hr><p>As discussed in the previous lesson, maximum likelihood estimates for parameters may sometimes be computed analytically, but often cannot. In those cases, we need to resort to numerical methods. In this lesson, we demonstrate some numerical methods to perform maximum likelihood estimates of parameters form a Negative Binomial distribution.</p>
-<section id="The-data-set">
+<div class="section" id="The-data-set">
 <h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
 <p>The data come from the <a class="reference external" href="http://elowitz.caltech.edu/">Elowitz lab</a>, published in Singer et al., Dynamic Heterogeneity and DNA Methylation in Embryonic Stem Cells, <em>Molec. Cell</em>, <strong>55</strong>, 319-331, 2014, available <a class="reference external" href="https://doi.org/10.1016/j.molcel.2014.06.029">here</a>.</p>
 <p>In this paper, the authors investigated cell populations of embryonic stem cells using RNA single molecule fluorescence in situ hybridization (smFISH), a technique that enables them to count the number of mRNA transcripts in a cell for a given gene. They were able to measure four different genes in the same cells. So, for one experiment, they get the counts of four different genes in a collection of cells.</p>
 <p>The authors focused on genes that code for pluripotency-associated regulators to study cell differentiation. Indeed, differing gene expression levels are a hallmark of differentiated cells. The authors do not just look at counts in a given cell at a given time. The <em>temporal</em> nature of gene expression is also important. While the authors do not directly look at temporal data using smFISH (since the technique requires fixing the cells), they did look at time lapse fluorescence movies of other
 regulators. We will not focus on these experiments here, but will discuss how the distribution of mRNA counts acquired via smFISH can serve to provide some insight about the dynamics of gene expression.</p>
 <p>The data set we are analyzing now comes from an experiment where smFISH was performed in 279 cells for the genes <em>rex1</em>, <em>rest</em>, <em>nanog</em>, and <em>prdm14</em>. The data set may be downloaded at <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv</a>.</p>
-</section>
-<section id="Exploratory-data-analysis">
+</div>
+<div class="section" id="Exploratory-data-analysis">
 <h2>Exploratory data analysis<a class="headerlink" href="#Exploratory-data-analysis" title="Permalink to this heading"></a></h2>
 <p>We first load in the data set and generate ECDFs for the mRNA counts for each of the four genes.</p>
 <div class="nbinput docutils container">
@@ -733,8 +735,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>It appears as though there is a correlation between Rest, Nanog, and Rex1. They tend to be high or low together. Prdm14, on the other hand, shows less correlation.</p>
-</section>
-<section id="Model-for-mRNA-levels">
+</div>
+<div class="section" id="Model-for-mRNA-levels">
 <h2>Model for mRNA levels<a class="headerlink" href="#Model-for-mRNA-levels" title="Permalink to this heading"></a></h2>
 <p>In this part of the lesson, we will model gene expression of each of the four genes separately, though they are connected by which cell is being measured. We will discuss that later. For now, we develop a model for the mRNA counts for a given gene.</p>
 <p>If gene expression is a purely Poisson process, we might expect a Poisson distribution. Or, if the copy number is itself somehow tightly regulated, we might expect a Normal distribution.</p>
@@ -766,8 +768,8 @@ n_\mathrm{burst}(1-\theta)^{n_\mathrm{burst}} \\[1em]
 &n \sim \text{NBinom}(\alpha, \beta),\\[1em]
 &b = 1/\beta.
 \end{align}</span></p>
-</section>
-<section id="Maximum-likelihood-estimation-by-numerical-optimization">
+</div>
+<div class="section" id="Maximum-likelihood-estimation-by-numerical-optimization">
 <h2>Maximum likelihood estimation by numerical optimization<a class="headerlink" href="#Maximum-likelihood-estimation-by-numerical-optimization" title="Permalink to this heading"></a></h2>
 <p>To compute the MLE for the two parameters, the burst frequency <span class="math notranslate nohighlight">\(\alpha\)</span> and burst size <span class="math notranslate nohighlight">\(\beta\)</span>, we need to define the likelihood function. We make the assumption that the number of transcripts in each cell is i.i.d., giving a statistical model of</p>
 <p><span class="math">\begin{align}
@@ -786,7 +788,7 @@ L(\alpha, b;\mathbf{n}) = \prod_i\frac{\Gamma(n_i+\alpha)}{\Gamma(\alpha)n!}\lef
 \frac{\partial \ell}{\partial \alpha} = \frac{\partial \ell}{\partial b} = 0.
 \end{align}</span></p>
 <p>Unfortunately, no closed form solution exists for this. We therefore need to resort to <a class="reference external" href="https://en.wikipedia.org/wiki/Mathematical_optimization">numerical optimization</a> to find the MLE <span class="math notranslate nohighlight">\(\alpha^*\)</span> and <span class="math notranslate nohighlight">\(b^*\)</span>.</p>
-<section id="Numerical-optimization">
+<div class="section" id="Numerical-optimization">
 <h3>Numerical optimization<a class="headerlink" href="#Numerical-optimization" title="Permalink to this heading"></a></h3>
 <p>Numerical optimization is typically implemented to find a <em>minimizers</em> of a function rather than maximizers. The function being minimized is called an <strong>objective function</strong>. This is not a problem for maximum likelihood estimation; we simply define a <em>negative</em> log-likelihood as our objective function.</p>
 <p>Sometimes, we have <strong>constraints</strong> on the allowed values for the parameters. In our case, both <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> must be non-negative. So, the statement of the optimization problem to find the MLE is</p>
@@ -803,8 +805,8 @@ L(\alpha, b;\mathbf{n}) = \prod_i\frac{\Gamma(n_i+\alpha)}{\Gamma(\alpha)n!}\lef
 This is passed as an array <code class="docutils literal notranslate"><span class="pre">x0</span></code>. The kwarg <code class="docutils literal notranslate"><span class="pre">args</span></code> specifies which additional arguments are to be passed to <code class="docutils literal notranslate"><span class="pre">fun()</span></code>. <strong>Note that</strong> <code class="docutils literal notranslate"><span class="pre">args</span></code> <strong>must be a tuple</strong>. Finally, the <code class="docutils literal notranslate"><span class="pre">method</span></code> keyword argument specifies which numerical optimization method to use, the default being the <a class="reference external" href="https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm">Broyden–Fletcher–Goldfarb–Shanno algorithm</a>. This is a good algorithm but does compute derivatives, so it is only useful if the parameter
 values can take on any real value.</p>
 <p>I have omitted the <code class="docutils literal notranslate"><span class="pre">bounds</span></code> keyword argument here because we will not usually use them, as we will either do the logarithm trick above, or use <a class="reference external" href="https://en.wikipedia.org/wiki/Powell%27s_method">Powell’s method</a>, which does not required calculation of derivatives (so we may therefore have discontinuities in the objective function and set the value of the objective function to be infinity for disallowed parameter values).</p>
-</section>
-<section id="Guess-at-optimal-parameters">
+</div>
+<div class="section" id="Guess-at-optimal-parameters">
 <h3>Guess at optimal parameters<a class="headerlink" href="#Guess-at-optimal-parameters" title="Permalink to this heading"></a></h3>
 <p>We will use the method of moments to guess the optimal parameters. Referring to the <a class="reference external" href="https://distribution-explorer.github.io/">Distribution Explorer</a> for the first moment and variance, we can equate them with the plug-in estimates.</p>
 <p><span class="math">\begin{align}
@@ -844,7 +846,7 @@ b_mom = 49.569381904553985
 </div>
 <p>Note that the method-of-moments is not the only way to come up with guesses. As an example, if the data are not actually generated from a Negative Binomial distribution (or even if they are and there are not too many data points), then we may have <span class="math notranslate nohighlight">\(\hat{\sigma} &lt; \bar{n}\)</span>, which would result in a negative estimate for both <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, which are not even allowed values of the parameters. It turns out that in this case, the optimization works just fine if we arbitrarily
 pick something like <span class="math notranslate nohighlight">\(\alpha \approx \beta \approx 3\)</span>.</p>
-<section id="Solving-with-the-BFGS-algorithm">
+<div class="section" id="Solving-with-the-BFGS-algorithm">
 <h4>Solving with the BFGS algorithm<a class="headerlink" href="#Solving-with-the-BFGS-algorithm" title="Permalink to this heading"></a></h4>
 <p>We will now solve the minimization problem using the BFGS algorithm, specifying the parameters using logarithms to make sure that the problem is completely unconstrained. First, we have to write a function for the log-likelihood matching the required function signature of the input <code class="docutils literal notranslate"><span class="pre">fun</span></code> to <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code>. Note that we do not have to hand-code the log-likelihood. The <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module has functions to compute the log-PDF/log-PMF for many distributions. We just need to check
 the <a class="reference external" href="https://distribution-explorer.github.io/">Distribution Explorer</a> to ensure we use the parametrization that the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module requires. In this case, it expects parameters <code class="docutils literal notranslate"><span class="pre">alpha</span></code> and <code class="docutils literal notranslate"><span class="pre">1/1+b</span></code>.</p>
@@ -936,8 +938,8 @@ b:  69.44451179971176
 </pre></div></div>
 </div>
 <p>So, the MLE for the burst frequency is about 1.25 inverse degradation times. The MLE for the burst size is about 70 transcripts per burst.</p>
-</section>
-<section id="Solving-using-Powell's-method">
+</div>
+<div class="section" id="Solving-using-Powell's-method">
 <h4>Solving using Powell’s method<a class="headerlink" href="#Solving-using-Powell's-method" title="Permalink to this heading"></a></h4>
 <p>As an alternative to the BFGS method, we can use Powell’s method. This has the advantage that we do not have to use derivatives in the optimization, so we do not have to use logarithms of the parameters. We do, however, need to specify that the log-likelihood is minus infinity for disallowed parameter values.</p>
 <div class="nbinput nblast docutils container">
@@ -992,10 +994,10 @@ b:  69.4443747143358
 </pre></div></div>
 </div>
 <p>This differs from the result we got with BFGS in the third or fourth decimal place, due to inaccuracies in introducing the logarithms, but the difference is not big and also is small compared to the confidence interval we will for the MLEs of <em>α</em> and <em>b</em> in a subsequent lesson.</p>
-</section>
-</section>
-</section>
-<section id="The-likelihood-function">
+</div>
+</div>
+</div>
+<div class="section" id="The-likelihood-function">
 <h2>The likelihood function<a class="headerlink" href="#The-likelihood-function" title="Permalink to this heading"></a></h2>
 <p>To help give a picture of what the likelihood function looks like, and what the optimizer is doing, we can plot it. In this case, we have two parameters, so we can make a contour plot. We first compute the log-likelihood for various values of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <div class="nbinput nblast docutils container">
@@ -1074,8 +1076,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Graphically, we can see that we appropriately found the maximum.</p>
-</section>
-<section id="A-quick-visualization">
+</div>
+<div class="section" id="A-quick-visualization">
 <h2>A quick visualization<a class="headerlink" href="#A-quick-visualization" title="Permalink to this heading"></a></h2>
 <p>We can do a quick visualization of our MLE to see if the model holds up. We will talk more about graphical tests of model predictive accuracy in coming lessons, but for now, we will simply overlay the theoretical CDF parametrized by the MLE. We can conveniently use the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module to generate the CDF. It is probably overkill, since we have such a wide range of mRNA counts, but we will take care to make sure we plot the theoretical CDF as a staircase, since it is for a discrete
 distribution.</p>
@@ -1141,8 +1143,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The MLE curve deviates from the nonparametric ECDF 95% confidence interval. This suggests we may be missing something in our model. We will cover this in more depth in future lessons.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -1172,8 +1174,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1187,11 +1189,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16ca9bd10> 
+   <jinja2.runtime.BlockReference object at 0x1391e2fd0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

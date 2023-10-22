@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction to plotting with Bokeh &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -127,6 +126,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -181,7 +183,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Introduction-to-plotting-with-Bokeh">
+  <div class="section" id="Introduction-to-plotting-with-Bokeh">
 <h1>Introduction to plotting with Bokeh<a class="headerlink" href="#Introduction-to-plotting-with-Bokeh" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
@@ -506,15 +508,15 @@ if (force === true) {
 </script></div>
 </div>
 <hr /><p>We have a couple nice data sets from the last few lessons, the data from the tongue strikes of frogs and facial matching data from people with sleep deprivation. We’ve learned how to use Pandas to handle the data sets and get what we want out of them. But I argue that what we want out of them most of the time is <strong>plots</strong>. Now is the time in when we learn how to take data set and plot them.</p>
-<section id="The-Python-visualization-landscape">
+<div class="section" id="The-Python-visualization-landscape">
 <h2>The Python visualization landscape<a class="headerlink" href="#The-Python-visualization-landscape" title="Permalink to this heading"></a></h2>
 <p>Let us start by looking at some of the many plotting packages available in Python. In a <a class="reference external" href="https://www.youtube.com/watch?v=FytuB8nFHPQ">talk at PyCon in 2017</a>, <a class="reference external" href="http://vanderplas.com">Jake VanderPlas</a>, who is one of the authors of one of them (<a class="reference external" href="https://altair-viz.github.io">Altair</a>), gave an overview of the Python visualization landscape. That landscape is depicted below, taken from <a class="reference external" href="https://github.com/rougier/python-visualization-landscape">this visualization of it</a> by <a class="reference external" href="http://www.labri.fr/perso/nrougier/">Nicolas
 Rougier</a>. (It is three years old and definitely not complete, notably missing <a class="reference external" href="https://panel.pyviz.org">Panel</a>, for example.)</p>
 <img alt="python_viz_landscape" src="../../_images/python_viz_landscape.png" />
 <p>The landscape is divided into three main pods based on the low-level renderer of the graphics, JavaScript, <a class="reference external" href="https://matplotlib.org">Matplotlib</a>, and <a class="reference external" href="https://www.opengl.org">OpenGL</a> (though Matplotlib is higher-level than JavaScript and OpenGL). We will not discuss packages based on OpenGL. Packages that use JavaScript for rendering are particularly well suited for interactivity in browsers. Interactivity and portability (accomplished by rendering in browsers) are key features of modern
 plotting libraries, so we will use JavaScript-based plotting (as I do in my own work).</p>
-</section>
-<section id="High-level-and-low-level-plotting-packages">
+</div>
+<div class="section" id="High-level-and-low-level-plotting-packages">
 <h2>High-level and low-level plotting packages<a class="headerlink" href="#High-level-and-low-level-plotting-packages" title="Permalink to this heading"></a></h2>
 <p>As a demonstration of what I mean by high-level and low-level plotting packages, let us first think about one of our tasks we did with Pandas with the facial matching data set. We computed the median percent correct for those with and without insomnia. Here’s the code to do it.</p>
 <div class="nbinput docutils container">
@@ -554,8 +556,8 @@ Plotting libraries in Python usually take care of the rendering part for you, ei
 <div style="width: 500px; margin: auto;"><p><img alt="HoloViz maze" src="../../_images/shortcuts.png" /> <em>Copyright HoloViz authors, downloaded from</em><a class="reference external" href="http://holoviz.org/background.html">here</a><em>.</em></p>
 </div><p>Using a low-level plotting library, you can get to any graphic you like, but it takes many steps to do so. Using a high level library, you can rapidly get to many, if not most, of the graphics you like in very few steps. However, you cannot get to <em>all</em> graphics. In a layered approach, in which the higher level libraries give you access to the lower level customizations, you can get to any graphic, and can do so quickly. The layered approach requires proficiency in using the low-level and
 high-level libraries.</p>
-</section>
-<section id="Introduction-to-Bokeh">
+</div>
+<div class="section" id="Introduction-to-Bokeh">
 <h2>Introduction to Bokeh<a class="headerlink" href="#Introduction-to-Bokeh" title="Permalink to this heading"></a></h2>
 <p>Our debate in building this course was about whether to start with higher-level plotting or lower-level. We decided to do our plotting using <a class="reference external" href="https://bokeh.pydata.org/">Bokeh</a>, a low-level plotting library first for a few reasons.</p>
 <ol class="arabic simple">
@@ -568,7 +570,7 @@ high-level libraries.</p>
 </pre></div>
 </div>
 <p>at the top of the notebook (as we have done). Finally, note that we also have to have installed the PyViz JupyterLab extension, which you should have done while configuring your computer.</p>
-<section id="Bokeh's-grammar-and-our-first-plot-with-Bokeh">
+<div class="section" id="Bokeh's-grammar-and-our-first-plot-with-Bokeh">
 <h3>Bokeh’s grammar and our first plot with Bokeh<a class="headerlink" href="#Bokeh's-grammar-and-our-first-plot-with-Bokeh" title="Permalink to this heading"></a></h3>
 <p>Constructing a plot with Bokeh consists of four main steps.</p>
 <ol class="arabic simple">
@@ -688,8 +690,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>In looking at the plot, notice a toolbar to right of the plot that enables you to zoom and pan within the plot.</p>
-</section>
-<section id="Code-style-in-plot-specifications">
+</div>
+<div class="section" id="Code-style-in-plot-specifications">
 <h3>Code style in plot specifications<a class="headerlink" href="#Code-style-in-plot-specifications" title="Permalink to this heading"></a></h3>
 <p>Specifications of plots often involves calls to functions with lots of keyword arguments to specify the plot, and this can get unwieldy without a clear style. You can develop your own style, maybe reading <a class="reference external" href="http://treyhunner.com/2017/07/craft-your-python-like-poetry/">Trey Hunner’s blog post again</a>. I like to do the following, which is not what <a class="reference external" href="https://github.com/psf/black">Black</a> defaults to.</p>
 <ol class="arabic simple">
@@ -699,8 +701,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </ol>
 <p>Note that you <em>cannot</em> use method chaining when instantiating figures or populating glyphs.</p>
 <p>If you adhere to a style, it makes your code cleaner and easier to read.</p>
-</section>
-<section id="Coloring-with-other-dimensions">
+</div>
+<div class="section" id="Coloring-with-other-dimensions">
 <h3>Coloring with other dimensions<a class="headerlink" href="#Coloring-with-other-dimensions" title="Permalink to this heading"></a></h3>
 <p>Let’s say we wanted to make the same plot, but with orange circles for insomniacs and blue circles for normal sleepers. To do this, we take advantage of two features of Bokeh.</p>
 <ol class="arabic simple">
@@ -834,9 +836,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-</section>
-<section id="Adding-tooltips">
+</div>
+</div>
+<div class="section" id="Adding-tooltips">
 <h2>Adding tooltips<a class="headerlink" href="#Adding-tooltips" title="Permalink to this heading"></a></h2>
 <p>Bokeh’s interactivity is one of its greatest strengths. While we are plotting confidences when correct and incorrect, we have colored with insomniac status. We might also like to have access to other information in our (tidy) data source if we hover over a glyph. Let’s say we want to know the participant number, gender, and age of each participant. We can tell Bokeh to give us this information by adding <strong>tooltips</strong> when we instantiate the figure.</p>
 <p>The syntax for a tooltip is a list of 2-tuples, where each tuple represents the tooltip you want. The first entry in the tuple is the label and the second is the column from the data source that has the values. The second entry must be preceded with an <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol signifying that it is a field in the data source and not field that is intrinsic to the plot, which is preceded with a <code class="docutils literal notranslate"><span class="pre">$</span></code> sign. If there are spaces in the column heading, enclose the column name in braces. (See the <a class="reference external" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html#basic-tooltips">documentation
@@ -924,8 +926,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="Saving-Bokeh-plots">
+</div>
+<div class="section" id="Saving-Bokeh-plots">
 <h2>Saving Bokeh plots<a class="headerlink" href="#Saving-Bokeh-plots" title="Permalink to this heading"></a></h2>
 <p><em>Note that saving Bokeh plots as presented below will not work in Google Colab.</em></p>
 <p>After you create your plot, you can save it to a variety of formats. Most commonly you would save them as PNG (for presentations), SVG (for publications in the paper of the past), and HTML (for the paper of the future or sharing with colleagues).</p>
@@ -1019,8 +1021,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div></div>
 </div>
 <p>The resulting HTML page has all of the interactivity of the plot and you can, for example, email it to your collaborators for them to explore.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -1048,8 +1050,8 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1063,11 +1065,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16c934510> 
+   <jinja2.runtime.BlockReference object at 0x1391daf50> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

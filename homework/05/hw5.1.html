@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 5.1: Confidence intervals for microtubule catastrophe (team problem, 55 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -109,6 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="hw5.2.html">Homework 5.2: Modeling and parameter estimation for Boolean data (45 pts)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -163,7 +165,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-5.1:-Confidence-intervals-for-microtubule-catastrophe-(team-problem,-55-pts)">
+  <div class="section" id="Homework-5.1:-Confidence-intervals-for-microtubule-catastrophe-(team-problem,-55-pts)">
 <h1>Homework 5.1: Confidence intervals for microtubule catastrophe (team problem, 55 pts)<a class="headerlink" href="#Homework-5.1:-Confidence-intervals-for-microtubule-catastrophe-(team-problem,-55-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv">Dataset download</a></p>
 <hr /><p>Refresh yourself about the microtubule catastrophe data we have already explored in previous homeworks. We will again work with this data set here.</p>
@@ -177,7 +179,7 @@ with unlabeled tubulin including a confidence interval. In looking at the plot, 
 &\sigma^2 = \frac{1}{n(n-1)}\sum_{i=1}^n (x_i - \bar{x})^2,
 \end{align}</span></p>
 <p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> is the arithmetic mean of the data points. To compute a confidence interval of the mean, then, you can compute the interval over which 95% of the probability mass of the above described Normal distribution lies. Compute this approximate confidence interval and compare it to the result you got in part (b). <em>Hint</em>: You can use the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> package to conveniently get intervals for named distributions.</p>
-<p><strong>e)</strong> <em>This part of the problem is for enrichment, and is not graded.</em> Write a function with call signature <code class="docutils literal notranslate"><span class="pre">ecdf(x,</span> <span class="pre">data)</span></code>, which computes the value of the ECDF built from the one-dimensional array <code class="docutils literal notranslate"><span class="pre">data</span></code> at arbitrary points <code class="docutils literal notranslate"><span class="pre">x</span></code>. That is, <code class="docutils literal notranslate"><span class="pre">x</span></code> can be an array. Write this function also helps cement in your mind what an ECDF is and will be useful in part (f).</p>
+<p><strong>e)</strong> <em>This part of the problem is for enrichment, and is not graded.</em> Write a function with call signature <code class="docutils literal notranslate"><span class="pre">ecdf(x,</span> <span class="pre">data)</span></code>, which computes the value of the ECDF built from the one-dimensional array <code class="docutils literal notranslate"><span class="pre">data</span></code> at arbitrary points <code class="docutils literal notranslate"><span class="pre">x</span></code>. That is, <code class="docutils literal notranslate"><span class="pre">x</span></code> can be an array. Writing this function also helps cement in your mind what an ECDF is and will be useful in part (f).</p>
 <p><strong>f)</strong> <em>This part of the problem is for enrichment, and is not graded.</em> In part (a), you used bootstrapping to compute a confidence interval on the ECDF. As is often (though definitely not always) the case, we could use a theoretical result to construct a confidence interval. We could alternatively use the <strong>Dvoretzky-Kiefer-Wolfowitz Inequality</strong> (DKW) to compute confidence intervals for an ECDF. The DKW inequality puts an upper bound on the maximum distance between the ECDF <span class="math notranslate nohighlight">\(\hat{F}(x)\)</span>
 and the generative CDF <span class="math notranslate nohighlight">\(F(x)\)</span>. It states that, for any <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>,</p>
 <p><span class="math">\begin{align}
@@ -201,7 +203,7 @@ U(x) = \min\left(1, \hat{F}(x) + \epsilon\right).
 \end{align}</span></p>
 <p>Note that this is not strictly speaking a confidence interval, but rather a set of bounds for where the confidence interval can lie (it’s the DKW <strong>in</strong>equality after all).</p>
 <p>Plot the upper and lower bounds for the 95% confidence interval as computed from the DKW inequality for the microtubule catastrophe data and comment on what you see.</p>
-</section>
+</div>
 
 
            </div>
@@ -215,11 +217,11 @@ U(x) = \min\left(1, \hat{F}(x) + \epsilon\right).
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16d587250> 
+   <jinja2.runtime.BlockReference object at 0x13945cc50> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

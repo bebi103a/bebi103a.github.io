@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parallel bootstrap calculations &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -117,6 +116,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -171,7 +173,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Parallel-bootstrap-calculations">
+  <div class="section" id="Parallel-bootstrap-calculations">
 <h1>Parallel bootstrap calculations<a class="headerlink" href="#Parallel-bootstrap-calculations" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -541,7 +543,7 @@ if (force === true) {
 </pre></div>
 </div>
 </div>
-<section id="Explicit-RNGs">
+<div class="section" id="Explicit-RNGs">
 <h2>Explicit RNGs<a class="headerlink" href="#Explicit-RNGs" title="Permalink to this heading"></a></h2>
 <p>When we parallelize the calculation, we have to be very careful about the random number generators we use. If we define a random number generator globally with <code class="docutils literal notranslate"><span class="pre">rg</span> <span class="pre">=</span> <span class="pre">np.random.default_rng()</span></code>, then each parallel process will use the same sequence of pseudorandom numbers. We therefore need to make a new RNG for each of the parallel processes. As a result, we need to explicitly supply a random number generator to the function we use to generate samples. This changes the call signature to include
 the RNG, but requires no other changes.</p>
@@ -626,8 +628,8 @@ the RNG, but requires no other changes.</p>
 100%|█████████████████████████████████████████████████████████████████████████████| 100/100 [00:04&lt;00:00, 23.31it/s]
 </pre></div></div>
 </div>
-</section>
-<section id="Enabling-parallelization">
+</div>
+<div class="section" id="Enabling-parallelization">
 <h2>Enabling parallelization<a class="headerlink" href="#Enabling-parallelization" title="Permalink to this heading"></a></h2>
 <p>To enable multiple cores to draw bootstrap replicates, we could use Python’s built-in <a class="reference external" href="https://docs.python.org/3.8/library/multiprocessing.html">multiprocessing module</a>. This module has <a class="reference external" href="https://github.com/ipython/ipython/issues/12396">some problems running with Jupyter notebooks on some OSs</a>, though. As a drop-in replacement, we could use Mike McKerns’s <a class="reference external" href="https://github.com/uqfoundation/multiprocess">multiprocess package</a>, which offers improvements on the built-in multiprocessing
 module. You can install multiprocess with</p>
@@ -864,8 +866,8 @@ array([[ 1.09281607, 56.60096637],
        [ 1.49211809, 82.50439241]])
 </pre></div></div>
 </div>
-</section>
-<section id="Parameter-estimation-for-all-genes">
+</div>
+<div class="section" id="Parameter-estimation-for-all-genes">
 <h2>Parameter estimation for all genes<a class="headerlink" href="#Parameter-estimation-for-all-genes" title="Permalink to this heading"></a></h2>
 <p>We are now empowered to compute the MLE and confidence intervals for all four genes. We will do so with parametric bootstrap. We can ignore the warnings, as the occur when the solver attempts to try illegal (negative) parameter values. Powell’s method is immune to this issue.</p>
 <div class="nbinput docutils container">
@@ -1102,8 +1104,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="Implementation-of-MLE-bootstrapping-in-the-bebi103-package">
+</div>
+<div class="section" id="Implementation-of-MLE-bootstrapping-in-the-bebi103-package">
 <h2>Implementation of MLE bootstrapping in the bebi103 package<a class="headerlink" href="#Implementation-of-MLE-bootstrapping-in-the-bebi103-package" title="Permalink to this heading"></a></h2>
 <p>The functionality we have developed in this lesson for bootstrapping MLE estimates is available in the function <code class="docutils literal notranslate"><span class="pre">bebi103.bootstrap.draw_bs_reps_mle()</span></code>. It has call signature</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bebi103</span><span class="o">.</span><span class="n">draw_bs_reps_mle</span><span class="p">(</span>
@@ -1169,8 +1171,8 @@ array([[ 1.05692579, 57.23168923],
 </pre></div></div>
 </div>
 <p>The confidence intervals are slightly different than in the parametric case, but are quite similar.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
@@ -1201,8 +1203,8 @@ jupyterlab  : 3.4.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1216,11 +1218,11 @@ jupyterlab  : 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11508e750> 
+   <jinja2.runtime.BlockReference object at 0x1142cfc90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visualizing distributions &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -121,6 +120,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -175,7 +177,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Visualizing-distributions">
+  <div class="section" id="Visualizing-distributions">
 <h1>Visualizing distributions<a class="headerlink" href="#Visualizing-distributions" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
@@ -662,7 +664,7 @@ distribution from which experimental data are sampled, then, has high probabilit
 </table>
 </div></div>
 </div>
-<section id="Box-plots">
+<div class="section" id="Box-plots">
 <h2>Box plots<a class="headerlink" href="#Box-plots" title="Permalink to this heading"></a></h2>
 <p>We saw in the previous part of the lesson that bar graphs throw out most of the information present in a data set. They only give an approximation of the mean of the generative distribution and nothing else. We can instead report more information.</p>
 <p>A box-and-whisker plot, also just called a box plot is a better option than a bar graph. Indeed, it was invented by John Tukey himself. Instead of condensing your measurements into one value (or two, if you include an error bar) like in a bar graph, you condense them into at least five. It is easier to describe a box plot if you have one to look at.</p>
@@ -775,12 +777,12 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="Plot-all-your-data">
+</div>
+<div class="section" id="Plot-all-your-data">
 <h2>Plot all your data<a class="headerlink" href="#Plot-all-your-data" title="Permalink to this heading"></a></h2>
 <p>While the box plot is better than a bar graph because it shows quantiles and not just a mean, it is still hiding much of the structure of the data set. Conversely, when plotting x-y data in a scatter plot, you plot all of your data points. Shouldn’t the same be true for plots with categorical variables? You went through all the work to get the data; you should show them all!</p>
-</section>
-<section id="Strip-plots">
+</div>
+<div class="section" id="Strip-plots">
 <h2>Strip plots<a class="headerlink" href="#Strip-plots" title="Permalink to this heading"></a></h2>
 <p>One convenient way to plot all of your data is a <strong>strip plot</strong>. In a strip plot, every point is plotted.</p>
 <div class="nbinput docutils container">
@@ -936,8 +938,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This plot allows us to make out how the data are distributed. We suspect there is more probability density around 85% or so, with a heavy tail heading toward lower values, ending at 40.</p>
-</section>
-<section id="Spike-plots">
+</div>
+<div class="section" id="Spike-plots">
 <h2>Spike plots<a class="headerlink" href="#Spike-plots" title="Permalink to this heading"></a></h2>
 <p>The swarm plot above essentially provides a count of the number of times a given measurement was observed. Because of the nature of the GFMT, the percent correct values are discrete, coming in 2.5% increments. When we have discrete values like that, a <strong>spike plot</strong> serves to provide the counts of each measurement value.</p>
 <div class="nbinput docutils container">
@@ -1098,8 +1100,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="Histograms">
+</div>
+<div class="section" id="Histograms">
 <h2>Histograms<a class="headerlink" href="#Histograms" title="Permalink to this heading"></a></h2>
 <p>If we do not have discrete data, we can instead use a <a class="reference external" href="https://en.wikipedia.org/wiki/Histogram">histogram</a>. A histogram is constructed by dividing the measurement values into bins and then counting how many measurements fall into each bin. The bins are then displayed graphically.</p>
 <p>A problem with histograms is that they require a choice of binning. Different choices of bins can lead to qualitatively different appearances of the plot. One choice of number of bins is the <a class="reference external" href="https://en.wikipedia.org/wiki/Freedman–Diaconis_rule">Freedman-Diaconis rule</a>, which serves to minimize the integral of the squared difference between the (unknown) underlying probability density function and the histogram. This is the default of iqplot.</p>
@@ -1153,8 +1155,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The <strong>rug plot</strong> at the bottom of the histogram shows all of the measurements (following the “plot all your data” rule).</p>
-</section>
-<section id="ECDFs">
+</div>
+<div class="section" id="ECDFs">
 <h2>ECDFs<a class="headerlink" href="#ECDFs" title="Permalink to this heading"></a></h2>
 <p>Histograms are typically used to display how data are distributed. As an example I will generate Normally distributed data and plot the histogram.</p>
 <div class="nbinput docutils container">
@@ -1366,8 +1368,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The circles are on the concave corners of the staircase.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -1395,8 +1397,8 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1410,11 +1412,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16c5a2f50> 
+   <jinja2.runtime.BlockReference object at 0x11413d850> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

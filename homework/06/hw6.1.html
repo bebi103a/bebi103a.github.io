@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 4.3: Change of parametrization and change of variables (not assigned) &mdash; BE/Bi 103 a  documentation</title>
+  <title>Homework 6.1: Heavy-tailed distributions and outliers (30 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -25,7 +24,9 @@
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 6.2: MLE of microtubule catastrophe data (team problem, 70 pts)" href="hw6.2.html" />
+    <link rel="prev" title="6. Maximum likelihood estimation I" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -97,12 +98,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Maximum likelihood estimation I</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Homework 6.1: Heavy-tailed distributions and outliers (30 pts)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw6.2.html">Homework 6.2: MLE of microtubule catastrophe data (team problem, 70 pts)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -139,12 +147,13 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Homework 4.3: Change of parametrization and change of variables (not assigned)</li>
+          <li class="breadcrumb-item"><a href="index.html">6. Maximum likelihood estimation I</a></li>
+      <li class="breadcrumb-item active">Homework 6.1: Heavy-tailed distributions and outliers (30 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
         
-            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/main/homework/04/hw4.3.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/main/homework/04/hw4.3.ipynb" download> Download notebook</a>
+            <a href="https://colab.research.google.com/github/bebi103a/bebi103a.github.io/blob/main/homework/06/hw6.1.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/main/homework/06/hw6.1.ipynb" download> Download notebook</a>
         
       
     
@@ -156,30 +165,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-4.3:-Change-of-parametrization-and-change-of-variables-(not-assigned)">
-<h1>Homework 4.3: Change of parametrization and change of variables (not assigned)<a class="headerlink" href="#Homework-4.3:-Change-of-parametrization-and-change-of-variables-(not-assigned)" title="Permalink to this heading"></a></h1>
-<hr><p><em>You may submit this problem as a PDF, either with clearly typed mathematics or with neat handwriting, if you like.</em></p>
-<p><strong>a)</strong> The <a class="reference external" href="https://distribution-explorer.github.io/discrete/negative_binomial.html">Negative Binomial distribution</a> notoriously have many parametrizations. Systems biologists have a preferred parametrization when describing bursty gene expression (see <a class="reference external" href="https://doi.org/10.1038/nature04599">Cai, et al., 2006</a>). Bursty gene expression can be observed when a gene is turned “on,” e.g. by repressor unbinding, and many RNA transcripts are made. It is then turned “off” by repressor binding, and
-no transcripts are made for a while.</p>
-<p>Referring to <a class="reference external" href="https://distribution-explorer.github.io/discrete/negative_binomial.html#parameters">the parametrization in the Distribution Explorer</a> systems biologists use the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, which is the burst frequency. They prefer not to use the parameter <span class="math notranslate nohighlight">\(\beta\)</span>, but instead use the parameter <span class="math notranslate nohighlight">\(b = 1/\beta\)</span>, which is the burst size, the mean number of transcripts per burst.</p>
-<p>Write down the probability mass function for the Negative Binomial distribution parametrized by <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
-<p><strong>b)</strong> The <a class="reference external" href="https://distribution-explorer.github.io/continuous/beta.html">Beta distribution</a> describes variables on the interval [0, 1]. Say a variable <span class="math notranslate nohighlight">\(\theta\)</span> is Beta distributed. Write down the PDF for <span class="math notranslate nohighlight">\(x = 1/\theta\)</span>. Then write down the PDF for <span class="math notranslate nohighlight">\(y = 1 - \theta\)</span>.</p>
-</section>
+  <div class="section" id="Homework-6.1:-Heavy-tailed-distributions-and-outliers-(30-pts)">
+<h1>Homework 6.1: Heavy-tailed distributions and outliers (30 pts)<a class="headerlink" href="#Homework-6.1:-Heavy-tailed-distributions-and-outliers-(30-pts)" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gandhi_et_al_night_six_activity.csv">Dataset download</a></p>
+<hr><p>David Prober’s lab studies sleep using zebrafish as a model organism. In a <a class="reference external" href="https://doi.org/10.1016/j.neuron.2015.02.016">paper by Gandhi and coworkers</a> his lab studied the effect of a deletion in the gene coding for arylalkylamine N-acetyltransferase (aanat), which is a key enzyme in the rhythmic production of melatonin. Melatonin is a hormone responsible for regulation of circadian rhythms. It is often taken as a drug to treat sleep disorders. The goal of this study was to investigate the
+effects of <em>aanat</em> deletion on sleep pattern in 5+ day old zebrafish larvae.</p>
+<p>In one of the analyses, the authors compared the average activity of multiple fish over the course of night 6 of their lives. Here, activity is defined as the number of seconds per ten minutes that the fish is moving. You can download the results of the data processing here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gandhi_et_al_night_six_activity.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/gandhi_et_al_night_six_activity.csv</a>.</p>
+<p>In performing exploratory data analysis, you will see that there are some clear outliers in activity. For at least two of these outliers, domain experts have told me that there were developmental problems with the fish.</p>
+<p><strong>a)</strong> Assuming that the activity of fish for each respective genotype is Normally distributed, obtain MLEs for the mean activity (parameter <span class="math notranslate nohighlight">\(\mu\)</span>) for each genotype with confidence intervals.</p>
+<p><strong>b)</strong> Normal models tend to fail when there are outliers. This is because of the very light tail of the Normal distribution. If you have an experiment that you suspect may have major deviations, it is often useful to choose a generative model with heavier tails. To that end, model the activity with a Student-t distribution. Obtain MLEs for the parameter <span class="math notranslate nohighlight">\(\mu\)</span> with confidence intervals. Comment on how the inference changes using this model.</p>
+</div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="6. Maximum likelihood estimation I" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw6.2.html" class="btn btn-neutral float-right" title="Homework 6.2: MLE of microtubule catastrophe data (team problem, 70 pts)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16d7bc890> 
+   <jinja2.runtime.BlockReference object at 0x139301810> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

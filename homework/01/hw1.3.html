@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 1.3: Microtubule catastrophe and ECDFs (team problem, 35 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -110,6 +109,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Maximum likelihood estimation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Maximum likelihood estimation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation III</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -164,13 +166,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(team-problem,-35-pts)">
+  <div class="section" id="Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(team-problem,-35-pts)">
 <h1>Homework 1.3: Microtubule catastrophe and ECDFs (team problem, 35 pts)<a class="headerlink" href="#Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(team-problem,-35-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv">Data set download</a></p>
 <hr /><p>In a <a class="reference external" href="../../lessons/07/iqplot.iypnb">future lesson</a>, you will learn about <strong>emprical cumulative distribution functions</strong>, or ECDFs. These are useful ways to visualize how measured data are distributed. An ECDF evaluated at point <em>x</em> is defined as</p>
 <p>ECDF(<em>x</em>) = fraction of data points ≤ <em>x</em>.</p>
 <p>The ECDF is defined on the entire real number line, with <span class="math notranslate nohighlight">\(\mathrm{ECDF}(x\to-\infty) = 0\)</span> and <span class="math notranslate nohighlight">\(\mathrm{ECDF}(x\to\infty) = 1\)</span>. However, the ECDF is often plotted as discrete points, <span class="math notranslate nohighlight">\(\{(x_i, y_i)\}\)</span>, where for point <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span> is the value of the measured quantity and <span class="math notranslate nohighlight">\(y_i\)</span> is <span class="math notranslate nohighlight">\(\mathrm{ECDF}(x_i)\)</span>. For example, if I have a set of measured data with values (1.1, –6.7, 2.3, 9.8, 2.3), the points on the ECDF plot are</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>x</p></th>
 <th class="head"><p>y</p></th>
@@ -205,7 +211,7 @@ labels and exposure to laser light did not affect the microtubule dynamics, they
 <p>When you write this function, you may only use base Python and the standard library, in addition to Numpy and Pandas.</p>
 <p><strong>b)</strong> Use the <code class="docutils literal notranslate"><span class="pre">ecdfvals()</span></code> function that you wrote to plot the ECDFs shown in Fig. 2a of the Gardner, Zanic, et al. paper. By looking this plot, do you think that the fluorescent labeling makes a difference in the onset of catastrophe? (We will do a more careful statistical inference later in the course, but for now, does it pass the eye test? Eye tests are an important part of EDA, but certainly not an end point.) You can access the data set here:
 <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv</a></p>
-</section>
+</div>
 
 
            </div>
@@ -219,11 +225,11 @@ labels and exposure to laser light did not affect the microtubule dynamics, they
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 17, 2023.
+      <span class="lastupdated">Last updated on Oct 22, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16d370510> 
+   <jinja2.runtime.BlockReference object at 0x139055d90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

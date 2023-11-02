@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manipulating files and directories with the command line &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -118,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -183,9 +185,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Manipulating-files-and-directories-with-the-command-line">
+  <section id="Manipulating-files-and-directories-with-the-command-line">
 <h1>Manipulating files and directories with the command line<a class="headerlink" href="#Manipulating-files-and-directories-with-the-command-line" title="Permalink to this heading"></a></h1>
-<div class="section" id="mv:-moving-and-renaming-files">
+<section id="mv:-moving-and-renaming-files">
 <h2>mv: moving and renaming files<a class="headerlink" href="#mv:-moving-and-renaming-files" title="Permalink to this heading"></a></h2>
 <p>Since we’re currently doing a command line tutorial, let’s go into that directory and see what is there.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd command_line_recitation
@@ -238,18 +240,18 @@ ls
 </pre></div>
 </div>
 <p>We see that <code class="docutils literal notranslate"><span class="pre">some_sequence.fasta</span></code> is there, along with other FASTA files.</p>
-</div>
-<div class="section" id="Word-to-the-wise:-NO-SPACES">
+</section>
+<section id="Word-to-the-wise:-NO-SPACES">
 <h2>Word to the wise: <strong>NO SPACES</strong><a class="headerlink" href="#Word-to-the-wise:-NO-SPACES" title="Permalink to this heading"></a></h2>
 <p>Look at what is in the directory using <code class="docutils literal notranslate"><span class="pre">ls</span></code>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
 <p>The directory <code class="docutils literal notranslate"><span class="pre">command_line_recitation/</span></code> has some files that will help us through this lesson. Note that there are no spaces in the directory name. <strong>In general, you avoid spaces in directory and file names</strong>, even though your operating system often has them in there. Trust me on this, they can make things a total mess, especially on the command line, since a space also separates commands. Really. <strong>NO SPACES.</strong></p>
-</div>
-<div class="section" id="Exploring-file-content">
+</section>
+<section id="Exploring-file-content">
 <h2>Exploring file content<a class="headerlink" href="#Exploring-file-content" title="Permalink to this heading"></a></h2>
-<p>We would like to see what is in the sequence files. Bash offers various ways to display the content of files. We’ll look at the genome of the dengue virus in the file <code class="docutils literal notranslate"><span class="pre">dengue.fasta</span></code>. There are lots of ways to do it. We’ll start with <code class="docutils literal notranslate"><span class="pre">less</span></code>. It got its name because it is more feature-rich than <code class="docutils literal notranslate"><span class="pre">more</span></code>, which was used to look at files before <code class="docutils literal notranslate"><span class="pre">less</span></code> came to be. (“<code class="docutils literal notranslate"><span class="pre">less</span></code> is <code class="docutils literal notranslate"><span class="pre">more</span></code>,” get it?) It allows using the arrow up and arrow down keys traverse up or down by line. It also allows
+<p>We would like to see what is in the sequence files. Bash offers various ways to display the content of files. We’ll look at the genome of the dengue virus in the file <code class="docutils literal notranslate"><span class="pre">dengue.fasta</span></code>. There are lots of ways to do it. We’ll start with <code class="docutils literal notranslate"><span class="pre">less</span></code>. It got its name because it is more feature-rich than <code class="docutils literal notranslate"><span class="pre">more</span></code>, which was used to look at files before <code class="docutils literal notranslate"><span class="pre">less</span></code> came to be. (”<code class="docutils literal notranslate"><span class="pre">less</span></code> is <code class="docutils literal notranslate"><span class="pre">more</span></code>,” get it?) It allows using the arrow up and arrow down keys traverse up or down by line. It also allows
 scrolling by touchpad or mouse. Since it doesn’t require the whole file to be read before displaying the top content, it’s ideal for larger files.</p>
 <ul class="simple">
 <li><p>macOS or Linux: <code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">dengue.fasta</span></code></p></li>
@@ -258,25 +260,25 @@ scrolling by touchpad or mouse. Since it doesn’t require the whole file to be 
 <p>It also supports searching initiated by “/” followed by the query: <code class="docutils literal notranslate"><span class="pre">/AAAA</span></code>. You can move down by a number of lines by “<code class="docutils literal notranslate"><span class="pre">:</span></code>” followed by the number of lines: <code class="docutils literal notranslate"><span class="pre">:40</span></code>.</p>
 <p>To show line numbers, type <code class="docutils literal notranslate"><span class="pre">-N</span></code>. Other useful commands are <code class="docutils literal notranslate"><span class="pre">shift+g</span></code> will go to the end of the file and <code class="docutils literal notranslate"><span class="pre">gg</span></code> to the beginning. To exit <code class="docutils literal notranslate"><span class="pre">less</span></code> or <code class="docutils literal notranslate"><span class="pre">more</span></code>, hit <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
 <p>We’ll now look at several other ways to look at files. Just substitute them for <code class="docutils literal notranslate"><span class="pre">less</span></code> in the above command.</p>
-<div class="section" id="cat">
+<section id="cat">
 <h3>cat<a class="headerlink" href="#cat" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">cat</span></code> prints the entire file to the standard output (terminal). This is especially useful if the files are very small. Windows users, use <code class="docutils literal notranslate"><span class="pre">!type</span></code> instead of <code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p>
-</div>
-<div class="section" id="head">
+</section>
+<section id="head">
 <h3>head<a class="headerlink" href="#head" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">head</span></code> just prints the top lines of the file to the standard output. The default can be changed:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>head -5
 </pre></div>
 </div>
 <p>This will print the first 5 lines to the standard output. Windows users, note alternative command: <code class="docutils literal notranslate"><span class="pre">gc</span> <span class="pre">myfile.txt</span> <span class="pre">-head</span> <span class="pre">5</span></code>.</p>
-</div>
-<div class="section" id="tail">
+</section>
+<section id="tail">
 <h3>tail<a class="headerlink" href="#tail" title="Permalink to this heading"></a></h3>
 <p>Like <code class="docutils literal notranslate"><span class="pre">head</span></code>, but for the last lines of the file. Windows users, note alternative command: <code class="docutils literal notranslate"><span class="pre">gc</span> <span class="pre">myfile.txt</span> <span class="pre">-tail</span> <span class="pre">5</span></code>.</p>
 <p>You will notice that <code class="docutils literal notranslate"><span class="pre">less</span></code> does not show the text in the terminal once you exit, whereas <code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">head</span></code>, and <code class="docutils literal notranslate"><span class="pre">tail</span></code> do. This might be useful if you need something from the file for your next command.</p>
-</div>
-</div>
-<div class="section" id="Copying-files-and-directories:-cp">
+</section>
+</section>
+<section id="Copying-files-and-directories:-cp">
 <h2>Copying files and directories: cp<a class="headerlink" href="#Copying-files-and-directories:-cp" title="Permalink to this heading"></a></h2>
 <p>If you want to retain a copy of the folder/file in the original folder you can use the copy command <code class="docutils literal notranslate"><span class="pre">cp</span></code>. It works straightforwardly with files. Applied to directories it requires a <strong>flag</strong>: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span></code>, meaning “recursive.” A <strong>flag</strong> typically begins with a hyphen (<code class="docutils literal notranslate"><span class="pre">-</span></code>) and gives the command some extra directions on how you want to do things. In this case, we are telling <code class="docutils literal notranslate"><span class="pre">cp</span></code> to work recursively.</p>
 <p>Let’s have a look at the <code class="docutils literal notranslate"><span class="pre">cp</span></code> command in action.</p>
@@ -296,7 +298,7 @@ scrolling by touchpad or mouse. Since it doesn’t require the whole file to be 
 </pre></div>
 </div>
 <p>One more thing… <code class="docutils literal notranslate"><span class="pre">rsync</span></code> is a generally better version of <code class="docutils literal notranslate"><span class="pre">cp</span></code> and it’s available on most distributions and OSes. Knowing that <code class="docutils literal notranslate"><span class="pre">cp</span></code> exists is necessary, using it everyday, not so much. <code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">-avzP</span></code> is a great setup where your files will be copied faster (thanks to compression), while maintaining all their properties and showing you progress.</p>
-<div class="section" id="Removing-files-and-directories-with-rm">
+<section id="Removing-files-and-directories-with-rm">
 <h3>Removing files and directories with rm<a class="headerlink" href="#Removing-files-and-directories-with-rm" title="Permalink to this heading"></a></h3>
 <p>Yes, some of the things we just did are silly. We have no need for having a copy of a given sequence or a copy of the whole sequences directory. We can clean things up by deleting them. First, let’s get rid of our copy of the dengue sequence. Let’s <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the sequences directory and make sure it’s there.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd sequences
@@ -324,9 +326,9 @@ ls
 <p>In the same way, copying onto a previously existing file with <code class="docutils literal notranslate"><span class="pre">cp</span></code> or <code class="docutils literal notranslate"><span class="pre">rsync</span></code> is also irreversible, so be very careful when using them too! <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-i</span></code> also exists and, if you are unsure about what you might be doing, choose this over <code class="docutils literal notranslate"><span class="pre">rsync</span></code>.</p>
 <p>rm -</p>
 <p><em>Copyright note: In addition to the copyright shown below, this recitation was developed based on materials from Axel Müller.</em></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -340,11 +342,11 @@ ls
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1173381d0> 
+   <jinja2.runtime.BlockReference object at 0x117c3f310> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

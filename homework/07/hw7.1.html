@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 7.1: Parameter estimates from FRAP curves (100 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -97,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
@@ -165,7 +167,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)">
+  <section id="Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)">
 <h1>Homework 7.1: Parameter estimates from FRAP curves (100 pts)<a class="headerlink" href="#Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frap_image_processing_results.csv">Dataset download</a></p>
 <hr /><p>For this problem, you will perform analysis of data from a fluorescence recovery after photobleaching (FRAP) experiment. The data set comes from <a class="reference external" href="https://goehringlab.crick.ac.uk">Nate Goehring</a>. The data are taken of a <em>C. elegans</em> one-cell embryo expressing a GFP fusion to the PH domain of Protein Lipase C delta 1 (PH-PLCd1). This domain binds PIP2, a lipid enriched in the plasma membrane. By using FRAP, we can investigate the dynamics of diffusion of the PH-PLCd1/PIP2 complex on the cell
@@ -203,7 +205,7 @@ I_0 f_f\left(1 - f_b\,\frac{4 \mathrm{e}^{-k_\mathrm{off}t}}{d_x d_y}\,\psi_x(t)
 \end{align}</span></p>
 <p>where <span class="math notranslate nohighlight">\(f_f\)</span> is the fraction of fluorescent species left. So, we have five parameters to use in regression, the physical parameters of interest, <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(k_\mathrm{off}\)</span>, and <span class="math notranslate nohighlight">\(I_0\)</span>, <span class="math notranslate nohighlight">\(f_f\)</span>, and <span class="math notranslate nohighlight">\(f_b\)</span>.</p>
 <p>I have processed images from the data set. The results may be downloaded here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frap_image_processing_results.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/frap_image_processing_results.csv</a>. There are eight FRAP experiments in total. Assume each of the eight experiments are independent. Obtain MLE estimates, with confidence intervals, for the parameters for each of the eight experiments. You might want to make a plot of all eight values of <span class="math notranslate nohighlight">\(D^*\)</span> and <span class="math notranslate nohighlight">\(k_\mathrm{off}^*\)</span> with their confidence regions.</p>
-</div>
+</section>
 
 
            </div>
@@ -217,11 +219,11 @@ I_0 f_f\left(1 - f_b\,\frac{4 \mathrm{e}^{-k_\mathrm{off}t}}{d_x d_y}\,\psi_x(t)
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117924f10> 
+   <jinja2.runtime.BlockReference object at 0x16fd4d010> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pairs bootstrap and correlation &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -107,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -172,7 +174,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Pairs-bootstrap-and-correlation">
+  <section id="Pairs-bootstrap-and-correlation">
 <h1>Pairs bootstrap and correlation<a class="headerlink" href="#Pairs-bootstrap-and-correlation" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/bee_sperm.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -658,7 +660,7 @@ if (force === true) {
 </table>
 </div></div>
 </div>
-<div class="section" id="Correlation">
+<section id="Correlation">
 <h2>Correlation<a class="headerlink" href="#Correlation" title="Permalink to this heading"></a></h2>
 <p>We might wish to investigate how two measured quantities are correlated. For example, if the number of dead sperm and the number of alive sperm are closely correlated, this would mean that a given drone produces some quantity of sperm and some fraction tend to be dead. Let’s take a look at this.</p>
 <div class="nbinput docutils container">
@@ -777,8 +779,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 0.5219944217488051
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Pairs-bootstrap-confidence-intervals">
+</section>
+<section id="Pairs-bootstrap-confidence-intervals">
 <h2>Pairs bootstrap confidence intervals<a class="headerlink" href="#Pairs-bootstrap-confidence-intervals" title="Permalink to this heading"></a></h2>
 <p>How can we get a confidence interval on a correlation coefficient? We can again apply the bootstrap, but this time, the replicate is a <em>pair</em> of data, in this case a dead sperm count/alive sperm count pair. The process of drawing pairs of data points from an experiment and then computing bootstrap replicates from them is called <strong>pairs bootstrap</strong>. Let’s code it up for this example with the bivariate correlation.</p>
 <p>Our strategy in coding up the pairs bootstrap is to draw bootstrap samples of the <em>indices</em> of measurement and use those indices to select the pairs.</p>
@@ -932,8 +934,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>We see a clear correlation in both samples, with a wide, but positive, confidence interval. Note that we did this analysis on a log scale, since the data span several orders of magnitude.</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -962,8 +964,8 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -977,11 +979,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x13c18cd50> 
+   <jinja2.runtime.BlockReference object at 0x16e6211d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

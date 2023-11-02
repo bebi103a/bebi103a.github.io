@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Git/Github tips and traps &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -95,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -159,30 +161,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Git/Github-tips-and-traps">
+  <section id="Git/Github-tips-and-traps">
 <h1>Git/Github tips and traps<a class="headerlink" href="#Git/Github-tips-and-traps" title="Permalink to this heading"></a></h1>
 <hr><p>For the purposes of this material, it is assumed that the you have read through <a class="reference internal" href="../../lessons/02/index.html"><span class="doc">Lesson 2</span></a>. We’ll start by reviewing some of these concepts and then covering some simple tricks to prevent a whole host of headaches in using GitHub within your groups. The bulk of this lesson, however, will extend on these materials. Specifically, we cover <strong>merging</strong>, including using <a class="reference external" href="https://github.com/mwouts/jupytext">jupytext</a> to deal with the oddities of performing these
 operations on notebooks. If you are looking for a more in-depth tutorial on various Git concepts, reference this tutorial from <a class="reference external" href="http://swcarpentry.github.io/git-novice/">software carpentry</a>. The goal for today is to get you comfortable with git.</p>
 <p>We will also do a quick tutorial of GitHub with Google Colab and talk about the beauty and dangers of this feature. Lastly, we will go over how to use the GitHub Desktop app.</p>
-<div class="section" id="Simple-practices-can-save-from-huge-pains">
+<section id="Simple-practices-can-save-from-huge-pains">
 <h2>Simple practices can save from huge pains<a class="headerlink" href="#Simple-practices-can-save-from-huge-pains" title="Permalink to this heading"></a></h2>
 <p>Git is extremely useful and powerful, but it can cause serious annoyances if not used carefully. Follow Justin’s suggestion from <a class="reference external" href="../../homework/01/hw1.4.ipynb">homework 1</a>: “it is wise to commit and push often.” And from <a class="reference internal" href="../../lessons/02/version_control_with_git.html"><span class="doc">Lesson 2</span></a>, pull frequently and “always <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> when you start working.” These practices will go a long way to prevent clashes where two team members have edited the same file at the same time without knowing. <strong>Even
 if you feel that a particular piece of work is not yet finished, commit and push it any time you step away from it.</strong> It is much better for a teammate to look at work you might feel insecure about due to its incompleteness than to have a horrible merge issue later on.</p>
-<div class="section" id="Use-the-sandbox-exceedingly-liberally">
+<section id="Use-the-sandbox-exceedingly-liberally">
 <h3>Use the sandbox exceedingly liberally<a class="headerlink" href="#Use-the-sandbox-exceedingly-liberally" title="Permalink to this heading"></a></h3>
 <p>The simplest and easiest way to avoid clashing with group members work is to use the sandbox provided in your GitHub repository extensively. When doing this, each member can work on a differently named file. For example, I might work on <code class="docutils literal notranslate"><span class="pre">hw3.2_ar.ipynb</span></code>, where the <code class="docutils literal notranslate"><span class="pre">ar</span></code> signifies my initials, while my teammate Liana works on <code class="docutils literal notranslate"><span class="pre">hw3.2_lm.ipynb</span></code>. Each team member can have their own version of various pieces of the homework for scratch work. The key reason to do this is that <strong>you might not know
 when a team member is working on the same file</strong>. If two people are working on the same file at the same time, a <strong>merge conflict</strong> is certain in the near future. One will push to the repository first, leaving changes that the other does not have in the file they are working with. This means that if the second forces a push, their changes will be kept at the expense of the other’s. Without additional tools, merging notebooks with disparate changes is very non-trivial. Instead, to avoid all this,
 both members can work on their own files in the sandbox, discuss various parts, and combine and edit a final submission when the time comes.</p>
 <p>Note that if you open two Jupyter notebooks next to each other in JupyterLab it is quite easy to create a combined version of a document. This is much better than overwriting each other repeatedly.</p>
-</div>
-<div class="section" id="Use-checkout-to-avoid-destroying-others-work">
+</section>
+<section id="Use-checkout-to-avoid-destroying-others-work">
 <h3>Use <code class="docutils literal notranslate"><span class="pre">checkout</span></code> to avoid destroying others work<a class="headerlink" href="#Use-checkout-to-avoid-destroying-others-work" title="Permalink to this heading"></a></h3>
 <p>When you use separate files for each team member in the sandbox, you will often want to look at and build in the work of your teammates. This means that you will often pull material from the repo and open the notebooks of others. If you run this notebook and poke around in it, you may make a “change” in the document that you do not intend to. If you commit and push this change, you might cause a merge conflict with changes the owner of this file has made since you last pulled. If you insist on
 pushing, you might destroy another’s work. If you check <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and see a change in such a file that you don’t want to push, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">FILE_NAME_HERE</span></code> to discard your non-change-changes and prevent later merge conflicts. Your teammates will thank you!</p>
 <p>Alternatively, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span></code> to just restore the file to the current version stored in git.</p>
-</div>
-</div>
-<div class="section" id="Configuration-&amp;-basics">
+</section>
+</section>
+<section id="Configuration-&amp;-basics">
 <h2>Configuration &amp; basics<a class="headerlink" href="#Configuration-&-basics" title="Permalink to this heading"></a></h2>
 <p>If you haven’t done so already, make sure to configure your Git parameters. Namely, you must set your contact information and name. Ignore if you already did this when setting up for the class.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;YOUR NAME&quot;</span>
@@ -198,10 +200,6 @@ git<span class="w"> </span>clone<span class="w"> </span>URL_YOU_COPIED
 </div>
 <p>You should additionally already be familiar with the following commands from <a class="reference internal" href="../../lessons/02/version_control_with_git.html"><span class="doc">Lesson 2</span></a>:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
 <th class="head"><p>Description</p></th>
@@ -231,7 +229,7 @@ git<span class="w"> </span>clone<span class="w"> </span>URL_YOU_COPIED
 
 ![](git-staging-workflow.png)
 
-</div> --><div class="section" id="Syncing-your-forked-repository-to-the-upstream-repository">
+</div> --><section id="Syncing-your-forked-repository-to-the-upstream-repository">
 <h3>Syncing your forked repository to the upstream repository<a class="headerlink" href="#Syncing-your-forked-repository-to-the-upstream-repository" title="Permalink to this heading"></a></h3>
 <p>For this course, you will do all your work with your teammates in a single repo. You will not need to deal with forking repos, but for today, this is the easiest way to demonstrate merge clashes and how to deal with them. You want to be able to sync your repository with my <code class="docutils literal notranslate"><span class="pre">gitbrachmerge</span></code> repository so you can retrieve any updates in it. The original repository is typically called the <strong>upstream repository</strong>, since presumably you are changing it, so you are downstream. You want the upstream
 repository to be a <strong>remote</strong> repository, which is just what we call a repository we track and fetch and merge from. To see which repositories are remote, do</p>
@@ -256,11 +254,11 @@ repository to be a <strong>remote</strong> repository, which is just what we cal
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git pull origin main
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="Merging">
+</section>
+</section>
+<section id="Merging">
 <h2>Merging<a class="headerlink" href="#Merging" title="Permalink to this heading"></a></h2>
-<div class="section" id="If-possible,-avoid-merging">
+<section id="If-possible,-avoid-merging">
 <h3>If possible, avoid merging<a class="headerlink" href="#If-possible,-avoid-merging" title="Permalink to this heading"></a></h3>
 <p>The best way to merge is to avoid merging in the first place. This is doubly true when working with Jupyter notebooks. The simple practices above are meant to help avoid the need to merge. Here are some more excellent tips on avoiding the need to merge from a tutorial from <a class="reference external" href="http://swcarpentry.github.io/git-novice/09-conflict/index.html">software carpentry</a>. These include some more advanced features of git than we’ve covered today, like branches, but they are nevertheless good advice,
 especially the project management strategies:</p>
@@ -279,10 +277,10 @@ especially the project management strategies:</p>
 </ul>
 </div></blockquote>
 <p>Daisie Huang and Ivan Gonzalez (eds): “Software Carpentry: Version Control with Git.” Version 2016.06, June 2016, <a class="reference external" href="https://github.com/swcarpentry/git-novice">https://github.com/swcarpentry/git-novice</a>, 10.5281/zenodo.57467.</p>
-<hr></div>
-<div class="section" id="Merging-with-simple-text-files">
+<hr></section>
+<section id="Merging-with-simple-text-files">
 <h3>Merging with simple text files<a class="headerlink" href="#Merging-with-simple-text-files" title="Permalink to this heading"></a></h3>
-<div class="section" id="Exercise-1">
+<section id="Exercise-1">
 <h4>Exercise 1<a class="headerlink" href="#Exercise-1" title="Permalink to this heading"></a></h4>
 <p>We will first play around with the simplest case of merges by dealing with text files. In the repository you forked, there is a text file called <code class="docutils literal notranslate"><span class="pre">text_merge/edit_me.txt</span></code>. We will play around with editing this file concurrently with two people and deal with the resulting merge issues. Open this file in your favorite text editor and add a few lines. This could be accomplished, for example, with</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/git/gitbrachmerge/text_merging/
@@ -305,19 +303,19 @@ git push origin main
 </pre></div>
 </div>
 <p>You have now dealt with the discrepancies like a champ!</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="Merging-Jupyter-Notebooks">
+<section id="Merging-Jupyter-Notebooks">
 <h3>Merging Jupyter Notebooks<a class="headerlink" href="#Merging-Jupyter-Notebooks" title="Permalink to this heading"></a></h3>
-<div class="section" id="Exercise-2">
+<section id="Exercise-2">
 <h4>Exercise 2<a class="headerlink" href="#Exercise-2" title="Permalink to this heading"></a></h4>
 <p>We will now run through the same experiment as before, but this time each will edit the simple Jupyter notebook stored in <code class="docutils literal notranslate"><span class="pre">notebook_merging/simple_notebook.ipynb</span></code>. The resulting merge will not be so simple to deal with since the internal formatting of Jupyter notebooks is not very human readable. Open the document, change a plot, maybe add a cell or two the the file, and save. Try to reconcile this with upstream master after I push a change myself.</p>
 <p>Note also that if you have a merge conflict with notebooks, the inserts that git adds to flag the conflict will break the formatting of the notebook, so the notebook will become unreadable to Jupyterlab. If this happens, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">--abort</span></code> to at least return your notebook to a readable format. Since there is no easy way to merge notebooks, your least bad option may actually be to naively memorize a standard git workflow.</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="Jupytext">
+<section id="Jupytext">
 <h3>Jupytext<a class="headerlink" href="#Jupytext" title="Permalink to this heading"></a></h3>
 <p>Jupytext is a relatively new package that promises to combine the best of both worlds of notebooks (interactivity, inline plots, and beyond) and plain python scripts (easy version control and merging). Its integration with Jupyterlab is a work in progess, so <strong>caveat emptor</strong>. On my system, the newer versions of <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> prevent me from saving notebooks at all (though I haven’t ruled out that the problem is on my end and not intrinsic to the package). We will instead explore the command line
 options available.</p>
@@ -335,12 +333,12 @@ options available.</p>
 </div>
 <p>(The conversion from <code class="docutils literal notranslate"><span class="pre">.py</span></code> to <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> may give you a deprecation warning; it works fine, but has security vulnerabilities, so maybe don’t run this on random scripts from the internet.)</p>
 <p>Jupytext has been heavily tested, ensuring that the result you get from a conversion and back gives the same notebook as you started with.</p>
-<div class="section" id="Exercise-3">
+<section id="Exercise-3">
 <h4>Exercise 3<a class="headerlink" href="#Exercise-3" title="Permalink to this heading"></a></h4>
 <p>Try out the same experiment we did with the text file and the Jupyter notebook on the jupytext document. Convert the file to a notebook with the above command, add a cell or two, save, convert back to a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, and try to merge with changes I made to the same file.</p>
-</div>
-</div>
-<div class="section" id="A-new-workflow-in-your-repos-(with-jupytext)">
+</section>
+</section>
+<section id="A-new-workflow-in-your-repos-(with-jupytext)">
 <h3>A new workflow in your repos (with jupytext)<a class="headerlink" href="#A-new-workflow-in-your-repos-(with-jupytext)" title="Permalink to this heading"></a></h3>
 <p>Based on the power of merging with a text based file, a better workflow for your repository would be to store your sandbox work in <code class="docutils literal notranslate"><span class="pre">.py</span></code> files generated with jupytext instead of pushing as notebooks. With this, you need not bother version controlling your <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files at all. In addition to aiding with merges, this also helps limit the size of your repository: the text file is much smaller than a notebook, especially one that has glyph-heavy plots in it. The suggested work flow is as
 follows:</p>
@@ -352,8 +350,8 @@ follows:</p>
 <li><p>Add, commit, and push this <code class="docutils literal notranslate"><span class="pre">.py</span></code> file to GitHub</p></li>
 <li><p>Pull, convert to a notebook, and repeat</p></li>
 </ul>
-</div>
-<div class="section" id="A-workflow-without-jupytext">
+</section>
+<section id="A-workflow-without-jupytext">
 <h3>A workflow without jupytext<a class="headerlink" href="#A-workflow-without-jupytext" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Pull all work</p></li>
@@ -362,64 +360,64 @@ follows:</p>
 <li><p>Add, commit, and push the notebook to GitHub</p></li>
 <li><p>Pull and repeat</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="GitHub-with-Google-Colab">
+<section id="GitHub-with-Google-Colab">
 <h2>GitHub with Google Colab<a class="headerlink" href="#GitHub-with-Google-Colab" title="Permalink to this heading"></a></h2>
 <p>Refer to this part of <a class="reference internal" href="../../lessons/02/git_with_colab.html"><span class="doc">Lesson 2</span></a> to refresh on how to use GitHub with Google Colab!</p>
 <p>This can end up being very helpful to accomplish pairs coding remotely.</p>
-<div class="section" id="Example-of-GitHub-+-Colab">
+<section id="Example-of-GitHub-+-Colab">
 <h3>Example of GitHub + Colab<a class="headerlink" href="#Example-of-GitHub-+-Colab" title="Permalink to this heading"></a></h3>
 <p>First, everybody should have the Google Chrome Extension already setup, as mentioned in <a class="reference internal" href="../../lessons/02/git_with_colab.html"><span class="doc">Lesson 2</span></a>.</p>
 <p>Navigate to your GitHub gitbrachmerge repo that you forked earlier in this recitation. Go to <code class="docutils literal notranslate"><span class="pre">notebook_merging</span></code>, click on <code class="docutils literal notranslate"><span class="pre">simple_notebook.ipynb</span></code>, and click on the Google Colab Chrome Extension.</p>
 <p>Now your notebook has automatically opened on Google Colab! This is effectively performing the ‘git pull’ onto the Google platform.</p>
 <p>Now <strong>change a few lines of code</strong>. Click <code class="docutils literal notranslate"><span class="pre">File</span></code>, then <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">a</span> <span class="pre">copy</span> <span class="pre">in</span> <span class="pre">GitHub</span></code>. You will be redirected to the updated Git repository and should see the changes you’ve made! As we can see, there’s no need to perform git add, commit, push commands when using Colab.</p>
 <p>However, be <strong>extra</strong> careful if two people are working on the same Colab notebook on their own local machines. Google Colab does <strong>not</strong> work like Google Drive—changes are not updated live. If you push a file with your edits after your teammate pushes the same file with different edits, you will overwrite what they have done. This is why the sandbox is your friend!</p>
-<hr></div>
-</div>
-<div class="section" id="GitHub-Desktop">
+<hr></section>
+</section>
+<section id="GitHub-Desktop">
 <h2>GitHub Desktop<a class="headerlink" href="#GitHub-Desktop" title="Permalink to this heading"></a></h2>
 <p>GitHub Desktop is a downloadable application that allows you to use GitHub using a graphical user interface (GUI) instead of the command line. With the app, you can execute most of GitHub’s main functionality, including pushing, pulling, and cloning, as well as more advanced tools such as attributing commits and creating pull requests. The app also gives you visual confirmation of your changes, and allows you to easily see previous changes made by collaborators.</p>
-<div class="section" id="GitHub-Desktop-vs-Git-on-the-Command-Line">
+<section id="GitHub-Desktop-vs-Git-on-the-Command-Line">
 <h3>GitHub Desktop vs Git on the Command Line<a class="headerlink" href="#GitHub-Desktop-vs-Git-on-the-Command-Line" title="Permalink to this heading"></a></h3>
 <p>So far, we’ve had you use GitHub through the Command Line Interface (CLI). You might notice that most pro Git users use the CLI – part of this is because Git works much faster on the terminal. Because the CLI does not have a graphical interface, it consumes less RAM and CPU resourses, and can be better for managing large projects.</p>
 <p>Although it is of course good to know how to use the CLI, it can be somewhat overwhelming for beginners. GitHub desktop allows you to collaborate with your team using Git’s best practices, and enables you to get used to incorporating Git and version control into your workflow while allowing you to focus on coding instead of spending time wrestling with the CLI. I also find that having a GUI helps me avoid errors, and unwanted or accidental changes.</p>
-</div>
-<div class="section" id="Installing-GitHub-Desktop">
+</section>
+<section id="Installing-GitHub-Desktop">
 <h3>Installing GitHub Desktop<a class="headerlink" href="#Installing-GitHub-Desktop" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Download and install the application from the <a class="reference external" href="https://desktop.github.com/">official website</a>.</p></li>
 <li><p>When prompted, sign in to Github and follow the configuration instructions.</p></li>
 </ol>
-</div>
-<div class="section" id="Using-GitHub-Desktop">
+</section>
+<section id="Using-GitHub-Desktop">
 <h3>Using GitHub Desktop<a class="headerlink" href="#Using-GitHub-Desktop" title="Permalink to this heading"></a></h3>
-<div class="section" id="Creating,-Adding,-and-Cloning-Repos">
+<section id="Creating,-Adding,-and-Cloning-Repos">
 <h4>Creating, Adding, and Cloning Repos<a class="headerlink" href="#Creating,-Adding,-and-Cloning-Repos" title="Permalink to this heading"></a></h4>
 <p>From the “Get Started” page or the “Add” drop-down on the top left, you can follow the on-screen instructions to add repos for use with the Desktop app. You can also head to a repo’s page in your browser, click the green “Code” button, and hit “Open in GitHub Desktop” to easily clone a repo to your machine. Make sure that the Local Path for your repo is correct.</p>
-</div>
-<div class="section" id="Committing-and-Pushing-Changes">
+</section>
+<section id="Committing-and-Pushing-Changes">
 <h4>Committing and Pushing Changes<a class="headerlink" href="#Committing-and-Pushing-Changes" title="Permalink to this heading"></a></h4>
 <p>Any changes you make inside your repo’s folder will automatically show up on the left sidebar in the app. To commit these changes, give your commit a title and commit message in the bottom left, and hit the blue “Commit to…” button. To push, hit the button on the top toolbar. GitHub desktop will automatically attempt to resolve conflicts and merges when pushing, if necessary.</p>
 <p>Clicking the “History” tab will show all the commits made by you and your collaborators. For each commit, GitHub Desktop will show a detailed display of the changes made, the commit message, the time the commit was created, the committer’s username and profile photo, and the commit’s unique SHA-1 hash. It also displays any tags.</p>
-</div>
-<div class="section" id="Branches-and-Pull-Requests">
+</section>
+<section id="Branches-and-Pull-Requests">
 <h4>Branches and Pull Requests<a class="headerlink" href="#Branches-and-Pull-Requests" title="Permalink to this heading"></a></h4>
 <p>Clicking the “Current Branch” tab in the top toolbar will allow you to easily switch, merge, or create branches. It also allows you to view pull requests. GitHub desktop also gives you a helpful popup when switching branches that asks what you want to do with your changes, so you don’t lose your in-progress work.</p>
-</div>
-<div class="section" id="Other-Functionality">
+</section>
+<section id="Other-Functionality">
 <h4>Other Functionality<a class="headerlink" href="#Other-Functionality" title="Permalink to this heading"></a></h4>
 <p>For other ways to manage your projects using GitHub Desktop, check out the <a class="reference external" href="https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop">documentation</a>.</p>
-<hr></div>
-</div>
-<div class="section" id="A-final-note-on-commit-messages">
+<hr></section>
+</section>
+<section id="A-final-note-on-commit-messages">
 <h3>A final note on commit messages<a class="headerlink" href="#A-final-note-on-commit-messages" title="Permalink to this heading"></a></h3>
 <p>Git really comes into its own for managing larger projects than your homework assignments in this course. One key ingredient of good version control in this context is writing informative commit messages. Justin emphasized in <a class="reference internal" href="../../lessons/00/intro_to_jupyterlab.html"><span class="doc">Lesson 0</span></a> that the emphasis of comments in code should be <em>why</em>, not <em>how</em>. The important information is <em>why</em> was a design choice made, what was it’s context, and not the implementation details (the <em>how</em>), which should be
 fairly self-evident from good self-documenting code. Future You is the most important reader.</p>
 <p>All of these same thoughts apply to commit messages. Their goal is to give context and explain why, not how, changes were made. I highly recommend <a class="reference external" href="https://chris.beams.io/posts/git-commit/">this</a> post on how to write good commit messages. This may sound like a silly thing to harp on, so read that blog post for more insight on why your <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span></code> should never look like <a class="reference external" href="https://xkcd.com/1296/">this</a>.</p>
-</div>
-<div class="section" id="PS">
+</section>
+<section id="PS">
 <h3>PS<a class="headerlink" href="#PS" title="Permalink to this heading"></a></h3>
 <p><strong>Once again, remember the order of git commands to avoid problems and headache:</strong></p>
 <ol class="arabic simple">
@@ -430,9 +428,9 @@ fairly self-evident from good self-documenting code. Future You is the most impo
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">main</span></code></p></li>
 </ol>
 <p><em>This recitation was originally written by Muir Morrison and was added to by Julian Wagner, Ankita Roychoudhury, Victoria Chen and Nastya Oguienko.</em></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -443,11 +441,11 @@ fairly self-evident from good self-documenting code. Future You is the most impo
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117776790> 
+   <jinja2.runtime.BlockReference object at 0x16e747d50> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

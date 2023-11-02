@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reshaping data frames by stacking and unstacking &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -116,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -181,7 +183,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Reshaping-data-frames-by-stacking-and-unstacking">
+  <section id="Reshaping-data-frames-by-stacking-and-unstacking">
 <h1>Reshaping data frames by stacking and unstacking<a class="headerlink" href="#Reshaping-data-frames-by-stacking-and-unstacking" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
@@ -495,7 +497,7 @@ if (force === true) {
 </div>
 <hr /><p>We have seen how melting a data frame can bring it to tidy format, but this is not always the best option. <strong>Stacking</strong> and <strong>unstacking</strong> operations can be very useful for shaping data frames. As usual, this is best seen by example, and we will use a subset of the <a class="reference external" href="https://towardsdatascience.com/penguins-dataset-overview-iris-alternative-9453bb8c8d95">Palmer penguins data set</a>, which you can download here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv</a>. The data set
 consists of measurements of three different species of penguins acquired at the <a class="reference external" href="https://en.wikipedia.org/wiki/Palmer_Station">Palmer Station in Antarctica</a>. The measurements were made between 2007 and 2009 by <a class="reference external" href="https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php">Kristen Gorman</a>.</p>
-<div class="section" id="Melting-the-data-set-too-soon">
+<section id="Melting-the-data-set-too-soon">
 <h2>Melting the data set too soon<a class="headerlink" href="#Melting-the-data-set-too-soon" title="Permalink to this heading"></a></h2>
 <p>We start by loading in the data set, bearing in mind that for this particular format of it the header rows are rows zero and one.</p>
 <div class="nbinput docutils container">
@@ -841,8 +843,8 @@ consists of measurements of three different species of penguins acquired at the 
 </div>
 <p>This seems like a tidy data frame, and it is, but we have lost information! Specifically, we lost the which individual penguin each measurements belongs to. A total of 204 penguins were measured (68 for each species), and four properties of each were measured. The melted data frame has 204 × 4 = 816 rows. This is no good, since we want to know which penguin each <em>set</em> of four measurements belongs to.</p>
 <p>So, we want a tidy data frame that has five columns, each column containing a variable for one set of measurements. The variables are the beak depth, beak length, flipper length, and weight, and which species the penguin being measured is.</p>
-</div>
-<div class="section" id="Stacking">
+</section>
+<section id="Stacking">
 <h2>Stacking<a class="headerlink" href="#Stacking" title="Permalink to this heading"></a></h2>
 <p><strong>Stacking</strong> is procedure that takes a wide data frame and makes it narrower by converting the names at a level of a columnar multiindex into an index in the data frame. In this case, we want to make the species, as given in the top level of the column muliindex, and make it an index. Let’s perform the stacking operation and see what we get.</p>
 <div class="nbinput docutils container">
@@ -1306,8 +1308,8 @@ consists of measurements of three different species of penguins acquired at the 
 </div></div>
 </div>
 <p>Beautiful! A tidy data frame! (Note that we can delete the <code class="docutils literal notranslate"><span class="pre">'penguin</span> <span class="pre">number'</span></code> column if we like because it is irrelevant. In most situations, I would delete it, but we will use it for illustrative purposes later in this lesson.)</p>
-</div>
-<div class="section" id="Reshaping-by-unstacking">
+</section>
+<section id="Reshaping-by-unstacking">
 <h2>Reshaping by unstacking<a class="headerlink" href="#Reshaping-by-unstacking" title="Permalink to this heading"></a></h2>
 <p>Sometimes, our data set is tidy, contains all of the information we need, but is not in a convenient format. As an example, I will create a tidy data frame for the penguin data where each row is a single measurement of a single feature of a penguin. This is what we had before when we melted the data frame too soon, but if we melt the data frame now, specifying <code class="docutils literal notranslate"><span class="pre">'penguin</span> <span class="pre">number'</span></code> and <code class="docutils literal notranslate"><span class="pre">'species'</span></code> as ID variables, we get a tidy data frame that still has all of the information in the data set.</p>
 <div class="nbinput docutils container">
@@ -1680,7 +1682,7 @@ consists of measurements of three different species of penguins acquired at the 
 </table>
 </div></div>
 </div>
-<div class="section" id="A-couple-of-plots-for-fun">
+<section id="A-couple-of-plots-for-fun">
 <h3>A couple of plots for fun<a class="headerlink" href="#A-couple-of-plots-for-fun" title="Permalink to this heading"></a></h3>
 <p>Now that we’ve done all this work and our data set is tidy, let’s make a plot for fun. First, we’ll plot the ECDFs of the bill lengths.</p>
 <div class="nbinput docutils container">
@@ -1806,9 +1808,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="An-important-note-about-tidiness">
+</section>
+</section>
+<section id="An-important-note-about-tidiness">
 <h2>An important note about tidiness<a class="headerlink" href="#An-important-note-about-tidiness" title="Permalink to this heading"></a></h2>
 <p>It is important to note that there is more than one way to make a data set tidy. In the example of the Palmer penguin data set, we saw two legitimate ways of making the data frame tidy. In our preferred version, each row corresponded to a measurement of a single <em>penguin</em>, which had several variables associated with it. In another version, each row corresponded to a single <em>feature</em> of a penguin.</p>
 <p>To demonstrate that this latter version is workable, but more cumbersome, we can make the same plots as above. First, we’ll melt it again.</p>
@@ -2024,8 +2026,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This works fine, but is more cumbersome and therefore prone to error because we cannot use a groupby operation. The moral of the story is that you should tidy your data, but you should think carefully about in what way your data are tidy.</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
@@ -2053,8 +2055,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -2068,11 +2070,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x116ef8550> 
+   <jinja2.runtime.BlockReference object at 0x16ea9cad0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

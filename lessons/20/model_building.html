@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model building &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -109,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -174,14 +176,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="model-building">
+  <section id="model-building">
 <h1>Model building<a class="headerlink" href="#model-building" title="Permalink to this heading"></a></h1>
 <p>In this lesson, we will learn how to construct a variate-covariate model and discuss some useful theoretical results related to the maximum likelihood estimates for the parameters of these models. As we usually do, we will have a concrete model in mind as an example. I will take this opportunity to illustrate the process of carefully building a model (this time in the context of variate-covariate modeling) and discuss why modeling is important for scientists.</p>
-<div class="section" id="end-of-theory">
+<section id="end-of-theory">
 <h2>End of theory?<a class="headerlink" href="#end-of-theory" title="Permalink to this heading"></a></h2>
 <p>As machine learning methods grow in power and prominence, and as data acquisition becomes more and more facile, we see more and more methods where a machine “learns” directly from data. Over a decade ago, <a class="reference external" href="https://en.wikipedia.org/wiki/Chris_Anderson_(writer)">Chris Anderson</a> wrote an article entitled <a class="reference external" href="https://www.wired.com/2008/06/pb-theory/">The End of Theory: The Data Deluge Makes the Scientific Method Obsolete</a> in Wired Magazine. Anderson claimed that because we have access to large data sets, we no longer need the scientific method of testable hypotheses. Specifically, he says we do not need models, we can just use lots and lots of data to make predictions. This is absurd because if we just try to learn from data, we do not really learn anything fundamental about how nature works. If you are working for Netflix and trying to figure out what movies people want to watch, learning from data is fine. But if you’re a scientist and want to increase knowledge, you need models.</p>
-</div>
-<div class="section" id="an-example-exercise-in-modeling">
+</section>
+<section id="an-example-exercise-in-modeling">
 <h2>An example exercise in modeling<a class="headerlink" href="#an-example-exercise-in-modeling" title="Permalink to this heading"></a></h2>
 <p>We will introduce two competing models for how the size of mitotic spindles are set. Matt Good and coworkers (<a class="reference external" href="https://dx.doi.org/10.1126%2Fscience.1243147)">*Science*, 2013</a>) developed a microfluidic device where they could create droplets of cytoplasm extracted from <em>Xenopus</em> eggs and embryos, as shown the figure below (scale bar 20 µm; image taken from the paper).</p>
 <a class="reference internal image-reference" href="../../_images/good_droplets.png"><img alt="Droplets encapsulating mitotic spindles from Good and coworkers." src="../../_images/good_droplets.png" style="width: 600px;" /></a>
@@ -247,10 +249,10 @@
 <li><p>The spindles have an inherent length, independent of droplet diameter.</p></li>
 <li><p>The length of spindles is determined by the total amount of tubulin available to make them.</p></li>
 </ol>
-<div class="section" id="model-1-spindle-size-is-independent-of-droplet-size">
+<section id="model-1-spindle-size-is-independent-of-droplet-size">
 <h3>Model 1: Spindle size is independent of droplet size<a class="headerlink" href="#model-1-spindle-size-is-independent-of-droplet-size" title="Permalink to this heading"></a></h3>
 <p>As a first model, we propose that the size of a mitotic spindle is inherent to the spindle itself. This means that the size of the spindle is independent of the size of the droplet or cell in which it resides. This would be the case, for example, if construction of the spindle involves length-sensing molecules, such as depolymerizing motor proteins. We define that set length as <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
-<div class="section" id="the-statistical-model">
+<section id="the-statistical-model">
 <h4>The statistical model<a class="headerlink" href="#the-statistical-model" title="Permalink to this heading"></a></h4>
 <p>Not all spindles will be measured to be exactly <span class="math notranslate nohighlight">\(\phi\)</span> µm in length. Rather, there may be some variation about <span class="math notranslate nohighlight">\(\phi\)</span> due to natural variation and measurement error. So, we would expect measured length of spindle <em>i</em> to be</p>
 <div class="math notranslate nohighlight">
@@ -279,11 +281,11 @@ f(\mathbf{l} ; \phi, \sigma) = \prod_{i} f(l_i ; \phi, \sigma) = \frac{1}{(2\pi 
 l_i \sim \text{Norm}(\phi, \sigma) \;\;\forall i.
 \end{align}\]</div>
 <p>We will generally write our models in this format, which is easier to parse and understand. Note that in writing this generative model, we have necessarily introduced another parameter, <span class="math notranslate nohighlight">\(\sigma\)</span>, the standard deviation parametrizing the Normal distribution. So, we have two parameters in our model, <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-</div>
-</div>
-<div class="section" id="model-2-spindle-length-is-set-by-total-amount-of-tubulin">
+</section>
+</section>
+<section id="model-2-spindle-length-is-set-by-total-amount-of-tubulin">
 <h3>Model 2: Spindle length is set by total amount of tubulin<a class="headerlink" href="#model-2-spindle-length-is-set-by-total-amount-of-tubulin" title="Permalink to this heading"></a></h3>
-<div class="section" id="the-cartoon-model">
+<section id="the-cartoon-model">
 <h4>The cartoon model<a class="headerlink" href="#the-cartoon-model" title="Permalink to this heading"></a></h4>
 <p>The three key principles of this “cartoon” model are:</p>
 <ol class="arabic simple">
@@ -291,8 +293,8 @@ l_i \sim \text{Norm}(\phi, \sigma) \;\;\forall i.
 <li><p>The total length of polymerized microtubules is a function of the total tubulin concentration after assembly of the spindle.  This results from the balance of microtubule polymerization rate with catastrophe frequencies.</p></li>
 <li><p>The density of tubulin in the spindle is independent of droplet or cell volume.</p></li>
 </ol>
-</div>
-<div class="section" id="the-mathematical-model">
+</section>
+<section id="the-mathematical-model">
 <h4>The mathematical model<a class="headerlink" href="#the-mathematical-model" title="Permalink to this heading"></a></h4>
 <p>From these principles, we need to derive a mathematical model that will provide us with testable predictions. The derivation follows below (following the derivation presented in the paper), and you may read it if you are interested. Since our main focus here is building a statistical model, you can skip ahead to to the final equation, where we define a mathematical expression relating the spindle length, <span class="math notranslate nohighlight">\(l\)</span> to the droplet diameter, <span class="math notranslate nohighlight">\(d\)</span>, which depends on two parameters, <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span>. Nonetheless, it is important to see how a models such as this one is derived.</p>
 <p>Principle 1 above (conservation of tubulin) implies</p>
@@ -362,15 +364,11 @@ V_0\right)^{\frac{1}{3}}
 l \approx \left(\frac{6 \alpha \beta}{\pi k^2}\,
 \frac{T_0 - T_\mathrm{min}}{T_\mathrm{s}}\right)^{\frac{1}{3}}.
 \end{align}\]</div>
-</div>
-<div class="section" id="indentifiability-of-parameters">
+</section>
+<section id="indentifiability-of-parameters">
 <h4>Indentifiability of parameters<a class="headerlink" href="#indentifiability-of-parameters" title="Permalink to this heading"></a></h4>
 <p>We measure the microtubule length <span class="math notranslate nohighlight">\(l\)</span> and droplet diameter <span class="math notranslate nohighlight">\(d\)</span> directly from the images. We can also measure the spindle aspect ratio <span class="math notranslate nohighlight">\(k\)</span> directly from the images. Thus, we have four unknown parameters, since we already know α ≈ 2.7 nmol/µm. The unknown parameters are:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>meaning</p></th>
@@ -407,8 +405,8 @@ l(d) \approx \frac{\gamma d}{\left(1+(\gamma d/\phi)^3\right)^{\frac{1}{3}}}.
 <p>This model is a <strong>variate-covariate model</strong> in which the spindle length is the <strong>variate</strong> and the droplet diameter is the <strong>covariate</strong>. The parameters <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> parametrize the function <span class="math notranslate nohighlight">\(l(d)\)</span>, which describes how the variate <span class="math notranslate nohighlight">\(l\)</span> depends on the covariate <span class="math notranslate nohighlight">\(d\)</span>.</p>
 <p>Note that variate-covariate modeling and the associated parameter estimation is often referred to as <strong>regression</strong>. I avoid the use of this term because it is a historical artifact and describes a subset of variate-covariate models. You can read more about the terminology in <a class="reference external" href="https://betanalpha.github.io/assets/case_studies/variate_covariate_modeling.html#41_Regression_To_The_Obscene">this short historical description by Michael Betancourt</a>.</p>
 <p>Finding MLEs of parameters for variate-covariate models is also often referred to as <strong>curve fitting</strong>. I also avoid that term because I prefer the more descriptive term “maximum likelihood estimation,” which further emphasizes that it is the same procedure we have been doing for other models beyond variate-covariate models.</p>
-</div>
-<div class="section" id="visualizing-the-mathematical-model">
+</section>
+<section id="visualizing-the-mathematical-model">
 <h4>Visualizing the mathematical model<a class="headerlink" href="#visualizing-the-mathematical-model" title="Permalink to this heading"></a></h4>
 <p>Let’s take a quick look at the mathematical model so we can see how the curve looks. It is best to nondimensionalize the diameter by <span class="math notranslate nohighlight">\(\phi\)</span>, giving</p>
 <div class="math notranslate nohighlight">
@@ -470,8 +468,8 @@ l(d) \approx \frac{\gamma d}{\left(1+(\gamma d/\phi)^3\right)^{\frac{1}{3}}}.
       </body>
     </html>
     </embed><p>The curve grows from zero to a plateau at <span class="math notranslate nohighlight">\(l = \phi\)</span>, more rapidly for larger <span class="math notranslate nohighlight">\(\gamma\)</span>. We can more carefully characterize the limiting behavior.</p>
-</div>
-<div class="section" id="limiting-behavior">
+</section>
+<section id="limiting-behavior">
 <h4>Limiting behavior<a class="headerlink" href="#limiting-behavior" title="Permalink to this heading"></a></h4>
 <p>For large droplets, with <span class="math notranslate nohighlight">\(d \gg \phi/\gamma\)</span>, the spindle size becomes independent of <span class="math notranslate nohighlight">\(d\)</span>, with</p>
 <div class="math notranslate nohighlight">
@@ -486,8 +484,8 @@ l(d) \approx \gamma\,d.
 <p>Note that the expression for the linear regime gives bounds for <span class="math notranslate nohighlight">\(\gamma\)</span>.  Obviously, <span class="math notranslate nohighlight">\(\gamma &gt; 0\)</span>, lest we get negative spindle lengths. Because <span class="math notranslate nohighlight">\(l \le d\)</span>, lest the spindle not fit in the droplet, we also have <span class="math notranslate nohighlight">\(\gamma \le 1\)</span>.</p>
 <p>Importantly, if the experiment is done in the regime where <span class="math notranslate nohighlight">\(d\)</span> is large (and we do not really know a priori how large that is since we do not know the parameters <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span>), we cannot tell the difference between the two models, since they are equivalent in that regime. Further, if the experiment is in this regime the model is unidentifiable because we cannot resolve <span class="math notranslate nohighlight">\(\gamma\)</span>.</p>
 <p>This sounds kind of dire, but this is actually a convenient fact. The second model is more complex, but it has the simpler model, model 1, as a limit. Thus, the two models are in fact commensurate with each other. Knowledge of how these limits work also enhances the experimental design. We should strive for small droplets. And perhaps most importantly, if we didn’t consider the second model, we might automatically assume that droplet size has nothing to do with spindle length if we simply did the experiment in larger droplets.</p>
-</div>
-<div class="section" id="generative-model">
+</section>
+<section id="generative-model">
 <h4>Generative model<a class="headerlink" href="#generative-model" title="Permalink to this heading"></a></h4>
 <p>We have a theoretical model relating the droplet diameter to the spindle length. Let us now build a generative model. To do so, we need to specify how the <em>measured</em> spindle lengths are distributed.</p>
 <p>We start by assuming that the measured droplet length-diameter pairs are independent and identically distributed (i.i.d.). This is often a reasonable assumption in variate-covariate models, and certainly seems so in this one. The i.i.d. assumption may break down, for example in some models in which the variate is time and subsequent data points are depended upon each other. Nonetheless, even for many time series, the i.i.d. assumption is reasonable, especially because many processes are memoryless.</p>
@@ -523,11 +521,11 @@ l_i \sim \text{Norm}\left(\frac{\gamma d_i}{\left(1+(\gamma d_i/\phi)^3\right)^{
 \end{align}\]</div>
 <p>Importantly, note that this model builds upon our first model. Generally, when doing modeling, it is a good idea to build more complex models on your initial baseline model such that the models are related to each other by limiting behavior. This gives you a continuum of model and a sound basis for making comparisons among models.</p>
 <p>Note that we are assuming the droplet diameters are known. When we generate data sets for prior predictive checks, we will randomly generate them from about 20 µm to 200 µm, since this is the range achievable with the microfluidic device.</p>
-</div>
-<div class="section" id="checking-model-assumptions">
+</section>
+<section id="checking-model-assumptions">
 <h4>Checking model assumptions<a class="headerlink" href="#checking-model-assumptions" title="Permalink to this heading"></a></h4>
 <p>In deriving the mathematical model, we made a series of assumptions. It is generally a good idea to check to see if assumptions in the mathematical modeling are realized in the experiment. If they are not, you may need to relax the assumptions and have a potentially more complicated model (which may suffer from identifiability issues). This underscores the interconnection between modeling and experimental design. You can allow for modeling assumptions and identifiability if you design your experimental parameters to meet the assumptions (e.g., choosing the appropriate range of droplet sizes).</p>
-<div class="section" id="is-v-mathrm-s-v-0-ll-1">
+<section id="is-v-mathrm-s-v-0-ll-1">
 <h5>Is <span class="math notranslate nohighlight">\(V_\mathrm{s} / V_0 \ll 1\)</span>?<a class="headerlink" href="#is-v-mathrm-s-v-0-ll-1" title="Permalink to this heading"></a></h5>
 <p>Let’s do a quick verification that the droplet volume is indeed much larger than the spindle volume. Remember, the spindle volume for a prolate spheroid of length <span class="math notranslate nohighlight">\(l\)</span> and width <span class="math notranslate nohighlight">\(w\)</span> is <span class="math notranslate nohighlight">\(V_\mathrm{s} = \pi l w^2 / 6\)</span>.</p>
 <embed>
@@ -584,8 +582,8 @@ l_i \sim \text{Norm}\left(\frac{\gamma d_i}{\left(1+(\gamma d_i/\phi)^3\right)^{
       </body>
     </html>
     </embed><p>We see that for pretty much all spindles that were measured, <span class="math notranslate nohighlight">\(V_\mathrm{s} / V_0\)</span> is small, so this is a sound assumption.</p>
-</div>
-<div class="section" id="do-all-spindles-have-the-same-aspect-ratio-k">
+</section>
+<section id="do-all-spindles-have-the-same-aspect-ratio-k">
 <h5>Do all spindles have the same aspect ratio <span class="math notranslate nohighlight">\(k\)</span>?<a class="headerlink" href="#do-all-spindles-have-the-same-aspect-ratio-k" title="Permalink to this heading"></a></h5>
 <p>In setting up our model, we assumed that all spindles had the same aspect ratio. We can check this assumption because we have the data to do so available to us.</p>
 <embed>
@@ -643,11 +641,11 @@ l_i \sim \text{Norm}\left(\frac{\gamma d_i}{\left(1+(\gamma d_i/\phi)^3\right)^{
 </html>
 </embed><p>The median aspect ratio is about 0.4, and we see spindle lengths about <span class="math notranslate nohighlight">\(\pm 25\%\)</span> of that. This could be significant variation. We may wish to update the model to account for nonconstant <span class="math notranslate nohighlight">\(k\)</span>. Going forward, we will assume <span class="math notranslate nohighlight">\(k\)</span> is constant, but you may wish to perform the analysis that follows with nonconstant <span class="math notranslate nohighlight">\(k\)</span> as an exercise.</p>
 <p>Importantly, these checks of the model highlight the importance of checking your assumptions against your data. Always a good idea!</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -661,11 +659,11 @@ l_i \sim \text{Norm}\left(\frac{\gamma d_i}{\left(1+(\gamma d_i/\phi)^3\right)^{
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x116e19a50> 
+   <jinja2.runtime.BlockReference object at 0x170000b10> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

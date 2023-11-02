@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using data frame indexes &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -116,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -181,7 +183,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Using-data-frame-indexes">
+  <section id="Using-data-frame-indexes">
 <h1>Using data frame indexes<a class="headerlink" href="#Using-data-frame-indexes" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput nblast docutils container">
@@ -340,7 +342,7 @@
 </div>
 <p>So far, we have used Boolean indexing for extracting data out of data frames, and I advocate for taking primarily that approach. The logic and syntax are very clean. In this sense, the index of a data frame is disposable. In fact, Hadley Wickham <a class="reference external" href="https://adv-r.hadley.nz/vectors-chap.html#rownames">advocates for disposing of them completely</a>. We will mostly dispose of them.</p>
 <p>However, when wrangling we often need to use indexes, so let’s get more familiar with them.</p>
-<div class="section" id="Changing-index">
+<section id="Changing-index">
 <h2>Changing index<a class="headerlink" href="#Changing-index" title="Permalink to this heading"></a></h2>
 <p>As I mentioned before, indexes are immutable. Let’s try changing the index of our data frame.</p>
 <div class="nbinput docutils container">
@@ -853,8 +855,8 @@ Name: 16, dtype: object
 </div></div>
 </div>
 <p>The index was reset to a range index in the process.</p>
-</div>
-<div class="section" id="Aside:-Data-frames-are-not-changed-in-place-by-default">
+</section>
+<section id="Aside:-Data-frames-are-not-changed-in-place-by-default">
 <h2>Aside: Data frames are not changed in place by default<a class="headerlink" href="#Aside:-Data-frames-are-not-changed-in-place-by-default" title="Permalink to this heading"></a></h2>
 <p>Note that when we set the index, we used</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;participant number&#39;</span><span class="p">)</span>
@@ -866,7 +868,7 @@ Name: 16, dtype: object
 </div>
 <p>The latter would create a data frame indexed by participant number, but the value of the variable <code class="docutils literal notranslate"><span class="pre">df</span></code> would not be changed. Instead, you need to explicitly make the assignment as is done in the former. Pandas in general will be cowardly in changing your data frame in place, which is a good idea.</p>
 <p>Note that many methods have an <code class="docutils literal notranslate"><span class="pre">inplace</span></code> keyword argument, which will then allow the data frame to be changed in place. I generally avoid this because I find code where the assignment is explicit, right there at the front of the line, easier to read. There may be performance benefits to using the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> keyword argument, but I have not needed those benefits in practice.</p>
-<div class="section" id="Multiindexes">
+<section id="Multiindexes">
 <h3>Multiindexes<a class="headerlink" href="#Multiindexes" title="Permalink to this heading"></a></h3>
 <p>Let’s say that we know we will be interested in pulling out results based on gender. For example, if we wanted all records for females, we could use Boolean indexing with the current data frame as</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">:]</span>
@@ -1870,9 +1872,9 @@ Name: (f, 18), dtype: float64
 </table>
 </div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Column-names-are-also-indexes">
+</section>
+</section>
+<section id="Column-names-are-also-indexes">
 <h2>Column names are also indexes<a class="headerlink" href="#Column-names-are-also-indexes" title="Permalink to this heading"></a></h2>
 <p>The concepts we have laid out for indexes applied to rows also apply to columns. The current state of our data frame has multiindexed rows with single index column names. The column names represent the various aspects of the test (such as percent correct and sleep quality scores) and the row multiindex are gender and participant number. By doing a transpose operation, we can swap the column and rows, giving a data frame where each <em>column</em> represents a single experiment, indexed by gender and
 participant number. (Note that this is not a tidy data frame, since for tidy data each <em>row</em> represents a single observation/experiment and each column represents an aspect of the observation. We are looking at an untidy data frame here for illustrative purposes about indexes.)</p>
@@ -2291,14 +2293,14 @@ ess                             6.0
 Name: (f, 11), dtype: float64
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="When-to-use-direct-vs-Boolean-indexing">
+</section>
+<section id="When-to-use-direct-vs-Boolean-indexing">
 <h2>When to use direct vs Boolean indexing<a class="headerlink" href="#When-to-use-direct-vs-Boolean-indexing" title="Permalink to this heading"></a></h2>
 <p>I generally only use direct indexing when I need the speed. As we will see, it is sometimes useful to set up multiindexes when wrangling en route to a tidy data frame that can be indexed with Boolean indexing. But aside from those two uses, I generally advocate using simple data frames with a range index for the rows (which is ignored) and a standard (not multi-) index for column names. Importantly, many high-level plotting libraries do not recognize indexes as data, and therefore the indexes
 cannot be conveniently used in making plots.</p>
 <p>Nonetheless, it is important to know how indexes work, since you will often encounter them while wrangling and reading documentation.</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
@@ -2323,8 +2325,8 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -2338,11 +2340,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117368c50> 
+   <jinja2.runtime.BlockReference object at 0x16e76ed90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

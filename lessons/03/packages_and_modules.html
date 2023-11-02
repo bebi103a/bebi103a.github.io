@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Packages and modules &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -132,6 +133,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -197,13 +199,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Packages-and-modules">
+  <section id="Packages-and-modules">
 <h1>Packages and modules<a class="headerlink" href="#Packages-and-modules" title="Permalink to this heading"></a></h1>
 <hr><p><strong>Note</strong>: In this lesson, you will be learning about how to write your own packages. While you will not necessarily need to do this in the course, it is an important skill to have. Because you will be writing <code class="docutils literal notranslate"><span class="pre">.py</span></code> files, this lesson is not at directly usable on Google Colab, so you should do it on your own machine, if possible.</p>
 <p>The Python Standard Library has lots of built-in <strong>modules</strong> that contain useful functions and data types for doing specific tasks. You can also use modules from outside the standard library. And you will undoubtedly write your own modules!</p>
 <p>A module is contained in a file that ends with <code class="docutils literal notranslate"><span class="pre">.py</span></code>. This file can have <strong>classes</strong>, functions, and other objects. We will not discuss defining your own classes in this class, so your modules will essentially just contain functions.</p>
 <p>A <strong>package</strong> contains several related modules that are all grouped together under one name. We will extensively use the <a class="reference external" href="http://www.numpy.org">NumPy</a>, <a class="reference external" href="http://www.scipy.org/">SciPy</a>, <a class="reference external" href="http://pandas.pydata.org">Pandas</a>, and <a class="reference external" href="http://bokeh.pydata.org">Bokeh</a> packages, among others, and I’m sure you will also use them beyond. As such, the first module we will consider is NumPy.</p>
-<div class="section" id="Example:-I-want-to-compute-the-mean-and-median-of-a-list-of-numbers">
+<section id="Example:-I-want-to-compute-the-mean-and-median-of-a-list-of-numbers">
 <h2>Example: I want to compute the mean and median of a list of numbers<a class="headerlink" href="#Example:-I-want-to-compute-the-mean-and-median-of-a-list-of-numbers" title="Permalink to this heading"></a></h2>
 <p>Say I have a list of numbers and I want to compute the mean. This happens all the time; you repeat a measurement multiple times and you want to compute the mean. We could write a function to do this.</p>
 <div class="nbinput nblast docutils container">
@@ -305,8 +307,8 @@ two middle values of ``V_sorted`` when ``N`` is even.
 </pre></div>
 </div>
 <p>This is where the documentation tells you that the median will be reported as the average of two middle values when the number of elements is even. Note that you could also read the documentation <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.median.html">here</a>, which is a bit easier to read.</p>
-</div>
-<div class="section" id="The-as-keyword">
+</section>
+<section id="The-as-keyword">
 <h2>The as keyword<a class="headerlink" href="#The-as-keyword" title="Permalink to this heading"></a></h2>
 <p>We use Numpy all the time. Typing <code class="docutils literal notranslate"><span class="pre">numpy</span></code> over and over again can get annoying. So, it is common practice to use the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword to import a module with an alias. Numpy’s alias is traditionally <code class="docutils literal notranslate"><span class="pre">np</span></code>, <em>and this is the only alias you should use for Numpy</em>.</p>
 <div class="nbinput docutils container">
@@ -329,13 +331,13 @@ two middle values of ``V_sorted`` when ``N`` is even.
 </pre></div></div>
 </div>
 <p>I prefer to do things this way, though <a class="reference external" href="http://nbviewer.jupyter.org/github/barbagroup/jupyter-tutorial/blob/master/3--Jupyter%20like%20a%20pro.ipynb">some purists differ</a>. We will use traditional aliases for major packages like Numpy, Pandas, and HoloViews.</p>
-</div>
-<div class="section" id="Third-party-packages">
+</section>
+<section id="Third-party-packages">
 <h2>Third party packages<a class="headerlink" href="#Third-party-packages" title="Permalink to this heading"></a></h2>
 <p>Standard Python installations come with the standard library. Numpy and other useful packages are not in the standard library. Outside of the standard library, there are several packages available. Several. Ha! There are currently (August 17, 2021) over 320,000 packages available through the <a class="reference external" href="https://pypi.python.org/pypi">Python Package Index</a>, PyPI. Usually, you can ask Google about what you are trying to do, and there is often a third party package to help you do it. The most useful (for
 scientific computing) and thoroughly tested packages and modules are available using <code class="docutils literal notranslate"><span class="pre">conda</span></code>. Others can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, which we will use soon.</p>
-</div>
-<div class="section" id="Writing-your-own-module">
+</section>
+<section id="Writing-your-own-module">
 <h2>Writing your own module<a class="headerlink" href="#Writing-your-own-module" title="Permalink to this heading"></a></h2>
 <p>To write your own module, you need to create a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file and save it. You can do this using the text editor in JupyterLab. Let’s call our module <code class="docutils literal notranslate"><span class="pre">na_utils</span></code>, for “nucleic acid utilities.” So, we create a file called <code class="docutils literal notranslate"><span class="pre">na_utils.py</span></code>. To start off, we’ll just have two functions in the module (and we’d naturally add more later), <code class="docutils literal notranslate"><span class="pre">dna_to_rna()</span></code>, one which converts a DNA sequence to an RNA sequence (just changes <code class="docutils literal notranslate"><span class="pre">T</span></code> to <code class="docutils literal notranslate"><span class="pre">U</span></code>) and another which computes the GC content of a sequence. The
 contents of <code class="docutils literal notranslate"><span class="pre">na_utils.py</span></code> should look as follows.</p>
@@ -399,7 +401,7 @@ contents of <code class="docutils literal notranslate"><span class="pre">na_util
 </pre></div></div>
 </div>
 <p>Wonderful! You now have your own functioning module!</p>
-<div class="section" id="A-quick-note-on-error-checking">
+<section id="A-quick-note-on-error-checking">
 <h3>A quick note on error checking<a class="headerlink" href="#A-quick-note-on-error-checking" title="Permalink to this heading"></a></h3>
 <p>These functions have minimal error checking of the input. For example, the <code class="docutils literal notranslate"><span class="pre">rna()</span></code> function will take gibberish in and give gibberish out.</p>
 <div class="nbinput docutils container">
@@ -420,9 +422,9 @@ contents of <code class="docutils literal notranslate"><span class="pre">na_util
 </pre></div></div>
 </div>
 <p>In general, checking input and handling errors is an essential part of writing functions, and we will cover that soon.</p>
-</div>
-</div>
-<div class="section" id="Importing-modules-in-your-.py-files-and-notebooks">
+</section>
+</section>
+<section id="Importing-modules-in-your-.py-files-and-notebooks">
 <h2>Importing modules in your .py files and notebooks<a class="headerlink" href="#Importing-modules-in-your-.py-files-and-notebooks" title="Permalink to this heading"></a></h2>
 <p>As our first foray into the glory of <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>, the Python style guide, we quote:</p>
 <blockquote>
@@ -436,7 +438,7 @@ contents of <code class="docutils literal notranslate"><span class="pre">na_util
 <p>You should put a blank line between each group of imports.</p>
 </div></blockquote>
 <p>You should follow this guide. I generally do it for Jupyter notebooks as well, with my first code cell having all of the imports I need. Therefore, going forward all of our lessons will have all necessary imports at the top of the document. The only exception is when we are explicitly demonstrating a concept that requires an import.</p>
-<div class="section" id="Imports-and-updates">
+<section id="Imports-and-updates">
 <h3>Imports and updates<a class="headerlink" href="#Imports-and-updates" title="Permalink to this heading"></a></h3>
 <p>Once you have imported a module or package, the interpreter stores its contents in memory. You cannot update the contents of the package and expect the interpreter to know about the changes. You will need to restart the kernel and then import the package again in a fresh instance.</p>
 <p>This can seem annoying, but it is good design. It ensures that code you are running does not change as you go through executing a notebook. However, when developing modules, it is sometimes convenient to have an imported module be updated as you run through the notebook as you are editing. To enable this, you can use the <a class="reference external" href="https://ipython.org/ipython-doc/3/config/extensions/autoreload.html">autoreload extension</a>. To activate it, run the following in a code cell, being sure to include the <code class="docutils literal notranslate"><span class="pre">%</span></code>
@@ -446,14 +448,14 @@ sign.</p>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">%</span></code> sign in IPython/JupyterLab means that you are going to use a <a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">magic function</a>, which we will encounter from time to time.</p>
-</div>
-</div>
-<div class="section" id="Package-management">
+</section>
+</section>
+<section id="Package-management">
 <h2>Package management<a class="headerlink" href="#Package-management" title="Permalink to this heading"></a></h2>
 <p>When we wrote the <code class="docutils literal notranslate"><span class="pre">na_utils</span></code> module, we stored it in the directory that we were working in, called the <strong>working directory</strong>. But what if you write a module that you want to use regardless of what directory your are in? To allow this kind of usage, you can use the <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> module of the standard library to manage your packages. You should read <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#packages">the documentation on Python packages and modules</a> to understand the details of how
 this is done, but what we present here is sufficient to get simple packages running and installed.</p>
 <p>In fact, if you are going to write any piece of code you will reuse from notebook to notebook and/or from application to application, you should make a proper package for it, following the specifications I’ll now lay out.</p>
-<div class="section" id="Package-architecture">
+<section id="Package-architecture">
 <h3>Package architecture<a class="headerlink" href="#Package-architecture" title="Permalink to this heading"></a></h3>
 <p>In order for the tools in <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> to effectively install your modules for widespread use, you need to follow a specific architecture for your package. Let’s say I wanted to make a package called <code class="docutils literal notranslate"><span class="pre">example</span></code> that has some of the utilities dictionaries and functions we have encountered in the lessons so far.</p>
 <p>The file structure is of the package is</p>
@@ -510,16 +512,16 @@ Utilities for parsing strings of nucleic acid sequences.
 </pre></div>
 </div>
 <p>This is a minimal <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> function, but will be sufficient for most packages you write for your own use. For your use, you make obvious changes to the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">author</span></code>, etc., fields.</p>
-</div>
-<div class="section" id="Installing-your-package">
+</section>
+<section id="Installing-your-package">
 <h3>Installing your package<a class="headerlink" href="#Installing-your-package" title="Permalink to this heading"></a></h3>
 <p>Once your basic package architecture is built, you can install it using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, which is a self-referential acronym for Pip Installs Packages. To install a your package, make sure you are in the directory immediately above your package. If my package is in <code class="docutils literal notranslate"><span class="pre">~/git/example</span></code>, I would want to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/git</span></code>. Then, do the following on the command line.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install -e example
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">-e</span></code> flag is important, which tells pip that this is a local, editable package. Your package is now accessible on your machine whenever you run the Python interpreter!</p>
-</div>
-<div class="section" id="Installing-external-packages-outside-of-conda">
+</section>
+<section id="Installing-external-packages-outside-of-conda">
 <h3>Installing external packages outside of conda<a class="headerlink" href="#Installing-external-packages-outside-of-conda" title="Permalink to this heading"></a></h3>
 <p>What you have just done is a common workflow with packages. You write your own packages (that are under version control, of course), and you make them available using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span></code>. In addition to your own packages, you used <code class="docutils literal notranslate"><span class="pre">conda</span></code> to install third party packages on your machine in lesson 0. Sometimes packages are not yet available via conda, but are nonetheless available in the <a class="reference external" href="https://pypi.org/">Python Package Index (PyPI)</a>. There are over 320,000 packages in the PyPI. To install
 one of them, you simple use</p>
@@ -532,9 +534,9 @@ one of them, you simple use</p>
 </pre></div>
 </div>
 <p>Importantly, <code class="docutils literal notranslate"><span class="pre">conda</span></code> plays nicely with <code class="docutils literal notranslate"><span class="pre">pip</span></code>. If you install something with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, <code class="docutils literal notranslate"><span class="pre">conda</span></code> will be aware of it.</p>
-</div>
-</div>
-<div class="section" id="Appendix">
+</section>
+</section>
+<section id="Appendix">
 <h2>Appendix<a class="headerlink" href="#Appendix" title="Permalink to this heading"></a></h2>
 <p>In the example package, the contents of <code class="docutils literal notranslate"><span class="pre">bioinfo_dicts.py</span></code> are:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -587,8 +589,8 @@ one of them, you simple use</p>
 </pre></div>
 </div>
 <p>The contents of the file <code class="docutils literal notranslate"><span class="pre">na_utils.py</span></code> we shown <a class="reference external" href="#Writing-your-own-module">earlier in this lesson</a>.</p>
-</div>
-<div class="section" id="Computing-environment">
+</section>
+<section id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -613,8 +615,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -628,11 +630,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1176fded0> 
+   <jinja2.runtime.BlockReference object at 0x117f79090> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

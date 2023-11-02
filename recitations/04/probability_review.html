@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R4. Probability review &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -111,6 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../05/overplotting.html">R5. Overplotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/index.html">R6. Dashboards</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -175,11 +177,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="R4.-Probability-review">
+  <section id="R4.-Probability-review">
 <h1>R4. Probability review<a class="headerlink" href="#R4.-Probability-review" title="Permalink to this heading"></a></h1>
 <p><em>This recitation was adapted from a probability review document by Rosita Fu. The Jupyter Notebook cheatsheet was written by Grace Liu.</em></p>
 <p>You can <a class="reference external" href="http://bebi103.caltech.edu.s3-website-us-east-1.amazonaws.com/2021a/_downloads/840d1112d4e86cf5d35b0faf73424775/probability_review_rosita.pdf">download Rosita’s notes</a>. The go into maximum likelihood estimation as well, which we will cover later in the term.</p>
-<div class="section" id="Contents:">
+<section id="Contents:">
 <h2>Contents:<a class="headerlink" href="#Contents:" title="Permalink to this heading"></a></h2>
 <p>In this recitation we will cover:</p>
 <ul class="simple">
@@ -190,8 +192,8 @@
 <li><p>Common Distributions</p></li>
 </ul>
 <p>This notebook will only contain the important formulas and definitions, please see Rosita’s notes for more thorough breakdown of the material.</p>
-</div>
-<div class="section" id="Axioms-of-Probability">
+</section>
+<section id="Axioms-of-Probability">
 <h2>Axioms of Probability<a class="headerlink" href="#Axioms-of-Probability" title="Permalink to this heading"></a></h2>
 <p>To get started with probability, we can define a few terms:</p>
 <p>Sample space: Set of all total outcomes <span class="math notranslate nohighlight">\(\Omega\)</span></p>
@@ -206,7 +208,7 @@
 <li><p>If <span class="math notranslate nohighlight">\(A_1, A_2, ...A_n\)</span> disjoint (non-overlapping), then <span class="math notranslate nohighlight">\(\sum P(\cup A_i) = 1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(P(A\cup B) = P(A) + P(B) - P(A\cap B)\)</span></p></li>
 </ol>
-<div class="section" id="Conditional-Probability-and-Marginalization">
+<section id="Conditional-Probability-and-Marginalization">
 <h3>Conditional Probability and Marginalization<a class="headerlink" href="#Conditional-Probability-and-Marginalization" title="Permalink to this heading"></a></h3>
 <p>If two events are <strong>independent</strong>, then</p>
 <p><span class="math">\begin{align}
@@ -232,9 +234,9 @@ P(A\vert B) = \frac{P(A,B)}{P(B)}
 <p>in the discrete case, or, in the continuous case:</p>
 <div class="math notranslate nohighlight">
 \[P(x) = \int P(x\vert y) f(y) dy\]</div>
-</div>
-</div>
-<div class="section" id="Random-Variables">
+</section>
+</section>
+<section id="Random-Variables">
 <h2>Random Variables<a class="headerlink" href="#Random-Variables" title="Permalink to this heading"></a></h2>
 <p>A random variable is a function that matches outcomes in sample space to real numbers. The probability distribution of <span class="math notranslate nohighlight">\(\Omega\)</span> induces a probability distribution of an R.V. on real numbers.</p>
 <p>A discrete R.V. can only take on a finite number of values (e.g. integers). Its probability distribution is defined by its probability mass function (PMF) <span class="math notranslate nohighlight">\(p(x_i) = P(X=x_i)\)</span></p>
@@ -251,8 +253,8 @@ P(A\vert B) = \frac{P(A,B)}{P(B)}
 \[F(x) = \int_{-\infty}^{x} f(x)dx\]</div>
 <div class="math notranslate nohighlight">
 \[f(x) = \frac{dF(x)}{dx}\]</div>
-</div>
-<div class="section" id="Expectation-and-Moments">
+</section>
+<section id="Expectation-and-Moments">
 <h2>Expectation and Moments<a class="headerlink" href="#Expectation-and-Moments" title="Permalink to this heading"></a></h2>
 <p>The expectation of a random variable is the weighted average of all possible values. If you sample out of a distribution a large number of times, the mean of the samples would be close to the expectation value. This is called the Law of Large Numbers</p>
 <ul>
@@ -283,26 +285,26 @@ P(A\vert B) = \frac{P(A,B)}{P(B)}
 \[V[X] = E[(X-E[X])^2]\]</div>
 <div class="math notranslate nohighlight">
 \[V[X] = E[X^2] - (E[X])^2\]</div>
-</div>
-<div class="section" id="Common-Distributions">
+</section>
+<section id="Common-Distributions">
 <h2>Common Distributions<a class="headerlink" href="#Common-Distributions" title="Permalink to this heading"></a></h2>
 <p>I highly recommend looking at Justin’s <a class="reference external" href="https://distribution-explorer.github.io/">Distribution Explorer</a> and playing with the different distributions yourself, but here are some of the common distributions with stories that you might come across in this class.</p>
-<div class="section" id="Discrete-distributions">
+<section id="Discrete-distributions">
 <h3>Discrete distributions<a class="headerlink" href="#Discrete-distributions" title="Permalink to this heading"></a></h3>
 <p><a class="reference external" href="https://distribution-explorer.github.io/discrete/bernoulli.html">Bernoulli</a> : There are only two outcomes: success and failure, where the probability of success is <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p><a class="reference external" href="https://distribution-explorer.github.io/discrete/binomial.html">Binomial</a> : After performing <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials with probability of success <span class="math notranslate nohighlight">\(p\)</span>, the number of successes is Bernouli distributed</p>
 <p><a class="reference external" href="https://distribution-explorer.github.io/discrete/geometric.html">Geometric</a> : If we perform Bernoulli trials with probability of success <span class="math notranslate nohighlight">\(p\)</span>, the number of failures before the first success is Geometric distributed</p>
 <p><a class="reference external" href="https://distribution-explorer.github.io/discrete/poisson.html">Poisson</a>: A Poisson process is a memoryless process with rate of arrival <span class="math notranslate nohighlight">\(\lambda\)</span>. The number of arrivals in a unit of time is modeled by the Poisson Distribution</p>
-</div>
-<div class="section" id="Continuous-distributions">
+</section>
+<section id="Continuous-distributions">
 <h3>Continuous distributions<a class="headerlink" href="#Continuous-distributions" title="Permalink to this heading"></a></h3>
 <p><a class="reference external" href="https://distribution-explorer.github.io/continuous/uniform.html">Uniform</a>: There is a limited range of possible values <span class="math notranslate nohighlight">\([a,b]\)</span>. Within that range, every value has equal probability.</p>
 <p><a class="reference external" href="https://distribution-explorer.github.io/continuous/exponential.html">Exponential</a>: The inter-arrival time for a Poisson process with rate of arrival <span class="math notranslate nohighlight">\(\lambda\)</span> is Exponentially distributed.</p>
 <p><a class="reference external" href="https://distribution-explorer.github.io/continuous/gamma.html">Gamma</a>: The amount of time it takes to accumulate <span class="math notranslate nohighlight">\(\alpha\)</span> arrivals of a Poisson process with arrival rate <span class="math notranslate nohighlight">\(\lambda\)</span></p>
 <p><a class="reference external" href="https://distribution-explorer.github.io/continuous/normal.html">Gaussian/Normal</a>: Parametrized by the mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. By the Central Limit Theorem , all distributions tend toward the Normal distribution at large enough sample size. Most processes that are a sum of many individual subprocesses will be Normally distributed.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -316,11 +318,11 @@ P(A\vert B) = \frac{P(A,B)}{P(B)}
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 25, 2023.
+      <span class="lastupdated">Last updated on Nov 02, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x116621c90> 
+   <jinja2.runtime.BlockReference object at 0x16ebc3f90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

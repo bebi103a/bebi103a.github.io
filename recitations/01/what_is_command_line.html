@@ -35,16 +35,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-
-          
-          
-          <a href="../../index.html">
-            
-              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+            <a href="../../index.html">
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -82,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Implementation of model assessment</a></li>
@@ -97,7 +93,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">What is the command line?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#What-is-a-shell?">What is a shell?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#A-very-brief-historical-overview">A very brief historical overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Windows-vs.-macOS/Linux">Windows vs. macOS/Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Windows-vs. macOS/Linux">Windows vs. macOS/Linux</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="maneuvering_directories.html">Maneuvering around directories</a></li>
@@ -111,6 +107,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/overplotting.html">R5. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">R6. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -157,9 +155,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">R1. The command line and Git</a></li>
-      <li class="breadcrumb-item active">What is the command line?</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">R1. The command line and Git</a> &raquo;</li>
+      <li>What is the command line?</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -176,12 +174,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="What-is-the-command-line?">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="What-is-the-command-line?">
 <h1>What is the command line?<a class="headerlink" href="#What-is-the-command-line?" title="Permalink to this heading"></a></h1>
 <p>Perhaps the first step toward really empowering you to command your computer to do whatever you will is to learn how to use the command line. This lesson provides a brief introduction to command line skills.</p>
 <section id="What-is-a-shell?">
 <h2>What is a shell?<a class="headerlink" href="#What-is-a-shell?" title="Permalink to this heading"></a></h2>
-<p>A <strong>shell</strong> is a program that takes commands from files or entered interactively through the keyboard and passes them on to the operating system to be executed. A shell is accessed through a <strong>terminal (emulator)</strong>. Where you would normally execute a command by clicking on a button (e.g. open the Downloads folder by double-clicking on it), a shell lets you perform the same operations by typing commands (e.g. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Downloads</span></code>).</p>
+<p>A <strong>shell</strong> is a program that takes commands from files or entered interactively through the keyboard and passes them on to the operating system to be executed. A shell is accessed through a <strong>terminal (emulator)</strong>. Where you would normally execute a command by clicking on a button (e.g. open the Downloads folder by double-clicking on it), a shell lets you perform the same operations by typing commands (e.g. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Downloads</span></code>).</p>
 <p>We will use JupyterLab’s terminal in this tutorial. However, you need not limit yourself to using this. If you are using macOS, you can use the Terminal application. For a Mac, you can fire up the Terminal application. It is typically in the <code class="docutils literal notranslate"><span class="pre">/Applications/Utilities</span></code> folder. Otherwise, hit ⌘-space bar and type <code class="docutils literal notranslate"><span class="pre">terminal</span></code> in the search box, and select the Terminal Application. For Windows, you can use PowerShell, which you can launch through the <code class="docutils literal notranslate"><span class="pre">Start</span></code> menu. If you are using Linux, it’s a
 good bet you already know how to navigate a terminal, but, in most cases, hit the Super-key and type <code class="docutils literal notranslate"><span class="pre">terminal</span></code>.</p>
 </section>
@@ -190,8 +212,8 @@ good bet you already know how to navigate a terminal, but, in most cases, hit th
 <p>Ken Thompson of Bell Labs developed the predecessor to the modern shell for the first release of UNIX in 1971. In 1977, Stephen Bourne introduced the Bourne shell (<code class="docutils literal notranslate"><span class="pre">sh</span></code>) which added the ability to invoke scripts (small reusable programs) from within the shell. The Bourne shell remains relevant. In some cases it is still the default root shell. Shortly afterwards, the C shell (<code class="docutils literal notranslate"><span class="pre">csh</span></code>) was developed which made use of a C-like scripting language. <code class="docutils literal notranslate"><span class="pre">tcsh</span></code> is built on <code class="docutils literal notranslate"><span class="pre">csh</span></code> and is still very
 common. <code class="docutils literal notranslate"><span class="pre">bash</span></code>, the Bourne again shell was developed by Brian Fox to replace the Bourne shell. It adds many useful features to sh and is the default for several Linux distributions. It used to be the default for macOS until Catalina (2019), when it was replaced by <code class="docutils literal notranslate"><span class="pre">zsh</span></code>.</p>
 </section>
-<section id="Windows-vs.-macOS/Linux">
-<h2>Windows vs. macOS/Linux<a class="headerlink" href="#Windows-vs.-macOS/Linux" title="Permalink to this heading"></a></h2>
+<section id="Windows-vs. macOS/Linux">
+<h2>Windows vs. macOS/Linux<a class="headerlink" href="#Windows-vs. macOS/Linux" title="Permalink to this heading"></a></h2>
 <p>Windows 10 enables you to also use <code class="docutils literal notranslate"><span class="pre">bash</span></code>, but you need to activate the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows Subsystem for Linux</a>. We will not use <code class="docutils literal notranslate"><span class="pre">bash</span></code> for Windows users (unless you want to), but will instead use <a class="reference external" href="https://en.wikipedia.org/wiki/PowerShell">PowerShell</a>, which is also the default shell in JupyterLab’s terminal for Windows users. For the simple command line operations we will do in here, PowerShell is almost always sufficient and the syntax is the
 same. <a class="reference external" href="http://cecs.wright.edu/~pmateti/Courses/233/Top/233-CheatSheet.html#Bash_and_PowerShell_Quick_Reference">This cheatsheet</a> is a useful reference for comparing <code class="docutils literal notranslate"><span class="pre">bash</span></code> and PowerShell commands.</p>
 <p>In what follows below, we will show the <code class="docutils literal notranslate"><span class="pre">bash</span></code> commands and sometimes provide commentary for Windows users. Here is a brief table comparing <code class="docutils literal notranslate"><span class="pre">bash</span></code> to PowerShell commands.</p>
@@ -257,11 +279,11 @@ same. <a class="reference external" href="http://cecs.wright.edu/~pmateti/Course
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 02, 2023.
+      <span class="lastupdated">Last updated on Nov 15, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16e718d90> 
+   <jinja2.runtime.BlockReference object at 0x7fb89971fbb0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

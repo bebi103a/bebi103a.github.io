@@ -35,16 +35,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-
-          
-          
-          <a href="../../index.html">
-            
-              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+            <a href="../../index.html">
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -82,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Implementation of model assessment</a></li>
@@ -99,6 +95,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
@@ -149,9 +147,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">5. Nonparametric hacker stats and Boolean data</a></li>
-      <li class="breadcrumb-item active">Homework 5.2: Modeling and parameter estimation for Boolean data (45 pts)</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">5. Nonparametric hacker stats and Boolean data</a> &raquo;</li>
+      <li>Homework 5.2: Modeling and parameter estimation for Boolean data (45 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -168,13 +166,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-5.2:-Modeling-and-parameter-estimation-for-Boolean-data-(45-pts)">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Homework-5.2:-Modeling-and-parameter-estimation-for-Boolean-data-(45-pts)">
 <h1>Homework 5.2: Modeling and parameter estimation for Boolean data (45 pts)<a class="headerlink" href="#Homework-5.2:-Modeling-and-parameter-estimation-for-Boolean-data-(45-pts)" title="Permalink to this heading"></a></h1>
 <hr><p>In this problem, we will work with data of the True/False type. Lots of data sets in the biological sciences are like this. For example, we might look at a certain mutation in <em>Drosophila</em> that affects development and we might check whether or not eggs hatch.</p>
 <p>The data we will use comes from an experiment we have done for the last few years in <a class="reference external" href="http://bi1x.caltech.edu/">Bi 1x</a> here at Caltech. The experiment was developed by Meaghan Sullivan in collaboration with Ravi Nath. Sophie Walton further developed strains that were used in the 2019 experiment, which we study here. We studied a neural circuit in <em>C. elegans</em> using optogenetics.</p>
 <p>A neural circuit is a series of interconnected neurons that create a pathway to transmit a signal from where it is received to where it causes a behavioral response in an animal. An example is the neural circuit involved in reversals in <em>C. elegans</em>. This circuit consists of three types of neurons: sensory neurons receive stimuli from the environment, command interneurons integrate information from many sensory neurons and pass a signal to the motor neurons, and motor neurons that control worm
 behavior, such as reversals.</p>
-<p>There are six non-motor neurons acting in a circuit that responds to environmental cues and triggers a reversal, a shown in the figure below (based on <a class="reference external" href="https://doi.org/10.1371/journal.pone.0018766">Schultheis et. al. 2011</a>). These include four sensory neurons (ALM, AVM, ASH, and PLM) and two interneurons (AVD and AVA). Each sensory neuron is sensitive to a different type of stimulus. For example, the sensory neuron we are studying (ASH) is sensitive to chemosensory stimuli such as toxins,
+<p>There are six non-motor neurons acting in a circuit that responds to environmental cues and triggers a reversal, a shown in the figure below (based on <a class="reference external" href="https://doi.org/10.1371/journal.pone.0018766">Schultheis et. al. 2011</a>). These include four sensory neurons (ALM, AVM, ASH, and PLM) and two interneurons (AVD and AVA). Each sensory neuron is sensitive to a different type of stimulus. For example, the sensory neuron we are studying (ASH) is sensitive to chemosensory stimuli such as toxins,
 while another neuron (PLM) is sensitive to mechanical stimuli (touch) in the posterior part of the worm’s body. The sensory neurons send signals that are integrated by the two command interneurons (AVA and AVD). Each sensory neuron can provide an impulse to the command interneurons at any time. In order for the command interneuron to fire and activate motor neurons, the sum of the stimuli at any point in time must exceed a certain threshold. Once the stimuli from one or more sensory neurons has
 induced an action potential in a command interneuron, that signal is passed to motor neurons which will modulate worm behavior.</p>
 <div style="margin: auto; width: 400px"><img alt="Reversal neural network" src="../../_images/reversal_neural_network.png" />
@@ -238,11 +260,11 @@ stimulation will cause the worm to exhibit aversion behavior and reverse.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 02, 2023.
+      <span class="lastupdated">Last updated on Nov 15, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16fac1f50> 
+   <jinja2.runtime.BlockReference object at 0x7fb89b3302e0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

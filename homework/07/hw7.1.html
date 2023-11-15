@@ -35,16 +35,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-
-          
-          
-          <a href="../../index.html">
-            
-              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+            <a href="../../index.html">
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -82,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Implementation of model assessment</a></li>
@@ -99,6 +95,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
@@ -148,9 +146,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">7. Maximum likelihood estimation II</a></li>
-      <li class="breadcrumb-item active">Homework 7.1: Parameter estimates from FRAP curves (100 pts)</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">7. Maximum likelihood estimation II</a> &raquo;</li>
+      <li>Homework 7.1: Parameter estimates from FRAP curves (100 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -167,7 +165,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)">
 <h1>Homework 7.1: Parameter estimates from FRAP curves (100 pts)<a class="headerlink" href="#Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frap_image_processing_results.csv">Dataset download</a></p>
 <hr /><p>For this problem, you will perform analysis of data from a fluorescence recovery after photobleaching (FRAP) experiment. The data set comes from <a class="reference external" href="https://goehringlab.crick.ac.uk">Nate Goehring</a>. The data are taken of a <em>C. elegans</em> one-cell embryo expressing a GFP fusion to the PH domain of Protein Lipase C delta 1 (PH-PLCd1). This domain binds PIP2, a lipid enriched in the plasma membrane. By using FRAP, we can investigate the dynamics of diffusion of the PH-PLCd1/PIP2 complex on the cell
@@ -177,7 +199,7 @@ membrane, as well as the binding/unbinding dynamics of PH-PLCd1. The the FRAP ex
 \frac{\partial c}{\partial t} = D\left(\frac{\partial^2 c}{\partial x^2} + \frac{\partial^2 c}{\partial y^2}\right) + k_\mathrm{on} c_\mathrm{cyto} - k_\mathrm{off} c.
 \end{align}</span></p>
 <p>Here, <span class="math notranslate nohighlight">\(k_\mathrm{on}\)</span> and <span class="math notranslate nohighlight">\(k_\mathrm{off}\)</span> are the phenomenological rate constants for binding and unbinding to PIP2 on the membrane, and <span class="math notranslate nohighlight">\(D\)</span> is the diffusion coefficient for the PH-PLCd1/PIP2 complex on the membrane.</p>
-<p>In <a class="reference external" href="http://dx.doi.org/10.1016/j.bpj.2010.08.033">their paper</a>, the authors discuss techniques for analyzing the data taking into account the fluorescence recovery of the bleached region in time and space. For simplicity, we will only consider recovery of the normalized mean fluorescence. If <span class="math notranslate nohighlight">\(I(t)\)</span> is the mean fluorescence of the bleached region and <span class="math notranslate nohighlight">\(I_0\)</span> is the mean fluorescence of the bleached region immediately before photobleaching, we have, as derived in the paper,</p>
+<p>In <a class="reference external" href="http://dx.doi.org/10.1016/j.bpj.2010.08.033">their paper</a>, the authors discuss techniques for analyzing the data taking into account the fluorescence recovery of the bleached region in time and space. If <span class="math notranslate nohighlight">\(I(t)\)</span> is the mean fluorescence of the bleached region and <span class="math notranslate nohighlight">\(I_0\)</span> is the mean fluorescence of the bleached region immediately before photobleaching, we have, as derived in the paper,</p>
 <p><span class="math">\begin{align}
 I(t) &= \left\{\begin{array}{lll}
 I_0 & & t < 0 ,\\[1em]
@@ -219,11 +241,11 @@ I_0 f_f\left(1 - f_b\,\frac{4 \mathrm{e}^{-k_\mathrm{off}t}}{d_x d_y}\,\psi_x(t)
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 02, 2023.
+      <span class="lastupdated">Last updated on Nov 15, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16fd4d010> 
+   <jinja2.runtime.BlockReference object at 0x7fb86a730040> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

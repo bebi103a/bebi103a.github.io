@@ -32,16 +32,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-
-          
-          
-          <a href="#">
-            
-              <img src="_static/logo.png" class="logo" alt="Logo"/>
+            <a href="#">
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -79,7 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/25/index.html">25. Implementation of model assessment</a></li>
@@ -96,6 +92,8 @@
 <li class="toctree-l1"><a class="reference internal" href="recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recitations/05/overplotting.html">R5. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recitations/06/index.html">R6. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -142,8 +140,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">BE/Bi 103 a: Introduction to Data Analysis in the Biological Sciences</li>
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>BE/Bi 103 a: Introduction to Data Analysis in the Biological Sciences</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -160,7 +158,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="be-bi-103-a-introduction-to-data-analysis-in-the-biological-sciences">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="be-bi-103-a-introduction-to-data-analysis-in-the-biological-sciences">
 <h1>BE/Bi 103 a: Introduction to Data Analysis in the Biological Sciences<a class="headerlink" href="#be-bi-103-a-introduction-to-data-analysis-in-the-biological-sciences" title="Permalink to this heading"></a></h1>
 <p>Modern biology is a quantitative science, and biological scientists need to be equipped with tools to analyze quantitative data. This course takes a hands-on approach to developing these tools. Together, we will analyze real data. We will learn how to organize, preserve, and share data sets, create informative interactive graphical displays of data, process images to extract actionable data, and perform basic resampling-based statistical inferences.</p>
 <p>Importantly, biological data is often “messy” and there is no one right way to perform an analysis or make a plot. As we work with data, we will discuss various approaches to get a feel for the art of biological data analysis.</p>
@@ -230,7 +252,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lessons/25/index.html">25. Implementation of model assessment</a></li>
@@ -249,6 +271,8 @@
 <li class="toctree-l1"><a class="reference internal" href="recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recitations/05/overplotting.html">R5. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recitations/06/index.html">R6. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -311,11 +335,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 02, 2023.
+      <span class="lastupdated">Last updated on Nov 15, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x16fe36250> 
+   <jinja2.runtime.BlockReference object at 0x7fcdc8374460> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

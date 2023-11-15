@@ -35,16 +35,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-
-          
-          
-          <a href="../../index.html">
-            
-              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+            <a href="../../index.html">
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -99,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
@@ -116,6 +112,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
@@ -162,9 +160,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">18. Parametric inference</a></li>
-      <li class="breadcrumb-item active">Maximum likelihood estimation</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">18. Parametric inference</a> &raquo;</li>
+      <li>Maximum likelihood estimation</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -181,7 +179,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="maximum-likelihood-estimation">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="maximum-likelihood-estimation">
 <h1>Maximum likelihood estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this heading"></a></h1>
 <p>Once we have written down our statistical model, we would like to get estimates for the parameters of the model. By far the most often used method for parameter estimation is <strong>maximum likelihood estimation</strong>. (The second-most widely used is probably the <a class="reference external" href="https://en.wikipedia.org/wiki/Method_of_moments_(statistics)">method of moments</a>, which we will not discuss.) To understand how this works, we first need to define what a <strong>likelihood</strong> is. <em>Note: Here we are specifically talking about the likelihood function in a frequentist setting, not the likelihood in a Bayesian context.</em></p>
 <section id="the-likelihood-function">
@@ -311,11 +333,11 @@ f(\mathbf{t};\beta) = \prod_{i=1}^n \beta\,\mathrm{e}^{-\beta t_i} = \beta^n\,\e
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 02, 2023.
+      <span class="lastupdated">Last updated on Nov 15, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1700116d0> 
+   <jinja2.runtime.BlockReference object at 0x7fb869ad1a90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

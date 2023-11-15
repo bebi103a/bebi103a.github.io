@@ -35,16 +35,12 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-
-          
-          
-          <a href="../../index.html">
-            
-              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+            <a href="../../index.html">
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -82,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/21/index.html">21. Confidence intervals of MLEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lessons/25/index.html">25. Implementation of model assessment</a></li>
@@ -99,6 +95,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul class="current">
@@ -150,9 +148,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">1. Practice with Python tools and EDA I</a></li>
-      <li class="breadcrumb-item active">Homework 1.3: Microtubule catastrophe and ECDFs (team problem, 35 pts)</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">1. Practice with Python tools and EDA I</a> &raquo;</li>
+      <li>Homework 1.3: Microtubule catastrophe and ECDFs (team problem, 35 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -169,7 +167,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(team-problem,-35-pts)">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(team-problem,-35-pts)">
 <h1>Homework 1.3: Microtubule catastrophe and ECDFs (team problem, 35 pts)<a class="headerlink" href="#Homework-1.3:-Microtubule-catastrophe-and-ECDFs-(team-problem,-35-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv">Data set download</a></p>
 <hr /><p>In a <a class="reference external" href="../../lessons/07/iqplot.iypnb">future lesson</a>, you will learn about <strong>emprical cumulative distribution functions</strong>, or ECDFs. These are useful ways to visualize how measured data are distributed. An ECDF evaluated at point <em>x</em> is defined as</p>
@@ -203,12 +225,12 @@
 <p><a class="reference external" href="http://dx.doi.org/10.1016/j.cell.2011.10.037">Gardner, Zanic, and coworkers</a> investigated the dynamics of microtubule catastrophe, the switching of a microtubule from a growing to a shrinking state. In particular, they were interested in the time between the start of growth of a microtubule and the catastrophe event. They monitored microtubules by using tubulin (the monomer that comprises a microtubule) that was labeled with a fluorescent marker. As a control to make sure that fluorescent
 labels and exposure to laser light did not affect the microtubule dynamics, they performed a similar experiment using differential interference contrast (DIC) microscopy. They measured the time until catastrophe with labeled and unlabeled tubulin.</p>
 <p>We will look at the data used to generate Fig. 2a of their paper. In the end, you will generate a plot similar to that figure.</p>
-<p><strong>a)</strong> Write a function with the call signature <code class="docutils literal notranslate"><span class="pre">ecdfvals(data)</span></code>, which takes a one-dimensional Numpy array (or Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>; the same construction of your function will work for both) of data and returns the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> values for plotting the ECDF in the “dots” style, as in Fig. 2a of the Gardner, Zanic, et al. paper. As a reminder,</p>
+<p><strong>a)</strong> Write a function with the call signature <code class="docutils literal notranslate"><span class="pre">ecdfvals(data)</span></code>, which takes a one-dimensional Numpy array (or Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>; the same construction of your function will work for both) of data and returns the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> values for plotting the ECDF in the “dots” style, as in Fig. 2a of the Gardner, Zanic, et al. paper. As a reminder,</p>
 <blockquote>
 <div><p>ECDF(<em>x</em>) = fraction of data points ≤ x.</p>
 </div></blockquote>
 <p>When you write this function, you may only use base Python and the standard library, in addition to Numpy and Pandas.</p>
-<p><strong>b)</strong> Use the <code class="docutils literal notranslate"><span class="pre">ecdfvals()</span></code> function that you wrote to plot the ECDFs shown in Fig. 2a of the Gardner, Zanic, et al. paper. By looking this plot, do you think that the fluorescent labeling makes a difference in the onset of catastrophe? (We will do a more careful statistical inference later in the course, but for now, does it pass the eye test? Eye tests are an important part of EDA, but certainly not an end point.) You can access the data set here:
+<p><strong>b)</strong> Use the <code class="docutils literal notranslate"><span class="pre">ecdfvals()</span></code> function that you wrote to plot the ECDFs shown in Fig. 2a of the Gardner, Zanic, et al. paper. By looking this plot, do you think that the fluorescent labeling makes a difference in the onset of catastrophe? (We will do a more careful statistical inference later in the course, but for now, does it pass the eye test? Eye tests are an important part of EDA, but certainly not an end point.) You can access the data set here:
 <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv</a></p>
 </section>
 
@@ -224,11 +246,11 @@ labels and exposure to laser light did not affect the microtubule dynamics, they
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 02, 2023.
+      <span class="lastupdated">Last updated on Nov 15, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x117c62650> 
+   <jinja2.runtime.BlockReference object at 0x7fb8695a93d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

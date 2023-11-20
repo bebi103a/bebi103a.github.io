@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidence intervals &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -35,12 +34,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -118,6 +121,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -153,9 +158,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">14. Plug-in estimates and confidence intervals</a> &raquo;</li>
-      <li>Confidence intervals</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">14. Plug-in estimates and confidence intervals</a></li>
+      <li class="breadcrumb-item active">Confidence intervals</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -172,33 +177,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="confidence-intervals">
+  <div class="section" id="confidence-intervals">
 <h1>Confidence intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this heading"></a></h1>
-<section id="the-frequentist-interpretation-of-probability">
+<div class="section" id="the-frequentist-interpretation-of-probability">
 <h2>The frequentist interpretation of probability<a class="headerlink" href="#the-frequentist-interpretation-of-probability" title="Permalink to this heading"></a></h2>
 <p>Before we start taking about confidence intervals, it is important to recall the frequentist interpretation of probability. Under this interpretation, the probability <span class="math notranslate nohighlight">\(P(A)\)</span>
 represents a long-run frequency of event <span class="math notranslate nohighlight">\(A\)</span> over a large number
@@ -206,8 +187,8 @@ of identical repetitions of an experiment. In our calculation of confidence inte
 interpretation of probability again and again, using our computers to
 “repeat” experiments many times and tally the frequencies of what we
 see.</p>
-</section>
-<section id="id1">
+</div>
+<div class="section" id="id1">
 <h2>Confidence intervals<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>Consider the following question. If I were to do the experiment again,
 what value might I expect for my plug-in estimate for my functional?
@@ -254,12 +235,12 @@ repeat the experiment over and over again, each time computing
 <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> values, and report the 2.5th and 97.5th percentile
 to get our 95% confidence interval. But wait, how will we repeat the
 experiment so many times?</p>
-</section>
-<section id="bootstrap-confidence-intervals">
+</div>
+<div class="section" id="bootstrap-confidence-intervals">
 <h2>Bootstrap confidence intervals<a class="headerlink" href="#bootstrap-confidence-intervals" title="Permalink to this heading"></a></h2>
 <p>Remember that the data come from a generative distribution with CDF
 <span class="math notranslate nohighlight">\(F(x)\)</span>. Doing an experiment where we make <span class="math notranslate nohighlight">\(n\)</span> measurements
-amounts to drawing <span class="math notranslate nohighlight">\(n\)</span> numbers out of <span class="math notranslate nohighlight">\(F(x)\)</span> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. So, we
+amounts to drawing <span class="math notranslate nohighlight">\(n\)</span> numbers out of <span class="math notranslate nohighlight">\(F(x)\)</span> <a class="footnote-reference brackets" href="#id3" id="id2">1</a>. So, we
 could draw out of <span class="math notranslate nohighlight">\(F(x)\)</span> over and over again. The problem is, we
 do not know what <span class="math notranslate nohighlight">\(F(x)\)</span> is. However, we do have an empirical
 approximation for <span class="math notranslate nohighlight">\(F(x)\)</span>, namely <span class="math notranslate nohighlight">\(\hat{F}(x)\)</span>. So, we could
@@ -295,14 +276,15 @@ parameters coming out of unknown distributions; we only know the data.</p>
 <p>There are plenty of subtleties and improvements to this procedure, but
 this is most of the story. We will discuss the mechanics of how to programmatically generate bootstrap replicates in forthcoming lessons, but we have already covered the main idea.</p>
 <hr class="docutils" />
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>We’re being loose with language here. We’re drawing out of the
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>We’re being loose with language here. We’re drawing out of the
 distribution that has CDF <span class="math notranslate nohighlight">\(F(x)\)</span>, but we’re saying “draw out of
 F” for short.</p>
-</aside>
-</section>
-</section>
+</dd>
+</dl>
+</div>
+</div>
 
 
            </div>
@@ -316,11 +298,11 @@ F” for short.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb869930cd0> 
+   <jinja2.runtime.BlockReference object at 0x11911d150> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

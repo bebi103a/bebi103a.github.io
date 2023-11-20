@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 3.1: The RNA Pol-II CTD and transcriptional bursting (80 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -35,12 +34,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -113,6 +116,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -148,9 +153,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">3. Wrangling, EDA III, and probability distributions</a> &raquo;</li>
-      <li>Homework 3.1: The RNA Pol-II CTD and transcriptional bursting (80 pts)</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">3. Wrangling, EDA III, and probability distributions</a></li>
+      <li class="breadcrumb-item active">Homework 3.1: The RNA Pol-II CTD and transcriptional bursting (80 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -167,31 +172,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Homework-3.1:-The-RNA-Pol-II-CTD-and-transcriptional-bursting-(80-pts)">
+  <div class="section" id="Homework-3.1:-The-RNA-Pol-II-CTD-and-transcriptional-bursting-(80-pts)">
 <h1>Homework 3.1: The RNA Pol-II CTD and transcriptional bursting (80 pts)<a class="headerlink" href="#Homework-3.1:-The-RNA-Pol-II-CTD-and-transcriptional-bursting-(80-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_snapshot_parts.csv">Data set 1 download</a>, <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_frac_active_cells.csv">Data set 2 download</a></p>
 <hr><p>The largest subunit of RNA polymerase II (Pol II) has a disordered domain on its C-terminus, the so-called C-terminal domain, or CTD. The CTD consists of repeats of seven amino acids. The number of repeats ranges from five to sixty in various species. Each heptad is referred to as a CTD repeat, or CTDr.</p>
@@ -203,6 +184,10 @@ setup is shown below, taken from <a class="reference external" href="https://doi
 <p><strong>a)</strong> In one experiment, Quintero-Cadena induced transcription using galactose and then took snapshots of the cells with a fluorescence microscope. He used digital image processing techniques to locate, characterize, and quantify dots. The results of the image acquisition and analysis may be found here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_snapshot_parts.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_snapshot_parts.csv</a>. The data are tidy, and when you load the data frame, each row refers to a single dot in the image. Below is a brief
 description of the columns. (Many of the columns refer to parameters of the image acquisition and processing using <a class="reference external" href="http://soft-matter.github.io/trackpy/v0.4.2/">trackpy</a>.)</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>column</p></th>
 <th class="head"><p>content</p></th>
@@ -282,6 +267,10 @@ description of the columns. (Many of the columns refer to parameters of the imag
 <p><strong>b)</strong> Quintero-Cadena took another perspective on these data. He took snapshots and determined how many cells in the field of view were actively transcribing the target gene. A cell was deemed to be active if it has a transcription site whose integrated normalized fluorescence (<code class="docutils literal notranslate"><span class="pre">mass_norm</span></code>) exceeded a threshold. Quintero-Cadena used a threshold of 7.</p>
 <p>You can download the data set with this analysis here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_frac_active_cells.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/pp7_frac_active_cells.csv</a></p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 78%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>content</p></th>
@@ -322,7 +311,7 @@ description of the columns. (Many of the columns refer to parameters of the imag
 </table>
 <p>Use these data to make an informative plot or plots exploring the effect of the number of CTDrs and the time after induction on the activity of cells.</p>
 <p><em>Porfirio Quintero-Cadena is a former student and TA of this course. He is also a believer in open access to (tidy) data. The data sets used in the paper are freely available and CC-0 licensed, which means we may use them completely freely. If you want people to learn more from your hard-earned data, follow Porfirio’s example and</em><strong>make them freely available.</strong></p>
-</section>
+</div>
 
 
            </div>
@@ -336,11 +325,11 @@ description of the columns. (Many of the columns refer to parameters of the imag
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb860c01f40> 
+   <jinja2.runtime.BlockReference object at 0x13e783490> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

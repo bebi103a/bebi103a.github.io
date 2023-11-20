@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Comments and opinions on NHST &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -35,12 +34,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -120,6 +123,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -155,9 +160,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">16. Null hypothesis significance testing</a> &raquo;</li>
-      <li>Comments and opinions on NHST</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">16. Null hypothesis significance testing</a></li>
+      <li class="breadcrumb-item active">Comments and opinions on NHST</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -174,33 +179,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="comments-and-opinions-on-nhst">
+  <div class="section" id="comments-and-opinions-on-nhst">
 <h1>Comments and opinions on NHST<a class="headerlink" href="#comments-and-opinions-on-nhst" title="Permalink to this heading"></a></h1>
-<section id="what-does-it-mean-to-be-significant">
+<div class="section" id="what-does-it-mean-to-be-significant">
 <h2>What does it mean to be significant?<a class="headerlink" href="#what-does-it-mean-to-be-significant" title="Permalink to this heading"></a></h2>
 <p>If the p-value is small, the effect is said to be <strong>statistically
 significant</strong> (hence the term “significance level”). But what is small? What should we choose for the significance level? By choosing a significance level, we draw a line in the sand. On one side of the line is a rejected hypothesis, and on the other an accepted one. I generally discourage a bright line
@@ -208,9 +189,9 @@ p-value used to deem a result statistically significant or not. You
 computed the p-value, it has a specific meaning; you should report it. I
 do not see a need to convert a computed value, the p-value, into a
 Boolean True/False on whether or not we attach the word “significant”
-to the result. That is, I do not see a need to make a decision, at least not when doing scientific inquiry. <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
-</section>
-<section id="do-we-even-want-to-calculate-a-p-value">
+to the result. That is, I do not see a need to make a decision, at least not when doing scientific inquiry. <a class="footnote-reference brackets" href="#id3" id="id1">1</a></p>
+</div>
+<div class="section" id="do-we-even-want-to-calculate-a-p-value">
 <h2>Do we even want to calculate a p-value?<a class="headerlink" href="#do-we-even-want-to-calculate-a-p-value" title="Permalink to this heading"></a></h2>
 <p>The question the NHST and its result, the p-value, address is rarely the question we want to
 ask. For example, say we are doing a test of the null hypothesis that
@@ -230,8 +211,8 @@ different samples and their mean differs by one part per million. This
 difference, though tiny, would still give a low p-value, and therefore
 often be deemed “statistically significant.” But, ultimately, it is the
 size of the difference, or the <strong>effect size</strong>, we care about.</p>
-</section>
-<section id="what-is-with-all-those-names">
+</div>
+<div class="section" id="what-is-with-all-those-names">
 <h2>What is with all those names?<a class="headerlink" href="#what-is-with-all-those-names" title="Permalink to this heading"></a></h2>
 <p>You have no doubt heard of many named hypothesis tests, like
 the Student-t test, Welch’s t-test, the Mann-Whitney U-test, and
@@ -279,7 +260,7 @@ null hypothesis. Reject the null hypothesis if this is small.</p></li>
 </ol>
 <p>As you can see from the above prescription, item 2 can be tricky. Coming
 up with test statistics <em>that also have a distribution that we can write
-down</em> is difficult <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. When such a test statistic is found, the test
+down</em> is difficult <a class="footnote-reference brackets" href="#id4" id="id2">2</a>. When such a test statistic is found, the test
 usually gets a name. The main reason for doing things this way is that
 most hypothesis tests were developed before computers, so we couldn’t
 just bootstrap our way through hypothesis tests. (The bootstrap was
@@ -299,7 +280,7 @@ have chosen to present a method of hypothesis testing that is intuitive
 with the frequentist interpretation of probability front and center. It
 also allows you to design your own tests that fit a null hypothesis that
 you are interested in that might not be “off-the-shelf.” That said, implementations of the named tests are almost always <em>much</em> faster to compute than using resampling methods, so if you have large data sets or computational speed is a consideration for any other reasons, you might want to consider using functions in <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>.</p>
-<section id="warnings-about-hypothesis-tests">
+<div class="section" id="warnings-about-hypothesis-tests">
 <h3>Warnings about hypothesis tests<a class="headerlink" href="#warnings-about-hypothesis-tests" title="Permalink to this heading"></a></h3>
 <p>There are many. I will discuss them more when I talk about “statistical
 pitfalls” later in the course.</p>
@@ -355,17 +336,17 @@ They seldom answer the question scientists are asking and lead to great
 confusion.</p>
 <p>That said, I know they are widely and effectively used in contexts I am less familiar with. It’s foolish to make strong, blanket statements (like I just did), so consider this a tempering of my advocacy for abandonment.</p>
 <hr class="docutils" />
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>You may need to make a decision in other contexts, such as clinical settings when deciding treatment. In these cases, though, the results of a NHST are often not the criteria upon which you want to make decisions.</p>
-</aside>
-<aside class="footnote brackets" id="id4" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>I am not going to discuss other important considerations that go into choice of test statistics, especially when you want to make an accept/reject decision, such as power and false positive rates.</p>
-</aside>
-</section>
-</section>
-</section>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>You may need to make a decision in other contexts, such as clinical settings when deciding treatment. In these cases, though, the results of a NHST are often not the criteria upon which you want to make decisions.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>I am not going to discuss other important considerations that go into choice of test statistics, especially when you want to make an accept/reject decision, such as power and false positive rates.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -379,11 +360,11 @@ confusion.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb858cdf490> 
+   <jinja2.runtime.BlockReference object at 0x119306890> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

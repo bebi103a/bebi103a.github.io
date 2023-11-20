@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 1.2: Palmer penguins and split-apply-combine (30 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -35,12 +34,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -113,6 +116,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -148,9 +153,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">1. Practice with Python tools and EDA I</a> &raquo;</li>
-      <li>Homework 1.2: Palmer penguins and split-apply-combine (30 pts)</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">1. Practice with Python tools and EDA I</a></li>
+      <li class="breadcrumb-item active">Homework 1.2: Palmer penguins and split-apply-combine (30 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -167,31 +172,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Homework-1.2:-Palmer-penguins-and-split-apply-combine-(30-pts)">
+  <div class="section" id="Homework-1.2:-Palmer-penguins-and-split-apply-combine-(30-pts)">
 <h1>Homework 1.2: Palmer penguins and split-apply-combine (30 pts)<a class="headerlink" href="#Homework-1.2:-Palmer-penguins-and-split-apply-combine-(30-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">Data set download</a></p>
 <hr /><p>The <a class="reference external" href="https://towardsdatascience.com/penguins-dataset-overview-iris-alternative-9453bb8c8d95">Palmer penguins data set</a> is a nice data set with which to practice various data science skills. For this exercise, we will use as subset of it, which you can download here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv</a>. The data set consists of measurements of three different species of penguins acquired at the <a class="reference external" href="https://en.wikipedia.org/wiki/Palmer_Station">Palmer Station in
@@ -214,7 +195,7 @@ Antarctica</a>. The measurements were made between 2007 and 2009 by <a class="re
 <p><strong>d)</strong> Using that you created in part (c), <code class="docutils literal notranslate"><span class="pre">df_tidy</span></code>, slice out all of the bill lengths for <em>Gentoo</em> penguins.</p>
 <p><strong>e)</strong> Make a new data frame containing the mean measured bill depth, bill length, body mass in kg, and flipper length for each species. You can use millimeters for all length measurements.</p>
 <p><strong>f)</strong> Make a scatter plot of bill length versus flipper length with the glyphs colored by species.</p>
-</section>
+</div>
 
 
            </div>
@@ -228,11 +209,11 @@ Antarctica</a>. The measurements were made between 2007 and 2009 by <a class="re
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb858b15b50> 
+   <jinja2.runtime.BlockReference object at 0x1197b10d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

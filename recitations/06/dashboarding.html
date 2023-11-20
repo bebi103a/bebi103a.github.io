@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboarding &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -125,6 +129,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -160,9 +166,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">R6. Dashboards</a> &raquo;</li>
-      <li>Dashboarding</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">R6. Dashboards</a></li>
+      <li class="breadcrumb-item active">Dashboarding</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -179,285 +185,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Dashboarding">
+  <div class="section" id="Dashboarding">
 <h1>Dashboarding<a class="headerlink" href="#Dashboarding" title="Permalink to this heading"></a></h1>
 <p><em>This recitation was created by Nastya Oguienko and Justin Bois based on the lessons on dashboarding from previous versions of this course.</em></p>
 <hr><div class="nbinput docutils container">
@@ -790,7 +518,7 @@ if (force === true) {
 <div style="color: tomato; font-weight: bold;"><p>Important! Interactive control of graphics does not work in Google Colab. You have to run these notebooks in Jupyter Lab on your local machine!</p>
 <p>Also, dashboards will not appear in the HTML-rendered version of this notebook. You are therefore encouraged to download and run this notebook on your local machine.</p>
 </div><p>In this portion of the recitation, we will create a dashboard with real data. A dashboard is a collection of interactive plots and widgets that allow facile graphical exploration of the ins and outs of a data set. If you have a common type of data set, it is a good idea to build a dashboard to automatically load the data set and explore it. Dashboards are also useful in publications, as they allow readers to interact with your result and explore them.</p>
-<section id="The-data-set">
+<div class="section" id="The-data-set">
 <h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
 <p>We will use as data set that comes from the Parker lab at Caltech and that you are already familiar with! But let’s remind ourselves one more time what this is all about. The lab studies rove beetles that can infiltrate ant colonies. In one of their experiments, they place a rove beetle and an ant in a circular area and track the movements of the ants. They do this by using a deep learning algorithm to identify the head, thorax, abdomen, and right and left antennae. While deep learning applied
 to biological images is a beautiful and useful topic, we will not cover it in this course (be on the lookout for future courses that do!). We will instead work with a data set that is the output of the deep learning algorithm.</p>
@@ -1013,7 +741,7 @@ to biological images is a beautiful and useful topic, we will not cover it in th
 </table>
 </div></div>
 </div>
-<section id="Sketching-your-dashboard">
+<div class="section" id="Sketching-your-dashboard">
 <h3>Sketching your dashboard<a class="headerlink" href="#Sketching-your-dashboard" title="Permalink to this heading"></a></h3>
 <p>At this point, we know what the data set looks like. The first step to creating a good dashboard is to decide what you want to have on it! Think about: What kind of plot(s) should we make to visualize this data? What parameters might we want to change through interactive widgets?</p>
 <p>It makes sense to begin with a hand-drawn sketch for what you want from the dashboard. Below is a reproduction of Justin’s first sketch (originally drawn on in collaboration with Cecelia Andrews, one of his former TAs) that he drew.</p>
@@ -1021,8 +749,8 @@ to biological images is a beautiful and useful topic, we will not cover it in th
 <p>The plot to the upper left is a path with the position of an ant over time. We would like to have the path colored by how much time has passes so we can see time as well. The color of the time is encoded in the colorbar. Next to that plot is a plot of the total distance traveled by the ant over time. This could help visualize when the ant is walking fast and when it is stationary, along with the trajectory plot. At the bottom is another way of visualizing the trajectory of the ant, looking at
 the x- and y-position over time. To the right are widgets for selecting which to plot. The slider is a range slider, allowing selection of a time range. The range of times of the ant’s trajectory are chosen with this slider. Below that is a selector for which type of beetle is with the ant, either Dalotia or Sceptobius. Finally, there is a selector for the unique ID of the ant being displayed.</p>
 <p>We will proceed by building the pieces of the dashboard one at a time to demonstrate how it is done, culminating in the finished dashboard.</p>
-</section>
-<section id="Visualizing-ant-position-over-time">
+</div>
+<div class="section" id="Visualizing-ant-position-over-time">
 <h3>Visualizing ant position over time<a class="headerlink" href="#Visualizing-ant-position-over-time" title="Permalink to this heading"></a></h3>
 <p>To visualize the ant’s position over time, we will make a plot using base Bokeh and use color to indicate time. Since we will do this over and over again, we’ll write a function to do this. Such a function, which would be common in a workflow, would be in the package you write to analyze these kinds of data.</p>
 <p>We will first write a couple of functions that will create the <code class="docutils literal notranslate"><span class="pre">ColumnDataSource</span></code> object from a data frame (or a part of the data frame) which we will pass later to the plotting function:</p>
@@ -1140,9 +868,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Great! Now we can proceed to building interactions.</p>
-</section>
-</section>
-<section id="Building-an-interaction">
+</div>
+</div>
+<div class="section" id="Building-an-interaction">
 <h2>Building an interaction<a class="headerlink" href="#Building-an-interaction" title="Permalink to this heading"></a></h2>
 <p>Since these trajectories can be long, we may want to be able to select only a portion of the trajectory. To do this, we can use <code class="docutils literal notranslate"><span class="pre">bokeh</span></code> to make a range slider widget to select the interval. Let’s first make the widget.</p>
 <div class="nbinput nblast docutils container">
@@ -1227,8 +955,8 @@ var element = document.currentScript.previousSibling.previousSibling;
   })();
 </script></div>
 </div>
-</section>
-<section id="Throttling">
+</div>
+<div class="section" id="Throttling">
 <h2>Throttling<a class="headerlink" href="#Throttling" title="Permalink to this heading"></a></h2>
 <p>In the plot above, the plot update lags behind the movement of the interval slider. This is because a lot has to happen to update the plot. A data frame is sliced, and a new plot is created and rendered. This happens very frequently, as Bokeh attempts to make updates smoothly as you move the slider.</p>
 <p>We can instead throttle the response. A callback is a function that is evaluated upon change of a widget. Throttling the callback means that it only gets called upon mouse-up. That is, if we start moving the slider, the plot will not re-render until we are finished moving the slider and release the mouse button.</p>
@@ -1300,7 +1028,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>When using this slider, you will note that the plot is much quicker in its response because it is not being rerendered.</p>
 <p>Now that you have grasped the main concepts of widget and dashboard coding, it’s a good time to stop. We will proceed with the rest of the sketched dashboard in the next part of the recitation.</p>
-<section id="Computing-environment">
+<div class="section" id="Computing-environment">
 <h3>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
@@ -1329,9 +1057,9 @@ jupyterlab: 4.0.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -1345,11 +1073,11 @@ jupyterlab: 4.0.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb899cc3670> 
+   <jinja2.runtime.BlockReference object at 0x118cdc910> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

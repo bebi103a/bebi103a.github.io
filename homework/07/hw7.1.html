@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 7.1: Parameter estimates from FRAP curves (100 pts) &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -35,12 +34,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -111,6 +114,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -146,9 +151,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">7. Maximum likelihood estimation II</a> &raquo;</li>
-      <li>Homework 7.1: Parameter estimates from FRAP curves (100 pts)</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">7. Maximum likelihood estimation II</a></li>
+      <li class="breadcrumb-item active">Homework 7.1: Parameter estimates from FRAP curves (100 pts)</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -165,31 +170,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)">
+  <div class="section" id="Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)">
 <h1>Homework 7.1: Parameter estimates from FRAP curves (100 pts)<a class="headerlink" href="#Homework-7.1:-Parameter-estimates-from-FRAP-curves-(100-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frap_image_processing_results.csv">Dataset download</a></p>
 <hr /><p>For this problem, you will perform analysis of data from a fluorescence recovery after photobleaching (FRAP) experiment. The data set comes from <a class="reference external" href="https://goehringlab.crick.ac.uk">Nate Goehring</a>. The data are taken of a <em>C. elegans</em> one-cell embryo expressing a GFP fusion to the PH domain of Protein Lipase C delta 1 (PH-PLCd1). This domain binds PIP2, a lipid enriched in the plasma membrane. By using FRAP, we can investigate the dynamics of diffusion of the PH-PLCd1/PIP2 complex on the cell
@@ -210,7 +191,7 @@ I_0 \left(
 \text{where } \psi_i(t) &= \frac{d_i}{2}\,\mathrm{erf}\left(\frac{d_i}{\sqrt{4Dt}}\right)
 -\sqrt{\frac{D t}{\pi}}\left(1 - \mathrm{e}^{-d_i^2/4Dt}\right),
 \end{align}</span></p>
-<p>where <span class="math notranslate nohighlight">\(d_x\)</span> and <span class="math notranslate nohighlight">\(d_y\)</span> are the extent of the photobleached box in the <span class="math notranslate nohighlight">\(x\)</span>- and <span class="math notranslate nohighlight">\(y\)</span>-directions, <span class="math notranslate nohighlight">\(f_b\)</span> is the fraction of fluorophores that were bleached, and <span class="math notranslate nohighlight">\(\mathrm{erf}(x)\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Error_function">error function</a>. For this experiment, <span class="math notranslate nohighlight">\(d_x = d_y = 5.52\)</span> µm. Note that this function is defined such that the photobleaching event occurs at time <span class="math notranslate nohighlight">\(t = 0\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(d_x\)</span> and <span class="math notranslate nohighlight">\(d_y\)</span> are the extent of the photobleached box in the <span class="math notranslate nohighlight">\(x\)</span>- and <span class="math notranslate nohighlight">\(y\)</span>-directions, <span class="math notranslate nohighlight">\(f_b\)</span> is the fraction of fluorophores in the bleach region that were bleached, and <span class="math notranslate nohighlight">\(\mathrm{erf}(x)\)</span> is the <a class="reference external" href="http://en.wikipedia.org/wiki/Error_function">error function</a>. For this experiment, <span class="math notranslate nohighlight">\(d_x = d_y = 5.52\)</span> µm. Note that this function is defined such that the photobleaching event occurs at time <span class="math notranslate nohighlight">\(t = 0\)</span>.</p>
 <p>We measure <span class="math notranslate nohighlight">\(I(t)\)</span>, <span class="math notranslate nohighlight">\(d_x\)</span>, and <span class="math notranslate nohighlight">\(d_y\)</span>. We could also measure <span class="math notranslate nohighlight">\(f_b\)</span> as</p>
 <p><span class="math">\begin{align}
 f_b \approx 1 - \frac{I(0^+)}{I_0},
@@ -225,9 +206,9 @@ I_0 f_f\left(1 - f_b\,\frac{4 \mathrm{e}^{-k_\mathrm{off}t}}{d_x d_y}\,\psi_x(t)
 \text{where } \psi_i(t) &= \frac{d_i}{2}\,\mathrm{erf}\left(\frac{d_i}{\sqrt{4Dt}}\right)
 -\sqrt{\frac{D t}{\pi}}\left(1 - \mathrm{e}^{-d_i^2/4Dt}\right),
 \end{align}</span></p>
-<p>where <span class="math notranslate nohighlight">\(f_f\)</span> is the fraction of fluorescent species left. So, we have five parameters to use in regression, the physical parameters of interest, <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(k_\mathrm{off}\)</span>, and <span class="math notranslate nohighlight">\(I_0\)</span>, <span class="math notranslate nohighlight">\(f_f\)</span>, and <span class="math notranslate nohighlight">\(f_b\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(f_f\)</span> is the fraction of fluorescent species in the entire embryo that remain unbleached. So, we have five parameters to use in regression, the physical parameters of interest, <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(k_\mathrm{off}\)</span>, and <span class="math notranslate nohighlight">\(I_0\)</span>, <span class="math notranslate nohighlight">\(f_f\)</span>, and <span class="math notranslate nohighlight">\(f_b\)</span>.</p>
 <p>I have processed images from the data set. The results may be downloaded here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frap_image_processing_results.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/frap_image_processing_results.csv</a>. There are eight FRAP experiments in total. Assume each of the eight experiments are independent. Obtain MLE estimates, with confidence intervals, for the parameters for each of the eight experiments. You might want to make a plot of all eight values of <span class="math notranslate nohighlight">\(D^*\)</span> and <span class="math notranslate nohighlight">\(k_\mathrm{off}^*\)</span> with their confidence regions.</p>
-</section>
+</div>
 
 
            </div>
@@ -241,11 +222,11 @@ I_0 f_f\left(1 - f_b\,\frac{4 \mathrm{e}^{-k_\mathrm{off}t}}{d_x d_y}\,\psi_x(t)
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb86a730040> 
+   <jinja2.runtime.BlockReference object at 0x13ee9efd0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

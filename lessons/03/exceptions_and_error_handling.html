@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Errors and Exception handling &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -134,6 +138,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -169,9 +175,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">3. Introduction to Python</a> &raquo;</li>
-      <li>Errors and Exception handling</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">3. Introduction to Python</a></li>
+      <li class="breadcrumb-item active">Errors and Exception handling</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -188,285 +194,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Errors-and-Exception-handling">
+  <div class="section" id="Errors-and-Exception-handling">
 <h1>Errors and Exception handling<a class="headerlink" href="#Errors-and-Exception-handling" title="Permalink to this heading"></a></h1>
 <hr /><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -503,10 +231,10 @@ Input <span class="ansi-green-fg">In [3]</span>, in <span class="ansi-cyan-fg">&
 <p>In this case, the <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> indicates that we tried to do something that is legal in Python for some types, but we tried to do it to a type for which it is illegal (strings are immutable). In Python, an error detected during execution is called an <strong>exception</strong>. We say that the interpreter “<strong>raised an exception</strong>.” There are many kinds of built-in exceptions, and you can find a list of them, with descriptions <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">here</a>. You
 can write your own kinds of exceptions, but we will not cover that.</p>
 <p>In this lesson, we will investigate how to handle errors in your code. Importantly, we will also touch on the different kinds of errors and how to avoid them. Or, more specifically, you will learn how to use exceptions to help you write better, more bug-free code.</p>
-<section id="Kinds-of-errors">
+<div class="section" id="Kinds-of-errors">
 <h2>Kinds of errors<a class="headerlink" href="#Kinds-of-errors" title="Permalink to this heading"></a></h2>
 <p>In computer programs, we can break down errors into three types.</p>
-<section id="Syntax-errors">
+<div class="section" id="Syntax-errors">
 <h3>Syntax errors<a class="headerlink" href="#Syntax-errors" title="Permalink to this heading"></a></h3>
 <p>A <strong>syntax error</strong> means you wrote something nonsensical, something the Python interpreter cannot understand. An example of a syntax error in English would be the following.</p>
 <blockquote>
@@ -543,8 +271,8 @@ all’s fair in vanessy, were sosie sesthers wroth with twone nathandjoe.</p>
 </pre></div></div>
 </div>
 <p>Syntax errors are often the easiest to deal with, since the program will not run at all if any are present.</p>
-</section>
-<section id="Runtime-errors">
+</div>
+<div class="section" id="Runtime-errors">
 <h3>Runtime errors<a class="headerlink" href="#Runtime-errors" title="Permalink to this heading"></a></h3>
 <p><strong>Runtime errors</strong> occur when a program is syntactically correct, so it can run, but the interpreter encountered something wrong. The example at the start of the tutorial, trying to change a character in a string, is an example of a runtime error. This particular one was a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, which is a more specific type of runtime error. Python does have a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>, which just indicates a generic runtime (non-syntax) error.</p>
 <p>Runtime errors are more difficult to spot than syntax errors because it is possible that a program could run all the way through without encountering the error for some inputs, but for other inputs, you get an error. Let’s consider the example of a simple function meant to add two numbers.</p>
@@ -621,8 +349,8 @@ Input <span class="ansi-green-fg">In [5]</span>, in <span class="ansi-cyan-fg">a
 <span class="ansi-red-fg">TypeError</span>: can only concatenate str (not &#34;float&#34;) to str
 </pre></div></div>
 </div>
-</section>
-<section id="Semantic-errors">
+</div>
+<div class="section" id="Semantic-errors">
 <h3>Semantic errors<a class="headerlink" href="#Semantic-errors" title="Permalink to this heading"></a></h3>
 <p>Semantic errors are perhaps the most nefarious. They occur when your program is syntactically correct, executes without runtime errors, and then produces the wrong result. These errors are the hardest to find and can do the most damage. After all, when your program does not do what you designed it to do, you want it to scream out with an exception!</p>
 <p>Following is a common example of a semantic error in which we change a mutable object within a function and then try to reuse it.</p>
@@ -662,9 +390,9 @@ We get    [1, 1, 2, 2, 3, 3]
 </pre></div></div>
 </div>
 <p>Yikes! We changed <code class="docutils literal notranslate"><span class="pre">my_list</span></code> within the function unintentionally. <em>Question: How would you re-rewrite ``double_list()`` to avoid this issue?</em></p>
-</section>
-</section>
-<section id="Handling-errors-in-your-code">
+</div>
+</div>
+<div class="section" id="Handling-errors-in-your-code">
 <h2>Handling errors in your code<a class="headerlink" href="#Handling-errors-in-your-code" title="Permalink to this heading"></a></h2>
 <p>If you have a syntax error, your code will not even run. So, we will assume we are without syntax errors in this discussion on how to handle errors. So, how can we handle runtime errors? In most use cases, we just write our code and let the Python interpreter tell us about these exceptions. However, sometimes we want to use the fact that we <em>know</em> we might encounter a runtime error within our code. A common example of this is when importing modules that are convenient, but not essential, for
 your code to run. Errors are handled in your code using a <strong>try statement</strong>.</p>
@@ -725,8 +453,8 @@ Input <span class="ansi-green-fg">In [10]</span>, in <span class="ansi-cyan-fg">
 <p>The program now runs just fine! The <code class="docutils literal notranslate"><span class="pre">try</span></code> statement consists of an initial <code class="docutils literal notranslate"><span class="pre">try</span></code> clause. Everything under the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause is attempted to be executed. If it succeeds, the rest of the <code class="docutils literal notranslate"><span class="pre">try</span></code> statement is skipped, and the interpreter goes to the <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">...</span></code> line.</p>
 <p>If, however, there is an <code class="docutils literal notranslate"><span class="pre">ImportError</span></code>, the code within the <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">ImportError</span> <span class="pre">as</span> <span class="pre">e</span></code> clause is executed. The exception does not halt the program. If there is some other kind of error other than an <code class="docutils literal notranslate"><span class="pre">ImportError</span></code>, the interpreter will raise an exception after it does whatever code is in the <code class="docutils literal notranslate"><span class="pre">finally</span></code> clause. The <code class="docutils literal notranslate"><span class="pre">finally</span></code> clause is useful to tidy things up, like closing open file handles. While it is possible for a <code class="docutils literal notranslate"><span class="pre">try</span></code> statement to handle any generic exception by not specifying
 <code class="docutils literal notranslate"><span class="pre">ImportError</span> <span class="pre">as</span> <span class="pre">e</span></code>, it is good practice to explicitly specify the exception(s) that you anticipate in <code class="docutils literal notranslate"><span class="pre">try</span></code> statements as shown here. In this case, we only want to have control over <code class="docutils literal notranslate"><span class="pre">ImportError</span></code>s. We want the interpreter to scream at us for any other, unanticipated errors.</p>
-</section>
-<section id="Issuing-warnings">
+</div>
+<div class="section" id="Issuing-warnings">
 <h2>Issuing warnings<a class="headerlink" href="#Issuing-warnings" title="Permalink to this heading"></a></h2>
 <p>We may want to issue a warning instead of silently continuing. For this, the <code class="docutils literal notranslate"><span class="pre">warnings</span></code> module from the standard library is useful. We use the <code class="docutils literal notranslate"><span class="pre">warnings.warn()</span></code> method to issue the warning.</p>
 <div class="nbinput docutils container">
@@ -773,8 +501,8 @@ Input <span class="ansi-green-fg">In [10]</span>, in <span class="ansi-cyan-fg">
 </pre></div></div>
 </div>
 <p>Normally, we would use an <code class="docutils literal notranslate"><span class="pre">ImportWarning</span></code>, but those are ignored by default, so we have used a <code class="docutils literal notranslate"><span class="pre">UserWarning</span></code>.</p>
-</section>
-<section id="Checking-input">
+</div>
+<div class="section" id="Checking-input">
 <h2>Checking input<a class="headerlink" href="#Checking-input" title="Permalink to this heading"></a></h2>
 <p>It is often the case that you want to check the input of a function when it is called to ensure that it will work properly. In other words, you want to anticipate errors that the user (or you) might make in running your function, and you want to give descriptive error messages. For example, let’s say you are writing a code that processes protein sequences that contain only the 20 naturally occurring amino acids represented by their one-letter abbreviation. You may wish to check that the amino
 acid sequence is legitimate. In particular, the letters <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">J</span></code>, <code class="docutils literal notranslate"><span class="pre">O</span></code>, <code class="docutils literal notranslate"><span class="pre">U</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code>, and <code class="docutils literal notranslate"><span class="pre">Z</span></code>, are not valid abbreviations for standard amino acids. (We will not use the <a class="reference external" href="https://en.wikipedia.org/wiki/Amino_acid#Table_of_standard_amino_acid_abbreviations_and_properties">ambiguity code</a>, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">B</span></code> for aspartic acid or asparagine, <code class="docutils literal notranslate"><span class="pre">Z</span></code> for glutamine or glutamic acid, or <code class="docutils literal notranslate"><span class="pre">X</span></code> for any amino acid.)</p>
@@ -876,8 +604,8 @@ Input <span class="ansi-green-fg">In [13]</span>, in <span class="ansi-cyan-fg">
 </pre></div></div>
 </div>
 <p>Good code checks for errors and gives useful error messages. We will use exception handling extensively when we go over test driven development in future lessons.</p>
-</section>
-<section id="Assertion-errors">
+</div>
+<div class="section" id="Assertion-errors">
 <h2>Assertion errors<a class="headerlink" href="#Assertion-errors" title="Permalink to this heading"></a></h2>
 <p>As discussed in the lecture about test-driven development, we often want to check to see if a condition is true. The <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement provides a convenient method for doing this. As usual, this is best seen by example.</p>
 <div class="nbinput nblast docutils container">
@@ -941,8 +669,8 @@ Input <span class="ansi-green-fg">In [18]</span>, in <span class="ansi-cyan-fg">
 </pre></div></div>
 </div>
 <p>Assertion errors are important errors in Python because we use them extensively in testing. We typically have lots of <code class="docutils literal notranslate"><span class="pre">assert</span></code> statements of expressions that should be truth, and if we get an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code>, we know the test failed.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
@@ -966,8 +694,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -981,11 +709,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb88a4d1d30> 
+   <jinja2.runtime.BlockReference object at 0x119253d10> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>More details of TDD &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -123,6 +127,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -158,9 +164,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">5. Test-driven development</a> &raquo;</li>
-      <li>More details of TDD</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">5. Test-driven development</a></li>
+      <li class="breadcrumb-item active">More details of TDD</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -177,292 +183,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="More-details-of-TDD">
+  <div class="section" id="More-details-of-TDD">
 <h1>More details of TDD<a class="headerlink" href="#More-details-of-TDD" title="Permalink to this heading"></a></h1>
 <p><em>Note that because this lesson requires writing and editing separate .py files, it will not run on Google Colab without first mounting drives and other considerations.</em></p>
-<hr><section id="Handling-odd-behaviors">
+<hr><div class="section" id="Handling-odd-behaviors">
 <h2>Handling odd behaviors<a class="headerlink" href="#Handling-odd-behaviors" title="Permalink to this heading"></a></h2>
 <p>To explore another feature of <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, we’ll consider another aspect of our <code class="docutils literal notranslate"><span class="pre">number_negatives()</span></code> function. Specifically, what should we do if an invalid sequence is entered? A sensible thing to do in this case is to make our software throw a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>.</p>
 <p>Again, in designing our test, we need to think about what constitutes an invalid sequence. We’ll only allow the 20 canonical symbols for residues. So, we adjust our test function accordingly. We cannot use the <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement to check for proper error handling, so we use the <code class="docutils literal notranslate"><span class="pre">pytest.raises()</span></code> function. This function takes as its first argument the type of exception expected, and a string containing the code to be run to give the exception.</p>
-<section id="A-note-on-assertions-vs-raising-exceptions">
+<div class="section" id="A-note-on-assertions-vs-raising-exceptions">
 <h3>A note on assertions vs raising exceptions<a class="headerlink" href="#A-note-on-assertions-vs-raising-exceptions" title="Permalink to this heading"></a></h3>
 <div class="line-block">
 <div class="line">It is important to draw the distinction between assertions and raising exceptions in our code.</div>
@@ -602,9 +330,9 @@ test_seq_features.py::test_number_negatives_for_invalid_amino_acid <span class="
 </pre></div></div>
 </div>
 <p>All of our tests passed!</p>
-</section>
-</section>
-<section id="Summary-of-TDD">
+</div>
+</div>
+<div class="section" id="Summary-of-TDD">
 <h2>Summary of TDD<a class="headerlink" href="#Summary-of-TDD" title="Permalink to this heading"></a></h2>
 <p>Now that you have some experience with TDD and have an idea about what it is and how it works, let’s formalize things by writing out the basic principles of test-driven development.</p>
 <ol class="arabic simple">
@@ -613,8 +341,8 @@ test_seq_features.py::test_number_negatives_for_invalid_amino_acid <span class="
 <li><p>Whenever you want to make any enhancements of adjustments to your code, write tests for it <strong>first</strong>.</p></li>
 <li><p>Whenever you encounter a bug, write tests for it that reproduce the behavior and then fix the code to make the entire test suite to pass.</p></li>
 </ol>
-</section>
-<section id="Improving-the-seq_features-module-using-TDD:-Practice">
+</div>
+<div class="section" id="Improving-the-seq_features-module-using-TDD:-Practice">
 <h2>Improving the seq_features module using TDD: Practice<a class="headerlink" href="#Improving-the-seq_features-module-using-TDD:-Practice" title="Permalink to this heading"></a></h2>
 <p>Let’s write now a function that will calculate the total number of positively charged residues in a protein. In other words, let’s count the number of Lysine (K), Arginine (R) and Histidine (H) residues in the sequence.</p>
 <p>To do that, let’s make the prototype function and add to <code class="docutils literal notranslate"><span class="pre">seq_features.py</span></code>:</p>
@@ -835,8 +563,8 @@ test_seq_features.py::test_number_positives_for_invalid_amino_acid <span class="
 </pre></div></div>
 </div>
 <p>We now have a good set of tests and functions that work as expected as a result.</p>
-</section>
-<section id="Code-refactoring-and-TDD">
+</div>
+<div class="section" id="Code-refactoring-and-TDD">
 <h2>Code refactoring and TDD<a class="headerlink" href="#Code-refactoring-and-TDD" title="Permalink to this heading"></a></h2>
 <p>As we are building modules and functions, though we may try, we are not able to anticipate all the functionalities they must have. And by adding new functionalities, we might need to change our code substantially and even dramatically change the initial logic that worked so well up to this point. This is so common in programming that developers have a name for it: <strong>code refactoring</strong>.</p>
 <p>For example, we did not anticipate when we start writing <code class="docutils literal notranslate"><span class="pre">seq_features</span></code> that we also wanted to calculate the positive charges as well. Beyond that, we broke one of the most important rules in programming: <strong>functions must do one thing and only one thing very well</strong>. It is clear that <code class="docutils literal notranslate"><span class="pre">number_negatives()</span></code> was doing three things:</p>
@@ -1049,12 +777,12 @@ test_seq_features.py::test_is_valid_sequence_for_other_invalid_amino_acid_anywhe
 <span class="ansi-green-intense-fg ansi-bold">============================== 15 passed in 0.07s ==============================</span>
 </pre></div></div>
 </div>
-</section>
-<section id="Where-do-we-go-from-here?">
+</div>
+<div class="section" id="Where-do-we-go-from-here?">
 <h2>Where do we go from here?<a class="headerlink" href="#Where-do-we-go-from-here?" title="Permalink to this heading"></a></h2>
 <p>There are tons of details about <code class="docutils literal notranslate"><span class="pre">pytest</span></code> that will address most issues you will encounter while working on your programs. It is <a class="reference external" href="https://docs.pytest.org">very well documented</a>, so you can use that to develop tests for your code.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
@@ -1078,8 +806,8 @@ jupyterlab 3.1.7
 </pre></div></div>
 </div>
 <p><em>Copyright note: In addition to the copyright shown below, Davi Ortega contributed to this lecture.</em></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1093,11 +821,11 @@ jupyterlab 3.1.7
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb869754be0> 
+   <jinja2.runtime.BlockReference object at 0x118f68150> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

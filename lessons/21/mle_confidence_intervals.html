@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidence region and confidence intervals for a MLE &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -122,6 +126,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -157,9 +163,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">21. Confidence intervals of MLEs</a> &raquo;</li>
-      <li>Confidence region and confidence intervals for a MLE</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">21. Confidence intervals of MLEs</a></li>
+      <li class="breadcrumb-item active">Confidence region and confidence intervals for a MLE</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -176,285 +182,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Confidence-region-and-confidence-intervals-for-a-MLE">
+  <div class="section" id="Confidence-region-and-confidence-intervals-for-a-MLE">
 <h1>Confidence region and confidence intervals for a MLE<a class="headerlink" href="#Confidence-region-and-confidence-intervals-for-a-MLE" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -783,7 +511,7 @@ if (force === true) {
 </script></div>
 </div>
 <hr><p>In our previous lesson on numerical maximum likelihood estimation, we computed an MLE for the parameters of a Negative Binomial model for mRNA counts for Nanog using the <a class="reference external" href="https://doi.org/10.1016/j.molcel.2014.06.029">Singer, et al.</a> dataset. Here, we will compute the MLEs for the other three genes as well and further compute confidence intervals for these MLEs.</p>
-<section id="MLE-for-all-genes">
+<div class="section" id="MLE-for-all-genes">
 <h2>MLE for all genes<a class="headerlink" href="#MLE-for-all-genes" title="Permalink to this heading"></a></h2>
 <p>We start by writing function to compute the maximum likelihood estimate for our model. We have a set of Negative-Binomially distributed i.i.d. counts, parametrized by <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b=1/\beta\)</span>, and we wish to compute the MLE. We worked out the code previously, so we can write the functions here.</p>
 <div class="nbinput nblast docutils container">
@@ -942,8 +670,8 @@ if (force === true) {
 </table>
 </div></div>
 </div>
-</section>
-<section id="Bootstrap-confidence-intervals">
+</div>
+<div class="section" id="Bootstrap-confidence-intervals">
 <h2>Bootstrap confidence intervals<a class="headerlink" href="#Bootstrap-confidence-intervals" title="Permalink to this heading"></a></h2>
 <p>Remember that the MLE is a random variable, so we can compute confidence intervals for it. There are several approaches to computing confidence intervals for maximum likelihood estimates. We will explore two methods. They differ in how we use our model to generate bootstrap samples.</p>
 <ol class="arabic simple">
@@ -953,7 +681,7 @@ These MLEs constitute our bootstrap replicates for the MLE, and we can compute c
 used. It operates under the assumption that our model is indeed a good approximation for the generative distribution.</p></li>
 </ol>
 <p>The first method is nonparametric in that we use the plug-in principle for approximating the generative distribution (and only use the model to compute the statistical functional), so we will refer to it as the nonparametric bootstrap for the MLE, but I have not seen that terminology be widely used, probably because of confusion with the fact that a parametric model is used to compute the MLE.</p>
-<section id="Nonparametric-MLE-confidence-interval">
+<div class="section" id="Nonparametric-MLE-confidence-interval">
 <h3>Nonparametric MLE confidence interval<a class="headerlink" href="#Nonparametric-MLE-confidence-interval" title="Permalink to this heading"></a></h3>
 <p>For the nonparametric MLE confidence interval, we simply draw a bootstrap sample out of the original data set, as we have been doing, and then compute the MLE estimates. Let’s do that. We will use <a class="reference external" href="https://tqdm.github.io">TQDM</a> to give us a progress bar, since this calculation takes a few minutes.</p>
 <div class="nbinput nblast docutils container">
@@ -1040,8 +768,8 @@ array([[ 1.05756375, 57.16408783],
 </pre></div></div>
 </div>
 <p>So, the confidence interval for <span class="math notranslate nohighlight">\(\alpha\)</span> lies between 1.06 and 1.55, and that for <span class="math notranslate nohighlight">\(b\)</span> lies between 57.1 and 82.3.</p>
-</section>
-<section id="Confidence-regions">
+</div>
+<div class="section" id="Confidence-regions">
 <h3>Confidence regions<a class="headerlink" href="#Confidence-regions" title="Permalink to this heading"></a></h3>
 <p>The confidence intervals we have just reported are the confidence intervals for the respective parameters, but we really should define a <strong>confidence region</strong>, which is the multidimensional extension of a confidence interval. (A confidence interval is the special case of a confidence region with only one parameter.)</p>
 <p>Indeed, the confidence interval for <span class="math notranslate nohighlight">\(\alpha\)</span> comes from percentiles computed from the probability density function <span class="math notranslate nohighlight">\(f(\alpha^*;\mathbf{n})\)</span>. (Strictly speaking this is a probability mass function in this case because there are a finite number of unique bootstrap samples, but we do not need to worry about that distinction because there are <em>a lot(!)</em> of unique bootstrap samples.) This PDF is computed from the joint PDF of the MLEs as</p>
@@ -1224,8 +952,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="Parametric-confidence-intervals">
+</div>
+<div class="section" id="Parametric-confidence-intervals">
 <h3>Parametric confidence intervals<a class="headerlink" href="#Parametric-confidence-intervals" title="Permalink to this heading"></a></h3>
 <p>We repeat the calculation for a parametric confidence interval. As we write a function for this, we need to include an <code class="docutils literal notranslate"><span class="pre">mle_fun</span></code> as for <code class="docutils literal notranslate"><span class="pre">draw_bs_reps_mle()</span></code>, but we also need to provide a function that draws new data sets out of the parametric model.</p>
 <div class="nbinput nblast docutils container">
@@ -1386,9 +1114,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>The corner plot is indeed similar to the nonparametric case.</p>
 <p>We could compute confidence intervals for the other genes, but we will not do that here to save time, since each computation takes about three minutes. In the next part of this lesson, we will parallelize the calculations to make them faster.</p>
-</section>
-</section>
-<section id="Computing-environment">
+</div>
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -1418,8 +1146,8 @@ jupyterlab: 4.0.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1433,11 +1161,11 @@ jupyterlab: 4.0.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb869f65730> 
+   <jinja2.runtime.BlockReference object at 0x13eed11d0> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

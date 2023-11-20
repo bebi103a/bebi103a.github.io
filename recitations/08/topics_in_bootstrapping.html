@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R8. Topics in bootstrapping &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -104,7 +108,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Why-and-how-do-we-bootstrap?">Why and how do we bootstrap?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#How-are-confidence-intervals-related-to-bootstrapping?">How are confidence intervals related to bootstrapping?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Let’s-try-bootstrapping!">Let’s try bootstrapping!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Let's-try-bootstrapping!">Let’s try bootstrapping!</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#How-can-we-deal-with-paired-data?">How can we deal with paired data?</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Paired-bootstrap">Paired bootstrap</a></li>
 </ul>
@@ -127,6 +131,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -162,8 +168,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>R8. Topics in bootstrapping</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">R8. Topics in bootstrapping</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -180,285 +186,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="R8.-Topics-in-bootstrapping">
+  <div class="section" id="R8.-Topics-in-bootstrapping">
 <h1>R8. Topics in bootstrapping<a class="headerlink" href="#R8.-Topics-in-bootstrapping" title="Permalink to this heading"></a></h1>
 <p><em>This recitation was prepared by Cecelia Andrews with help from Justin Bois. Modifications were made by Sanjana Kulkarni, Rashi Jeeda, and Grace Liu.</em></p>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/law_school_data.csv">Law school dataset download</a></p>
@@ -798,11 +526,11 @@ if (force === true) {
 </ol>
 <p>An excellent reference, if dated, for bootstrapping calculations is <strong>Efron and Tibshirani’s An Introduction to the Bootstrap, 1994</strong> (<a class="reference external" href="http://www.amazon.com/Introduction-Bootstrap-Monographs-Statistics-Probability/dp/0412042312">Amazon</a>).</p>
 <hr class="docutils" />
-<section id="1.-Review">
+<div class="section" id="1.-Review">
 <h2>1. Review<a class="headerlink" href="#1.-Review" title="Permalink to this heading"></a></h2>
-<section id="What-do-we-need-to-understand-before-thinking-about-bootstrapping?">
+<div class="section" id="What-do-we-need-to-understand-before-thinking-about-bootstrapping?">
 <h3>What do we need to understand before thinking about bootstrapping?<a class="headerlink" href="#What-do-we-need-to-understand-before-thinking-about-bootstrapping?" title="Permalink to this heading"></a></h3>
-<section id="The-plug-in-principle">
+<div class="section" id="The-plug-in-principle">
 <h4>The plug-in principle<a class="headerlink" href="#The-plug-in-principle" title="Permalink to this heading"></a></h4>
 <p>This was covered in Lesson 14.</p>
 <p>The plug-in-principle is important theory for understanding why bootstrapping is helpful.</p>
@@ -816,23 +544,23 @@ if (force === true) {
 \hat{\theta} &= T(\hat{F})
 \end{align}</span></p>
 <p>Essentially, the plug-in principle says we can estimate the parameter <span class="math notranslate nohighlight">\(\theta\)</span> by computing the statistical functional on the empirical CDF rather than the actual CDF.</p>
-</section>
-</section>
-<section id="Why-and-how-do-we-bootstrap?">
+</div>
+</div>
+<div class="section" id="Why-and-how-do-we-bootstrap?">
 <h3>Why and how do we bootstrap?<a class="headerlink" href="#Why-and-how-do-we-bootstrap?" title="Permalink to this heading"></a></h3>
 <p>When we are trying to learn something from data, it becomes easier to estimate accurate statistics from our results as we gather more data that is representative of our population. As we increase our number of samples, we capture more and more samples from the generative distribution and our picture of it becomes more clear. However, it is often not reasonably possible to sample an entire population to learn about something we’re interested in. In these cases, we have to settle for having only a
 subset of all the possible data.</p>
 <p>However, bootstrapping can help us simulate extra runs of an experiment and act as a way to artificially obtain more samples! The basic idea of bootstrapping is to simulate many repetitions of the experiment. It is a type of resampling, in which you draw samples from your sample to generate a bootstrap distribution. For example, if you have a sample of 10 data points, you can generate more samples by randomly choosing from the original set of 10 points, with replacement.</p>
 <p>Bootstrapping allows us to get a better plug-in estimate for the statistical functional as if we did the experiment many times.</p>
-</section>
-<section id="How-are-confidence-intervals-related-to-bootstrapping?">
+</div>
+<div class="section" id="How-are-confidence-intervals-related-to-bootstrapping?">
 <h3>How are confidence intervals related to bootstrapping?<a class="headerlink" href="#How-are-confidence-intervals-related-to-bootstrapping?" title="Permalink to this heading"></a></h3>
 <p>Confidence intervals were covered in Lesson 14.</p>
 <p>Recall that we know the following about confidence intervals: “If an experiment is repeated over and over again, the estimate I compute for a parameter, <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> , will lie between the bounds of the 95% confidence interval for 95% of the experiments.” This is the frequentist interpretation of confidence intervals. The center of the interval is treated as a fixed value (population test statistic), and the bounds are random variables that change based on the simulation.</p>
 <p>Since we usually cannot actually perform an experiment a large number of times, bootstrapping serves to “create” these repeated trials. We can then compute a parameter of interest for each of those trials, and we will know that the parameter value estimate will lie in the 95% interval for 95% of the bootstrap samples.</p>
-</section>
-<section id="Let’s-try-bootstrapping!">
-<h3>Let’s try bootstrapping!<a class="headerlink" href="#Let’s-try-bootstrapping!" title="Permalink to this heading"></a></h3>
+</div>
+<div class="section" id="Let's-try-bootstrapping!">
+<h3>Let’s try bootstrapping!<a class="headerlink" href="#Let's-try-bootstrapping!" title="Permalink to this heading"></a></h3>
 <p>To see the power of bootstrapping in action, let’s consider the example given in Efron and Tibshirani’s <em>An Introduction to the Bootstrap</em>.</p>
 <p>The CSV file <code class="docutils literal notranslate"><span class="pre">law_school_data.csv</span></code>, available <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/law_school_data.csv">here</a>, contains the population of measurements (LSAT, GPA) for N=82 American law schools for the entering classes of 1973. LSAT is the average score of the class on the LSAT (national law exam), and GPA is the average undergraduate GPA. In this example, we have a census, so we know the actual values of the summary statistics we may want to compute. Here we load in the data
 and view the first 10 observations.</p>
@@ -1468,10 +1196,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 <p>What do you notice about the bootstrapped ECDFs? Consider the approximate shape and mean.</p>
 <p>The boostrapped samples are a pretty good approximation of the overall population distribution.</p>
 <p>Now that we’ve shown the power of bootstrapping, let’s explore some more bootstrapping methods! First we’ll review pairs bootstrapping, which we learned about in class, then go into some new methods.</p>
-</section>
-<section id="How-can-we-deal-with-paired-data?">
+</div>
+<div class="section" id="How-can-we-deal-with-paired-data?">
 <h3>How can we deal with paired data?<a class="headerlink" href="#How-can-we-deal-with-paired-data?" title="Permalink to this heading"></a></h3>
-<section id="Paired-bootstrap">
+<div class="section" id="Paired-bootstrap">
 <h4>Paired bootstrap<a class="headerlink" href="#Paired-bootstrap" title="Permalink to this heading"></a></h4>
 <p>Also covered in Lesson 16. See the lesson for a coding example.</p>
 <p>We use pairs bootstrapping when we have paired data, and we will often want to compute the correlation. The important thing to remember with pairs bootstrapping is that we draw a random sample of <em>pairs</em>, not 2 random samples of each array. For example, if we have paired data in 2 arrays: <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, x_2,\ldots, x_n]\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y} = [y_1, y_2,\ldots, y_n]\)</span>, we must draw the same indices from both arrays so we end up with paired samples:</p>
@@ -1664,7 +1392,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 </div>
-<p>Let’s start by making an exploratory scatter plot of the dead sperm vs. alive sperm based on the control data, taking the log on both axes.</p>
+<p>Let’s start by making an exploratory scatter plot of the dead sperm vs. alive sperm based on the control data, taking the log on both axes.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -1962,10 +1690,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>With even just a tiny number of bootstrap samples, we can see that we preserve the correlation in the original data when we bootstrap by index. However, we completely lose the correlation when indices are not preserved, and the resulting data makes no sense when compared to our original exploratory plot.</p>
-</section>
-</section>
-</section>
-<section id="2.-BCa-Confidence-Intervals">
+</div>
+</div>
+</div>
+<div class="section" id="2.-BCa-Confidence-Intervals">
 <h2>2. BCa Confidence Intervals<a class="headerlink" href="#2.-BCa-Confidence-Intervals" title="Permalink to this heading"></a></h2>
 <p><strong>Use BCa when…</strong> your dataset is large and you expect that there are high-order effects causing errors in your estimates.</p>
 <p>The BCa confidence interval is the bias-corrected accelerated bootstrap confidence interval. This concept was introduced by Bradley Efron. The BCa interval is designed to automatically create confidence intervals that adjust for underlying higher order effects. In simple terms, it corrects for bias and skew in the distribution of bootstrap estimates.</p>
@@ -2253,8 +1981,8 @@ Hungry worms mean egg area 95% C.I.: (2065.4210526315787, 2150.3508771929824)
 </pre></div></div>
 </div>
 <p>Comparing the BCa and the standard bootstrap confidence intervals, we can see that the BCa confidence intervals are wider, especially on the right side.</p>
-</section>
-<section id="3.-Studentized-Bootstrap">
+</div>
+<div class="section" id="3.-Studentized-Bootstrap">
 <h2>3. Studentized Bootstrap<a class="headerlink" href="#3.-Studentized-Bootstrap" title="Permalink to this heading"></a></h2>
 <p><strong>Use the Studentized Bootstrap when…</strong> your dataset is small and you know that there is a large amount of measurements you are missing.</p>
 <p>The Studentized bootstrap error aims to reduce coverage error of our resampling. It is a good idea to use Studentized bootstrapping to approximate your statistic of interest when you suspect the distribution of your sample may not be close to the actual population distribution. The Studentized bootstrapping method works because even when this is the case, the distribution of the sample statistic divided by estimated standard error could be close to the actual population statistic divided by the
@@ -2549,8 +2277,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>Studentized confidence intervals are most useful for very small datasets (so less likely to be representative of the population) or datasets that are highly skewed. The extra (inner) sampling attempts to correct for the lack of information with a more rigorous treatment.</p>
 <p>The main drawback is that it takes much longer than the percentile bootstrapping method. For datasets that are not skewed or very small, the two methods should give approximately equal confidence intervals. If you like, you can repeat this analysis on the bees and pesticides data in lesson 16. This sample distribution is closer to the population distribution, so the two methods give similar confidence intervals.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
@@ -2581,8 +2309,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -2596,11 +2324,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb899d3beb0> 
+   <jinja2.runtime.BlockReference object at 0x118e04f10> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

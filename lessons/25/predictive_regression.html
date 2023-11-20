@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Graphical model assessment: Predictive regression &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -125,6 +129,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -160,9 +166,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">25. Implementation of model assessment</a> &raquo;</li>
-      <li>Graphical model assessment: Predictive regression</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">25. Implementation of model assessment</a></li>
+      <li class="breadcrumb-item active">Graphical model assessment: Predictive regression</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -179,285 +185,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Graphical-model-assessment:-Predictive-regression">
+  <div class="section" id="Graphical-model-assessment:-Predictive-regression">
 <h1>Graphical model assessment: Predictive regression<a class="headerlink" href="#Graphical-model-assessment:-Predictive-regression" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/good_invitro_droplet_data.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -783,7 +511,7 @@ if (force === true) {
 </script></div>
 </div>
 <hr><p>We have just seen how a predictive ECDF can be used to graphically assess a model for the case of repeated measurements drawn out of a generative distribution. Now, we turn to a model that involves a regression.</p>
-<section id="The-data-set-and-models">
+<div class="section" id="The-data-set-and-models">
 <h2>The data set and models<a class="headerlink" href="#The-data-set-and-models" title="Permalink to this heading"></a></h2>
 <p>We again use the data set from <a class="reference external" href="https://dx.doi.org/10.1126%2Fscience.1243147">Good and coworkers</a> that we used in our lessons on model building and variate-covariate modeling. In the experiment, Good and coworkers measured the length of mitotic spindles in droplets of varying diameter.</p>
 <p>Let’s take a quick look at the data.</p>
@@ -862,10 +590,10 @@ l_i \sim \text{Norm}(\phi, \sigma)\;\forall i.
 &l_i \sim \text{Norm}(\mu_i, \sigma)\;\forall i.
 \end{align}</span></p>
 <p>These are the two models we will graphically assess, starting with the second model, which establishes a relationship between spindle length and droplet diameter.</p>
-</section>
-<section id="Assessing-the-model-for-spindle-length-dependent-on-droplet-diameter">
+</div>
+<div class="section" id="Assessing-the-model-for-spindle-length-dependent-on-droplet-diameter">
 <h2>Assessing the model for spindle length dependent on droplet diameter<a class="headerlink" href="#Assessing-the-model-for-spindle-length-dependent-on-droplet-diameter" title="Permalink to this heading"></a></h2>
-<p>As was the case with our studies of the Singer, et al. data on mRNA counts, we do also need functions from previous lessons here to compute the MLE. You can skip this, since it is copied directly from previous lessons. The important result is that we get the MLE for the three parameters, <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(\phi\)</span>, and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>As was the case with our studies of the Singer, et al. data on mRNA counts, we do also need functions from previous lessons here to compute the MLE. You can skip this, since it is copied directly from previous lessons. The important result is that we get the MLE for the three parameters, <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(\phi\)</span>, and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -921,7 +649,7 @@ l_i \sim \text{Norm}(\phi, \sigma)\;\forall i.
 σ* = 3.753422
 </pre></div></div>
 </div>
-<section id="Sampling-out-of-the-generative-model">
+<div class="section" id="Sampling-out-of-the-generative-model">
 <h3>Sampling out of the generative model<a class="headerlink" href="#Sampling-out-of-the-generative-model" title="Permalink to this heading"></a></h3>
 <p>As before, we want to see what kind of data sets are predicted by the generative model when parametrized by the MLEs of the parameters. We therefore need to write a function to obtain the samples. The extra wrinkle here is that we need to also provide values for the droplet diameter for which we want the samples. In this model, we assume that the droplet diameters are measured exactly and that they determine the spindle length (of course neglecting the variation we model in the residuals).</p>
 <div class="nbinput nblast docutils container">
@@ -953,8 +681,8 @@ l_i \sim \text{Norm}(\phi, \sigma)\;\forall i.
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Making-the-predictive-regression-plot">
+</div>
+<div class="section" id="Making-the-predictive-regression-plot">
 <h3>Making the predictive regression plot<a class="headerlink" href="#Making-the-predictive-regression-plot" title="Permalink to this heading"></a></h3>
 <p>Now that we have our samples, we compute the percentiles of the spindle length for each value of <span class="math notranslate nohighlight">\(d\)</span>. We then generate the plot from these percentiles, with the data overlaid. The <code class="docutils literal notranslate"><span class="pre">bebi103.viz.predictive_regression()</span></code> function accomplishes this for us. We need to provide it with the samples of spindle length (with the shape we have already prescribed), as well as the <span class="math notranslate nohighlight">\(d\)</span>-values for which the samples were generated. We also need to provide the data as an array with two columns, the
 first being the diameter and the second the spindle length.</p>
@@ -1016,8 +744,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>In this plot, we see that roughly 5% of the data points (there are 670 total points) lie outside the middle 95%, so the model is consistent with the measured data.</p>
 <p>In my view, <strong>this</strong> is how variate-covariate modeling results should be plotted, not simple with a “best fit line”, which does not reveal the full generative model.</p>
-</section>
-<section id="Viewing-differences">
+</div>
+<div class="section" id="Viewing-differences">
 <h3>Viewing differences<a class="headerlink" href="#Viewing-differences" title="Permalink to this heading"></a></h3>
 <p>We may also wish to get a plot of how different the data are from the model. In this case, the median spindle length is subtracted off of all samples such that the median is zero. We also need to subtract it from the data to make a comparison. That means that we have to draw our samples from the generative distribution for values of the droplet diameter that were actually measured.</p>
 <div class="nbinput docutils container">
@@ -1079,9 +807,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Importantly, there does not seem to be any systematic way in which the measurements deviate from the model. In other words, whether a data point lies outside the 80% envelope and whether it lies above or below looks independent of droplet diameter.</p>
-</section>
-</section>
-<section id="Graphical-assessment-of-the-Normal-model">
+</div>
+</div>
+<div class="section" id="Graphical-assessment-of-the-Normal-model">
 <h2>Graphical assessment of the Normal model<a class="headerlink" href="#Graphical-assessment-of-the-Normal-model" title="Permalink to this heading"></a></h2>
 <p>As we have learned, the MLE for the parameters for the Normal model are the same as the plug-in estimates.</p>
 <div class="nbinput nblast docutils container">
@@ -1160,8 +888,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Here, I have also included the 80% envelope. Again, only about 5% of the data points lie outside the 95% envelope. However, the data points tend to fall below the 80% envelope only for small droplet diameters and above only for large droplet diameters, suggesting that the model is missing the droplet-diameter dependence.</p>
-</section>
-<section id="General-method-of-graphical-predictive-model-assessment">
+</div>
+<div class="section" id="General-method-of-graphical-predictive-model-assessment">
 <h2>General method of graphical predictive model assessment<a class="headerlink" href="#General-method-of-graphical-predictive-model-assessment" title="Permalink to this heading"></a></h2>
 <p>When using both predictive ECDFs and predictive regression curves, we did the same procedure, which you can imagine generalizing.</p>
 <ol class="arabic simple">
@@ -1172,8 +900,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 <li><p>Evaluate how many of the measured data points lie outside the percentile regions of the generated data sets.</p></li>
 </ol>
 <p>Predictive ECDFs and regression curves are just two (often used) examples of this prescription, and you can develop your own as is useful for the model and data set you are working with.</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -1202,8 +930,8 @@ jupyterlab: 4.0.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1217,11 +945,11 @@ jupyterlab: 4.0.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb858c24370> 
+   <jinja2.runtime.BlockReference object at 0x13eb33210> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tidy data and split-apply-combine &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -128,6 +132,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -163,9 +169,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">6. Exploratory data analysis, part 1</a> &raquo;</li>
-      <li>Tidy data and split-apply-combine</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">6. Exploratory data analysis, part 1</a></li>
+      <li class="breadcrumb-item active">Tidy data and split-apply-combine</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -182,285 +188,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Tidy-data-and-split-apply-combine">
+  <div class="section" id="Tidy-data-and-split-apply-combine">
 <h1>Tidy data and split-apply-combine<a class="headerlink" href="#Tidy-data-and-split-apply-combine" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput nblast docutils container">
@@ -473,7 +201,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <hr /><p>We have dipped our toe into Pandas to see its power. In this lesson, we will continue to harness the power of Pandas to pull out subsets of data we are interested in, and of vital importance, will introduce the concept of <strong>tidy data</strong>. I suspect this will be a demarcation in your life. You will have the times in your life before tidy data and after. Welcome to your bright tomorrow.</p>
-<section id="Tidy-data">
+<div class="section" id="Tidy-data">
 <h2>Tidy data<a class="headerlink" href="#Tidy-data" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Hadley_Wickham">Hadley Wickham</a> wrote a <a class="reference external" href="http://dx.doi.org/10.18637/jss.v059.i10">great article</a> in favor of “tidy data.” Tidy data frames follow the rules: 1. Each variable is a column. 2. Each observation is a row. 3. Each type of observation has its own separate data frame.</p>
 <p>This is less pretty to visualize as a table, but we rarely look at data in tables. Indeed, the representation of data which is convenient for visualization is different from that which is convenient for analysis. A tidy data frame is almost always <strong>much</strong> easier to work with than non-tidy formats.</p>
@@ -492,10 +220,10 @@ possibility of misinterpretation or mistakes.</p>
 <p><strong>Objection:</strong> Once it’s tidy, we pretty much have to use Boolean indexing to get what we want, and that can be slower than other methods of accessing data. What about performance?</p>
 <p><strong>Response:</strong> See the previous response. Speed of access really only becomes a problem with big, high-throughput data sets. In those cases, there are often many things you need to be clever about beyond organization of your data.</p>
 <p><strong>Conclusion:</strong> I really think that tidying a data set allows for fluid exploration. We will focus on tidy data sets going forward. The techniques for bringing untidy data into tidy format use many of Pandas’s functions, and we will explore them in future lessons.</p>
-</section>
-<section id="The-data-set">
+</div>
+<div class="section" id="The-data-set">
 <h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
-<p>We will again use the data set from the <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al. paper</a> on facial matching under sleep deprivation. Let’s load in the original data set and add the column on insomnia as we did in <a class="reference internal" href="intro_to_pandas.html"><span class="doc">previous part of this lesson</span></a>.</p>
+<p>We will again use the data set from the <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al. paper</a> on facial matching under sleep deprivation. Let’s load in the original data set and add the column on insomnia as we did in <a class="reference internal" href="intro_to_pandas.html"><span class="doc">previous part of this lesson</span></a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -651,8 +379,8 @@ possibility of misinterpretation or mistakes.</p>
 </div></div>
 </div>
 <p>This data set is in tidy format. Each row represents a single test on a single participant. The aspects of that person’s test are given in each column. We already saw the power of having the data in this format when we did Boolean indexing in the last lesson. Now, we will see how this format allows use to easily do an operation we do again and again with data sets, <strong>split-apply-combine</strong>.</p>
-</section>
-<section id="Split-apply-combine">
+</div>
+<div class="section" id="Split-apply-combine">
 <h2>Split-apply-combine<a class="headerlink" href="#Split-apply-combine" title="Permalink to this heading"></a></h2>
 <p>Let’s say we want to compute the median percent correct face matchings for subjects with insomnia and the median percent correct face matchings for those without. Ignoring for the second the mechanics of how we would do this with Python, let’s think about it in English. What do we need to do?</p>
 <ol class="arabic simple">
@@ -663,7 +391,7 @@ possibility of misinterpretation or mistakes.</p>
 <p>We see that the strategy we want is a <strong>split-apply-combine</strong> strategy. This idea was put forward by Hadley Wickham in <a class="reference external" href="http://dx.doi.org/10.18637/jss.v040.i01">this paper</a>. It turns out that this is a strategy we want to use <em>very</em> often. Split the data in terms of some criterion. Apply some function to the split-up data. Combine the results into a new data frame.</p>
 <p>Note that if the data are tidy, this procedure makes a lot of sense. Choose the column you want to use to split by. All rows with like entries in the splitting column are then grouped into a new data set. You can then apply any function you want into these new data sets. You can then combine the results into a new data frame.</p>
 <p>Pandas’s split-apply-combine operations are achieved using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method. You can think of <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> as the splitting part. You can then apply functions to the resulting <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. The <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">Pandas documentation on split-apply-combine</a> is excellent and worth reading through. It is extensive though, so don’t let yourself get intimidated by it.</p>
-<section id="Aggregation:-Median-percent-correct">
+<div class="section" id="Aggregation:-Median-percent-correct">
 <h3>Aggregation: Median percent correct<a class="headerlink" href="#Aggregation:-Median-percent-correct" title="Permalink to this heading"></a></h3>
 <p>Let’s go ahead and do our first split-apply-combine on this tidy data set. First, we will split the data set up by insomnia condition.</p>
 <div class="nbinput docutils container">
@@ -1015,9 +743,9 @@ possibility of misinterpretation or mistakes.</p>
 </div></div>
 </div>
 <p>This type of operation is called an <strong>aggregation</strong>. That is, we split the data set up into groups, and then computed a summary statistic for each group, in this case the median.</p>
-</section>
-</section>
-<section id="Transformation">
+</div>
+</div>
+<div class="section" id="Transformation">
 <h2>Transformation<a class="headerlink" href="#Transformation" title="Permalink to this heading"></a></h2>
 <p>Instead of summarizing data in a group with single summary statistics by aggregation, we can also do a <strong>transformation</strong> in which each row gets a new entry within a given group. As a simple example, we could generate a column that gives the rank of each participate in terms of percent correct for an insomniac group versus non-insomniac groups. That is, we perform a rank ordering with the insomniac group and within the non-insomniac group.</p>
 <div class="nbinput docutils container">
@@ -1314,8 +1042,8 @@ Name: percent correct, dtype: float64
 </div></div>
 </div>
 <p>Indeed it worked!</p>
-</section>
-<section id="Aggregating-and-transforming-with-custom-functions">
+</div>
+<div class="section" id="Aggregating-and-transforming-with-custom-functions">
 <h2>Aggregating and transforming with custom functions<a class="headerlink" href="#Aggregating-and-transforming-with-custom-functions" title="Permalink to this heading"></a></h2>
 <p>Let’s say we want to compute the coefficient of variation (CoV, the standard deviation divided by the mean) of data in columns of groups in the data frame. There is no built-in function to do this. We have to write our own function to compute the CoV and then use it with the <code class="docutils literal notranslate"><span class="pre">agg()</span></code> method of a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. In the function below, the values of each column are denoted by <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <p>To compute the coefficient of variation, we will use one more Numpy function beyond <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> that you have already seen, <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>.</p>
@@ -1531,8 +1259,8 @@ correct facial matchings.</p>
 </div></div>
 </div>
 <p>Yes, that’s right. One single, clean, easy to read line of code. In coming tutorials, we will see how to use tidy data to quickly generate plots.</p>
-</section>
-<section id="Looping-over-a-GroupBy-object">
+</div>
+<div class="section" id="Looping-over-a-GroupBy-object">
 <h2>Looping over a GroupBy object<a class="headerlink" href="#Looping-over-a-GroupBy-object" title="Permalink to this heading"></a></h2>
 <p>While the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> methods we have learned so far (like <code class="docutils literal notranslate"><span class="pre">transform()</span></code> and <code class="docutils literal notranslate"><span class="pre">agg()</span></code>) are useful and lead to concise code, we sometimes want to loop over the groups of a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object. This often comes up in plotting applications, as we will see in future lessons. As an example, I will compute the median percent correct for female and males, insomniacs and not (which we already computed using <code class="docutils literal notranslate"><span class="pre">describe()</span></code>.</p>
 <div class="nbinput docutils container">
@@ -1556,8 +1284,8 @@ correct facial matchings.</p>
 </pre></div></div>
 </div>
 <p>By using the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object as an iterator, it yields the name of the group (which I assigned as <code class="docutils literal notranslate"><span class="pre">name</span></code>) and the corresponding sub-data frame (which I assigned <code class="docutils literal notranslate"><span class="pre">group</span></code>).</p>
-</section>
-<section id="Computing-environment">
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
@@ -1583,8 +1311,8 @@ jupyterlab: 4.0.6
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1598,11 +1326,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb899d62280> 
+   <jinja2.runtime.BlockReference object at 0x13e8ffd90> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

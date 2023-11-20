@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Graphical model assessment for univariate models &mdash; BE/Bi 103 a  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,12 +35,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #827F7F" >
-            <a href="../../index.html">
-            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -128,6 +132,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -163,9 +169,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">25. Implementation of model assessment</a> &raquo;</li>
-      <li>Graphical model assessment for univariate models</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">25. Implementation of model assessment</a></li>
+      <li class="breadcrumb-item active">Graphical model assessment for univariate models</li>
   <li class="wy-breadcrumbs-aside">
     
         
@@ -182,285 +188,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="Graphical-model-assessment-for-univariate-models">
+  <div class="section" id="Graphical-model-assessment-for-univariate-models">
 <h1>Graphical model assessment for univariate models<a class="headerlink" href="#Graphical-model-assessment-for-univariate-models" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -789,7 +517,7 @@ if (force === true) {
 }(window));
 </script></div>
 </div>
-<hr ><section id="Graphical-model-assessment">
+<hr ><div class="section" id="Graphical-model-assessment">
 <h2>Graphical model assessment<a class="headerlink" href="#Graphical-model-assessment" title="Permalink to this heading"></a></h2>
 <p>We have already <a class="reference internal" href="../24/graphical_model_assessment.html"><span class="doc">discussed model assessment</span></a>. In this lesson, we will discuss implementation of graphical model assessment.</p>
 <p>We will use the transcript counts from Singer, et al., this time focusing on the Rex1 gene, which shows clear biomodality. As a reminder, here is the ECDF for the transcript counts.</p>
@@ -847,8 +575,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Before we can proceed to the model assessments, we need to write functions to calculate the MLE.</p>
-</section>
-<section id="Likelihood-calculators">
+</div>
+<div class="section" id="Likelihood-calculators">
 <h2>Likelihood calculators<a class="headerlink" href="#Likelihood-calculators" title="Permalink to this heading"></a></h2>
 <p>In this and the following parts of this lesson, we will need the functions we have written to perform maximum likelihood estimation for a Negative Binomial distribution and for a mixture of two Negative Binomials. These are copied directly from the <a class="reference external" href="../26/mixture_models.ipynb">lesson on mixture models</a>, so you do not need to focus on this rather long code cell.</p>
 <div class="nbinput nblast docutils container">
@@ -956,8 +684,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Constructing-a-Q-Q-plot">
+</div>
+<div class="section" id="Constructing-a-Q-Q-plot">
 <h2>Constructing a Q-Q plot<a class="headerlink" href="#Constructing-a-Q-Q-plot" title="Permalink to this heading"></a></h2>
 <p>We will start by making a <a class="reference external" href="graphical_model_assessment.rst#Q-Q-plots">Q-Q plot</a> for the single Negative-Binomial case. The function <code class="docutils literal notranslate"><span class="pre">bebi103.viz.qqplot()</span></code> generates Q-Q plots. In order to provide the function with samples out of the generative distribution, let’s draw out of a single Negative Binomial with our <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(b\)</span> parametrization.</p>
 <div class="nbinput nblast docutils container">
@@ -1028,7 +756,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Clearly, the generative model cannot produce the observed transcript bounds, since the Q-Q plot shows strong separation of the generative quantiles from the observed quantiles.</p>
-<section id="Q-Q-plot-for-the-mixture-model">
+<div class="section" id="Q-Q-plot-for-the-mixture-model">
 <h3>Q-Q plot for the mixture model<a class="headerlink" href="#Q-Q-plot-for-the-mixture-model" title="Permalink to this heading"></a></h3>
 <p>We can also make a Q-Q plot for the mixture model. We need to write a function to generate data out of the mixture model. As we did in a previous lesson, we first randomly choose a cell type with weight <span class="math notranslate nohighlight">\(w\)</span>, and then draw out of a Negative Binomial distribution with parameters corresponding to that cell type.</p>
 <div class="nbinput nblast docutils container">
@@ -1111,9 +839,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The Q-Q plot shows a much stronger agreement between the theoretical distribution and the observed.</p>
-</section>
-</section>
-<section id="Predictive-ECDFs">
+</div>
+</div>
+<div class="section" id="Predictive-ECDFs">
 <h2>Predictive ECDFs<a class="headerlink" href="#Predictive-ECDFs" title="Permalink to this heading"></a></h2>
 <p>If we wish to accept a model with the MLE for the parameters as a good representation of the true generative model, we would like to see how data generated from that model would look. We can do a parametric bootstrap to generate data sets and then plot confidence intervals of the resulting ECDFs. We call ECDFs that come from the generative model <strong>predictive ECDFs</strong>. We can try that for the single Negative Binomial model.</p>
 <p>Given the samples (which we already computed and stored in <code class="docutils literal notranslate"><span class="pre">single_samples</span></code>), we can then compute the predictive ECDFs for each of these samples. We want the values of the predictive ECDF at each possible value of <span class="math notranslate nohighlight">\(n\)</span>, which requires us to compute the value of the ECDF at an arbitrary value. The function below accomplishes this.</p>
@@ -1208,7 +936,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This is a predictive ECDF. Is is the envelope in which we would expect 95% of the data points to lie if the generative model were true.</p>
-<section id="Comparing-with-data">
+<div class="section" id="Comparing-with-data">
 <h3>Comparing with data<a class="headerlink" href="#Comparing-with-data" title="Permalink to this heading"></a></h3>
 <p>We can overlay the ECDF of the data to see if it falls within this envelope.</p>
 <div class="nbinput docutils container">
@@ -1262,8 +990,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>The Negative Binomial model generated some counts that were quite large, which is why the plot extends past counts of 1000. If you zoom in on the region where the data lie, the deviation of the measured ECDF from the ECDF generated by the model is clear.</p>
 <p>We can also compare with the mixture model.</p>
-</section>
-<section id="Using-predictive-ECDFs-in-the-bebi103-package">
+</div>
+<div class="section" id="Using-predictive-ECDFs-in-the-bebi103-package">
 <h3>Using predictive ECDFs in the bebi103 package<a class="headerlink" href="#Using-predictive-ECDFs-in-the-bebi103-package" title="Permalink to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">bebi103</span></code> package enables automated generation of predictive ECDFs. To demonstrate its usage, we can generate samples from the mixture model and plot a predictive ECDF.</p>
 <div class="nbinput docutils container">
@@ -1319,8 +1047,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Here we see that the predictive ECDF captures the measured data much better. If you zoom into the plot, you will notice that the <code class="docutils literal notranslate"><span class="pre">bebi103.viz.predictive_ecdf()</span></code> function plots quantiles in various shades of blue. By default, the outermost region (lightest blue) contains the middle 95% of the generated ECDFs, and the next one in captures the middle 68%. The median ECDF from the generative model is a dark blue line in the middle.</p>
-</section>
-<section id="ECDF-difference">
+</div>
+<div class="section" id="ECDF-difference">
 <h3>ECDF difference<a class="headerlink" href="#ECDF-difference" title="Permalink to this heading"></a></h3>
 <p>While the predictive ECDF plot is useful, it is perhaps more illuminating to plot the <em>difference</em> between the predictive ECDF and the measured ECDF. We can do this with the <code class="docutils literal notranslate"><span class="pre">diff='ecdf'</span></code> kwarg.</p>
 <div class="nbinput docutils container">
@@ -1375,9 +1103,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>It is now clear that very few of the 279 data points lie outside the 95% envelope of the predictive ECDF. We might expect more to lie outside; it is conceivable that the model is too flexible.</p>
-</section>
-</section>
-<section id="Computing-environment">
+</div>
+</div>
+<div class="section" id="Computing-environment">
 <h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -1407,8 +1135,8 @@ jupyterlab: 4.0.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1422,11 +1150,11 @@ jupyterlab: 4.0.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 15, 2023.
+      <span class="lastupdated">Last updated on Nov 20, 2023.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7fb8699305e0> 
+   <jinja2.runtime.BlockReference object at 0x13ea13210> 
 
 <p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

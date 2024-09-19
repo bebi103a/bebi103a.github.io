@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Merging and concatenating data frames &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Melting a data frame" href="melting.html" />
-    <link rel="prev" title="Using data frame indexes" href="dataframe_indexes.html" /> 
+    <link rel="next" title="Making a data frame tall" href="unpivoting.html" />
+    <link rel="prev" title="Manipulating data frames and wrangling data" href="manipulating_data_frames_intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,97 +62,68 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">10. Data wrangling</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="essential_parts_of_df.html">The essential parts of a data frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dataframe_indexes.html">Using data frame indexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulating_data_frames_intro.html">Manipulating and wrangling data frames</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Merging and concatenating data frames</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#The-frog-tongue-strike-data-set">The frog tongue strike data set</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#The-data-files">The data files</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Concatenating-data-frames">Concatenating data frames</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#More-advanced-concatenation">More advanced concatenation</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#Concatenating-data-frames">Concatenating data frames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Creating-a-DataFrame-from-scratch">Creating a DataFrame from scratch</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Data-frames-from-dictionaries">Data frames from dictionaries</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Data-frames-from-numpy-arrays">Data frames from numpy arrays</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Programmatically-creating-a-data-frame">Programmatically creating a data frame</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Merging-DataFrames">Merging DataFrames</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Brute-force-merge">Brute force merge</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Using-pd.merge()">Using pd.merge()</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#Joining-DataFrames">Joining DataFrames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#At-long-last,-a-plot!">At long last, a plot!</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Computing-environment">Computing environment</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="melting.html">Melting a data frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stacking_and_unstacking.html">Stacking and unstacking data frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unpivoting.html">Making a data frame tall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pivoting.html">Making a data frame wide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="styling_data_frames.html">Styling data frames</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Intro to probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../12/random_number_generation.html">12. Random number generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13/prob_dists.html">13. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Plug-in estimates and confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 15</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Null hypothesis significance testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Parametric inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Numerical MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 19</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 25</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Schedule overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#homework-due-dates">Homework due dates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html#exam-dates">Exam dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#lesson-exercise-due-dates">Lesson exercise due dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#weekly-schedule">Weekly schedule</a></li>
 </ul>
@@ -160,6 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#submission-of-assignments">Submission of assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lessons-and-lesson-exercises">Lessons and lesson exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#homework">Homework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#exams">Exams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#grading">Grading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
@@ -199,15 +174,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Merging-and-concatenating-data-frames">
-<h1>Merging and concatenating data frames<a class="headerlink" href="#Merging-and-concatenating-data-frames" title="Permalink to this heading"></a></h1>
+  <section id="Merging-and-concatenating-data-frames">
+<h1>Merging and concatenating data frames<a class="headerlink" href="#Merging-and-concatenating-data-frames" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip">Data set download</a></p>
 <hr/><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
 
 <span class="kn">import</span> <span class="nn">iqplot</span>
 
@@ -221,17 +196,17 @@
 </div>
 <div class="output_area rendered_html docutils container">
 <style>
-        .bk-notebook-logo {
-            display: block;
-            width: 20px;
-            height: 20px;
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
-        }
-    </style>
-    <div>
-        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="fe0062d8-4ea1-42b8-bc8e-166e0e29d52f">Loading BokehJS ...</span>
-    </div></div>
+    .bk-notebook-logo {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+    }
+</style>
+<div>
+    <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+    <span id="bb380e96-ef03-434c-9be3-eaefedd5d6d7">Loading BokehJS ...</span>
+</div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -240,6 +215,7 @@
 <div class="output_javascript"></div>
 <script type="text/javascript">
 var element = document.currentScript.previousSibling.previousSibling;
+'use strict';
 (function(root) {
   function now() {
     return new Date();
@@ -269,14 +245,22 @@ const JS_MIME_TYPE = 'application/javascript';
    * Handle when an output is cleared or removed
    */
   function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
     const cell = handle.cell;
 
     const id = cell.output_area._bokeh_element_id;
     const server_id = cell.output_area._bokeh_server_id;
+
     // Clean up Bokeh references
-    if (id != null && id in Bokeh.index) {
-      Bokeh.index[id].model.document.clear();
-      delete Bokeh.index[id];
+    if (id != null) {
+      drop(id)
     }
 
     if (server_id !== undefined) {
@@ -285,11 +269,8 @@ const JS_MIME_TYPE = 'application/javascript';
       cell.notebook.kernel.execute(cmd_clean, {
         iopub: {
           output: function(msg) {
-            const id = msg.content.text.trim();
-            if (id in Bokeh.index) {
-              Bokeh.index[id].model.document.clear();
-              delete Bokeh.index[id];
-            }
+            const id = msg.content.text.trim()
+            drop(id)
           }
         }
       });
@@ -396,17 +377,42 @@ const JS_MIME_TYPE = 'application/javascript';
      "</code>\n"+
      "</div>"}};
 
-  function display_loaded() {
-    const el = document.getElementById("fe0062d8-4ea1-42b8-bc8e-166e0e29d52f");
+  function display_loaded(error = null) {
+    const el = document.getElementById("bb380e96-ef03-434c-9be3-eaefedd5d6d7");
     if (el != null) {
-      el.textContent = "BokehJS is loading...";
-    }
-    if (root.Bokeh !== undefined) {
-      if (el != null) {
-        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
       }
     } else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(display_loaded, 100)
+      setTimeout(() => display_loaded(error), 100);
     }
   }
 
@@ -480,7 +486,7 @@ const JS_MIME_TYPE = 'application/javascript';
     document.body.appendChild(element);
   }
 
-  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.2.1.min.js"];
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js"];
   const css_urls = [];
 
   const inline_js = [    function(Bokeh) {
@@ -492,10 +498,13 @@ function(Bokeh) {
 
   function run_inline_js() {
     if (root.Bokeh !== undefined || force === true) {
-          for (let i = 0; i < inline_js.length; i++) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
       inline_js[i].call(root, root.Bokeh);
     }
-if (force === true) {
+
+      } catch (error) {display_loaded(error);throw error;
+      }if (force === true) {
         display_loaded();
       }} else if (Date.now() < root._bokeh_timeout) {
       setTimeout(run_inline_js, 100);
@@ -503,7 +512,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("fe0062d8-4ea1-42b8-bc8e-166e0e29d52f")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("bb380e96-ef03-434c-9be3-eaefedd5d6d7")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -520,16 +529,16 @@ if (force === true) {
 }(window));
 </script></div>
 </div>
-<hr /><p>It often happens that experiments consist of multiple data files that need to be brought together into a single data frame to work with in exploratory data analysis and subsequent analyses. Through its concatenation and merging capabilities, Pandas provides powerful tools for handling this sort of data.</p>
-<div class="section" id="The-frog-tongue-strike-data-set">
-<h2>The frog tongue strike data set<a class="headerlink" href="#The-frog-tongue-strike-data-set" title="Permalink to this heading"></a></h2>
+<hr /><p>It often happens that experiments consist of multiple data files that need to be brought together into a single data frame to work with in exploratory data analysis and subsequent analyses. Through its concatenation and merging capabilities, Polars provides powerful tools for handling this sort of data.</p>
+<section id="The-frog-tongue-strike-data-set">
+<h2>The frog tongue strike data set<a class="headerlink" href="#The-frog-tongue-strike-data-set" title="Link to this heading"></a></h2>
 <p>As usual, we will work with a real data set to learn about concatenation and merging of data frames. The data set we will use comes from a fun paper about the adhesive properties of frog tongues. The reference is <a class="reference external" href="https://dx.doi.org/10.1038%2Fsrep05225">Kleinteich and Gorb, Tongue adhesion in the horned frog Ceratophrys sp., Sci. Rep., 4, 5225, 2014</a>. You might also want to check out a <em>New York Times</em> feature on the paper
 <a class="reference external" href="http://www.nytimes.com/2014/08/25/science/a-frog-thats-a-living-breathing-pac-man.html">here</a>.</p>
 <p>In this paper, the authors investigated various properties of the adhesive characteristics of the tongues of horned frogs when they strike prey. The authors had a striking pad connected to a cantilever to measure forces. They also used high speed cameras to capture the strike and record relevant data.</p>
 <p>To get an idea of the experimental set up, you can check out this movie, kindly sent to me by Thomas Kleinteich. If video does not play in your browser, you may download it <a class="reference external" href="kleinteich_frog_strike.mp4">here</a>.</p>
 <div style="width: 400px; margin: auto;"><video width="400px" src="kleinteich_frog_strike.mp4" controls><p>Your browser does not support display of this video.</p>
-</video></div><div class="section" id="The-data-files">
-<h3>The data files<a class="headerlink" href="#The-data-files" title="Permalink to this heading"></a></h3>
+</video></div><section id="The-data-files">
+<h3>The data files<a class="headerlink" href="#The-data-files" title="Link to this heading"></a></h3>
 <p>I pulled data files from the <a class="reference external" href="https://dx.doi.org/10.1038%2Fsrep05225">Kleinteich and Gorb paper</a>. You can download the data files here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip">https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip</a>.</p>
 <p>There are four files, one for each of the four frogs, labeled with IDs I, II, III, and IV, that were studied. To see the format of the files, we can look at the content of the file for frog I. You can use</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>head -n 20 ../data/frog_strikes_I.csv
@@ -567,10 +576,10 @@ date,trial number,impact force (mN),impact time (ms),impact force / body weight,
 </div>
 <p>The first lines all begin with <code class="docutils literal notranslate"><span class="pre">#</span></code> signs, signifying that they are comments. They do give important information about the frog, though.</p>
 <p>The first line after the comments are the headers, giving the column names for the data frame we will load.</p>
-</div>
-</div>
-<div class="section" id="Concatenating-data-frames">
-<h2>Concatenating data frames<a class="headerlink" href="#Concatenating-data-frames" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Concatenating-data-frames">
+<h2>Concatenating data frames<a class="headerlink" href="#Concatenating-data-frames" title="Link to this heading"></a></h2>
 <p>We would like to have all of the data frames be together in one data frame so we can conveniently do things like make plots comparing the four frogs. Let’s read in the data sets and make a list of data frames.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -583,7 +592,7 @@ date,trial number,impact force (mN),impact time (ms),impact force / body weight,
     <span class="k">for</span> <span class="n">frog_id</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;II&quot;</span><span class="p">,</span> <span class="s2">&quot;III&quot;</span><span class="p">,</span> <span class="s2">&quot;IV&quot;</span><span class="p">]</span>
 <span class="p">]</span>
 
-<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">]</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">comment_prefix</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">]</span>
 
 <span class="c1"># Take a look at first data frame</span>
 <span class="n">dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -595,131 +604,16 @@ date,trial number,impact force (mN),impact time (ms),impact force / body weight,
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (5, 14)</small><table border="1" class="dataframe"><thead><tr><th>date</th><th>trial number</th><th>impact force (mN)</th><th>impact time (ms)</th><th>impact force / body weight</th><th>adhesive force (mN)</th><th>time frog pulls on target (ms)</th><th>adhesive force / body weight</th><th>adhesive impulse (N-s)</th><th>total contact area (mm2)</th><th>contact area without mucus (mm2)</th><th>contact area with mucus / contact area without mucus</th><th>contact pressure (Pa)</th><th>adhesive strength (Pa)</th></tr><tr><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td></tr></thead><tbody><tr><td>&quot;2013_02_26&quot;</td><td>3</td><td>1205</td><td>46</td><td>1.95</td><td>-785</td><td>884</td><td>1.27</td><td>-0.29</td><td>387</td><td>70</td><td>0.82</td><td>3117</td><td>-2030</td></tr><tr><td>&quot;2013_02_26&quot;</td><td>4</td><td>2527</td><td>44</td><td>4.08</td><td>-983</td><td>248</td><td>1.59</td><td>-0.181</td><td>101</td><td>94</td><td>0.07</td><td>24923</td><td>-9695</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>1</td><td>1745</td><td>34</td><td>2.82</td><td>-850</td><td>211</td><td>1.37</td><td>-0.157</td><td>83</td><td>79</td><td>0.05</td><td>21020</td><td>-10239</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>2</td><td>1556</td><td>41</td><td>2.51</td><td>-455</td><td>1025</td><td>0.74</td><td>-0.17</td><td>330</td><td>158</td><td>0.52</td><td>4718</td><td>-1381</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>3</td><td>493</td><td>36</td><td>0.8</td><td>-974</td><td>499</td><td>1.57</td><td>-0.423</td><td>245</td><td>216</td><td>0.12</td><td>2012</td><td>-3975</td></tr></tbody></table></div></div>
 </div>
-<p>We have successfully loaded in all of the data frames. They all have the same columns (as given by the CSV files) and they all have the same indexes (range indexes that were applied be default when loading from the CSV files). We do not really care about the indexes. So, we wish to tape the data frames together vertically. We can use the <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> function to do this.</p>
+<p>We have successfully loaded in all of the data frames. They all have the same columns (as given by the CSV files). So, we wish to tape the data frames together vertically. We can use the <code class="docutils literal notranslate"><span class="pre">pl.concat()</span></code> function to do this.</p>
 <p>Before we do that, though, we might notice a problem. We will not have information to tell us which frog is which. We might therefore like to add a column to each data frame that has the frog ID, and then concatenate them. We can parse the ID of the frog from the file name, as we can see by looking at the file names.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -741,14 +635,14 @@ date,trial number,impact force (mN),impact time (ms),impact force / body weight,
  &#39;../data/frog_strikes_IV.csv&#39;]
 </pre></div></div>
 </div>
-<p>So, for each data frame/file name pair, we extract the Roman numeral and add a column to the data frame containing the frog ID.</p>
+<p>So, for each data frame/file name pair, we extract the Roman numeral and add a column to the data frame containing the frog ID. To do this, we use a Polars <strong>literal</strong>, accessible with <code class="docutils literal notranslate"><span class="pre">pl.lit()</span></code>, which means that we want to insert a specific value (in this case, <code class="docutils literal notranslate"><span class="pre">&quot;I&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;II&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;III&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;IV&quot;</span></code>) into a data frame as a column.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fnames</span><span class="p">):</span>
     <span class="n">frog_id</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">f</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)]</span>
-    <span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">frog_id</span>
+    <span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">frog_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;ID&#39;</span><span class="p">))</span>
 
 <span class="c1"># Take a look</span>
 <span class="n">dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -760,145 +654,27 @@ date,trial number,impact force (mN),impact time (ms),impact force / body weight,
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-      <th>ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-      <td>I</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-      <td>I</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-      <td>I</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-      <td>I</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-      <td>I</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (5, 15)</small><table border="1" class="dataframe"><thead><tr><th>date</th><th>trial number</th><th>impact force (mN)</th><th>impact time (ms)</th><th>impact force / body weight</th><th>adhesive force (mN)</th><th>time frog pulls on target (ms)</th><th>adhesive force / body weight</th><th>adhesive impulse (N-s)</th><th>total contact area (mm2)</th><th>contact area without mucus (mm2)</th><th>contact area with mucus / contact area without mucus</th><th>contact pressure (Pa)</th><th>adhesive strength (Pa)</th><th>ID</th></tr><tr><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td><td>str</td></tr></thead><tbody><tr><td>&quot;2013_02_26&quot;</td><td>3</td><td>1205</td><td>46</td><td>1.95</td><td>-785</td><td>884</td><td>1.27</td><td>-0.29</td><td>387</td><td>70</td><td>0.82</td><td>3117</td><td>-2030</td><td>&quot;I&quot;</td></tr><tr><td>&quot;2013_02_26&quot;</td><td>4</td><td>2527</td><td>44</td><td>4.08</td><td>-983</td><td>248</td><td>1.59</td><td>-0.181</td><td>101</td><td>94</td><td>0.07</td><td>24923</td><td>-9695</td><td>&quot;I&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>1</td><td>1745</td><td>34</td><td>2.82</td><td>-850</td><td>211</td><td>1.37</td><td>-0.157</td><td>83</td><td>79</td><td>0.05</td><td>21020</td><td>-10239</td><td>&quot;I&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>2</td><td>1556</td><td>41</td><td>2.51</td><td>-455</td><td>1025</td><td>0.74</td><td>-0.17</td><td>330</td><td>158</td><td>0.52</td><td>4718</td><td>-1381</td><td>&quot;I&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>3</td><td>493</td><td>36</td><td>0.8</td><td>-974</td><td>499</td><td>1.57</td><td>-0.423</td><td>245</td><td>216</td><td>0.12</td><td>2012</td><td>-3975</td><td>&quot;I&quot;</td></tr></tbody></table></div></div>
 </div>
-<p>Good! Now all data frames have an <code class="docutils literal notranslate"><span class="pre">'ID'</span></code> column, and we can concatenate. The <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> function takes as input a list of data frames to be concatenated. Since we do not care about the index, we can use the <code class="docutils literal notranslate"><span class="pre">ignore_index=True</span></code> kwarg.</p>
+<p>Good! Now all data frames have an <code class="docutils literal notranslate"><span class="pre">'ID'</span></code> column, and we can concatenate. The <code class="docutils literal notranslate"><span class="pre">pl.concat()</span></code> function takes as input a list of data frames to be concatenated and stacks them on top of each other.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Concatenate data frames</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
 
 <span class="c1"># Make sure we got them all</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of rows:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Unique IDs:&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Number of rows:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Unique IDs:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -908,654 +684,19 @@ date,trial number,impact force (mN),impact time (ms),impact force / body weight,
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Number of rows: 80
-Unique IDs: [&#39;I&#39; &#39;II&#39; &#39;III&#39; &#39;IV&#39;]
+Unique IDs: [&#39;IV&#39;, &#39;III&#39;, &#39;I&#39;, &#39;II&#39;]
 </pre></div></div>
 </div>
 <p>Check!</p>
-<div class="section" id="More-advanced-concatenation">
-<h3>More advanced concatenation<a class="headerlink" href="#More-advanced-concatenation" title="Permalink to this heading"></a></h3>
-<p>When we concatenated, we updated each data frame with a fresh column. The <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> function can handle some of this for you. If we instead passed a dictionary of data frames instead of a list, it applies the keys to each data frame that is concatenated using a multiindex. First, we’ll read in the data frames as a dictionary of data frames instead of a list.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make dictionary of data frames</span>
-<span class="n">dfs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">f</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)]:</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fnames</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1"># Verify that keys are in fact IDs</span>
-<span class="n">dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-dict_keys([&#39;I&#39;, &#39;II&#39;, &#39;III&#39;, &#39;IV&#39;])
-</pre></div></div>
-</div>
-<p>Now, if we call <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> with dictionary input, we get a new data frame with a multiindex.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
-
-<span class="c1"># Take a look</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="5" valign="top">I</th>
-      <th>0</th>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>We have a multiindex for the rows, with the high level index being the ID and the low level index being the original index of the data frame that was concatenated. It is useful to give these indexes names so we can conveniently refer to them. We can do that by setting the <code class="docutils literal notranslate"><span class="pre">df.index.names</span></code> property as</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;original index&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>We can instead specify a <code class="docutils literal notranslate"><span class="pre">names</span></code> kwarg when we call <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code>. This kwarg specifies the names of the resulting multiindex from the concatenation.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;original index&#39;</span><span class="p">])</span>
-
-<span class="c1"># Take a look</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-    </tr>
-    <tr>
-      <th>ID</th>
-      <th>original index</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="5" valign="top">I</th>
-      <th>0</th>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>We conveniently have labeled indexes, and we can now make <code class="docutils literal notranslate"><span class="pre">ID</span></code> a column in the data frame using the <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> method.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ID</th>
-      <th>original index</th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>I</td>
-      <td>0</td>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>I</td>
-      <td>1</td>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>I</td>
-      <td>2</td>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>I</td>
-      <td>3</td>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>I</td>
-      <td>4</td>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>We now have a default range index for the data frame that we do not care about. Because the original index was not informative either, we can delete that column if we like, but it is not really a burden to have an unused column laying around in a data set this small. Nonetheless, let’s blow it away.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;original index&#39;</span><span class="p">]</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ID</th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>I</td>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>I</td>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>We now have a nice, tidy data frame!</p>
-</div>
-</div>
-<div class="section" id="Creating-a-DataFrame-from-scratch">
-<h2>Creating a DataFrame from scratch<a class="headerlink" href="#Creating-a-DataFrame-from-scratch" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Creating-a-DataFrame-from-scratch">
+<h2>Creating a DataFrame from scratch<a class="headerlink" href="#Creating-a-DataFrame-from-scratch" title="Link to this heading"></a></h2>
 <p>Looking back at the <a class="reference external" href="#The-data-files">headers of the original data files</a>, we see that there is information present in the header that we would like to have in our data frame. For example, it would be nice to know if each strike came from an adult or juvenile. Or what the snout-vent length was. Working toward the goal of including this in our data frame, we will first construct a new data frame containing information about each frog.</p>
-<div class="section" id="Data-frames-from-dictionaries">
-<h3>Data frames from dictionaries<a class="headerlink" href="#Data-frames-from-dictionaries" title="Permalink to this heading"></a></h3>
+<section id="Data-frames-from-dictionaries">
+<h3>Data frames from dictionaries<a class="headerlink" href="#Data-frames-from-dictionaries" title="Link to this heading"></a></h3>
 <p>One way do create this new data frame is to first construct a dictionary with the respective fields. Since these data sets are small, we can look at the files and make the dictionary by hand.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span>
@@ -1568,13 +709,13 @@ dict_keys([&#39;I&#39;, &#39;II&#39;, &#39;III&#39;, &#39;IV&#39;])
 </pre></div>
 </div>
 </div>
-<p>Now that we have this dictionary, we can convert it into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> by instantiating a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> class with it, using the <code class="docutils literal notranslate"><span class="pre">data</span></code> kwarg.</p>
+<p>Now that we have this dictionary, we can convert it into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> by instantiating a <code class="docutils literal notranslate"><span class="pre">pl.DataFrame</span></code> class with it, using the <code class="docutils literal notranslate"><span class="pre">data</span></code> kwarg.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make it into a DataFrame</span>
-<span class="n">df_frog_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_dict</span><span class="p">)</span>
+<span class="n">df_frog_info</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_dict</span><span class="p">)</span>
 
 <span class="c1"># Take a look</span>
 <span class="n">df_frog_info</span>
@@ -1582,79 +723,26 @@ dict_keys([&#39;I&#39;, &#39;II&#39;, &#39;III&#39;, &#39;IV&#39;])
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ID</th>
-      <th>age</th>
-      <th>SVL (mm)</th>
-      <th>body weight (g)</th>
-      <th>species</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>I</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>II</td>
-      <td>adult</td>
-      <td>70</td>
-      <td>72.7</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>III</td>
-      <td>juvenile</td>
-      <td>28</td>
-      <td>12.7</td>
-      <td>cranwelli</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>IV</td>
-      <td>juvenile</td>
-      <td>31</td>
-      <td>12.7</td>
-      <td>cranwelli</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (4, 5)</small><table border="1" class="dataframe"><thead><tr><th>ID</th><th>age</th><th>SVL (mm)</th><th>body weight (g)</th><th>species</th></tr><tr><td>str</td><td>str</td><td>i64</td><td>f64</td><td>str</td></tr></thead><tbody><tr><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>63</td><td>63.1</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;II&quot;</td><td>&quot;adult&quot;</td><td>70</td><td>72.7</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;III&quot;</td><td>&quot;juvenile&quot;</td><td>28</td><td>12.7</td><td>&quot;cranwelli&quot;</td></tr><tr><td>&quot;IV&quot;</td><td>&quot;juvenile&quot;</td><td>31</td><td>12.7</td><td>&quot;cranwelli&quot;</td></tr></tbody></table></div></div>
 </div>
 <p>Nice!</p>
-</div>
-<div class="section" id="Data-frames-from-numpy-arrays">
-<h3>Data frames from numpy arrays<a class="headerlink" href="#Data-frames-from-numpy-arrays" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Data-frames-from-numpy-arrays">
+<h3>Data frames from numpy arrays<a class="headerlink" href="#Data-frames-from-numpy-arrays" title="Link to this heading"></a></h3>
 <p>Sometimes the data sets are not small enough to construct a dictionary by hand. Oftentimes, we have a two-dimensional array of data that we want to make into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. As an example, let’s say we have a Numpy array where the first column is snout vent length and the second is weight.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">63</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="p">[</span><span class="mf">63.1</span><span class="p">,</span> <span class="mf">72.7</span><span class="p">,</span> <span class="mf">12.7</span><span class="p">,</span> <span class="mf">12.7</span><span class="p">]])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
@@ -1665,7 +753,7 @@ dict_keys([&#39;I&#39;, &#39;II&#39;, &#39;III&#39;, &#39;IV&#39;])
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1676,12 +764,12 @@ array([[63. , 63.1],
        [31. , 12.7]])
 </pre></div></div>
 </div>
-<p>To make this into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we again create <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> instance, but this time we also specify the <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword argument.</p>
+<p>To make this into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we again create <code class="docutils literal notranslate"><span class="pre">pl.DataFrame</span></code> instance, but this time we also specify the <code class="docutils literal notranslate"><span class="pre">schema</span></code> keyword argument to label the columns.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_demo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SVL (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;weight (g)&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_demo</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SVL (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;weight (g)&quot;</span><span class="p">])</span>
 
 <span class="c1"># Take a look</span>
 <span class="n">df_demo</span>
@@ -1689,61 +777,23 @@ array([[63. , 63.1],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SVL (mm)</th>
-      <th>weight (g)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>63.0</td>
-      <td>63.1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>70.0</td>
-      <td>72.7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>28.0</td>
-      <td>12.7</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>31.0</td>
-      <td>12.7</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (4, 2)</small><table border="1" class="dataframe"><thead><tr><th>SVL (mm)</th><th>weight (g)</th></tr><tr><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>63.0</td><td>63.1</td></tr><tr><td>70.0</td><td>72.7</td></tr><tr><td>28.0</td><td>12.7</td></tr><tr><td>31.0</td><td>12.7</td></tr></tbody></table></div></div>
 </div>
 <p>That also works. Generally, any two-dimensional Numpy array can be converted into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in this way. You just need to supply column names.</p>
-</div>
-<div class="section" id="Programmatically-creating-a-data-frame">
-<h3>Programmatically creating a data frame<a class="headerlink" href="#Programmatically-creating-a-data-frame" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Programmatically-creating-a-data-frame">
+<h3>Programmatically creating a data frame<a class="headerlink" href="#Programmatically-creating-a-data-frame" title="Link to this heading"></a></h3>
 <p>Hand-entering data should be minimized. The information about each frog were hand-entered once by the experimenter. We should not hand-enter them again. We therefore should parse the comment lines of input files to get the pertinent information.</p>
 <p>Note, though, that in the case of a single experiment with only four data sets, hand entering might be faster and indeed less error prone than doing it programmatically. We should definitely do it programmatically if we have a large number of data files or will ever do an experiment with the same file format again.</p>
 <p>So, let’s programmatically parse the files. We start by writing a function to parse the metadata from a single file. Recall that the comment lines look like this:</p>
@@ -1757,7 +807,7 @@ array([[63. , 63.1],
 </div>
 <p>(The function below will not work with Colab because <code class="docutils literal notranslate"><span class="pre">open()</span></code> does not work for files specified by a URL.)</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parse_frog_metadata</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
@@ -1795,7 +845,7 @@ array([[63. , 63.1],
 </div>
 <p>Let’s take it for a spin.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parse_frog_metadata</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;frog_strikes_I.csv&#39;</span><span class="p">))</span>
@@ -1803,7 +853,7 @@ array([[63. , 63.1],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1813,7 +863,7 @@ array([[63. , 63.1],
 </div>
 <p>Looks good! Now we can create a list of tuples to use as data for making a data frame.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">parse_frog_metadata</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">]</span>
@@ -1824,7 +874,7 @@ array([[63. , 63.1],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1835,14 +885,15 @@ array([[63. , 63.1],
  (&#39;IV&#39;, &#39;juvenile&#39;, &#39;31&#39;, &#39;12.7&#39;, &#39;cranwelli&#39;)]
 </pre></div></div>
 </div>
-<p>We now input this list of tuples, plus the column names, into <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code>, and we’ve got our data frame.</p>
+<p>We now input this list of tuples, plus the column names, into <code class="docutils literal notranslate"><span class="pre">pl.DataFrame()</span></code>, and we’ve got our data frame. We do have to specify that this list of tuples is row-oriented, so Polars knows that each tuple is a row and not a column.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_frog_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_frog_info</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;SVL (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;body weight (g)&quot;</span><span class="p">,</span> <span class="s2">&quot;species&quot;</span><span class="p">]</span>
+    <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;SVL (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;body weight (g)&quot;</span><span class="p">,</span> <span class="s2">&quot;species&quot;</span><span class="p">],</span>
+    <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Take a look</span>
@@ -1851,447 +902,58 @@ array([[63. , 63.1],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ID</th>
-      <th>age</th>
-      <th>SVL (mm)</th>
-      <th>body weight (g)</th>
-      <th>species</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>I</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>II</td>
-      <td>adult</td>
-      <td>70</td>
-      <td>72.7</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>III</td>
-      <td>juvenile</td>
-      <td>28</td>
-      <td>12.7</td>
-      <td>cranwelli</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>IV</td>
-      <td>juvenile</td>
-      <td>31</td>
-      <td>12.7</td>
-      <td>cranwelli</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (4, 5)</small><table border="1" class="dataframe"><thead><tr><th>ID</th><th>age</th><th>SVL (mm)</th><th>body weight (g)</th><th>species</th></tr><tr><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td></tr></thead><tbody><tr><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;II&quot;</td><td>&quot;adult&quot;</td><td>&quot;70&quot;</td><td>&quot;72.7&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;III&quot;</td><td>&quot;juvenile&quot;</td><td>&quot;28&quot;</td><td>&quot;12.7&quot;</td><td>&quot;cranwelli&quot;</td></tr><tr><td>&quot;IV&quot;</td><td>&quot;juvenile&quot;</td><td>&quot;31&quot;</td><td>&quot;12.7&quot;</td><td>&quot;cranwelli&quot;</td></tr></tbody></table></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Merging-DataFrames">
-<h2>Merging DataFrames<a class="headerlink" href="#Merging-DataFrames" title="Permalink to this heading"></a></h2>
-<p>Our ultimate goal is to add the information about the frogs into our main data frame, <code class="docutils literal notranslate"><span class="pre">df</span></code>, that we have been working with.</p>
-<div class="section" id="Brute-force-merge">
-<h3>Brute force merge<a class="headerlink" href="#Brute-force-merge" title="Permalink to this heading"></a></h3>
-<p>We can do it using tools we have already learned. For each row in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we can add the relevant value in each column. Because this will not be the final way I recommend doing this, I will do these operations on a copy of <code class="docutils literal notranslate"><span class="pre">df</span></code> using the <code class="docutils literal notranslate"><span class="pre">copy()</span></code> method.</p>
+</section>
+</section>
+<section id="Joining-DataFrames">
+<h2>Joining DataFrames<a class="headerlink" href="#Joining-DataFrames" title="Link to this heading"></a></h2>
+<p>We want to add the information about the frogs into our main data frame, <code class="docutils literal notranslate"><span class="pre">df</span></code>, that we have been working with. Specifically, for each row of the data frame, we also want to include the frog’s age, snout-vent length, body weight, and species. So, we want to take the data frame with all of the information about the tongue strikes and combine it with the data frame containing information about each frog. This combining of data frames is a <strong>join operation</strong>. In this case, we join on the <code class="docutils literal notranslate"><span class="pre">'ID'</span></code>
+column, since the value of the that column in each data frame indicates the frog we are talking about.</p>
+<p>To perform a join operation we use the <code class="docutils literal notranslate"><span class="pre">df.join()</span></code> method (or <code class="docutils literal notranslate"><span class="pre">df.join_asof()</span></code> method for approximate matches). Its default join strategy is an <strong>inner join</strong>, in which the entries of a given row are included in the joined data frame if and only if the entry <code class="docutils literal notranslate"><span class="pre">'ID'</span></code> column of the respective frames match. You can read more about available join strategies in <a class="reference external" href="https://docs.pola.rs/user-guide/transformations/joins/">the documentation</a>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a copy of df</span>
-<span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_frog_info</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span><span class="p">)</span>
 
-<span class="c1"># Build each column</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_frog_info</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_frog_info</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="s1">&#39;ID&#39;</span><span class="p">]:</span>
-    <span class="c1"># Make a new column with empty values</span>
-    <span class="n">df_copy</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_copy</span><span class="p">))</span>
-
-    <span class="c1"># Add in each entry, row by row</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">df_copy</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="n">ind</span> <span class="o">=</span> <span class="n">df_frog_info</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
-        <span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_frog_info</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># Take a look at the updated DataFrame</span>
-<span class="n">df_copy</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ID</th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-      <th>age</th>
-      <th>SVL (mm)</th>
-      <th>body weight (g)</th>
-      <th>species</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>I</td>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>I</td>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>Note that I used the <code class="docutils literal notranslate"><span class="pre">iterrows()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">df_copy</span></code> data frame. This iterator gives an index (which I called <code class="docutils literal notranslate"><span class="pre">i</span></code>) and a row of a data frame (which I called <code class="docutils literal notranslate"><span class="pre">r</span></code>). This method, and the analogous one for iterating over columns, <code class="docutils literal notranslate"><span class="pre">iteritems()</span></code>, can be useful.</p>
-<p>But this approach seems rather clunky.</p>
-</div>
-<div class="section" id="Using-pd.merge()">
-<h3>Using pd.merge()<a class="headerlink" href="#Using-pd.merge()" title="Permalink to this heading"></a></h3>
-<p>There is a much better way to do it is to use Pandas’s <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/merging.html#database-style-dataframe-joining-merging">built-in merge() method</a>. Called with all the default keyword arguments, this function finds common columns between two <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s (in this case, there is just one, the <code class="docutils literal notranslate"><span class="pre">ID</span></code> column), and then uses those columns to merge them, filling in values that match in the common columns. This is exactly what we want.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_frog_info</span><span class="p">)</span>
-
-<span class="c1"># Check it out!</span>
+<span class="c1"># Take a look</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ID</th>
-      <th>date</th>
-      <th>trial number</th>
-      <th>impact force (mN)</th>
-      <th>impact time (ms)</th>
-      <th>impact force / body weight</th>
-      <th>adhesive force (mN)</th>
-      <th>time frog pulls on target (ms)</th>
-      <th>adhesive force / body weight</th>
-      <th>adhesive impulse (N-s)</th>
-      <th>total contact area (mm2)</th>
-      <th>contact area without mucus (mm2)</th>
-      <th>contact area with mucus / contact area without mucus</th>
-      <th>contact pressure (Pa)</th>
-      <th>adhesive strength (Pa)</th>
-      <th>age</th>
-      <th>SVL (mm)</th>
-      <th>body weight (g)</th>
-      <th>species</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>I</td>
-      <td>2013_02_26</td>
-      <td>3</td>
-      <td>1205</td>
-      <td>46</td>
-      <td>1.95</td>
-      <td>-785</td>
-      <td>884</td>
-      <td>1.27</td>
-      <td>-0.290</td>
-      <td>387</td>
-      <td>70</td>
-      <td>0.82</td>
-      <td>3117</td>
-      <td>-2030</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>I</td>
-      <td>2013_02_26</td>
-      <td>4</td>
-      <td>2527</td>
-      <td>44</td>
-      <td>4.08</td>
-      <td>-983</td>
-      <td>248</td>
-      <td>1.59</td>
-      <td>-0.181</td>
-      <td>101</td>
-      <td>94</td>
-      <td>0.07</td>
-      <td>24923</td>
-      <td>-9695</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>1</td>
-      <td>1745</td>
-      <td>34</td>
-      <td>2.82</td>
-      <td>-850</td>
-      <td>211</td>
-      <td>1.37</td>
-      <td>-0.157</td>
-      <td>83</td>
-      <td>79</td>
-      <td>0.05</td>
-      <td>21020</td>
-      <td>-10239</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>2</td>
-      <td>1556</td>
-      <td>41</td>
-      <td>2.51</td>
-      <td>-455</td>
-      <td>1025</td>
-      <td>0.74</td>
-      <td>-0.170</td>
-      <td>330</td>
-      <td>158</td>
-      <td>0.52</td>
-      <td>4718</td>
-      <td>-1381</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>I</td>
-      <td>2013_03_01</td>
-      <td>3</td>
-      <td>493</td>
-      <td>36</td>
-      <td>0.80</td>
-      <td>-974</td>
-      <td>499</td>
-      <td>1.57</td>
-      <td>-0.423</td>
-      <td>245</td>
-      <td>216</td>
-      <td>0.12</td>
-      <td>2012</td>
-      <td>-3975</td>
-      <td>adult</td>
-      <td>63</td>
-      <td>63.1</td>
-      <td>cross</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (5, 19)</small><table border="1" class="dataframe"><thead><tr><th>date</th><th>trial number</th><th>impact force (mN)</th><th>impact time (ms)</th><th>impact force / body weight</th><th>adhesive force (mN)</th><th>time frog pulls on target (ms)</th><th>adhesive force / body weight</th><th>adhesive impulse (N-s)</th><th>total contact area (mm2)</th><th>contact area without mucus (mm2)</th><th>contact area with mucus / contact area without mucus</th><th>contact pressure (Pa)</th><th>adhesive strength (Pa)</th><th>ID</th><th>age</th><th>SVL (mm)</th><th>body weight (g)</th><th>species</th></tr><tr><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td></tr></thead><tbody><tr><td>&quot;2013_02_26&quot;</td><td>3</td><td>1205</td><td>46</td><td>1.95</td><td>-785</td><td>884</td><td>1.27</td><td>-0.29</td><td>387</td><td>70</td><td>0.82</td><td>3117</td><td>-2030</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_02_26&quot;</td><td>4</td><td>2527</td><td>44</td><td>4.08</td><td>-983</td><td>248</td><td>1.59</td><td>-0.181</td><td>101</td><td>94</td><td>0.07</td><td>24923</td><td>-9695</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>1</td><td>1745</td><td>34</td><td>2.82</td><td>-850</td><td>211</td><td>1.37</td><td>-0.157</td><td>83</td><td>79</td><td>0.05</td><td>21020</td><td>-10239</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>2</td><td>1556</td><td>41</td><td>2.51</td><td>-455</td><td>1025</td><td>0.74</td><td>-0.17</td><td>330</td><td>158</td><td>0.52</td><td>4718</td><td>-1381</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>3</td><td>493</td><td>36</td><td>0.8</td><td>-974</td><td>499</td><td>1.57</td><td>-0.423</td><td>245</td><td>216</td><td>0.12</td><td>2012</td><td>-3975</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr></tbody></table></div></div>
 </div>
 <p>Note that the entries for the added columns were repeated appropriately, e.g., body weight column had 63 for every row corresponding to frog I.</p>
-<p>I think this example of merging <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s highlights the power of using them in your data analysis. Note also that there are plenty of options for how merges are done, and you should consult the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html#database-style-dataframe-or-named-series-joining-merging">Pandas documentation</a>.</p>
-<p>This example also brings up an important point. When you have to perform operations on data frames, you can often “brute force” it with loops, etc. But if what you are trying to do seems like something a data analyst would frequently encounter, there is a good chance it’s already built-in to Pandas, and you should ask Google how to do it.</p>
-</div>
-</div>
-<div class="section" id="At-long-last,-a-plot!">
-<h2>At long last, a plot!<a class="headerlink" href="#At-long-last,-a-plot!" title="Permalink to this heading"></a></h2>
+</section>
+<section id="At-long-last,-a-plot!">
+<h2>At long last, a plot!<a class="headerlink" href="#At-long-last,-a-plot!" title="Link to this heading"></a></h2>
 <p>While the purpose of this part of the lesson was to learn how to concatenate and merge data frames, going through all of that wrangling effort would somehow be unsatisfying if we we didn’t generate a plot. Let’s compare the impact force on a per-mass basis for each frog.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">iqplot</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span>
@@ -2312,7 +974,7 @@ array([[63. , 63.1],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div id="d7e59000-dcd9-44e4-87f0-ad254f913e20" data-root-id="p1002" style="display: contents;"></div></div>
+<div id="d7f5b7de-0d1d-409e-a255-3715591b530b" data-root-id="p1002" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -2323,9 +985,9 @@ array([[63. , 63.1],
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"d5db22b2-971e-4bb2-b214-ca6c42cee39b":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1002","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1004"},"y_range":{"type":"object","name":"FactorRange","id":"p1001","attributes":{"factors":["IV","III","II","I"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1011"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1012"},"title":{"type":"object","name":"Title","id":"p1009"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1040","attributes":{"name":"hover_glyphs","data_source":{"type":"object","name":"ColumnDataSource","id":"p1031","attributes":{"selected":{"type":"object","name":"Selection","id":"p1032","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1033"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAAA=="},"shape":[40],"dtype":"int32","order":"little"}],["age",{"type":"ndarray","array":["adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult"],"shape":[40],"dtype":"object","order":"little"}],["impact force / body weight",{"type":"ndarray","array":{"type":"bytes","data":"MzMzMzMz/z9SuB6F61EQQI/C9ShcjwZAFK5H4XoUBECamZmZmZnpP3E9CtejcA1AzczMzMzM7D/hehSuR+EIQBSuR+F6FBFAexSuR+F6CEB7FK5H4XoIQAAAAAAAAARA4XoUrkfhAEDXo3A9CtcFQOxRuB6F6wNAj8L1KFyPAEAAAAAAAAD0Pz0K16NwPQpAAAAAAAAAAEBSuB6F61HoP1K4HoXrUQ5AuB6F61G49j+kcD0K16PoP9ejcD0K1wFAUrgehetR9D/2KFyPwvUMQNejcD0K1/M/rkfhehSu9z9cj8L1KFwLQGZmZmZmZuY/ZmZmZmZm+j8pXI/C9SjkP1K4HoXrUfw/j8L1KFyP4j89CtejcD0GQFyPwvUoXPM/UrgehetR8D/NzMzMzMzsP0jhehSuR/E/hetRuB6F+z8="},"shape":[40],"dtype":"float64","order":"little"}],["ID",{"type":"ndarray","array":["I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II"],"shape":[40],"dtype":"object","order":"little"}],["cat",{"type":"ndarray","array":["I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II"],"shape":[40],"dtype":"object","order":"little"}],["__label",{"type":"ndarray","array":["adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult"],"shape":[40],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1041","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1042"}}},"glyph":{"type":"object","name":"Circle","id":"p1037","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"type":"object","name":"Jitter","id":"p1030","attributes":{"width":0.1,"distribution":"normal","range":{"id":"p1001"}}}},"line_color":{"type":"value","value":"#1f77b3"},"fill_color":{"type":"value","value":"#1f77b3"},"hatch_color":{"type":"value","value":"#1f77b3"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1038","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1030"}},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b3"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#1f77b3"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1039","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1030"}},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b3"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#1f77b3"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1052","attributes":{"name":"hover_glyphs","data_source":{"type":"object","name":"ColumnDataSource","id":"p1043","attributes":{"selected":{"type":"object","name":"Selection","id":"p1044","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1045"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"KAAAACkAAAAqAAAAKwAAACwAAAAtAAAALgAAAC8AAAAwAAAAMQAAADIAAAAzAAAANAAAADUAAAA2AAAANwAAADgAAAA5AAAAOgAAADsAAAA8AAAAPQAAAD4AAAA/AAAAQAAAAEEAAABCAAAAQwAAAEQAAABFAAAARgAAAEcAAABIAAAASQAAAEoAAABLAAAATAAAAE0AAABOAAAATwAAAA=="},"shape":[40],"dtype":"int32","order":"little"}],["age",{"type":"ndarray","array":["juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile"],"shape":[40],"dtype":"object","order":"little"}],["impact force / body weight",{"type":"ndarray","array":{"type":"bytes","data":"w/UoXI/CE0CkcD0K16MKQOF6FK5H4QRA9ihcj8L1GECkcD0K16MTQIXrUbgehRFASOF6FK5HEUCkcD0K16MSQPYoXI/C9RlAmpmZmZmZDUCF61G4HoUNQClcj8L1KBRA9ihcj8L1E0CF61G4HoURQDMzMzMzMxFAuB6F61G4CEDXo3A9CtcJQMP1KFyPwhNAZmZmZmZmFUBxPQrXo3APQHsUrkfhevQ/zczMzMzM8D/sUbgehevRP/YoXI/C9QpAH4XrUbgeBUDD9Shcj8LFP+xRuB6F6w1APQrXo3A9AEBxPQrXo3AVQFyPwvUoXBFAhetRuB6F9z+F61G4HoX3P8P1KFyPwhFAuB6F61G4DkBI4XoUrkcYQAAAAAAAAAhAAAAAAAAAEkAzMzMzMzMVQEjhehSuRxJA16NwPQrXC0A="},"shape":[40],"dtype":"float64","order":"little"}],["ID",{"type":"ndarray","array":["III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV"],"shape":[40],"dtype":"object","order":"little"}],["cat",{"type":"ndarray","array":["III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV"],"shape":[40],"dtype":"object","order":"little"}],["__label",{"type":"ndarray","array":["juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile"],"shape":[40],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1053","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1054"}}},"glyph":{"type":"object","name":"Circle","id":"p1049","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1030"}},"line_color":{"type":"value","value":"#ff7e0e"},"fill_color":{"type":"value","value":"#ff7e0e"},"hatch_color":{"type":"value","value":"#ff7e0e"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1050","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1030"}},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#ff7e0e"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#ff7e0e"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1051","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1030"}},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#ff7e0e"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#ff7e0e"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1010","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1023"},{"type":"object","name":"WheelZoomTool","id":"p1024"},{"type":"object","name":"BoxZoomTool","id":"p1025","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1026","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1027"},{"type":"object","name":"ResetTool","id":"p1028"},{"type":"object","name":"HelpTool","id":"p1029"}]}},"toolbar_location":"above","left":[{"type":"object","name":"CategoricalAxis","id":"p1018","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1019"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1020"},"axis_label":"frog ID","major_label_policy":{"type":"object","name":"AllLabels","id":"p1021"}}}],"right":[{"type":"object","name":"Legend","id":"p1055","attributes":{"location":"center","title":"age","click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p1056","attributes":{"label":{"type":"value","value":"adult"},"renderers":[{"id":"p1040"}]}},{"type":"object","name":"LegendItem","id":"p1057","attributes":{"label":{"type":"value","value":"juvenile"},"renderers":[{"id":"p1052"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1013","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1014","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1015"},"axis_label":"impact force / body weight (mN/g)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1016"}}}],"center":[{"type":"object","name":"Grid","id":"p1017","attributes":{"axis":{"id":"p1013"}}},{"type":"object","name":"Grid","id":"p1022","attributes":{"dimension":1,"axis":{"id":"p1018"},"grid_line_color":null}}],"frame_width":375,"frame_height":275}}]}};
-  const render_items = [{"docid":"d5db22b2-971e-4bb2-b214-ca6c42cee39b","roots":{"p1002":"d7e59000-dcd9-44e4-87f0-ad254f913e20"},"root_ids":["p1002"]}];
-  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  const docs_json = {"86463620-f0f3-451a-8618-e8a937064811":{"version":"3.4.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1002","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1004"},"y_range":{"type":"object","name":"FactorRange","id":"p1001","attributes":{"factors":["IV","III","II","I"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1011"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1012"},"title":{"type":"object","name":"Title","id":"p1009"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1044","attributes":{"name":"hover_glyphs","data_source":{"type":"object","name":"ColumnDataSource","id":"p1035","attributes":{"selected":{"type":"object","name":"Selection","id":"p1036","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1037"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAAA=="},"shape":[40],"dtype":"int32","order":"little"}],["ID",{"type":"ndarray","array":["I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II"],"shape":[40],"dtype":"object","order":"little"}],["impact force / body weight",{"type":"ndarray","array":{"type":"bytes","data":"MzMzMzMz/z9SuB6F61EQQI/C9ShcjwZAFK5H4XoUBECamZmZmZnpP3E9CtejcA1AzczMzMzM7D/hehSuR+EIQBSuR+F6FBFAexSuR+F6CEB7FK5H4XoIQAAAAAAAAARA4XoUrkfhAEDXo3A9CtcFQOxRuB6F6wNAj8L1KFyPAEAAAAAAAAD0Pz0K16NwPQpAAAAAAAAAAEBSuB6F61HoP1K4HoXrUQ5AuB6F61G49j+kcD0K16PoP9ejcD0K1wFAUrgehetR9D/2KFyPwvUMQNejcD0K1/M/rkfhehSu9z9cj8L1KFwLQGZmZmZmZuY/ZmZmZmZm+j8pXI/C9SjkP1K4HoXrUfw/j8L1KFyP4j89CtejcD0GQFyPwvUoXPM/UrgehetR8D/NzMzMzMzsP0jhehSuR/E/hetRuB6F+z8="},"shape":[40],"dtype":"float64","order":"little"}],["age",{"type":"ndarray","array":["adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult"],"shape":[40],"dtype":"object","order":"little"}],["cat",{"type":"ndarray","array":["I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","I","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II","II"],"shape":[40],"dtype":"object","order":"little"}],["__label",{"type":"ndarray","array":["adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult","adult"],"shape":[40],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1045","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1046"}}},"glyph":{"type":"object","name":"Scatter","id":"p1041","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"type":"object","name":"Jitter","id":"p1034","attributes":{"width":0.1,"distribution":"normal","range":{"id":"p1001"}}}},"line_color":{"type":"value","value":"#1f77b3"},"fill_color":{"type":"value","value":"#1f77b3"},"hatch_color":{"type":"value","value":"#1f77b3"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1042","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1034"}},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b3"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#1f77b3"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1043","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1034"}},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b3"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#1f77b3"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1056","attributes":{"name":"hover_glyphs","data_source":{"type":"object","name":"ColumnDataSource","id":"p1047","attributes":{"selected":{"type":"object","name":"Selection","id":"p1048","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1049"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"KAAAACkAAAAqAAAAKwAAACwAAAAtAAAALgAAAC8AAAAwAAAAMQAAADIAAAAzAAAANAAAADUAAAA2AAAANwAAADgAAAA5AAAAOgAAADsAAAA8AAAAPQAAAD4AAAA/AAAAQAAAAEEAAABCAAAAQwAAAEQAAABFAAAARgAAAEcAAABIAAAASQAAAEoAAABLAAAATAAAAE0AAABOAAAATwAAAA=="},"shape":[40],"dtype":"int32","order":"little"}],["ID",{"type":"ndarray","array":["III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV"],"shape":[40],"dtype":"object","order":"little"}],["impact force / body weight",{"type":"ndarray","array":{"type":"bytes","data":"w/UoXI/CE0CkcD0K16MKQOF6FK5H4QRA9ihcj8L1GECkcD0K16MTQIXrUbgehRFASOF6FK5HEUCkcD0K16MSQPYoXI/C9RlAmpmZmZmZDUCF61G4HoUNQClcj8L1KBRA9ihcj8L1E0CF61G4HoURQDMzMzMzMxFAuB6F61G4CEDXo3A9CtcJQMP1KFyPwhNAZmZmZmZmFUBxPQrXo3APQHsUrkfhevQ/zczMzMzM8D/sUbgehevRP/YoXI/C9QpAH4XrUbgeBUDD9Shcj8LFP+xRuB6F6w1APQrXo3A9AEBxPQrXo3AVQFyPwvUoXBFAhetRuB6F9z+F61G4HoX3P8P1KFyPwhFAuB6F61G4DkBI4XoUrkcYQAAAAAAAAAhAAAAAAAAAEkAzMzMzMzMVQEjhehSuRxJA16NwPQrXC0A="},"shape":[40],"dtype":"float64","order":"little"}],["age",{"type":"ndarray","array":["juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile"],"shape":[40],"dtype":"object","order":"little"}],["cat",{"type":"ndarray","array":["III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","III","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV","IV"],"shape":[40],"dtype":"object","order":"little"}],["__label",{"type":"ndarray","array":["juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile","juvenile"],"shape":[40],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1057","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1058"}}},"glyph":{"type":"object","name":"Scatter","id":"p1053","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1034"}},"line_color":{"type":"value","value":"#ff7e0e"},"fill_color":{"type":"value","value":"#ff7e0e"},"hatch_color":{"type":"value","value":"#ff7e0e"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1054","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1034"}},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#ff7e0e"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#ff7e0e"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1055","attributes":{"x":{"type":"field","field":"impact force / body weight"},"y":{"type":"field","field":"cat","transform":{"id":"p1034"}},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#ff7e0e"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#ff7e0e"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1010","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1023"},{"type":"object","name":"WheelZoomTool","id":"p1024","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1025","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1026","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1031"},{"type":"object","name":"ResetTool","id":"p1032"},{"type":"object","name":"HelpTool","id":"p1033"}]}},"toolbar_location":"above","left":[{"type":"object","name":"CategoricalAxis","id":"p1018","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1019"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1020"},"axis_label":"frog ID","major_label_policy":{"type":"object","name":"AllLabels","id":"p1021"}}}],"right":[{"type":"object","name":"Legend","id":"p1059","attributes":{"location":"center","title":"age","click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p1060","attributes":{"label":{"type":"value","value":"adult"},"renderers":[{"id":"p1044"}]}},{"type":"object","name":"LegendItem","id":"p1061","attributes":{"label":{"type":"value","value":"juvenile"},"renderers":[{"id":"p1056"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1013","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1014","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1015"},"axis_label":"impact force / body weight (mN/g)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1016"}}}],"center":[{"type":"object","name":"Grid","id":"p1017","attributes":{"axis":{"id":"p1013"}}},{"type":"object","name":"Grid","id":"p1022","attributes":{"dimension":1,"axis":{"id":"p1018"},"grid_line_color":null}}],"frame_width":375,"frame_height":275}}]}};
+  const render_items = [{"docid":"86463620-f0f3-451a-8618-e8a937064811","roots":{"p1002":"d7f5b7de-0d1d-409e-a255-3715591b530b"},"root_ids":["p1002"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
     embed_document(root);
@@ -2347,16 +1009,16 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-<p>Apparently Frog III consistently packs a powerful punch, er…. tongue.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+<p>Apparently Frog III consistently packs a powerful punch, er…. tongue, for its body weight.</p>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
-<span class="o">%</span><span class="k">watermark</span> -v -p numpy,pandas,bokeh,iqplot,jupyterlab
+<span class="o">%</span><span class="k">watermark</span> -v -p numpy,polars,bokeh,iqplot,jupyterlab
 </pre></div>
 </div>
 </div>
@@ -2366,39 +1028,39 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.11.5
-IPython version      : 8.15.0
+Python version       : 3.12.4
+IPython version      : 8.25.0
 
-numpy     : 1.24.3
-pandas    : 2.0.3
-bokeh     : 3.2.1
-iqplot    : 0.3.5
-jupyterlab: 4.0.6
+numpy     : 1.26.4
+polars    : 1.6.0
+bokeh     : 3.4.1
+iqplot    : 0.3.7
+jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dataframe_indexes.html" class="btn btn-neutral float-left" title="Using data frame indexes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="melting.html" class="btn btn-neutral float-right" title="Melting a data frame" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="manipulating_data_frames_intro.html" class="btn btn-neutral float-left" title="Manipulating data frames and wrangling data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="unpivoting.html" class="btn btn-neutral float-right" title="Making a data frame tall" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 29, 2023.
+      <span class="lastupdated">Last updated on Sep 19, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11d86ce10> 
+   <jinja2.runtime.BlockReference object at 0x12b957dd0> 
 
-<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parallel bootstrap calculations &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="E7. To be completed after lesson 21" href="../../lesson_exercises/exercise_07.html" />
+    <link rel="next" title="22. Implementation of MLE for variate-covariate models" href="../22/variate_covariate_implementation.html" />
     <link rel="prev" title="Confidence region and confidence intervals for a MLE" href="mle_confidence_intervals.html" /> 
 </head>
 
@@ -59,25 +62,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/index.html">10. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Intro to probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../12/random_number_generation.html">12. Random number generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13/prob_dists.html">13. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Plug-in estimates and confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 15</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Null hypothesis significance testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Parametric inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Numerical MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 19</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">21. Confidence intervals of MLEs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mle_confidence_intervals.html">MLE confidence intervals</a></li>
@@ -91,45 +92,26 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 25</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Schedule overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#homework-due-dates">Homework due dates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html#exam-dates">Exam dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#lesson-exercise-due-dates">Lesson exercise due dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#weekly-schedule">Weekly schedule</a></li>
 </ul>
@@ -140,6 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#submission-of-assignments">Submission of assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lessons-and-lesson-exercises">Lessons and lesson exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#homework">Homework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#exams">Exams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#grading">Grading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
@@ -179,8 +162,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Parallel-bootstrap-calculations">
-<h1>Parallel bootstrap calculations<a class="headerlink" href="#Parallel-bootstrap-calculations" title="Permalink to this heading"></a></h1>
+  <section id="Parallel-bootstrap-calculations">
+<h1>Parallel bootstrap calculations<a class="headerlink" href="#Parallel-bootstrap-calculations" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -194,7 +177,7 @@
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
 <span class="kn">import</span> <span class="nn">scipy.optimize</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
 
@@ -212,17 +195,17 @@
 </div>
 <div class="output_area rendered_html docutils container">
 <style>
-        .bk-notebook-logo {
-            display: block;
-            width: 20px;
-            height: 20px;
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
-        }
-    </style>
-    <div>
-        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="bbc03a06-f89e-4d64-b28d-3e7e0a077a82">Loading BokehJS ...</span>
-    </div></div>
+    .bk-notebook-logo {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+    }
+</style>
+<div>
+    <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+    <span id="f16abbf1-6d2f-4ae8-b9e0-279389ad3b77">Loading BokehJS ...</span>
+</div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -231,6 +214,7 @@
 <div class="output_javascript"></div>
 <script type="text/javascript">
 var element = document.currentScript.previousSibling.previousSibling;
+'use strict';
 (function(root) {
   function now() {
     return new Date();
@@ -260,14 +244,22 @@ const JS_MIME_TYPE = 'application/javascript';
    * Handle when an output is cleared or removed
    */
   function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
     const cell = handle.cell;
 
     const id = cell.output_area._bokeh_element_id;
     const server_id = cell.output_area._bokeh_server_id;
+
     // Clean up Bokeh references
-    if (id != null && id in Bokeh.index) {
-      Bokeh.index[id].model.document.clear();
-      delete Bokeh.index[id];
+    if (id != null) {
+      drop(id)
     }
 
     if (server_id !== undefined) {
@@ -276,11 +268,8 @@ const JS_MIME_TYPE = 'application/javascript';
       cell.notebook.kernel.execute(cmd_clean, {
         iopub: {
           output: function(msg) {
-            const id = msg.content.text.trim();
-            if (id in Bokeh.index) {
-              Bokeh.index[id].model.document.clear();
-              delete Bokeh.index[id];
-            }
+            const id = msg.content.text.trim()
+            drop(id)
           }
         }
       });
@@ -387,17 +376,42 @@ const JS_MIME_TYPE = 'application/javascript';
      "</code>\n"+
      "</div>"}};
 
-  function display_loaded() {
-    const el = document.getElementById("bbc03a06-f89e-4d64-b28d-3e7e0a077a82");
+  function display_loaded(error = null) {
+    const el = document.getElementById("f16abbf1-6d2f-4ae8-b9e0-279389ad3b77");
     if (el != null) {
-      el.textContent = "BokehJS is loading...";
-    }
-    if (root.Bokeh !== undefined) {
-      if (el != null) {
-        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
       }
     } else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(display_loaded, 100)
+      setTimeout(() => display_loaded(error), 100);
     }
   }
 
@@ -471,7 +485,7 @@ const JS_MIME_TYPE = 'application/javascript';
     document.body.appendChild(element);
   }
 
-  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.2.1.min.js", "https://unpkg.com/@holoviz/panel@1.2.1/dist/panel.min.js"];
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js", "https://unpkg.com/@holoviz/panel@1.4.4/dist/panel.min.js"];
   const css_urls = [];
 
   const inline_js = [    function(Bokeh) {
@@ -483,10 +497,13 @@ function(Bokeh) {
 
   function run_inline_js() {
     if (root.Bokeh !== undefined || force === true) {
-          for (let i = 0; i < inline_js.length; i++) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
       inline_js[i].call(root, root.Bokeh);
     }
-if (force === true) {
+
+      } catch (error) {display_loaded(error);throw error;
+      }if (force === true) {
         display_loaded();
       }} else if (Date.now() < root._bokeh_timeout) {
       setTimeout(run_inline_js, 100);
@@ -494,7 +511,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("bbc03a06-f89e-4d64-b28d-3e7e0a077a82")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("f16abbf1-6d2f-4ae8-b9e0-279389ad3b77")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -517,7 +534,7 @@ if (force === true) {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;singer_transcript_counts.csv&quot;</span><span class="p">),</span> <span class="n">comment</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;singer_transcript_counts.csv&quot;</span><span class="p">),</span> <span class="n">comment_prefix</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -557,8 +574,8 @@ if (force === true) {
 </pre></div>
 </div>
 </div>
-<div class="section" id="Explicit-RNGs">
-<h2>Explicit RNGs<a class="headerlink" href="#Explicit-RNGs" title="Permalink to this heading"></a></h2>
+<section id="Explicit-RNGs">
+<h2>Explicit RNGs<a class="headerlink" href="#Explicit-RNGs" title="Link to this heading"></a></h2>
 <p>When we parallelize the calculation, we have to be very careful about the random number generators we use. If we define a random number generator globally with <code class="docutils literal notranslate"><span class="pre">rng</span> <span class="pre">=</span> <span class="pre">np.random.default_rng()</span></code>, then each parallel process will use the same sequence of pseudorandom numbers. We therefore need to make a new RNG for each of the parallel processes. As a result, we need to explicitly supply a random number generator to the function we use to generate samples. This changes the call signature to include
 the RNG, but requires no other changes.</p>
 <div class="nbinput nblast docutils container">
@@ -629,7 +646,7 @@ the RNG, but requires no other changes.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bs_reps</span> <span class="o">=</span> <span class="n">_draw_parametric_bs_reps_mle</span><span class="p">(</span>
-    <span class="n">mle_iid_nbinom</span><span class="p">,</span> <span class="n">gen_nbinom</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nanog&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">mle_iid_nbinom</span><span class="p">,</span> <span class="n">gen_nbinom</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nanog&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -639,17 +656,14 @@ the RNG, but requires no other changes.</p>
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████████████████████████████████████████████████████████████████| 100/100 [00:01&lt;00:00, 56.53it/s]
+100%|███████████████████████████████████████████████████████████████| 100/100 [00:01&lt;00:00, 87.95it/s]
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Enabling-parallelization">
-<h2>Enabling parallelization<a class="headerlink" href="#Enabling-parallelization" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Enabling-parallelization">
+<h2>Enabling parallelization<a class="headerlink" href="#Enabling-parallelization" title="Link to this heading"></a></h2>
 <p>To enable multiple cores to draw bootstrap replicates, we could use Python’s built-in <a class="reference external" href="https://docs.python.org/3.11/library/multiprocessing.html">multiprocessing module</a>. This module has <a class="reference external" href="https://github.com/ipython/ipython/issues/12396">some problems running with Jupyter notebooks on some OSs</a>, though. As a drop-in replacement, we could use Mike McKerns’s <a class="reference external" href="https://github.com/uqfoundation/multiprocess">multiprocess package</a>, which offers improvements on the built-in multiprocessing
-module. You can install multiprocess with</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install --upgrade multiprocess
-</pre></div>
-</div>
+module.</p>
 <p>To enable seamless switching between these two multiprocessing packages, I included the following import statement.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">multiprocess</span>
@@ -831,10 +845,10 @@ module. You can install multiprocess with</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-10
+8
 </pre></div></div>
 </div>
-<p>My computer has ten cores; I will therefore use nine cores. And now that I am unleashing nine cores on the problem, I will take 10,000 replicates again, and this time it will only take about 1/9 as long as it did the first time I did the calculation.</p>
+<p>My computer has eight cores; I will therefore use seven cores. And now that I am unleashing nine cores on the problem, I will take 10,000 replicates again, and this time it will only take about 1/9 as long as it did the first time I did the calculation.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
@@ -842,10 +856,10 @@ module. You can install multiprocess with</p>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bs_reps</span> <span class="o">=</span> <span class="n">draw_parametric_bs_reps_mle</span><span class="p">(</span>
     <span class="n">mle_iid_nbinom</span><span class="p">,</span>
     <span class="n">gen_nbinom</span><span class="p">,</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nanog&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nanog&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
     <span class="n">args</span><span class="o">=</span><span class="p">(),</span>
     <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
     <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -856,15 +870,13 @@ module. You can install multiprocess with</p>
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:27&lt;00:00, 39.80it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.63it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.44it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.44it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.43it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.41it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.26it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.09it/s]
-100%|████████████████████████████████████████████████████████████████████| 1112/1112 [00:28&lt;00:00, 39.10it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26&lt;00:00, 54.90it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26&lt;00:00, 54.66it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26&lt;00:00, 54.60it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26&lt;00:00, 54.43it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26&lt;00:00, 54.41it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26&lt;00:00, 54.32it/s]
+100%|█████████████████████████████████████████████████████████████| 1432/1432 [00:26&lt;00:00, 54.39it/s]
 </pre></div></div>
 </div>
 <p>From these replicates, we can compute the confidence intervals for <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b\)</span> for Nanog.</p>
@@ -882,13 +894,13 @@ module. You can install multiprocess with</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[ 1.09413461, 56.83813835],
-       [ 1.48656415, 82.87410514]])
+array([[ 1.09248122, 56.62316902],
+       [ 1.49371231, 82.69216558]])
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Parameter-estimation-for-all-genes">
-<h2>Parameter estimation for all genes<a class="headerlink" href="#Parameter-estimation-for-all-genes" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Parameter-estimation-for-all-genes">
+<h2>Parameter estimation for all genes<a class="headerlink" href="#Parameter-estimation-for-all-genes" title="Link to this heading"></a></h2>
 <p>We are now empowered to compute the MLE and confidence intervals for all four genes. We will do so with parametric bootstrap. We can ignore the warnings, as the occur when the solver attempts to try illegal (negative) parameter values. Powell’s method is immune to this issue.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
@@ -897,26 +909,32 @@ array([[ 1.09413461, 56.83813835],
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nanog&quot;</span><span class="p">,</span> <span class="s2">&quot;Prdm14&quot;</span><span class="p">,</span> <span class="s2">&quot;Rest&quot;</span><span class="p">,</span> <span class="s2">&quot;Rex1&quot;</span><span class="p">]</span>
 
 <span class="c1"># Data frame to store results</span>
-<span class="n">df_mle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gene&quot;</span><span class="p">,</span> <span class="s2">&quot;parameter&quot;</span><span class="p">,</span> <span class="s2">&quot;mle&quot;</span><span class="p">,</span> <span class="s2">&quot;conf_int_low&quot;</span><span class="p">,</span> <span class="s2">&quot;conf_int_high&quot;</span><span class="p">]</span>
+<span class="n">df_mle</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">schema</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;gene&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;parameter&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;mle&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;conf_int_low&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;conf_int_high&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span>
+    <span class="p">]</span>
 <span class="p">)</span>
 
 <span class="c1"># Perform MLE for each gene</span>
 <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">genes</span><span class="p">):</span>
-    <span class="n">mle</span> <span class="o">=</span> <span class="n">mle_iid_nbinom</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">gene</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">mle</span> <span class="o">=</span> <span class="n">mle_iid_nbinom</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">gene</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
 
     <span class="n">bs_reps</span> <span class="o">=</span> <span class="n">draw_parametric_bs_reps_mle</span><span class="p">(</span>
         <span class="n">mle_iid_nbinom</span><span class="p">,</span>
         <span class="n">gen_nbinom</span><span class="p">,</span>
-        <span class="n">df</span><span class="p">[</span><span class="n">gene</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">gene</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
         <span class="n">args</span><span class="o">=</span><span class="p">(),</span>
         <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
         <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">conf_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">bs_reps</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="n">sub_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">sub_df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="p">{</span>
             <span class="s2">&quot;gene&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">gene</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
             <span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
@@ -925,7 +943,7 @@ array([[ 1.09413461, 56.83813835],
             <span class="s2">&quot;conf_int_high&quot;</span><span class="p">:</span> <span class="n">conf_int</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span>
         <span class="p">}</span>
     <span class="p">)</span>
-    <span class="n">df_mle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_mle</span><span class="p">,</span> <span class="n">sub_df</span><span class="p">])</span>
+    <span class="n">df_mle</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_mle</span><span class="p">,</span> <span class="n">sub_df</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -934,7 +952,7 @@ array([[ 1.09413461, 56.83813835],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████████████████████████████████████████████████████████████████████| 4/4 [01:57&lt;00:00, 29.46s/it]
+100%|███████████████████████████████████████████████████████████████████| 4/4 [01:57&lt;00:00, 29.34s/it]
 </pre></div></div>
 </div>
 <p>We now have a data frame with the results from our statistical inference. Let’s take a look.</p>
@@ -951,111 +969,26 @@ array([[ 1.09413461, 56.83813835],
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>gene</th>
-      <th>parameter</th>
-      <th>mle</th>
-      <th>conf_int_low</th>
-      <th>conf_int_high</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Nanog</td>
-      <td>alpha</td>
-      <td>1.263097</td>
-      <td>1.096059</td>
-      <td>1.490806</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Nanog</td>
-      <td>b</td>
-      <td>69.347842</td>
-      <td>56.832672</td>
-      <td>82.420965</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>Prdm14</td>
-      <td>alpha</td>
-      <td>0.552886</td>
-      <td>0.454121</td>
-      <td>0.687130</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Prdm14</td>
-      <td>b</td>
-      <td>8.200636</td>
-      <td>6.161311</td>
-      <td>10.512314</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>Rest</td>
-      <td>alpha</td>
-      <td>4.530335</td>
-      <td>3.874058</td>
-      <td>5.445957</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Rest</td>
-      <td>b</td>
-      <td>16.543054</td>
-      <td>13.589208</td>
-      <td>19.408816</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>Rex1</td>
-      <td>alpha</td>
-      <td>1.634562</td>
-      <td>1.415841</td>
-      <td>1.940372</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Rex1</td>
-      <td>b</td>
-      <td>84.680915</td>
-      <td>69.762021</td>
-      <td>99.774827</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (8, 5)</small><table border="1" class="dataframe"><thead><tr><th>gene</th><th>parameter</th><th>mle</th><th>conf_int_low</th><th>conf_int_high</th></tr><tr><td>str</td><td>str</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>&quot;Nanog&quot;</td><td>&quot;alpha&quot;</td><td>1.263097</td><td>1.086924</td><td>1.490689</td></tr><tr><td>&quot;Nanog&quot;</td><td>&quot;b&quot;</td><td>69.347842</td><td>57.000678</td><td>82.855546</td></tr><tr><td>&quot;Prdm14&quot;</td><td>&quot;alpha&quot;</td><td>0.552886</td><td>0.454054</td><td>0.683784</td></tr><tr><td>&quot;Prdm14&quot;</td><td>&quot;b&quot;</td><td>8.200636</td><td>6.208957</td><td>10.538376</td></tr><tr><td>&quot;Rest&quot;</td><td>&quot;alpha&quot;</td><td>4.530335</td><td>3.861675</td><td>5.444188</td></tr><tr><td>&quot;Rest&quot;</td><td>&quot;b&quot;</td><td>16.543054</td><td>13.667831</td><td>19.445975</td></tr><tr><td>&quot;Rex1&quot;</td><td>&quot;alpha&quot;</td><td>1.634562</td><td>1.41371</td><td>1.926967</td></tr><tr><td>&quot;Rex1&quot;</td><td>&quot;b&quot;</td><td>84.680915</td><td>69.914502</td><td>100.022393</td></tr></tbody></table></div></div>
 </div>
 <p>Finally, we can make a plot of the MLEs of the parameter values with confidence interbals.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_df</span> <span class="o">=</span> <span class="n">df_mle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_mle</span><span class="p">[</span><span class="s2">&quot;parameter&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_df</span> <span class="o">=</span> <span class="n">df_mle</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;parameter&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;alpha&quot;</span><span class="p">)</span>
 <span class="n">summaries</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;estimate&quot;</span><span class="p">:</span> <span class="n">est</span><span class="p">,</span> <span class="s2">&quot;conf_int&quot;</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">est</span><span class="p">,</span> <span class="n">conf</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
-        <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;mle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-        <span class="n">sub_df</span><span class="p">[[</span><span class="s2">&quot;conf_int_low&quot;</span><span class="p">,</span> <span class="s2">&quot;conf_int_high&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;mle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+        <span class="n">sub_df</span><span class="p">[[</span><span class="s2">&quot;conf_int_low&quot;</span><span class="p">,</span> <span class="s2">&quot;conf_int_high&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
         <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;gene&quot;</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="p">]</span>
@@ -1066,12 +999,12 @@ array([[ 1.09413461, 56.83813835],
         <span class="n">frame_height</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span>
     <span class="p">)</span>
 
-<span class="n">sub_df</span> <span class="o">=</span> <span class="n">df_mle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_mle</span><span class="p">[</span><span class="s2">&quot;parameter&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">sub_df</span> <span class="o">=</span> <span class="n">df_mle</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;parameter&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;b&quot;</span><span class="p">)</span>
 <span class="n">summaries</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;estimate&quot;</span><span class="p">:</span> <span class="n">est</span><span class="p">,</span> <span class="s2">&quot;conf_int&quot;</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">est</span><span class="p">,</span> <span class="n">conf</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
-        <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;mle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-        <span class="n">sub_df</span><span class="p">[[</span><span class="s2">&quot;conf_int_low&quot;</span><span class="p">,</span> <span class="s2">&quot;conf_int_high&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;mle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+        <span class="n">sub_df</span><span class="p">[[</span><span class="s2">&quot;conf_int_low&quot;</span><span class="p">,</span> <span class="s2">&quot;conf_int_high&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
         <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;gene&quot;</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="p">]</span>
@@ -1089,7 +1022,7 @@ array([[ 1.09413461, 56.83813835],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div id="bea5ca5b-3bb9-42b1-9018-f3404ff5ed3f" data-root-id="p1205" style="display: contents;"></div></div>
+<div id="a8825757-94cd-48c1-b825-876b13ccb680" data-root-id="p1213" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -1100,9 +1033,9 @@ array([[ 1.09413461, 56.83813835],
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"cecaa4c5-53ac-470b-9f58-9ae76c8478a2":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Column","id":"p1205","attributes":{"children":[{"type":"object","name":"Figure","id":"p1002","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1004"},"y_range":{"type":"object","name":"FactorRange","id":"p1011","attributes":{"factors":["Rex1","Rest","Prdm14","Nanog"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1012"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1013"},"title":{"type":"object","name":"Title","id":"p1009"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1037","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1031","attributes":{"selected":{"type":"object","name":"Selection","id":"p1032","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1033"},"data":{"type":"map","entries":[["x",[1.2630973722818943]],["y",["Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1038","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1039"}}},"glyph":{"type":"object","name":"Circle","id":"p1034","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1035","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1036","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1046","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1040","attributes":{"selected":{"type":"object","name":"Selection","id":"p1041","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1042"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"SPbBJHWJ8T/z8vIuV9r3Pw=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Nanog","Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1047","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1048"}}},"glyph":{"type":"object","name":"Line","id":"p1043","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1044","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1045","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1055","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1049","attributes":{"selected":{"type":"object","name":"Selection","id":"p1050","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1051"},"data":{"type":"map","entries":[["x",[0.5528859647659605]],["y",["Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1056","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1057"}}},"glyph":{"type":"object","name":"Circle","id":"p1052","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1053","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1054","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1064","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1058","attributes":{"selected":{"type":"object","name":"Selection","id":"p1059","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1060"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"cjxtZlIQ3T+quSmj+PzlPw=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Prdm14","Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1065","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1066"}}},"glyph":{"type":"object","name":"Line","id":"p1061","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1062","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1063","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1073","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1067","attributes":{"selected":{"type":"object","name":"Selection","id":"p1068","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1069"},"data":{"type":"map","entries":[["x",[4.530334884321037]],["y",["Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1074","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1075"}}},"glyph":{"type":"object","name":"Circle","id":"p1070","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1071","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1072","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1082","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1076","attributes":{"selected":{"type":"object","name":"Selection","id":"p1077","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1078"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"IC0sJBL+DkDJQWAJqcgVQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rest","Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1083","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1084"}}},"glyph":{"type":"object","name":"Line","id":"p1079","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1080","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1081","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1091","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1085","attributes":{"selected":{"type":"object","name":"Selection","id":"p1086","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1087"},"data":{"type":"map","entries":[["x",[1.6345624303476392]],["y",["Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1092","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1093"}}},"glyph":{"type":"object","name":"Circle","id":"p1088","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1089","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1090","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1100","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1094","attributes":{"selected":{"type":"object","name":"Selection","id":"p1095","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1096"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"5mPP8Uin9j/KiKIJwwv/Pw=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rex1","Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1101","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1102"}}},"glyph":{"type":"object","name":"Line","id":"p1097","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1098","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1099","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1010","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1024"},{"type":"object","name":"WheelZoomTool","id":"p1025"},{"type":"object","name":"BoxZoomTool","id":"p1026","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1027","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1028"},{"type":"object","name":"ResetTool","id":"p1029"},{"type":"object","name":"HelpTool","id":"p1030"}]}},"toolbar_location":"above","left":[{"type":"object","name":"CategoricalAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1020"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1021"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1022"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1014","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1015","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1016"},"axis_label":"\u03b1*","major_label_policy":{"type":"object","name":"AllLabels","id":"p1017"}}}],"center":[{"type":"object","name":"Grid","id":"p1018","attributes":{"axis":{"id":"p1014"}}},{"type":"object","name":"Grid","id":"p1023","attributes":{"dimension":1,"axis":{"id":"p1019"}}}],"frame_width":450,"frame_height":75}},{"type":"object","name":"Spacer","id":"p1204","attributes":{"height":20}},{"type":"object","name":"Figure","id":"p1103","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1105"},"y_range":{"type":"object","name":"FactorRange","id":"p1112","attributes":{"factors":["Rex1","Rest","Prdm14","Nanog"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1113"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1114"},"title":{"type":"object","name":"Title","id":"p1110"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1138","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1132","attributes":{"selected":{"type":"object","name":"Selection","id":"p1133","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1134"},"data":{"type":"map","entries":[["x",[69.34784233306983]],["y",["Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1139","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1140"}}},"glyph":{"type":"object","name":"Circle","id":"p1135","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1136","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1137","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1147","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1141","attributes":{"selected":{"type":"object","name":"Selection","id":"p1142","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1143"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"WvSg+5RqTEA6e6MW8ZpUQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Nanog","Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1148","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1149"}}},"glyph":{"type":"object","name":"Line","id":"p1144","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1145","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1146","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1156","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1150","attributes":{"selected":{"type":"object","name":"Selection","id":"p1151","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1152"},"data":{"type":"map","entries":[["x",[8.200635707904203]],["y",["Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1157","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1158"}}},"glyph":{"type":"object","name":"Circle","id":"p1153","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1154","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1155","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1165","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1159","attributes":{"selected":{"type":"object","name":"Selection","id":"p1160","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1161"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"8DNDmC6lGEBv8YgPTgYlQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Prdm14","Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1166","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1167"}}},"glyph":{"type":"object","name":"Line","id":"p1162","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1163","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1164","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1174","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1168","attributes":{"selected":{"type":"object","name":"Selection","id":"p1169","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1170"},"data":{"type":"map","entries":[["x",[16.54305361995114]],["y",["Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1175","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1176"}}},"glyph":{"type":"object","name":"Circle","id":"p1171","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1172","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1173","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1183","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1177","attributes":{"selected":{"type":"object","name":"Selection","id":"p1178","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1179"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"nKgOu6wtK0DnHuklqGgzQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rest","Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1184","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1185"}}},"glyph":{"type":"object","name":"Line","id":"p1180","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1181","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1182","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1192","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1186","attributes":{"selected":{"type":"object","name":"Selection","id":"p1187","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1188"},"data":{"type":"map","entries":[["x",[84.68091531313344]],["y",["Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1193","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1194"}}},"glyph":{"type":"object","name":"Circle","id":"p1189","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Circle","id":"p1190","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Circle","id":"p1191","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1201","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1195","attributes":{"selected":{"type":"object","name":"Selection","id":"p1196","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1197"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"1X0G9cRwUUCfmI7DlvFYQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rex1","Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1202","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1203"}}},"glyph":{"type":"object","name":"Line","id":"p1198","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1199","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1200","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1111","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1125"},{"type":"object","name":"WheelZoomTool","id":"p1126"},{"type":"object","name":"BoxZoomTool","id":"p1127","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1128","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1129"},{"type":"object","name":"ResetTool","id":"p1130"},{"type":"object","name":"HelpTool","id":"p1131"}]}},"toolbar_location":"above","left":[{"type":"object","name":"CategoricalAxis","id":"p1120","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1121"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1122"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1123"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1115","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1116","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1117"},"axis_label":"b*","major_label_policy":{"type":"object","name":"AllLabels","id":"p1118"}}}],"center":[{"type":"object","name":"Grid","id":"p1119","attributes":{"axis":{"id":"p1115"}}},{"type":"object","name":"Grid","id":"p1124","attributes":{"dimension":1,"axis":{"id":"p1120"}}}],"frame_width":450,"frame_height":75}}]}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}]}};
-  const render_items = [{"docid":"cecaa4c5-53ac-470b-9f58-9ae76c8478a2","roots":{"p1205":"bea5ca5b-3bb9-42b1-9018-f3404ff5ed3f"},"root_ids":["p1205"]}];
-  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  const docs_json = {"09067014-d6aa-47c8-8ea7-9a6e9fca6ec3":{"version":"3.4.1","title":"Bokeh Application","roots":[{"type":"object","name":"Column","id":"p1213","attributes":{"children":[{"type":"object","name":"Figure","id":"p1002","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1004"},"y_range":{"type":"object","name":"FactorRange","id":"p1011","attributes":{"factors":["Rex1","Rest","Prdm14","Nanog"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1012"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1013"},"title":{"type":"object","name":"Title","id":"p1009"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1041","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1035","attributes":{"selected":{"type":"object","name":"Selection","id":"p1036","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1037"},"data":{"type":"map","entries":[["x",[1.2630973722808048]],["y",["Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1042","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1043"}}},"glyph":{"type":"object","name":"Scatter","id":"p1038","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1039","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1040","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1050","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1044","attributes":{"selected":{"type":"object","name":"Selection","id":"p1045","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1046"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"Z81Dxgpk8T+Ml+g43Nn3Pw=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Nanog","Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1051","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1052"}}},"glyph":{"type":"object","name":"Line","id":"p1047","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1048","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1049","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1059","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1053","attributes":{"selected":{"type":"object","name":"Selection","id":"p1054","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1055"},"data":{"type":"map","entries":[["x",[0.5528859648100356]],["y",["Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1060","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1061"}}},"glyph":{"type":"object","name":"Scatter","id":"p1056","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1057","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1058","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1068","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1062","attributes":{"selected":{"type":"object","name":"Selection","id":"p1063","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1064"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"2lCBZzcP3T9zmw5kjuHlPw=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Prdm14","Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1069","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1070"}}},"glyph":{"type":"object","name":"Line","id":"p1065","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1066","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1067","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1077","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1071","attributes":{"selected":{"type":"object","name":"Selection","id":"p1072","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1073"},"data":{"type":"map","entries":[["x",[4.530334885171684]],["y",["Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1078","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1079"}}},"glyph":{"type":"object","name":"Scatter","id":"p1074","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1075","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1076","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1086","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1080","attributes":{"selected":{"type":"object","name":"Selection","id":"p1081","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1082"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"hT8dFLbkDkAtQlEq2cYVQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rest","Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1087","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1088"}}},"glyph":{"type":"object","name":"Line","id":"p1083","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1084","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1085","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1095","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1089","attributes":{"selected":{"type":"object","name":"Selection","id":"p1090","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1091"},"data":{"type":"map","entries":[["x",[1.6345624303464514]],["y",["Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1096","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1097"}}},"glyph":{"type":"object","name":"Scatter","id":"p1092","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1093","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1094","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1104","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1098","attributes":{"selected":{"type":"object","name":"Selection","id":"p1099","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1100"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"71h3+42e9j9zdNdp29T+Pw=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rex1","Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1105","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1106"}}},"glyph":{"type":"object","name":"Line","id":"p1101","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1102","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1103","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1010","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1024"},{"type":"object","name":"WheelZoomTool","id":"p1025","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1026","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1027","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1032"},{"type":"object","name":"ResetTool","id":"p1033"},{"type":"object","name":"HelpTool","id":"p1034"}]}},"toolbar_location":"above","left":[{"type":"object","name":"CategoricalAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1020"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1021"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1022"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1014","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1015","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1016"},"axis_label":"\u03b1*","major_label_policy":{"type":"object","name":"AllLabels","id":"p1017"}}}],"center":[{"type":"object","name":"Grid","id":"p1018","attributes":{"axis":{"id":"p1014"}}},{"type":"object","name":"Grid","id":"p1023","attributes":{"dimension":1,"axis":{"id":"p1019"}}}],"frame_width":450,"frame_height":75}},{"type":"object","name":"Spacer","id":"p1212","attributes":{"height":20}},{"type":"object","name":"Figure","id":"p1107","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1109"},"y_range":{"type":"object","name":"FactorRange","id":"p1116","attributes":{"factors":["Rex1","Rest","Prdm14","Nanog"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1117"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1118"},"title":{"type":"object","name":"Title","id":"p1114"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1146","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1140","attributes":{"selected":{"type":"object","name":"Selection","id":"p1141","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1142"},"data":{"type":"map","entries":[["x",[69.34784233619546]],["y",["Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1147","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1148"}}},"glyph":{"type":"object","name":"Scatter","id":"p1143","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1144","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1145","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1155","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1149","attributes":{"selected":{"type":"object","name":"Selection","id":"p1150","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1151"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"58BUNhaATEAYWxpCwbZUQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Nanog","Nanog"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1156","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1157"}}},"glyph":{"type":"object","name":"Line","id":"p1152","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1153","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1154","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1164","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1158","attributes":{"selected":{"type":"object","name":"Selection","id":"p1159","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1160"},"data":{"type":"map","entries":[["x",[8.200635706742071]],["y",["Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1165","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1166"}}},"glyph":{"type":"object","name":"Scatter","id":"p1161","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1162","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1163","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1173","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1167","attributes":{"selected":{"type":"object","name":"Selection","id":"p1168","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1169"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"6rq5xvjVGEAgApn9pRMlQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Prdm14","Prdm14"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1174","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1175"}}},"glyph":{"type":"object","name":"Line","id":"p1170","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1171","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1172","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1182","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1176","attributes":{"selected":{"type":"object","name":"Selection","id":"p1177","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1178"},"data":{"type":"map","entries":[["x",[16.54305361977416]],["y",["Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1183","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1184"}}},"glyph":{"type":"object","name":"Scatter","id":"p1179","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1180","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1181","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1191","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1185","attributes":{"selected":{"type":"object","name":"Selection","id":"p1186","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1187"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"y0ce8e1VK0Dq/95qK3IzQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rest","Rest"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1192","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1193"}}},"glyph":{"type":"object","name":"Line","id":"p1188","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1189","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1190","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}},{"type":"object","name":"GlyphRenderer","id":"p1200","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1194","attributes":{"selected":{"type":"object","name":"Selection","id":"p1195","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1196"},"data":{"type":"map","entries":[["x",[84.68091531208012]],["y",["Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1201","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1202"}}},"glyph":{"type":"object","name":"Scatter","id":"p1197","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1198","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1199","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"size":{"type":"value","value":5},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1209","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1203","attributes":{"selected":{"type":"object","name":"Selection","id":"p1204","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1205"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"gaW2M4d6UUDRRVvibgFZQA=="},"shape":[2],"dtype":"float64","order":"little"}],["y",["Rex1","Rex1"]]]}}},"view":{"type":"object","name":"CDSView","id":"p1210","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1211"}}},"glyph":{"type":"object","name":"Line","id":"p1206","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1207","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1208","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_width":3}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1115","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1129"},{"type":"object","name":"WheelZoomTool","id":"p1130","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1131","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1132","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1137"},{"type":"object","name":"ResetTool","id":"p1138"},{"type":"object","name":"HelpTool","id":"p1139"}]}},"toolbar_location":"above","left":[{"type":"object","name":"CategoricalAxis","id":"p1124","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1125"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1126"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1127"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1119","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1120","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1121"},"axis_label":"b*","major_label_policy":{"type":"object","name":"AllLabels","id":"p1122"}}}],"center":[{"type":"object","name":"Grid","id":"p1123","attributes":{"axis":{"id":"p1119"}}},{"type":"object","name":"Grid","id":"p1128","attributes":{"dimension":1,"axis":{"id":"p1124"}}}],"frame_width":450,"frame_height":75}}]}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"gap","kind":"Any","default":""},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"TemplateEditor1","properties":[{"name":"layout","kind":"Any","default":[]}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"value","kind":"Any","default":null}]}]}};
+  const render_items = [{"docid":"09067014-d6aa-47c8-8ea7-9a6e9fca6ec3","roots":{"p1213":"a8825757-94cd-48c1-b825-876b13ccb680"},"root_ids":["p1213"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
     embed_document(root);
@@ -1124,9 +1057,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Implementation-of-MLE-bootstrapping-in-the-bebi103-package">
-<h2>Implementation of MLE bootstrapping in the bebi103 package<a class="headerlink" href="#Implementation-of-MLE-bootstrapping-in-the-bebi103-package" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Implementation-of-MLE-bootstrapping-in-the-bebi103-package">
+<h2>Implementation of MLE bootstrapping in the bebi103 package<a class="headerlink" href="#Implementation-of-MLE-bootstrapping-in-the-bebi103-package" title="Link to this heading"></a></h2>
 <p>The functionality we have developed in this lesson for bootstrapping MLE estimates is available in the function <code class="docutils literal notranslate"><span class="pre">bebi103.bootstrap.draw_bs_reps_mle()</span></code>. It has call signature</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bebi103</span><span class="o">.</span><span class="n">draw_bs_reps_mle</span><span class="p">(</span>
     <span class="n">mle_fun</span><span class="p">,</span>
@@ -1158,10 +1091,10 @@ flexibility. The <code class="docutils literal notranslate"><span class="pre">be
 <span class="n">bs_reps</span> <span class="o">=</span> <span class="n">bebi103</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">draw_bs_reps_mle</span><span class="p">(</span>
     <span class="n">mle_iid_nbinom</span><span class="p">,</span>
     <span class="n">resample_fun</span><span class="p">,</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Nanog&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-    <span class="n">gen_args</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Nanog&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="p">),</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Nanog&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+    <span class="n">gen_args</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Nanog&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="p">),</span>
     <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
     <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1175,15 +1108,13 @@ flexibility. The <code class="docutils literal notranslate"><span class="pre">be
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.21it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 39.15it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 38.96it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 38.94it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 38.85it/s]
-100%|████████████████████████████████████████████████████████████████████| 1112/1112 [00:28&lt;00:00, 38.85it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 38.75it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 38.75it/s]
-100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28&lt;00:00, 38.36it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32&lt;00:00, 44.21it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32&lt;00:00, 44.06it/s]
+100%|█████████████████████████████████████████████████████████████| 1432/1432 [00:32&lt;00:00, 44.08it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32&lt;00:00, 43.70it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32&lt;00:00, 43.61it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32&lt;00:00, 43.54it/s]
+100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32&lt;00:00, 43.47it/s]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1192,20 +1123,20 @@ flexibility. The <code class="docutils literal notranslate"><span class="pre">be
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[ 1.05045444, 57.24063066],
-       [ 1.54491901, 83.02403084]])
+array([[ 1.05773093, 57.34137945],
+       [ 1.53909701, 82.40707761]])
 </pre></div></div>
 </div>
 <p>The confidence intervals are slightly different than in the parametric case, but are quite similar.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
-<span class="o">%</span><span class="k">watermark</span> -v -p multiprocess,numpy,scipy,pandas,tqdm,bokeh,bebi103,jupyterlab
+<span class="o">%</span><span class="k">watermark</span> -v -p multiprocess,numpy,scipy,polars,tqdm,bokeh,bebi103,jupyterlab
 </pre></div>
 </div>
 </div>
@@ -1215,42 +1146,42 @@ array([[ 1.05045444, 57.24063066],
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.11.4
-IPython version      : 8.12.0
+Python version       : 3.12.3
+IPython version      : 8.25.0
 
-multiprocess: 0.70.15
-numpy       : 1.24.3
-scipy       : 1.10.1
-pandas      : 1.5.3
-tqdm        : 4.65.0
-bokeh       : 3.2.1
-bebi103     : 0.1.17
-jupyterlab  : 4.0.4
+multiprocess: 0.70.16
+numpy       : 1.26.4
+scipy       : 1.13.1
+polars      : 1.1.0
+tqdm        : 4.66.4
+bokeh       : 3.4.1
+bebi103     : 0.1.21
+jupyterlab  : 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="mle_confidence_intervals.html" class="btn btn-neutral float-left" title="Confidence region and confidence intervals for a MLE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../lesson_exercises/exercise_07.html" class="btn btn-neutral float-right" title="E7. To be completed after lesson 21" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../22/variate_covariate_implementation.html" class="btn btn-neutral float-right" title="22. Implementation of MLE for variate-covariate models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 29, 2023.
+      <span class="lastupdated">Last updated on Sep 19, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x115e4ac10> 
+   <jinja2.runtime.BlockReference object at 0x12d255c70> 
 
-<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

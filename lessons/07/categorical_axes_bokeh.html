@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plots with categorical variables &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -59,7 +62,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">7. Exploratory data analysis, part 2</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Plots with categorical axes with Bokeh</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Types-of-data-for-plots">Types of data for plots</a></li>
@@ -80,61 +82,41 @@
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/index.html">10. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Intro to probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../12/random_number_generation.html">12. Random number generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13/prob_dists.html">13. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Plug-in estimates and confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 15</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Null hypothesis significance testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Parametric inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Numerical MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 19</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 25</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Schedule overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#homework-due-dates">Homework due dates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html#exam-dates">Exam dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#lesson-exercise-due-dates">Lesson exercise due dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#weekly-schedule">Weekly schedule</a></li>
 </ul>
@@ -145,6 +127,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#submission-of-assignments">Submission of assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lessons-and-lesson-exercises">Lessons and lesson exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#homework">Homework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#exams">Exams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#grading">Grading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
@@ -184,14 +167,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Plots-with-categorical-variables">
-<h1>Plots with categorical variables<a class="headerlink" href="#Plots-with-categorical-variables" title="Permalink to this heading"></a></h1>
+  <section id="Plots-with-categorical-variables">
+<h1>Plots with categorical variables<a class="headerlink" href="#Plots-with-categorical-variables" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
 
 <span class="kn">import</span> <span class="nn">bokeh.models</span>
 <span class="kn">import</span> <span class="nn">bokeh.plotting</span>
@@ -205,17 +188,17 @@
 </div>
 <div class="output_area rendered_html docutils container">
 <style>
-        .bk-notebook-logo {
-            display: block;
-            width: 20px;
-            height: 20px;
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
-        }
-    </style>
-    <div>
-        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="dd96a900-5f5a-4c3d-a058-3e7a32d20fac">Loading BokehJS ...</span>
-    </div></div>
+    .bk-notebook-logo {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+    }
+</style>
+<div>
+    <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+    <span id="c20a3b98-90e2-4510-b7d2-f4d3ea765ee1">Loading BokehJS ...</span>
+</div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -224,6 +207,7 @@
 <div class="output_javascript"></div>
 <script type="text/javascript">
 var element = document.currentScript.previousSibling.previousSibling;
+'use strict';
 (function(root) {
   function now() {
     return new Date();
@@ -253,14 +237,22 @@ const JS_MIME_TYPE = 'application/javascript';
    * Handle when an output is cleared or removed
    */
   function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
     const cell = handle.cell;
 
     const id = cell.output_area._bokeh_element_id;
     const server_id = cell.output_area._bokeh_server_id;
+
     // Clean up Bokeh references
-    if (id != null && id in Bokeh.index) {
-      Bokeh.index[id].model.document.clear();
-      delete Bokeh.index[id];
+    if (id != null) {
+      drop(id)
     }
 
     if (server_id !== undefined) {
@@ -269,11 +261,8 @@ const JS_MIME_TYPE = 'application/javascript';
       cell.notebook.kernel.execute(cmd_clean, {
         iopub: {
           output: function(msg) {
-            const id = msg.content.text.trim();
-            if (id in Bokeh.index) {
-              Bokeh.index[id].model.document.clear();
-              delete Bokeh.index[id];
-            }
+            const id = msg.content.text.trim()
+            drop(id)
           }
         }
       });
@@ -380,17 +369,42 @@ const JS_MIME_TYPE = 'application/javascript';
      "</code>\n"+
      "</div>"}};
 
-  function display_loaded() {
-    const el = document.getElementById("dd96a900-5f5a-4c3d-a058-3e7a32d20fac");
+  function display_loaded(error = null) {
+    const el = document.getElementById("c20a3b98-90e2-4510-b7d2-f4d3ea765ee1");
     if (el != null) {
-      el.textContent = "BokehJS is loading...";
-    }
-    if (root.Bokeh !== undefined) {
-      if (el != null) {
-        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
       }
     } else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(display_loaded, 100)
+      setTimeout(() => display_loaded(error), 100);
     }
   }
 
@@ -464,7 +478,7 @@ const JS_MIME_TYPE = 'application/javascript';
     document.body.appendChild(element);
   }
 
-  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.2.1.min.js"];
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js"];
   const css_urls = [];
 
   const inline_js = [    function(Bokeh) {
@@ -476,10 +490,13 @@ function(Bokeh) {
 
   function run_inline_js() {
     if (root.Bokeh !== undefined || force === true) {
-          for (let i = 0; i < inline_js.length; i++) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
       inline_js[i].call(root, root.Bokeh);
     }
-if (force === true) {
+
+      } catch (error) {display_loaded(error);throw error;
+      }if (force === true) {
         display_loaded();
       }} else if (Date.now() < root._bokeh_timeout) {
       setTimeout(run_inline_js, 100);
@@ -487,7 +504,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("dd96a900-5f5a-4c3d-a058-3e7a32d20fac")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("c20a3b98-90e2-4510-b7d2-f4d3ea765ee1")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -504,8 +521,8 @@ if (force === true) {
 }(window));
 </script></div>
 </div>
-<hr/><div class="section" id="Types-of-data-for-plots">
-<h2>Types of data for plots<a class="headerlink" href="#Types-of-data-for-plots" title="Permalink to this heading"></a></h2>
+<hr/><section id="Types-of-data-for-plots">
+<h2>Types of data for plots<a class="headerlink" href="#Types-of-data-for-plots" title="Link to this heading"></a></h2>
 <p>Let us first consider the different kinds of data we may encounter as we think about constructing a plot.</p>
 <ul class="simple">
 <li><p><strong>Quantitative</strong> data may have continuously varying (and therefore ordered) values.</p></li>
@@ -517,31 +534,36 @@ if (force === true) {
 <p>When we made scatter plots, both types of data were quantitative. We did actually incorporate categorical information in the form of colors of the glyph (insomniacs and normal sleepers being colored differently) and in tooltips.</p>
 <p>But what if we wanted a single type of measurement, such as percent correct in the facial identification, but were interested in delineating performance of insomniacs and normal sleepers. Here, we have the quantitative percent correct data and the categorical sleeper type. One of our axes is now categorical.</p>
 <p>Note that this kind of plot is commonly encountered in the biological sciences. We repeat a measurement many times for given test conditions and wish to compare the results. The different conditions are the categories, and the axis along which the conditions are represented is called a categorical axis. The quantitative axis contains the result of the measurements from each condition.</p>
-<hr /><p><em>The rest of this lesson is mostly for reference so you can see how to handle categorical axes with Bokeh. In practice, we will mostly be using</em><a class="reference external" href="http://iqplot.github.io/">iqplot</a><em>to do this and it is done for your automatically. You may therefore skip the rest of this notebook if you like.</em></p>
+<hr /><p><em>The rest of this lesson is mostly for reference so you can see how to handle categorical axes with Bokeh. In practice, we will mostly be using</em> <a class="reference external" href="http://iqplot.github.io/">iqplot</a> <em>to do this and it is done for your automatically. You may therefore skip the rest of this notebook if you like.</em></p>
 <p><em>That said, for some plotting applications, you may need to adjust details or do things outside of iqplot’s capabilities, so the contents of this lesson can be useful.</em></p>
-</div>
-<div class="section" id="Making-a-bar-graph-with-Bokeh">
-<h2>Making a bar graph with Bokeh<a class="headerlink" href="#Making-a-bar-graph-with-Bokeh" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Making-a-bar-graph-with-Bokeh">
+<h2>Making a bar graph with Bokeh<a class="headerlink" href="#Making-a-bar-graph-with-Bokeh" title="Link to this heading"></a></h2>
 <p>To demonstrate how to set up a categorical axis with Bokeh, I will make a bar graph of the mean percent correct for insomniacs and normal sleepers. But before I even begin this, I will give you the following piece of advice: <em>Don’t make bar graphs.</em> More on that in a moment.</p>
-<div class="section" id="Setting-up-a-data-frame-for-plotting">
-<h3>Setting up a data frame for plotting<a class="headerlink" href="#Setting-up-a-data-frame-for-plotting" title="Permalink to this heading"></a></h3>
+<section id="Setting-up-a-data-frame-for-plotting">
+<h3>Setting up a data frame for plotting<a class="headerlink" href="#Setting-up-a-data-frame-for-plotting" title="Link to this heading"></a></h3>
 <p>Before making a plot, we need to set up a data frame amenable for the type of plot we want. We start by reading in the data set and computing the <code class="docutils literal notranslate"><span class="pre">'insomnia'</span></code> column, which gives <code class="docutils literal notranslate"><span class="pre">True</span></code>s and <code class="docutils literal notranslate"><span class="pre">False</span></code>s, as we’ve done in the preceding parts of this lesson.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;gfmt_sleep.csv&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;insomnia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sci&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">16</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">null_values</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;sci&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
-<p>For convenience in plotting the categorical axis, we would rather not have the values on the axis be <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, but something more descriptive, like <em>insomniac</em> and <em>normal</em>. So, let’s make a column in the data frame, <code class="docutils literal notranslate"><span class="pre">'sleeper'</span></code> that has that for us. We use the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method of the data frame to apply a function that returns the string <code class="docutils literal notranslate"><span class="pre">'insomniac'</span></code> if the entry is in the <code class="docutils literal notranslate"><span class="pre">'insomnia'</span></code> column is <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">'normal'</span></code> otherwise.</p>
+<p>For convenience in plotting the categorical axis, we would rather not have the values on the axis be <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, but something more descriptive, like <em>insomniac</em> and <em>normal</em>. So, let’s make a column in the data frame, <code class="docutils literal notranslate"><span class="pre">'sleeper'</span></code> that has that for us. We can use the <code class="docutils literal notranslate"><span class="pre">replace_strict()</span></code> method, which take a dictionary as an argument, replacing all instances given by a key in the dictionary with the corresponding value. When using this method, it is good practice to specify the data
+type of the resulting column (though Polars will attempt to infer it).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sleeper&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;insomnia&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;insomniac&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="s2">&quot;normal&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">replace_strict</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;insomniac&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;normal&#39;</span><span class="p">},</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sleeper&#39;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -550,7 +572,7 @@ if (force === true) {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;sleeper&quot;</span><span class="p">)[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">&quot;sleeper&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;percent correct&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
 <span class="c1"># Take a look</span>
 <span class="n">df_mean</span>
@@ -562,47 +584,19 @@ if (force === true) {
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>sleeper</th>
-      <th>percent correct</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>insomniac</td>
-      <td>76.100000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>normal</td>
-      <td>81.461039</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>sleeper</th><th>percent correct</th></tr><tr><td>str</td><td>f64</td></tr></thead><tbody><tr><td>&quot;normal&quot;</td><td>81.461039</td></tr><tr><td>&quot;insomniac&quot;</td><td>76.1</td></tr></tbody></table></div></div>
 </div>
 <p>Now we’re ready to make the bar graph. Note that we now have only two data points that we are showing on the plot. We have decided to throw out a <strong>lot</strong> of information from the data we collected to display only two values. Does this strike you as a terrible idea? It should. <strong>Don’t do this.</strong> We’re just doing it to show how categorical axes are set up using Bokeh.</p>
-</div>
-<div class="section" id="Setting-up-categorical-axes">
-<h3>Setting up categorical axes<a class="headerlink" href="#Setting-up-categorical-axes" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Setting-up-categorical-axes">
+<h3>Setting up categorical axes<a class="headerlink" href="#Setting-up-categorical-axes" title="Link to this heading"></a></h3>
 <p>To set up a categorical axis, you need to specify the <code class="docutils literal notranslate"><span class="pre">x_range</span></code> (or <code class="docutils literal notranslate"><span class="pre">y_range</span></code> if you want the y-axis to be categorical) as a list with the categories you want on the axis when you instantiate the figure. I will make a horizontal bar graph, so I will specify <code class="docutils literal notranslate"><span class="pre">y_range</span></code>. I also want my quantitative axis (x in this case) to go from zero to 100, since it signifies a percent. Also, when I instantiate this figure, because it is not very tall and I do not want the reset tool cut off, I will also
 explicitly set the tools I want in the toolbar.</p>
 <div class="nbinput nblast docutils container">
@@ -614,20 +608,20 @@ explicitly set the tools I want in the toolbar.</p>
     <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
     <span class="n">x_axis_label</span><span class="o">=</span><span class="s2">&quot;percent correct&quot;</span><span class="p">,</span>
     <span class="n">x_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
-    <span class="n">y_range</span><span class="o">=</span><span class="n">df_mean</span><span class="p">[</span><span class="s2">&quot;sleeper&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
+    <span class="n">y_range</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;insomniac&#39;</span><span class="p">,</span> <span class="s1">&#39;normal&#39;</span><span class="p">],</span>
     <span class="n">tools</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>Now that we have the figure, we can put the bars on. The <code class="docutils literal notranslate"><span class="pre">p.hbar()</span></code> method populates the figure with horizontal bar glyphs. The <code class="docutils literal notranslate"><span class="pre">right</span></code> kwarg says what column of the data source dictates how far to the right to show the bar, while the <code class="docutils literal notranslate"><span class="pre">height</span></code> kwarg says how think the bars are.</p>
-<p>I will also ensure the quantitative axis starts at zero and turn off the grid lines on the categorical axis, which is commonly done.</p>
+<p>I will also turn off the grid lines on the categorical axis, which is commonly done.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">hbar</span><span class="p">(</span>
-    <span class="n">source</span><span class="o">=</span><span class="n">df_mean</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">df_mean</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sleeper&quot;</span><span class="p">,</span>
     <span class="n">right</span><span class="o">=</span><span class="s2">&quot;percent correct&quot;</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
@@ -644,7 +638,7 @@ explicitly set the tools I want in the toolbar.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div id="c0b3cbf1-489f-4eb9-8419-6c0762b0a03a" data-root-id="p1001" style="display: contents;"></div></div>
+<div id="ae913e74-0895-4973-9800-2739e999dc93" data-root-id="p1001" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -655,9 +649,9 @@ explicitly set the tools I want in the toolbar.</p>
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"f6a1cb2e-3637-4c2a-abe5-3eaa8a1c1eee":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1001","attributes":{"width":400,"height":200,"x_range":{"type":"object","name":"Range1d","id":"p1010","attributes":{"end":100}},"y_range":{"type":"object","name":"FactorRange","id":"p1011","attributes":{"factors":["insomniac","normal"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1012"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1013"},"title":{"type":"object","name":"Title","id":"p1008"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1034","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1025","attributes":{"selected":{"type":"object","name":"Selection","id":"p1026","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1027"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAA="},"shape":[2],"dtype":"int32","order":"little"}],["sleeper",{"type":"ndarray","array":["insomniac","normal"],"shape":[2],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"ZmZmZmYGU0AH9o6pgV1UQA=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1035","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1036"}}},"glyph":{"type":"object","name":"HBar","id":"p1031","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"HBar","id":"p1032","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"HBar","id":"p1033","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1009","attributes":{"tools":[{"type":"object","name":"SaveTool","id":"p1024"}]}},"left":[{"type":"object","name":"CategoricalAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1020"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1021"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1022"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1014","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1015","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1016"},"axis_label":"percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1017"}}}],"center":[{"type":"object","name":"Grid","id":"p1018","attributes":{"axis":{"id":"p1014"}}},{"type":"object","name":"Grid","id":"p1023","attributes":{"dimension":1,"axis":{"id":"p1019"},"grid_line_color":null}}]}}]}};
-  const render_items = [{"docid":"f6a1cb2e-3637-4c2a-abe5-3eaa8a1c1eee","roots":{"p1001":"c0b3cbf1-489f-4eb9-8419-6c0762b0a03a"},"root_ids":["p1001"]}];
-  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  const docs_json = {"ca047716-f3b8-4ffc-a79b-8c3147b3cf14":{"version":"3.4.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1001","attributes":{"width":400,"height":200,"x_range":{"type":"object","name":"Range1d","id":"p1010","attributes":{"end":100}},"y_range":{"type":"object","name":"FactorRange","id":"p1011","attributes":{"factors":["insomniac","normal"]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1012"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1013"},"title":{"type":"object","name":"Title","id":"p1008"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1034","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1025","attributes":{"selected":{"type":"object","name":"Selection","id":"p1026","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1027"},"data":{"type":"map","entries":[["sleeper",{"type":"ndarray","array":["normal","insomniac"],"shape":[2],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"B/aOqYFdVEBmZmZmZgZTQA=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1035","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1036"}}},"glyph":{"type":"object","name":"HBar","id":"p1031","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"HBar","id":"p1032","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"HBar","id":"p1033","attributes":{"y":{"type":"field","field":"sleeper"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1009","attributes":{"tools":[{"type":"object","name":"SaveTool","id":"p1024"}]}},"left":[{"type":"object","name":"CategoricalAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1020"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1021"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1022"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1014","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1015","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1016"},"axis_label":"percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1017"}}}],"center":[{"type":"object","name":"Grid","id":"p1018","attributes":{"axis":{"id":"p1014"}}},{"type":"object","name":"Grid","id":"p1023","attributes":{"dimension":1,"axis":{"id":"p1019"},"grid_line_color":null}}]}}]}};
+  const render_items = [{"docid":"ca047716-f3b8-4ffc-a79b-8c3147b3cf14","roots":{"p1001":"ae913e74-0895-4973-9800-2739e999dc93"},"root_ids":["p1001"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
     embed_document(root);
@@ -687,13 +681,13 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">bokeh</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
-    <span class="n">x_range</span><span class="o">=</span><span class="n">df_mean</span><span class="p">[</span><span class="s2">&quot;sleeper&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">x_range</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;insomniac&#39;</span><span class="p">],</span>
     <span class="n">y_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
     <span class="n">y_axis_label</span><span class="o">=</span><span class="s2">&quot;average percent correct&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span>
-    <span class="n">source</span><span class="o">=</span><span class="n">df_mean</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">df_mean</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
     <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sleeper&quot;</span><span class="p">,</span>
     <span class="n">top</span><span class="o">=</span><span class="s2">&quot;percent correct&quot;</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
@@ -709,7 +703,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div id="af6bcc3b-bf34-48d1-afa5-844acc412cfb" data-root-id="p1039" style="display: contents;"></div></div>
+<div id="ded40b03-247c-4f74-89c3-e6f7a294ffd1" data-root-id="p1038" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -720,9 +714,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"f34f9bde-1da9-4dae-b9d2-3c97437b5a51":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1039","attributes":{"width":250,"height":250,"x_range":{"type":"object","name":"FactorRange","id":"p1048","attributes":{"factors":["normal","insomniac"]}},"y_range":{"type":"object","name":"Range1d","id":"p1049","attributes":{"end":100}},"x_scale":{"type":"object","name":"CategoricalScale","id":"p1050"},"y_scale":{"type":"object","name":"LinearScale","id":"p1051"},"title":{"type":"object","name":"Title","id":"p1046"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1078","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1069","attributes":{"selected":{"type":"object","name":"Selection","id":"p1070","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1071"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAA="},"shape":[2],"dtype":"int32","order":"little"}],["sleeper",{"type":"ndarray","array":["insomniac","normal"],"shape":[2],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"ZmZmZmYGU0AH9o6pgV1UQA=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1079","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1080"}}},"glyph":{"type":"object","name":"VBar","id":"p1075","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"VBar","id":"p1076","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"VBar","id":"p1077","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1047","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1062"},{"type":"object","name":"WheelZoomTool","id":"p1063"},{"type":"object","name":"BoxZoomTool","id":"p1064","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1065","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1066"},{"type":"object","name":"ResetTool","id":"p1067"},{"type":"object","name":"HelpTool","id":"p1068"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1057","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1058","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1059"},"axis_label":"average percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1060"}}}],"below":[{"type":"object","name":"CategoricalAxis","id":"p1052","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1053"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1054"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1055"}}}],"center":[{"type":"object","name":"Grid","id":"p1056","attributes":{"axis":{"id":"p1052"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1061","attributes":{"dimension":1,"axis":{"id":"p1057"}}}]}}]}};
-  const render_items = [{"docid":"f34f9bde-1da9-4dae-b9d2-3c97437b5a51","roots":{"p1039":"af6bcc3b-bf34-48d1-afa5-844acc412cfb"},"root_ids":["p1039"]}];
-  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  const docs_json = {"75984b55-0494-4e9e-8b60-c081b9377412":{"version":"3.4.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1038","attributes":{"width":250,"height":250,"x_range":{"type":"object","name":"FactorRange","id":"p1047","attributes":{"factors":["normal","insomniac"]}},"y_range":{"type":"object","name":"Range1d","id":"p1048","attributes":{"end":100}},"x_scale":{"type":"object","name":"CategoricalScale","id":"p1049"},"y_scale":{"type":"object","name":"LinearScale","id":"p1050"},"title":{"type":"object","name":"Title","id":"p1045"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1081","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1072","attributes":{"selected":{"type":"object","name":"Selection","id":"p1073","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1074"},"data":{"type":"map","entries":[["sleeper",{"type":"ndarray","array":["normal","insomniac"],"shape":[2],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"B/aOqYFdVEBmZmZmZgZTQA=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1082","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1083"}}},"glyph":{"type":"object","name":"VBar","id":"p1078","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"VBar","id":"p1079","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"VBar","id":"p1080","attributes":{"x":{"type":"field","field":"sleeper"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1046","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1061"},{"type":"object","name":"WheelZoomTool","id":"p1062","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1063","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1064","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1069"},{"type":"object","name":"ResetTool","id":"p1070"},{"type":"object","name":"HelpTool","id":"p1071"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1056","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1057","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1058"},"axis_label":"average percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1059"}}}],"below":[{"type":"object","name":"CategoricalAxis","id":"p1051","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1052"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1053"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1054"}}}],"center":[{"type":"object","name":"Grid","id":"p1055","attributes":{"axis":{"id":"p1051"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1060","attributes":{"dimension":1,"axis":{"id":"p1056"}}}]}}]}};
+  const render_items = [{"docid":"75984b55-0494-4e9e-8b60-c081b9377412","roots":{"p1038":"ded40b03-247c-4f74-89c3-e6f7a294ffd1"},"root_ids":["p1038"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
     embed_document(root);
@@ -744,18 +738,24 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="Nested-categorical-axes">
-<h2>Nested categorical axes<a class="headerlink" href="#Nested-categorical-axes" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Nested-categorical-axes">
+<h2>Nested categorical axes<a class="headerlink" href="#Nested-categorical-axes" title="Link to this heading"></a></h2>
 <p>We may wish to make a bar graph where we have four bars, normal and insomniac for males and also normal and insomniac for females. To start, we will have to re-make the <code class="docutils literal notranslate"><span class="pre">df_mean</span></code> data frame, now grouping by gender and sleeper. Furthermore, it will be nicer to label the categories as “female” and “male” instead of “f” and “m”.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;female&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;f&quot;</span> <span class="k">else</span> <span class="s2">&quot;male&quot;</span><span class="p">)</span>
-
-<span class="n">df_mean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;sleeper&quot;</span><span class="p">])[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mean</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">([</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;sleeper&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;percent correct&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">replace_strict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="s1">&#39;female&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="s1">&#39;male&#39;</span><span class="p">),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="c1"># Take a look</span>
 <span class="n">df_mean</span>
@@ -767,64 +767,21 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>gender</th>
-      <th>sleeper</th>
-      <th>percent correct</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>female</td>
-      <td>insomniac</td>
-      <td>73.947368</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>female</td>
-      <td>normal</td>
-      <td>82.045455</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>male</td>
-      <td>insomniac</td>
-      <td>82.916667</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>male</td>
-      <td>normal</td>
-      <td>80.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (4, 3)</small><table border="1" class="dataframe"><thead><tr><th>gender</th><th>sleeper</th><th>percent correct</th></tr><tr><td>str</td><td>str</td><td>f64</td></tr></thead><tbody><tr><td>&quot;female&quot;</td><td>&quot;normal&quot;</td><td>82.045455</td></tr><tr><td>&quot;male&quot;</td><td>&quot;normal&quot;</td><td>80.0</td></tr><tr><td>&quot;female&quot;</td><td>&quot;insomniac&quot;</td><td>73.947368</td></tr><tr><td>&quot;male&quot;</td><td>&quot;insomniac&quot;</td><td>82.916667</td></tr></tbody></table></div></div>
 </div>
-<p>Because of the way Bokeh handles nested categories, we need to create a new column that has a tuple corresponding to the nested category. To make the tuple, we can again apply a function, this time to each entire row of the data frame (which requires the <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> kwarg of <code class="docutils literal notranslate"><span class="pre">df_mean.apply()</span></code>).</p>
+<p>Because of the way Bokeh handles nested categories, we need to create a new column that has a list corresponding to the nested category. To make this, we use the <code class="docutils literal notranslate"><span class="pre">pl.concat_list()</span></code> function.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mean</span><span class="p">[</span><span class="s2">&quot;cats&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_mean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;sleeper&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mean</span> <span class="o">=</span> <span class="n">df_mean</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">concat_list</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;sleeper&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">))</span>
 
 <span class="c1"># Take a look</span>
 <span class="n">df_mean</span>
@@ -836,65 +793,17 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>gender</th>
-      <th>sleeper</th>
-      <th>percent correct</th>
-      <th>cats</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>female</td>
-      <td>insomniac</td>
-      <td>73.947368</td>
-      <td>(female, insomniac)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>female</td>
-      <td>normal</td>
-      <td>82.045455</td>
-      <td>(female, normal)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>male</td>
-      <td>insomniac</td>
-      <td>82.916667</td>
-      <td>(male, insomniac)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>male</td>
-      <td>normal</td>
-      <td>80.000000</td>
-      <td>(male, normal)</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (4, 4)</small><table border="1" class="dataframe"><thead><tr><th>gender</th><th>sleeper</th><th>percent correct</th><th>cats</th></tr><tr><td>str</td><td>str</td><td>f64</td><td>list[str]</td></tr></thead><tbody><tr><td>&quot;female&quot;</td><td>&quot;normal&quot;</td><td>82.045455</td><td>[&quot;female&quot;, &quot;normal&quot;]</td></tr><tr><td>&quot;male&quot;</td><td>&quot;normal&quot;</td><td>80.0</td><td>[&quot;male&quot;, &quot;normal&quot;]</td></tr><tr><td>&quot;female&quot;</td><td>&quot;insomniac&quot;</td><td>73.947368</td><td>[&quot;female&quot;, &quot;insomniac&quot;]</td></tr><tr><td>&quot;male&quot;</td><td>&quot;insomniac&quot;</td><td>82.916667</td><td>[&quot;male&quot;, &quot;insomniac&quot;]</td></tr></tbody></table></div></div>
 </div>
 <p>Next, we need to set up <strong>factors</strong>, which give the nested categories. We could extract them from the <code class="docutils literal notranslate"><span class="pre">'cats'</span></code> column of the data frame as</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">factors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_mean</span><span class="o">.</span><span class="n">cats</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">factors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_mean</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Instead, we will specify them by hand to ensure they are ordered as we would like.</p>
@@ -933,7 +842,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">hbar</span><span class="p">(</span>
-    <span class="n">source</span><span class="o">=</span><span class="n">df_mean</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">df_mean</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cats&quot;</span><span class="p">,</span>
     <span class="n">right</span><span class="o">=</span><span class="s2">&quot;percent correct&quot;</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
@@ -949,7 +858,7 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div id="b98e56dd-b470-4145-9123-cb192927fe33" data-root-id="p1084" style="display: contents;"></div></div>
+<div id="a473832a-4514-49a6-98ff-7de70559b12c" data-root-id="p1086" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -960,9 +869,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"86eabef4-4634-483f-9546-f605494ada60":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1084","attributes":{"width":400,"height":200,"x_range":{"type":"object","name":"Range1d","id":"p1093","attributes":{"end":100}},"y_range":{"type":"object","name":"FactorRange","id":"p1083","attributes":{"factors":[["female","normal"],["female","insomniac"],["male","normal"],["male","insomniac"]]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1094"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1095"},"title":{"type":"object","name":"Title","id":"p1091"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1116","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1107","attributes":{"selected":{"type":"object","name":"Selection","id":"p1108","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1109"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAACAAAAAwAAAA=="},"shape":[4],"dtype":"int32","order":"little"}],["gender",{"type":"ndarray","array":["female","female","male","male"],"shape":[4],"dtype":"object","order":"little"}],["sleeper",{"type":"ndarray","array":["insomniac","normal","insomniac","normal"],"shape":[4],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"ymsor6F8UkCjiy666IJUQKuqqqqqulRAAAAAAAAAVEA="},"shape":[4],"dtype":"float64","order":"little"}],["cats",{"type":"ndarray","array":[["female","insomniac"],["female","normal"],["male","insomniac"],["male","normal"]],"shape":[4],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1117","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1118"}}},"glyph":{"type":"object","name":"HBar","id":"p1113","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"HBar","id":"p1114","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"HBar","id":"p1115","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1092","attributes":{"tools":[{"type":"object","name":"SaveTool","id":"p1106"}]}},"left":[{"type":"object","name":"CategoricalAxis","id":"p1101","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1102"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1103"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1104"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1096","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1097","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1098"},"axis_label":"average percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1099"}}}],"center":[{"type":"object","name":"Grid","id":"p1100","attributes":{"axis":{"id":"p1096"}}},{"type":"object","name":"Grid","id":"p1105","attributes":{"dimension":1,"axis":{"id":"p1101"},"grid_line_color":null}}]}}]}};
-  const render_items = [{"docid":"86eabef4-4634-483f-9546-f605494ada60","roots":{"p1084":"b98e56dd-b470-4145-9123-cb192927fe33"},"root_ids":["p1084"]}];
-  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  const docs_json = {"6aec1b39-645f-4aaa-b9ef-17faeac3848b":{"version":"3.4.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1086","attributes":{"width":400,"height":200,"x_range":{"type":"object","name":"Range1d","id":"p1095","attributes":{"end":100}},"y_range":{"type":"object","name":"FactorRange","id":"p1085","attributes":{"factors":[["female","normal"],["female","insomniac"],["male","normal"],["male","insomniac"]]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1096"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1097"},"title":{"type":"object","name":"Title","id":"p1093"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1118","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1109","attributes":{"selected":{"type":"object","name":"Selection","id":"p1110","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1111"},"data":{"type":"map","entries":[["gender",{"type":"ndarray","array":["female","male","female","male"],"shape":[4],"dtype":"object","order":"little"}],["sleeper",{"type":"ndarray","array":["normal","normal","insomniac","insomniac"],"shape":[4],"dtype":"object","order":"little"}],["percent correct",{"type":"ndarray","array":{"type":"bytes","data":"o4suuuiCVEAAAAAAAABUQMprKK+hfFJAq6qqqqq6VEA="},"shape":[4],"dtype":"float64","order":"little"}],["cats",{"type":"ndarray","array":[{"type":"ndarray","array":["female","normal"],"shape":[2],"dtype":"object","order":"little"},{"type":"ndarray","array":["male","normal"],"shape":[2],"dtype":"object","order":"little"},{"type":"ndarray","array":["female","insomniac"],"shape":[2],"dtype":"object","order":"little"},{"type":"ndarray","array":["male","insomniac"],"shape":[2],"dtype":"object","order":"little"}],"shape":[4],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1119","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1120"}}},"glyph":{"type":"object","name":"HBar","id":"p1115","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"HBar","id":"p1116","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"HBar","id":"p1117","attributes":{"y":{"type":"field","field":"cats"},"height":{"type":"value","value":0.6},"right":{"type":"field","field":"percent correct"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1094","attributes":{"tools":[{"type":"object","name":"SaveTool","id":"p1108"}]}},"left":[{"type":"object","name":"CategoricalAxis","id":"p1103","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1104"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1105"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1106"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1098","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1099","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1100"},"axis_label":"average percent correct","major_label_policy":{"type":"object","name":"AllLabels","id":"p1101"}}}],"center":[{"type":"object","name":"Grid","id":"p1102","attributes":{"axis":{"id":"p1098"}}},{"type":"object","name":"Grid","id":"p1107","attributes":{"dimension":1,"axis":{"id":"p1103"},"grid_line_color":null}}]}}]}};
+  const render_items = [{"docid":"6aec1b39-645f-4aaa-b9ef-17faeac3848b","roots":{"p1086":"a473832a-4514-49a6-98ff-7de70559b12c"},"root_ids":["p1086"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
     embed_document(root);
@@ -984,15 +893,15 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
-<span class="o">%</span><span class="k">watermark</span> -v -p pandas,bokeh,jupyterlab
+<span class="o">%</span><span class="k">watermark</span> -v -p polars,bokeh,jupyterlab
 </pre></div>
 </div>
 </div>
@@ -1002,17 +911,17 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.11.5
-IPython version      : 8.15.0
+Python version       : 3.12.4
+IPython version      : 8.25.0
 
-pandas    : 2.0.3
-bokeh     : 3.2.1
-jupyterlab: 4.0.6
+polars    : 1.6.0
+bokeh     : 3.4.1
+jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1026,13 +935,13 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 29, 2023.
+      <span class="lastupdated">Last updated on Sep 19, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11cdd6010> 
+   <jinja2.runtime.BlockReference object at 0x12bebec60> 
 
-<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tidy data and split-apply-combine &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -27,7 +30,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Introduction to plotting with Bokeh" href="intro_to_plotting_with_bokeh.html" />
-    <link rel="prev" title="Introduction to data frames" href="intro_to_pandas.html" /> 
+    <link rel="prev" title="Introduction to data frames" href="intro_to_polars.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,16 +64,17 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Exploratory data analysis, part 1</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="exploratory_data_analysis.html">Exploratory data analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_to_numpy.html">Introduction to Numpy and Scipy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro_to_pandas.html">Introduction to data frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_to_polars.html">Introduction to data frames</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Tidy data and split-apply-combine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Tidy-data">Tidy data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#The-data-set">The data set</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Split-apply-combine">Split-apply-combine</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Aggregation:-Median-percent-correct">Aggregation: Median percent correct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Median-percent-correct">Median percent correct</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Transformation">Transformation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Aggregating-and-transforming-with-custom-functions">Aggregating and transforming with custom functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Window-functions">Window functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Custom-aggregation-and-window-functions">Custom aggregation and window functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Polars-Structs-and-expressions-using-multiple-columns">Polars Structs and expressions using multiple columns</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Looping-over-a-GroupBy-object">Looping over a GroupBy object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Computing-environment">Computing environment</a></li>
 </ul>
@@ -79,66 +83,45 @@
 <li class="toctree-l2"><a class="reference internal" href="plotting_smooth_curves.html">Plotting smooth curves</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/index.html">10. Data wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Intro to probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../12/random_number_generation.html">12. Random number generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13/prob_dists.html">13. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Plug-in estimates and confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 15</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Null hypothesis significance testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Parametric inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Numerical MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 19</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 25</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Schedule overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#homework-due-dates">Homework due dates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html#exam-dates">Exam dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#lesson-exercise-due-dates">Lesson exercise due dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#weekly-schedule">Weekly schedule</a></li>
 </ul>
@@ -149,6 +132,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#submission-of-assignments">Submission of assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lessons-and-lesson-exercises">Lessons and lesson exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#homework">Homework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#exams">Exams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#grading">Grading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
@@ -188,21 +172,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Tidy-data-and-split-apply-combine">
-<h1>Tidy data and split-apply-combine<a class="headerlink" href="#Tidy-data-and-split-apply-combine" title="Permalink to this heading"></a></h1>
+  <section id="Tidy-data-and-split-apply-combine">
+<h1>Tidy data and split-apply-combine<a class="headerlink" href="#Tidy-data-and-split-apply-combine" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">polars.selectors</span> <span class="k">as</span> <span class="nn">cs</span>
 </pre></div>
 </div>
 </div>
-<hr /><p>We have dipped our toe into Pandas to see its power. In this lesson, we will continue to harness the power of Pandas to pull out subsets of data we are interested in, and of vital importance, will introduce the concept of <strong>tidy data</strong>. I suspect this will be a demarcation in your life. You will have the times in your life before tidy data and after. Welcome to your bright tomorrow.</p>
-<div class="section" id="Tidy-data">
-<h2>Tidy data<a class="headerlink" href="#Tidy-data" title="Permalink to this heading"></a></h2>
+<hr /><p>We have dipped our toe into Polars to see its power. In this lesson, we will continue to harness the power of Polars to pull out subsets of data we are interested in, and of vital importance, will introduce the concept of <strong>tidy data</strong>. I suspect this will be a demarcation in your life. You will have the times in your life before tidy data and after. Welcome to your bright tomorrow.</p>
+<section id="Tidy-data">
+<h2>Tidy data<a class="headerlink" href="#Tidy-data" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Hadley_Wickham">Hadley Wickham</a> wrote a <a class="reference external" href="http://dx.doi.org/10.18637/jss.v059.i10">great article</a> in favor of “tidy data.” Tidy data frames follow the rules: 1. Each variable is a column. 2. Each observation is a row. 3. Each type of observation has its own separate data frame.</p>
 <p>This is less pretty to visualize as a table, but we rarely look at data in tables. Indeed, the representation of data which is convenient for visualization is different from that which is convenient for analysis. A tidy data frame is almost always <strong>much</strong> easier to work with than non-tidy formats.</p>
 <p>You may raise some objections about tidy data. Here are a few, and my responses.</p>
@@ -219,18 +204,18 @@ possibility of misinterpretation or mistakes.</p>
 <p><strong>Response:</strong> Yes, there are more efficient ways of storing and accessing data. But for data sets that are not “big data,” this is seldom a real issue. The extra expense in memory, as well as the extra expense in access, are small prices to pay for the simplicity and speed of the human user in accessing the data.</p>
 <p><strong>Objection:</strong> Once it’s tidy, we pretty much have to use Boolean indexing to get what we want, and that can be slower than other methods of accessing data. What about performance?</p>
 <p><strong>Response:</strong> See the previous response. Speed of access really only becomes a problem with big, high-throughput data sets. In those cases, there are often many things you need to be clever about beyond organization of your data.</p>
-<p><strong>Conclusion:</strong> I really think that tidying a data set allows for fluid exploration. We will focus on tidy data sets going forward. The techniques for bringing untidy data into tidy format use many of Pandas’s functions, and we will explore them in future lessons.</p>
-</div>
-<div class="section" id="The-data-set">
-<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
-<p>We will again use the data set from the <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al. paper</a> on facial matching under sleep deprivation. Let’s load in the original data set and add the column on insomnia as we did in <a class="reference internal" href="intro_to_pandas.html"><span class="doc">previous part of this lesson</span></a>.</p>
+<p><strong>Conclusion:</strong> I really think that tidying a data set allows for fluid exploration. We will focus on tidy data sets going forward. Bringing untidy data into tidy format can be an annoying challenge that often involves lots of file I/O and text parsing operations. As such, it is wise to arrange your data in tidy format starting at acquisition. If your instrumentation prevents you from doing so, you should develop functions and scripts to parse them and convert them into tidy format.</p>
+</section>
+<section id="The-data-set">
+<h2>The data set<a class="headerlink" href="#The-data-set" title="Link to this heading"></a></h2>
+<p>We will again use the data set from the <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al. paper</a> on facial matching under sleep deprivation. Let’s load in the original data set and add the column on insomnia as we did in <a class="reference internal" href="intro_to_polars.html"><span class="doc">previous part of this lesson</span></a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;gfmt_sleep.csv&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;insomnia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sci&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">16</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">null_values</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;sci&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;insomnia&quot;</span><span class="p">))</span>
 
 <span class="c1"># Take a look</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -242,146 +227,19 @@ possibility of misinterpretation or mistakes.</p>
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>participant number</th>
-      <th>gender</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-      <th>insomnia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>8</td>
-      <td>f</td>
-      <td>39</td>
-      <td>65</td>
-      <td>80</td>
-      <td>72.5</td>
-      <td>91.0</td>
-      <td>90.0</td>
-      <td>93.0</td>
-      <td>83.5</td>
-      <td>93.0</td>
-      <td>90.0</td>
-      <td>9</td>
-      <td>13</td>
-      <td>2</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>16</td>
-      <td>m</td>
-      <td>42</td>
-      <td>90</td>
-      <td>90</td>
-      <td>90.0</td>
-      <td>75.5</td>
-      <td>55.5</td>
-      <td>70.5</td>
-      <td>50.0</td>
-      <td>75.0</td>
-      <td>50.0</td>
-      <td>4</td>
-      <td>11</td>
-      <td>7</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>18</td>
-      <td>f</td>
-      <td>31</td>
-      <td>90</td>
-      <td>95</td>
-      <td>92.5</td>
-      <td>89.5</td>
-      <td>90.0</td>
-      <td>86.0</td>
-      <td>81.0</td>
-      <td>89.0</td>
-      <td>88.0</td>
-      <td>10</td>
-      <td>9</td>
-      <td>3</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>22</td>
-      <td>f</td>
-      <td>35</td>
-      <td>100</td>
-      <td>75</td>
-      <td>87.5</td>
-      <td>89.5</td>
-      <td>NaN</td>
-      <td>71.0</td>
-      <td>80.0</td>
-      <td>88.0</td>
-      <td>80.0</td>
-      <td>13</td>
-      <td>8</td>
-      <td>20</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>27</td>
-      <td>f</td>
-      <td>74</td>
-      <td>60</td>
-      <td>65</td>
-      <td>62.5</td>
-      <td>68.5</td>
-      <td>49.0</td>
-      <td>61.0</td>
-      <td>49.0</td>
-      <td>65.0</td>
-      <td>49.0</td>
-      <td>13</td>
-      <td>9</td>
-      <td>12</td>
-      <td>True</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (5, 16)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th><th>insomnia</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td><td>bool</td></tr></thead><tbody><tr><td>8</td><td>&quot;f&quot;</td><td>39</td><td>65</td><td>80</td><td>72.5</td><td>91.0</td><td>90.0</td><td>93.0</td><td>83.5</td><td>93.0</td><td>90.0</td><td>9</td><td>13</td><td>2</td><td>true</td></tr><tr><td>16</td><td>&quot;m&quot;</td><td>42</td><td>90</td><td>90</td><td>90.0</td><td>75.5</td><td>55.5</td><td>70.5</td><td>50.0</td><td>75.0</td><td>50.0</td><td>4</td><td>11</td><td>7</td><td>true</td></tr><tr><td>18</td><td>&quot;f&quot;</td><td>31</td><td>90</td><td>95</td><td>92.5</td><td>89.5</td><td>90.0</td><td>86.0</td><td>81.0</td><td>89.0</td><td>88.0</td><td>10</td><td>9</td><td>3</td><td>true</td></tr><tr><td>22</td><td>&quot;f&quot;</td><td>35</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>71.0</td><td>80.0</td><td>88.0</td><td>80.0</td><td>13</td><td>8</td><td>20</td><td>true</td></tr><tr><td>27</td><td>&quot;f&quot;</td><td>74</td><td>60</td><td>65</td><td>62.5</td><td>68.5</td><td>49.0</td><td>61.0</td><td>49.0</td><td>65.0</td><td>49.0</td><td>13</td><td>9</td><td>12</td><td>true</td></tr></tbody></table></div></div>
 </div>
-<p>This data set is in tidy format. Each row represents a single test on a single participant. The aspects of that person’s test are given in each column. We already saw the power of having the data in this format when we did Boolean indexing in the last lesson. Now, we will see how this format allows use to easily do an operation we do again and again with data sets, <strong>split-apply-combine</strong>.</p>
-</div>
-<div class="section" id="Split-apply-combine">
-<h2>Split-apply-combine<a class="headerlink" href="#Split-apply-combine" title="Permalink to this heading"></a></h2>
+<p>This data set is in tidy format. Each row represents a single test on a single participant. The aspects of that person’s test are given in each column. We already saw the power of having the data in this format when we did Boolean indexing. Now, we will see how this format allows use to easily do an operation we do again and again with data sets, <strong>split-apply-combine</strong>.</p>
+</section>
+<section id="Split-apply-combine">
+<h2>Split-apply-combine<a class="headerlink" href="#Split-apply-combine" title="Link to this heading"></a></h2>
 <p>Let’s say we want to compute the median percent correct face matchings for subjects with insomnia and the median percent correct face matchings for those without. Ignoring for the second the mechanics of how we would do this with Python, let’s think about it in English. What do we need to do?</p>
 <ol class="arabic simple">
 <li><p><strong>Split</strong> the data set up according to the <code class="docutils literal notranslate"><span class="pre">'insomnia'</span></code> field, i.e., split it up so we have a separate data set for the two classes of subjects, those with insomnia and those without.</p></li>
@@ -389,19 +247,16 @@ possibility of misinterpretation or mistakes.</p>
 <li><p><strong>Combine</strong> the results of these averages on the split data set into a new, summary data set that contains the two classes (insomniac and not) and means for each.</p></li>
 </ol>
 <p>We see that the strategy we want is a <strong>split-apply-combine</strong> strategy. This idea was put forward by Hadley Wickham in <a class="reference external" href="http://dx.doi.org/10.18637/jss.v040.i01">this paper</a>. It turns out that this is a strategy we want to use <em>very</em> often. Split the data in terms of some criterion. Apply some function to the split-up data. Combine the results into a new data frame.</p>
-<p>Note that if the data are tidy, this procedure makes a lot of sense. Choose the column you want to use to split by. All rows with like entries in the splitting column are then grouped into a new data set. You can then apply any function you want into these new data sets. You can then combine the results into a new data frame.</p>
-<p>Pandas’s split-apply-combine operations are achieved using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method. You can think of <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> as the splitting part. You can then apply functions to the resulting <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. The <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">Pandas documentation on split-apply-combine</a> is excellent and worth reading through. It is extensive though, so don’t let yourself get intimidated by it.</p>
-<div class="section" id="Aggregation:-Median-percent-correct">
-<h3>Aggregation: Median percent correct<a class="headerlink" href="#Aggregation:-Median-percent-correct" title="Permalink to this heading"></a></h3>
-<p>Let’s go ahead and do our first split-apply-combine on this tidy data set. First, we will split the data set up by insomnia condition.</p>
+<p>Note that if the data are tidy, this procedure makes a lot of sense. Choose the column or columns you want to use to split by. All rows with like entries in the splitting column(s) are then grouped into a new data set. You can then apply any function you want into these new data sets. You can then combine the results into a new data frame.</p>
+<p>Polars’s split-apply-combine operations are achieved in a <strong>group by/aggregation</strong> context, achieved with <code class="docutils literal notranslate"><span class="pre">df.group_by().agg()</span></code>. You can think of <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> as the splitting part. The apply-combine part is done by passing expressions into <code class="docutils literal notranslate"><span class="pre">agg()</span></code>. The result is a data frame with as many rows as there are groups that we split the data frame into.</p>
+<section id="Median-percent-correct">
+<h3>Median percent correct<a class="headerlink" href="#Median-percent-correct" title="Link to this heading"></a></h3>
+<p>Let’s go ahead and do our first split-apply-combine on this tidy data set. First, we will split the data set up by insomnia condition and then apply a median function.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;insomnia&quot;</span><span class="p">)</span>
-
-<span class="c1"># Take a look</span>
-<span class="n">grouped</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -409,20 +264,22 @@ possibility of misinterpretation or mistakes.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x1316926d0&gt;
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 16)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>bool</td><td>f64</td><td>str</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>46.0</td><td>null</td><td>39.0</td><td>90.0</td><td>75.0</td><td>75.0</td><td>76.5</td><td>72.0</td><td>71.0</td><td>68.5</td><td>77.0</td><td>65.0</td><td>14.0</td><td>9.0</td><td>7.0</td></tr><tr><td>false</td><td>54.0</td><td>null</td><td>36.0</td><td>90.0</td><td>80.0</td><td>85.0</td><td>74.5</td><td>55.5</td><td>71.5</td><td>59.0</td><td>75.0</td><td>59.25</td><td>26.0</td><td>4.0</td><td>6.0</td></tr></tbody></table></div></div>
 </div>
-<p>There is not much to see in the <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object that resulted. But there is a lot we can do with this object. Typing <code class="docutils literal notranslate"><span class="pre">grouped.</span></code> and hitting tab will show you the many possibilities. For most of these possibilities, the apply and combine steps happen together and a new data frame is returned. The <code class="docutils literal notranslate"><span class="pre">grouped.median()</span></code> method is exactly what we want. We use the <code class="docutils literal notranslate"><span class="pre">numeric_only=True</span></code> keyword argument so Pandas does not attempt to find the median of categorical data like gender.</p>
+<p>Note that we used the <code class="docutils literal notranslate"><span class="pre">median()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object. This computes the median of all columns. This is equivalent the following using <code class="docutils literal notranslate"><span class="pre">agg()</span></code> with the expression <code class="docutils literal notranslate"><span class="pre">pl.col('*').median()</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_median</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Take a look</span>
-<span class="n">df_median</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -431,102 +288,21 @@ possibility of misinterpretation or mistakes.</p>
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>participant number</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-    </tr>
-    <tr>
-      <th>insomnia</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>False</th>
-      <td>54.0</td>
-      <td>36.0</td>
-      <td>90.0</td>
-      <td>80.0</td>
-      <td>85.0</td>
-      <td>74.5</td>
-      <td>55.5</td>
-      <td>71.5</td>
-      <td>59.0</td>
-      <td>75.0</td>
-      <td>59.25</td>
-      <td>26.0</td>
-      <td>4.0</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>True</th>
-      <td>46.0</td>
-      <td>39.0</td>
-      <td>90.0</td>
-      <td>75.0</td>
-      <td>75.0</td>
-      <td>76.5</td>
-      <td>72.0</td>
-      <td>71.0</td>
-      <td>68.5</td>
-      <td>77.0</td>
-      <td>65.00</td>
-      <td>14.0</td>
-      <td>9.0</td>
-      <td>7.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (2, 16)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>bool</td><td>f64</td><td>str</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>46.0</td><td>null</td><td>39.0</td><td>90.0</td><td>75.0</td><td>75.0</td><td>76.5</td><td>72.0</td><td>71.0</td><td>68.5</td><td>77.0</td><td>65.0</td><td>14.0</td><td>9.0</td><td>7.0</td></tr><tr><td>false</td><td>54.0</td><td>null</td><td>36.0</td><td>90.0</td><td>80.0</td><td>85.0</td><td>74.5</td><td>55.5</td><td>71.5</td><td>59.0</td><td>75.0</td><td>59.25</td><td>26.0</td><td>4.0</td><td>6.0</td></tr></tbody></table></div></div>
 </div>
-<p>The outputted data frame has the medians of all quantities, including the <code class="docutils literal notranslate"><span class="pre">percent</span> <span class="pre">correct</span></code> that we wanted. Note that this data frame has <code class="docutils literal notranslate"><span class="pre">insomnia</span></code> as the name of the row index. If we want to instead keep <code class="docutils literal notranslate"><span class="pre">insomnia</span></code> (which, remember, is what we used to split up the data set before we computed the summary statistics) as a column, we can use the <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> method.</p>
+<p>The median doesn’t make sense for gender. If we only wanted to compute medians of quantities for which it makes sense to do so, we could use selectors.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_median</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">cs</span><span class="o">.</span><span class="n">numeric</span><span class="p">()</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="s1">&#39;participant number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -535,88 +311,27 @@ possibility of misinterpretation or mistakes.</p>
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>insomnia</th>
-      <th>participant number</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>False</td>
-      <td>54.0</td>
-      <td>36.0</td>
-      <td>90.0</td>
-      <td>80.0</td>
-      <td>85.0</td>
-      <td>74.5</td>
-      <td>55.5</td>
-      <td>71.5</td>
-      <td>59.0</td>
-      <td>75.0</td>
-      <td>59.25</td>
-      <td>26.0</td>
-      <td>4.0</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>True</td>
-      <td>46.0</td>
-      <td>39.0</td>
-      <td>90.0</td>
-      <td>75.0</td>
-      <td>75.0</td>
-      <td>76.5</td>
-      <td>72.0</td>
-      <td>71.0</td>
-      <td>68.5</td>
-      <td>77.0</td>
-      <td>65.00</td>
-      <td>14.0</td>
-      <td>9.0</td>
-      <td>7.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (2, 14)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>bool</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>39.0</td><td>90.0</td><td>75.0</td><td>75.0</td><td>76.5</td><td>72.0</td><td>71.0</td><td>68.5</td><td>77.0</td><td>65.0</td><td>14.0</td><td>9.0</td><td>7.0</td></tr><tr><td>false</td><td>36.0</td><td>90.0</td><td>80.0</td><td>85.0</td><td>74.5</td><td>55.5</td><td>71.5</td><td>59.0</td><td>75.0</td><td>59.25</td><td>26.0</td><td>4.0</td><td>6.0</td></tr></tbody></table></div></div>
 </div>
-<p>We can also use multiple columns in our <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> operation. For example, we may wish to look at four groups, male insomniacs, female insomniacs, male non-insomniacs, and female non-insomniacs. To do this, we simply pass in a list of columns into <code class="docutils literal notranslate"><span class="pre">df.groupby()</span></code>.</p>
+<p>If instead we only wanted the median of the percent correct and confidence when correct, we could do the following.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;insomnia&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">,</span> <span class="s1">&#39;confidence when correct&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -625,134 +340,21 @@ possibility of misinterpretation or mistakes.</p>
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>gender</th>
-      <th>insomnia</th>
-      <th>participant number</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>f</td>
-      <td>False</td>
-      <td>58.0</td>
-      <td>36.0</td>
-      <td>85.0</td>
-      <td>80.0</td>
-      <td>85.00</td>
-      <td>74.00</td>
-      <td>55.00</td>
-      <td>70.50</td>
-      <td>60.00</td>
-      <td>74.00</td>
-      <td>58.75</td>
-      <td>26.0</td>
-      <td>4.0</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>f</td>
-      <td>True</td>
-      <td>46.0</td>
-      <td>39.0</td>
-      <td>80.0</td>
-      <td>75.0</td>
-      <td>72.50</td>
-      <td>76.50</td>
-      <td>73.75</td>
-      <td>71.00</td>
-      <td>68.50</td>
-      <td>77.00</td>
-      <td>70.50</td>
-      <td>14.0</td>
-      <td>9.0</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>m</td>
-      <td>False</td>
-      <td>41.0</td>
-      <td>38.5</td>
-      <td>90.0</td>
-      <td>80.0</td>
-      <td>82.50</td>
-      <td>76.00</td>
-      <td>57.75</td>
-      <td>74.25</td>
-      <td>54.75</td>
-      <td>76.25</td>
-      <td>59.25</td>
-      <td>29.0</td>
-      <td>3.0</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>m</td>
-      <td>True</td>
-      <td>55.5</td>
-      <td>37.0</td>
-      <td>95.0</td>
-      <td>82.5</td>
-      <td>83.75</td>
-      <td>83.75</td>
-      <td>55.50</td>
-      <td>75.75</td>
-      <td>73.25</td>
-      <td>81.25</td>
-      <td>62.50</td>
-      <td>14.0</td>
-      <td>9.0</td>
-      <td>8.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (2, 3)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>percent correct</th><th>confidence when correct</th></tr><tr><td>bool</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>false</td><td>85.0</td><td>75.0</td></tr><tr><td>true</td><td>75.0</td><td>77.0</td></tr></tbody></table></div></div>
 </div>
-<p>This type of operation is called an <strong>aggregation</strong>. That is, we split the data set up into groups, and then computed a summary statistic for each group, in this case the median.</p>
-</div>
-</div>
-<div class="section" id="Transformation">
-<h2>Transformation<a class="headerlink" href="#Transformation" title="Permalink to this heading"></a></h2>
-<p>Instead of summarizing data in a group with single summary statistics by aggregation, we can also do a <strong>transformation</strong> in which each row gets a new entry within a given group. As a simple example, we could generate a column that gives the rank of each participate in terms of percent correct for an insomniac group versus non-insomniac groups. That is, we perform a rank ordering with the insomniac group and within the non-insomniac group.</p>
+<p>We can also use multiple columns in our <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> operation. For example, we may wish to look at four groups, male insomniacs, female insomniacs, male non-insomniacs, and female non-insomniacs. To do this, we simply pass in a list of columns into <code class="docutils literal notranslate"><span class="pre">df.group_by()</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">([</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;insomnia&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -760,25 +362,34 @@ possibility of misinterpretation or mistakes.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-0    11.0
-1    21.5
-2    23.0
-3    19.5
-4     3.5
-Name: percent correct, dtype: float64
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4, 16)</small><table border="1" class="dataframe"><thead><tr><th>gender</th><th>insomnia</th><th>participant number</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>str</td><td>bool</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>&quot;m&quot;</td><td>false</td><td>41.0</td><td>38.5</td><td>90.0</td><td>80.0</td><td>82.5</td><td>76.0</td><td>57.75</td><td>74.25</td><td>54.75</td><td>76.25</td><td>59.25</td><td>29.0</td><td>3.0</td><td>6.0</td></tr><tr><td>&quot;f&quot;</td><td>true</td><td>46.0</td><td>39.0</td><td>80.0</td><td>75.0</td><td>72.5</td><td>76.5</td><td>73.75</td><td>71.0</td><td>68.5</td><td>77.0</td><td>70.5</td><td>14.0</td><td>9.0</td><td>7.0</td></tr><tr><td>&quot;m&quot;</td><td>true</td><td>55.5</td><td>37.0</td><td>95.0</td><td>82.5</td><td>83.75</td><td>83.75</td><td>55.5</td><td>75.75</td><td>73.25</td><td>81.25</td><td>62.5</td><td>14.0</td><td>9.0</td><td>8.0</td></tr><tr><td>&quot;f&quot;</td><td>false</td><td>58.0</td><td>36.0</td><td>85.0</td><td>80.0</td><td>85.0</td><td>74.0</td><td>55.0</td><td>70.5</td><td>60.0</td><td>74.0</td><td>58.75</td><td>26.0</td><td>4.0</td><td>7.0</td></tr></tbody></table></div></div>
 </div>
-<p>This gave us a column of ranks with the indexing of the original data frame preserved. We can put this column into the data frame.</p>
+</section>
+</section>
+<section id="Window-functions">
+<h2>Window functions<a class="headerlink" href="#Window-functions" title="Link to this heading"></a></h2>
+<p>In the above examples, we split the data frame into groups and applied an aggregating function that gave us back a data frame with as many rows as groups. But what if we do not want to aggregate? For example, say we want to compute the ranking of each participant according to percent correct <em>within each group</em> of insomniacs and normal sleepers. First, let’s see what happens if we use a group by/aggregation context. When we do the grouping, we will retain the order of the entries so that the
+series of ranks that we acquire match the original order in the data frame. We will also use the <code class="docutils literal notranslate"><span class="pre">'ordinal'</span></code> method for ranking, which gives a distinct rank to each entry even in the event of ties.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;rank grouped by insomnia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
-
-<span class="c1"># Take a look</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -787,157 +398,29 @@ Name: percent correct, dtype: float64
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>participant number</th>
-      <th>gender</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-      <th>insomnia</th>
-      <th>rank grouped by insomnia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>8</td>
-      <td>f</td>
-      <td>39</td>
-      <td>65</td>
-      <td>80</td>
-      <td>72.5</td>
-      <td>91.0</td>
-      <td>90.0</td>
-      <td>93.0</td>
-      <td>83.5</td>
-      <td>93.0</td>
-      <td>90.0</td>
-      <td>9</td>
-      <td>13</td>
-      <td>2</td>
-      <td>True</td>
-      <td>11.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>16</td>
-      <td>m</td>
-      <td>42</td>
-      <td>90</td>
-      <td>90</td>
-      <td>90.0</td>
-      <td>75.5</td>
-      <td>55.5</td>
-      <td>70.5</td>
-      <td>50.0</td>
-      <td>75.0</td>
-      <td>50.0</td>
-      <td>4</td>
-      <td>11</td>
-      <td>7</td>
-      <td>True</td>
-      <td>21.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>18</td>
-      <td>f</td>
-      <td>31</td>
-      <td>90</td>
-      <td>95</td>
-      <td>92.5</td>
-      <td>89.5</td>
-      <td>90.0</td>
-      <td>86.0</td>
-      <td>81.0</td>
-      <td>89.0</td>
-      <td>88.0</td>
-      <td>10</td>
-      <td>9</td>
-      <td>3</td>
-      <td>True</td>
-      <td>23.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>22</td>
-      <td>f</td>
-      <td>35</td>
-      <td>100</td>
-      <td>75</td>
-      <td>87.5</td>
-      <td>89.5</td>
-      <td>NaN</td>
-      <td>71.0</td>
-      <td>80.0</td>
-      <td>88.0</td>
-      <td>80.0</td>
-      <td>13</td>
-      <td>8</td>
-      <td>20</td>
-      <td>True</td>
-      <td>19.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>27</td>
-      <td>f</td>
-      <td>74</td>
-      <td>60</td>
-      <td>65</td>
-      <td>62.5</td>
-      <td>68.5</td>
-      <td>49.0</td>
-      <td>61.0</td>
-      <td>49.0</td>
-      <td>65.0</td>
-      <td>49.0</td>
-      <td>13</td>
-      <td>9</td>
-      <td>12</td>
-      <td>True</td>
-      <td>3.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>percent correct</th></tr><tr><td>bool</td><td>list[u32]</td></tr></thead><tbody><tr><td>true</td><td>[11, 21, … 10]</td></tr><tr><td>false</td><td>[13, 35, … 7]</td></tr></tbody></table></div></div>
 </div>
-<p>To verify that this worked correctly, and also to show some nice sorting properties of <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, we will sort the data frame by <code class="docutils literal notranslate"><span class="pre">insomnia</span></code> and then by <code class="docutils literal notranslate"><span class="pre">percent</span> <span class="pre">correct</span></code> and make sure the ranks worked accordingly.</p>
+<p>We see that we indeed get a data frame that has the two rows, one for each group. The <code class="docutils literal notranslate"><span class="pre">'percent</span> <span class="pre">correct'</span></code> columns has a new data type, a Polars list (not the same as a Python list). If we wanted to convert each entry in the list into a new row of the data frame, we can use the <code class="docutils literal notranslate"><span class="pre">explode()</span></code> method of a data frame.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;insomnia&quot;</span><span class="p">,</span> <span class="s2">&quot;percent correct&quot;</span><span class="p">])</span>
-
-<span class="c1"># Look at relevant columns</span>
-<span class="n">df_sorted</span><span class="p">[[</span><span class="s2">&quot;insomnia&quot;</span><span class="p">,</span> <span class="s2">&quot;percent correct&quot;</span><span class="p">,</span> <span class="s2">&quot;rank grouped by insomnia&quot;</span><span class="p">]]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -946,329 +429,237 @@ Name: percent correct, dtype: float64
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>insomnia</th>
-      <th>percent correct</th>
-      <th>rank grouped by insomnia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>81</th>
-      <td>False</td>
-      <td>40.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>False</td>
-      <td>55.0</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>False</td>
-      <td>57.5</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>False</td>
-      <td>60.0</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>False</td>
-      <td>60.0</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>True</td>
-      <td>90.0</td>
-      <td>21.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>True</td>
-      <td>90.0</td>
-      <td>22.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>True</td>
-      <td>92.5</td>
-      <td>23.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>True</td>
-      <td>95.0</td>
-      <td>24.0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>True</td>
-      <td>97.5</td>
-      <td>25.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>102 rows × 3 columns</p>
-</div></div>
+<small>shape: (102, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>percent correct</th></tr><tr><td>bool</td><td>u32</td></tr></thead><tbody><tr><td>true</td><td>11</td></tr><tr><td>true</td><td>21</td></tr><tr><td>true</td><td>23</td></tr><tr><td>true</td><td>19</td></tr><tr><td>true</td><td>3</td></tr><tr><td>&hellip;</td><td>&hellip;</td></tr><tr><td>false</td><td>29</td></tr><tr><td>false</td><td>57</td></tr><tr><td>false</td><td>20</td></tr><tr><td>false</td><td>12</td></tr><tr><td>false</td><td>7</td></tr></tbody></table></div></div>
 </div>
-<p>Indeed it worked!</p>
-</div>
-<div class="section" id="Aggregating-and-transforming-with-custom-functions">
-<h2>Aggregating and transforming with custom functions<a class="headerlink" href="#Aggregating-and-transforming-with-custom-functions" title="Permalink to this heading"></a></h2>
-<p>Let’s say we want to compute the coefficient of variation (CoV, the standard deviation divided by the mean) of data in columns of groups in the data frame. There is no built-in function to do this. We have to write our own function to compute the CoV and then use it with the <code class="docutils literal notranslate"><span class="pre">agg()</span></code> method of a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. In the function below, the values of each column are denoted by <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
-<p>To compute the coefficient of variation, we will use one more Numpy function beyond <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> that you have already seen, <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>.</p>
-<div class="nbinput nblast docutils container">
+<p>There are a few annoyances with doing this, importantly that we have to make a column with a list data type and then explode it.</p>
+<p>Here is where <strong>window</strong> functions come into play. A window function only operates on a subset of the data, ignoring everything outside of that subset. Since we are applying a function (in our example a rank function) to a subset (group) of the data, we can think of doing a group by followed by a calculation that has the same number of rows in the output as there are rows in the data as a window function.</p>
+<p>Window functions are implemented in Polars expressions using the <code class="docutils literal notranslate"><span class="pre">over()</span></code> method. The argument(s) of the <code class="docutils literal notranslate"><span class="pre">over()</span></code> specify which columns specify groups. The expression is then evaluated individually for each group. To add a column with rankings based on percent correct within each group (insomnia or regular sleeper), we can do the following.</p>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coeff_of_var</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;percent correct ranked within insomnia groups&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (102, 17)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th><th>insomnia</th><th>percent correct ranked within insomnia groups</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td><td>bool</td><td>u32</td></tr></thead><tbody><tr><td>8</td><td>&quot;f&quot;</td><td>39</td><td>65</td><td>80</td><td>72.5</td><td>91.0</td><td>90.0</td><td>93.0</td><td>83.5</td><td>93.0</td><td>90.0</td><td>9</td><td>13</td><td>2</td><td>true</td><td>11</td></tr><tr><td>16</td><td>&quot;m&quot;</td><td>42</td><td>90</td><td>90</td><td>90.0</td><td>75.5</td><td>55.5</td><td>70.5</td><td>50.0</td><td>75.0</td><td>50.0</td><td>4</td><td>11</td><td>7</td><td>true</td><td>21</td></tr><tr><td>18</td><td>&quot;f&quot;</td><td>31</td><td>90</td><td>95</td><td>92.5</td><td>89.5</td><td>90.0</td><td>86.0</td><td>81.0</td><td>89.0</td><td>88.0</td><td>10</td><td>9</td><td>3</td><td>true</td><td>23</td></tr><tr><td>22</td><td>&quot;f&quot;</td><td>35</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>71.0</td><td>80.0</td><td>88.0</td><td>80.0</td><td>13</td><td>8</td><td>20</td><td>true</td><td>19</td></tr><tr><td>27</td><td>&quot;f&quot;</td><td>74</td><td>60</td><td>65</td><td>62.5</td><td>68.5</td><td>49.0</td><td>61.0</td><td>49.0</td><td>65.0</td><td>49.0</td><td>13</td><td>9</td><td>12</td><td>true</td><td>3</td></tr><tr><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td></tr><tr><td>97</td><td>&quot;f&quot;</td><td>23</td><td>70</td><td>85</td><td>77.5</td><td>77.0</td><td>66.5</td><td>77.0</td><td>77.5</td><td>77.0</td><td>74.0</td><td>20</td><td>8</td><td>10</td><td>false</td><td>29</td></tr><tr><td>98</td><td>&quot;f&quot;</td><td>70</td><td>90</td><td>85</td><td>87.5</td><td>65.5</td><td>85.5</td><td>87.0</td><td>80.0</td><td>74.0</td><td>80.0</td><td>19</td><td>8</td><td>7</td><td>false</td><td>57</td></tr><tr><td>99</td><td>&quot;f&quot;</td><td>24</td><td>70</td><td>80</td><td>75.0</td><td>61.5</td><td>81.0</td><td>70.0</td><td>61.0</td><td>65.0</td><td>81.0</td><td>31</td><td>2</td><td>15</td><td>false</td><td>20</td></tr><tr><td>102</td><td>&quot;f&quot;</td><td>40</td><td>75</td><td>65</td><td>70.0</td><td>53.0</td><td>37.0</td><td>84.0</td><td>52.0</td><td>81.0</td><td>51.0</td><td>22</td><td>4</td><td>7</td><td>false</td><td>12</td></tr><tr><td>103</td><td>&quot;f&quot;</td><td>33</td><td>85</td><td>40</td><td>62.5</td><td>80.0</td><td>27.0</td><td>31.0</td><td>82.5</td><td>81.0</td><td>73.0</td><td>24</td><td>5</td><td>7</td><td>false</td><td>7</td></tr></tbody></table></div></div>
+</div>
+<p>Window functions and group by operations are similar. Consider computing the median percent correct for each group, insomniacs and normal sleepers. Using a group by/aggregation context, this is accomplished as follows.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">median</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;median percent correct&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>median percent correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>75.0</td></tr><tr><td>false</td><td>85.0</td></tr></tbody></table></div></div>
+</div>
+<p>We can achieve the same result using a window function with in a select context.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;median percent correct&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="s1">&#39;median percent correct&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>median percent correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>75.0</td></tr><tr><td>false</td><td>85.0</td></tr></tbody></table></div></div>
+</div>
+<p>A group by/aggregation context is preferred in this case. As a loose rule of thumb, use a group by/aggregation context when you want a resulting data frame with the number of rows being equal to the number of groups. Use a window function in a selection context when you want a resulting data frame with the same number of rows as your input data frame.</p>
+</section>
+<section id="Custom-aggregation-and-window-functions">
+<h2>Custom aggregation and window functions<a class="headerlink" href="#Custom-aggregation-and-window-functions" title="Link to this heading"></a></h2>
+<p>Let’s say we want to compute the coefficient of variation (CoV, the standard deviation divided by the mean) of data in columns of groups in the data frame. There is no built-in function in Polars to do this, but we could construct an expression that does it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;coeff of var percent correct&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>coeff of var percent correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>0.171856</td></tr><tr><td>false</td><td>0.138785</td></tr></tbody></table></div></div>
+</div>
+<p>In this case, the coefficient of variation is not a complicated calculation, so it fits neatly on one line. We could instead write a function that generates a Polars expression to compute the coefficient of variation of a column.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coeff_of_var_pl</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return Polars expression for coefficient of variation</span>
+<span class="sd">    for a column or columns of data.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">col</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="n">ddof</span><span class="p">)</span> <span class="o">/</span> <span class="n">col</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+
+<span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">coeff_of_var_pl</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;coeff of var percent correct&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>coeff of var percent correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>0.171856</td></tr><tr><td>false</td><td>0.138785</td></tr></tbody></table></div></div>
+</div>
+<p>Alternatively (though not preferably, as discussed below), we could write our own Python function to compute the coefficient of variation using Numpy. Say we had such a function lying around that take as input a Numpy array and returns the coefficient of variation as a Numpy array.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coeff_of_var</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute coefficient of variation from an array of data.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Now we can apply it as an aggregating function. Because it does not make sense to compute a coefficient of variation of a categorical variable like gender, we drop it from the data frame before doing the group by operation.</p>
+<p>We can use this function as an aggregating function using the <code class="docutils literal notranslate"><span class="pre">map_elements()</span></code> method of a Polars expression. The argument of <code class="docutils literal notranslate"><span class="pre">map_elements()</span></code> is a function that take a series as input and returns either a scalar or a series. We therefore need to pass in a function that converts the series to a Numpy array for use in the <code class="docutils literal notranslate"><span class="pre">coeff_of_var()</span></code> function, which we can accomplish with a lambda function.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">coeff_of_var</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">coeff_of_var</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">returns_scalar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>insomnia</th>
-      <th>participant number</th>
-      <th>age</th>
-      <th>correct hit percentage</th>
-      <th>correct reject percentage</th>
-      <th>percent correct</th>
-      <th>confidence when correct hit</th>
-      <th>confidence incorrect hit</th>
-      <th>confidence correct reject</th>
-      <th>confidence incorrect reject</th>
-      <th>confidence when correct</th>
-      <th>confidence when incorrect</th>
-      <th>sci</th>
-      <th>psqi</th>
-      <th>ess</th>
-      <th>rank grouped by insomnia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>False</td>
-      <td>0.586191</td>
-      <td>0.384262</td>
-      <td>0.166784</td>
-      <td>0.184061</td>
-      <td>0.138785</td>
-      <td>0.195978</td>
-      <td>0.350286</td>
-      <td>0.204312</td>
-      <td>0.298216</td>
-      <td>0.187304</td>
-      <td>0.262509</td>
-      <td>0.175245</td>
-      <td>0.577869</td>
-      <td>0.571566</td>
-      <td>0.5699</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>True</td>
-      <td>0.536117</td>
-      <td>0.313853</td>
-      <td>0.218834</td>
-      <td>0.325760</td>
-      <td>0.171856</td>
-      <td>0.156219</td>
-      <td>0.225440</td>
-      <td>0.222827</td>
-      <td>0.211512</td>
-      <td>0.160061</td>
-      <td>0.197484</td>
-      <td>0.381907</td>
-      <td>0.299741</td>
-      <td>0.681514</td>
-      <td>0.5547</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>percent correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>0.171856</td></tr><tr><td>false</td><td>0.138785</td></tr></tbody></table></div></div>
 </div>
-<p>We can take a similar approach with a transformation, which you will explore for <a class="reference external" href="https://en.wikipedia.org/wiki/Empirical_distribution_function">ECDFs</a> in your homework.</p>
-<p>You now have tremendous power in your hands. When your data are tidy, you can rapidly accelerate the ubiquitous split-apply-combine methods. Importantly, you now have a logical framework to think about how you slice and dice your data. As a final, simple example, I will show you how to go start to finish after loading the data set into a data frame, splitting by insomnia and gender, and then getting the quartiles and extrema, in addition to the mean and standard deviation, in the percent of
-correct facial matchings.</p>
+<p>Note that it is important to supply the data type of the return of the function you are mapping to ensure that Polars correctly assigns data types in the resulting data frame.</p>
+<p>If at all possible, use Polars expressions for custom aggregation and window function. They are cleaner to implement and far more performant, as illustrated in the timed calculations below.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;insomnia&quot;</span><span class="p">])[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>count</th>
-      <th>mean</th>
-      <th>std</th>
-      <th>min</th>
-      <th>25%</th>
-      <th>50%</th>
-      <th>75%</th>
-      <th>max</th>
-    </tr>
-    <tr>
-      <th>gender</th>
-      <th>insomnia</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="2" valign="top">f</th>
-      <th>False</th>
-      <td>55.0</td>
-      <td>82.045455</td>
-      <td>10.844982</td>
-      <td>55.0</td>
-      <td>75.000</td>
-      <td>85.00</td>
-      <td>88.750</td>
-      <td>100.0</td>
-    </tr>
-    <tr>
-      <th>True</th>
-      <td>19.0</td>
-      <td>73.947368</td>
-      <td>13.624829</td>
-      <td>45.0</td>
-      <td>67.500</td>
-      <td>72.50</td>
-      <td>83.750</td>
-      <td>95.0</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">m</th>
-      <th>False</th>
-      <td>22.0</td>
-      <td>80.000000</td>
-      <td>12.770875</td>
-      <td>40.0</td>
-      <td>77.500</td>
-      <td>82.50</td>
-      <td>89.375</td>
-      <td>95.0</td>
-    </tr>
-    <tr>
-      <th>True</th>
-      <td>6.0</td>
-      <td>82.916667</td>
-      <td>10.655593</td>
-      <td>67.5</td>
-      <td>76.875</td>
-      <td>83.75</td>
-      <td>88.750</td>
-      <td>97.5</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>Yes, that’s right. One single, clean, easy to read line of code. In coming tutorials, we will see how to use tidy data to quickly generate plots.</p>
-</div>
-<div class="section" id="Looping-over-a-GroupBy-object">
-<h2>Looping over a GroupBy object<a class="headerlink" href="#Looping-over-a-GroupBy-object" title="Permalink to this heading"></a></h2>
-<p>While the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> methods we have learned so far (like <code class="docutils literal notranslate"><span class="pre">transform()</span></code> and <code class="docutils literal notranslate"><span class="pre">agg()</span></code>) are useful and lead to concise code, we sometimes want to loop over the groups of a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object. This often comes up in plotting applications, as we will see in future lessons. As an example, I will compute the median percent correct for female and males, insomniacs and not (which we already computed using <code class="docutils literal notranslate"><span class="pre">describe()</span></code>.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;insomnia&quot;</span><span class="p">]):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">coeff_of_var_pl</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;coeff of var percent correct&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1277,22 +668,291 @@ correct facial matchings.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;f&#39;, False) :  85.0
-(&#39;f&#39;, True) :  72.5
-(&#39;m&#39;, False) :  82.5
-(&#39;m&#39;, True) :  83.75
+156 μs ± 51.8 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div></div>
 </div>
-<p>By using the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object as an iterator, it yields the name of the group (which I assigned as <code class="docutils literal notranslate"><span class="pre">name</span></code>) and the corresponding sub-data frame (which I assigned <code class="docutils literal notranslate"><span class="pre">group</span></code>).</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">coeff_of_var</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()),</span> <span class="n">return_dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">returns_scalar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+819 μs ± 147 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+</pre></div></div>
+</div>
+</section>
+<section id="Polars-Structs-and-expressions-using-multiple-columns">
+<h2>Polars Structs and expressions using multiple columns<a class="headerlink" href="#Polars-Structs-and-expressions-using-multiple-columns" title="Link to this heading"></a></h2>
+<p>As discussed earlier, Polars expressions strictly take a series as input and return a series as output. What if we want to perform a calculation that requires two columns? This is where the Polars <strong>Struct</strong> data type comes in. As a simple example, if we cast out whole data frame into a series, we get a series with a <code class="docutils literal notranslate"><span class="pre">struct</span></code> data type.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct_series</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Take a look</span>
+<span class="n">struct_series</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (102,)</small><table border="1" class="dataframe"><thead><tr><th></th></tr><tr><td>struct[16]</td></tr></thead><tbody><tr><td>{8,&quot;f&quot;,39,65,80,72.5,91.0,90.0,93.0,83.5,93.0,90.0,9,13,2,true}</td></tr><tr><td>{16,&quot;m&quot;,42,90,90,90.0,75.5,55.5,70.5,50.0,75.0,50.0,4,11,7,true}</td></tr><tr><td>{18,&quot;f&quot;,31,90,95,92.5,89.5,90.0,86.0,81.0,89.0,88.0,10,9,3,true}</td></tr><tr><td>{22,&quot;f&quot;,35,100,75,87.5,89.5,null,71.0,80.0,88.0,80.0,13,8,20,true}</td></tr><tr><td>{27,&quot;f&quot;,74,60,65,62.5,68.5,49.0,61.0,49.0,65.0,49.0,13,9,12,true}</td></tr><tr><td>&hellip;</td></tr><tr><td>{97,&quot;f&quot;,23,70,85,77.5,77.0,66.5,77.0,77.5,77.0,74.0,20,8,10,false}</td></tr><tr><td>{98,&quot;f&quot;,70,90,85,87.5,65.5,85.5,87.0,80.0,74.0,80.0,19,8,7,false}</td></tr><tr><td>{99,&quot;f&quot;,24,70,80,75.0,61.5,81.0,70.0,61.0,65.0,81.0,31,2,15,false}</td></tr><tr><td>{102,&quot;f&quot;,40,75,65,70.0,53.0,37.0,84.0,52.0,81.0,51.0,22,4,7,false}</td></tr><tr><td>{103,&quot;f&quot;,33,85,40,62.5,80.0,27.0,31.0,82.5,81.0,73.0,24,5,7,false}</td></tr></tbody></table></div></div>
+</div>
+<p>Each entry is an entire row of a data frame. The labels of each column is still present, as can be seen by considering one entry in the series of <code class="docutils literal notranslate"><span class="pre">struct</span></code>s.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct_series</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;participant number&#39;: 8,
+ &#39;gender&#39;: &#39;f&#39;,
+ &#39;age&#39;: 39,
+ &#39;correct hit percentage&#39;: 65,
+ &#39;correct reject percentage&#39;: 80,
+ &#39;percent correct&#39;: 72.5,
+ &#39;confidence when correct hit&#39;: 91.0,
+ &#39;confidence incorrect hit&#39;: 90.0,
+ &#39;confidence correct reject&#39;: 93.0,
+ &#39;confidence incorrect reject&#39;: 83.5,
+ &#39;confidence when correct&#39;: 93.0,
+ &#39;confidence when incorrect&#39;: 90.0,
+ &#39;sci&#39;: 9,
+ &#39;psqi&#39;: 13,
+ &#39;ess&#39;: 2,
+ &#39;insomnia&#39;: True}
+</pre></div></div>
+</div>
+<p>The labels for each entry in a struct (the keys in the dictionary displated above), are called <strong>fields</strong>, and we can get a list of the fields for the structs in a series.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct_series</span><span class="o">.</span><span class="n">struct</span><span class="o">.</span><span class="n">fields</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;participant number&#39;,
+ &#39;gender&#39;,
+ &#39;age&#39;,
+ &#39;correct hit percentage&#39;,
+ &#39;correct reject percentage&#39;,
+ &#39;percent correct&#39;,
+ &#39;confidence when correct hit&#39;,
+ &#39;confidence incorrect hit&#39;,
+ &#39;confidence correct reject&#39;,
+ &#39;confidence incorrect reject&#39;,
+ &#39;confidence when correct&#39;,
+ &#39;confidence when incorrect&#39;,
+ &#39;sci&#39;,
+ &#39;psqi&#39;,
+ &#39;ess&#39;,
+ &#39;insomnia&#39;]
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">struct_series.struct.field()</span></code> method allows us to take entries from all entries corresponding to a given field.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">struct_series</span><span class="o">.</span><span class="n">struct</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (102,)</small><table border="1" class="dataframe"><thead><tr><th>percent correct</th></tr><tr><td>f64</td></tr></thead><tbody><tr><td>72.5</td></tr><tr><td>90.0</td></tr><tr><td>92.5</td></tr><tr><td>87.5</td></tr><tr><td>62.5</td></tr><tr><td>&hellip;</td></tr><tr><td>77.5</td></tr><tr><td>87.5</td></tr><tr><td>75.0</td></tr><tr><td>70.0</td></tr><tr><td>62.5</td></tr></tbody></table></div></div>
+</div>
+<p>The following two operations give the same result.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">struct</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So, if we need to compute with multiple columns with an expression, we can convert whatever columns we need into a series of data type <code class="docutils literal notranslate"><span class="pre">struct</span></code>. We can then unpack what we need using the <code class="docutils literal notranslate"><span class="pre">struct_series.struct.field()</span></code> method.</p>
+<p>As an example, say we have a function that compute the bivariate (a.k.a. Pearson) correlation coeff between two data sets given as Numpy arrays.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bivariate_corr</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute bivariate correlation coefficient for `x` and `y`.</span>
+<span class="sd">    Ignores NaNs.&quot;&quot;&quot;</span>
+    <span class="c1"># Masked arrays to handle NaNs</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">x</span><span class="o">.</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">y</span><span class="o">.</span><span class="n">mask</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Now we want to compute the bivariate correlation coefficient for confidence when correct and confidence when incorrect for insomniacs and for normal sleepers. In our call to <code class="docutils literal notranslate"><span class="pre">agg()</span></code>, we use <code class="docutils literal notranslate"><span class="pre">pl.struct</span></code> to generate a series of data type <code class="docutils literal notranslate"><span class="pre">struct</span></code> containing the columns we need for the calculation of the correlation coefficient. We then use <code class="docutils literal notranslate"><span class="pre">map_elements()</span></code> to use the above function to do the calculation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">struct</span><span class="p">([</span><span class="s1">&#39;confidence when correct&#39;</span><span class="p">,</span> <span class="s1">&#39;confidence when incorrect&#39;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">map_elements</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">bivariate_corr</span><span class="p">(</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">struct</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;confidence when correct&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">struct</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;confidence when incorrect&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+            <span class="p">),</span>
+           <span class="n">return_dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">returns_scalar</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;bivariate correlation&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>bivariate correlation</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>0.590435</td></tr><tr><td>false</td><td>0.552045</td></tr></tbody></table></div></div>
+</div>
+<p>While this example is instructive to demonstrate how to write your own functions to operate on data frames, as is often the case, Polars has a built-in function that computes the bivariate correlation coefficient.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;insomnia&#39;</span><span class="p">,</span> <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="s1">&#39;confidence when correct&#39;</span><span class="p">,</span> <span class="s1">&#39;confidence when incorrect&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>confidence when correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>0.590435</td></tr><tr><td>false</td><td>0.552045</td></tr></tbody></table></div></div>
+</div>
+</section>
+<section id="Looping-over-a-GroupBy-object">
+<h2>Looping over a GroupBy object<a class="headerlink" href="#Looping-over-a-GroupBy-object" title="Link to this heading"></a></h2>
+<p>We sometimes want to loop over the groups of a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object. This often comes up in plotting applications, as we will see in future lessons. As an example, I will compute the median percent correct for female and males, insomniacs and not (which we already computed using <code class="docutils literal notranslate"><span class="pre">describe()</span></code>).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">sub_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">([</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;insomnia&#39;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group_name</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;m&#39;, True) :  83.75
+(&#39;m&#39;, False) :  82.5
+(&#39;f&#39;, False) :  85.0
+(&#39;f&#39;, True) :  72.5
+</pre></div></div>
+</div>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object as an iterator, it yields the name of the group (which I assigned as <code class="docutils literal notranslate"><span class="pre">group_name</span></code>) and the corresponding sub-data frame (which I assigned <code class="docutils literal notranslate"><span class="pre">sub_df</span></code>). Note that the group name is <em>always</em> given as a tuple, even when only grouping by a single column.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">group_name</span><span class="p">,),</span> <span class="n">sub_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group_name</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">sub_df</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+f :  83.75
+m :  83.75
+</pre></div></div>
+</div>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
-<span class="o">%</span><span class="k">watermark</span> -v -p numpy,pandas,jupyterlab
+<span class="o">%</span><span class="k">watermark</span> -v -p numpy,polars,jupyterlab
 </pre></div>
 </div>
 </div>
@@ -1302,23 +962,23 @@ correct facial matchings.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.11.5
-IPython version      : 8.15.0
+Python version       : 3.12.4
+IPython version      : 8.25.0
 
-numpy     : 1.24.3
-pandas    : 2.0.3
-jupyterlab: 4.0.6
+numpy     : 1.26.4
+polars    : 1.6.0
+jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="intro_to_pandas.html" class="btn btn-neutral float-left" title="Introduction to data frames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="intro_to_polars.html" class="btn btn-neutral float-left" title="Introduction to data frames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="intro_to_plotting_with_bokeh.html" class="btn btn-neutral float-right" title="Introduction to plotting with Bokeh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -1326,13 +986,13 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 29, 2023.
+      <span class="lastupdated">Last updated on Sep 19, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11d7c5e10> 
+   <jinja2.runtime.BlockReference object at 0x12e996480> 
 
-<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

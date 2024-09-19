@@ -13,7 +13,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": null,
    "metadata": {
     "nbsphinx": "hidden",
     "tags": []
@@ -23,7 +23,7 @@
     "# Colab setup ------------------\n",
     "import os, sys, subprocess\n",
     "if \"google.colab\" in sys.modules:\n",
-    "    cmd = \"pip install --upgrade iqplot bebi103 multiprocess watermark\"\n",
+    "    cmd = \"pip install --upgrade polars iqplot bebi103 multiprocess watermark\"\n",
     "    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)\n",
     "    stdout, stderr = process.communicate()\n",
     "    data_path = \"https://s3.amazonaws.com/bebi103.caltech.edu/data/\"\n",
@@ -40,7 +40,7 @@
     {
      "data": {
       "text/html": [
-       "<style>\n",
+       "    <style>\n",
        "        .bk-notebook-logo {\n",
        "            display: block;\n",
        "            width: 20px;\n",
@@ -50,7 +50,7 @@
        "    </style>\n",
        "    <div>\n",
        "        <a href=\"https://bokeh.org\" target=\"_blank\" class=\"bk-notebook-logo\"></a>\n",
-       "        <span id=\"bbc03a06-f89e-4d64-b28d-3e7e0a077a82\">Loading BokehJS ...</span>\n",
+       "        <span id=\"f16abbf1-6d2f-4ae8-b9e0-279389ad3b77\">Loading BokehJS ...</span>\n",
        "    </div>\n"
       ]
      },
@@ -60,6 +60,7 @@
     {
      "data": {
       "application/javascript": [
+       "'use strict';\n",
        "(function(root) {\n",
        "  function now() {\n",
        "    return new Date();\n",
@@ -89,14 +90,22 @@
        "   * Handle when an output is cleared or removed\n",
        "   */\n",
        "  function handleClearOutput(event, handle) {\n",
+       "    function drop(id) {\n",
+       "      const view = Bokeh.index.get_by_id(id)\n",
+       "      if (view != null) {\n",
+       "        view.model.document.clear()\n",
+       "        Bokeh.index.delete(view)\n",
+       "      }\n",
+       "    }\n",
+       "\n",
        "    const cell = handle.cell;\n",
        "\n",
        "    const id = cell.output_area._bokeh_element_id;\n",
        "    const server_id = cell.output_area._bokeh_server_id;\n",
+       "\n",
        "    // Clean up Bokeh references\n",
-       "    if (id != null && id in Bokeh.index) {\n",
-       "      Bokeh.index[id].model.document.clear();\n",
-       "      delete Bokeh.index[id];\n",
+       "    if (id != null) {\n",
+       "      drop(id)\n",
        "    }\n",
        "\n",
        "    if (server_id !== undefined) {\n",
@@ -105,11 +114,8 @@
        "      cell.notebook.kernel.execute(cmd_clean, {\n",
        "        iopub: {\n",
        "          output: function(msg) {\n",
-       "            const id = msg.content.text.trim();\n",
-       "            if (id in Bokeh.index) {\n",
-       "              Bokeh.index[id].model.document.clear();\n",
-       "              delete Bokeh.index[id];\n",
-       "            }\n",
+       "            const id = msg.content.text.trim()\n",
+       "            drop(id)\n",
        "          }\n",
        "        }\n",
        "      });\n",
@@ -216,17 +222,42 @@
        "     \"</code>\\n\"+\n",
        "     \"</div>\"}};\n",
        "\n",
-       "  function display_loaded() {\n",
-       "    const el = document.getElementById(\"bbc03a06-f89e-4d64-b28d-3e7e0a077a82\");\n",
+       "  function display_loaded(error = null) {\n",
+       "    const el = document.getElementById(\"f16abbf1-6d2f-4ae8-b9e0-279389ad3b77\");\n",
        "    if (el != null) {\n",
-       "      el.textContent = \"BokehJS is loading...\";\n",
-       "    }\n",
-       "    if (root.Bokeh !== undefined) {\n",
-       "      if (el != null) {\n",
-       "        el.textContent = \"BokehJS \" + root.Bokeh.version + \" successfully loaded.\";\n",
+       "      const html = (() => {\n",
+       "        if (typeof root.Bokeh === \"undefined\") {\n",
+       "          if (error == null) {\n",
+       "            return \"BokehJS is loading ...\";\n",
+       "          } else {\n",
+       "            return \"BokehJS failed to load.\";\n",
+       "          }\n",
+       "        } else {\n",
+       "          const prefix = `BokehJS ${root.Bokeh.version}`;\n",
+       "          if (error == null) {\n",
+       "            return `${prefix} successfully loaded.`;\n",
+       "          } else {\n",
+       "            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;\n",
+       "          }\n",
+       "        }\n",
+       "      })();\n",
+       "      el.innerHTML = html;\n",
+       "\n",
+       "      if (error != null) {\n",
+       "        const wrapper = document.createElement(\"div\");\n",
+       "        wrapper.style.overflow = \"auto\";\n",
+       "        wrapper.style.height = \"5em\";\n",
+       "        wrapper.style.resize = \"vertical\";\n",
+       "        const content = document.createElement(\"div\");\n",
+       "        content.style.fontFamily = \"monospace\";\n",
+       "        content.style.whiteSpace = \"pre-wrap\";\n",
+       "        content.style.backgroundColor = \"rgb(255, 221, 221)\";\n",
+       "        content.textContent = error.stack ?? error.toString();\n",
+       "        wrapper.append(content);\n",
+       "        el.append(wrapper);\n",
        "      }\n",
        "    } else if (Date.now() < root._bokeh_timeout) {\n",
-       "      setTimeout(display_loaded, 100)\n",
+       "      setTimeout(() => display_loaded(error), 100);\n",
        "    }\n",
        "  }\n",
        "\n",
@@ -300,7 +331,7 @@
        "    document.body.appendChild(element);\n",
        "  }\n",
        "\n",
-       "  const js_urls = [\"https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.2.1.min.js\", \"https://unpkg.com/@holoviz/panel@1.2.1/dist/panel.min.js\"];\n",
+       "  const js_urls = [\"https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js\", \"https://unpkg.com/@holoviz/panel@1.4.4/dist/panel.min.js\"];\n",
        "  const css_urls = [];\n",
        "\n",
        "  const inline_js = [    function(Bokeh) {\n",
@@ -312,10 +343,13 @@
        "\n",
        "  function run_inline_js() {\n",
        "    if (root.Bokeh !== undefined || force === true) {\n",
-       "          for (let i = 0; i < inline_js.length; i++) {\n",
+       "      try {\n",
+       "            for (let i = 0; i < inline_js.length; i++) {\n",
        "      inline_js[i].call(root, root.Bokeh);\n",
        "    }\n",
-       "if (force === true) {\n",
+       "\n",
+       "      } catch (error) {display_loaded(error);throw error;\n",
+       "      }if (force === true) {\n",
        "        display_loaded();\n",
        "      }} else if (Date.now() < root._bokeh_timeout) {\n",
        "      setTimeout(run_inline_js, 100);\n",
@@ -323,7 +357,7 @@
        "      console.log(\"Bokeh: BokehJS failed to load within specified timeout.\");\n",
        "      root._bokeh_failed_load = true;\n",
        "    } else if (force !== true) {\n",
-       "      const cell = $(document.getElementById(\"bbc03a06-f89e-4d64-b28d-3e7e0a077a82\")).parents('.cell').data().cell;\n",
+       "      const cell = $(document.getElementById(\"f16abbf1-6d2f-4ae8-b9e0-279389ad3b77\")).parents('.cell').data().cell;\n",
        "      cell.output_area.append_execute_result(NB_LOAD_WARNING)\n",
        "    }\n",
        "  }\n",
@@ -339,7 +373,7 @@
        "  }\n",
        "}(window));"
       ],
-      "application/vnd.bokehjs_load.v0+json": "(function(root) {\n  function now() {\n    return new Date();\n  }\n\n  const force = true;\n\n  if (typeof root._bokeh_onload_callbacks === \"undefined\" || force === true) {\n    root._bokeh_onload_callbacks = [];\n    root._bokeh_is_loading = undefined;\n  }\n\n\n  if (typeof (root._bokeh_timeout) === \"undefined\" || force === true) {\n    root._bokeh_timeout = Date.now() + 5000;\n    root._bokeh_failed_load = false;\n  }\n\n  const NB_LOAD_WARNING = {'data': {'text/html':\n     \"<div style='background-color: #fdd'>\\n\"+\n     \"<p>\\n\"+\n     \"BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \\n\"+\n     \"may be due to a slow or bad network connection. Possible fixes:\\n\"+\n     \"</p>\\n\"+\n     \"<ul>\\n\"+\n     \"<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\\n\"+\n     \"<li>use INLINE resources instead, as so:</li>\\n\"+\n     \"</ul>\\n\"+\n     \"<code>\\n\"+\n     \"from bokeh.resources import INLINE\\n\"+\n     \"output_notebook(resources=INLINE)\\n\"+\n     \"</code>\\n\"+\n     \"</div>\"}};\n\n  function display_loaded() {\n    const el = document.getElementById(\"bbc03a06-f89e-4d64-b28d-3e7e0a077a82\");\n    if (el != null) {\n      el.textContent = \"BokehJS is loading...\";\n    }\n    if (root.Bokeh !== undefined) {\n      if (el != null) {\n        el.textContent = \"BokehJS \" + root.Bokeh.version + \" successfully loaded.\";\n      }\n    } else if (Date.now() < root._bokeh_timeout) {\n      setTimeout(display_loaded, 100)\n    }\n  }\n\n  function run_callbacks() {\n    try {\n      root._bokeh_onload_callbacks.forEach(function(callback) {\n        if (callback != null)\n          callback();\n      });\n    } finally {\n      delete root._bokeh_onload_callbacks\n    }\n    console.debug(\"Bokeh: all callbacks have finished\");\n  }\n\n  function load_libs(css_urls, js_urls, callback) {\n    if (css_urls == null) css_urls = [];\n    if (js_urls == null) js_urls = [];\n\n    root._bokeh_onload_callbacks.push(callback);\n    if (root._bokeh_is_loading > 0) {\n      console.debug(\"Bokeh: BokehJS is being loaded, scheduling callback at\", now());\n      return null;\n    }\n    if (js_urls == null || js_urls.length === 0) {\n      run_callbacks();\n      return null;\n    }\n    console.debug(\"Bokeh: BokehJS not loaded, scheduling load and callback at\", now());\n    root._bokeh_is_loading = css_urls.length + js_urls.length;\n\n    function on_load() {\n      root._bokeh_is_loading--;\n      if (root._bokeh_is_loading === 0) {\n        console.debug(\"Bokeh: all BokehJS libraries/stylesheets loaded\");\n        run_callbacks()\n      }\n    }\n\n    function on_error(url) {\n      console.error(\"failed to load \" + url);\n    }\n\n    for (let i = 0; i < css_urls.length; i++) {\n      const url = css_urls[i];\n      const element = document.createElement(\"link\");\n      element.onload = on_load;\n      element.onerror = on_error.bind(null, url);\n      element.rel = \"stylesheet\";\n      element.type = \"text/css\";\n      element.href = url;\n      console.debug(\"Bokeh: injecting link tag for BokehJS stylesheet: \", url);\n      document.body.appendChild(element);\n    }\n\n    for (let i = 0; i < js_urls.length; i++) {\n      const url = js_urls[i];\n      const element = document.createElement('script');\n      element.onload = on_load;\n      element.onerror = on_error.bind(null, url);\n      element.async = false;\n      element.src = url;\n      console.debug(\"Bokeh: injecting script tag for BokehJS library: \", url);\n      document.head.appendChild(element);\n    }\n  };\n\n  function inject_raw_css(css) {\n    const element = document.createElement(\"style\");\n    element.appendChild(document.createTextNode(css));\n    document.body.appendChild(element);\n  }\n\n  const js_urls = [\"https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.2.1.min.js\", \"https://unpkg.com/@holoviz/panel@1.2.1/dist/panel.min.js\"];\n  const css_urls = [];\n\n  const inline_js = [    function(Bokeh) {\n      Bokeh.set_log_level(\"info\");\n    },\nfunction(Bokeh) {\n    }\n  ];\n\n  function run_inline_js() {\n    if (root.Bokeh !== undefined || force === true) {\n          for (let i = 0; i < inline_js.length; i++) {\n      inline_js[i].call(root, root.Bokeh);\n    }\nif (force === true) {\n        display_loaded();\n      }} else if (Date.now() < root._bokeh_timeout) {\n      setTimeout(run_inline_js, 100);\n    } else if (!root._bokeh_failed_load) {\n      console.log(\"Bokeh: BokehJS failed to load within specified timeout.\");\n      root._bokeh_failed_load = true;\n    } else if (force !== true) {\n      const cell = $(document.getElementById(\"bbc03a06-f89e-4d64-b28d-3e7e0a077a82\")).parents('.cell').data().cell;\n      cell.output_area.append_execute_result(NB_LOAD_WARNING)\n    }\n  }\n\n  if (root._bokeh_is_loading === 0) {\n    console.debug(\"Bokeh: BokehJS loaded, going straight to plotting\");\n    run_inline_js();\n  } else {\n    load_libs(css_urls, js_urls, function() {\n      console.debug(\"Bokeh: BokehJS plotting callback run at\", now());\n      run_inline_js();\n    });\n  }\n}(window));"
+      "application/vnd.bokehjs_load.v0+json": "'use strict';\n(function(root) {\n  function now() {\n    return new Date();\n  }\n\n  const force = true;\n\n  if (typeof root._bokeh_onload_callbacks === \"undefined\" || force === true) {\n    root._bokeh_onload_callbacks = [];\n    root._bokeh_is_loading = undefined;\n  }\n\n\n  if (typeof (root._bokeh_timeout) === \"undefined\" || force === true) {\n    root._bokeh_timeout = Date.now() + 5000;\n    root._bokeh_failed_load = false;\n  }\n\n  const NB_LOAD_WARNING = {'data': {'text/html':\n     \"<div style='background-color: #fdd'>\\n\"+\n     \"<p>\\n\"+\n     \"BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \\n\"+\n     \"may be due to a slow or bad network connection. Possible fixes:\\n\"+\n     \"</p>\\n\"+\n     \"<ul>\\n\"+\n     \"<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\\n\"+\n     \"<li>use INLINE resources instead, as so:</li>\\n\"+\n     \"</ul>\\n\"+\n     \"<code>\\n\"+\n     \"from bokeh.resources import INLINE\\n\"+\n     \"output_notebook(resources=INLINE)\\n\"+\n     \"</code>\\n\"+\n     \"</div>\"}};\n\n  function display_loaded(error = null) {\n    const el = document.getElementById(\"f16abbf1-6d2f-4ae8-b9e0-279389ad3b77\");\n    if (el != null) {\n      const html = (() => {\n        if (typeof root.Bokeh === \"undefined\") {\n          if (error == null) {\n            return \"BokehJS is loading ...\";\n          } else {\n            return \"BokehJS failed to load.\";\n          }\n        } else {\n          const prefix = `BokehJS ${root.Bokeh.version}`;\n          if (error == null) {\n            return `${prefix} successfully loaded.`;\n          } else {\n            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;\n          }\n        }\n      })();\n      el.innerHTML = html;\n\n      if (error != null) {\n        const wrapper = document.createElement(\"div\");\n        wrapper.style.overflow = \"auto\";\n        wrapper.style.height = \"5em\";\n        wrapper.style.resize = \"vertical\";\n        const content = document.createElement(\"div\");\n        content.style.fontFamily = \"monospace\";\n        content.style.whiteSpace = \"pre-wrap\";\n        content.style.backgroundColor = \"rgb(255, 221, 221)\";\n        content.textContent = error.stack ?? error.toString();\n        wrapper.append(content);\n        el.append(wrapper);\n      }\n    } else if (Date.now() < root._bokeh_timeout) {\n      setTimeout(() => display_loaded(error), 100);\n    }\n  }\n\n  function run_callbacks() {\n    try {\n      root._bokeh_onload_callbacks.forEach(function(callback) {\n        if (callback != null)\n          callback();\n      });\n    } finally {\n      delete root._bokeh_onload_callbacks\n    }\n    console.debug(\"Bokeh: all callbacks have finished\");\n  }\n\n  function load_libs(css_urls, js_urls, callback) {\n    if (css_urls == null) css_urls = [];\n    if (js_urls == null) js_urls = [];\n\n    root._bokeh_onload_callbacks.push(callback);\n    if (root._bokeh_is_loading > 0) {\n      console.debug(\"Bokeh: BokehJS is being loaded, scheduling callback at\", now());\n      return null;\n    }\n    if (js_urls == null || js_urls.length === 0) {\n      run_callbacks();\n      return null;\n    }\n    console.debug(\"Bokeh: BokehJS not loaded, scheduling load and callback at\", now());\n    root._bokeh_is_loading = css_urls.length + js_urls.length;\n\n    function on_load() {\n      root._bokeh_is_loading--;\n      if (root._bokeh_is_loading === 0) {\n        console.debug(\"Bokeh: all BokehJS libraries/stylesheets loaded\");\n        run_callbacks()\n      }\n    }\n\n    function on_error(url) {\n      console.error(\"failed to load \" + url);\n    }\n\n    for (let i = 0; i < css_urls.length; i++) {\n      const url = css_urls[i];\n      const element = document.createElement(\"link\");\n      element.onload = on_load;\n      element.onerror = on_error.bind(null, url);\n      element.rel = \"stylesheet\";\n      element.type = \"text/css\";\n      element.href = url;\n      console.debug(\"Bokeh: injecting link tag for BokehJS stylesheet: \", url);\n      document.body.appendChild(element);\n    }\n\n    for (let i = 0; i < js_urls.length; i++) {\n      const url = js_urls[i];\n      const element = document.createElement('script');\n      element.onload = on_load;\n      element.onerror = on_error.bind(null, url);\n      element.async = false;\n      element.src = url;\n      console.debug(\"Bokeh: injecting script tag for BokehJS library: \", url);\n      document.head.appendChild(element);\n    }\n  };\n\n  function inject_raw_css(css) {\n    const element = document.createElement(\"style\");\n    element.appendChild(document.createTextNode(css));\n    document.body.appendChild(element);\n  }\n\n  const js_urls = [\"https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js\", \"https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js\", \"https://unpkg.com/@holoviz/panel@1.4.4/dist/panel.min.js\"];\n  const css_urls = [];\n\n  const inline_js = [    function(Bokeh) {\n      Bokeh.set_log_level(\"info\");\n    },\nfunction(Bokeh) {\n    }\n  ];\n\n  function run_inline_js() {\n    if (root.Bokeh !== undefined || force === true) {\n      try {\n            for (let i = 0; i < inline_js.length; i++) {\n      inline_js[i].call(root, root.Bokeh);\n    }\n\n      } catch (error) {display_loaded(error);throw error;\n      }if (force === true) {\n        display_loaded();\n      }} else if (Date.now() < root._bokeh_timeout) {\n      setTimeout(run_inline_js, 100);\n    } else if (!root._bokeh_failed_load) {\n      console.log(\"Bokeh: BokehJS failed to load within specified timeout.\");\n      root._bokeh_failed_load = true;\n    } else if (force !== true) {\n      const cell = $(document.getElementById(\"f16abbf1-6d2f-4ae8-b9e0-279389ad3b77\")).parents('.cell').data().cell;\n      cell.output_area.append_execute_result(NB_LOAD_WARNING)\n    }\n  }\n\n  if (root._bokeh_is_loading === 0) {\n    console.debug(\"Bokeh: BokehJS loaded, going straight to plotting\");\n    run_inline_js();\n  } else {\n    load_libs(css_urls, js_urls, function() {\n      console.debug(\"Bokeh: BokehJS plotting callback run at\", now());\n      run_inline_js();\n    });\n  }\n}(window));"
      },
      "metadata": {},
      "output_type": "display_data"
@@ -354,7 +388,7 @@
     "import warnings\n",
     "\n",
     "import numpy as np\n",
-    "import pandas as pd\n",
+    "import polars as pl\n",
     "import scipy.optimize\n",
     "import scipy.stats as st\n",
     "\n",
@@ -383,7 +417,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "df = pd.read_csv(os.path.join(data_path, \"singer_transcript_counts.csv\"), comment=\"#\")"
+    "df = pl.read_csv(os.path.join(data_path, \"singer_transcript_counts.csv\"), comment_prefix=\"#\")"
    ]
   },
   {
@@ -525,13 +559,13 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████████████████████████████████████████████████████████████████| 100/100 [00:01<00:00, 56.53it/s]\n"
+      "100%|███████████████████████████████████████████████████████████████| 100/100 [00:01<00:00, 87.95it/s]\n"
      ]
     }
    ],
    "source": [
     "bs_reps = _draw_parametric_bs_reps_mle(\n",
-    "    mle_iid_nbinom, gen_nbinom, df[\"Nanog\"].values, args=(), size=100, progress_bar=True\n",
+    "    mle_iid_nbinom, gen_nbinom, df[\"Nanog\"].to_numpy(), args=(), size=100, progress_bar=True\n",
     ")"
    ]
   },
@@ -541,9 +575,7 @@
    "source": [
     "## Enabling parallelization\n",
     "\n",
-    "To enable multiple cores to draw bootstrap replicates, we could use Python's built-in [multiprocessing module](https://docs.python.org/3.11/library/multiprocessing.html). This module has [some problems running with Jupyter notebooks on some OSs](https://github.com/ipython/ipython/issues/12396), though. As a drop-in replacement, we could use Mike McKerns's [multiprocess package](https://github.com/uqfoundation/multiprocess), which offers improvements on the built-in multiprocessing module. You can install multiprocess with\n",
-    "\n",
-    "    pip install --upgrade multiprocess\n",
+    "To enable multiple cores to draw bootstrap replicates, we could use Python's built-in [multiprocessing module](https://docs.python.org/3.11/library/multiprocessing.html). This module has [some problems running with Jupyter notebooks on some OSs](https://github.com/ipython/ipython/issues/12396), though. As a drop-in replacement, we could use Mike McKerns's [multiprocess package](https://github.com/uqfoundation/multiprocess), which offers improvements on the built-in multiprocessing module.\n",
     "\n",
     "To enable seamless switching between these two multiprocessing packages, I included the following import statement.\n",
     "\n",
@@ -773,7 +805,7 @@
     {
      "data": {
       "text/plain": [
-       "10"
+       "8"
       ]
      },
      "execution_count": 13,
@@ -789,7 +821,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "My computer has ten cores; I will therefore use nine cores. And now that I am unleashing nine cores on the problem, I will take 10,000 replicates again, and this time it will only take about 1/9 as long as it did the first time I did the calculation."
+    "My computer has eight cores; I will therefore use seven cores. And now that I am unleashing nine cores on the problem, I will take 10,000 replicates again, and this time it will only take about 1/9 as long as it did the first time I did the calculation."
    ]
   },
   {
@@ -801,15 +833,13 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:27<00:00, 39.80it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.63it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.44it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.44it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.43it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.41it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.26it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.09it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1112/1112 [00:28<00:00, 39.10it/s]\n"
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26<00:00, 54.90it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26<00:00, 54.66it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26<00:00, 54.60it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26<00:00, 54.43it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26<00:00, 54.41it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:26<00:00, 54.32it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1432/1432 [00:26<00:00, 54.39it/s]\n"
      ]
     }
    ],
@@ -817,10 +847,10 @@
     "bs_reps = draw_parametric_bs_reps_mle(\n",
     "    mle_iid_nbinom,\n",
     "    gen_nbinom,\n",
-    "    df[\"Nanog\"].values,\n",
+    "    df[\"Nanog\"].to_numpy(),\n",
     "    args=(),\n",
     "    size=10000,\n",
-    "    n_jobs=9,\n",
+    "    n_jobs=7,\n",
     "    progress_bar=True,\n",
     ")"
    ]
@@ -840,8 +870,8 @@
     {
      "data": {
       "text/plain": [
-       "array([[ 1.09413461, 56.83813835],\n",
-       "       [ 1.48656415, 82.87410514]])"
+       "array([[ 1.09248122, 56.62316902],\n",
+       "       [ 1.49371231, 82.69216558]])"
       ]
      },
      "execution_count": 15,
@@ -871,7 +901,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████████████████████████████████████████████████████████████████████| 4/4 [01:57<00:00, 29.46s/it]\n"
+      "100%|███████████████████████████████████████████████████████████████████| 4/4 [01:57<00:00, 29.34s/it]\n"
      ]
     }
    ],
@@ -879,26 +909,32 @@
     "genes = [\"Nanog\", \"Prdm14\", \"Rest\", \"Rex1\"]\n",
     "\n",
     "# Data frame to store results\n",
-    "df_mle = pd.DataFrame(\n",
-    "    columns=[\"gene\", \"parameter\", \"mle\", \"conf_int_low\", \"conf_int_high\"]\n",
+    "df_mle = pl.DataFrame(\n",
+    "    schema=[\n",
+    "        (\"gene\", str),\n",
+    "        (\"parameter\", str),\n",
+    "        (\"mle\", float),\n",
+    "        (\"conf_int_low\", float),\n",
+    "        (\"conf_int_high\", float),\n",
+    "    ]\n",
     ")\n",
     "\n",
     "# Perform MLE for each gene\n",
     "for gene in tqdm.tqdm(genes):\n",
-    "    mle = mle_iid_nbinom(df[gene].values)\n",
+    "    mle = mle_iid_nbinom(df[gene].to_numpy())\n",
     "\n",
     "    bs_reps = draw_parametric_bs_reps_mle(\n",
     "        mle_iid_nbinom,\n",
     "        gen_nbinom,\n",
-    "        df[gene].values,\n",
+    "        df[gene].to_numpy(),\n",
     "        args=(),\n",
     "        size=10000,\n",
-    "        n_jobs=9,\n",
+    "        n_jobs=7,\n",
     "        progress_bar=False,\n",
     "    )\n",
     "    conf_int = np.percentile(bs_reps, [2.5, 97.5], axis=0)\n",
     "\n",
-    "    sub_df = pd.DataFrame(\n",
+    "    sub_df = pl.DataFrame(\n",
     "        {\n",
     "            \"gene\": [gene] * 2,\n",
     "            \"parameter\": [\"alpha\", \"b\"],\n",
@@ -907,7 +943,7 @@
     "            \"conf_int_high\": conf_int[1, :],\n",
     "        }\n",
     "    )\n",
-    "    df_mle = pd.concat([df_mle, sub_df])"
+    "    df_mle = pl.concat([df_mle, sub_df])"
    ]
   },
   {
@@ -925,110 +961,31 @@
     {
      "data": {
       "text/html": [
-       "<div>\n",
-       "<style scoped>\n",
-       "    .dataframe tbody tr th:only-of-type {\n",
-       "        vertical-align: middle;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe tbody tr th {\n",
-       "        vertical-align: top;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe thead th {\n",
-       "        text-align: right;\n",
-       "    }\n",
+       "<div><style>\n",
+       ".dataframe > thead > tr,\n",
+       ".dataframe > tbody > tr {\n",
+       "  text-align: right;\n",
+       "  white-space: pre-wrap;\n",
+       "}\n",
        "</style>\n",
-       "<table border=\"1\" class=\"dataframe\">\n",
-       "  <thead>\n",
-       "    <tr style=\"text-align: right;\">\n",
-       "      <th></th>\n",
-       "      <th>gene</th>\n",
-       "      <th>parameter</th>\n",
-       "      <th>mle</th>\n",
-       "      <th>conf_int_low</th>\n",
-       "      <th>conf_int_high</th>\n",
-       "    </tr>\n",
-       "  </thead>\n",
-       "  <tbody>\n",
-       "    <tr>\n",
-       "      <th>0</th>\n",
-       "      <td>Nanog</td>\n",
-       "      <td>alpha</td>\n",
-       "      <td>1.263097</td>\n",
-       "      <td>1.096059</td>\n",
-       "      <td>1.490806</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>1</th>\n",
-       "      <td>Nanog</td>\n",
-       "      <td>b</td>\n",
-       "      <td>69.347842</td>\n",
-       "      <td>56.832672</td>\n",
-       "      <td>82.420965</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>0</th>\n",
-       "      <td>Prdm14</td>\n",
-       "      <td>alpha</td>\n",
-       "      <td>0.552886</td>\n",
-       "      <td>0.454121</td>\n",
-       "      <td>0.687130</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>1</th>\n",
-       "      <td>Prdm14</td>\n",
-       "      <td>b</td>\n",
-       "      <td>8.200636</td>\n",
-       "      <td>6.161311</td>\n",
-       "      <td>10.512314</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>0</th>\n",
-       "      <td>Rest</td>\n",
-       "      <td>alpha</td>\n",
-       "      <td>4.530335</td>\n",
-       "      <td>3.874058</td>\n",
-       "      <td>5.445957</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>1</th>\n",
-       "      <td>Rest</td>\n",
-       "      <td>b</td>\n",
-       "      <td>16.543054</td>\n",
-       "      <td>13.589208</td>\n",
-       "      <td>19.408816</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>0</th>\n",
-       "      <td>Rex1</td>\n",
-       "      <td>alpha</td>\n",
-       "      <td>1.634562</td>\n",
-       "      <td>1.415841</td>\n",
-       "      <td>1.940372</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>1</th>\n",
-       "      <td>Rex1</td>\n",
-       "      <td>b</td>\n",
-       "      <td>84.680915</td>\n",
-       "      <td>69.762021</td>\n",
-       "      <td>99.774827</td>\n",
-       "    </tr>\n",
-       "  </tbody>\n",
-       "</table>\n",
-       "</div>"
+       "<small>shape: (8, 5)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>gene</th><th>parameter</th><th>mle</th><th>conf_int_low</th><th>conf_int_high</th></tr><tr><td>str</td><td>str</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>&quot;Nanog&quot;</td><td>&quot;alpha&quot;</td><td>1.263097</td><td>1.086924</td><td>1.490689</td></tr><tr><td>&quot;Nanog&quot;</td><td>&quot;b&quot;</td><td>69.347842</td><td>57.000678</td><td>82.855546</td></tr><tr><td>&quot;Prdm14&quot;</td><td>&quot;alpha&quot;</td><td>0.552886</td><td>0.454054</td><td>0.683784</td></tr><tr><td>&quot;Prdm14&quot;</td><td>&quot;b&quot;</td><td>8.200636</td><td>6.208957</td><td>10.538376</td></tr><tr><td>&quot;Rest&quot;</td><td>&quot;alpha&quot;</td><td>4.530335</td><td>3.861675</td><td>5.444188</td></tr><tr><td>&quot;Rest&quot;</td><td>&quot;b&quot;</td><td>16.543054</td><td>13.667831</td><td>19.445975</td></tr><tr><td>&quot;Rex1&quot;</td><td>&quot;alpha&quot;</td><td>1.634562</td><td>1.41371</td><td>1.926967</td></tr><tr><td>&quot;Rex1&quot;</td><td>&quot;b&quot;</td><td>84.680915</td><td>69.914502</td><td>100.022393</td></tr></tbody></table></div>"
       ],
       "text/plain": [
-       "     gene parameter        mle  conf_int_low  conf_int_high\n",
-       "0   Nanog     alpha   1.263097      1.096059       1.490806\n",
-       "1   Nanog         b  69.347842     56.832672      82.420965\n",
-       "0  Prdm14     alpha   0.552886      0.454121       0.687130\n",
-       "1  Prdm14         b   8.200636      6.161311      10.512314\n",
-       "0    Rest     alpha   4.530335      3.874058       5.445957\n",
-       "1    Rest         b  16.543054     13.589208      19.408816\n",
-       "0    Rex1     alpha   1.634562      1.415841       1.940372\n",
-       "1    Rex1         b  84.680915     69.762021      99.774827"
+       "shape: (8, 5)\n",
+       "┌────────┬───────────┬───────────┬──────────────┬───────────────┐\n",
+       "│ gene   ┆ parameter ┆ mle       ┆ conf_int_low ┆ conf_int_high │\n",
+       "│ ---    ┆ ---       ┆ ---       ┆ ---          ┆ ---           │\n",
+       "│ str    ┆ str       ┆ f64       ┆ f64          ┆ f64           │\n",
+       "╞════════╪═══════════╪═══════════╪══════════════╪═══════════════╡\n",
+       "│ Nanog  ┆ alpha     ┆ 1.263097  ┆ 1.086924     ┆ 1.490689      │\n",
+       "│ Nanog  ┆ b         ┆ 69.347842 ┆ 57.000678    ┆ 82.855546     │\n",
+       "│ Prdm14 ┆ alpha     ┆ 0.552886  ┆ 0.454054     ┆ 0.683784      │\n",
+       "│ Prdm14 ┆ b         ┆ 8.200636  ┆ 6.208957     ┆ 10.538376     │\n",
+       "│ Rest   ┆ alpha     ┆ 4.530335  ┆ 3.861675     ┆ 5.444188      │\n",
+       "│ Rest   ┆ b         ┆ 16.543054 ┆ 13.667831    ┆ 19.445975     │\n",
+       "│ Rex1   ┆ alpha     ┆ 1.634562  ┆ 1.41371      ┆ 1.926967      │\n",
+       "│ Rex1   ┆ b         ┆ 84.680915 ┆ 69.914502    ┆ 100.022393    │\n",
+       "└────────┴───────────┴───────────┴──────────────┴───────────────┘"
       ]
      },
      "execution_count": 17,
@@ -1056,7 +1013,7 @@
      "data": {
       "text/html": [
        "\n",
-       "  <div id=\"bea5ca5b-3bb9-42b1-9018-f3404ff5ed3f\" data-root-id=\"p1205\" style=\"display: contents;\"></div>\n"
+       "  <div id=\"a8825757-94cd-48c1-b825-876b13ccb680\" data-root-id=\"p1213\" style=\"display: contents;\"></div>\n"
       ]
      },
      "metadata": {},
@@ -1067,9 +1024,9 @@
       "application/javascript": [
        "(function(root) {\n",
        "  function embed_document(root) {\n",
-       "  const docs_json = {\"cecaa4c5-53ac-470b-9f58-9ae76c8478a2\":{\"version\":\"3.2.1\",\"title\":\"Bokeh Application\",\"roots\":[{\"type\":\"object\",\"name\":\"Column\",\"id\":\"p1205\",\"attributes\":{\"children\":[{\"type\":\"object\",\"name\":\"Figure\",\"id\":\"p1002\",\"attributes\":{\"x_range\":{\"type\":\"object\",\"name\":\"DataRange1d\",\"id\":\"p1004\"},\"y_range\":{\"type\":\"object\",\"name\":\"FactorRange\",\"id\":\"p1011\",\"attributes\":{\"factors\":[\"Rex1\",\"Rest\",\"Prdm14\",\"Nanog\"]}},\"x_scale\":{\"type\":\"object\",\"name\":\"LinearScale\",\"id\":\"p1012\"},\"y_scale\":{\"type\":\"object\",\"name\":\"CategoricalScale\",\"id\":\"p1013\"},\"title\":{\"type\":\"object\",\"name\":\"Title\",\"id\":\"p1009\"},\"renderers\":[{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1037\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1031\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1032\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1033\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[1.2630973722818943]],[\"y\",[\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1038\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1039\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1034\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1035\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1036\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1046\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1040\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1041\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1042\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"SPbBJHWJ8T/z8vIuV9r3Pw==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Nanog\",\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1047\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1048\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1043\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1044\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1045\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1055\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1049\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1050\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1051\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[0.5528859647659605]],[\"y\",[\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1056\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1057\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1052\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1053\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1054\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1064\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1058\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1059\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1060\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"cjxtZlIQ3T+quSmj+PzlPw==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Prdm14\",\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1065\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1066\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1061\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1062\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1063\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1073\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1067\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1068\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1069\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[4.530334884321037]],[\"y\",[\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1074\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1075\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1070\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1071\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1072\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1082\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1076\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1077\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1078\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"IC0sJBL+DkDJQWAJqcgVQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rest\",\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1083\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1084\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1079\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1080\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1081\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1091\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1085\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1086\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1087\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[1.6345624303476392]],[\"y\",[\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1092\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1093\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1088\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1089\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1090\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1100\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1094\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1095\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1096\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"5mPP8Uin9j/KiKIJwwv/Pw==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rex1\",\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1101\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1102\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1097\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1098\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1099\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}}],\"toolbar\":{\"type\":\"object\",\"name\":\"Toolbar\",\"id\":\"p1010\",\"attributes\":{\"tools\":[{\"type\":\"object\",\"name\":\"PanTool\",\"id\":\"p1024\"},{\"type\":\"object\",\"name\":\"WheelZoomTool\",\"id\":\"p1025\"},{\"type\":\"object\",\"name\":\"BoxZoomTool\",\"id\":\"p1026\",\"attributes\":{\"overlay\":{\"type\":\"object\",\"name\":\"BoxAnnotation\",\"id\":\"p1027\",\"attributes\":{\"syncable\":false,\"level\":\"overlay\",\"visible\":false,\"left_units\":\"canvas\",\"right_units\":\"canvas\",\"bottom_units\":\"canvas\",\"top_units\":\"canvas\",\"line_color\":\"black\",\"line_alpha\":1.0,\"line_width\":2,\"line_dash\":[4,4],\"fill_color\":\"lightgrey\",\"fill_alpha\":0.5}}}},{\"type\":\"object\",\"name\":\"SaveTool\",\"id\":\"p1028\"},{\"type\":\"object\",\"name\":\"ResetTool\",\"id\":\"p1029\"},{\"type\":\"object\",\"name\":\"HelpTool\",\"id\":\"p1030\"}]}},\"toolbar_location\":\"above\",\"left\":[{\"type\":\"object\",\"name\":\"CategoricalAxis\",\"id\":\"p1019\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"CategoricalTicker\",\"id\":\"p1020\"},\"formatter\":{\"type\":\"object\",\"name\":\"CategoricalTickFormatter\",\"id\":\"p1021\"},\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1022\"}}}],\"below\":[{\"type\":\"object\",\"name\":\"LinearAxis\",\"id\":\"p1014\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"BasicTicker\",\"id\":\"p1015\",\"attributes\":{\"mantissas\":[1,2,5]}},\"formatter\":{\"type\":\"object\",\"name\":\"BasicTickFormatter\",\"id\":\"p1016\"},\"axis_label\":\"\\u03b1*\",\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1017\"}}}],\"center\":[{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1018\",\"attributes\":{\"axis\":{\"id\":\"p1014\"}}},{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1023\",\"attributes\":{\"dimension\":1,\"axis\":{\"id\":\"p1019\"}}}],\"frame_width\":450,\"frame_height\":75}},{\"type\":\"object\",\"name\":\"Spacer\",\"id\":\"p1204\",\"attributes\":{\"height\":20}},{\"type\":\"object\",\"name\":\"Figure\",\"id\":\"p1103\",\"attributes\":{\"x_range\":{\"type\":\"object\",\"name\":\"DataRange1d\",\"id\":\"p1105\"},\"y_range\":{\"type\":\"object\",\"name\":\"FactorRange\",\"id\":\"p1112\",\"attributes\":{\"factors\":[\"Rex1\",\"Rest\",\"Prdm14\",\"Nanog\"]}},\"x_scale\":{\"type\":\"object\",\"name\":\"LinearScale\",\"id\":\"p1113\"},\"y_scale\":{\"type\":\"object\",\"name\":\"CategoricalScale\",\"id\":\"p1114\"},\"title\":{\"type\":\"object\",\"name\":\"Title\",\"id\":\"p1110\"},\"renderers\":[{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1138\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1132\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1133\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1134\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[69.34784233306983]],[\"y\",[\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1139\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1140\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1135\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1136\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1137\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1147\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1141\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1142\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1143\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"WvSg+5RqTEA6e6MW8ZpUQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Nanog\",\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1148\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1149\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1144\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1145\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1146\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1156\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1150\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1151\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1152\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[8.200635707904203]],[\"y\",[\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1157\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1158\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1153\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1154\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1155\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1165\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1159\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1160\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1161\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"8DNDmC6lGEBv8YgPTgYlQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Prdm14\",\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1166\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1167\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1162\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1163\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1164\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1174\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1168\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1169\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1170\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[16.54305361995114]],[\"y\",[\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1175\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1176\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1171\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1172\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1173\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1183\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1177\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1178\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1179\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"nKgOu6wtK0DnHuklqGgzQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rest\",\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1184\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1185\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1180\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1181\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1182\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1192\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1186\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1187\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1188\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[84.68091531313344]],[\"y\",[\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1193\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1194\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1189\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1190\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Circle\",\"id\":\"p1191\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1201\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1195\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1196\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1197\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"1X0G9cRwUUCfmI7DlvFYQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rex1\",\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1202\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1203\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1198\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1199\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1200\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}}],\"toolbar\":{\"type\":\"object\",\"name\":\"Toolbar\",\"id\":\"p1111\",\"attributes\":{\"tools\":[{\"type\":\"object\",\"name\":\"PanTool\",\"id\":\"p1125\"},{\"type\":\"object\",\"name\":\"WheelZoomTool\",\"id\":\"p1126\"},{\"type\":\"object\",\"name\":\"BoxZoomTool\",\"id\":\"p1127\",\"attributes\":{\"overlay\":{\"type\":\"object\",\"name\":\"BoxAnnotation\",\"id\":\"p1128\",\"attributes\":{\"syncable\":false,\"level\":\"overlay\",\"visible\":false,\"left_units\":\"canvas\",\"right_units\":\"canvas\",\"bottom_units\":\"canvas\",\"top_units\":\"canvas\",\"line_color\":\"black\",\"line_alpha\":1.0,\"line_width\":2,\"line_dash\":[4,4],\"fill_color\":\"lightgrey\",\"fill_alpha\":0.5}}}},{\"type\":\"object\",\"name\":\"SaveTool\",\"id\":\"p1129\"},{\"type\":\"object\",\"name\":\"ResetTool\",\"id\":\"p1130\"},{\"type\":\"object\",\"name\":\"HelpTool\",\"id\":\"p1131\"}]}},\"toolbar_location\":\"above\",\"left\":[{\"type\":\"object\",\"name\":\"CategoricalAxis\",\"id\":\"p1120\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"CategoricalTicker\",\"id\":\"p1121\"},\"formatter\":{\"type\":\"object\",\"name\":\"CategoricalTickFormatter\",\"id\":\"p1122\"},\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1123\"}}}],\"below\":[{\"type\":\"object\",\"name\":\"LinearAxis\",\"id\":\"p1115\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"BasicTicker\",\"id\":\"p1116\",\"attributes\":{\"mantissas\":[1,2,5]}},\"formatter\":{\"type\":\"object\",\"name\":\"BasicTickFormatter\",\"id\":\"p1117\"},\"axis_label\":\"b*\",\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1118\"}}}],\"center\":[{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1119\",\"attributes\":{\"axis\":{\"id\":\"p1115\"}}},{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1124\",\"attributes\":{\"dimension\":1,\"axis\":{\"id\":\"p1120\"}}}],\"frame_width\":450,\"frame_height\":75}}]}}],\"defs\":[{\"type\":\"model\",\"name\":\"ReactiveHTML1\"},{\"type\":\"model\",\"name\":\"FlexBox1\",\"properties\":[{\"name\":\"align_content\",\"kind\":\"Any\",\"default\":\"flex-start\"},{\"name\":\"align_items\",\"kind\":\"Any\",\"default\":\"flex-start\"},{\"name\":\"flex_direction\",\"kind\":\"Any\",\"default\":\"row\"},{\"name\":\"flex_wrap\",\"kind\":\"Any\",\"default\":\"wrap\"},{\"name\":\"justify_content\",\"kind\":\"Any\",\"default\":\"flex-start\"}]},{\"type\":\"model\",\"name\":\"FloatPanel1\",\"properties\":[{\"name\":\"config\",\"kind\":\"Any\",\"default\":{\"type\":\"map\"}},{\"name\":\"contained\",\"kind\":\"Any\",\"default\":true},{\"name\":\"position\",\"kind\":\"Any\",\"default\":\"right-top\"},{\"name\":\"offsetx\",\"kind\":\"Any\",\"default\":null},{\"name\":\"offsety\",\"kind\":\"Any\",\"default\":null},{\"name\":\"theme\",\"kind\":\"Any\",\"default\":\"primary\"},{\"name\":\"status\",\"kind\":\"Any\",\"default\":\"normalized\"}]},{\"type\":\"model\",\"name\":\"GridStack1\",\"properties\":[{\"name\":\"mode\",\"kind\":\"Any\",\"default\":\"warn\"},{\"name\":\"ncols\",\"kind\":\"Any\",\"default\":null},{\"name\":\"nrows\",\"kind\":\"Any\",\"default\":null},{\"name\":\"allow_resize\",\"kind\":\"Any\",\"default\":true},{\"name\":\"allow_drag\",\"kind\":\"Any\",\"default\":true},{\"name\":\"state\",\"kind\":\"Any\",\"default\":[]}]},{\"type\":\"model\",\"name\":\"drag1\",\"properties\":[{\"name\":\"slider_width\",\"kind\":\"Any\",\"default\":5},{\"name\":\"slider_color\",\"kind\":\"Any\",\"default\":\"black\"},{\"name\":\"value\",\"kind\":\"Any\",\"default\":50}]},{\"type\":\"model\",\"name\":\"click1\",\"properties\":[{\"name\":\"terminal_output\",\"kind\":\"Any\",\"default\":\"\"},{\"name\":\"debug_name\",\"kind\":\"Any\",\"default\":\"\"},{\"name\":\"clears\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"FastWrapper1\",\"properties\":[{\"name\":\"object\",\"kind\":\"Any\",\"default\":null},{\"name\":\"style\",\"kind\":\"Any\",\"default\":null}]},{\"type\":\"model\",\"name\":\"NotificationAreaBase1\",\"properties\":[{\"name\":\"js_events\",\"kind\":\"Any\",\"default\":{\"type\":\"map\"}},{\"name\":\"position\",\"kind\":\"Any\",\"default\":\"bottom-right\"},{\"name\":\"_clear\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"NotificationArea1\",\"properties\":[{\"name\":\"js_events\",\"kind\":\"Any\",\"default\":{\"type\":\"map\"}},{\"name\":\"notifications\",\"kind\":\"Any\",\"default\":[]},{\"name\":\"position\",\"kind\":\"Any\",\"default\":\"bottom-right\"},{\"name\":\"_clear\",\"kind\":\"Any\",\"default\":0},{\"name\":\"types\",\"kind\":\"Any\",\"default\":[{\"type\":\"map\",\"entries\":[[\"type\",\"warning\"],[\"background\",\"#ffc107\"],[\"icon\",{\"type\":\"map\",\"entries\":[[\"className\",\"fas fa-exclamation-triangle\"],[\"tagName\",\"i\"],[\"color\",\"white\"]]}]]},{\"type\":\"map\",\"entries\":[[\"type\",\"info\"],[\"background\",\"#007bff\"],[\"icon\",{\"type\":\"map\",\"entries\":[[\"className\",\"fas fa-info-circle\"],[\"tagName\",\"i\"],[\"color\",\"white\"]]}]]}]}]},{\"type\":\"model\",\"name\":\"Notification\",\"properties\":[{\"name\":\"background\",\"kind\":\"Any\",\"default\":null},{\"name\":\"duration\",\"kind\":\"Any\",\"default\":3000},{\"name\":\"icon\",\"kind\":\"Any\",\"default\":null},{\"name\":\"message\",\"kind\":\"Any\",\"default\":\"\"},{\"name\":\"notification_type\",\"kind\":\"Any\",\"default\":null},{\"name\":\"_destroyed\",\"kind\":\"Any\",\"default\":false}]},{\"type\":\"model\",\"name\":\"TemplateActions1\",\"properties\":[{\"name\":\"open_modal\",\"kind\":\"Any\",\"default\":0},{\"name\":\"close_modal\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"BootstrapTemplateActions1\",\"properties\":[{\"name\":\"open_modal\",\"kind\":\"Any\",\"default\":0},{\"name\":\"close_modal\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"MaterialTemplateActions1\",\"properties\":[{\"name\":\"open_modal\",\"kind\":\"Any\",\"default\":0},{\"name\":\"close_modal\",\"kind\":\"Any\",\"default\":0}]}]}};\n",
-       "  const render_items = [{\"docid\":\"cecaa4c5-53ac-470b-9f58-9ae76c8478a2\",\"roots\":{\"p1205\":\"bea5ca5b-3bb9-42b1-9018-f3404ff5ed3f\"},\"root_ids\":[\"p1205\"]}];\n",
-       "  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);\n",
+       "  const docs_json = {\"09067014-d6aa-47c8-8ea7-9a6e9fca6ec3\":{\"version\":\"3.4.1\",\"title\":\"Bokeh Application\",\"roots\":[{\"type\":\"object\",\"name\":\"Column\",\"id\":\"p1213\",\"attributes\":{\"children\":[{\"type\":\"object\",\"name\":\"Figure\",\"id\":\"p1002\",\"attributes\":{\"x_range\":{\"type\":\"object\",\"name\":\"DataRange1d\",\"id\":\"p1004\"},\"y_range\":{\"type\":\"object\",\"name\":\"FactorRange\",\"id\":\"p1011\",\"attributes\":{\"factors\":[\"Rex1\",\"Rest\",\"Prdm14\",\"Nanog\"]}},\"x_scale\":{\"type\":\"object\",\"name\":\"LinearScale\",\"id\":\"p1012\"},\"y_scale\":{\"type\":\"object\",\"name\":\"CategoricalScale\",\"id\":\"p1013\"},\"title\":{\"type\":\"object\",\"name\":\"Title\",\"id\":\"p1009\"},\"renderers\":[{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1041\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1035\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1036\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1037\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[1.2630973722808048]],[\"y\",[\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1042\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1043\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1038\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1039\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1040\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1050\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1044\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1045\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1046\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"Z81Dxgpk8T+Ml+g43Nn3Pw==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Nanog\",\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1051\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1052\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1047\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1048\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1049\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1059\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1053\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1054\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1055\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[0.5528859648100356]],[\"y\",[\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1060\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1061\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1056\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1057\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1058\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1068\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1062\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1063\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1064\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"2lCBZzcP3T9zmw5kjuHlPw==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Prdm14\",\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1069\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1070\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1065\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1066\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1067\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1077\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1071\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1072\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1073\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[4.530334885171684]],[\"y\",[\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1078\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1079\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1074\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1075\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1076\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1086\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1080\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1081\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1082\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"hT8dFLbkDkAtQlEq2cYVQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rest\",\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1087\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1088\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1083\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1084\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1085\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1095\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1089\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1090\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1091\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[1.6345624303464514]],[\"y\",[\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1096\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1097\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1092\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1093\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1094\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1104\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1098\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1099\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1100\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"71h3+42e9j9zdNdp29T+Pw==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rex1\",\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1105\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1106\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1101\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1102\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1103\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}}],\"toolbar\":{\"type\":\"object\",\"name\":\"Toolbar\",\"id\":\"p1010\",\"attributes\":{\"tools\":[{\"type\":\"object\",\"name\":\"PanTool\",\"id\":\"p1024\"},{\"type\":\"object\",\"name\":\"WheelZoomTool\",\"id\":\"p1025\",\"attributes\":{\"renderers\":\"auto\"}},{\"type\":\"object\",\"name\":\"BoxZoomTool\",\"id\":\"p1026\",\"attributes\":{\"overlay\":{\"type\":\"object\",\"name\":\"BoxAnnotation\",\"id\":\"p1027\",\"attributes\":{\"syncable\":false,\"level\":\"overlay\",\"visible\":false,\"left\":{\"type\":\"number\",\"value\":\"nan\"},\"right\":{\"type\":\"number\",\"value\":\"nan\"},\"top\":{\"type\":\"number\",\"value\":\"nan\"},\"bottom\":{\"type\":\"number\",\"value\":\"nan\"},\"left_units\":\"canvas\",\"right_units\":\"canvas\",\"top_units\":\"canvas\",\"bottom_units\":\"canvas\",\"line_color\":\"black\",\"line_alpha\":1.0,\"line_width\":2,\"line_dash\":[4,4],\"fill_color\":\"lightgrey\",\"fill_alpha\":0.5}}}},{\"type\":\"object\",\"name\":\"SaveTool\",\"id\":\"p1032\"},{\"type\":\"object\",\"name\":\"ResetTool\",\"id\":\"p1033\"},{\"type\":\"object\",\"name\":\"HelpTool\",\"id\":\"p1034\"}]}},\"toolbar_location\":\"above\",\"left\":[{\"type\":\"object\",\"name\":\"CategoricalAxis\",\"id\":\"p1019\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"CategoricalTicker\",\"id\":\"p1020\"},\"formatter\":{\"type\":\"object\",\"name\":\"CategoricalTickFormatter\",\"id\":\"p1021\"},\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1022\"}}}],\"below\":[{\"type\":\"object\",\"name\":\"LinearAxis\",\"id\":\"p1014\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"BasicTicker\",\"id\":\"p1015\",\"attributes\":{\"mantissas\":[1,2,5]}},\"formatter\":{\"type\":\"object\",\"name\":\"BasicTickFormatter\",\"id\":\"p1016\"},\"axis_label\":\"\\u03b1*\",\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1017\"}}}],\"center\":[{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1018\",\"attributes\":{\"axis\":{\"id\":\"p1014\"}}},{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1023\",\"attributes\":{\"dimension\":1,\"axis\":{\"id\":\"p1019\"}}}],\"frame_width\":450,\"frame_height\":75}},{\"type\":\"object\",\"name\":\"Spacer\",\"id\":\"p1212\",\"attributes\":{\"height\":20}},{\"type\":\"object\",\"name\":\"Figure\",\"id\":\"p1107\",\"attributes\":{\"x_range\":{\"type\":\"object\",\"name\":\"DataRange1d\",\"id\":\"p1109\"},\"y_range\":{\"type\":\"object\",\"name\":\"FactorRange\",\"id\":\"p1116\",\"attributes\":{\"factors\":[\"Rex1\",\"Rest\",\"Prdm14\",\"Nanog\"]}},\"x_scale\":{\"type\":\"object\",\"name\":\"LinearScale\",\"id\":\"p1117\"},\"y_scale\":{\"type\":\"object\",\"name\":\"CategoricalScale\",\"id\":\"p1118\"},\"title\":{\"type\":\"object\",\"name\":\"Title\",\"id\":\"p1114\"},\"renderers\":[{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1146\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1140\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1141\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1142\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[69.34784233619546]],[\"y\",[\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1147\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1148\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1143\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1144\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1145\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1155\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1149\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1150\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1151\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"58BUNhaATEAYWxpCwbZUQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Nanog\",\"Nanog\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1156\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1157\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1152\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1153\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1154\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1164\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1158\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1159\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1160\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[8.200635706742071]],[\"y\",[\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1165\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1166\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1161\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1162\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1163\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1173\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1167\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1168\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1169\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"6rq5xvjVGEAgApn9pRMlQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Prdm14\",\"Prdm14\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1174\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1175\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1170\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1171\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1172\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1182\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1176\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1177\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1178\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[16.54305361977416]],[\"y\",[\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1183\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1184\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1179\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1180\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1181\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1191\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1185\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1186\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1187\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"y0ce8e1VK0Dq/95qK3IzQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rest\",\"Rest\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1192\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1193\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1188\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1189\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1190\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1200\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1194\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1195\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1196\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",[84.68091531208012]],[\"y\",[\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1201\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1202\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1197\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"}}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1198\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.1},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.1},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.1}}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Scatter\",\"id\":\"p1199\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"size\":{\"type\":\"value\",\"value\":5},\"line_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"line_alpha\":{\"type\":\"value\",\"value\":0.2},\"fill_color\":{\"type\":\"value\",\"value\":\"#1f77b4\"},\"fill_alpha\":{\"type\":\"value\",\"value\":0.2},\"hatch_alpha\":{\"type\":\"value\",\"value\":0.2}}}}},{\"type\":\"object\",\"name\":\"GlyphRenderer\",\"id\":\"p1209\",\"attributes\":{\"data_source\":{\"type\":\"object\",\"name\":\"ColumnDataSource\",\"id\":\"p1203\",\"attributes\":{\"selected\":{\"type\":\"object\",\"name\":\"Selection\",\"id\":\"p1204\",\"attributes\":{\"indices\":[],\"line_indices\":[]}},\"selection_policy\":{\"type\":\"object\",\"name\":\"UnionRenderers\",\"id\":\"p1205\"},\"data\":{\"type\":\"map\",\"entries\":[[\"x\",{\"type\":\"ndarray\",\"array\":{\"type\":\"bytes\",\"data\":\"gaW2M4d6UUDRRVvibgFZQA==\"},\"shape\":[2],\"dtype\":\"float64\",\"order\":\"little\"}],[\"y\",[\"Rex1\",\"Rex1\"]]]}}},\"view\":{\"type\":\"object\",\"name\":\"CDSView\",\"id\":\"p1210\",\"attributes\":{\"filter\":{\"type\":\"object\",\"name\":\"AllIndices\",\"id\":\"p1211\"}}},\"glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1206\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_width\":3}},\"nonselection_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1207\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.1,\"line_width\":3}},\"muted_glyph\":{\"type\":\"object\",\"name\":\"Line\",\"id\":\"p1208\",\"attributes\":{\"x\":{\"type\":\"field\",\"field\":\"x\"},\"y\":{\"type\":\"field\",\"field\":\"y\"},\"line_color\":\"#1f77b4\",\"line_alpha\":0.2,\"line_width\":3}}}}],\"toolbar\":{\"type\":\"object\",\"name\":\"Toolbar\",\"id\":\"p1115\",\"attributes\":{\"tools\":[{\"type\":\"object\",\"name\":\"PanTool\",\"id\":\"p1129\"},{\"type\":\"object\",\"name\":\"WheelZoomTool\",\"id\":\"p1130\",\"attributes\":{\"renderers\":\"auto\"}},{\"type\":\"object\",\"name\":\"BoxZoomTool\",\"id\":\"p1131\",\"attributes\":{\"overlay\":{\"type\":\"object\",\"name\":\"BoxAnnotation\",\"id\":\"p1132\",\"attributes\":{\"syncable\":false,\"level\":\"overlay\",\"visible\":false,\"left\":{\"type\":\"number\",\"value\":\"nan\"},\"right\":{\"type\":\"number\",\"value\":\"nan\"},\"top\":{\"type\":\"number\",\"value\":\"nan\"},\"bottom\":{\"type\":\"number\",\"value\":\"nan\"},\"left_units\":\"canvas\",\"right_units\":\"canvas\",\"top_units\":\"canvas\",\"bottom_units\":\"canvas\",\"line_color\":\"black\",\"line_alpha\":1.0,\"line_width\":2,\"line_dash\":[4,4],\"fill_color\":\"lightgrey\",\"fill_alpha\":0.5}}}},{\"type\":\"object\",\"name\":\"SaveTool\",\"id\":\"p1137\"},{\"type\":\"object\",\"name\":\"ResetTool\",\"id\":\"p1138\"},{\"type\":\"object\",\"name\":\"HelpTool\",\"id\":\"p1139\"}]}},\"toolbar_location\":\"above\",\"left\":[{\"type\":\"object\",\"name\":\"CategoricalAxis\",\"id\":\"p1124\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"CategoricalTicker\",\"id\":\"p1125\"},\"formatter\":{\"type\":\"object\",\"name\":\"CategoricalTickFormatter\",\"id\":\"p1126\"},\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1127\"}}}],\"below\":[{\"type\":\"object\",\"name\":\"LinearAxis\",\"id\":\"p1119\",\"attributes\":{\"ticker\":{\"type\":\"object\",\"name\":\"BasicTicker\",\"id\":\"p1120\",\"attributes\":{\"mantissas\":[1,2,5]}},\"formatter\":{\"type\":\"object\",\"name\":\"BasicTickFormatter\",\"id\":\"p1121\"},\"axis_label\":\"b*\",\"major_label_policy\":{\"type\":\"object\",\"name\":\"AllLabels\",\"id\":\"p1122\"}}}],\"center\":[{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1123\",\"attributes\":{\"axis\":{\"id\":\"p1119\"}}},{\"type\":\"object\",\"name\":\"Grid\",\"id\":\"p1128\",\"attributes\":{\"dimension\":1,\"axis\":{\"id\":\"p1124\"}}}],\"frame_width\":450,\"frame_height\":75}}]}}],\"defs\":[{\"type\":\"model\",\"name\":\"ReactiveHTML1\"},{\"type\":\"model\",\"name\":\"FlexBox1\",\"properties\":[{\"name\":\"align_content\",\"kind\":\"Any\",\"default\":\"flex-start\"},{\"name\":\"align_items\",\"kind\":\"Any\",\"default\":\"flex-start\"},{\"name\":\"flex_direction\",\"kind\":\"Any\",\"default\":\"row\"},{\"name\":\"flex_wrap\",\"kind\":\"Any\",\"default\":\"wrap\"},{\"name\":\"gap\",\"kind\":\"Any\",\"default\":\"\"},{\"name\":\"justify_content\",\"kind\":\"Any\",\"default\":\"flex-start\"}]},{\"type\":\"model\",\"name\":\"FloatPanel1\",\"properties\":[{\"name\":\"config\",\"kind\":\"Any\",\"default\":{\"type\":\"map\"}},{\"name\":\"contained\",\"kind\":\"Any\",\"default\":true},{\"name\":\"position\",\"kind\":\"Any\",\"default\":\"right-top\"},{\"name\":\"offsetx\",\"kind\":\"Any\",\"default\":null},{\"name\":\"offsety\",\"kind\":\"Any\",\"default\":null},{\"name\":\"theme\",\"kind\":\"Any\",\"default\":\"primary\"},{\"name\":\"status\",\"kind\":\"Any\",\"default\":\"normalized\"}]},{\"type\":\"model\",\"name\":\"GridStack1\",\"properties\":[{\"name\":\"mode\",\"kind\":\"Any\",\"default\":\"warn\"},{\"name\":\"ncols\",\"kind\":\"Any\",\"default\":null},{\"name\":\"nrows\",\"kind\":\"Any\",\"default\":null},{\"name\":\"allow_resize\",\"kind\":\"Any\",\"default\":true},{\"name\":\"allow_drag\",\"kind\":\"Any\",\"default\":true},{\"name\":\"state\",\"kind\":\"Any\",\"default\":[]}]},{\"type\":\"model\",\"name\":\"drag1\",\"properties\":[{\"name\":\"slider_width\",\"kind\":\"Any\",\"default\":5},{\"name\":\"slider_color\",\"kind\":\"Any\",\"default\":\"black\"},{\"name\":\"value\",\"kind\":\"Any\",\"default\":50}]},{\"type\":\"model\",\"name\":\"click1\",\"properties\":[{\"name\":\"terminal_output\",\"kind\":\"Any\",\"default\":\"\"},{\"name\":\"debug_name\",\"kind\":\"Any\",\"default\":\"\"},{\"name\":\"clears\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"FastWrapper1\",\"properties\":[{\"name\":\"object\",\"kind\":\"Any\",\"default\":null},{\"name\":\"style\",\"kind\":\"Any\",\"default\":null}]},{\"type\":\"model\",\"name\":\"NotificationAreaBase1\",\"properties\":[{\"name\":\"js_events\",\"kind\":\"Any\",\"default\":{\"type\":\"map\"}},{\"name\":\"position\",\"kind\":\"Any\",\"default\":\"bottom-right\"},{\"name\":\"_clear\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"NotificationArea1\",\"properties\":[{\"name\":\"js_events\",\"kind\":\"Any\",\"default\":{\"type\":\"map\"}},{\"name\":\"notifications\",\"kind\":\"Any\",\"default\":[]},{\"name\":\"position\",\"kind\":\"Any\",\"default\":\"bottom-right\"},{\"name\":\"_clear\",\"kind\":\"Any\",\"default\":0},{\"name\":\"types\",\"kind\":\"Any\",\"default\":[{\"type\":\"map\",\"entries\":[[\"type\",\"warning\"],[\"background\",\"#ffc107\"],[\"icon\",{\"type\":\"map\",\"entries\":[[\"className\",\"fas fa-exclamation-triangle\"],[\"tagName\",\"i\"],[\"color\",\"white\"]]}]]},{\"type\":\"map\",\"entries\":[[\"type\",\"info\"],[\"background\",\"#007bff\"],[\"icon\",{\"type\":\"map\",\"entries\":[[\"className\",\"fas fa-info-circle\"],[\"tagName\",\"i\"],[\"color\",\"white\"]]}]]}]}]},{\"type\":\"model\",\"name\":\"Notification\",\"properties\":[{\"name\":\"background\",\"kind\":\"Any\",\"default\":null},{\"name\":\"duration\",\"kind\":\"Any\",\"default\":3000},{\"name\":\"icon\",\"kind\":\"Any\",\"default\":null},{\"name\":\"message\",\"kind\":\"Any\",\"default\":\"\"},{\"name\":\"notification_type\",\"kind\":\"Any\",\"default\":null},{\"name\":\"_destroyed\",\"kind\":\"Any\",\"default\":false}]},{\"type\":\"model\",\"name\":\"TemplateActions1\",\"properties\":[{\"name\":\"open_modal\",\"kind\":\"Any\",\"default\":0},{\"name\":\"close_modal\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"BootstrapTemplateActions1\",\"properties\":[{\"name\":\"open_modal\",\"kind\":\"Any\",\"default\":0},{\"name\":\"close_modal\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"TemplateEditor1\",\"properties\":[{\"name\":\"layout\",\"kind\":\"Any\",\"default\":[]}]},{\"type\":\"model\",\"name\":\"MaterialTemplateActions1\",\"properties\":[{\"name\":\"open_modal\",\"kind\":\"Any\",\"default\":0},{\"name\":\"close_modal\",\"kind\":\"Any\",\"default\":0}]},{\"type\":\"model\",\"name\":\"copy_to_clipboard1\",\"properties\":[{\"name\":\"fill\",\"kind\":\"Any\",\"default\":\"none\"},{\"name\":\"value\",\"kind\":\"Any\",\"default\":null}]}]}};\n",
+       "  const render_items = [{\"docid\":\"09067014-d6aa-47c8-8ea7-9a6e9fca6ec3\",\"roots\":{\"p1213\":\"a8825757-94cd-48c1-b825-876b13ccb680\"},\"root_ids\":[\"p1213\"]}];\n",
+       "  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);\n",
        "  }\n",
        "  if (root.Bokeh !== undefined) {\n",
        "    embed_document(root);\n",
@@ -1094,19 +1051,19 @@
      },
      "metadata": {
       "application/vnd.bokehjs_exec.v0+json": {
-       "id": "p1205"
+       "id": "p1213"
       }
      },
      "output_type": "display_data"
     }
    ],
    "source": [
-    "sub_df = df_mle.loc[df_mle[\"parameter\"] == \"alpha\", :]\n",
+    "sub_df = df_mle.filter(pl.col(\"parameter\") == \"alpha\")\n",
     "summaries = [\n",
     "    {\"estimate\": est, \"conf_int\": conf, \"label\": label}\n",
     "    for est, conf, label in zip(\n",
-    "        sub_df[\"mle\"].values,\n",
-    "        sub_df[[\"conf_int_low\", \"conf_int_high\"]].values,\n",
+    "        sub_df[\"mle\"].to_numpy(),\n",
+    "        sub_df[[\"conf_int_low\", \"conf_int_high\"]].to_numpy(),\n",
     "        sub_df[\"gene\"],\n",
     "    )\n",
     "]\n",
@@ -1117,12 +1074,12 @@
     "        frame_height=75,\n",
     "    )\n",
     "\n",
-    "sub_df = df_mle.loc[df_mle[\"parameter\"] == \"b\", :]\n",
+    "sub_df = df_mle.filter(pl.col(\"parameter\") == \"b\")\n",
     "summaries = [\n",
     "    {\"estimate\": est, \"conf_int\": conf, \"label\": label}\n",
     "    for est, conf, label in zip(\n",
-    "        sub_df[\"mle\"].values,\n",
-    "        sub_df[[\"conf_int_low\", \"conf_int_high\"]].values,\n",
+    "        sub_df[\"mle\"].to_numpy(),\n",
+    "        sub_df[[\"conf_int_low\", \"conf_int_high\"]].to_numpy(),\n",
     "        sub_df[\"gene\"],\n",
     "    )\n",
     "]\n",
@@ -1171,22 +1128,20 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.21it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 39.15it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 38.96it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 38.94it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 38.85it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1112/1112 [00:28<00:00, 38.85it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 38.75it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 38.75it/s]\n",
-      "100%|████████████████████████████████████████████████████████████████████| 1111/1111 [00:28<00:00, 38.36it/s]\n"
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32<00:00, 44.21it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32<00:00, 44.06it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1432/1432 [00:32<00:00, 44.08it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32<00:00, 43.70it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32<00:00, 43.61it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32<00:00, 43.54it/s]\n",
+      "100%|█████████████████████████████████████████████████████████████| 1428/1428 [00:32<00:00, 43.47it/s]\n"
      ]
     },
     {
      "data": {
       "text/plain": [
-       "array([[ 1.05045444, 57.24063066],\n",
-       "       [ 1.54491901, 83.02403084]])"
+       "array([[ 1.05773093, 57.34137945],\n",
+       "       [ 1.53909701, 82.40707761]])"
       ]
      },
      "execution_count": 19,
@@ -1205,10 +1160,10 @@
     "bs_reps = bebi103.bootstrap.draw_bs_reps_mle(\n",
     "    mle_iid_nbinom,\n",
     "    resample_fun,\n",
-    "    df['Nanog'].values,\n",
-    "    gen_args=(df['Nanog'].values, ),\n",
+    "    df['Nanog'].to_numpy(),\n",
+    "    gen_args=(df['Nanog'].to_numpy(), ),\n",
     "    size=10000,\n",
-    "    n_jobs=9,\n",
+    "    n_jobs=7,\n",
     "    progress_bar=True,\n",
     ")\n",
     "\n",
@@ -1240,24 +1195,24 @@
      "output_type": "stream",
      "text": [
       "Python implementation: CPython\n",
-      "Python version       : 3.11.4\n",
-      "IPython version      : 8.12.0\n",
+      "Python version       : 3.12.3\n",
+      "IPython version      : 8.25.0\n",
       "\n",
-      "multiprocess: 0.70.15\n",
-      "numpy       : 1.24.3\n",
-      "scipy       : 1.10.1\n",
-      "pandas      : 1.5.3\n",
-      "tqdm        : 4.65.0\n",
-      "bokeh       : 3.2.1\n",
-      "bebi103     : 0.1.17\n",
-      "jupyterlab  : 4.0.4\n",
+      "multiprocess: 0.70.16\n",
+      "numpy       : 1.26.4\n",
+      "scipy       : 1.13.1\n",
+      "polars      : 1.1.0\n",
+      "tqdm        : 4.66.4\n",
+      "bokeh       : 3.4.1\n",
+      "bebi103     : 0.1.21\n",
+      "jupyterlab  : 4.0.13\n",
       "\n"
      ]
     }
    ],
    "source": [
     "%load_ext watermark\n",
-    "%watermark -v -p multiprocess,numpy,scipy,pandas,tqdm,bokeh,bebi103,jupyterlab"
+    "%watermark -v -p multiprocess,numpy,scipy,polars,tqdm,bokeh,bebi103,jupyterlab"
    ]
   }
  ],
@@ -1277,7 +1232,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.11.4"
+   "version": "3.12.3"
   }
  },
  "nbformat": 4,

@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Styling data frames &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="E2. To be completed after lesson 10" href="../../lesson_exercises/exercise_02.html" />
-    <link rel="prev" title="Reshaping data frames by stacking and unstacking" href="stacking_and_unstacking.html" /> 
+    <link rel="next" title="E1. To be completed after lesson 10" href="../../lesson_exercises/exercise_01.html" />
+    <link rel="prev" title="Making a data frame wide" href="pivoting.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,77 +62,55 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/style.html">4. Style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Test-driven development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/index.html">6. Exploratory data analysis, part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/index.html">7. Exploratory data analysis, part 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/file_formats.html">8. Data file formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09/data_storage_and_sharing.html">9. Data storage and sharing</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">10. Data wrangling</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="essential_parts_of_df.html">The essential parts of a data frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dataframe_indexes.html">Using data frame indexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulating_data_frames_intro.html">Manipulating and wrangling data frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="merging_dataframes.html">Merging and concatenating data frames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="melting.html">Melting a data frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stacking_and_unstacking.html">Stacking and unstacking data frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unpivoting.html">Making a data frame tall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pivoting.html">Making a data frame wide</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Styling data frames</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Computing-environment">Computing environment</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_01.html">E1. To be completed after lesson 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/index.html">11. Intro to probability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../12/random_number_generation.html">12. Random number generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13/prob_dists.html">13. Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_02.html">E2. To be completed after lesson 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/index.html">14. Plug-in estimates and confidence intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15/index.html">15. Nonparametric inference with hacker stats</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_03.html">E3. To be completed after lesson 15</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../16/index.html">16. Null hypothesis significance testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../17/hacker_nhst.html">17. Hacker’s approach to NHST</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 17</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18/index.html">18. Parametric inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../19/index.html">19. Numerical MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_04.html">E4. To be completed after lesson 19</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/index.html">20. Variate-covariate modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../21/index.html">21. Confidence intervals of MLEs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_07.html">E7. To be completed after lesson 21</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22/variate_covariate_implementation.html">22. Implementation of MLE for variate-covariate models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_08.html">E8. To be completed after lesson 22</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_05.html">E5. To be completed after lesson 22</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../23/mixture_models.html">23. Mixture models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../24/index.html">24. Model assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../25/index.html">25. Implementation of model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_09.html">E9. To be completed after lesson 27</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson_exercises/exercise_06.html">E6. To be completed after lesson 25</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../26/index.html">26. Statistical watchouts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../27/reproducible_workflows.html">27. Reproducible workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28/paper_of_the_future.html">28. The paper of the future</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Recitations</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/01/index.html">R1. The command line and Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/02/index.html">R2. Extra help for new programmers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/03/manipulating_dfs.html">R3. Manipulating data frames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/04/probability_review.html">R4. Probability review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/05/overplotting.html">R5. Overplotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/06/index.html">R6. Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/07/mle_review.html">R7. Review of maximum likelihood estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recitations/08/topics_in_bootstrapping.html">R8. Topics in bootstrapping</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Homework</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/01/index.html">1. Practice with Python tools and EDA I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats and Boolean data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/07/index.html">7. Maximum likelihood estimation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/08/index.html">8. Maximum likelihood estimation III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/09/index.html">9. Model assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../homework/10/hw10.html">10. Course feedback</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Schedule overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#homework-due-dates">Homework due dates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html#exam-dates">Exam dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#lesson-exercise-due-dates">Lesson exercise due dates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html#weekly-schedule">Weekly schedule</a></li>
 </ul>
@@ -140,6 +121,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#submission-of-assignments">Submission of assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#lessons-and-lesson-exercises">Lessons and lesson exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#homework">Homework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies.html#exams">Exams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#grading">Grading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#collaboration-policy-and-honor-code">Collaboration policy and Honor Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../policies.html#excused-absences-and-extensions">Excused absences and extensions</a></li>
@@ -179,1065 +161,1885 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Styling-data-frames">
-<h1>Styling data frames<a class="headerlink" href="#Styling-data-frames" title="Permalink to this heading"></a></h1>
+  <section id="Styling-data-frames">
+<h1>Styling data frames<a class="headerlink" href="#Styling-data-frames" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">polars.selectors</span> <span class="k">as</span> <span class="nn">cs</span>
+<span class="kn">import</span> <span class="nn">great_tables</span>
 </pre></div>
 </div>
 </div>
-<hr><p>It is sometimes useful to highlight features in a data frame when viewing them. (Note that this is generally far less useful than making informative plots, which we will come to shortly.) Pandas offers some convenient ways to style the display of a data frame.</p>
-<p>To demonstrate, we will again use a data set from <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al.</a> containing results from a study the effects of sleep quality on performance in the <a class="reference external" href="https://doi.org/10.3758/BRM.42.1.286">Glasgow Facial Matching Test</a> (GMFT).</p>
-<div class="nbinput nblast docutils container">
+<hr><p>It is sometimes useful to highlight features in a data frame when viewing them. (Note that this is generally far less useful than making informative plots, which we will come to shortly.) We sometimes also want to make a table for display. For this purpose, Polars works seamlessly with <a class="reference external" href="https://posit-dev.github.io/great-tables/">Great Tables</a> package. To convert a Polars data frame to a Great Tables object that can then be stylized, simply use the <code class="docutils literal notranslate"><span class="pre">df.style</span></code> attribute of a Polars data
+frame. You can read about the endless possibilities for styling Polars data frames using Great Tables in the <a class="reference external" href="https://posit-dev.github.io/great-tables/">documentation</a>.</p>
+<p>Here, we will do a quick demonstration, again using a data set from <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al.</a> containing results from a study the effects of sleep quality on performance in the <a class="reference external" href="https://doi.org/10.3758/BRM.42.1.286">Glasgow Facial Matching Test</a> (GMFT). We will make a pretty-looking table also highlighting rows corresponding to women who scored at 90% or above.</p>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;gfmt_sleep.csv&#39;</span><span class="p">),</span> <span class="n">na_values</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>As our first example demonstrating styling, let’s say we wanted to highlight rows corresponding to women who scored at or above 75% correct. We can write a function that will take as an argument a row of the data frame, check the value in the <code class="docutils literal notranslate"><span class="pre">'gender'</span></code> and <code class="docutils literal notranslate"><span class="pre">'percent</span> <span class="pre">correct'</span></code> columns, and then specify a row color of gray or green accordingly. We then use <code class="docutils literal notranslate"><span class="pre">df.style.apply()</span></code> with the <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> kwarg to apply that function to each row.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">highlight_high_scoring_females</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;f&quot;</span> <span class="ow">and</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">75</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;background-color: #7fc97f&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;background-color: lightgray&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data set</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;gfmt_sleep.csv&#39;</span><span class="p">),</span> <span class="n">null_values</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_high_scoring_females</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<style type="text/css">
-#T_c6940_row0_col0, #T_c6940_row0_col1, #T_c6940_row0_col2, #T_c6940_row0_col3, #T_c6940_row0_col4, #T_c6940_row0_col5, #T_c6940_row0_col6, #T_c6940_row0_col7, #T_c6940_row0_col8, #T_c6940_row0_col9, #T_c6940_row0_col10, #T_c6940_row0_col11, #T_c6940_row0_col12, #T_c6940_row0_col13, #T_c6940_row0_col14, #T_c6940_row1_col0, #T_c6940_row1_col1, #T_c6940_row1_col2, #T_c6940_row1_col3, #T_c6940_row1_col4, #T_c6940_row1_col5, #T_c6940_row1_col6, #T_c6940_row1_col7, #T_c6940_row1_col8, #T_c6940_row1_col9, #T_c6940_row1_col10, #T_c6940_row1_col11, #T_c6940_row1_col12, #T_c6940_row1_col13, #T_c6940_row1_col14, #T_c6940_row4_col0, #T_c6940_row4_col1, #T_c6940_row4_col2, #T_c6940_row4_col3, #T_c6940_row4_col4, #T_c6940_row4_col5, #T_c6940_row4_col6, #T_c6940_row4_col7, #T_c6940_row4_col8, #T_c6940_row4_col9, #T_c6940_row4_col10, #T_c6940_row4_col11, #T_c6940_row4_col12, #T_c6940_row4_col13, #T_c6940_row4_col14, #T_c6940_row5_col0, #T_c6940_row5_col1, #T_c6940_row5_col2, #T_c6940_row5_col3, #T_c6940_row5_col4, #T_c6940_row5_col5, #T_c6940_row5_col6, #T_c6940_row5_col7, #T_c6940_row5_col8, #T_c6940_row5_col9, #T_c6940_row5_col10, #T_c6940_row5_col11, #T_c6940_row5_col12, #T_c6940_row5_col13, #T_c6940_row5_col14, #T_c6940_row6_col0, #T_c6940_row6_col1, #T_c6940_row6_col2, #T_c6940_row6_col3, #T_c6940_row6_col4, #T_c6940_row6_col5, #T_c6940_row6_col6, #T_c6940_row6_col7, #T_c6940_row6_col8, #T_c6940_row6_col9, #T_c6940_row6_col10, #T_c6940_row6_col11, #T_c6940_row6_col12, #T_c6940_row6_col13, #T_c6940_row6_col14, #T_c6940_row7_col0, #T_c6940_row7_col1, #T_c6940_row7_col2, #T_c6940_row7_col3, #T_c6940_row7_col4, #T_c6940_row7_col5, #T_c6940_row7_col6, #T_c6940_row7_col7, #T_c6940_row7_col8, #T_c6940_row7_col9, #T_c6940_row7_col10, #T_c6940_row7_col11, #T_c6940_row7_col12, #T_c6940_row7_col13, #T_c6940_row7_col14 {
-  background-color: lightgray;
-}
-#T_c6940_row2_col0, #T_c6940_row2_col1, #T_c6940_row2_col2, #T_c6940_row2_col3, #T_c6940_row2_col4, #T_c6940_row2_col5, #T_c6940_row2_col6, #T_c6940_row2_col7, #T_c6940_row2_col8, #T_c6940_row2_col9, #T_c6940_row2_col10, #T_c6940_row2_col11, #T_c6940_row2_col12, #T_c6940_row2_col13, #T_c6940_row2_col14, #T_c6940_row3_col0, #T_c6940_row3_col1, #T_c6940_row3_col2, #T_c6940_row3_col3, #T_c6940_row3_col4, #T_c6940_row3_col5, #T_c6940_row3_col6, #T_c6940_row3_col7, #T_c6940_row3_col8, #T_c6940_row3_col9, #T_c6940_row3_col10, #T_c6940_row3_col11, #T_c6940_row3_col12, #T_c6940_row3_col13, #T_c6940_row3_col14, #T_c6940_row8_col0, #T_c6940_row8_col1, #T_c6940_row8_col2, #T_c6940_row8_col3, #T_c6940_row8_col4, #T_c6940_row8_col5, #T_c6940_row8_col6, #T_c6940_row8_col7, #T_c6940_row8_col8, #T_c6940_row8_col9, #T_c6940_row8_col10, #T_c6940_row8_col11, #T_c6940_row8_col12, #T_c6940_row8_col13, #T_c6940_row8_col14, #T_c6940_row9_col0, #T_c6940_row9_col1, #T_c6940_row9_col2, #T_c6940_row9_col3, #T_c6940_row9_col4, #T_c6940_row9_col5, #T_c6940_row9_col6, #T_c6940_row9_col7, #T_c6940_row9_col8, #T_c6940_row9_col9, #T_c6940_row9_col10, #T_c6940_row9_col11, #T_c6940_row9_col12, #T_c6940_row9_col13, #T_c6940_row9_col14 {
-  background-color: #7fc97f;
-}
-</style>
-<table id="T_c6940">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_c6940_level0_col0" class="col_heading level0 col0" >participant number</th>
-      <th id="T_c6940_level0_col1" class="col_heading level0 col1" >gender</th>
-      <th id="T_c6940_level0_col2" class="col_heading level0 col2" >age</th>
-      <th id="T_c6940_level0_col3" class="col_heading level0 col3" >correct hit percentage</th>
-      <th id="T_c6940_level0_col4" class="col_heading level0 col4" >correct reject percentage</th>
-      <th id="T_c6940_level0_col5" class="col_heading level0 col5" >percent correct</th>
-      <th id="T_c6940_level0_col6" class="col_heading level0 col6" >confidence when correct hit</th>
-      <th id="T_c6940_level0_col7" class="col_heading level0 col7" >confidence incorrect hit</th>
-      <th id="T_c6940_level0_col8" class="col_heading level0 col8" >confidence correct reject</th>
-      <th id="T_c6940_level0_col9" class="col_heading level0 col9" >confidence incorrect reject</th>
-      <th id="T_c6940_level0_col10" class="col_heading level0 col10" >confidence when correct</th>
-      <th id="T_c6940_level0_col11" class="col_heading level0 col11" >confidence when incorrect</th>
-      <th id="T_c6940_level0_col12" class="col_heading level0 col12" >sci</th>
-      <th id="T_c6940_level0_col13" class="col_heading level0 col13" >psqi</th>
-      <th id="T_c6940_level0_col14" class="col_heading level0 col14" >ess</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_c6940_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_c6940_row0_col0" class="data row0 col0" >8</td>
-      <td id="T_c6940_row0_col1" class="data row0 col1" >f</td>
-      <td id="T_c6940_row0_col2" class="data row0 col2" >39</td>
-      <td id="T_c6940_row0_col3" class="data row0 col3" >65</td>
-      <td id="T_c6940_row0_col4" class="data row0 col4" >80</td>
-      <td id="T_c6940_row0_col5" class="data row0 col5" >72.500000</td>
-      <td id="T_c6940_row0_col6" class="data row0 col6" >91.000000</td>
-      <td id="T_c6940_row0_col7" class="data row0 col7" >90.000000</td>
-      <td id="T_c6940_row0_col8" class="data row0 col8" >93.000000</td>
-      <td id="T_c6940_row0_col9" class="data row0 col9" >83.500000</td>
-      <td id="T_c6940_row0_col10" class="data row0 col10" >93.000000</td>
-      <td id="T_c6940_row0_col11" class="data row0 col11" >90.000000</td>
-      <td id="T_c6940_row0_col12" class="data row0 col12" >9</td>
-      <td id="T_c6940_row0_col13" class="data row0 col13" >13</td>
-      <td id="T_c6940_row0_col14" class="data row0 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_c6940_row1_col0" class="data row1 col0" >16</td>
-      <td id="T_c6940_row1_col1" class="data row1 col1" >m</td>
-      <td id="T_c6940_row1_col2" class="data row1 col2" >42</td>
-      <td id="T_c6940_row1_col3" class="data row1 col3" >90</td>
-      <td id="T_c6940_row1_col4" class="data row1 col4" >90</td>
-      <td id="T_c6940_row1_col5" class="data row1 col5" >90.000000</td>
-      <td id="T_c6940_row1_col6" class="data row1 col6" >75.500000</td>
-      <td id="T_c6940_row1_col7" class="data row1 col7" >55.500000</td>
-      <td id="T_c6940_row1_col8" class="data row1 col8" >70.500000</td>
-      <td id="T_c6940_row1_col9" class="data row1 col9" >50.000000</td>
-      <td id="T_c6940_row1_col10" class="data row1 col10" >75.000000</td>
-      <td id="T_c6940_row1_col11" class="data row1 col11" >50.000000</td>
-      <td id="T_c6940_row1_col12" class="data row1 col12" >4</td>
-      <td id="T_c6940_row1_col13" class="data row1 col13" >11</td>
-      <td id="T_c6940_row1_col14" class="data row1 col14" >7</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_c6940_row2_col0" class="data row2 col0" >18</td>
-      <td id="T_c6940_row2_col1" class="data row2 col1" >f</td>
-      <td id="T_c6940_row2_col2" class="data row2 col2" >31</td>
-      <td id="T_c6940_row2_col3" class="data row2 col3" >90</td>
-      <td id="T_c6940_row2_col4" class="data row2 col4" >95</td>
-      <td id="T_c6940_row2_col5" class="data row2 col5" >92.500000</td>
-      <td id="T_c6940_row2_col6" class="data row2 col6" >89.500000</td>
-      <td id="T_c6940_row2_col7" class="data row2 col7" >90.000000</td>
-      <td id="T_c6940_row2_col8" class="data row2 col8" >86.000000</td>
-      <td id="T_c6940_row2_col9" class="data row2 col9" >81.000000</td>
-      <td id="T_c6940_row2_col10" class="data row2 col10" >89.000000</td>
-      <td id="T_c6940_row2_col11" class="data row2 col11" >88.000000</td>
-      <td id="T_c6940_row2_col12" class="data row2 col12" >10</td>
-      <td id="T_c6940_row2_col13" class="data row2 col13" >9</td>
-      <td id="T_c6940_row2_col14" class="data row2 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_c6940_row3_col0" class="data row3 col0" >22</td>
-      <td id="T_c6940_row3_col1" class="data row3 col1" >f</td>
-      <td id="T_c6940_row3_col2" class="data row3 col2" >35</td>
-      <td id="T_c6940_row3_col3" class="data row3 col3" >100</td>
-      <td id="T_c6940_row3_col4" class="data row3 col4" >75</td>
-      <td id="T_c6940_row3_col5" class="data row3 col5" >87.500000</td>
-      <td id="T_c6940_row3_col6" class="data row3 col6" >89.500000</td>
-      <td id="T_c6940_row3_col7" class="data row3 col7" >nan</td>
-      <td id="T_c6940_row3_col8" class="data row3 col8" >71.000000</td>
-      <td id="T_c6940_row3_col9" class="data row3 col9" >80.000000</td>
-      <td id="T_c6940_row3_col10" class="data row3 col10" >88.000000</td>
-      <td id="T_c6940_row3_col11" class="data row3 col11" >80.000000</td>
-      <td id="T_c6940_row3_col12" class="data row3 col12" >13</td>
-      <td id="T_c6940_row3_col13" class="data row3 col13" >8</td>
-      <td id="T_c6940_row3_col14" class="data row3 col14" >20</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_c6940_row4_col0" class="data row4 col0" >27</td>
-      <td id="T_c6940_row4_col1" class="data row4 col1" >f</td>
-      <td id="T_c6940_row4_col2" class="data row4 col2" >74</td>
-      <td id="T_c6940_row4_col3" class="data row4 col3" >60</td>
-      <td id="T_c6940_row4_col4" class="data row4 col4" >65</td>
-      <td id="T_c6940_row4_col5" class="data row4 col5" >62.500000</td>
-      <td id="T_c6940_row4_col6" class="data row4 col6" >68.500000</td>
-      <td id="T_c6940_row4_col7" class="data row4 col7" >49.000000</td>
-      <td id="T_c6940_row4_col8" class="data row4 col8" >61.000000</td>
-      <td id="T_c6940_row4_col9" class="data row4 col9" >49.000000</td>
-      <td id="T_c6940_row4_col10" class="data row4 col10" >65.000000</td>
-      <td id="T_c6940_row4_col11" class="data row4 col11" >49.000000</td>
-      <td id="T_c6940_row4_col12" class="data row4 col12" >13</td>
-      <td id="T_c6940_row4_col13" class="data row4 col13" >9</td>
-      <td id="T_c6940_row4_col14" class="data row4 col14" >12</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_c6940_row5_col0" class="data row5 col0" >28</td>
-      <td id="T_c6940_row5_col1" class="data row5 col1" >f</td>
-      <td id="T_c6940_row5_col2" class="data row5 col2" >61</td>
-      <td id="T_c6940_row5_col3" class="data row5 col3" >80</td>
-      <td id="T_c6940_row5_col4" class="data row5 col4" >20</td>
-      <td id="T_c6940_row5_col5" class="data row5 col5" >50.000000</td>
-      <td id="T_c6940_row5_col6" class="data row5 col6" >71.000000</td>
-      <td id="T_c6940_row5_col7" class="data row5 col7" >63.000000</td>
-      <td id="T_c6940_row5_col8" class="data row5 col8" >31.000000</td>
-      <td id="T_c6940_row5_col9" class="data row5 col9" >72.500000</td>
-      <td id="T_c6940_row5_col10" class="data row5 col10" >64.500000</td>
-      <td id="T_c6940_row5_col11" class="data row5 col11" >70.500000</td>
-      <td id="T_c6940_row5_col12" class="data row5 col12" >15</td>
-      <td id="T_c6940_row5_col13" class="data row5 col13" >14</td>
-      <td id="T_c6940_row5_col14" class="data row5 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_c6940_row6_col0" class="data row6 col0" >30</td>
-      <td id="T_c6940_row6_col1" class="data row6 col1" >m</td>
-      <td id="T_c6940_row6_col2" class="data row6 col2" >32</td>
-      <td id="T_c6940_row6_col3" class="data row6 col3" >90</td>
-      <td id="T_c6940_row6_col4" class="data row6 col4" >75</td>
-      <td id="T_c6940_row6_col5" class="data row6 col5" >82.500000</td>
-      <td id="T_c6940_row6_col6" class="data row6 col6" >67.000000</td>
-      <td id="T_c6940_row6_col7" class="data row6 col7" >56.500000</td>
-      <td id="T_c6940_row6_col8" class="data row6 col8" >66.000000</td>
-      <td id="T_c6940_row6_col9" class="data row6 col9" >65.000000</td>
-      <td id="T_c6940_row6_col10" class="data row6 col10" >66.000000</td>
-      <td id="T_c6940_row6_col11" class="data row6 col11" >64.000000</td>
-      <td id="T_c6940_row6_col12" class="data row6 col12" >16</td>
-      <td id="T_c6940_row6_col13" class="data row6 col13" >9</td>
-      <td id="T_c6940_row6_col14" class="data row6 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_c6940_row7_col0" class="data row7 col0" >33</td>
-      <td id="T_c6940_row7_col1" class="data row7 col1" >m</td>
-      <td id="T_c6940_row7_col2" class="data row7 col2" >62</td>
-      <td id="T_c6940_row7_col3" class="data row7 col3" >45</td>
-      <td id="T_c6940_row7_col4" class="data row7 col4" >90</td>
-      <td id="T_c6940_row7_col5" class="data row7 col5" >67.500000</td>
-      <td id="T_c6940_row7_col6" class="data row7 col6" >54.000000</td>
-      <td id="T_c6940_row7_col7" class="data row7 col7" >37.000000</td>
-      <td id="T_c6940_row7_col8" class="data row7 col8" >65.000000</td>
-      <td id="T_c6940_row7_col9" class="data row7 col9" >81.500000</td>
-      <td id="T_c6940_row7_col10" class="data row7 col10" >62.000000</td>
-      <td id="T_c6940_row7_col11" class="data row7 col11" >61.000000</td>
-      <td id="T_c6940_row7_col12" class="data row7 col12" >14</td>
-      <td id="T_c6940_row7_col13" class="data row7 col13" >9</td>
-      <td id="T_c6940_row7_col14" class="data row7 col14" >9</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_c6940_row8_col0" class="data row8 col0" >34</td>
-      <td id="T_c6940_row8_col1" class="data row8 col1" >f</td>
-      <td id="T_c6940_row8_col2" class="data row8 col2" >33</td>
-      <td id="T_c6940_row8_col3" class="data row8 col3" >80</td>
-      <td id="T_c6940_row8_col4" class="data row8 col4" >100</td>
-      <td id="T_c6940_row8_col5" class="data row8 col5" >90.000000</td>
-      <td id="T_c6940_row8_col6" class="data row8 col6" >70.500000</td>
-      <td id="T_c6940_row8_col7" class="data row8 col7" >76.500000</td>
-      <td id="T_c6940_row8_col8" class="data row8 col8" >64.500000</td>
-      <td id="T_c6940_row8_col9" class="data row8 col9" >nan</td>
-      <td id="T_c6940_row8_col10" class="data row8 col10" >68.000000</td>
-      <td id="T_c6940_row8_col11" class="data row8 col11" >76.500000</td>
-      <td id="T_c6940_row8_col12" class="data row8 col12" >14</td>
-      <td id="T_c6940_row8_col13" class="data row8 col13" >12</td>
-      <td id="T_c6940_row8_col14" class="data row8 col14" >10</td>
-    </tr>
-    <tr>
-      <th id="T_c6940_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_c6940_row9_col0" class="data row9 col0" >35</td>
-      <td id="T_c6940_row9_col1" class="data row9 col1" >f</td>
-      <td id="T_c6940_row9_col2" class="data row9 col2" >53</td>
-      <td id="T_c6940_row9_col3" class="data row9 col3" >100</td>
-      <td id="T_c6940_row9_col4" class="data row9 col4" >50</td>
-      <td id="T_c6940_row9_col5" class="data row9 col5" >75.000000</td>
-      <td id="T_c6940_row9_col6" class="data row9 col6" >74.500000</td>
-      <td id="T_c6940_row9_col7" class="data row9 col7" >nan</td>
-      <td id="T_c6940_row9_col8" class="data row9 col8" >60.500000</td>
-      <td id="T_c6940_row9_col9" class="data row9 col9" >65.000000</td>
-      <td id="T_c6940_row9_col10" class="data row9 col10" >71.000000</td>
-      <td id="T_c6940_row9_col11" class="data row9 col11" >65.000000</td>
-      <td id="T_c6940_row9_col12" class="data row9 col12" >14</td>
-      <td id="T_c6940_row9_col13" class="data row9 col13" >8</td>
-      <td id="T_c6940_row9_col14" class="data row9 col14" >7</td>
-    </tr>
-  </tbody>
-</table></div>
-</div>
-<p>We can be more fancy. Let’s say we want to shade the <code class="docutils literal notranslate"><span class="pre">'percent</span> <span class="pre">correct'</span></code> column with a bar corresponding to the value in the column. We use the <code class="docutils literal notranslate"><span class="pre">df.style.bar()</span></code> method to do so. The <code class="docutils literal notranslate"><span class="pre">subset</span></code> kwarg specifies which columns are to have bars.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<style type="text/css">
-#T_1d7a0_row0_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 72.5%, transparent 72.5%);
-}
-#T_1d7a0_row1_col5, #T_1d7a0_row8_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 90.0%, transparent 90.0%);
-}
-#T_1d7a0_row2_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 92.5%, transparent 92.5%);
-}
-#T_1d7a0_row3_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 87.5%, transparent 87.5%);
-}
-#T_1d7a0_row4_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 62.5%, transparent 62.5%);
-}
-#T_1d7a0_row5_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 50.0%, transparent 50.0%);
-}
-#T_1d7a0_row6_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 82.5%, transparent 82.5%);
-}
-#T_1d7a0_row7_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 67.5%, transparent 67.5%);
-}
-#T_1d7a0_row9_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 75.0%, transparent 75.0%);
-}
-</style>
-<table id="T_1d7a0">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_1d7a0_level0_col0" class="col_heading level0 col0" >participant number</th>
-      <th id="T_1d7a0_level0_col1" class="col_heading level0 col1" >gender</th>
-      <th id="T_1d7a0_level0_col2" class="col_heading level0 col2" >age</th>
-      <th id="T_1d7a0_level0_col3" class="col_heading level0 col3" >correct hit percentage</th>
-      <th id="T_1d7a0_level0_col4" class="col_heading level0 col4" >correct reject percentage</th>
-      <th id="T_1d7a0_level0_col5" class="col_heading level0 col5" >percent correct</th>
-      <th id="T_1d7a0_level0_col6" class="col_heading level0 col6" >confidence when correct hit</th>
-      <th id="T_1d7a0_level0_col7" class="col_heading level0 col7" >confidence incorrect hit</th>
-      <th id="T_1d7a0_level0_col8" class="col_heading level0 col8" >confidence correct reject</th>
-      <th id="T_1d7a0_level0_col9" class="col_heading level0 col9" >confidence incorrect reject</th>
-      <th id="T_1d7a0_level0_col10" class="col_heading level0 col10" >confidence when correct</th>
-      <th id="T_1d7a0_level0_col11" class="col_heading level0 col11" >confidence when incorrect</th>
-      <th id="T_1d7a0_level0_col12" class="col_heading level0 col12" >sci</th>
-      <th id="T_1d7a0_level0_col13" class="col_heading level0 col13" >psqi</th>
-      <th id="T_1d7a0_level0_col14" class="col_heading level0 col14" >ess</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_1d7a0_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_1d7a0_row0_col0" class="data row0 col0" >8</td>
-      <td id="T_1d7a0_row0_col1" class="data row0 col1" >f</td>
-      <td id="T_1d7a0_row0_col2" class="data row0 col2" >39</td>
-      <td id="T_1d7a0_row0_col3" class="data row0 col3" >65</td>
-      <td id="T_1d7a0_row0_col4" class="data row0 col4" >80</td>
-      <td id="T_1d7a0_row0_col5" class="data row0 col5" >72.500000</td>
-      <td id="T_1d7a0_row0_col6" class="data row0 col6" >91.000000</td>
-      <td id="T_1d7a0_row0_col7" class="data row0 col7" >90.000000</td>
-      <td id="T_1d7a0_row0_col8" class="data row0 col8" >93.000000</td>
-      <td id="T_1d7a0_row0_col9" class="data row0 col9" >83.500000</td>
-      <td id="T_1d7a0_row0_col10" class="data row0 col10" >93.000000</td>
-      <td id="T_1d7a0_row0_col11" class="data row0 col11" >90.000000</td>
-      <td id="T_1d7a0_row0_col12" class="data row0 col12" >9</td>
-      <td id="T_1d7a0_row0_col13" class="data row0 col13" >13</td>
-      <td id="T_1d7a0_row0_col14" class="data row0 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_1d7a0_row1_col0" class="data row1 col0" >16</td>
-      <td id="T_1d7a0_row1_col1" class="data row1 col1" >m</td>
-      <td id="T_1d7a0_row1_col2" class="data row1 col2" >42</td>
-      <td id="T_1d7a0_row1_col3" class="data row1 col3" >90</td>
-      <td id="T_1d7a0_row1_col4" class="data row1 col4" >90</td>
-      <td id="T_1d7a0_row1_col5" class="data row1 col5" >90.000000</td>
-      <td id="T_1d7a0_row1_col6" class="data row1 col6" >75.500000</td>
-      <td id="T_1d7a0_row1_col7" class="data row1 col7" >55.500000</td>
-      <td id="T_1d7a0_row1_col8" class="data row1 col8" >70.500000</td>
-      <td id="T_1d7a0_row1_col9" class="data row1 col9" >50.000000</td>
-      <td id="T_1d7a0_row1_col10" class="data row1 col10" >75.000000</td>
-      <td id="T_1d7a0_row1_col11" class="data row1 col11" >50.000000</td>
-      <td id="T_1d7a0_row1_col12" class="data row1 col12" >4</td>
-      <td id="T_1d7a0_row1_col13" class="data row1 col13" >11</td>
-      <td id="T_1d7a0_row1_col14" class="data row1 col14" >7</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_1d7a0_row2_col0" class="data row2 col0" >18</td>
-      <td id="T_1d7a0_row2_col1" class="data row2 col1" >f</td>
-      <td id="T_1d7a0_row2_col2" class="data row2 col2" >31</td>
-      <td id="T_1d7a0_row2_col3" class="data row2 col3" >90</td>
-      <td id="T_1d7a0_row2_col4" class="data row2 col4" >95</td>
-      <td id="T_1d7a0_row2_col5" class="data row2 col5" >92.500000</td>
-      <td id="T_1d7a0_row2_col6" class="data row2 col6" >89.500000</td>
-      <td id="T_1d7a0_row2_col7" class="data row2 col7" >90.000000</td>
-      <td id="T_1d7a0_row2_col8" class="data row2 col8" >86.000000</td>
-      <td id="T_1d7a0_row2_col9" class="data row2 col9" >81.000000</td>
-      <td id="T_1d7a0_row2_col10" class="data row2 col10" >89.000000</td>
-      <td id="T_1d7a0_row2_col11" class="data row2 col11" >88.000000</td>
-      <td id="T_1d7a0_row2_col12" class="data row2 col12" >10</td>
-      <td id="T_1d7a0_row2_col13" class="data row2 col13" >9</td>
-      <td id="T_1d7a0_row2_col14" class="data row2 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_1d7a0_row3_col0" class="data row3 col0" >22</td>
-      <td id="T_1d7a0_row3_col1" class="data row3 col1" >f</td>
-      <td id="T_1d7a0_row3_col2" class="data row3 col2" >35</td>
-      <td id="T_1d7a0_row3_col3" class="data row3 col3" >100</td>
-      <td id="T_1d7a0_row3_col4" class="data row3 col4" >75</td>
-      <td id="T_1d7a0_row3_col5" class="data row3 col5" >87.500000</td>
-      <td id="T_1d7a0_row3_col6" class="data row3 col6" >89.500000</td>
-      <td id="T_1d7a0_row3_col7" class="data row3 col7" >nan</td>
-      <td id="T_1d7a0_row3_col8" class="data row3 col8" >71.000000</td>
-      <td id="T_1d7a0_row3_col9" class="data row3 col9" >80.000000</td>
-      <td id="T_1d7a0_row3_col10" class="data row3 col10" >88.000000</td>
-      <td id="T_1d7a0_row3_col11" class="data row3 col11" >80.000000</td>
-      <td id="T_1d7a0_row3_col12" class="data row3 col12" >13</td>
-      <td id="T_1d7a0_row3_col13" class="data row3 col13" >8</td>
-      <td id="T_1d7a0_row3_col14" class="data row3 col14" >20</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_1d7a0_row4_col0" class="data row4 col0" >27</td>
-      <td id="T_1d7a0_row4_col1" class="data row4 col1" >f</td>
-      <td id="T_1d7a0_row4_col2" class="data row4 col2" >74</td>
-      <td id="T_1d7a0_row4_col3" class="data row4 col3" >60</td>
-      <td id="T_1d7a0_row4_col4" class="data row4 col4" >65</td>
-      <td id="T_1d7a0_row4_col5" class="data row4 col5" >62.500000</td>
-      <td id="T_1d7a0_row4_col6" class="data row4 col6" >68.500000</td>
-      <td id="T_1d7a0_row4_col7" class="data row4 col7" >49.000000</td>
-      <td id="T_1d7a0_row4_col8" class="data row4 col8" >61.000000</td>
-      <td id="T_1d7a0_row4_col9" class="data row4 col9" >49.000000</td>
-      <td id="T_1d7a0_row4_col10" class="data row4 col10" >65.000000</td>
-      <td id="T_1d7a0_row4_col11" class="data row4 col11" >49.000000</td>
-      <td id="T_1d7a0_row4_col12" class="data row4 col12" >13</td>
-      <td id="T_1d7a0_row4_col13" class="data row4 col13" >9</td>
-      <td id="T_1d7a0_row4_col14" class="data row4 col14" >12</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_1d7a0_row5_col0" class="data row5 col0" >28</td>
-      <td id="T_1d7a0_row5_col1" class="data row5 col1" >f</td>
-      <td id="T_1d7a0_row5_col2" class="data row5 col2" >61</td>
-      <td id="T_1d7a0_row5_col3" class="data row5 col3" >80</td>
-      <td id="T_1d7a0_row5_col4" class="data row5 col4" >20</td>
-      <td id="T_1d7a0_row5_col5" class="data row5 col5" >50.000000</td>
-      <td id="T_1d7a0_row5_col6" class="data row5 col6" >71.000000</td>
-      <td id="T_1d7a0_row5_col7" class="data row5 col7" >63.000000</td>
-      <td id="T_1d7a0_row5_col8" class="data row5 col8" >31.000000</td>
-      <td id="T_1d7a0_row5_col9" class="data row5 col9" >72.500000</td>
-      <td id="T_1d7a0_row5_col10" class="data row5 col10" >64.500000</td>
-      <td id="T_1d7a0_row5_col11" class="data row5 col11" >70.500000</td>
-      <td id="T_1d7a0_row5_col12" class="data row5 col12" >15</td>
-      <td id="T_1d7a0_row5_col13" class="data row5 col13" >14</td>
-      <td id="T_1d7a0_row5_col14" class="data row5 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_1d7a0_row6_col0" class="data row6 col0" >30</td>
-      <td id="T_1d7a0_row6_col1" class="data row6 col1" >m</td>
-      <td id="T_1d7a0_row6_col2" class="data row6 col2" >32</td>
-      <td id="T_1d7a0_row6_col3" class="data row6 col3" >90</td>
-      <td id="T_1d7a0_row6_col4" class="data row6 col4" >75</td>
-      <td id="T_1d7a0_row6_col5" class="data row6 col5" >82.500000</td>
-      <td id="T_1d7a0_row6_col6" class="data row6 col6" >67.000000</td>
-      <td id="T_1d7a0_row6_col7" class="data row6 col7" >56.500000</td>
-      <td id="T_1d7a0_row6_col8" class="data row6 col8" >66.000000</td>
-      <td id="T_1d7a0_row6_col9" class="data row6 col9" >65.000000</td>
-      <td id="T_1d7a0_row6_col10" class="data row6 col10" >66.000000</td>
-      <td id="T_1d7a0_row6_col11" class="data row6 col11" >64.000000</td>
-      <td id="T_1d7a0_row6_col12" class="data row6 col12" >16</td>
-      <td id="T_1d7a0_row6_col13" class="data row6 col13" >9</td>
-      <td id="T_1d7a0_row6_col14" class="data row6 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_1d7a0_row7_col0" class="data row7 col0" >33</td>
-      <td id="T_1d7a0_row7_col1" class="data row7 col1" >m</td>
-      <td id="T_1d7a0_row7_col2" class="data row7 col2" >62</td>
-      <td id="T_1d7a0_row7_col3" class="data row7 col3" >45</td>
-      <td id="T_1d7a0_row7_col4" class="data row7 col4" >90</td>
-      <td id="T_1d7a0_row7_col5" class="data row7 col5" >67.500000</td>
-      <td id="T_1d7a0_row7_col6" class="data row7 col6" >54.000000</td>
-      <td id="T_1d7a0_row7_col7" class="data row7 col7" >37.000000</td>
-      <td id="T_1d7a0_row7_col8" class="data row7 col8" >65.000000</td>
-      <td id="T_1d7a0_row7_col9" class="data row7 col9" >81.500000</td>
-      <td id="T_1d7a0_row7_col10" class="data row7 col10" >62.000000</td>
-      <td id="T_1d7a0_row7_col11" class="data row7 col11" >61.000000</td>
-      <td id="T_1d7a0_row7_col12" class="data row7 col12" >14</td>
-      <td id="T_1d7a0_row7_col13" class="data row7 col13" >9</td>
-      <td id="T_1d7a0_row7_col14" class="data row7 col14" >9</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_1d7a0_row8_col0" class="data row8 col0" >34</td>
-      <td id="T_1d7a0_row8_col1" class="data row8 col1" >f</td>
-      <td id="T_1d7a0_row8_col2" class="data row8 col2" >33</td>
-      <td id="T_1d7a0_row8_col3" class="data row8 col3" >80</td>
-      <td id="T_1d7a0_row8_col4" class="data row8 col4" >100</td>
-      <td id="T_1d7a0_row8_col5" class="data row8 col5" >90.000000</td>
-      <td id="T_1d7a0_row8_col6" class="data row8 col6" >70.500000</td>
-      <td id="T_1d7a0_row8_col7" class="data row8 col7" >76.500000</td>
-      <td id="T_1d7a0_row8_col8" class="data row8 col8" >64.500000</td>
-      <td id="T_1d7a0_row8_col9" class="data row8 col9" >nan</td>
-      <td id="T_1d7a0_row8_col10" class="data row8 col10" >68.000000</td>
-      <td id="T_1d7a0_row8_col11" class="data row8 col11" >76.500000</td>
-      <td id="T_1d7a0_row8_col12" class="data row8 col12" >14</td>
-      <td id="T_1d7a0_row8_col13" class="data row8 col13" >12</td>
-      <td id="T_1d7a0_row8_col14" class="data row8 col14" >10</td>
-    </tr>
-    <tr>
-      <th id="T_1d7a0_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_1d7a0_row9_col0" class="data row9 col0" >35</td>
-      <td id="T_1d7a0_row9_col1" class="data row9 col1" >f</td>
-      <td id="T_1d7a0_row9_col2" class="data row9 col2" >53</td>
-      <td id="T_1d7a0_row9_col3" class="data row9 col3" >100</td>
-      <td id="T_1d7a0_row9_col4" class="data row9 col4" >50</td>
-      <td id="T_1d7a0_row9_col5" class="data row9 col5" >75.000000</td>
-      <td id="T_1d7a0_row9_col6" class="data row9 col6" >74.500000</td>
-      <td id="T_1d7a0_row9_col7" class="data row9 col7" >nan</td>
-      <td id="T_1d7a0_row9_col8" class="data row9 col8" >60.500000</td>
-      <td id="T_1d7a0_row9_col9" class="data row9 col9" >65.000000</td>
-      <td id="T_1d7a0_row9_col10" class="data row9 col10" >71.000000</td>
-      <td id="T_1d7a0_row9_col11" class="data row9 col11" >65.000000</td>
-      <td id="T_1d7a0_row9_col12" class="data row9 col12" >14</td>
-      <td id="T_1d7a0_row9_col13" class="data row9 col13" >8</td>
-      <td id="T_1d7a0_row9_col14" class="data row9 col14" >7</td>
-    </tr>
-  </tbody>
-</table></div>
-</div>
-<p>Note that I have used the <code class="docutils literal notranslate"><span class="pre">vmin=0</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax=100</span></code> kwargs to set the base of the bar to be at zero and the maximum to be 100.</p>
-<p>Alternatively, I could color the percent correct according to the percent correct.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<style type="text/css">
-#T_b9ec0_row0_col5 {
-  background-color: #f85f43;
-  color: #f1f1f1;
-}
-#T_b9ec0_row1_col5, #T_b9ec0_row8_col5 {
-  background-color: #840711;
-  color: #f1f1f1;
-}
-#T_b9ec0_row2_col5 {
-  background-color: #67000d;
-  color: #f1f1f1;
-}
-#T_b9ec0_row3_col5 {
-  background-color: #a10e15;
-  color: #f1f1f1;
-}
-#T_b9ec0_row4_col5 {
-  background-color: #fcad90;
-  color: #000000;
-}
-#T_b9ec0_row5_col5 {
-  background-color: #fff5f0;
-  color: #000000;
-}
-#T_b9ec0_row6_col5 {
-  background-color: #c7171c;
-  color: #f1f1f1;
-}
-#T_b9ec0_row7_col5 {
-  background-color: #fc8666;
-  color: #f1f1f1;
-}
-#T_b9ec0_row9_col5 {
-  background-color: #f34935;
-  color: #f1f1f1;
-}
-</style>
-<table id="T_b9ec0">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_b9ec0_level0_col0" class="col_heading level0 col0" >participant number</th>
-      <th id="T_b9ec0_level0_col1" class="col_heading level0 col1" >gender</th>
-      <th id="T_b9ec0_level0_col2" class="col_heading level0 col2" >age</th>
-      <th id="T_b9ec0_level0_col3" class="col_heading level0 col3" >correct hit percentage</th>
-      <th id="T_b9ec0_level0_col4" class="col_heading level0 col4" >correct reject percentage</th>
-      <th id="T_b9ec0_level0_col5" class="col_heading level0 col5" >percent correct</th>
-      <th id="T_b9ec0_level0_col6" class="col_heading level0 col6" >confidence when correct hit</th>
-      <th id="T_b9ec0_level0_col7" class="col_heading level0 col7" >confidence incorrect hit</th>
-      <th id="T_b9ec0_level0_col8" class="col_heading level0 col8" >confidence correct reject</th>
-      <th id="T_b9ec0_level0_col9" class="col_heading level0 col9" >confidence incorrect reject</th>
-      <th id="T_b9ec0_level0_col10" class="col_heading level0 col10" >confidence when correct</th>
-      <th id="T_b9ec0_level0_col11" class="col_heading level0 col11" >confidence when incorrect</th>
-      <th id="T_b9ec0_level0_col12" class="col_heading level0 col12" >sci</th>
-      <th id="T_b9ec0_level0_col13" class="col_heading level0 col13" >psqi</th>
-      <th id="T_b9ec0_level0_col14" class="col_heading level0 col14" >ess</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_b9ec0_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_b9ec0_row0_col0" class="data row0 col0" >8</td>
-      <td id="T_b9ec0_row0_col1" class="data row0 col1" >f</td>
-      <td id="T_b9ec0_row0_col2" class="data row0 col2" >39</td>
-      <td id="T_b9ec0_row0_col3" class="data row0 col3" >65</td>
-      <td id="T_b9ec0_row0_col4" class="data row0 col4" >80</td>
-      <td id="T_b9ec0_row0_col5" class="data row0 col5" >72.500000</td>
-      <td id="T_b9ec0_row0_col6" class="data row0 col6" >91.000000</td>
-      <td id="T_b9ec0_row0_col7" class="data row0 col7" >90.000000</td>
-      <td id="T_b9ec0_row0_col8" class="data row0 col8" >93.000000</td>
-      <td id="T_b9ec0_row0_col9" class="data row0 col9" >83.500000</td>
-      <td id="T_b9ec0_row0_col10" class="data row0 col10" >93.000000</td>
-      <td id="T_b9ec0_row0_col11" class="data row0 col11" >90.000000</td>
-      <td id="T_b9ec0_row0_col12" class="data row0 col12" >9</td>
-      <td id="T_b9ec0_row0_col13" class="data row0 col13" >13</td>
-      <td id="T_b9ec0_row0_col14" class="data row0 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_b9ec0_row1_col0" class="data row1 col0" >16</td>
-      <td id="T_b9ec0_row1_col1" class="data row1 col1" >m</td>
-      <td id="T_b9ec0_row1_col2" class="data row1 col2" >42</td>
-      <td id="T_b9ec0_row1_col3" class="data row1 col3" >90</td>
-      <td id="T_b9ec0_row1_col4" class="data row1 col4" >90</td>
-      <td id="T_b9ec0_row1_col5" class="data row1 col5" >90.000000</td>
-      <td id="T_b9ec0_row1_col6" class="data row1 col6" >75.500000</td>
-      <td id="T_b9ec0_row1_col7" class="data row1 col7" >55.500000</td>
-      <td id="T_b9ec0_row1_col8" class="data row1 col8" >70.500000</td>
-      <td id="T_b9ec0_row1_col9" class="data row1 col9" >50.000000</td>
-      <td id="T_b9ec0_row1_col10" class="data row1 col10" >75.000000</td>
-      <td id="T_b9ec0_row1_col11" class="data row1 col11" >50.000000</td>
-      <td id="T_b9ec0_row1_col12" class="data row1 col12" >4</td>
-      <td id="T_b9ec0_row1_col13" class="data row1 col13" >11</td>
-      <td id="T_b9ec0_row1_col14" class="data row1 col14" >7</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_b9ec0_row2_col0" class="data row2 col0" >18</td>
-      <td id="T_b9ec0_row2_col1" class="data row2 col1" >f</td>
-      <td id="T_b9ec0_row2_col2" class="data row2 col2" >31</td>
-      <td id="T_b9ec0_row2_col3" class="data row2 col3" >90</td>
-      <td id="T_b9ec0_row2_col4" class="data row2 col4" >95</td>
-      <td id="T_b9ec0_row2_col5" class="data row2 col5" >92.500000</td>
-      <td id="T_b9ec0_row2_col6" class="data row2 col6" >89.500000</td>
-      <td id="T_b9ec0_row2_col7" class="data row2 col7" >90.000000</td>
-      <td id="T_b9ec0_row2_col8" class="data row2 col8" >86.000000</td>
-      <td id="T_b9ec0_row2_col9" class="data row2 col9" >81.000000</td>
-      <td id="T_b9ec0_row2_col10" class="data row2 col10" >89.000000</td>
-      <td id="T_b9ec0_row2_col11" class="data row2 col11" >88.000000</td>
-      <td id="T_b9ec0_row2_col12" class="data row2 col12" >10</td>
-      <td id="T_b9ec0_row2_col13" class="data row2 col13" >9</td>
-      <td id="T_b9ec0_row2_col14" class="data row2 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_b9ec0_row3_col0" class="data row3 col0" >22</td>
-      <td id="T_b9ec0_row3_col1" class="data row3 col1" >f</td>
-      <td id="T_b9ec0_row3_col2" class="data row3 col2" >35</td>
-      <td id="T_b9ec0_row3_col3" class="data row3 col3" >100</td>
-      <td id="T_b9ec0_row3_col4" class="data row3 col4" >75</td>
-      <td id="T_b9ec0_row3_col5" class="data row3 col5" >87.500000</td>
-      <td id="T_b9ec0_row3_col6" class="data row3 col6" >89.500000</td>
-      <td id="T_b9ec0_row3_col7" class="data row3 col7" >nan</td>
-      <td id="T_b9ec0_row3_col8" class="data row3 col8" >71.000000</td>
-      <td id="T_b9ec0_row3_col9" class="data row3 col9" >80.000000</td>
-      <td id="T_b9ec0_row3_col10" class="data row3 col10" >88.000000</td>
-      <td id="T_b9ec0_row3_col11" class="data row3 col11" >80.000000</td>
-      <td id="T_b9ec0_row3_col12" class="data row3 col12" >13</td>
-      <td id="T_b9ec0_row3_col13" class="data row3 col13" >8</td>
-      <td id="T_b9ec0_row3_col14" class="data row3 col14" >20</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_b9ec0_row4_col0" class="data row4 col0" >27</td>
-      <td id="T_b9ec0_row4_col1" class="data row4 col1" >f</td>
-      <td id="T_b9ec0_row4_col2" class="data row4 col2" >74</td>
-      <td id="T_b9ec0_row4_col3" class="data row4 col3" >60</td>
-      <td id="T_b9ec0_row4_col4" class="data row4 col4" >65</td>
-      <td id="T_b9ec0_row4_col5" class="data row4 col5" >62.500000</td>
-      <td id="T_b9ec0_row4_col6" class="data row4 col6" >68.500000</td>
-      <td id="T_b9ec0_row4_col7" class="data row4 col7" >49.000000</td>
-      <td id="T_b9ec0_row4_col8" class="data row4 col8" >61.000000</td>
-      <td id="T_b9ec0_row4_col9" class="data row4 col9" >49.000000</td>
-      <td id="T_b9ec0_row4_col10" class="data row4 col10" >65.000000</td>
-      <td id="T_b9ec0_row4_col11" class="data row4 col11" >49.000000</td>
-      <td id="T_b9ec0_row4_col12" class="data row4 col12" >13</td>
-      <td id="T_b9ec0_row4_col13" class="data row4 col13" >9</td>
-      <td id="T_b9ec0_row4_col14" class="data row4 col14" >12</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_b9ec0_row5_col0" class="data row5 col0" >28</td>
-      <td id="T_b9ec0_row5_col1" class="data row5 col1" >f</td>
-      <td id="T_b9ec0_row5_col2" class="data row5 col2" >61</td>
-      <td id="T_b9ec0_row5_col3" class="data row5 col3" >80</td>
-      <td id="T_b9ec0_row5_col4" class="data row5 col4" >20</td>
-      <td id="T_b9ec0_row5_col5" class="data row5 col5" >50.000000</td>
-      <td id="T_b9ec0_row5_col6" class="data row5 col6" >71.000000</td>
-      <td id="T_b9ec0_row5_col7" class="data row5 col7" >63.000000</td>
-      <td id="T_b9ec0_row5_col8" class="data row5 col8" >31.000000</td>
-      <td id="T_b9ec0_row5_col9" class="data row5 col9" >72.500000</td>
-      <td id="T_b9ec0_row5_col10" class="data row5 col10" >64.500000</td>
-      <td id="T_b9ec0_row5_col11" class="data row5 col11" >70.500000</td>
-      <td id="T_b9ec0_row5_col12" class="data row5 col12" >15</td>
-      <td id="T_b9ec0_row5_col13" class="data row5 col13" >14</td>
-      <td id="T_b9ec0_row5_col14" class="data row5 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_b9ec0_row6_col0" class="data row6 col0" >30</td>
-      <td id="T_b9ec0_row6_col1" class="data row6 col1" >m</td>
-      <td id="T_b9ec0_row6_col2" class="data row6 col2" >32</td>
-      <td id="T_b9ec0_row6_col3" class="data row6 col3" >90</td>
-      <td id="T_b9ec0_row6_col4" class="data row6 col4" >75</td>
-      <td id="T_b9ec0_row6_col5" class="data row6 col5" >82.500000</td>
-      <td id="T_b9ec0_row6_col6" class="data row6 col6" >67.000000</td>
-      <td id="T_b9ec0_row6_col7" class="data row6 col7" >56.500000</td>
-      <td id="T_b9ec0_row6_col8" class="data row6 col8" >66.000000</td>
-      <td id="T_b9ec0_row6_col9" class="data row6 col9" >65.000000</td>
-      <td id="T_b9ec0_row6_col10" class="data row6 col10" >66.000000</td>
-      <td id="T_b9ec0_row6_col11" class="data row6 col11" >64.000000</td>
-      <td id="T_b9ec0_row6_col12" class="data row6 col12" >16</td>
-      <td id="T_b9ec0_row6_col13" class="data row6 col13" >9</td>
-      <td id="T_b9ec0_row6_col14" class="data row6 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_b9ec0_row7_col0" class="data row7 col0" >33</td>
-      <td id="T_b9ec0_row7_col1" class="data row7 col1" >m</td>
-      <td id="T_b9ec0_row7_col2" class="data row7 col2" >62</td>
-      <td id="T_b9ec0_row7_col3" class="data row7 col3" >45</td>
-      <td id="T_b9ec0_row7_col4" class="data row7 col4" >90</td>
-      <td id="T_b9ec0_row7_col5" class="data row7 col5" >67.500000</td>
-      <td id="T_b9ec0_row7_col6" class="data row7 col6" >54.000000</td>
-      <td id="T_b9ec0_row7_col7" class="data row7 col7" >37.000000</td>
-      <td id="T_b9ec0_row7_col8" class="data row7 col8" >65.000000</td>
-      <td id="T_b9ec0_row7_col9" class="data row7 col9" >81.500000</td>
-      <td id="T_b9ec0_row7_col10" class="data row7 col10" >62.000000</td>
-      <td id="T_b9ec0_row7_col11" class="data row7 col11" >61.000000</td>
-      <td id="T_b9ec0_row7_col12" class="data row7 col12" >14</td>
-      <td id="T_b9ec0_row7_col13" class="data row7 col13" >9</td>
-      <td id="T_b9ec0_row7_col14" class="data row7 col14" >9</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_b9ec0_row8_col0" class="data row8 col0" >34</td>
-      <td id="T_b9ec0_row8_col1" class="data row8 col1" >f</td>
-      <td id="T_b9ec0_row8_col2" class="data row8 col2" >33</td>
-      <td id="T_b9ec0_row8_col3" class="data row8 col3" >80</td>
-      <td id="T_b9ec0_row8_col4" class="data row8 col4" >100</td>
-      <td id="T_b9ec0_row8_col5" class="data row8 col5" >90.000000</td>
-      <td id="T_b9ec0_row8_col6" class="data row8 col6" >70.500000</td>
-      <td id="T_b9ec0_row8_col7" class="data row8 col7" >76.500000</td>
-      <td id="T_b9ec0_row8_col8" class="data row8 col8" >64.500000</td>
-      <td id="T_b9ec0_row8_col9" class="data row8 col9" >nan</td>
-      <td id="T_b9ec0_row8_col10" class="data row8 col10" >68.000000</td>
-      <td id="T_b9ec0_row8_col11" class="data row8 col11" >76.500000</td>
-      <td id="T_b9ec0_row8_col12" class="data row8 col12" >14</td>
-      <td id="T_b9ec0_row8_col13" class="data row8 col13" >12</td>
-      <td id="T_b9ec0_row8_col14" class="data row8 col14" >10</td>
-    </tr>
-    <tr>
-      <th id="T_b9ec0_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_b9ec0_row9_col0" class="data row9 col0" >35</td>
-      <td id="T_b9ec0_row9_col1" class="data row9 col1" >f</td>
-      <td id="T_b9ec0_row9_col2" class="data row9 col2" >53</td>
-      <td id="T_b9ec0_row9_col3" class="data row9 col3" >100</td>
-      <td id="T_b9ec0_row9_col4" class="data row9 col4" >50</td>
-      <td id="T_b9ec0_row9_col5" class="data row9 col5" >75.000000</td>
-      <td id="T_b9ec0_row9_col6" class="data row9 col6" >74.500000</td>
-      <td id="T_b9ec0_row9_col7" class="data row9 col7" >nan</td>
-      <td id="T_b9ec0_row9_col8" class="data row9 col8" >60.500000</td>
-      <td id="T_b9ec0_row9_col9" class="data row9 col9" >65.000000</td>
-      <td id="T_b9ec0_row9_col10" class="data row9 col10" >71.000000</td>
-      <td id="T_b9ec0_row9_col11" class="data row9 col11" >65.000000</td>
-      <td id="T_b9ec0_row9_col12" class="data row9 col12" >14</td>
-      <td id="T_b9ec0_row9_col13" class="data row9 col13" >8</td>
-      <td id="T_b9ec0_row9_col14" class="data row9 col14" >7</td>
-    </tr>
-  </tbody>
-</table></div>
-</div>
-<p>We could have multiple effects together as well.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
-    <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;percent correct&quot;</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span>
-<span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-    <span class="n">highlight_high_scoring_females</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="c1"># Style the table</span>
+<span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;participant number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">style</span>
+    <span class="o">.</span><span class="n">tab_options</span><span class="p">(</span><span class="n">table_font_size</span><span class="o">=</span><span class="s1">&#39;x-small&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">tab_header</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;GFMT sleep study&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">tab_spanner</span><span class="p">(</span><span class="s1">&#39;Participant data&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;participant number&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">tab_spanner</span><span class="p">(</span><span class="s1">&#39;GFMT results&#39;</span><span class="p">,</span> <span class="n">cs</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;correct&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">tab_spanner</span><span class="p">(</span><span class="s1">&#39;Sleep indicators&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="s1">&#39;psqi&#39;</span><span class="p">,</span> <span class="s1">&#39;ess&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">tab_style</span><span class="p">(</span>
+        <span class="n">style</span><span class="o">=</span><span class="n">great_tables</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;#99dbc9&#39;</span><span class="p">),</span>
+        <span class="n">locations</span><span class="o">=</span><span class="n">great_tables</span><span class="o">.</span><span class="n">loc</span><span class="o">.</span><span class="n">body</span><span class="p">(</span>
+            <span class="n">rows</span><span class="o">=</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span><span class="p">)</span>
+            <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;percent correct&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<style type="text/css">
-#T_a93ed_row0_col0, #T_a93ed_row0_col1, #T_a93ed_row0_col2, #T_a93ed_row0_col3, #T_a93ed_row0_col4, #T_a93ed_row0_col6, #T_a93ed_row0_col7, #T_a93ed_row0_col8, #T_a93ed_row0_col9, #T_a93ed_row0_col10, #T_a93ed_row0_col11, #T_a93ed_row0_col12, #T_a93ed_row0_col13, #T_a93ed_row0_col14, #T_a93ed_row1_col0, #T_a93ed_row1_col1, #T_a93ed_row1_col2, #T_a93ed_row1_col3, #T_a93ed_row1_col4, #T_a93ed_row1_col6, #T_a93ed_row1_col7, #T_a93ed_row1_col8, #T_a93ed_row1_col9, #T_a93ed_row1_col10, #T_a93ed_row1_col11, #T_a93ed_row1_col12, #T_a93ed_row1_col13, #T_a93ed_row1_col14, #T_a93ed_row4_col0, #T_a93ed_row4_col1, #T_a93ed_row4_col2, #T_a93ed_row4_col3, #T_a93ed_row4_col4, #T_a93ed_row4_col6, #T_a93ed_row4_col7, #T_a93ed_row4_col8, #T_a93ed_row4_col9, #T_a93ed_row4_col10, #T_a93ed_row4_col11, #T_a93ed_row4_col12, #T_a93ed_row4_col13, #T_a93ed_row4_col14, #T_a93ed_row5_col0, #T_a93ed_row5_col1, #T_a93ed_row5_col2, #T_a93ed_row5_col3, #T_a93ed_row5_col4, #T_a93ed_row5_col6, #T_a93ed_row5_col7, #T_a93ed_row5_col8, #T_a93ed_row5_col9, #T_a93ed_row5_col10, #T_a93ed_row5_col11, #T_a93ed_row5_col12, #T_a93ed_row5_col13, #T_a93ed_row5_col14, #T_a93ed_row6_col0, #T_a93ed_row6_col1, #T_a93ed_row6_col2, #T_a93ed_row6_col3, #T_a93ed_row6_col4, #T_a93ed_row6_col6, #T_a93ed_row6_col7, #T_a93ed_row6_col8, #T_a93ed_row6_col9, #T_a93ed_row6_col10, #T_a93ed_row6_col11, #T_a93ed_row6_col12, #T_a93ed_row6_col13, #T_a93ed_row6_col14, #T_a93ed_row7_col0, #T_a93ed_row7_col1, #T_a93ed_row7_col2, #T_a93ed_row7_col3, #T_a93ed_row7_col4, #T_a93ed_row7_col6, #T_a93ed_row7_col7, #T_a93ed_row7_col8, #T_a93ed_row7_col9, #T_a93ed_row7_col10, #T_a93ed_row7_col11, #T_a93ed_row7_col12, #T_a93ed_row7_col13, #T_a93ed_row7_col14 {
-  background-color: lightgray;
-}
-#T_a93ed_row0_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 72.5%, transparent 72.5%);
-  background-color: lightgray;
-}
-#T_a93ed_row1_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 90.0%, transparent 90.0%);
-  background-color: lightgray;
-}
-#T_a93ed_row2_col0, #T_a93ed_row2_col1, #T_a93ed_row2_col2, #T_a93ed_row2_col3, #T_a93ed_row2_col4, #T_a93ed_row2_col6, #T_a93ed_row2_col7, #T_a93ed_row2_col8, #T_a93ed_row2_col9, #T_a93ed_row2_col10, #T_a93ed_row2_col11, #T_a93ed_row2_col12, #T_a93ed_row2_col13, #T_a93ed_row2_col14, #T_a93ed_row3_col0, #T_a93ed_row3_col1, #T_a93ed_row3_col2, #T_a93ed_row3_col3, #T_a93ed_row3_col4, #T_a93ed_row3_col6, #T_a93ed_row3_col7, #T_a93ed_row3_col8, #T_a93ed_row3_col9, #T_a93ed_row3_col10, #T_a93ed_row3_col11, #T_a93ed_row3_col12, #T_a93ed_row3_col13, #T_a93ed_row3_col14, #T_a93ed_row8_col0, #T_a93ed_row8_col1, #T_a93ed_row8_col2, #T_a93ed_row8_col3, #T_a93ed_row8_col4, #T_a93ed_row8_col6, #T_a93ed_row8_col7, #T_a93ed_row8_col8, #T_a93ed_row8_col9, #T_a93ed_row8_col10, #T_a93ed_row8_col11, #T_a93ed_row8_col12, #T_a93ed_row8_col13, #T_a93ed_row8_col14, #T_a93ed_row9_col0, #T_a93ed_row9_col1, #T_a93ed_row9_col2, #T_a93ed_row9_col3, #T_a93ed_row9_col4, #T_a93ed_row9_col6, #T_a93ed_row9_col7, #T_a93ed_row9_col8, #T_a93ed_row9_col9, #T_a93ed_row9_col10, #T_a93ed_row9_col11, #T_a93ed_row9_col12, #T_a93ed_row9_col13, #T_a93ed_row9_col14 {
-  background-color: #7fc97f;
-}
-#T_a93ed_row2_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 92.5%, transparent 92.5%);
-  background-color: #7fc97f;
-}
-#T_a93ed_row3_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 87.5%, transparent 87.5%);
-  background-color: #7fc97f;
-}
-#T_a93ed_row4_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 62.5%, transparent 62.5%);
-  background-color: lightgray;
-}
-#T_a93ed_row5_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 50.0%, transparent 50.0%);
-  background-color: lightgray;
-}
-#T_a93ed_row6_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 82.5%, transparent 82.5%);
-  background-color: lightgray;
-}
-#T_a93ed_row7_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 67.5%, transparent 67.5%);
-  background-color: lightgray;
-}
-#T_a93ed_row8_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 90.0%, transparent 90.0%);
-  background-color: #7fc97f;
-}
-#T_a93ed_row9_col5 {
-  width: 10em;
-  background: linear-gradient(90deg, #d65f5f 75.0%, transparent 75.0%);
-  background-color: #7fc97f;
-}
+<div id="bvamnihyco" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#bvamnihyco table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#bvamnihyco thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#bvamnihyco p { margin: 0; padding: 0; }
+ #bvamnihyco .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: x-small; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #bvamnihyco .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #bvamnihyco .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #bvamnihyco .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #bvamnihyco .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #bvamnihyco .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #bvamnihyco .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #bvamnihyco .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #bvamnihyco .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #bvamnihyco .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #bvamnihyco .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #bvamnihyco .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #bvamnihyco .gt_spanner_row { border-bottom-style: hidden; }
+ #bvamnihyco .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #bvamnihyco .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #bvamnihyco .gt_from_md> :first-child { margin-top: 0; }
+ #bvamnihyco .gt_from_md> :last-child { margin-bottom: 0; }
+ #bvamnihyco .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #bvamnihyco .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #bvamnihyco .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #bvamnihyco .gt_row_group_first td { border-top-width: 2px; }
+ #bvamnihyco .gt_row_group_first th { border-top-width: 2px; }
+ #bvamnihyco .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #bvamnihyco .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #bvamnihyco .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #bvamnihyco .gt_left { text-align: left; }
+ #bvamnihyco .gt_center { text-align: center; }
+ #bvamnihyco .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #bvamnihyco .gt_font_normal { font-weight: normal; }
+ #bvamnihyco .gt_font_bold { font-weight: bold; }
+ #bvamnihyco .gt_font_italic { font-style: italic; }
+ #bvamnihyco .gt_super { font-size: 65%; }
+ #bvamnihyco .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #bvamnihyco .gt_asterisk { font-size: 100%; vertical-align: 0; }
+
 </style>
-<table id="T_a93ed">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_a93ed_level0_col0" class="col_heading level0 col0" >participant number</th>
-      <th id="T_a93ed_level0_col1" class="col_heading level0 col1" >gender</th>
-      <th id="T_a93ed_level0_col2" class="col_heading level0 col2" >age</th>
-      <th id="T_a93ed_level0_col3" class="col_heading level0 col3" >correct hit percentage</th>
-      <th id="T_a93ed_level0_col4" class="col_heading level0 col4" >correct reject percentage</th>
-      <th id="T_a93ed_level0_col5" class="col_heading level0 col5" >percent correct</th>
-      <th id="T_a93ed_level0_col6" class="col_heading level0 col6" >confidence when correct hit</th>
-      <th id="T_a93ed_level0_col7" class="col_heading level0 col7" >confidence incorrect hit</th>
-      <th id="T_a93ed_level0_col8" class="col_heading level0 col8" >confidence correct reject</th>
-      <th id="T_a93ed_level0_col9" class="col_heading level0 col9" >confidence incorrect reject</th>
-      <th id="T_a93ed_level0_col10" class="col_heading level0 col10" >confidence when correct</th>
-      <th id="T_a93ed_level0_col11" class="col_heading level0 col11" >confidence when incorrect</th>
-      <th id="T_a93ed_level0_col12" class="col_heading level0 col12" >sci</th>
-      <th id="T_a93ed_level0_col13" class="col_heading level0 col13" >psqi</th>
-      <th id="T_a93ed_level0_col14" class="col_heading level0 col14" >ess</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_a93ed_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_a93ed_row0_col0" class="data row0 col0" >8</td>
-      <td id="T_a93ed_row0_col1" class="data row0 col1" >f</td>
-      <td id="T_a93ed_row0_col2" class="data row0 col2" >39</td>
-      <td id="T_a93ed_row0_col3" class="data row0 col3" >65</td>
-      <td id="T_a93ed_row0_col4" class="data row0 col4" >80</td>
-      <td id="T_a93ed_row0_col5" class="data row0 col5" >72.500000</td>
-      <td id="T_a93ed_row0_col6" class="data row0 col6" >91.000000</td>
-      <td id="T_a93ed_row0_col7" class="data row0 col7" >90.000000</td>
-      <td id="T_a93ed_row0_col8" class="data row0 col8" >93.000000</td>
-      <td id="T_a93ed_row0_col9" class="data row0 col9" >83.500000</td>
-      <td id="T_a93ed_row0_col10" class="data row0 col10" >93.000000</td>
-      <td id="T_a93ed_row0_col11" class="data row0 col11" >90.000000</td>
-      <td id="T_a93ed_row0_col12" class="data row0 col12" >9</td>
-      <td id="T_a93ed_row0_col13" class="data row0 col13" >13</td>
-      <td id="T_a93ed_row0_col14" class="data row0 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_a93ed_row1_col0" class="data row1 col0" >16</td>
-      <td id="T_a93ed_row1_col1" class="data row1 col1" >m</td>
-      <td id="T_a93ed_row1_col2" class="data row1 col2" >42</td>
-      <td id="T_a93ed_row1_col3" class="data row1 col3" >90</td>
-      <td id="T_a93ed_row1_col4" class="data row1 col4" >90</td>
-      <td id="T_a93ed_row1_col5" class="data row1 col5" >90.000000</td>
-      <td id="T_a93ed_row1_col6" class="data row1 col6" >75.500000</td>
-      <td id="T_a93ed_row1_col7" class="data row1 col7" >55.500000</td>
-      <td id="T_a93ed_row1_col8" class="data row1 col8" >70.500000</td>
-      <td id="T_a93ed_row1_col9" class="data row1 col9" >50.000000</td>
-      <td id="T_a93ed_row1_col10" class="data row1 col10" >75.000000</td>
-      <td id="T_a93ed_row1_col11" class="data row1 col11" >50.000000</td>
-      <td id="T_a93ed_row1_col12" class="data row1 col12" >4</td>
-      <td id="T_a93ed_row1_col13" class="data row1 col13" >11</td>
-      <td id="T_a93ed_row1_col14" class="data row1 col14" >7</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_a93ed_row2_col0" class="data row2 col0" >18</td>
-      <td id="T_a93ed_row2_col1" class="data row2 col1" >f</td>
-      <td id="T_a93ed_row2_col2" class="data row2 col2" >31</td>
-      <td id="T_a93ed_row2_col3" class="data row2 col3" >90</td>
-      <td id="T_a93ed_row2_col4" class="data row2 col4" >95</td>
-      <td id="T_a93ed_row2_col5" class="data row2 col5" >92.500000</td>
-      <td id="T_a93ed_row2_col6" class="data row2 col6" >89.500000</td>
-      <td id="T_a93ed_row2_col7" class="data row2 col7" >90.000000</td>
-      <td id="T_a93ed_row2_col8" class="data row2 col8" >86.000000</td>
-      <td id="T_a93ed_row2_col9" class="data row2 col9" >81.000000</td>
-      <td id="T_a93ed_row2_col10" class="data row2 col10" >89.000000</td>
-      <td id="T_a93ed_row2_col11" class="data row2 col11" >88.000000</td>
-      <td id="T_a93ed_row2_col12" class="data row2 col12" >10</td>
-      <td id="T_a93ed_row2_col13" class="data row2 col13" >9</td>
-      <td id="T_a93ed_row2_col14" class="data row2 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_a93ed_row3_col0" class="data row3 col0" >22</td>
-      <td id="T_a93ed_row3_col1" class="data row3 col1" >f</td>
-      <td id="T_a93ed_row3_col2" class="data row3 col2" >35</td>
-      <td id="T_a93ed_row3_col3" class="data row3 col3" >100</td>
-      <td id="T_a93ed_row3_col4" class="data row3 col4" >75</td>
-      <td id="T_a93ed_row3_col5" class="data row3 col5" >87.500000</td>
-      <td id="T_a93ed_row3_col6" class="data row3 col6" >89.500000</td>
-      <td id="T_a93ed_row3_col7" class="data row3 col7" >nan</td>
-      <td id="T_a93ed_row3_col8" class="data row3 col8" >71.000000</td>
-      <td id="T_a93ed_row3_col9" class="data row3 col9" >80.000000</td>
-      <td id="T_a93ed_row3_col10" class="data row3 col10" >88.000000</td>
-      <td id="T_a93ed_row3_col11" class="data row3 col11" >80.000000</td>
-      <td id="T_a93ed_row3_col12" class="data row3 col12" >13</td>
-      <td id="T_a93ed_row3_col13" class="data row3 col13" >8</td>
-      <td id="T_a93ed_row3_col14" class="data row3 col14" >20</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_a93ed_row4_col0" class="data row4 col0" >27</td>
-      <td id="T_a93ed_row4_col1" class="data row4 col1" >f</td>
-      <td id="T_a93ed_row4_col2" class="data row4 col2" >74</td>
-      <td id="T_a93ed_row4_col3" class="data row4 col3" >60</td>
-      <td id="T_a93ed_row4_col4" class="data row4 col4" >65</td>
-      <td id="T_a93ed_row4_col5" class="data row4 col5" >62.500000</td>
-      <td id="T_a93ed_row4_col6" class="data row4 col6" >68.500000</td>
-      <td id="T_a93ed_row4_col7" class="data row4 col7" >49.000000</td>
-      <td id="T_a93ed_row4_col8" class="data row4 col8" >61.000000</td>
-      <td id="T_a93ed_row4_col9" class="data row4 col9" >49.000000</td>
-      <td id="T_a93ed_row4_col10" class="data row4 col10" >65.000000</td>
-      <td id="T_a93ed_row4_col11" class="data row4 col11" >49.000000</td>
-      <td id="T_a93ed_row4_col12" class="data row4 col12" >13</td>
-      <td id="T_a93ed_row4_col13" class="data row4 col13" >9</td>
-      <td id="T_a93ed_row4_col14" class="data row4 col14" >12</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_a93ed_row5_col0" class="data row5 col0" >28</td>
-      <td id="T_a93ed_row5_col1" class="data row5 col1" >f</td>
-      <td id="T_a93ed_row5_col2" class="data row5 col2" >61</td>
-      <td id="T_a93ed_row5_col3" class="data row5 col3" >80</td>
-      <td id="T_a93ed_row5_col4" class="data row5 col4" >20</td>
-      <td id="T_a93ed_row5_col5" class="data row5 col5" >50.000000</td>
-      <td id="T_a93ed_row5_col6" class="data row5 col6" >71.000000</td>
-      <td id="T_a93ed_row5_col7" class="data row5 col7" >63.000000</td>
-      <td id="T_a93ed_row5_col8" class="data row5 col8" >31.000000</td>
-      <td id="T_a93ed_row5_col9" class="data row5 col9" >72.500000</td>
-      <td id="T_a93ed_row5_col10" class="data row5 col10" >64.500000</td>
-      <td id="T_a93ed_row5_col11" class="data row5 col11" >70.500000</td>
-      <td id="T_a93ed_row5_col12" class="data row5 col12" >15</td>
-      <td id="T_a93ed_row5_col13" class="data row5 col13" >14</td>
-      <td id="T_a93ed_row5_col14" class="data row5 col14" >2</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_a93ed_row6_col0" class="data row6 col0" >30</td>
-      <td id="T_a93ed_row6_col1" class="data row6 col1" >m</td>
-      <td id="T_a93ed_row6_col2" class="data row6 col2" >32</td>
-      <td id="T_a93ed_row6_col3" class="data row6 col3" >90</td>
-      <td id="T_a93ed_row6_col4" class="data row6 col4" >75</td>
-      <td id="T_a93ed_row6_col5" class="data row6 col5" >82.500000</td>
-      <td id="T_a93ed_row6_col6" class="data row6 col6" >67.000000</td>
-      <td id="T_a93ed_row6_col7" class="data row6 col7" >56.500000</td>
-      <td id="T_a93ed_row6_col8" class="data row6 col8" >66.000000</td>
-      <td id="T_a93ed_row6_col9" class="data row6 col9" >65.000000</td>
-      <td id="T_a93ed_row6_col10" class="data row6 col10" >66.000000</td>
-      <td id="T_a93ed_row6_col11" class="data row6 col11" >64.000000</td>
-      <td id="T_a93ed_row6_col12" class="data row6 col12" >16</td>
-      <td id="T_a93ed_row6_col13" class="data row6 col13" >9</td>
-      <td id="T_a93ed_row6_col14" class="data row6 col14" >3</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_a93ed_row7_col0" class="data row7 col0" >33</td>
-      <td id="T_a93ed_row7_col1" class="data row7 col1" >m</td>
-      <td id="T_a93ed_row7_col2" class="data row7 col2" >62</td>
-      <td id="T_a93ed_row7_col3" class="data row7 col3" >45</td>
-      <td id="T_a93ed_row7_col4" class="data row7 col4" >90</td>
-      <td id="T_a93ed_row7_col5" class="data row7 col5" >67.500000</td>
-      <td id="T_a93ed_row7_col6" class="data row7 col6" >54.000000</td>
-      <td id="T_a93ed_row7_col7" class="data row7 col7" >37.000000</td>
-      <td id="T_a93ed_row7_col8" class="data row7 col8" >65.000000</td>
-      <td id="T_a93ed_row7_col9" class="data row7 col9" >81.500000</td>
-      <td id="T_a93ed_row7_col10" class="data row7 col10" >62.000000</td>
-      <td id="T_a93ed_row7_col11" class="data row7 col11" >61.000000</td>
-      <td id="T_a93ed_row7_col12" class="data row7 col12" >14</td>
-      <td id="T_a93ed_row7_col13" class="data row7 col13" >9</td>
-      <td id="T_a93ed_row7_col14" class="data row7 col14" >9</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_a93ed_row8_col0" class="data row8 col0" >34</td>
-      <td id="T_a93ed_row8_col1" class="data row8 col1" >f</td>
-      <td id="T_a93ed_row8_col2" class="data row8 col2" >33</td>
-      <td id="T_a93ed_row8_col3" class="data row8 col3" >80</td>
-      <td id="T_a93ed_row8_col4" class="data row8 col4" >100</td>
-      <td id="T_a93ed_row8_col5" class="data row8 col5" >90.000000</td>
-      <td id="T_a93ed_row8_col6" class="data row8 col6" >70.500000</td>
-      <td id="T_a93ed_row8_col7" class="data row8 col7" >76.500000</td>
-      <td id="T_a93ed_row8_col8" class="data row8 col8" >64.500000</td>
-      <td id="T_a93ed_row8_col9" class="data row8 col9" >nan</td>
-      <td id="T_a93ed_row8_col10" class="data row8 col10" >68.000000</td>
-      <td id="T_a93ed_row8_col11" class="data row8 col11" >76.500000</td>
-      <td id="T_a93ed_row8_col12" class="data row8 col12" >14</td>
-      <td id="T_a93ed_row8_col13" class="data row8 col13" >12</td>
-      <td id="T_a93ed_row8_col14" class="data row8 col14" >10</td>
-    </tr>
-    <tr>
-      <th id="T_a93ed_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_a93ed_row9_col0" class="data row9 col0" >35</td>
-      <td id="T_a93ed_row9_col1" class="data row9 col1" >f</td>
-      <td id="T_a93ed_row9_col2" class="data row9 col2" >53</td>
-      <td id="T_a93ed_row9_col3" class="data row9 col3" >100</td>
-      <td id="T_a93ed_row9_col4" class="data row9 col4" >50</td>
-      <td id="T_a93ed_row9_col5" class="data row9 col5" >75.000000</td>
-      <td id="T_a93ed_row9_col6" class="data row9 col6" >74.500000</td>
-      <td id="T_a93ed_row9_col7" class="data row9 col7" >nan</td>
-      <td id="T_a93ed_row9_col8" class="data row9 col8" >60.500000</td>
-      <td id="T_a93ed_row9_col9" class="data row9 col9" >65.000000</td>
-      <td id="T_a93ed_row9_col10" class="data row9 col10" >71.000000</td>
-      <td id="T_a93ed_row9_col11" class="data row9 col11" >65.000000</td>
-      <td id="T_a93ed_row9_col12" class="data row9 col12" >14</td>
-      <td id="T_a93ed_row9_col13" class="data row9 col13" >8</td>
-      <td id="T_a93ed_row9_col14" class="data row9 col14" >7</td>
-    </tr>
-  </tbody>
-</table></div>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead class="gt_header">
+  <tr>
+    <th colspan="15" class="gt_heading gt_title gt_font_normal">GFMT sleep study</th>
+  </tr>
+</thead>
+<tr class="gt_col_headings gt_spanner_row">
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Participant data">
+    <span class="gt_column_spanner">Participant data</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="9" scope="colgroup" id="GFMT results">
+    <span class="gt_column_spanner">GFMT results</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Sleep indicators">
+    <span class="gt_column_spanner">Sleep indicators</span>
+  </th>
+</tr>
+<tr class="gt_col_headings">
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="participant number">participant number</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="gender">gender</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="age">age</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="correct hit percentage">correct hit percentage</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="correct reject percentage">correct reject percentage</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="percent correct">percent correct</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="confidence when correct hit">confidence when correct hit</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="confidence incorrect hit">confidence incorrect hit</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="confidence correct reject">confidence correct reject</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="confidence incorrect reject">confidence incorrect reject</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="confidence when correct">confidence when correct</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="confidence when incorrect">confidence when incorrect</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="sci">sci</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="psqi">psqi</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ess">ess</th>
+</tr>
+<tbody class="gt_table_body">
+  <tr>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">42</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">51.5</td>
+    <td class="gt_row gt_right">44.5</td>
+    <td class="gt_row gt_right">43.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">51.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">45</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">55.5</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">78.5</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">19</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">1</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">16</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">54.0</td>
+    <td class="gt_row gt_right">53.0</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">54.5</td>
+    <td class="gt_row gt_right">23</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">63.5</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">18</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">76.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">80.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">80.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">21</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">7</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">94.0</td>
+    <td class="gt_row gt_right">61.0</td>
+    <td class="gt_row gt_right">99.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">19</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">7</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">38</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">92.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">77.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">43.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">79.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">21.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">78.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">36.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">28</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">3</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">8</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">39</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">91.0</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">93.0</td>
+    <td class="gt_row gt_right">83.5</td>
+    <td class="gt_row gt_right">93.0</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">9</td>
+    <td class="gt_row gt_right">13</td>
+    <td class="gt_row gt_right">2</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">9</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">17</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">80.5</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">76.5</td>
+    <td class="gt_row gt_right">27.0</td>
+    <td class="gt_row gt_right">78.5</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">10</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">25</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">85.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">17</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">10</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">11</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">60</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">12</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">41</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">76.5</td>
+    <td class="gt_row gt_right">55.5</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">52.5</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">55.5</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">13</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">53</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">60</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">40.0</td>
+    <td class="gt_row gt_right">33.0</td>
+    <td class="gt_row gt_right">56.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">47.0</td>
+    <td class="gt_row gt_right">44.0</td>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">43</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">92.5</td>
+    <td class="gt_row gt_right">52.0</td>
+    <td class="gt_row gt_right">29.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">36.0</td>
+    <td class="gt_row gt_right">52.0</td>
+    <td class="gt_row gt_right">29.0</td>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">10</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">15</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">23</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">88.0</td>
+    <td class="gt_row gt_right">40.0</td>
+    <td class="gt_row gt_right">70.5</td>
+    <td class="gt_row gt_right">66.5</td>
+    <td class="gt_row gt_right">84.0</td>
+    <td class="gt_row gt_right">54.5</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">16</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">42</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">75.5</td>
+    <td class="gt_row gt_right">55.5</td>
+    <td class="gt_row gt_right">70.5</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">11</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">17</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">19</td>
+    <td class="gt_row gt_right">55</td>
+    <td class="gt_row gt_right">60</td>
+    <td class="gt_row gt_right">57.5</td>
+    <td class="gt_row gt_right">62.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">50.5</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">25</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">18</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">31</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">92.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">89.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">86.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">81.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">89.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">88.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">10</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">9</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">19</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">45</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">85</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">92.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">68.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">61.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">54.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">62.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">54.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">30</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">2</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">13</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">20</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">43</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">59.0</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">59.0</td>
+    <td class="gt_row gt_right">59.5</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">35</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">95.0</td>
+    <td class="gt_row gt_right">75.5</td>
+    <td class="gt_row gt_right">35.5</td>
+    <td class="gt_row gt_right">74.5</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">75.5</td>
+    <td class="gt_row gt_right">35.5</td>
+    <td class="gt_row gt_right">30</td>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">35</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">89.5</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">71.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">88.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">13</td>
+    <td class="gt_row gt_right">8</td>
+    <td class="gt_row gt_right">20</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">23</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">24</td>
+    <td class="gt_row gt_right">55</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">78.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">10</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">24</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">64</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">25.0</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">24.0</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">24.5</td>
+    <td class="gt_row gt_right">20</td>
+    <td class="gt_row gt_right">9</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">25</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">36</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">80</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">88.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">66.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">63.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">81.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">63.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">26</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">35</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">29.5</td>
+    <td class="gt_row gt_right">28.5</td>
+    <td class="gt_row gt_right">19.0</td>
+    <td class="gt_row gt_right">41.5</td>
+    <td class="gt_row gt_right">24.0</td>
+    <td class="gt_row gt_right">35.0</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">27</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">74</td>
+    <td class="gt_row gt_right">60</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">62.5</td>
+    <td class="gt_row gt_right">68.5</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">61.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">13</td>
+    <td class="gt_row gt_right">9</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">61</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">20</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">71.0</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">31.0</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">64.5</td>
+    <td class="gt_row gt_right">70.5</td>
+    <td class="gt_row gt_right">15</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">2</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">43</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">65.5</td>
+    <td class="gt_row gt_right">27.0</td>
+    <td class="gt_row gt_right">41.0</td>
+    <td class="gt_row gt_right">45.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">45.0</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">30</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">82.5</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">56.5</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">16</td>
+    <td class="gt_row gt_right">9</td>
+    <td class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">44</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">92.5</td>
+    <td class="gt_row gt_right">83.0</td>
+    <td class="gt_row gt_right">56.0</td>
+    <td class="gt_row gt_right">79.0</td>
+    <td class="gt_row gt_right">42.5</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">54.0</td>
+    <td class="gt_row gt_right">24</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">0</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">55</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">53.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">53.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">53.0</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">8</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">33</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">62</td>
+    <td class="gt_row gt_right">45</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">54.0</td>
+    <td class="gt_row gt_right">37.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">81.5</td>
+    <td class="gt_row gt_right">62.0</td>
+    <td class="gt_row gt_right">61.0</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">9</td>
+    <td class="gt_row gt_right">9</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">34</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">33</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">80</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">70.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">76.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">64.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">68.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">76.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">14</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">12</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">10</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">35</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">53</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">50</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">74.5</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">60.5</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">71.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">8</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">36</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">78.0</td>
+    <td class="gt_row gt_right">88.0</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">84.0</td>
+    <td class="gt_row gt_right">30</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">37</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">46</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">72.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">91.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">91.0</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">38</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">41</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">55</td>
+    <td class="gt_row gt_right">62.5</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">61.5</td>
+    <td class="gt_row gt_right">73.0</td>
+    <td class="gt_row gt_right">69.0</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">19</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">39</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">35</td>
+    <td class="gt_row gt_right">50</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">62.5</td>
+    <td class="gt_row gt_right">29.0</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">32.0</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">31.0</td>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_right">9</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">53</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">54.0</td>
+    <td class="gt_row gt_right">32.0</td>
+    <td class="gt_row gt_right">47.5</td>
+    <td class="gt_row gt_right">78.5</td>
+    <td class="gt_row gt_right">48.0</td>
+    <td class="gt_row gt_right">51.0</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">41</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">36</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">76.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">75.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">75.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">76.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">75.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">15</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">7</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">0</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">42</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">64.5</td>
+    <td class="gt_row gt_right">43.0</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">43.0</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">43</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">36.0</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">10</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">44</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">29.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">29.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">29.0</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">18</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">45</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">42</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">80.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">36.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">82.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">76.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">23</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">3</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">46</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">89.0</td>
+    <td class="gt_row gt_right">79.0</td>
+    <td class="gt_row gt_right">58.5</td>
+    <td class="gt_row gt_right">79.5</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">10</td>
+    <td class="gt_row gt_right">12</td>
+    <td class="gt_row gt_right">8</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">48</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">23</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">47.0</td>
+    <td class="gt_row gt_right">69.0</td>
+    <td class="gt_row gt_right">40.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">40.0</td>
+    <td class="gt_row gt_right">18</td>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_right">8</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">49</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">24</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">58.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">49.0</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">59.0</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">13</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">50</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">54</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">83.5</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">69.0</td>
+    <td class="gt_row gt_right">88.0</td>
+    <td class="gt_row gt_right">79.0</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_right">16</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">51</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">24</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">85</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">97.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">41.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">74.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">73.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">55.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">29</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">1</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">52</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">73.0</td>
+    <td class="gt_row gt_right">56.0</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">63.5</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">20</td>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_right">9</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">53</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">84.0</td>
+    <td class="gt_row gt_right">55.5</td>
+    <td class="gt_row gt_right">73.5</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">80.5</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">27</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">54</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">43</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">89.0</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">71.0</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">19</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">55</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">55</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">86.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">83.5</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">13</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">56</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">50</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">92.5</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">95.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">95.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">57</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">53</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">84.0</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">61.0</td>
+    <td class="gt_row gt_right">78.5</td>
+    <td class="gt_row gt_right">58.0</td>
+    <td class="gt_row gt_right">24</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">58</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">16</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">30.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">40.0</td>
+    <td class="gt_row gt_right">52.5</td>
+    <td class="gt_row gt_right">35.0</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">59</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">67</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">7.0</td>
+    <td class="gt_row gt_right">69.0</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">69.0</td>
+    <td class="gt_row gt_right">59.5</td>
+    <td class="gt_row gt_right">17</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">60</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">36</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">28.5</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">52.0</td>
+    <td class="gt_row gt_right">61.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">61</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">34</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">58.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">43.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">73.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">53.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">66.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">47.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">30</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">62</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">42</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">74.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">74.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">74.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">17</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">63</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">46</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">92.0</td>
+    <td class="gt_row gt_right">75.5</td>
+    <td class="gt_row gt_right">92.0</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">92.0</td>
+    <td class="gt_row gt_right">73.5</td>
+    <td class="gt_row gt_right">25</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">64</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">69</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">78.5</td>
+    <td class="gt_row gt_right">70.5</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">1</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">65</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">31</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">97.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">98.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">40.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">92.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">40.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">27</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">4</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">66</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">44</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">92.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">87.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">47.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">69.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">87.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">67.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">32</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">1</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">2</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">67</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">25</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">61.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">58.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">60.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">28</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">8</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">9</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">68</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">45</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">50</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">80.5</td>
+    <td class="gt_row gt_right">51.5</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">69.0</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">61.5</td>
+    <td class="gt_row gt_right">25</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">1</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">69</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">47</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">90</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">95.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">71.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">97.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">83.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">30</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">2</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">2</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">33</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">38.0</td>
+    <td class="gt_row gt_right">58.5</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">40.0</td>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">71</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">69.0</td>
+    <td class="gt_row gt_right">56.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">56.0</td>
+    <td class="gt_row gt_right">0</td>
+    <td class="gt_row gt_right">11</td>
+    <td class="gt_row gt_right">14</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">72</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">18</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">51.5</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">53.0</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">73</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">74</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">82.5</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">50.5</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">20</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">74</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">21</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">40.0</td>
+    <td class="gt_row gt_right">90.5</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">74.5</td>
+    <td class="gt_row gt_right">83.0</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">45</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">76.0</td>
+    <td class="gt_row gt_right">17.0</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">23</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">76</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">61</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">69.5</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">44.5</td>
+    <td class="gt_row gt_right">73.0</td>
+    <td class="gt_row gt_right">54.5</td>
+    <td class="gt_row gt_right">73.0</td>
+    <td class="gt_row gt_right">16</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">77</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">42</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">87.0</td>
+    <td class="gt_row gt_right">72.0</td>
+    <td class="gt_row gt_right">90.5</td>
+    <td class="gt_row gt_right">43.5</td>
+    <td class="gt_row gt_right">88.5</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">11</td>
+    <td class="gt_row gt_right">10</td>
+    <td class="gt_row gt_right">10</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">78</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">92.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">79</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">37</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">95.5</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">83.5</td>
+    <td class="gt_row gt_right">83.0</td>
+    <td class="gt_row gt_right">94.0</td>
+    <td class="gt_row gt_right">71.0</td>
+    <td class="gt_row gt_right">20</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">9</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">50</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">12</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">12</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">81</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">41</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">59.5</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">41.0</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">59.0</td>
+    <td class="gt_row gt_right">17</td>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_right">3</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">82</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">41</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">94.5</td>
+    <td class="gt_row gt_right">61.5</td>
+    <td class="gt_row gt_right">86.0</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">92.0</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">27</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">8</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">83</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">34</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">35</td>
+    <td class="gt_row gt_right">62.5</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">52.0</td>
+    <td class="gt_row gt_right">71.0</td>
+    <td class="gt_row gt_right">58.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">58.0</td>
+    <td class="gt_row gt_right">27</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">84</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">39</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">59.5</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">58.0</td>
+    <td class="gt_row gt_right">50.0</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_right">10</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">18</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">93.0</td>
+    <td class="gt_row gt_right">92.0</td>
+    <td class="gt_row gt_right">91.0</td>
+    <td class="gt_row gt_right">89.0</td>
+    <td class="gt_row gt_right">91.5</td>
+    <td class="gt_row gt_right">91.0</td>
+    <td class="gt_row gt_right">25</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">21</td>
+  </tr>
+  <tr>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">86</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_left">f</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">31</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">85</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">92.5</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">None</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">50.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">100.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">50.0</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">30</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">3</td>
+    <td style="background-color: #99dbc9;" class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">87</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">88.0</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">88</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">66</td>
+    <td class="gt_row gt_right">60</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">72.5</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">30</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">9</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">89</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">60</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">70.5</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">8</td>
+    <td class="gt_row gt_right">1</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">45</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">97.5</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">100.0</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">9</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">91</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">62</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">74.5</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">79.5</td>
+    <td class="gt_row gt_right">82.0</td>
+    <td class="gt_row gt_right">32</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">1</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">92</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">66.0</td>
+    <td class="gt_row gt_right">56.0</td>
+    <td class="gt_row gt_right">72.0</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">70.5</td>
+    <td class="gt_row gt_right">59.5</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">8</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">93</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">89.5</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">67.0</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">16</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">4</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">94</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">41</td>
+    <td class="gt_row gt_right">35</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">55.0</td>
+    <td class="gt_row gt_right">61.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">57.0</td>
+    <td class="gt_row gt_right">72.0</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">11</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_left">m</td>
+    <td class="gt_row gt_right">46</td>
+    <td class="gt_row gt_right">95</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">90.0</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">85.0</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">29</td>
+    <td class="gt_row gt_right">3</td>
+    <td class="gt_row gt_right">5</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">96</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">56</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">50</td>
+    <td class="gt_row gt_right">60.0</td>
+    <td class="gt_row gt_right">63.0</td>
+    <td class="gt_row gt_right">52.5</td>
+    <td class="gt_row gt_right">67.5</td>
+    <td class="gt_row gt_right">65.5</td>
+    <td class="gt_row gt_right">64.0</td>
+    <td class="gt_row gt_right">59.5</td>
+    <td class="gt_row gt_right">26</td>
+    <td class="gt_row gt_right">6</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">97</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">23</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">66.5</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">77.5</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">20</td>
+    <td class="gt_row gt_right">8</td>
+    <td class="gt_row gt_right">10</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">98</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">90</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">87.5</td>
+    <td class="gt_row gt_right">65.5</td>
+    <td class="gt_row gt_right">85.5</td>
+    <td class="gt_row gt_right">87.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">74.0</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">19</td>
+    <td class="gt_row gt_right">8</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">99</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">24</td>
+    <td class="gt_row gt_right">70</td>
+    <td class="gt_row gt_right">80</td>
+    <td class="gt_row gt_right">75.0</td>
+    <td class="gt_row gt_right">61.5</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">61.0</td>
+    <td class="gt_row gt_right">65.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">31</td>
+    <td class="gt_row gt_right">2</td>
+    <td class="gt_row gt_right">15</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">44</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">25</td>
+    <td class="gt_row gt_right">45.0</td>
+    <td class="gt_row gt_right">62.0</td>
+    <td class="gt_row gt_right">72.0</td>
+    <td class="gt_row gt_right">87.0</td>
+    <td class="gt_row gt_right">77.0</td>
+    <td class="gt_row gt_right">69.5</td>
+    <td class="gt_row gt_right">73.5</td>
+    <td class="gt_row gt_right">1</td>
+    <td class="gt_row gt_right">15</td>
+    <td class="gt_row gt_right">6</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">101</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">28</td>
+    <td class="gt_row gt_right">100</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">87.0</td>
+    <td class="gt_row gt_right">None</td>
+    <td class="gt_row gt_right">68.0</td>
+    <td class="gt_row gt_right">54.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">54.0</td>
+    <td class="gt_row gt_right">14</td>
+    <td class="gt_row gt_right">7</td>
+    <td class="gt_row gt_right">2</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">102</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">75</td>
+    <td class="gt_row gt_right">65</td>
+    <td class="gt_row gt_right">70.0</td>
+    <td class="gt_row gt_right">53.0</td>
+    <td class="gt_row gt_right">37.0</td>
+    <td class="gt_row gt_right">84.0</td>
+    <td class="gt_row gt_right">52.0</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">51.0</td>
+    <td class="gt_row gt_right">22</td>
+    <td class="gt_row gt_right">4</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+  <tr>
+    <td class="gt_row gt_right">103</td>
+    <td class="gt_row gt_left">f</td>
+    <td class="gt_row gt_right">33</td>
+    <td class="gt_row gt_right">85</td>
+    <td class="gt_row gt_right">40</td>
+    <td class="gt_row gt_right">62.5</td>
+    <td class="gt_row gt_right">80.0</td>
+    <td class="gt_row gt_right">27.0</td>
+    <td class="gt_row gt_right">31.0</td>
+    <td class="gt_row gt_right">82.5</td>
+    <td class="gt_row gt_right">81.0</td>
+    <td class="gt_row gt_right">73.0</td>
+    <td class="gt_row gt_right">24</td>
+    <td class="gt_row gt_right">5</td>
+    <td class="gt_row gt_right">7</td>
+  </tr>
+</tbody>
+
+
+</table>
+
+</div></div>
 </div>
-<p>In practice, I almost never use these features because it is almost always better to display results as a plot rather than in tabular form. Still, it can be useful when exploring data sets to highlight certain aspects when exploring data sets in tabular form.</p>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+<p>There is much more you can do, and <a class="reference external" href="https://posit-dev.github.io/great-tables/">the documentation of Great Tables</a> has plenty of examples and tips. In my experience, though, it is rare that you will need to style a data frame; results are usually shown graphically.</p>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput toggle docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
-<span class="o">%</span><span class="k">watermark</span> -v -p pandas,jupyterlab
+<span class="o">%</span><span class="k">watermark</span> -v -p polars,great_tables,jupyterlab
 </pre></div>
 </div>
 </div>
@@ -1247,36 +2049,37 @@
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.11.5
-IPython version      : 8.15.0
+Python version       : 3.12.3
+IPython version      : 8.20.0
 
-pandas    : 2.0.3
-jupyterlab: 4.0.6
+polars      : 1.0.0
+great_tables: 0.9.0
+jupyterlab  : 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="stacking_and_unstacking.html" class="btn btn-neutral float-left" title="Reshaping data frames by stacking and unstacking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../lesson_exercises/exercise_02.html" class="btn btn-neutral float-right" title="E2. To be completed after lesson 10" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pivoting.html" class="btn btn-neutral float-left" title="Making a data frame wide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../lesson_exercises/exercise_01.html" class="btn btn-neutral float-right" title="E1. To be completed after lesson 10" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 29, 2023.
+      <span class="lastupdated">Last updated on Sep 19, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11613c450> 
+   <jinja2.runtime.BlockReference object at 0x12b8ae7b0> 
 
-<p>© 2022 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 
 <p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
 

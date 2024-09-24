@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Null hypothesis significance testing &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -165,11 +165,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="null-hypothesis-significance-testing">
-<h1>Null hypothesis significance testing<a class="headerlink" href="#null-hypothesis-significance-testing" title="Link to this heading"></a></h1>
+  <div class="section" id="null-hypothesis-significance-testing">
+<h1>Null hypothesis significance testing<a class="headerlink" href="#null-hypothesis-significance-testing" title="Permalink to this heading"></a></h1>
 <p>Imagine we do an experiment where we make repeated measurements under control conditions and another set of repeated measurements under test conditions. We may wish to evaluate a hypothesis that there is some similarity in the data generation process between the control and test. If this similar data generating processes cannot produce the observed results, we might like to reject the hypothesis that they are similar. The procedure of <strong>null hypothesis significance testing</strong> (NHST) formalizes the procedure of evaluating hypotheses in this way.</p>
-<section id="steps-of-a-nhst">
-<h2>Steps of a NHST<a class="headerlink" href="#steps-of-a-nhst" title="Link to this heading"></a></h2>
+<div class="section" id="steps-of-a-nhst">
+<h2>Steps of a NHST<a class="headerlink" href="#steps-of-a-nhst" title="Permalink to this heading"></a></h2>
 <p>A typical hypothesis test consists of these steps.</p>
 <ol class="arabic simple">
 <li><p>Clearly state the null hypothesis.</p></li>
@@ -188,9 +188,9 @@ probability of observing a test statistic being at least as extreme as
 what was measured if the null hypothesis is true. It is exactly that,
 and nothing else. It is <em>not</em> the probability that the null hypothesis is
 true. In the frequentist interpretation of probability, we cannot assign a probability to the truth of a hypothesis because a hypothesis is not a random variable.</p>
-</section>
-<section id="rejecting-the-null-hypothesis">
-<h2>Rejecting the null hypothesis<a class="headerlink" href="#rejecting-the-null-hypothesis" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="rejecting-the-null-hypothesis">
+<h2>Rejecting the null hypothesis<a class="headerlink" href="#rejecting-the-null-hypothesis" title="Permalink to this heading"></a></h2>
 <p>The above prescription of a NHST ends with a p-value. Many researchers do not end there, but end with a <strong>decision</strong>, either a rejection or acceptance of a hypothesis. To take this approach, we adjust the procedure above, the first two steps being the same.</p>
 <ol class="arabic simple">
 <li><p>Clearly state the null hypothesis.</p></li>
@@ -205,9 +205,9 @@ value of the test statistic each time. This is sampling out of the <strong>null 
 </ol>
 <p>We are free to choose the rejection region however we like; we just have to be explicit in how we do it. A common method is to choose a <strong>significance level</strong> <span class="math notranslate nohighlight">\(\alpha\)</span>, such that values of the test statistic within the rejection region impart a total probability mass of <span class="math notranslate nohighlight">\(\alpha\)</span>, usually with <span class="math notranslate nohighlight">\(\alpha\)</span> being small. This approach is equivalent to computing the p-value, and if it is less than <span class="math notranslate nohighlight">\(\alpha\)</span>, the researcher decides to reject the null hypothesis. (I generally do not advocate such black and white decisions, described in the next section of this lesson.)</p>
 <p>Importantly, note that the significance level (or more generally the means of computing the rejection region) is decided <em>before</em> simulating the null hypothesis.</p>
-</section>
-<section id="defining-a-test">
-<h2>Defining a test<a class="headerlink" href="#defining-a-test" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="defining-a-test">
+<h2>Defining a test<a class="headerlink" href="#defining-a-test" title="Permalink to this heading"></a></h2>
 <p><strong>A hypothesis test is defined by the null hypothesis, the
 test statistic, and what it means to be at least as extreme.</strong> That
 uniquely defines the hypothesis test you are doing. All of the named
@@ -218,9 +218,9 @@ extreme (e.g., one-tailed or two-tailed). I can never remember what
 these are, nor do I encourage you to; you can always look them up.
 Rather, you should just clearly write out what your test is in terms of
 the hypothesis, test statistic, and definition of extremeness.</p>
-</section>
-<section id="performing-tests-using-hacker-stats">
-<h2>Performing tests using hacker stats<a class="headerlink" href="#performing-tests-using-hacker-stats" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="performing-tests-using-hacker-stats">
+<h2>Performing tests using hacker stats<a class="headerlink" href="#performing-tests-using-hacker-stats" title="Permalink to this heading"></a></h2>
 <p>Now, the real trick to doing a hypothesis test is
 simulating data acquisition assuming the null hypothesis is true. For some tests, that is some trios of null hypothesis, test statistic, and meaning of “at least as extreme as,” simulation is unnecessary because analytical results exist. This is the case for many of the named tests. However, in many cases, these are not the hypotheses you wish you test. Because you have random number generation at your finger tips, you can test the hypotheses <em>you</em> want to test, not just the ones that have names.</p>
 <p>I will demonstrate two hypothesis tests and how we can simulate them. For
@@ -228,8 +228,8 @@ both examples, we will consider the commonly encountered problem of
 performing the same measurements under two different conditions, control
 and test. You might have in mind the example of <em>C. elegans</em> egg lengths
 for well-fed mothers versus starved mothers.</p>
-<section id="test-and-control-come-from-the-same-distribution">
-<h3>Test and control come from the same distribution.<a class="headerlink" href="#test-and-control-come-from-the-same-distribution" title="Link to this heading"></a></h3>
+<div class="section" id="test-and-control-come-from-the-same-distribution">
+<h3>Test and control come from the same distribution.<a class="headerlink" href="#test-and-control-come-from-the-same-distribution" title="Permalink to this heading"></a></h3>
 <p>Here, the null hypothesis is that the distribution <span class="math notranslate nohighlight">\(F\)</span> of the
 control (wild type) measurements is the same as that <span class="math notranslate nohighlight">\(G\)</span> of the
 test (mutant), or <span class="math notranslate nohighlight">\(F = G\)</span>. To simulate this, we can do a
@@ -244,9 +244,9 @@ is test or control makes no difference.</p>
 <p>For this case, we might define our test statistic to be the difference
 of means, the difference of medians, or anything else that can be computed from the
 two data sets and has a scalar value.</p>
-</section>
-<section id="test-and-control-distributions-have-the-same-mean">
-<h3>Test and control distributions have the same mean.<a class="headerlink" href="#test-and-control-distributions-have-the-same-mean" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="test-and-control-distributions-have-the-same-mean">
+<h3>Test and control distributions have the same mean.<a class="headerlink" href="#test-and-control-distributions-have-the-same-mean" title="Permalink to this heading"></a></h3>
 <p>The null hypothesis here is exactly as I have stated, the test and control distributions have the same mean, and nothing more.
 To simulate this, we shift the data sets so that they have the same
 mean. In other words, if the control data are <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the
@@ -273,13 +273,13 @@ again.</p>
 <p>In both of these cases, no assumptions were made about the underlying
 distributions. Only the empirical distributions were used; these are
 nonparametric hypothesis tests.</p>
-</section>
-</section>
-<section id="interpretation-of-the-p-value">
-<h2>Interpretation of the p-value<a class="headerlink" href="#interpretation-of-the-p-value" title="Link to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="interpretation-of-the-p-value">
+<h2>Interpretation of the p-value<a class="headerlink" href="#interpretation-of-the-p-value" title="Permalink to this heading"></a></h2>
 <p>The p-value is best interpreted by its definition. It is the probability of observing a test statistic under the null hypothesis that is at least as extreme as what was observed experimentally. That’s it. It is important to interpret a p-value as what it is, and not anything else. Most importantly, it is <em>not</em> the probability that a null hypothesis is true. Even if it small, it is <em>not</em> a confirmation that another hypothesis you have in mind is true.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -293,11 +293,11 @@ nonparametric hypothesis tests.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 19, 2024.
+      <span class="lastupdated">Last updated on Sep 24, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12e8d1430> 
+   <jinja2.runtime.BlockReference object at 0x13643b890> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

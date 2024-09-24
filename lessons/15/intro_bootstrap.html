@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Performing bootstrap calculations &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -16,13 +15,14 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -166,8 +166,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Performing-bootstrap-calculations">
-<h1>Performing bootstrap calculations<a class="headerlink" href="#Performing-bootstrap-calculations" title="Link to this heading"></a></h1>
+  <div class="section" id="Performing-bootstrap-calculations">
+<h1>Performing bootstrap calculations<a class="headerlink" href="#Performing-bootstrap-calculations" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/bee_sperm.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -529,8 +529,8 @@ function(Bokeh) {
 over how we implement this in practice. We will work with some real data on the reproductive health of male bees that have been treated with pesticide.</p>
 <p>It is important as you go through this lesson to remember that you do not know what the generative distribution is. We are only approximating it using the plug-in principle. Since we do not know what <span class="math notranslate nohighlight">\(F\)</span> is, we do not know what its parameters are, so we therefore cannot estimate them. Rather, we can study <strong>summary statistics</strong>, which are plug-in estimates for statistical functionals of the generative distribution, such as means, variances, or even the ECDF itself, and how they may vary
 from experiment to experiment. In this sense, we are doing <strong>nonparametric inference</strong>.</p>
-<section id="The-data-set">
-<h2>The data set<a class="headerlink" href="#The-data-set" title="Link to this heading"></a></h2>
+<div class="section" id="The-data-set">
+<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
 <p>Neonicotinoid pesticides are thought to have inadvertent effects on service-providing insects such as bees. A study of this was <a class="reference external" href="http://www.nytimes.com/2016/07/29/science/neonicotinoid-insecticide-bee-sperm.html">featured in the New York Times</a>. The original paper by Straub and coworkers may be found <a class="reference external" href="http://dx.doi.org/10.1098/rspb.2016.0506">here</a>. The authors put their <a class="reference external" href="http://dx.doi.org/10.5061/dryad.bs515">data in the Dryad repository</a>, which means that it is free to all to work
 with!</p>
 <p>(Do you see a trend here? If you want people to think deeply about your results, explore them, learn from them, in general further science with them, <em>make your data publicly available.</em> Strongly encourage the members of your lab to do the same.)</p>
@@ -613,9 +613,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The visual inspection of the ECDFs suggests that indeed the control drones have more alive sperm than those treated with pesticide. But how variable would these ECDFs be if we repeated the experiment?</p>
-</section>
-<section id="Bootstrap-samples-and-ECDFs">
-<h2>Bootstrap samples and ECDFs<a class="headerlink" href="#Bootstrap-samples-and-ECDFs" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Bootstrap-samples-and-ECDFs">
+<h2>Bootstrap samples and ECDFs<a class="headerlink" href="#Bootstrap-samples-and-ECDFs" title="Permalink to this heading"></a></h2>
 <p>To address this question, we can generate bootstrap samples from the experimental data and make lots of ECDFs. We can then plot them all to see how the ECDF might vary. Recall that a bootstrap sample from a data set of <span class="math notranslate nohighlight">\(n\)</span> repeated measurements is generated by drawing <span class="math notranslate nohighlight">\(n\)</span> data points out of the original data set with replacement. The <code class="docutils literal notranslate"><span class="pre">rng.choice()</span></code> function enables random draws of elements out of an array. Let’s generate 100 bootstrap samples and plot their ECDFs to visualize how
 our data set might change as we repeat the experiment.</p>
 <div class="nbinput docutils container">
@@ -688,9 +688,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>From this graphical display, we can already see that the ECDFs do not strongly overlap in 100 bootstrap samples, so there is likely a real difference between the two treatments.</p>
-</section>
-<section id="Speeding-up-sampling-with-Numba">
-<h2>Speeding up sampling with Numba<a class="headerlink" href="#Speeding-up-sampling-with-Numba" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Speeding-up-sampling-with-Numba">
+<h2>Speeding up sampling with Numba<a class="headerlink" href="#Speeding-up-sampling-with-Numba" title="Permalink to this heading"></a></h2>
 <p>We can make sampling faster (though note that the slowness in generating the above plot is not in resampling, but in adding glyphs to the plot) by employing <strong>just-in-time compilation</strong>, wherein the Python code is compiled at runtime into machine code. This results in a substantial speed boost. <a class="reference external" href="http://numba.pydata.org">Numba</a> is a powerful tool for this purpose, and we will use it. Bear in mind, though, that not all Python code is Numba-able. Random number generation is supported, but as of
 Numba version 0.60, only the Mersenne Twister bit generator is <a class="reference external" href="https://en.wikipedia.org/wiki/Thread_safety">thread safe</a>, so we will use it in Numba’d code.</p>
 <p>In order to just-in-time compile a function, we need to decorate its definition with the <code class="docutils literal notranslate"><span class="pre">&#64;numba.njit</span></code> decorator, which tells the Python interpreter to use Numba to just-in-time compile the function. Note that Numba works on basic Python objects like tuples and Numpy arrays, so be sure to pass Numpy arrays into the respective functions.</p>
@@ -740,9 +740,9 @@ Using a Numba&#39;d Mersenne Twister:
 </pre></div></div>
 </div>
 <p>That’s a factor of 6 or so increase. That can make a big difference when generating lots of bootstrap samples.</p>
-</section>
-<section id="Bootstrap-replicates-and-confidence-intervals">
-<h2>Bootstrap replicates and confidence intervals<a class="headerlink" href="#Bootstrap-replicates-and-confidence-intervals" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Bootstrap-replicates-and-confidence-intervals">
+<h2>Bootstrap replicates and confidence intervals<a class="headerlink" href="#Bootstrap-replicates-and-confidence-intervals" title="Permalink to this heading"></a></h2>
 <p>We have plotted the ECDF of the data, which is instructive, but we would also like to get plug-in estimates for the generative distribution. Remember, when doing nonparametric plug-in estimates, we plug in the ECDF for the CDF. We do not need to specify what the distribution (described mathematically by the CDF, or equivalently by the PDF) is, just that we approximate it by the empirical distribution.</p>
 <p>We have laid out the procedure to compute a confidence interval.</p>
 <ol class="arabic simple">
@@ -831,8 +831,8 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.49]
 
 </pre></div></div>
 </div>
-<section id="Display-of-confidence-intervals">
-<h3>Display of confidence intervals<a class="headerlink" href="#Display-of-confidence-intervals" title="Link to this heading"></a></h3>
+<div class="section" id="Display-of-confidence-intervals">
+<h3>Display of confidence intervals<a class="headerlink" href="#Display-of-confidence-intervals" title="Permalink to this heading"></a></h3>
 <p>While the textual confidence intervals shown above are useful, it is often desired to display confidence intervals graphically. The <a class="reference external" href="https://bebi103.github.io/">bebi103 package</a> has a utility to do this. It requires as input a list of dictionaries where each dictionary contains an estimate, a confidence interval, and a label.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -886,9 +886,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="ECDF-of-bootstrap-replicates">
-<h3>ECDF of bootstrap replicates<a class="headerlink" href="#ECDF-of-bootstrap-replicates" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="ECDF-of-bootstrap-replicates">
+<h3>ECDF of bootstrap replicates<a class="headerlink" href="#ECDF-of-bootstrap-replicates" title="Permalink to this heading"></a></h3>
 <p>We can also use the bootstrap replicates to plot the probability distribution of mean alive sperm count. <em>Remember</em>: This is not a confidence interval on a parameter value. That does not make sense in frequentist statistics, and furthermore we have not assumed any parametric model. It is the confidence interval describing what we would get as a plug-in estimate for the mean if we did the experiment over and over again.</p>
 <p>When we plot the ECDF of the bootstrap replicates, we will thin them so as not to choke the browser with too many points. Since we will do this again, we write a quick function to do it.</p>
 <div class="nbinput docutils container">
@@ -1034,10 +1034,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>The results are similar, and we clearly see clear non-normality in the ECDFs.</p>
 <p>Note that plotting ECDFs of bootstrap replicates is not a normal reporting mechanism for bootstrap confidence intervals. We show them here to illustrate how bootstrapping works.</p>
-</section>
-</section>
-<section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
@@ -1065,8 +1065,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1080,11 +1080,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 19, 2024.
+      <span class="lastupdated">Last updated on Sep 24, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12b84fcb0> 
+   <jinja2.runtime.BlockReference object at 0x135e25430> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

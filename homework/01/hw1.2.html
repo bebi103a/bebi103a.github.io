@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 1.2: Palmer penguins and split-apply-combine (30 pts) &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -154,8 +154,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-1.2:-Palmer-penguins-and-split-apply-combine-(30-pts)">
-<h1>Homework 1.2: Palmer penguins and split-apply-combine (30 pts)<a class="headerlink" href="#Homework-1.2:-Palmer-penguins-and-split-apply-combine-(30-pts)" title="Link to this heading"></a></h1>
+  <div class="section" id="Homework-1.2:-Palmer-penguins-and-split-apply-combine-(30-pts)">
+<h1>Homework 1.2: Palmer penguins and split-apply-combine (30 pts)<a class="headerlink" href="#Homework-1.2:-Palmer-penguins-and-split-apply-combine-(30-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">Data set download</a></p>
 <hr /><p>The <a class="reference external" href="https://towardsdatascience.com/penguins-dataset-overview-iris-alternative-9453bb8c8d95">Palmer penguins data set</a> is a nice data set with which to practice various data science skills. For this exercise, we will use as subset of it, which you can download here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv</a>. The data set consists of measurements of three different species of penguins acquired at the <a class="reference external" href="https://en.wikipedia.org/wiki/Palmer_Station">Palmer Station in
 Antarctica</a>. The measurements were made between 2007 and 2009 by <a class="reference external" href="https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php">Kristen Gorman</a>.</p>
@@ -187,7 +187,7 @@ Antarctica</a>. The measurements were made between 2007 and 2009 by <a class="re
 <p><strong>d)</strong> Using the data frame you created in part (c), slice out all of the bill lengths for <em>Gentoo</em> penguins.</p>
 <p><strong>e)</strong> Make a new data frame containing the mean measured bill depth, bill length, body mass in kg, and flipper length for each species. You can use millimeters for all length measurements.</p>
 <p><strong>f)</strong> Make a scatter plot of bill length versus flipper length with the glyphs colored by species.</p>
-</section>
+</div>
 
 
            </div>
@@ -201,11 +201,11 @@ Antarctica</a>. The measurements were made between 2007 and 2009 by <a class="re
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 19, 2024.
+      <span class="lastupdated">Last updated on Sep 24, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12c6a6090> 
+   <jinja2.runtime.BlockReference object at 0x168e70dd0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

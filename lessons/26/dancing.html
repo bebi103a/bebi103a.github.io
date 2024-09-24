@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dancing statistics &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -16,13 +15,14 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -170,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Dancing-statistics">
-<h1>Dancing statistics<a class="headerlink" href="#Dancing-statistics" title="Link to this heading"></a></h1>
+  <div class="section" id="Dancing-statistics">
+<h1>Dancing statistics<a class="headerlink" href="#Dancing-statistics" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/mean_rest_bouts.csv">Dataset download</a></p>
 <p>This lesson was inspired by <a class="reference external" href="http://www.latrobe.edu.au/psychology/staff/profile?uname=GDCumming">Geoff Cumming</a>.</p>
 <hr><div class="nbinput docutils container">
@@ -667,17 +667,17 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>These is strong overlap of the confidence intervals, so it may just be that the differences are due to the finite sample size. We will investigate further with some modeling.</p>
-<section id="Cohen's-d">
-<h2>Cohen’s d<a class="headerlink" href="#Cohen's-d" title="Link to this heading"></a></h2>
+<div class="section" id="Cohen's-d">
+<h2>Cohen’s d<a class="headerlink" href="#Cohen's-d" title="Permalink to this heading"></a></h2>
 <p>Cohen’s d is a commonly used measure of <strong>effect size</strong> in comparison of two data sets. It is the ratio of the difference of means compared to a pooled standard deviation.</p>
 <p><span class="math">\begin{align}
 d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sigma}_y^2) \middle/ (n_x + n_y - 2)\right.}}.
 \end{align}</span></p>
 <p>Here, <span class="math notranslate nohighlight">\(\bar{x}\)</span> is the plug-in estimate for the mean of the data from sample <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\hat{\sigma}_x^2\)</span> is the plug-in estimate for the variance from sample <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(n_x\)</span> is the number of measurements in sample <span class="math notranslate nohighlight">\(x\)</span>. The values for sample <span class="math notranslate nohighlight">\(y\)</span> are similarly defined.</p>
 <p>Roughly speaking, Cohen’s d tells us how different the means of the data sets are compared to the variability in the data. A large Cohen’s d means that the effect is large compared to the variability of the measurement.</p>
-</section>
-<section id="Estimates-of-the-difference-of-means-and-Cohen's-d">
-<h2>Estimates of the difference of means and Cohen’s d<a class="headerlink" href="#Estimates-of-the-difference-of-means-and-Cohen's-d" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Estimates-of-the-difference-of-means-and-Cohen's-d">
+<h2>Estimates of the difference of means and Cohen’s d<a class="headerlink" href="#Estimates-of-the-difference-of-means-and-Cohen's-d" title="Permalink to this heading"></a></h2>
 <p>First, we will compute nonparametric estimates from the data. We will estimate the difference in the mean bout length and Cohen’s d. For speed, we save the two data sets as NumPy arrays.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -892,9 +892,9 @@ WT - MUT Cohen&#39;s d:  [-0.09, 0.54, 1.43]
 </pre></div></div>
 </div>
 <p>So, the effect size is 0.54, meaning that the mutant tends to have rest bouts 0.5 standard deviations as large as wild type fix. Jacob Cohen would call this a “medium” sized effect.</p>
-</section>
-<section id="Null-hypothesis-significance-testing">
-<h2>Null hypothesis significance testing<a class="headerlink" href="#Null-hypothesis-significance-testing" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Null-hypothesis-significance-testing">
+<h2>Null hypothesis significance testing<a class="headerlink" href="#Null-hypothesis-significance-testing" title="Permalink to this heading"></a></h2>
 <p>We will now perform an NHST on these two data sets. We formulate the hypothesis as follows.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0\)</span>: Wild type and mutant fish have the same mean rest about length.</p></li>
@@ -1041,9 +1041,9 @@ Permutation test p-value: 0.05205
 </pre></div></div>
 </div>
 <p>So, all of our tests give p-values that are close to each other, ranging from about 0.04 to 0.07. If we choose bright line p-values to deem something as significant or not, some similar hypothesis/test statistic pairs can give different results. So, my advice is <strong>do not use brightline p-values.</strong> You went through the trouble of computing the p-value, just report it and leave it at that. Don’t change a <code class="docutils literal notranslate"><span class="pre">float</span></code> to a <code class="docutils literal notranslate"><span class="pre">bool</span></code>.</p>
-</section>
-<section id="Model-comparison">
-<h2>Model comparison<a class="headerlink" href="#Model-comparison" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Model-comparison">
+<h2>Model comparison<a class="headerlink" href="#Model-comparison" title="Permalink to this heading"></a></h2>
 <p>As an alternative to NHST, we can ask a similar (but different) question. We can <em>compare</em> two generative models. In one model, wild type and mutant sleep mean bout lengths come from the same Normal distribution. In the other, they come from different Normal distributions. We can compute an AIC for each model and then the Akaike weight for the first model (that they come from the same Normal distribution). Again, we can use the convenient feature that for Normal distributions, the MLE is given
 by the plug-in estimates for the parameters.</p>
 <div class="nbinput nblast docutils container">
@@ -1094,9 +1094,9 @@ by the plug-in estimates for the parameters.</p>
 </pre></div></div>
 </div>
 <p>The Akaike weight says that we should slightly favor the model where the data points come from the <em>same</em> Normal distribution. This runs contrary to our hypothesis tests. The AIC is penalizing the model with more parameters.</p>
-</section>
-<section id="Dancing">
-<h2>Dancing<a class="headerlink" href="#Dancing" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Dancing">
+<h2>Dancing<a class="headerlink" href="#Dancing" title="Permalink to this heading"></a></h2>
 <p>We will now do a fun, instructive experiment. We will “re-acquire” the data by drawing random samples out of Normal distributions parametrized by the maximum likelihood estimates we obtain from the data. (Recall that the MLE for the mean and variance of a Normally distributed random variable is given by the plug-in estimates.) We will then compute the confidence interval and credible region for <span class="math notranslate nohighlight">\(\delta\)</span> and see how they vary from experiment to experiment. We will later repeat this with
 p-values and odds ratios.</p>
 <p>The idea here is that if the data are indeed Gaussian distributed, we are looking at data that could plausibly be generated in an identical experiment.</p>
@@ -1212,8 +1212,8 @@ are identically distributed. The hypothesis in Welch’s t-test is that the muta
 </pre></div>
 </div>
 </div>
-<section id="Dancing-confidence-intervals(?)">
-<h3>Dancing confidence intervals(?)<a class="headerlink" href="#Dancing-confidence-intervals(?)" title="Link to this heading"></a></h3>
+<div class="section" id="Dancing-confidence-intervals(?)">
+<h3>Dancing confidence intervals(?)<a class="headerlink" href="#Dancing-confidence-intervals(?)" title="Permalink to this heading"></a></h3>
 <p>To visualize the results, we’ll plot the confidence intervals. We’ll plot the confidence interval as a bar, and then the bounds of the credible region as dots. For ease of viewing, we will only plot 100 of these and will sort them by the plug-in estimate for δ.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
@@ -1279,9 +1279,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The confidence interval can vary from experiment to experiment, but not that much. That is, the confidence intervals “dance” around, but all within about a factor of 3 of the original observed values.</p>
-</section>
-<section id="Dancing:-p-values">
-<h3>Dancing: p-values<a class="headerlink" href="#Dancing:-p-values" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="Dancing:-p-values">
+<h3>Dancing: p-values<a class="headerlink" href="#Dancing:-p-values" title="Permalink to this heading"></a></h3>
 <p>Now, let’s look at the p-values and the Akaike weights.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
@@ -1366,9 +1366,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 <p>But what is really striking here is the scale! Wow! In 500 repeats, we get p-values ranging over four or five orders of magnitude! That’s three exclamations in a row! Four, now. Those exclamation points are there to highlight that the p-value is not a reproducible statistic at all.</p>
 <p>The Akaike weights are less variable, and more conservative. Not many of them dip below 0.1, and we would be unlikely to select one model against another for most of the values of the Akaike weights we calculated. However, they are still rather variable, and in 500 repeats the can var over many orders of magnitude as well. Though better than the p-values, they are still not terribly reproducible.</p>
 <p>Conversely, both confidence intervals don’t really dance much, and p-values and odds ratios dance like <a class="reference external" href="https://www.youtube.com/watch?v=XQ7z57qrZU8">this</a>.</p>
-</section>
-<section id="The-effect-of-sample-size-on-dancing">
-<h3>The effect of sample size on dancing<a class="headerlink" href="#The-effect-of-sample-size-on-dancing" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="The-effect-of-sample-size-on-dancing">
+<h3>The effect of sample size on dancing<a class="headerlink" href="#The-effect-of-sample-size-on-dancing" title="Permalink to this heading"></a></h3>
 <p>The zebrafish sleep experiment had only about 20 samples, so maybe larger sample sizes will result in less extreme dancing of p-values. Let’s do a numerical experiment to look at that. We will take 15, 20, 50, and 100 samples for our experimental “repeats” and investigate how the p-value varies. For speed, we will only compute the p-value from Welch’s t-test, which we showed previously to track closely with our custom p-values.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
@@ -1484,15 +1484,15 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>We see that even though the p-value and Akaike weight have large spreads as the number of samples increases, they also shift leftward. This is because small differences in samples can be discerned with large sample sizes. But notice that the p-value and the Akaike weight varies over <strong>orders of magnitude</strong> for similar data set.</p>
-</section>
-</section>
-<section id="Conclusion">
-<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="Conclusion">
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this heading"></a></h2>
 <p>This little exercise in reproducibility tells use that because the p-values “dance”, and to a lesser extent so do the Akaike weights, we had better be sure the dancefloor is far to the left. This suggests large <span class="math notranslate nohighlight">\(n\)</span> is needed.</p>
 <p>I would argue that you should do a similar “dancing” analysis of your data sets when you have a reasonable generative model in mind so that you can decide what constitutes a small p-value of Akaike weight.</p>
-</section>
-<section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
@@ -1523,8 +1523,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1538,11 +1538,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 19, 2024.
+      <span class="lastupdated">Last updated on Sep 24, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12e8d2570> 
+   <jinja2.runtime.BlockReference object at 0x1374ce600> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

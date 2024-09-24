@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1. The cycle of science &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -151,8 +151,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="the-cycle-of-science">
-<h1>1. The cycle of science<a class="headerlink" href="#the-cycle-of-science" title="Link to this heading"></a></h1>
+  <div class="section" id="the-cycle-of-science">
+<h1>1. The cycle of science<a class="headerlink" href="#the-cycle-of-science" title="Permalink to this heading"></a></h1>
 <p>Let’s begin our journey in training ourselves to do data analysis in the biological sciences. We start with a question. <strong>What is the goal of doing (biological) experiments?</strong>  There are many answers you may have for this.  Some examples:</p>
 <ul class="simple">
 <li><p>To further knowledge.</p></li>
@@ -167,8 +167,7 @@
 <li><p>To get data.</p></li>
 </ul>
 <p>This question might be better addressed if we zoom out a bit and think about the scientific process as a whole. Below, we have a sketch of the scientific processes. This cycle repeats itself as we explore nature and learn more. In the boxes are milestones, and along the arrows in orange text are the tasks that get us to these milestones.</p>
-<a class="reference internal image-reference" href="../../_images/cycle_of_science.png"><img alt="Cycle of science" class="align-center" src="../../_images/cycle_of_science.png" style="width: 600px;" />
-</a>
+<a class="reference internal image-reference" href="../../_images/cycle_of_science.png"><img alt="Cycle of science" class="align-center" src="../../_images/cycle_of_science.png" style="width: 600px;" /></a>
 <p><em>Adapted from Fig. 1.1 of P. Gregory,</em> Bayesian Logical Data Analysis for the Physical Sciences, <em>Cambridge, 2005.</em></p>
 <p>We start to the left with a hypothesis of how a biological system works, often expressed as a sketch, or cartoon, which is something we can have intuition about. Indeed, it is often a cartoon of how a system functions that we have in mind. From these cartoons, we can use deductive inference to move our model from a cartoon to a prediction. We then perform experiments to test our predictions, that is to <em>assault</em> our hypotheses, and the output of experiments is data. Once we have our data, we make inferences from them that enable us to update our hypothesis, thereby pushing human knowledge forward.</p>
 <p>Let’s consider the tasks and their milestones in a little more depth. We start in the lower left.</p>
@@ -187,11 +186,10 @@
 <li><p><strong>Do experiment.</strong> This requires <em>work</em>, and also its own kind of innovation. Specifically, you need to think carefully about how to construct your experiment to test the hypothesis. It also usually requires money. The result of doing experiments is data.</p></li>
 <li><p><strong>Statistical (plausible) inference.</strong> This step is perhaps the least familiar to you, but <em>this is the step that this course is mostly about</em>. I will talk about what statistical inference is momentarily; it is too involved for this bullet point.</p></li>
 </ul>
-<section id="data-analysis-pipelines">
-<h2>Data analysis pipelines<a class="headerlink" href="#data-analysis-pipelines" title="Link to this heading"></a></h2>
+<div class="section" id="data-analysis-pipelines">
+<h2>Data analysis pipelines<a class="headerlink" href="#data-analysis-pipelines" title="Permalink to this heading"></a></h2>
 <p>Let’s consider the lower right arrow in the figure above, going from a data set to updated hypotheses and parameter estimates, the heart of this course. We zoom in on that arrow, there are several steps, which we will call a <strong>data analysis pipeline</strong>, depicted below.</p>
-<a class="reference internal image-reference" href="../../_images/data_pipeline.png"><img alt="Data analysis pipeline" class="align-center" src="../../_images/data_pipeline.png" style="width: 600px;" />
-</a>
+<a class="reference internal image-reference" href="../../_images/data_pipeline.png"><img alt="Data analysis pipeline" class="align-center" src="../../_images/data_pipeline.png" style="width: 600px;" /></a>
 <p>Again, each block represents a milestone along the pipeline and each arrow a task to bring you there. Let’s look at each step.</p>
 <ul class="simple">
 <li><p><strong>Data validation.</strong> We always have assumptions about data coming from a data source into the pipeline. We have assumptions about file formats, data organization, etc. We also have assumptions about the data themselves. For example, fluorescence measurements must all be nonnegative. Before proceeding through the pipeline, we need to make sure the data comply with all of these assumptions, lest we have issues down the pipeline. This process is called data validation.</p></li>
@@ -200,14 +198,14 @@
 <li><p><strong>Parameter estimation.</strong> This is the practice of quantifying the observed effects in the data, and in particular quantifying the uncertainty in our estimates of the effect sizes. This falls under the umbrella of statistical inference.</p></li>
 <li><p><strong>Hypothesis testing.</strong> Also a technique of statistical inference, hypothesis testing involves evaluation of hypotheses about how the data were generated. This usually gives some quantitative measure about the hypotheses, but there are many issues with quantifying the “truth” of a hypothesis.</p></li>
 </ul>
-</section>
-<section id="general-data-and-code-stewardship">
-<h2>General data and code stewardship<a class="headerlink" href="#general-data-and-code-stewardship" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="general-data-and-code-stewardship">
+<h2>General data and code stewardship<a class="headerlink" href="#general-data-and-code-stewardship" title="Permalink to this heading"></a></h2>
 <p>In this course, we will learn about all of these steps. We will spend roughly half of the class on data validation and wrangling and exploratory data analysis, and the other half of the class on statistical inference.</p>
 <p>The data you acquire are hard earned. That is probably why you are taking this course. You work hard to get data, and now you want to get the most you can out of them. Since data sets are so valuable, we need to be careful and deliberate in how we <em>preserve</em> them, in addition to how we analyze them. We will also discuss best practices for data storage and sharing during the course.</p>
 <p>Bringing data through the analysis pipeline involves using a computer. The code you write to bring go from data source to updated hypotheses should also be carefully curated and shared. Principles from software engineering, specifically <strong>test-driven development</strong> and  <strong>version control</strong> are central tools in this regard. We will learn about them in addition to some programming basics.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -221,11 +219,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 19, 2024.
+      <span class="lastupdated">Last updated on Sep 24, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12e799e50> 
+   <jinja2.runtime.BlockReference object at 0x1373d4560> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

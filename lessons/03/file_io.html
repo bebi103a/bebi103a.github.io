@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>File I/O &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -16,13 +15,14 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -175,8 +175,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="File-I/O">
-<h1>File I/O<a class="headerlink" href="#File-I/O" title="Link to this heading"></a></h1>
+  <div class="section" id="File-I/O">
+<h1>File I/O<a class="headerlink" href="#File-I/O" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/1OLG.pdb">Data set download</a></p>
 <hr><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -191,8 +191,8 @@
 <hr><p>Reading data in from files and then writing your results out again is one of the most common practices in scientific computing. In this lesson, we will learn about some of Python’s File I/O capabilities. We will use a PDB file as an example. The PDB file contains the crystal structure for the tetramerization domain of <a class="reference external" href="https://en.wikipedia.org/wiki/P53">p53</a>. Note that <code class="docutils literal notranslate"><span class="pre">1OLG</span></code> is its unique <a class="reference external" href="https://www.rcsb.org/structure/1olg">Protein Databank</a> identifier.</p>
 <p>You can download the PDB file <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/1OLG.pdb">here</a>. To use the file in this notebook, you will need to have the file in the directory <code class="docutils literal notranslate"><span class="pre">../data/</span></code>. This is the directory structure you use when doing your homework.</p>
 <p><strong>Note</strong>: Using the built-in <code class="docutils literal notranslate"><span class="pre">open</span></code> function will not work for opening files via URL. Therefore, if you are running this notebook in Google Colab, you will not be able to open the data file.</p>
-<section id="File-objects">
-<h2>File objects<a class="headerlink" href="#File-objects" title="Link to this heading"></a></h2>
+<div class="section" id="File-objects">
+<h2>File objects<a class="headerlink" href="#File-objects" title="Permalink to this heading"></a></h2>
 <p>To open a file, we use the built-in <code class="docutils literal notranslate"><span class="pre">open()</span></code> function. When opening files, we should do this using <strong>context management</strong>. I will demonstrate how to open a file and then describe the syntax.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -219,6 +219,10 @@ chance to close the file, it won’t get closed and you could be in trouble. If 
 <p>Let’s focus for a moment on the variable <code class="docutils literal notranslate"><span class="pre">f</span></code> in the above code cell. It is a Python <code class="docutils literal notranslate"><span class="pre">file</span></code> object, which has methods and attributes, just like any other object. We’ll explore those in a moment, but first, let’s look at how we opened the file. The first argument to <code class="docutils literal notranslate"><span class="pre">open()</span></code> is a string that has the name of the file, with the full path if necessary. The second argument is a string that says what we will be doing with the file. I.e., are we reading or writing to the file? The possible strings
 for this second argument are</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>string</p></th>
 <th class="head"><p>meaning</p></th>
@@ -246,10 +250,14 @@ for this second argument are</p>
 <div class="admonition warning">
 <p>Trying to open an existing file with <code class="docutils literal notranslate"><span class="pre">'w'</span></code> will wipe it out and create a new file.</p>
 </div>
-<section id="Reading-data-out-of-the-file-with-file-object-methods">
-<h3>Reading data out of the file with file object methods<a class="headerlink" href="#Reading-data-out-of-the-file-with-file-object-methods" title="Link to this heading"></a></h3>
+<div class="section" id="Reading-data-out-of-the-file-with-file-object-methods">
+<h3>Reading data out of the file with file object methods<a class="headerlink" href="#Reading-data-out-of-the-file-with-file-object-methods" title="Permalink to this heading"></a></h3>
 <p>We will focus on the methods <code class="docutils literal notranslate"><span class="pre">f.read()</span></code> and <code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code>. What do they do?</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>method</p></th>
 <th class="head"><p>task</p></th>
@@ -338,9 +346,9 @@ for this second argument are</p>
 &#39;HEADER    ANTI-ONCOGENE                           13-JUN-94   1OLG&#39;
 </pre></div></div>
 </div>
-</section>
-<section id="Reading-line-by-line">
-<h3>Reading line-by-line<a class="headerlink" href="#Reading-line-by-line" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="Reading-line-by-line">
+<h3>Reading line-by-line<a class="headerlink" href="#Reading-line-by-line" title="Permalink to this heading"></a></h3>
 <p>What if we do not want to read the entire file into a list? For example, if a file is several gigabytes, we do not want to spend all of our RAM storing a list. Instead, we can read it line-by-line. Conveniently, the file object can be used as an iterator.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -405,10 +413,10 @@ SOURCE   3 ORGANISM_COMMON: HUMAN;
 </pre></div></div>
 </div>
 <p>Each subsequent call to <code class="docutils literal notranslate"><span class="pre">f.readline()</span></code> reads in the next line of the file. (Remember, as we read through a file, we keep moving forward in the bytes of the file and we have to use <code class="docutils literal notranslate"><span class="pre">f.seek()</span></code> to rewind.)</p>
-</section>
-</section>
-<section id="Writing-to-a-file">
-<h2>Writing to a file<a class="headerlink" href="#Writing-to-a-file" title="Link to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="Writing-to-a-file">
+<h2>Writing to a file<a class="headerlink" href="#Writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Writing to a file has similar syntax. We already saw how to open a file for writing. Again, context management is useful. However, before trying to open a file, we should check to make sure a file of the same name does not exist before opening it. The <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module is useful. The function <code class="docutils literal notranslate"><span class="pre">os.path.isfile()</span></code> function checks to see if a file exists.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -541,9 +549,9 @@ The golden ratio is φ = 1.61803399
 </pre></div></div>
 </div>
 <p>That works!</p>
-</section>
-<section id="An-exercise:-extract-atomic-coordinates-for-first-chain-in-tetramer">
-<h2>An exercise: extract atomic coordinates for first chain in tetramer<a class="headerlink" href="#An-exercise:-extract-atomic-coordinates-for-first-chain-in-tetramer" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="An-exercise:-extract-atomic-coordinates-for-first-chain-in-tetramer">
+<h2>An exercise: extract atomic coordinates for first chain in tetramer<a class="headerlink" href="#An-exercise:-extract-atomic-coordinates-for-first-chain-in-tetramer" title="Permalink to this heading"></a></h2>
 <p>As an example on how to do file I/O, we will take the PDB file and extract only the <code class="docutils literal notranslate"><span class="pre">ATOM</span></code> records for the first chain of the tetramer and write only those entries to a new file.</p>
 <p>It is useful to know that according to the <a class="reference external" href="http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html#ATOM">PDB format specification</a>, column 21 in the <code class="docutils literal notranslate"><span class="pre">ATOM</span></code> entry gives the ID of the chain.</p>
 <p>We also conveniently use the fact that we can have multiple files open in our <code class="docutils literal notranslate"><span class="pre">with</span></code> block, separating them with commas.</p>
@@ -611,9 +619,9 @@ ATOM    698  HA3 GLY A 360      -4.341  28.288   9.386  1.00  6.05           H
 </pre></div></div>
 </div>
 <p>Nice!</p>
-</section>
-<section id="Finding-files-with-glob">
-<h2>Finding files with glob<a class="headerlink" href="#Finding-files-with-glob" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Finding-files-with-glob">
+<h2>Finding files with glob<a class="headerlink" href="#Finding-files-with-glob" title="Permalink to this heading"></a></h2>
 <p>In the above snippet of code, we extracted all atom records from a PDB file. We might want to do this (or some other operation) for many files. For example, the directory <code class="docutils literal notranslate"><span class="pre">~/git/data/</span></code> has four PDB files in it. For the present discussion, let’s say we want to pull the sequence of chain A out of each PDB file.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">glob</span></code> module from the standard library enables us to get a list of all files that match a pattern. In our case, we want all files matching <code class="docutils literal notranslate"><span class="pre">data/*.pdb</span></code>, where <code class="docutils literal notranslate"><span class="pre">*</span></code> is a <strong>wild card character</strong>, meaning that any matches of characters where <code class="docutils literal notranslate"><span class="pre">*</span></code> appears are allowed. Let’s see what <code class="docutils literal notranslate"><span class="pre">glob.glob()</span></code> gives us.</p>
 <div class="nbinput docutils container">
@@ -684,9 +692,9 @@ ATOM    698  HA3 GLY A 360      -4.341  28.288   9.386  1.00  6.05           H
 &#39;ASP-GLU-ASP-GLU-THR-THR-ALA-LEU-VAL-CYS-ASP-ASN-GLY-SER-GLY-LEU-VAL-LYS-ALA-GLY-PHE-ALA-GLY-ASP-ASP-ALA-PRO-ARG-ALA-VAL-PHE-PRO-SER-ILE-VAL-GLY-ARG-PRO-ARG-HIS-GLN-GLY-VAL-MET-VAL-GLY-MET-GLY-GLN-LYS-ASP-SER-TYR-VAL-GLY-ASP-GLU-ALA-GLN-SER-LYS-ARG-GLY-ILE-LEU-THR-LEU-LYS-TYR-PRO-ILE-GLU-HIC-GLY-ILE-ILE-THR-ASN-TRP-ASP-ASP-MET-GLU-LYS-ILE-TRP-HIS-HIS-THR-PHE-TYR-ASN-GLU-LEU-ARG-VAL-ALA-PRO-GLU-GLU-HIS-PRO-THR-LEU-LEU-THR-GLU-ALA-PRO-LEU-ASN-PRO-LYS-ALA-ASN-ARG-GLU-LYS-MET-THR-GLN-ILE-MET-PHE-GLU-THR-PHE-ASN-VAL-PRO-ALA-MET-TYR-VAL-ALA-ILE-GLN-ALA-VAL-LEU-SER-LEU-TYR-ALA-SER-GLY-ARG-THR-THR-GLY-ILE-VAL-LEU-ASP-SER-GLY-ASP-GLY-VAL-THR-HIS-ASN-VAL-PRO-ILE-TYR-GLU-GLY-TYR-ALA-LEU-PRO-HIS-ALA-ILE-MET-ARG-LEU-ASP-LEU-ALA-GLY-ARG-ASP-LEU-THR-ASP-TYR-LEU-MET-LYS-ILE-LEU-THR-GLU-ARG-GLY-TYR-SER-PHE-VAL-THR-THR-ALA-GLU-ARG-GLU-ILE-VAL-ARG-ASP-ILE-LYS-GLU-LYS-LEU-CYS-TYR-VAL-ALA-LEU-ASP-PHE-GLU-ASN-GLU-MET-ALA-THR-ALA-ALA-SER-SER-SER-SER-LEU-GLU-LYS-SER-TYR-GLU-LEU-PRO-ASP-GLY-GLN-VAL-ILE-THR-ILE-GLY-ASN-GLU-ARG-PHE-ARG-CYS-PRO-GLU-THR-LEU-PHE-GLN-PRO-SER-PHE-ILE-GLY-MET-GLU-SER-ALA-GLY-ILE-HIS-GLU-THR-THR-TYR-ASN-SER-ILE-MET-LYS-CYS-ASP-ILE-ASP-ILE-ARG-LYS-ASP-LEU-TYR-ALA-ASN-ASN-VAL-MET-SER-GLY-GLY-THR-THR-MET-TYR-PRO-GLY-ILE-ALA-ASP-ARG-MET-GLN-LYS-GLU-ILE-THR-ALA-LEU-ALA-PRO-SER-THR-MET-LYS-ILE-LYS-ILE-ILE-ALA-PRO-PRO-GLU-ARG-LYS-TYR-SER-VAL-TRP-ILE-GLY-GLY-SER-ILE-LEU-ALA-SER-LEU-SER-THR-PHE-GLN-GLN-MET-TRP-ILE-THR-LYS-GLN-GLU-TYR-ASP-GLU-ALA-GLY-PRO-SER-ILE-VAL-HIS-ARG-LYS-CYS-PHE&#39;
 </pre></div></div>
 </div>
-</section>
-<section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
@@ -709,8 +717,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -724,11 +732,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 19, 2024.
+      <span class="lastupdated">Last updated on Sep 24, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12e6a9e80> 
+   <jinja2.runtime.BlockReference object at 0x136026b70> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

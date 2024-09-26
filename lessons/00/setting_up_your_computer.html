@@ -64,16 +64,15 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Installation-on-your-own-machine">Installation on your own machine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Windows-users:-Install-Git-and-Chrome-or-Firefox">Windows users: Install Git and Chrome or Firefox</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Downloading-and-installing-Anaconda">Downloading and installing Anaconda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Install-node.js">Install node.js</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Setting-up-a-conda-environment">Setting up a conda environment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#a)-Activating-from-the-command-line">a) Activating from the command line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#b)-Activating-using-the-Anaconda-Navigator">b) Activating using the Anaconda Navigator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Downloading-and-installing-Miniconda">Downloading and installing Miniconda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macOS">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Linux">Linux</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#Install-node.js">Install node.js</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Setting-up-a-conda-environment">Setting up a conda environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Launching-JupyterLab">Launching JupyterLab</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Launching-JupyterLab-from-the-command-line">Launching JupyterLab from the command line</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Checking-your-distribution">Checking your distribution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Computing-environment">Computing environment</a></li>
 </ul>
@@ -197,7 +196,7 @@ aware of.</p>
 <p>These limitations are in place so that Google can offer Colab for free. If you want more cores, longer timeouts, etc., you might want to check out <a class="reference external" href="https://colab.research.google.com/signup">Colab Pro</a>. However, the free tier should work well for you in the course. You can of course always run on your own machine, and in fact are encouraged to do so.</p>
 <p>There are additional software-specific watchouts when using Colab.</p>
 <ul class="simple">
-<li><p>Colab does not allow for full functionality of <a class="reference external" href="http://bokeh.pydata.org/">Bokeh</a> apps that we will use when we do dashboarding.</p></li>
+<li><p>Colab does not allow for full functionality of <a class="reference external" href="http://bokeh.pydata.org/">Bokeh</a> apps.</p></li>
 <li><p>Colab instances have specific software installed, so you will need to install anything else you need in your notebook. This is not a major burden, and is discussed in the next section.</p></li>
 </ul>
 <p>I recommend reading the <a class="reference external" href="https://research.google.com/colaboratory/faq.html">Colab FAQs</a> for more information about Colab.</p>
@@ -231,22 +230,42 @@ local machine or on Colab.</p>
 </div>
 <div class="section" id="Installation-on-your-own-machine">
 <h2>Installation on your own machine<a class="headerlink" href="#Installation-on-your-own-machine" title="Permalink to this heading"></a></h2>
-<p>We now proceed to discuss installation of the necessary software on your own machine. Before we get into that, there are some preliminaries for Windows users.</p>
+<p>We now proceed to discuss installation of the necessary software on your own machine.</p>
 </div>
-<div class="section" id="Windows-users:-Install-Git-and-Chrome-or-Firefox">
-<h2>Windows users: Install Git and Chrome or Firefox<a class="headerlink" href="#Windows-users:-Install-Git-and-Chrome-or-Firefox" title="Permalink to this heading"></a></h2>
-<p>We will be using <a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a> in this course. It is browser-based, and Chrome, Firefox, and Safari are supported. Microsoft Edge is <strong>not</strong>. Therefore, if you are a Windows user, you need to be sure you have either Chrome of Firefox installed.</p>
-<p>Git is natively installed on Macs. For Windows users, you need to install Git by itself. You can do this by following the instructions <a class="reference external" href="https://gitforwindows.org">here</a>.</p>
-</div>
-<div class="section" id="Downloading-and-installing-Anaconda">
-<h2>Downloading and installing Anaconda<a class="headerlink" href="#Downloading-and-installing-Anaconda" title="Permalink to this heading"></a></h2>
-<p>If you already have Anaconda installed on your machine, you can skip this step.</p>
-<p>Downloading and installing Anaconda is simple.</p>
+<div class="section" id="Downloading-and-installing-Miniconda">
+<h2>Downloading and installing Miniconda<a class="headerlink" href="#Downloading-and-installing-Miniconda" title="Permalink to this heading"></a></h2>
+<p>If you already have Anaconda or Miniconda installed on your machine, you can skip this step and proceed to install node.js.</p>
+<p>To download and install Miniconda, do the following.</p>
+<div class="section" id="Windows">
+<h3>Windows<a class="headerlink" href="#Windows" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Go to the <a class="reference external" href="https://www.anaconda.com/download">Anaconda’s download page</a> and click the Download button.</p></li>
-<li><p>Follow the on-screen instructions for installation. While doing so, be sure that Anaconda is installed in your home directory (which is the default), not in root.</p></li>
+<li><p>Go to the <a class="reference external" href="https://docs.anaconda.com/miniconda/#quick-command-line-install">Miniconda page</a> and go to the “Quick command line install” section.</p></li>
+<li><p>Click on the “Windows PowerShell” tab.</p></li>
+<li><p>Copy all of the contents in the gray box (starting the <code class="docutils literal notranslate"><span class="pre">curl</span></code>).</p></li>
+<li><p>Go to the Start menu and search for “PowerShell.” Click to open a PowerShell window. Alternatively, you can hit <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">+</span> <span class="pre">R</span></code> and type <code class="docutils literal notranslate"><span class="pre">PowerShell</span></code> in the text box.</p></li>
+<li><p>Paste the copied text into the PowerShell window and hit enter.</p></li>
 </ol>
-<p>That’s it! After you do that, you will have a functioning Python distribution.</p>
+</div>
+<div class="section" id="macOS">
+<h3>macOS<a class="headerlink" href="#macOS" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://docs.anaconda.com/miniconda/#quick-command-line-install">Miniconda page</a> and go to the “Quick command line install” section.</p></li>
+<li><p>Click on the “macOS” tab.</p></li>
+<li><p>Copy all of the contents in the gray box (starting the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>).</p></li>
+<li><p>Open a Terminal window. You can do this by hitting <code class="docutils literal notranslate"><span class="pre">Command-space</span> <span class="pre">bar</span></code>, typing <code class="docutils literal notranslate"><span class="pre">Terminal</span></code>, and hitting enter. Alternatively, the Terminal application is located in the <code class="docutils literal notranslate"><span class="pre">/System/Applications/Utilities/</span></code> folder, which you can navigate to using Finder.</p></li>
+<li><p>Paste the copied text into the Terminal window and hit enter.</p></li>
+</ol>
+</div>
+<div class="section" id="Linux">
+<h3>Linux<a class="headerlink" href="#Linux" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://docs.anaconda.com/miniconda/#quick-command-line-install">Miniconda page</a> and go to the “Quick command line install” section.</p></li>
+<li><p>Click on the “Linux” tab.</p></li>
+<li><p>Copy all of the contents in the gray box (starting the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>).</p></li>
+<li><p>Open a terminal window. I assume you know how to do this if you are using Linux.</p></li>
+<li><p>Paste the copied text into the terminal window and hit enter.</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="Install-node.js">
 <h2>Install node.js<a class="headerlink" href="#Install-node.js" title="Permalink to this heading"></a></h2>
@@ -254,14 +273,11 @@ local machine or on Colab.</p>
 </div>
 <div class="section" id="Setting-up-a-conda-environment">
 <h2>Setting up a conda environment<a class="headerlink" href="#Setting-up-a-conda-environment" title="Permalink to this heading"></a></h2>
-<p>I have created a conda environment for use in this class. You can download the YML specification for the environment:</p>
+<p>I have created a conda environment for use in this class. You can download the YML specification for the environment via the link below (you may need to right-click and then download).</p>
 <blockquote>
 <div><p><a class="reference external" href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/main/_static/bebi103.yml">Download bebi103.yml</a></p>
 </div></blockquote>
-<p>You can set up and activate the environment on the command line or by using the Anaconda Navigator, which should be installed with Anaconda. You can do either of the two options, (a) or (b), below.</p>
-<div class="section" id="a)-Activating-from-the-command-line">
-<h3>a) Activating from the command line<a class="headerlink" href="#a)-Activating-from-the-command-line" title="Permalink to this heading"></a></h3>
-<p>To set up your conda environment from the command line, navigate to the directory where you saved the <code class="docutils literal notranslate"><span class="pre">bebi103.yml</span></code> file. Then, on the command line, enter</p>
+<p>You can set up and activate the environment on the command line. (By “command line,” I mean a prompt in a PowerShell or terminal window.) Navigate to the directory where you saved the <code class="docutils literal notranslate"><span class="pre">bebi103.yml</span></code> file. (For example, if it is in a directory called <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> in your home directory, you would do <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Downloads</span></code> on the command line to navigate there.) Then, on the command line, enter</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda env create -f bebi103.yml
 </pre></div>
 </div>
@@ -271,23 +287,9 @@ local machine or on Colab.</p>
 </div>
 <p>on the command line.</p>
 </div>
-<div class="section" id="b)-Activating-using-the-Anaconda-Navigator">
-<h3>b) Activating using the Anaconda Navigator<a class="headerlink" href="#b)-Activating-using-the-Anaconda-Navigator" title="Permalink to this heading"></a></h3>
-<p>If you are using macOS, Anaconda Navigator will be available in your <code class="docutils literal notranslate"><span class="pre">Applications</span></code> menu. If you are using Windows, you can launch Anaconda Navigator from the Start menu.</p>
-<p>When the Navigator window opens, select <code class="docutils literal notranslate"><span class="pre">Environments</span></code> on the left menu pane. Upon selecting <code class="docutils literal notranslate"><span class="pre">Environments</span></code>, you will see a pane immediately to the right of the <code class="docutils literal notranslate"><span class="pre">Home/Environments/Learning/Community</span></code> pane with a <code class="docutils literal notranslate"><span class="pre">Search</span> <span class="pre">Environments</span></code> window at the top. At the bottom of that pane, click <code class="docutils literal notranslate"><span class="pre">Import</span></code>. In the window that pops up, click on the folder icon under <code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">drive</span></code>. Find the <code class="docutils literal notranslate"><span class="pre">bebi103.yml</span></code> file you just downloaded. Click <code class="docutils literal notranslate"><span class="pre">Import</span></code>. It may take some time for the environment to be
-imported and built.</p>
-</div>
-</div>
 <div class="section" id="Launching-JupyterLab">
 <h2>Launching JupyterLab<a class="headerlink" href="#Launching-JupyterLab" title="Permalink to this heading"></a></h2>
-<p>You can alternatively launch JupyterLab via the Anaconda Navigator or via your operating system’s terminal program (Terminal on macOS and PowerShell on Windows). If you wish to launch using the latter (which I prefer), skip to the next section.</p>
-<p>In the Anaconda Navigator, click <code class="docutils literal notranslate"><span class="pre">Home</span></code> on the left pane. To the right, you will have a pane from which you can launch JupyterLab. On the top of the right pane, you will see two pulldown menus separated by the word “on.” Be sure you select <code class="docutils literal notranslate"><span class="pre">bebi103</span></code> on the right pulldown menu. This ensures that you are using the environment you just set up.</p>
-<p><strong>You need to make sure you are using the pol_stats environment whenever you launch JupyterLab during the workshop.</strong></p>
-<p>You should see a card for JupyterLab. Do not confuse this with Notebook; you want to launch JupyterLab. Click Launch on the JupyterLab card. This will launch JupyterLab in your default browser.</p>
-</div>
-<div class="section" id="Launching-JupyterLab-from-the-command-line">
-<h2>Launching JupyterLab from the command line<a class="headerlink" href="#Launching-JupyterLab-from-the-command-line" title="Permalink to this heading"></a></h2>
-<p>While launching JupyterLab from the Anaconda Navigator is fine, I generally prefer to launch it from the command line on my own machine. If you are on a Mac, open the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> program. You can do this hitting <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">space</span> <span class="pre">bar</span></code> and searching for “terminal.” Using Windows, you should launch PowerShell. You can do this by hitting <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">+</span> <span class="pre">R</span></code> and typing “powershell” in the text box.</p>
+<p>You can launch JupyterLab via your operating system’s terminal program (Terminal on macOS and PowerShell on Windows). If you are on a Mac, open the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> program. You can do this hitting <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">space</span> <span class="pre">bar</span></code> and searching for “terminal.” Using Windows, you should launch PowerShell. You can do this by hitting <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">+</span> <span class="pre">R</span></code> and typing “powershell” in the text box.</p>
 <p>Once you have a terminal or PowerShell window open, you will have a prompt. At the prompt, type</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda activate bebi103
 </pre></div>
@@ -303,7 +305,6 @@ imported and built.</p>
 </pre></div>
 </div>
 <p>on the command line.</p>
-<p>It is up to you if you want to launch JupyterLab from the Anaconda Navigator or command line.</p>
 </div>
 <div class="section" id="Checking-your-distribution">
 <h2>Checking your distribution<a class="headerlink" href="#Checking-your-distribution" title="Permalink to this heading"></a></h2>
@@ -339,17 +340,17 @@ imported and built.</p>
 </div>
 <div class="output_area rendered_html docutils container">
 <style>
-        .bk-notebook-logo {
-            display: block;
-            width: 20px;
-            height: 20px;
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
-        }
-    </style>
-    <div>
-        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="b8e7c069-b385-4558-8966-c814d1649498">Loading BokehJS ...</span>
-    </div></div>
+    .bk-notebook-logo {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+    }
+</style>
+<div>
+    <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+    <span id="b0ab11bf-f019-4513-9c10-aae4cc2bd7db">Loading BokehJS ...</span>
+</div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -358,6 +359,7 @@ imported and built.</p>
 <div class="output_javascript"></div>
 <script type="text/javascript">
 var element = document.currentScript.previousSibling.previousSibling;
+'use strict';
 (function(root) {
   function now() {
     return new Date();
@@ -387,14 +389,22 @@ const JS_MIME_TYPE = 'application/javascript';
    * Handle when an output is cleared or removed
    */
   function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
     const cell = handle.cell;
 
     const id = cell.output_area._bokeh_element_id;
     const server_id = cell.output_area._bokeh_server_id;
+
     // Clean up Bokeh references
-    if (id != null && id in Bokeh.index) {
-      Bokeh.index[id].model.document.clear();
-      delete Bokeh.index[id];
+    if (id != null) {
+      drop(id)
     }
 
     if (server_id !== undefined) {
@@ -403,11 +413,8 @@ const JS_MIME_TYPE = 'application/javascript';
       cell.notebook.kernel.execute(cmd_clean, {
         iopub: {
           output: function(msg) {
-            const id = msg.content.text.trim();
-            if (id in Bokeh.index) {
-              Bokeh.index[id].model.document.clear();
-              delete Bokeh.index[id];
-            }
+            const id = msg.content.text.trim()
+            drop(id)
           }
         }
       });
@@ -514,17 +521,42 @@ const JS_MIME_TYPE = 'application/javascript';
      "</code>\n"+
      "</div>"}};
 
-  function display_loaded() {
-    const el = document.getElementById("b8e7c069-b385-4558-8966-c814d1649498");
+  function display_loaded(error = null) {
+    const el = document.getElementById("b0ab11bf-f019-4513-9c10-aae4cc2bd7db");
     if (el != null) {
-      el.textContent = "BokehJS is loading...";
-    }
-    if (root.Bokeh !== undefined) {
-      if (el != null) {
-        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
       }
     } else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(display_loaded, 100)
+      setTimeout(() => display_loaded(error), 100);
     }
   }
 
@@ -598,7 +630,7 @@ const JS_MIME_TYPE = 'application/javascript';
     document.body.appendChild(element);
   }
 
-  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.2.1.min.js"];
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js"];
   const css_urls = [];
 
   const inline_js = [    function(Bokeh) {
@@ -610,10 +642,13 @@ function(Bokeh) {
 
   function run_inline_js() {
     if (root.Bokeh !== undefined || force === true) {
-          for (let i = 0; i < inline_js.length; i++) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
       inline_js[i].call(root, root.Bokeh);
     }
-if (force === true) {
+
+      } catch (error) {display_loaded(error);throw error;
+      }if (force === true) {
         display_loaded();
       }} else if (Date.now() < root._bokeh_timeout) {
       setTimeout(run_inline_js, 100);
@@ -621,7 +656,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("b8e7c069-b385-4558-8966-c814d1649498")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("b0ab11bf-f019-4513-9c10-aae4cc2bd7db")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -642,7 +677,7 @@ if (force === true) {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div id="f962b716-779d-4458-91c8-151df5a21cf7" data-root-id="p1001" style="display: contents;"></div></div>
+<div id="dda5b6c6-835e-4de7-8514-9309dbc749df" data-root-id="p1001" style="display: contents;"></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -653,9 +688,9 @@ if (force === true) {
 var element = document.currentScript.previousSibling.previousSibling;
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"b0b30c54-2c9e-4832-bd05-219995c1673f":{"version":"3.2.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1001","attributes":{"width":275,"height":250,"x_range":{"type":"object","name":"DataRange1d","id":"p1002"},"y_range":{"type":"object","name":"DataRange1d","id":"p1003"},"x_scale":{"type":"object","name":"LinearScale","id":"p1010"},"y_scale":{"type":"object","name":"LinearScale","id":"p1011"},"title":{"type":"object","name":"Title","id":"p1008"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1035","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1029","attributes":{"selected":{"type":"object","name":"Selection","id":"p1030","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1031"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAFEBRqPwN6BQUQG0hFSthUxRA9Dbf8q66FECWFkztmUkVQHapa0xz/hVALlAOFxrXFkDAR1quAdEXQFMBv5c56RhAW/BZcHYcGkAA1u3qG2cbQIHsDbZHxRxAZVkeJd0yHkAM31V0kasfQDhXBT98lSBAXQYm20hWIUAzPpCg6hUiQDgQ23sg0iJA00u0mLKII0Am11iTeDckQEXc8WJf3CRA7tjy6W51JUBkWwQbzwAmQIA9tKLMfCZAucoHCN3nJkD57x44okAnQBIxUXPthSdARvCElMG2J0BKeO6tVNInQOfJ3PgQ2CdA2ee0GJXHJ0DxvK+zs6AnQKptUWZyYydAUurZGAgQJ0CmVxXA2qYmQHhi75R8KCZAeoX3z6iVJUDvMZf3P+8kQLAXENFDNiRAWd9rBdNrI0DX/lOMJJEiQD10Te+CpyFAhdYPeEewIECPSkK5qlkfQC0ZEvcpPR1APhWic94NG0B1ckwnks4YQJBJo97+gRZALnrEgcYqFEDZKasWbMsRQCp2RimbzA5ATiGDNj37CUC+1402yCYFQIzwVvfhUgBAUsI/A48F9z+fekK8KeXqP2gXly4Ejc8/QhFwQGLl1b8YP6xGYJbtv0JExUaFAfi/g//an1eNAMAeG/S81goFwI4+nXcKeQnAiJpitf3XDcAGXaJF+BMRwMkUDTKmNBPARSA04UtOFcAwQyPtNGEXwPFJwB+vbRnA3mhkcQR0G8B/tzlLdXQdwEdq9Cczbx/Ai3q21S2yIMDGnZQj+qkhwJFsiT/zniLA1xg+b/6QI8A0th1V8H8kwKNWjCyMayXA4LwRbINTJsBmJWXOdTcnwOOOa8HxFijAaUBmOHXxKMAE8cvcbsYpwFh6m5c/lSrAZIZqazxdK8A9wguWsB0swFi0bO/f1SzAt4xAegmFLcDxbTcaaiouwFQv5GI/xS7A9eEPcspUL8BH5BPIUtgvwI65dIiUJzDAauh36FRcMMCUVHv0H4owwK1X73KzsDDAoIONiNbPMMAlNUOcWucwwJP2qBIc9zDAbm+l3QL/MMBub6XdAv8wwJP2qBIc9zDAJTVDnFrnMMCgg42I1s8wwKxX73KzsDDAlFR79B+KMMBr6HfoVFwwwI65dIiUJzDARuQTyFLYL8D34Q9yylQvwFIv5GI/xS7A8203GmoqLsC5jEB6CYUtwFm0bO/f1SzAPsILlrAdLMBjhmprPF0rwFd6m5c/lSrABfHL3G7GKcBrQGY4dfEowOaOa8HxFijAZyVlznU3J8DfvBFsg1MmwKVWjCyMayXAM7YdVfB/JMDZGD5v/pAjwJRsiT/zniLAxJ2UI/qpIcCOerbVLbIgwE1q9Cczbx/AfLc5S3V0HcDmaGRxBHQbwO1JwB+vbRnAN0Mj7TRhF8BLIDThS04VwMUUDTKmNBPACl2iRfgTEcCDmmK1/dcNwJ8+nXcKeQnAHhv0vNYKBcB5/9qfV40AwFVExUaFAfi/8j6sRmCW7b/yEXBAYuXVvzwXly4Ejc8/4HpCvCnl6j86wj8DjwX3P43wVvfhUgBAudeNNsgmBUBMIYM2PfsJQBV2RimbzA5A1SmrFmzLEUAzesSBxioUQItJo97+gRZAdnJMJ5LOGEAxFaJz3g0bQCgZEvcpPR1AkkpCuapZH0CB1g94R7AgQD10Te+CpyFA1P5TjCSRIkBZ32sF02sjQLEXENFDNiRA7TGX9z/vJEB7hffPqJUlQHdi75R8KCZAplcVwNqmJkBT6tkYCBAnQKhtUWZyYydA8Lyvs7OgJ0DW57QYlccnQOXJ3PgQ2CdAS3jurVTSJ0BI8ISUwbYnQBExUXPthSdA++8eOKJAJ0C3ygcI3ecmQIE9tKLMfCZAZFsEG88AJkDv2PLpbnUlQEbc8WJf3CRAJ9dYk3g3JEDWS7SYsogjQDgQ23sg0iJAND6QoOoVIkBeBibbSFYhQDhXBT98lSBADd9VdJGrH0BlWR4l3TIeQIDsDbZHxRxACNbt6htnG0BY8FlwdhwaQFkBv5c56RhAvkdargHRF0AqUA4XGtcWQHepa0xz/hVAlxZM7ZlJFUD0Nt/yrroUQGshFSthUxRAUaj8DegUFEAAAAAAAAAUQA=="},"shape":[200],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1036","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1037"}}},"glyph":{"type":"object","name":"Line","id":"p1032","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1033","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1034","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2,"line_width":3}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1009","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1022"},{"type":"object","name":"WheelZoomTool","id":"p1023"},{"type":"object","name":"BoxZoomTool","id":"p1024","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1025","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1026"},{"type":"object","name":"ResetTool","id":"p1027"},{"type":"object","name":"HelpTool","id":"p1028"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1017","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1018","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1019"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1020"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1012","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1013","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1014"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1015"}}}],"center":[{"type":"object","name":"Grid","id":"p1016","attributes":{"axis":{"id":"p1012"}}},{"type":"object","name":"Grid","id":"p1021","attributes":{"dimension":1,"axis":{"id":"p1017"}}},{"type":"object","name":"Label","id":"p1038","attributes":{"text":"BE/Bi 103 a","text_align":"center","x":0,"y":0}}]}}]}};
-  const render_items = [{"docid":"b0b30c54-2c9e-4832-bd05-219995c1673f","roots":{"p1001":"f962b716-779d-4458-91c8-151df5a21cf7"},"root_ids":["p1001"]}];
-  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  const docs_json = {"5a4736e2-3125-4db1-88ec-76adf8a8be79":{"version":"3.4.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1001","attributes":{"width":275,"height":250,"x_range":{"type":"object","name":"DataRange1d","id":"p1002"},"y_range":{"type":"object","name":"DataRange1d","id":"p1003"},"x_scale":{"type":"object","name":"LinearScale","id":"p1010"},"y_scale":{"type":"object","name":"LinearScale","id":"p1011"},"title":{"type":"object","name":"Title","id":"p1008"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1039","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1033","attributes":{"selected":{"type":"object","name":"Selection","id":"p1034","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1035"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1040","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1041"}}},"glyph":{"type":"object","name":"Line","id":"p1036","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_width":3}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1037","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1,"line_width":3}},"muted_glyph":{"type":"object","name":"Line","id":"p1038","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2,"line_width":3}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1009","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1022"},{"type":"object","name":"WheelZoomTool","id":"p1023","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1024","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1025","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1030"},{"type":"object","name":"ResetTool","id":"p1031"},{"type":"object","name":"HelpTool","id":"p1032"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1017","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1018","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1019"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1020"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1012","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1013","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1014"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1015"}}}],"center":[{"type":"object","name":"Grid","id":"p1016","attributes":{"axis":{"id":"p1012"}}},{"type":"object","name":"Grid","id":"p1021","attributes":{"dimension":1,"axis":{"id":"p1017"}}},{"type":"object","name":"Label","id":"p1042","attributes":{"text":"BE/Bi 103 a","text_align":"center","x":0,"y":0}}]}}]}};
+  const render_items = [{"docid":"5a4736e2-3125-4db1-88ec-76adf8a8be79","roots":{"p1001":"dda5b6c6-835e-4de7-8514-9309dbc749df"},"root_ids":["p1001"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
     embed_document(root);
@@ -695,12 +730,12 @@ var element = document.currentScript.previousSibling.previousSibling;
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Python implementation: CPython
-Python version       : 3.11.5
-IPython version      : 8.15.0
+Python version       : 3.12.5
+IPython version      : 8.27.0
 
-numpy     : 1.24.3
-bokeh     : 3.2.1
-jupyterlab: 4.0.6
+numpy     : 1.26.4
+bokeh     : 3.4.1
+jupyterlab: 4.2.5
 
 </pre></div></div>
 </div>
@@ -719,11 +754,11 @@ jupyterlab: 4.0.6
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Sep 24, 2024.
+      <span class="lastupdated">Last updated on Sep 26, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x13745b3e0> 
+   <jinja2.runtime.BlockReference object at 0x11d3e8740> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

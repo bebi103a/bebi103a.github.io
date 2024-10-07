@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visualizing distributions &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -168,8 +168,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Visualizing-distributions">
-<h1>Visualizing distributions<a class="headerlink" href="#Visualizing-distributions" title="Permalink to this heading"></a></h1>
+  <section id="Visualizing-distributions">
+<h1>Visualizing distributions<a class="headerlink" href="#Visualizing-distributions" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -561,8 +561,8 @@ distribution from which experimental data are sampled, then, has high probabilit
 </style>
 <small>shape: (5, 17)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th><th>insomnia</th><th>sleeper</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td><td>bool</td><td>str</td></tr></thead><tbody><tr><td>8</td><td>&quot;f&quot;</td><td>39</td><td>65</td><td>80</td><td>72.5</td><td>91.0</td><td>90.0</td><td>93.0</td><td>83.5</td><td>93.0</td><td>90.0</td><td>9</td><td>13</td><td>2</td><td>true</td><td>&quot;insomniac&quot;</td></tr><tr><td>16</td><td>&quot;m&quot;</td><td>42</td><td>90</td><td>90</td><td>90.0</td><td>75.5</td><td>55.5</td><td>70.5</td><td>50.0</td><td>75.0</td><td>50.0</td><td>4</td><td>11</td><td>7</td><td>true</td><td>&quot;insomniac&quot;</td></tr><tr><td>18</td><td>&quot;f&quot;</td><td>31</td><td>90</td><td>95</td><td>92.5</td><td>89.5</td><td>90.0</td><td>86.0</td><td>81.0</td><td>89.0</td><td>88.0</td><td>10</td><td>9</td><td>3</td><td>true</td><td>&quot;insomniac&quot;</td></tr><tr><td>22</td><td>&quot;f&quot;</td><td>35</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>71.0</td><td>80.0</td><td>88.0</td><td>80.0</td><td>13</td><td>8</td><td>20</td><td>true</td><td>&quot;insomniac&quot;</td></tr><tr><td>27</td><td>&quot;f&quot;</td><td>74</td><td>60</td><td>65</td><td>62.5</td><td>68.5</td><td>49.0</td><td>61.0</td><td>49.0</td><td>65.0</td><td>49.0</td><td>13</td><td>9</td><td>12</td><td>true</td><td>&quot;insomniac&quot;</td></tr></tbody></table></div></div>
 </div>
-<div class="section" id="Box-plots">
-<h2>Box plots<a class="headerlink" href="#Box-plots" title="Permalink to this heading"></a></h2>
+<section id="Box-plots">
+<h2>Box plots<a class="headerlink" href="#Box-plots" title="Link to this heading"></a></h2>
 <p>We saw in the previous part of the lesson that bar graphs throw out most of the information present in a data set. They only give an approximation of the mean of the generative distribution and nothing else. We can instead report more information.</p>
 <p>A box-and-whisker plot, also just called a box plot is a better option than a bar graph. Indeed, it was invented by John Tukey himself. Instead of condensing your measurements into one value (or two, if you include an error bar) like in a bar graph, you condense them into at least five. It is easier to describe a box plot if you have one to look at.</p>
 <div class="nbinput docutils container">
@@ -674,13 +674,13 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Plot-all-your-data">
-<h2>Plot all your data<a class="headerlink" href="#Plot-all-your-data" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Plot-all-your-data">
+<h2>Plot all your data<a class="headerlink" href="#Plot-all-your-data" title="Link to this heading"></a></h2>
 <p>While the box plot is better than a bar graph because it shows quantiles and not just a mean, it is still hiding much of the structure of the data set. Conversely, when plotting x-y data in a scatter plot, you plot all of your data points. Shouldn’t the same be true for plots with categorical variables? You went through all the work to get the data; you should show them all!</p>
-</div>
-<div class="section" id="Strip-plots">
-<h2>Strip plots<a class="headerlink" href="#Strip-plots" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Strip-plots">
+<h2>Strip plots<a class="headerlink" href="#Strip-plots" title="Link to this heading"></a></h2>
 <p>One convenient way to plot all of your data is a <strong>strip plot</strong>. In a strip plot, every point is plotted.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -835,9 +835,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This plot allows us to make out how the data are distributed. We suspect there is more probability density around 85% or so, with a heavy tail heading toward lower values, ending at 40.</p>
-</div>
-<div class="section" id="Spike-plots">
-<h2>Spike plots<a class="headerlink" href="#Spike-plots" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Spike-plots">
+<h2>Spike plots<a class="headerlink" href="#Spike-plots" title="Link to this heading"></a></h2>
 <p>The swarm plot above essentially provides a count of the number of times a given measurement was observed. Because of the nature of the GFMT, the percent correct values are discrete, coming in 2.5% increments. When we have discrete values like that, a <strong>spike plot</strong> serves to provide the counts of each measurement value.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -1003,9 +1003,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Histograms">
-<h2>Histograms<a class="headerlink" href="#Histograms" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Histograms">
+<h2>Histograms<a class="headerlink" href="#Histograms" title="Link to this heading"></a></h2>
 <p>If we do not have discrete data, we can instead use a <a class="reference external" href="https://en.wikipedia.org/wiki/Histogram">histogram</a>. A histogram is constructed by dividing the measurement values into bins and then counting how many measurements fall into each bin. The bins are then displayed graphically.</p>
 <p>A problem with histograms is that they require a choice of binning. Different choices of bins can lead to qualitatively different appearances of the plot. One choice of number of bins is the <a class="reference external" href="https://en.wikipedia.org/wiki/Freedman–Diaconis_rule">Freedman-Diaconis rule</a>, which serves to minimize the integral of the squared difference between the (unknown) underlying probability density function and the histogram. This is the default of iqplot.</p>
 <div class="nbinput docutils container">
@@ -1058,9 +1058,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The <strong>rug plot</strong> at the bottom of the histogram shows all of the measurements (following the “plot all your data” rule).</p>
-</div>
-<div class="section" id="ECDFs">
-<h2>ECDFs<a class="headerlink" href="#ECDFs" title="Permalink to this heading"></a></h2>
+</section>
+<section id="ECDFs">
+<h2>ECDFs<a class="headerlink" href="#ECDFs" title="Link to this heading"></a></h2>
 <p>Histograms are typically used to display how data are distributed. As an example I will generate Normally distributed data and plot the histogram.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -1271,9 +1271,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The circles are on the concave corners of the staircase.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
@@ -1300,8 +1300,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1315,11 +1315,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11bb52330> 
+   <jinja2.runtime.BlockReference object at 0x120eb24e0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

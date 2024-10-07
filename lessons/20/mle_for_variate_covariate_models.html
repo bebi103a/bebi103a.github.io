@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maximum likelihood estimation for variate-covariate models &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -165,8 +165,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="maximum-likelihood-estimation-for-variate-covariate-models">
-<h1>Maximum likelihood estimation for variate-covariate models<a class="headerlink" href="#maximum-likelihood-estimation-for-variate-covariate-models" title="Permalink to this heading"></a></h1>
+  <section id="maximum-likelihood-estimation-for-variate-covariate-models">
+<h1>Maximum likelihood estimation for variate-covariate models<a class="headerlink" href="#maximum-likelihood-estimation-for-variate-covariate-models" title="Link to this heading"></a></h1>
 <p>In the last part of this lesson, we discussed how to write down a generative model for variate-covariate models. To obtain estimates for the parameters of the model, we can perform a maximum likelihood estimation, precisely as we have done for other models; we minimize the log likelihood function. The optimization is typically done using numerical optimization, as we have already seen in the <a class="reference internal" href="../19/numerical_mle.html#Numerical-maximum-likelihood-estimation"><span class="std std-ref">Numerical maximum likelihood estimation</span></a> lesson.</p>
 <p>For some special cases of variate-covariate models, we can work out analytical results that can greatly ease the optimization problem. Fortunately, these special case arise quite frequently.</p>
 <p>In what follows, we will use a general expression for the theoretical model. Let <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> be the theoretical curve with parameters <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \ldots)\)</span>, and let <span class="math notranslate nohighlight">\((x_i,y_i)\)</span> be a variate-covariate pair of measurements. We assume was have <span class="math notranslate nohighlight">\(n\)</span> of them. We will also everywhere assume the data points are i.i.d.</p>
@@ -175,8 +175,8 @@
 \[\begin{align}
 y(x;\theta) = l(d;\gamma, \phi) = \frac{\gamma d}{\left(1+(\gamma d/\phi)^3\right)^{\frac{1}{3}}}.
 \end{align}\]</div>
-<div class="section" id="normally-distributed-residuals">
-<h2>Normally distributed residuals<a class="headerlink" href="#normally-distributed-residuals" title="Permalink to this heading"></a></h2>
+<section id="normally-distributed-residuals">
+<h2>Normally distributed residuals<a class="headerlink" href="#normally-distributed-residuals" title="Link to this heading"></a></h2>
 <p>The results we derive here apply to the case where we have Normally (possibly heteroscedastic) distributed residuals. In the most general case, our model is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -193,9 +193,9 @@ L(\theta, \{\sigma_i\}; \{x_i\}, \{y_i\}) = \prod_i \frac{1}{\sqrt{2\pi\sigma_i^
 \ell(\theta, \{\sigma_i\}; \{x_i\}, \{y_i\}) = -\frac{n}{2}\,\ln 2\pi - \sum_i \ln \sigma_i - \frac{1}{2}\sum_i \left(\frac{y_i - y(x_i;\theta)}{\sigma_i}\right)^2.
 \end{align}\]</div>
 <p>This is a general log-likelihood for Normally distributed residuals. We will now investigate special cases.</p>
-</div>
-<div class="section" id="known-sigma-i-and-the-levenberg-marquardt-algorithm">
-<h2>Known <span class="math notranslate nohighlight">\(\sigma_i\)</span> and the Levenberg-Marquardt algorithm<a class="headerlink" href="#known-sigma-i-and-the-levenberg-marquardt-algorithm" title="Permalink to this heading"></a></h2>
+</section>
+<section id="known-sigma-i-and-the-levenberg-marquardt-algorithm">
+<h2>Known <span class="math notranslate nohighlight">\(\sigma_i\)</span> and the Levenberg-Marquardt algorithm<a class="headerlink" href="#known-sigma-i-and-the-levenberg-marquardt-algorithm" title="Link to this heading"></a></h2>
 <p>In some cases, we know the values of the <span class="math notranslate nohighlight">\(\sigma_i\)</span>’s a priori. That is, they are not parameters we need estimates for, but are already known. While I often see this in the biological literature, I seldom come across examples like this in my own work. Typically, a measurement for a given <span class="math notranslate nohighlight">\(x_i\)</span> is repeated multiple times and then <span class="math notranslate nohighlight">\(\sigma_i\)</span> is estimated. Nonetheless, treating this case is informative, as it introduces to a useful algorithm.</p>
 <p>The log-likelihood no longer depends on the <span class="math notranslate nohighlight">\(\sigma_i\)</span>’s (since they are known), and is</p>
 <div class="math notranslate nohighlight">
@@ -212,16 +212,16 @@ L(\theta, \{\sigma_i\}; \{x_i\}, \{y_i\}) = \prod_i \frac{1}{\sqrt{2\pi\sigma_i^
 \[\begin{align}
 \arg \min_z \sum_i \left(f_i(z)\right)^2,
 \end{align}\]</div>
-<p>with each <span class="math notranslate nohighlight">\(f_i\)</span> being scalar-valued and <span class="math notranslate nohighlight">\(z\)</span> being scalar or vector-valued. <a class="footnote-reference brackets" href="#f1" id="id1">1</a> The maximum likelihood estimation problem is of this form, with <span class="math notranslate nohighlight">\(z = \theta\)</span> and</p>
+<p>with each <span class="math notranslate nohighlight">\(f_i\)</span> being scalar-valued and <span class="math notranslate nohighlight">\(z\)</span> being scalar or vector-valued. <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> The maximum likelihood estimation problem is of this form, with <span class="math notranslate nohighlight">\(z = \theta\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 f_i(\theta) = \left(\frac{y_i - y(x_i;\theta)}{\sigma_i}\right)^2.
 \end{align}\]</div>
 <p>So, to find the MLE for the parameters <span class="math notranslate nohighlight">\(\theta\)</span>, we can directly employ the Levenberg-Marquardt algorithm. We will discuss implementation using Python-based tools in a forthcoming lesson.</p>
 <p>Note that if the <span class="math notranslate nohighlight">\(\sigma_i\)</span> values are not known, the MLE problem does not match the class of optimization problems for which the Levenberg-Marquardt algorithm can be used.</p>
-</div>
-<div class="section" id="homoscedastic-normal-models">
-<h2>Homoscedastic Normal models<a class="headerlink" href="#homoscedastic-normal-models" title="Permalink to this heading"></a></h2>
+</section>
+<section id="homoscedastic-normal-models">
+<h2>Homoscedastic Normal models<a class="headerlink" href="#homoscedastic-normal-models" title="Link to this heading"></a></h2>
 <p>Now, consider a homoscedastic model,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -250,15 +250,15 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 \end{align}\]</div>
 <p>This is solved to give <span class="math notranslate nohighlight">\(\sigma^* = \sqrt{\text{RSS}^*/n}\)</span>.</p>
 <p>So, we can split the optimization problem in two parts. First, find the values of parameters <span class="math notranslate nohighlight">\(\theta\)</span> that minimize the residual sum of squares, typically using the Levenberg-Marquardt algorithm. Then, using these values, compute the MLE for <span class="math notranslate nohighlight">\(\sigma\)</span> using the analytical result we have just derived.</p>
-<div class="section" id="a-very-important-caveat">
-<h3>A very important caveat<a class="headerlink" href="#a-very-important-caveat" title="Permalink to this heading"></a></h3>
+<section id="a-very-important-caveat">
+<h3>A very important caveat<a class="headerlink" href="#a-very-important-caveat" title="Link to this heading"></a></h3>
 <p>Though commonly encountered, the special case we have just considered is not always the variate-covariate model we might choose. That means that the convenience of the Levenberg-Marquardt algorithm and the convenient result for getting a maximum likelihood estimate for the homoscedastic <span class="math notranslate nohighlight">\(\sigma\)</span> will not in general work. They only work for this special case.</p>
-</div>
-</div>
-<div class="section" id="theoretical-functions-that-are-linear-in-the-parameters">
-<h2>Theoretical functions that are linear in the parameters<a class="headerlink" href="#theoretical-functions-that-are-linear-in-the-parameters" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="theoretical-functions-that-are-linear-in-the-parameters">
+<h2>Theoretical functions that are linear in the parameters<a class="headerlink" href="#theoretical-functions-that-are-linear-in-the-parameters" title="Link to this heading"></a></h2>
 <p>Like other optimization algorithms we have seen so far, the Levenberg-Marquardt algorithm will only provide a <em>local</em> minimizer; it is not guaranteed to find a global minimum. That said, if the function <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in the parameters <span class="math notranslate nohighlight">\(\theta\)</span>, it can be shown that, under certain restrictions, the minimizer <span class="math notranslate nohighlight">\(\theta^*\)</span> of the RSS is unique, and therefore a local minimum is also a global minimum.</p>
-<p>To show this, since <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in <span class="math notranslate nohighlight">\(\theta\)</span>, we can write it in the form <span class="math notranslate nohighlight">\(y(x;\theta) = \mathbf{z} \cdot \theta\)</span>. <a class="footnote-reference brackets" href="#f2" id="id2">2</a> For example, if <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is a second order polynomial, <span class="math notranslate nohighlight">\(y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2\)</span>, then <span class="math notranslate nohighlight">\(\mathbf{z} = (1, x, x^2)\)</span> and <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}\)</span>. Residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(y_i - \mathbf{z}_i \cdot \theta\)</span>, and the residual sum of squares is</p>
+<p>To show this, since <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is linear in <span class="math notranslate nohighlight">\(\theta\)</span>, we can write it in the form <span class="math notranslate nohighlight">\(y(x;\theta) = \mathbf{z} \cdot \theta\)</span>. <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For example, if <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is a second order polynomial, <span class="math notranslate nohighlight">\(y(x;\theta) = \theta_1 + \theta_2 x + \theta_3 x^2\)</span>, then <span class="math notranslate nohighlight">\(\mathbf{z} = (1, x, x^2)\)</span> and <span class="math notranslate nohighlight">\(\theta = (\theta_1, \theta_2, \theta_3)^\mathsf{T}\)</span>. Residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(y_i - \mathbf{z}_i \cdot \theta\)</span>, and the residual sum of squares is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 \text{RSS} = \sum_i (y_i - \mathbf{z}_i \theta)^2,
@@ -293,16 +293,18 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 <p>Provided the matrix <span class="math notranslate nohighlight">\(\mathsf{Z}^\mathsf{T}\mathsf{Z}\)</span> is nonsingular, this linear system has a unique solution.</p>
 <p>This is referred to as <strong>ordinary least squares</strong>, or OLS, and is a subject in many introductory linear algebra courses. Though <span class="math notranslate nohighlight">\(\theta^*\)</span> may be computed using matrix operations according to the above formula, in practice it is often simply calculated using the Levenberg-Marquardt algorithm, which is typically more numerically stable. Because of what we have just shown, whatever local minimum the algorithm finds is, in fact, a global minimum and therefore the unique MLE for <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p>Note that this is not generally true! There may be local minima of the RSS as a function of <span class="math notranslate nohighlight">\(\theta\)</span> (and therefore local minima of the log likelihood) is <span class="math notranslate nohighlight">\(y(x;\theta)\)</span> is nonlinear in the parameters <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Note, though, in the implementation we will use in <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares()</span></code>, <span class="math notranslate nohighlight">\(z\)</span> must be entered as an array, even for a single parameter.</p>
-</dd>
-<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>In most books and other literature on the subject, the vector we have defined as <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. I find that variables named <span class="math notranslate nohighlight">\(x\)</span> abound and the symbol is overloaded, which is why I defined it as <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> and the design matrix as <span class="math notranslate nohighlight">\(\mathsf{Z}\)</span> instead of <span class="math notranslate nohighlight">\(\mathsf{X}\)</span> (though the design matrix is often also denoted by <span class="math notranslate nohighlight">\(\mathsf{A}\)</span>).</p>
-</dd>
-</dl>
-</div>
-</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Note, though, in the implementation we will use in <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares()</span></code>, <span class="math notranslate nohighlight">\(z\)</span> must be entered as an array, even for a single parameter.</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>In most books and other literature on the subject, the vector we have defined as <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. I find that variables named <span class="math notranslate nohighlight">\(x\)</span> abound and the symbol is overloaded, which is why I defined it as <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> and the design matrix as <span class="math notranslate nohighlight">\(\mathsf{Z}\)</span> instead of <span class="math notranslate nohighlight">\(\mathsf{X}\)</span> (though the design matrix is often also denoted by <span class="math notranslate nohighlight">\(\mathsf{A}\)</span>).</p>
+</aside>
+</aside>
+</section>
+</section>
 
 
            </div>
@@ -316,11 +318,11 @@ y_i \sim \text{Norm}(y(x_i;\theta), \sigma) \;\forall i.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11e2a1310> 
+   <jinja2.runtime.BlockReference object at 0x11f15b530> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

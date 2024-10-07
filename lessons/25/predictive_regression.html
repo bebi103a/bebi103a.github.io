@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Graphical model assessment: Predictive regression &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -170,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Graphical-model-assessment:-Predictive-regression">
-<h1>Graphical model assessment: Predictive regression<a class="headerlink" href="#Graphical-model-assessment:-Predictive-regression" title="Permalink to this heading"></a></h1>
+  <section id="Graphical-model-assessment:-Predictive-regression">
+<h1>Graphical model assessment: Predictive regression<a class="headerlink" href="#Graphical-model-assessment:-Predictive-regression" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/good_invitro_droplet_data.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -530,8 +530,8 @@ function(Bokeh) {
 </script></div>
 </div>
 <hr><p>We have just seen how a predictive ECDF can be used to graphically assess a model for the case of repeated measurements drawn out of a generative distribution. Now, we turn to a model that involves a regression.</p>
-<div class="section" id="The-data-set-and-models">
-<h2>The data set and models<a class="headerlink" href="#The-data-set-and-models" title="Permalink to this heading"></a></h2>
+<section id="The-data-set-and-models">
+<h2>The data set and models<a class="headerlink" href="#The-data-set-and-models" title="Link to this heading"></a></h2>
 <p>We again use the data set from <a class="reference external" href="https://dx.doi.org/10.1126%2Fscience.1243147">Good and coworkers</a> that we used in our lessons on model building and variate-covariate modeling. In the experiment, Good and coworkers measured the length of mitotic spindles in droplets of varying diameter.</p>
 <p>Let’s take a quick look at the data.</p>
 <div class="nbinput docutils container">
@@ -609,9 +609,9 @@ l_i \sim \text{Norm}(\phi, \sigma)\;\forall i.
 &l_i \sim \text{Norm}(\mu_i, \sigma)\;\forall i.
 \end{align}</span></p>
 <p>These are the two models we will graphically assess, starting with the second model, which establishes a relationship between spindle length and droplet diameter.</p>
-</div>
-<div class="section" id="Assessing-the-model-for-spindle-length-dependent-on-droplet-diameter">
-<h2>Assessing the model for spindle length dependent on droplet diameter<a class="headerlink" href="#Assessing-the-model-for-spindle-length-dependent-on-droplet-diameter" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Assessing-the-model-for-spindle-length-dependent-on-droplet-diameter">
+<h2>Assessing the model for spindle length dependent on droplet diameter<a class="headerlink" href="#Assessing-the-model-for-spindle-length-dependent-on-droplet-diameter" title="Link to this heading"></a></h2>
 <p>As was the case with our studies of the Singer, et al. data on mRNA counts, we do also need functions from previous lessons here to compute the MLE. You can skip this, since it is copied directly from previous lessons. The important result is that we get the MLE for the three parameters, <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(\phi\)</span>, and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -670,8 +670,8 @@ l_i \sim \text{Norm}(\phi, \sigma)\;\forall i.
 σ* = 3.753422
 </pre></div></div>
 </div>
-<div class="section" id="Sampling-out-of-the-generative-model">
-<h3>Sampling out of the generative model<a class="headerlink" href="#Sampling-out-of-the-generative-model" title="Permalink to this heading"></a></h3>
+<section id="Sampling-out-of-the-generative-model">
+<h3>Sampling out of the generative model<a class="headerlink" href="#Sampling-out-of-the-generative-model" title="Link to this heading"></a></h3>
 <p>As before, we want to see what kind of data sets are predicted by the generative model when parametrized by the MLEs of the parameters. We therefore need to write a function to obtain the samples. The extra wrinkle here is that we need to also provide values for the droplet diameter for which we want the samples. In this model, we assume that the droplet diameters are measured exactly and that they determine the spindle length (of course neglecting the variation we model in the residuals).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -702,9 +702,9 @@ l_i \sim \text{Norm}(\phi, \sigma)\;\forall i.
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Making-the-predictive-regression-plot">
-<h3>Making the predictive regression plot<a class="headerlink" href="#Making-the-predictive-regression-plot" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Making-the-predictive-regression-plot">
+<h3>Making the predictive regression plot<a class="headerlink" href="#Making-the-predictive-regression-plot" title="Link to this heading"></a></h3>
 <p>Now that we have our samples, we compute the percentiles of the spindle length for each value of <span class="math notranslate nohighlight">\(d\)</span>. We then generate the plot from these percentiles, with the data overlaid. The <code class="docutils literal notranslate"><span class="pre">bebi103.viz.predictive_regression()</span></code> function accomplishes this for us. We need to provide it with the samples of spindle length (with the shape we have already prescribed), as well as the <span class="math notranslate nohighlight">\(d\)</span>-values for which the samples were generated. We also need to provide the data as an array with two columns, the
 first being the diameter and the second the spindle length.</p>
 <p>(Note that we use the term “regression” here, as is commonly done for variate-covariate modeling, even though it is in many ways a misnomer.)</p>
@@ -765,9 +765,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>In this plot, we see that roughly 5% of the data points (there are 670 total points) lie outside the middle 95%, so the model is consistent with the measured data.</p>
 <p>In my view, <strong>this</strong> is how variate-covariate modeling results should be plotted, not simple with a “best fit line”, which does not reveal the full generative model.</p>
-</div>
-<div class="section" id="Viewing-differences">
-<h3>Viewing differences<a class="headerlink" href="#Viewing-differences" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Viewing-differences">
+<h3>Viewing differences<a class="headerlink" href="#Viewing-differences" title="Link to this heading"></a></h3>
 <p>We may also wish to get a plot of how different the data are from the model. In this case, the median spindle length is subtracted off of all samples such that the median is zero. We also need to subtract it from the data to make a comparison. That means that we have to draw our samples from the generative distribution for values of the droplet diameter that were actually measured.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -828,10 +828,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Importantly, there does not seem to be any systematic way in which the measurements deviate from the model. In other words, whether a data point lies outside the 80% envelope and whether it lies above or below looks independent of droplet diameter.</p>
-</div>
-</div>
-<div class="section" id="Graphical-assessment-of-the-Normal-model">
-<h2>Graphical assessment of the Normal model<a class="headerlink" href="#Graphical-assessment-of-the-Normal-model" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Graphical-assessment-of-the-Normal-model">
+<h2>Graphical assessment of the Normal model<a class="headerlink" href="#Graphical-assessment-of-the-Normal-model" title="Link to this heading"></a></h2>
 <p>As we have learned, the MLE for the parameters for the Normal model are the same as the plug-in estimates.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -909,9 +909,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Here, I have also included the 80% envelope. Again, only about 5% of the data points lie outside the 95% envelope. However, the data points tend to fall below the 80% envelope only for small droplet diameters and above only for large droplet diameters, suggesting that the model is missing the droplet-diameter dependence.</p>
-</div>
-<div class="section" id="General-method-of-graphical-predictive-model-assessment">
-<h2>General method of graphical predictive model assessment<a class="headerlink" href="#General-method-of-graphical-predictive-model-assessment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="General-method-of-graphical-predictive-model-assessment">
+<h2>General method of graphical predictive model assessment<a class="headerlink" href="#General-method-of-graphical-predictive-model-assessment" title="Link to this heading"></a></h2>
 <p>When using both predictive ECDFs and predictive regression curves, we did the same procedure, which you can imagine generalizing.</p>
 <ol class="arabic simple">
 <li><p>Compute the MLE of the parameters for the generative model in question.</p></li>
@@ -921,9 +921,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 <li><p>Evaluate how many of the measured data points lie outside the percentile regions of the generated data sets.</p></li>
 </ol>
 <p>Predictive ECDFs and regression curves are just two (often used) examples of this prescription, and you can develop your own as is useful for the model and data set you are working with.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -951,8 +951,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -966,11 +966,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11bbd4830> 
+   <jinja2.runtime.BlockReference object at 0x11ecf7080> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

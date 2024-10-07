@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Polars for Pandas users &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -168,8 +168,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Polars-for-Pandas-users">
-<h1>Polars for Pandas users<a class="headerlink" href="#Polars-for-Pandas-users" title="Permalink to this heading"></a></h1>
+  <section id="Polars-for-Pandas-users">
+<h1>Polars for Pandas users<a class="headerlink" href="#Polars-for-Pandas-users" title="Link to this heading"></a></h1>
 <hr><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -185,8 +185,8 @@
 </div>
 <hr><p>As of September 2024, <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> is by far and away the most widely used data frame package for Python. We are using Polars primarily because, in my opinion, the API is more intuitive and therefore easier for beginners and experts alike to use. It is also faster, sometimes much faster. It is, however, important to know about Pandas and how to use it because many of your colleagues use it and many packages you may use do, too.</p>
 <p>Therefore, in this part of the lesson, I discuss how to convert a Polars data frame to Pandas, and vice versa. I also provide syntax for doing common tasks in Polars and Pandas. It is also worth reading the <a class="reference external" href="https://docs.pola.rs/user-guide/migration/pandas/">section of the Polars user guide comparing Pandas and Polars</a>.</p>
-<div class="section" id="A-sample-data-frame">
-<h2>A sample data frame<a class="headerlink" href="#A-sample-data-frame" title="Permalink to this heading"></a></h2>
+<section id="A-sample-data-frame">
+<h2>A sample data frame<a class="headerlink" href="#A-sample-data-frame" title="Link to this heading"></a></h2>
 <p>For ease of discussion and comparison, we will use a simple data frame that has two categorical columns, <code class="docutils literal notranslate"><span class="pre">'c1'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'c2'</span></code>, two quantitative columns as floats, <code class="docutils literal notranslate"><span class="pre">'q1'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'q2'</span></code>, and a column, <code class="docutils literal notranslate"><span class="pre">'i1'</span></code> of integer values. It also has an identity column, a unique identifier for each row that is useful when converting the data frame to tall format. Note that <code class="docutils literal notranslate"><span class="pre">'q1'</span></code> has a null value and <code class="docutils literal notranslate"><span class="pre">'q2'</span></code> has a NaN value.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -222,9 +222,9 @@
 </style>
 <small>shape: (8, 6)</small><table border="1" class="dataframe"><thead><tr><th>id</th><th>c1</th><th>c2</th><th>q1</th><th>q2</th><th>i1</th></tr><tr><td>i64</td><td>str</td><td>str</td><td>f64</td><td>f64</td><td>i64</td></tr></thead><tbody><tr><td>1</td><td>&quot;a&quot;</td><td>&quot;c&quot;</td><td>1.1</td><td>4.5</td><td>5</td></tr><tr><td>2</td><td>&quot;a&quot;</td><td>&quot;d&quot;</td><td>2.2</td><td>2.3</td><td>3</td></tr><tr><td>3</td><td>&quot;a&quot;</td><td>&quot;c&quot;</td><td>3.1</td><td>NaN</td><td>0</td></tr><tr><td>4</td><td>&quot;a&quot;</td><td>&quot;d&quot;</td><td>null</td><td>1.1</td><td>2</td></tr><tr><td>5</td><td>&quot;b&quot;</td><td>&quot;c&quot;</td><td>2.9</td><td>7.8</td><td>4</td></tr><tr><td>6</td><td>&quot;b&quot;</td><td>&quot;d&quot;</td><td>1.7</td><td>2.3</td><td>3</td></tr><tr><td>7</td><td>&quot;b&quot;</td><td>&quot;c&quot;</td><td>3.0</td><td>1.1</td><td>4</td></tr><tr><td>8</td><td>&quot;b&quot;</td><td>&quot;d&quot;</td><td>7.3</td><td>0.8</td><td>1</td></tr></tbody></table></div></div>
 </div>
-</div>
-<div class="section" id="From-Polars-to-Pandas-and-from-Pandas-to-Polars">
-<h2>From Polars to Pandas and from Pandas to Polars<a class="headerlink" href="#From-Polars-to-Pandas-and-from-Pandas-to-Polars" title="Permalink to this heading"></a></h2>
+</section>
+<section id="From-Polars-to-Pandas-and-from-Pandas-to-Polars">
+<h2>From Polars to Pandas and from Pandas to Polars<a class="headerlink" href="#From-Polars-to-Pandas-and-from-Pandas-to-Polars" title="Link to this heading"></a></h2>
 <p>If you have a Polars data frame, you can directly convert it to a Pandas data frame using the <code class="docutils literal notranslate"><span class="pre">to_pandas()</span></code>, method. Let’s do that for our data frame.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -367,16 +367,11 @@
 </style>
 <small>shape: (8, 6)</small><table border="1" class="dataframe"><thead><tr><th>id</th><th>c1</th><th>c2</th><th>q1</th><th>q2</th><th>i1</th></tr><tr><td>i64</td><td>str</td><td>str</td><td>f64</td><td>f64</td><td>i64</td></tr></thead><tbody><tr><td>1</td><td>&quot;a&quot;</td><td>&quot;c&quot;</td><td>1.1</td><td>4.5</td><td>5</td></tr><tr><td>2</td><td>&quot;a&quot;</td><td>&quot;d&quot;</td><td>2.2</td><td>2.3</td><td>3</td></tr><tr><td>3</td><td>&quot;a&quot;</td><td>&quot;c&quot;</td><td>3.1</td><td>null</td><td>0</td></tr><tr><td>4</td><td>&quot;a&quot;</td><td>&quot;d&quot;</td><td>null</td><td>1.1</td><td>2</td></tr><tr><td>5</td><td>&quot;b&quot;</td><td>&quot;c&quot;</td><td>2.9</td><td>7.8</td><td>4</td></tr><tr><td>6</td><td>&quot;b&quot;</td><td>&quot;d&quot;</td><td>1.7</td><td>2.3</td><td>3</td></tr><tr><td>7</td><td>&quot;b&quot;</td><td>&quot;c&quot;</td><td>3.0</td><td>1.1</td><td>4</td></tr><tr><td>8</td><td>&quot;b&quot;</td><td>&quot;d&quot;</td><td>7.3</td><td>0.8</td><td>1</td></tr></tbody></table></div></div>
 </div>
-</div>
-<div class="section" id="Pandas-and-Polars-for-common-tasks">
-<h2>Pandas and Polars for common tasks<a class="headerlink" href="#Pandas-and-Polars-for-common-tasks" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Pandas-and-Polars-for-common-tasks">
+<h2>Pandas and Polars for common tasks<a class="headerlink" href="#Pandas-and-Polars-for-common-tasks" title="Link to this heading"></a></h2>
 <p>Below is a table listing common tasks with data frame done using Polars and Pandas.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 38%" />
-<col style="width: 33%" />
-<col style="width: 28%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Description</p></th>
 <th class="head"><p>Pandas</p></th>
@@ -567,14 +562,14 @@
 <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means you cannot apply a function to it, multiply by it, etc.</p></li>
 <li><p>For Polars, the <code class="docutils literal notranslate"><span class="pre">on</span></code> kwarg for <code class="docutils literal notranslate"><span class="pre">df.join()</span></code> is required. With Pandas, which columns to join on are inferred based on like-names of columns.</p></li>
 </ol>
-</div>
-<div class="section" id="Hierarchical-indexes">
-<h2>Hierarchical indexes<a class="headerlink" href="#Hierarchical-indexes" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Hierarchical-indexes">
+<h2>Hierarchical indexes<a class="headerlink" href="#Hierarchical-indexes" title="Link to this heading"></a></h2>
 <p>Pandas supports hierarchical indexes, called <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code>es. This is not supports by Polars. Polars will not read a CSV file with hierarchical indexes. If you have a data set in a CSV file with hierarchical indexes, you can convert it to a CSV file in tall format where the <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> has been converted to columns using the <code class="docutils literal notranslate"><span class="pre">bebi103.utils.unpivot_csv()</span></code> function. This operation is akin to a <code class="docutils literal notranslate"><span class="pre">df.melt()</span></code> operation on a data frame with a hierarchical index. You can then read the
 converted CSV file into Polars and begin working with it.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -600,8 +595,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -615,11 +610,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11bec9910> 
+   <jinja2.runtime.BlockReference object at 0x11c933230> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

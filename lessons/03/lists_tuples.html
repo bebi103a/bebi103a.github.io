@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lists and tuples &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -189,15 +189,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Lists-and-tuples">
-<h1>Lists and tuples<a class="headerlink" href="#Lists-and-tuples" title="Permalink to this heading"></a></h1>
+  <section id="Lists-and-tuples">
+<h1>Lists and tuples<a class="headerlink" href="#Lists-and-tuples" title="Link to this heading"></a></h1>
 <hr><p>We often want to group things together. For example, we may want to group all of the results some a control experiment and the results from a test experiment. As we will see in future lessons, data frames are very good for that kind of grouping. They are more complex objects, and it helps to have an understanding of Python’s native data types for holding collections of data.</p>
 <p>In this lesson, we first will explore two important data types in Python, <strong>lists</strong> and <strong>tuples</strong>. They are both <strong>sequences</strong> of objects. Just like a string is a sequence (that is, an ordered collection) of characters, lists and tuples are sequences of arbitrary objects, called <strong>items</strong> or <strong>elements</strong>. They are a way to make a single object that contains many other objects.</p>
-<div class="section" id="Lists">
-<h2>Lists<a class="headerlink" href="#Lists" title="Permalink to this heading"></a></h2>
+<section id="Lists">
+<h2>Lists<a class="headerlink" href="#Lists" title="Link to this heading"></a></h2>
 <p>As usual, it is easiest to explore new topics by example. We’ll start by creating a list.</p>
-<div class="section" id="List-creation">
-<h3>List creation<a class="headerlink" href="#List-creation" title="Permalink to this heading"></a></h3>
+<section id="List-creation">
+<h3>List creation<a class="headerlink" href="#List-creation" title="Link to this heading"></a></h3>
 <p>We create lists by putting Python values or expressions inside square brackets, separated by commas. For example:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -274,9 +274,9 @@ list
 [&#39;A&#39;, &#39; &#39;, &#39;s&#39;, &#39;t&#39;, &#39;r&#39;, &#39;i&#39;, &#39;n&#39;, &#39;g&#39;, &#39;.&#39;]
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="List-operators">
-<h3>List operators<a class="headerlink" href="#List-operators" title="Permalink to this heading"></a></h3>
+</section>
+<section id="List-operators">
+<h3>List operators<a class="headerlink" href="#List-operators" title="Link to this heading"></a></h3>
 <p>Operators on lists behave much like operators on strings. The <strong>``+``</strong> operator on lists means list concatenation.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -313,15 +313,11 @@ list
 [1, 2, 3, 1, 2, 3, 1, 2, 3]
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Membership-operators">
-<h3>Membership operators<a class="headerlink" href="#Membership-operators" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Membership-operators">
+<h3>Membership operators<a class="headerlink" href="#Membership-operators" title="Link to this heading"></a></h3>
 <p>Membership operators are used to determine if an item is in a list. The two membership operators are:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 64%" />
-<col style="width: 36%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>English</p></th>
 <th class="head"><p>operator</p></th>
@@ -469,9 +465,9 @@ This codon is neither a start nor stop codon.
 </pre></div>
 </div>
 <p>Much nicer!</p>
-</div>
-<div class="section" id="List-indexing">
-<h3>List indexing<a class="headerlink" href="#List-indexing" title="Permalink to this heading"></a></h3>
+</section>
+<section id="List-indexing">
+<h3>List indexing<a class="headerlink" href="#List-indexing" title="Link to this heading"></a></h3>
 <p>Imagine that we would like to access an item in a list. Because a list is ordered, we can ask for the first item, the second item, the <em>n</em>th item, the last item, etc. This is done using a bracket notation. We first write the name of our list and then enclosed in square brackets we write the location (index) of the desired element:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -594,20 +590,6 @@ a string
 </div>
 <p>This is very convenient for indexing in reverse. Now make it more clear, here are the forward and backward indices for the list:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 38%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Values</p></th>
 <th class="head"><p>0</p></th>
@@ -652,9 +634,9 @@ a string
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="List-slicing">
-<h3>List slicing<a class="headerlink" href="#List-slicing" title="Permalink to this heading"></a></h3>
+</section>
+<section id="List-slicing">
+<h3>List slicing<a class="headerlink" href="#List-slicing" title="Link to this heading"></a></h3>
 <p>Now, what if we want to pull out multiple items in a list, called <strong>slicing</strong>? We can use colons (<code class="docutils literal notranslate"><span class="pre">:</span></code>) for that.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
@@ -826,10 +808,10 @@ a string
 </pre></div></div>
 </div>
 <p>This is more verbose, but much easier to read and understand. In general, you should not choose the most concise way of doing something if it clouds readability. We will discuss this more when we talk about style.</p>
-</div>
-</div>
-<div class="section" id="Mutability">
-<h2>Mutability<a class="headerlink" href="#Mutability" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Mutability">
+<h2>Mutability<a class="headerlink" href="#Mutability" title="Link to this heading"></a></h2>
 <p>Lists are <strong>mutable</strong>. That means that you can change their values without creating a new list. (You cannot change the data type or identity.) Let’s see this by example.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
@@ -895,8 +877,8 @@ a string
 </pre></div></div>
 </div>
 <p>It is still the same list! This is <em>very</em> important to consider when we do assignments.</p>
-<div class="section" id="Pitfall:-Aliasing">
-<h3>Pitfall: Aliasing<a class="headerlink" href="#Pitfall:-Aliasing" title="Permalink to this heading"></a></h3>
+<section id="Pitfall:-Aliasing">
+<h3>Pitfall: Aliasing<a class="headerlink" href="#Pitfall:-Aliasing" title="Link to this heading"></a></h3>
 <p><strong>Aliasing</strong> is a subtle issue which can come up when assigning lists to variables. Let’s look at an example. We will make a list, then assign a new variable to the list (which we will momentarily erroneously think of as making a copy of the list) and then change a value of an entry in the “copied” list.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
@@ -978,10 +960,10 @@ a string
 </pre></div></div>
 </div>
 <p>Another option is to use a data type that is very much like a list, except it is immutable.</p>
-</div>
-</div>
-<div class="section" id="Tuples">
-<h2>Tuples<a class="headerlink" href="#Tuples" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Tuples">
+<h2>Tuples<a class="headerlink" href="#Tuples" title="Link to this heading"></a></h2>
 <p>A <strong>tuple</strong> is like a list, except it is immutable (basically a read-only list). (What I just said there is explosive, as described in <a class="reference external" href="http://www.asmeurer.com/blog/posts/tuples/">this blog post</a>. Tuples do have many other capabilities beyond what you would expect from just bring “a read-only list,” but for us just beginning now, we can think of it that way.) A tuple is created just like a list, except we use parentheses instead of brackets. The only watch-out is that a tuple with a single
 item needs to include a comma after the item.</p>
 <div class="nbinput docutils container">
@@ -1091,8 +1073,8 @@ Input <span class="ansi-green-fg">In [39]</span>, in <span class="ansi-cyan-fg">
 <span class="ansi-red-fg">TypeError</span>: &#39;tuple&#39; object does not support item assignment
 </pre></div></div>
 </div>
-<div class="section" id="Slicing-of-tuples">
-<h3>Slicing of tuples<a class="headerlink" href="#Slicing-of-tuples" title="Permalink to this heading"></a></h3>
+<section id="Slicing-of-tuples">
+<h3>Slicing of tuples<a class="headerlink" href="#Slicing-of-tuples" title="Link to this heading"></a></h3>
 <p>Slicing of tuples is the same as lists, except a tuple is returned from the slicing operation, not a list.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
@@ -1132,9 +1114,9 @@ Input <span class="ansi-green-fg">In [39]</span>, in <span class="ansi-cyan-fg">
 (1, 3, 5, 7, 9)
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="The-+-operator-with-tuples">
-<h3>The <strong>+</strong> operator with tuples<a class="headerlink" href="#The-+-operator-with-tuples" title="Permalink to this heading"></a></h3>
+</section>
+<section id="The-+-operator-with-tuples">
+<h3>The <strong>+</strong> operator with tuples<a class="headerlink" href="#The-+-operator-with-tuples" title="Link to this heading"></a></h3>
 <p>As with lists we can concatenate tuples with the <strong>+</strong> operation</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
@@ -1153,9 +1135,9 @@ Input <span class="ansi-green-fg">In [39]</span>, in <span class="ansi-cyan-fg">
 (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Membership-operators-with-tuples">
-<h3>Membership operators with tuples<a class="headerlink" href="#Membership-operators-with-tuples" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Membership-operators-with-tuples">
+<h3>Membership operators with tuples<a class="headerlink" href="#Membership-operators-with-tuples" title="Link to this heading"></a></h3>
 <p>Membership operators work the same as with lists.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
@@ -1191,9 +1173,9 @@ True
 True
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Tuple-unpacking">
-<h3>Tuple unpacking<a class="headerlink" href="#Tuple-unpacking" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Tuple-unpacking">
+<h3>Tuple unpacking<a class="headerlink" href="#Tuple-unpacking" title="Link to this heading"></a></h3>
 <p>It is like a multiple assignment statement that is best seen through example:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
@@ -1269,10 +1251,10 @@ True
 1 2 3
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Wisdom-on-tuples-and-lists">
-<h2>Wisdom on tuples and lists<a class="headerlink" href="#Wisdom-on-tuples-and-lists" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Wisdom-on-tuples-and-lists">
+<h2>Wisdom on tuples and lists<a class="headerlink" href="#Wisdom-on-tuples-and-lists" title="Link to this heading"></a></h2>
 <p>At face, tuples and lists are very similar, differing essentially only in mutability. The differences are actually more profound, as described in the <a class="reference external" href="http://www.asmeurer.com/blog/posts/tuples/">aforementioned blog post</a>. We will make extensive use of them in our programs.</p>
 <p>“When should I use a tuple and when should I use a list?” you ask. Here is my advice.</p>
 <div class="admonition note">
@@ -1292,9 +1274,9 @@ True
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
@@ -1317,8 +1299,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1332,11 +1314,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11cc63590> 
+   <jinja2.runtime.BlockReference object at 0x120ea09b0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

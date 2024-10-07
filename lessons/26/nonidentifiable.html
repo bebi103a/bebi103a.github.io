@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nonidentifiable models &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -168,8 +168,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Nonidentifiable-models">
-<h1>Nonidentifiable models<a class="headerlink" href="#Nonidentifiable-models" title="Permalink to this heading"></a></h1>
+  <section id="Nonidentifiable-models">
+<h1>Nonidentifiable models<a class="headerlink" href="#Nonidentifiable-models" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/hiv_data.csv">Data set download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -532,8 +532,8 @@ function(Bokeh) {
 </script></div>
 </div>
 <hr><p>In this portion of the lesson, we will show how nonidentifiability can be lurking in an analysis.</p>
-<div class="section" id="The-theoretical-model">
-<h2>The theoretical model<a class="headerlink" href="#The-theoretical-model" title="Permalink to this heading"></a></h2>
+<section id="The-theoretical-model">
+<h2>The theoretical model<a class="headerlink" href="#The-theoretical-model" title="Link to this heading"></a></h2>
 <p>A human immunodeficiency virus (HIV) is a virus that causes host organisms to develop a weaker, and sometimes ineffective, immune system. HIV inserts its viral RNA into a target cell of the immune system. This virus gets reverse transcribed into DNA and integrated into the host cell’s chromosomes. The host cell will then transcribe the integrated DNA into mRNA for the production of viral proteins and produce new HIV. Newly created viruses then exit the cell by budding off from the host. HIV
 carries the danger of ongoing replication and cell infection without termination or immunological control. Because CD4 T cells, which communicate with other immune cells to activate responses to foreign pathogens, are the targets for viral infection and production, their infection leads to reductions in healthy CD4 T cell production, causing the immune system to weaken. This reduction in the immune response becomes particularly concerning after remaining infected for longer periods of time,
 leading to acquired immune deficiency syndrome (AIDS).</p>
@@ -550,9 +550,9 @@ we initially have a viral load of <span class="math notranslate nohighlight">\(V
 <p><span class="math">\begin{align}
 V(t;V_0,c,\delta) = V_0e^{-ct} + \frac{cV_0}{c-\delta}\left[\frac{c}{c-\delta}(e^{-{\delta}t} - e^{-ct}) - {\delta}te^{-ct}\right].
 \end{align}</span></p>
-</div>
-<div class="section" id="The-data-set">
-<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
+</section>
+<section id="The-data-set">
+<h2>The data set<a class="headerlink" href="#The-data-set" title="Link to this heading"></a></h2>
 <p>We will take viral load data from a real patient (which you can download <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/hiv_data.csv">here</a>). The patient was treated with the drug Ritonavir, a protease inhibitor that serves to clear the viruses; i.e., it modulates <span class="math notranslate nohighlight">\(c\)</span>. So, in the context of the model, <span class="math notranslate nohighlight">\(c\)</span> is a good parameter to use to understand the efficacy of a drug.</p>
 <p>Let us take a quick look at the data set.</p>
 <div class="nbinput docutils container">
@@ -613,17 +613,17 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>After some noisy viral RNA levels early on, the virus begins to be cleared after about a day, bringing the viral load down.</p>
-</div>
-<div class="section" id="The-statistical-model">
-<h2>The statistical model<a class="headerlink" href="#The-statistical-model" title="Permalink to this heading"></a></h2>
+</section>
+<section id="The-statistical-model">
+<h2>The statistical model<a class="headerlink" href="#The-statistical-model" title="Link to this heading"></a></h2>
 <p>For our statistical model (which we will later see is nonidentifiable), we will assume that residual <span class="math notranslate nohighlight">\(i\)</span> is Normally distributed with scale parameter <span class="math notranslate nohighlight">\(\sigma_i = \sigma_0 V(t_i;V_0, v, \delta)\)</span>. That is, we assume that the variability scales with the size of the measurement.</p>
 <p><span class="math">\begin{align}
 &\mu_i = V(t_i;V_0,c,\delta) = V_0e^{-ct_i} + \frac{cV_0}{c-\delta}\left[\frac{c}{c-\delta}(e^{-{\delta}t_i} - e^{-ct_i}) - {\delta}t_ie^{-ct_i}\right] \;\forall i, \\[1em]
 &V_i \sim \text{Norm}(\mu_i, \sigma_0 \mu_i) \;\forall i.
 \end{align}</span></p>
-</div>
-<div class="section" id="Performing-a-regression-to-determine-the-parameters-δ-and-c">
-<h2>Performing a regression to determine the parameters δ and c<a class="headerlink" href="#Performing-a-regression-to-determine-the-parameters-δ-and-c" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Performing-a-regression-to-determine-the-parameters-δ-and-c">
+<h2>Performing a regression to determine the parameters δ and c<a class="headerlink" href="#Performing-a-regression-to-determine-the-parameters-δ-and-c" title="Link to this heading"></a></h2>
 <p>The most common procedure to characterize the parameters δ and c is to minimize the sum of the square of the residuals between the theoretical equation given above and the measured data. As we showed in one of the homeworks, this is equivalent to finding the MAP parameter values for a model with a homoscedastic Gaussian likelihood and Uniform priors. Let’s proceed to do this MAP calculation.</p>
 <p>In the viral load model, we need to make sure that we don’t get a divide by zero error when <span class="math notranslate nohighlight">\(c \approx \delta\)</span>. We will use the fact that</p>
 <p><span class="math">\begin{align}
@@ -783,9 +783,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Graphical-model-check">
-<h2>Graphical model check<a class="headerlink" href="#Graphical-model-check" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Graphical-model-check">
+<h2>Graphical model check<a class="headerlink" href="#Graphical-model-check" title="Link to this heading"></a></h2>
 <p>We’ll now perform a quick graphical model check, using our generative model parametrized by the MLE to generate data sets. First, we’ll code up a function to generate samples and then generate them.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -865,9 +865,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This looks ok, with most measured points falling within the middle 95th percentile of the generated data sets.</p>
-</div>
-<div class="section" id="Confidence-intervals-of-parameters">
-<h2>Confidence intervals of parameters<a class="headerlink" href="#Confidence-intervals-of-parameters" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Confidence-intervals-of-parameters">
+<h2>Confidence intervals of parameters<a class="headerlink" href="#Confidence-intervals-of-parameters" title="Link to this heading"></a></h2>
 <p>We can proceed to compute confidence intervals for the parameters. We will use our usual method of parametrically drawing new data sets out of the generative distribution parametrized by the MLE. WE first have to write a function to generate new data sets out of the model with the requisite call signature for <code class="docutils literal notranslate"><span class="pre">bebi103.bootstrap.draw_bs_reps_mle()</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -983,9 +983,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Most samples are below 10, but we see 20% of them are well above 10, some positively enormous. This could be a solver issue, or it could be a lurking nonidentifiability. Let’s investigate.</p>
-</div>
-<div class="section" id="Plotting-the-log-likelihood-function">
-<h2>Plotting the log likelihood function<a class="headerlink" href="#Plotting-the-log-likelihood-function" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Plotting-the-log-likelihood-function">
+<h2>Plotting the log likelihood function<a class="headerlink" href="#Plotting-the-log-likelihood-function" title="Link to this heading"></a></h2>
 <p>To diagnose the issue, we will look at the likelihood function. To start with, we will fix the values of <span class="math notranslate nohighlight">\(V_0\)</span>, <span class="math notranslate nohighlight">\(\delta\)</span>, and <span class="math notranslate nohighlight">\(\sigma_0\)</span> to their MLEs and plot the likelihood function as a function of <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -1192,9 +1192,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 <p>There is the nonidentifiability! The faint tail at <span class="math notranslate nohighlight">\(\delta \approx 0.4\)</span> days<span class="math notranslate nohighlight">\(^{-1}\)</span> goes off to infinity. If we have <span class="math notranslate nohighlight">\(\delta \approx 0.4\)</span>, then <em>any</em> value of <span class="math notranslate nohighlight">\(c\)</span> will give roughly the same likelihood. From our estimates, we expect <span class="math notranslate nohighlight">\(\delta\)</span> to lie somewhere near 0.4 days<span class="math notranslate nohighlight">\(^{-1}\)</span>, so this nonidentifiability is something we can likely encounter. It tells us that we cannot actually know <span class="math notranslate nohighlight">\(c\)</span> for sure, that is unless we had an independent measurement for
 <span class="math notranslate nohighlight">\(\delta\)</span>. We would have no way of knowing this if we just solved the least squares problem and reported our values.</p>
 <p>Computing the predictive regression and the confidence interval of the MLEs is the <em>minimum</em> you should do with your model. Next term, we will discuss principled modeling techniques that will help protect you from these pathologies that are encountered a lot more than we know.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
@@ -1224,8 +1224,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1239,11 +1239,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11be262d0> 
+   <jinja2.runtime.BlockReference object at 0x11ecf6120> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

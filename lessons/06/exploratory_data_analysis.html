@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exploratory data analysis &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -164,12 +164,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Exploratory-data-analysis">
-<h1>Exploratory data analysis<a class="headerlink" href="#Exploratory-data-analysis" title="Permalink to this heading"></a></h1>
+  <section id="Exploratory-data-analysis">
+<h1>Exploratory data analysis<a class="headerlink" href="#Exploratory-data-analysis" title="Link to this heading"></a></h1>
 <hr><p>In 1977, John Tukey, one of the great statisticians and mathematicians of all time, published a book entitled <em>Exploratory Data Analysis</em>. In it, he laid out general principles on how researchers should handle their first encounters with their data, before formal statistical inference. Most of us spend a lot of time doing exploratory data analysis, or EDA, without really knowing it. Mostly, EDA involves a graphical exploration of a data set.</p>
 <p>We start off with a few wise words from John Tukey himself.</p>
-<div class="section" id="Useful-EDA-advice-from-John-Tukey">
-<h2>Useful EDA advice from John Tukey<a class="headerlink" href="#Useful-EDA-advice-from-John-Tukey" title="Permalink to this heading"></a></h2>
+<section id="Useful-EDA-advice-from-John-Tukey">
+<h2>Useful EDA advice from John Tukey<a class="headerlink" href="#Useful-EDA-advice-from-John-Tukey" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>“Exploratory data analysis can never be the whole story, but nothing else can serve as a foundation stone—as the first step.”</p></li>
 <li><p>“In exploratory data analysis there can be no substitute for flexibility; for adapting what is calculated—and what we hope plotted—both to the needs of the situation and the clues that the data have already provided.”</p></li>
@@ -178,14 +178,14 @@
 <li><p>“Graphs force us to note the unexpected; nothing could be more important.”</p></li>
 <li><p>“‘Exploratory data analysis’ is an attitude, a state of flexibility, a willingness to look for those things that we believe are not there, as well as those we believe to be there.”</p></li>
 </ul>
-</div>
-<div class="section" id="The-tools-of-EDA">
-<h2>The tools of EDA<a class="headerlink" href="#The-tools-of-EDA" title="Permalink to this heading"></a></h2>
+</section>
+<section id="The-tools-of-EDA">
+<h2>The tools of EDA<a class="headerlink" href="#The-tools-of-EDA" title="Link to this heading"></a></h2>
 <p>Being able to load in a data set and quickly start exploring it graphically enables you to <em>think</em> about your data set instead being mired in the mechanics of producing a plot. In the notebooks that follow in this lesson, we will learn how to use the Python-based tools for EDA. In particular, we will learn how to use <a class="reference external" href="https://pandas.pydata.org">Pandas</a> to keep the data set organized and accessible and <a class="reference external" href="https://docs.bokeh.org/en/latest/">Bokeh</a> to make interactive graphics.</p>
 <p>Along the way, we will learn key concepts of data organization and display. Importantly, we will learn about <strong>tidy data</strong>, <strong>split-apply-combine</strong>, and how to <strong>plot all of your data</strong>.</p>
 <p>Before we march on this trajectory, though, we need to learn a bit about <a class="reference external" href="http://numpy.org/">Numpy</a> and <a class="reference external" href="http://scipy.org/">Scipy</a>, which form the foundation upon which much of these tools are built.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -199,11 +199,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11bcba480> 
+   <jinja2.runtime.BlockReference object at 0x11c72cc80> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting up computing resources &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -178,17 +178,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Setting-up-computing-resources">
-<h1>Setting up computing resources<a class="headerlink" href="#Setting-up-computing-resources" title="Permalink to this heading"></a></h1>
+  <section id="Setting-up-computing-resources">
+<h1>Setting up computing resources<a class="headerlink" href="#Setting-up-computing-resources" title="Link to this heading"></a></h1>
 <p>In this lesson you will set up a Python computing environment for scientific computing on your own computer and also learn a bit about Google Colab, a cloud service for running Jupyter notebooks.</p>
 <p>It is advantageous to learn how to set up a Python distribution and manage packages on your own machine, as each person can have different needs. That said, <a class="reference external" href="https://colab.research.google.com/">Google Colab</a> is a nice, free resource to run Jupyter Notebooks on Google’s computers without any local installations necessary.</p>
-<div class="section" id="Setting-up-Google-Colab">
-<h2>Setting up Google Colab<a class="headerlink" href="#Setting-up-Google-Colab" title="Permalink to this heading"></a></h2>
+<section id="Setting-up-Google-Colab">
+<h2>Setting up Google Colab<a class="headerlink" href="#Setting-up-Google-Colab" title="Link to this heading"></a></h2>
 <p>In order to use Google Colab, you must have a Google account. Caltech students and employees have an account through Caltech’s G Suite. Many of you may have a personal Google account, usually set up for things like GMail, YouTube, etc. For your work in this class, <strong>use your Caltech account.</strong> This will facilitate collaboration with your teammates in the course, as well as with course staff.</p>
 <p>Many of you probably use your personal Google account on your machine, so it can get annoying to log in and out of it. A trick that I find useful is to use one browser, e.g., Safari or Microsoft Edge, for your personal use, web browsing, etc., and a different browser for your scientific work, including the work in this class. Google Colab are most tested for Chrome, Firefox, and Safari (in fact JupyterLab, which you will use on your own machine, only supports these three browsers).</p>
 <p>Once you have either logged out of all of your personal accounts or have a different browser open, you can launch a Colab notebook by simply navigating to <a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a>. Alternatively, you can click the “Launch in Colab” badge at the top right of this page, and you will launch this notebook in Colab. That badge will appear in the top right of all pages in the course content generated from notebooks.</p>
-<div class="section" id="Watchouts-when-using-Colab">
-<h3>Watchouts when using Colab<a class="headerlink" href="#Watchouts-when-using-Colab" title="Permalink to this heading"></a></h3>
+<section id="Watchouts-when-using-Colab">
+<h3>Watchouts when using Colab<a class="headerlink" href="#Watchouts-when-using-Colab" title="Link to this heading"></a></h3>
 <p>If you do run a notebook in Colab, you are doing your computing on one of Google’s computers via a virtual machine. You get two CPU cores and limited (about 12 GB, but it varies) RAM. You can also get GPUs and TPUs (Google’s tensor processing units), but we will not use those in this course. The computing resources should be enough for all of our calculations this term (though you will need more computing power in the sequel of this course). However, there are some limitations you should be
 aware of.</p>
 <ul class="simple">
@@ -202,9 +202,9 @@ aware of.</p>
 <li><p>Colab instances have specific software installed, so you will need to install anything else you need in your notebook. This is not a major burden, and is discussed in the next section.</p></li>
 </ul>
 <p>I recommend reading the <a class="reference external" href="https://research.google.com/colaboratory/faq.html">Colab FAQs</a> for more information about Colab.</p>
-</div>
-<div class="section" id="Software-in-Colab">
-<h3>Software in Colab<a class="headerlink" href="#Software-in-Colab" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Software-in-Colab">
+<h3>Software in Colab<a class="headerlink" href="#Software-in-Colab" title="Link to this heading"></a></h3>
 <p>When you launch a Google Colab notebook, much of the software we will use in class is already installed. It is not always the latest version of the software, however. In fact, as of July 2024, Colab is running Python 3.10, whereas you will run Python 3.12 on your machine through your Anaconda installation. Nonetheless, most (but not all) of the analyses we do for this class will work just fine in Colab. We will make every effort to let you know when Colab will not be able to handle activities in
 class, the most important example being some dashboarding applications.</p>
 <p>Because the notebooks in Colab have software preinstalled, and no more, you will often need to install software before you can run the rest of the code in a notebook. To enable this, when necessary, in the first code cell of each notebook in this class, we will have the following code (or a variant thereof depending on what is needed or if the default installations of Colab change). Running this code will not affect running your notebook on your local machine; the same notebook will work on your
@@ -223,23 +223,23 @@ local machine or on Colab.</p>
 </div>
 <p>In addition to installing the necessary software on a Colab instance, this also sets the relative path to data sets we will use in the course. When running in Colab, the data set is fetched from cloud storage on <a class="reference external" href="https://aws.amazon.com">AWS</a>. When running on your local machine for homeworks, the path to the data is one directory up from where you are working.</p>
 <p>In most notebooks, the Colab and data path setup code cells are hidden in the HTML rendering to avoid clutter, but will be present when you download the notebooks.</p>
-</div>
-<div class="section" id="Collaborating-with-Colab">
-<h3>Collaborating with Colab<a class="headerlink" href="#Collaborating-with-Colab" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Collaborating-with-Colab">
+<h3>Collaborating with Colab<a class="headerlink" href="#Collaborating-with-Colab" title="Link to this heading"></a></h3>
 <p>If you want to collaborate with another student or with the course staff on a notebook, you can click “Share” on the top right corner of the Colab window and choose with whom and how (the defaults are fine) you want to share.</p>
 <p>When we talk about Git in a future lesson, we will discuss Colab’s GitHub support, which will be necessary for version control and submitting and sharing your homework.</p>
-</div>
-</div>
-<div class="section" id="Installation-on-your-own-machine">
-<h2>Installation on your own machine<a class="headerlink" href="#Installation-on-your-own-machine" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Installation-on-your-own-machine">
+<h2>Installation on your own machine<a class="headerlink" href="#Installation-on-your-own-machine" title="Link to this heading"></a></h2>
 <p>We now proceed to discuss installation of the necessary software on your own machine.</p>
-</div>
-<div class="section" id="Downloading-and-installing-Miniconda">
-<h2>Downloading and installing Miniconda<a class="headerlink" href="#Downloading-and-installing-Miniconda" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Downloading-and-installing-Miniconda">
+<h2>Downloading and installing Miniconda<a class="headerlink" href="#Downloading-and-installing-Miniconda" title="Link to this heading"></a></h2>
 <p>If you already have Anaconda or Miniconda installed on your machine, you can skip this step and proceed to install node.js.</p>
 <p>To download and install Miniconda, do the following.</p>
-<div class="section" id="Windows">
-<h3>Windows<a class="headerlink" href="#Windows" title="Permalink to this heading"></a></h3>
+<section id="Windows">
+<h3>Windows<a class="headerlink" href="#Windows" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://docs.anaconda.com/miniconda/#quick-command-line-install">Miniconda page</a> and go to the “Quick command line install” section.</p></li>
 <li><p>Click on the “Windows PowerShell” tab.</p></li>
@@ -247,9 +247,9 @@ local machine or on Colab.</p>
 <li><p>Go to the Start menu and search for “PowerShell.” Click to open a PowerShell window. Alternatively, you can hit <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">+</span> <span class="pre">R</span></code> and type <code class="docutils literal notranslate"><span class="pre">PowerShell</span></code> in the text box.</p></li>
 <li><p>Paste the copied text into the PowerShell window and hit enter.</p></li>
 </ol>
-</div>
-<div class="section" id="macOS">
-<h3>macOS<a class="headerlink" href="#macOS" title="Permalink to this heading"></a></h3>
+</section>
+<section id="macOS">
+<h3>macOS<a class="headerlink" href="#macOS" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://docs.anaconda.com/miniconda/#quick-command-line-install">Miniconda page</a> and go to the “Quick command line install” section.</p></li>
 <li><p>Click on the “macOS” tab.</p></li>
@@ -257,9 +257,9 @@ local machine or on Colab.</p>
 <li><p>Open a Terminal window. You can do this by hitting <code class="docutils literal notranslate"><span class="pre">Command-space</span> <span class="pre">bar</span></code>, typing <code class="docutils literal notranslate"><span class="pre">Terminal</span></code>, and hitting enter. Alternatively, the Terminal application is located in the <code class="docutils literal notranslate"><span class="pre">/System/Applications/Utilities/</span></code> folder, which you can navigate to using Finder.</p></li>
 <li><p>Paste the copied text into the Terminal window and hit enter.</p></li>
 </ol>
-</div>
-<div class="section" id="Linux">
-<h3>Linux<a class="headerlink" href="#Linux" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Linux">
+<h3>Linux<a class="headerlink" href="#Linux" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://docs.anaconda.com/miniconda/#quick-command-line-install">Miniconda page</a> and go to the “Quick command line install” section.</p></li>
 <li><p>Click on the “Linux” tab.</p></li>
@@ -267,14 +267,14 @@ local machine or on Colab.</p>
 <li><p>Open a terminal window. I assume you know how to do this if you are using Linux.</p></li>
 <li><p>Paste the copied text into the terminal window and hit enter.</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="Install-node.js">
-<h2>Install node.js<a class="headerlink" href="#Install-node.js" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Install-node.js">
+<h2>Install node.js<a class="headerlink" href="#Install-node.js" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://nodejs.org/">node.js</a> is a platform that enables you to run JavaScript outside of the browser. We will not use it directly, but it needs to be installed for some of the more sophisticated JupyterLab functionality. Install node.js by downloading the appropriate installer for your machine <a class="reference external" href="https://nodejs.org/en/download/">here</a>.</p>
-</div>
-<div class="section" id="Setting-up-a-conda-environment">
-<h2>Setting up a conda environment<a class="headerlink" href="#Setting-up-a-conda-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Setting-up-a-conda-environment">
+<h2>Setting up a conda environment<a class="headerlink" href="#Setting-up-a-conda-environment" title="Link to this heading"></a></h2>
 <p>I have created a conda environment for use in this class. You can download the YML specification for the environment via the link below (you may need to right-click and then download).</p>
 <blockquote>
 <div><p><a class="reference external" href="https://raw.githubusercontent.com/bebi103a/bebi103a.github.io/main/_static/bebi103.yml">Download bebi103.yml</a></p>
@@ -288,9 +288,9 @@ local machine or on Colab.</p>
 </pre></div>
 </div>
 <p>on the command line.</p>
-</div>
-<div class="section" id="Launching-JupyterLab">
-<h2>Launching JupyterLab<a class="headerlink" href="#Launching-JupyterLab" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Launching-JupyterLab">
+<h2>Launching JupyterLab<a class="headerlink" href="#Launching-JupyterLab" title="Link to this heading"></a></h2>
 <p>You can launch JupyterLab via your operating system’s terminal program (Terminal on macOS and PowerShell on Windows). If you are on a Mac, open the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> program. You can do this hitting <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">space</span> <span class="pre">bar</span></code> and searching for “terminal.” Using Windows, you should launch PowerShell. You can do this by hitting <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">+</span> <span class="pre">R</span></code> and typing “powershell” in the text box.</p>
 <p>Once you have a terminal or PowerShell window open, you will have a prompt. At the prompt, type</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda activate bebi103
@@ -307,9 +307,9 @@ local machine or on Colab.</p>
 </pre></div>
 </div>
 <p>on the command line.</p>
-</div>
-<div class="section" id="Checking-your-distribution">
-<h2>Checking your distribution<a class="headerlink" href="#Checking-your-distribution" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Checking-your-distribution">
+<h2>Checking your distribution<a class="headerlink" href="#Checking-your-distribution" title="Link to this heading"></a></h2>
 <p>We’ll now run a quick test to make sure things are working properly. We will make a quick plot that requires some of the scientific libraries we will use.</p>
 <p>Use the JupyterLab launcher (you can get a new launcher by clicking on the <code class="docutils literal notranslate"><span class="pre">+</span></code> icon on the left pane of your JupyterLab window) to launch a notebook. In the first cell (the box next to the <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]:</span></code> prompt), paste the code below. To run the code, press <code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code> while the cursor is active inside the cell. You should see a plot that looks like the one below. If you do, you have a functioning Python environment for scientific computing!</p>
 <p>You can also test this in Colab (and it should work with no problems).</p>
@@ -714,9 +714,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -741,8 +741,8 @@ jupyterlab: 4.2.5
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -756,11 +756,11 @@ jupyterlab: 4.2.5
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12ad04b00> 
+   <jinja2.runtime.BlockReference object at 0x120ed2ba0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

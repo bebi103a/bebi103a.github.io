@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction to data frames &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -188,8 +188,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Introduction-to-data-frames">
-<h1>Introduction to data frames<a class="headerlink" href="#Introduction-to-data-frames" title="Permalink to this heading"></a></h1>
+  <section id="Introduction-to-data-frames">
+<h1>Introduction to data frames<a class="headerlink" href="#Introduction-to-data-frames" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -203,8 +203,8 @@
 </div>
 <hr><p>Throughout your research career, you will undoubtedly need to handle data, possibly lots of data. Once in a usable form, you are empowered to rapidly make graphics and perform statistical inference. <strong>Tidy data</strong> is an important format and we will discuss that in subsequent sections of this lesson. In an ideal world, data sets would be stored in tidy format and be ready to use. The data comes in lots of formats, and you may have to spend much of your time <strong>wrangling</strong> the data to get it into a
 usable format. Wrangling is the topic of the next lesson; for now all data sets will be in tidy format from the get-go.</p>
-<div class="section" id="The-data-set">
-<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
+<section id="The-data-set">
+<h2>The data set<a class="headerlink" href="#The-data-set" title="Link to this heading"></a></h2>
 <p>We will explore using data frames with a real data set. We will use a data set published in <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al., Perceptual impairment in face identification with poor sleep, Royal Society Open Science, 3, 160321, 2016</a>. In this paper, researchers used the <a class="reference external" href="https://doi.org/10.3758/BRM.42.1.286">Glasgow Facial Matching Test</a> (GMFT) to investigate how sleep deprivation affects a subject’s ability to match faces, as well as the confidence the subject has in
 those matches. Briefly, the test works by having subjects look at a pair of faces. Two such pairs are shown below.</p>
 <div style="width: 300px; margin: auto;"><img alt="GFMT faces" src="../../_images/gfmt_faces.png" />
@@ -247,21 +247,21 @@ will almost exclusively use CSV files in this class.</p>
 </div>
 <p>The first line contains the <strong>headers</strong> for each column. They are participant number, gender, age, etc. The data follow. There are two important things to note here. First, notice that the <code class="docutils literal notranslate"><span class="pre">gender</span></code> column has string data (<code class="docutils literal notranslate"><span class="pre">m</span></code> or <code class="docutils literal notranslate"><span class="pre">f</span></code>), while the rest of the data are numeric. Note also that there are some <strong>missing data</strong>, denoted by the <code class="docutils literal notranslate"><span class="pre">*</span></code>s in the file.</p>
 <p>Given the file I/O skills you recently learned, you could write some functions to parse this file and extract the data you want. You can imagine that this might be kind of painful. However, if the file format is nice and clean, like we more or less have here, we can use pre-built tools to read in the data from the file and put it in a convenient data structure. Those structures are <strong>data frames</strong>.</p>
-</div>
-<div class="section" id="Data-frames">
-<h2>Data frames<a class="headerlink" href="#Data-frames" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Data-frames">
+<h2>Data frames<a class="headerlink" href="#Data-frames" title="Link to this heading"></a></h2>
 <p>Though we will use the word “data frame” over and over again, what a data frame <em>is</em> is actually a bit nebulous. Our working definition of a data frame is that it is a representation of two-dimensional tabular data where each column has a label. We will restrict ourselves to the case where each column has a specific data type (e.g., strings, ints, floats, or even lists).</p>
 <p>One can think of a data frame as a collection of labeled columns, each one called a <strong>series</strong>. (A series may be thought of as a single column of data.) Alternatively, it is sometimes convenient to think of a data frame as a collection of <strong>rows</strong>, where each entry in the row is labeled with the column heading.</p>
 <p>For more reading on the history of data frames and an attempt (in my opinion a very good attempt) at clearly defining them see section 4 of <a class="reference external" href="https://dl.acm.org/doi/10.14778/3407790.3407807">this paper by Petersohn, et al</a>.</p>
-<div class="section" id="Pandas">
-<h3>Pandas<a class="headerlink" href="#Pandas" title="Permalink to this heading"></a></h3>
+<section id="Pandas">
+<h3>Pandas<a class="headerlink" href="#Pandas" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="https://pandas.pydata.org">Pandas</a> is one of the most widely used tools in the Python ecosystem for handling data. It is worth knowing about. We will, however, not be using Pandas, but instead will use <a class="reference external" href="https://pola.rs">Polars</a>. I prefer Polars because its API is cleaner, in my opinion, but it has the added benefit of generally being much faster than Pandas.</p>
-</div>
-</div>
-<div class="section" id="Loading-the-data">
-<h2>Loading the data<a class="headerlink" href="#Loading-the-data" title="Permalink to this heading"></a></h2>
-<div class="section" id="Using-polars.read_csv()-to-read-in-data">
-<h3>Using polars.read_csv() to read in data<a class="headerlink" href="#Using-polars.read_csv()-to-read-in-data" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="Loading-the-data">
+<h2>Loading the data<a class="headerlink" href="#Loading-the-data" title="Link to this heading"></a></h2>
+<section id="Using-polars.read_csv()-to-read-in-data">
+<h3>Using polars.read_csv() to read in data<a class="headerlink" href="#Using-polars.read_csv()-to-read-in-data" title="Link to this heading"></a></h3>
 <p>We have imported Polars with the alias <code class="docutils literal notranslate"><span class="pre">pl</span></code> as is customary. We will use <code class="docutils literal notranslate"><span class="pre">pl.read_csv()</span></code> to load the data set. The data are stored in a <strong>data frame</strong> (data type <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>), which is one of the data types that makes Polars so convenient for use in data analysis. Data frames offer mixed data types, including incomplete columns, and convenient slicing, among many, many other convenient features. We will use the data frame to look at the data, at the same time demonstrating some of the
 power of data frames. They are like spreadsheets, only a lot better.</p>
 <div class="nbinput nblast docutils container">
@@ -274,10 +274,10 @@ power of data frames. They are like spreadsheets, only a lot better.</p>
 </div>
 <p>Notice that we used the kwarg <code class="docutils literal notranslate"><span class="pre">null_values=*</span></code> to specify that entries marked with a <code class="docutils literal notranslate"><span class="pre">*</span></code> are missing. The resulting data frame is populated with <strong>null</strong>, wherever this character is present in the file. In this case, we want <code class="docutils literal notranslate"><span class="pre">null_values='*'</span></code>. So, let’s load in the data set.</p>
 <p>If you check out the doc string for <code class="docutils literal notranslate"><span class="pre">pl.read_csv()</span></code>, you will see there are <em>lots</em> of options for reading in the data.</p>
-</div>
-</div>
-<div class="section" id="Exploring-the-DataFrame">
-<h2>Exploring the DataFrame<a class="headerlink" href="#Exploring-the-DataFrame" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Exploring-the-DataFrame">
+<h2>Exploring the DataFrame<a class="headerlink" href="#Exploring-the-DataFrame" title="Link to this heading"></a></h2>
 <p>Let’s jump right in and look at the contents of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. We can look at the first several rows using the <code class="docutils literal notranslate"><span class="pre">df.head()</span></code> method.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -303,9 +303,9 @@ power of data frames. They are like spreadsheets, only a lot better.</p>
 <small>shape: (5, 15)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td></tr></thead><tbody><tr><td>8</td><td>&quot;f&quot;</td><td>39</td><td>65</td><td>80</td><td>72.5</td><td>91.0</td><td>90.0</td><td>93.0</td><td>83.5</td><td>93.0</td><td>90.0</td><td>9</td><td>13</td><td>2</td></tr><tr><td>16</td><td>&quot;m&quot;</td><td>42</td><td>90</td><td>90</td><td>90.0</td><td>75.5</td><td>55.5</td><td>70.5</td><td>50.0</td><td>75.0</td><td>50.0</td><td>4</td><td>11</td><td>7</td></tr><tr><td>18</td><td>&quot;f&quot;</td><td>31</td><td>90</td><td>95</td><td>92.5</td><td>89.5</td><td>90.0</td><td>86.0</td><td>81.0</td><td>89.0</td><td>88.0</td><td>10</td><td>9</td><td>3</td></tr><tr><td>22</td><td>&quot;f&quot;</td><td>35</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>71.0</td><td>80.0</td><td>88.0</td><td>80.0</td><td>13</td><td>8</td><td>20</td></tr><tr><td>27</td><td>&quot;f&quot;</td><td>74</td><td>60</td><td>65</td><td>62.5</td><td>68.5</td><td>49.0</td><td>61.0</td><td>49.0</td><td>65.0</td><td>49.0</td><td>13</td><td>9</td><td>12</td></tr></tbody></table></div></div>
 </div>
 <p>We see that the column headings were automatically assigned, as have the data types of the columns, where <code class="docutils literal notranslate"><span class="pre">i64</span></code>, <code class="docutils literal notranslate"><span class="pre">f64</span></code>, and <code class="docutils literal notranslate"><span class="pre">str</span></code> respectively denote integers, floats and strings. Also note (in row 3) that the missing data are denoted as <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
-</div>
-<div class="section" id="Indexing-data-frames">
-<h2>Indexing data frames<a class="headerlink" href="#Indexing-data-frames" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Indexing-data-frames">
+<h2>Indexing data frames<a class="headerlink" href="#Indexing-data-frames" title="Link to this heading"></a></h2>
 <p>The data frame is a convenient data structure for many reasons that will become clear as we start exploring. Let’s start by looking at how data frames are indexed. The rows in Polars data frames are indexed by integers, starting with zero as usual for Python. So, the first row of the data frame may be accessed as follows.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -376,9 +376,9 @@ power of data frames. They are like spreadsheets, only a lot better.</p>
 </style>
 <small>shape: (102,)</small><table border="1" class="dataframe"><thead><tr><th>percent correct</th></tr><tr><td>f64</td></tr></thead><tbody><tr><td>72.5</td></tr><tr><td>90.0</td></tr><tr><td>92.5</td></tr><tr><td>87.5</td></tr><tr><td>62.5</td></tr><tr><td>&hellip;</td></tr><tr><td>77.5</td></tr><tr><td>87.5</td></tr><tr><td>75.0</td></tr><tr><td>70.0</td></tr><tr><td>62.5</td></tr></tbody></table></div></div>
 </div>
-</div>
-<div class="section" id="Boolean-indexing-of-data-frames">
-<h2>Boolean indexing of data frames<a class="headerlink" href="#Boolean-indexing-of-data-frames" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Boolean-indexing-of-data-frames">
+<h2>Boolean indexing of data frames<a class="headerlink" href="#Boolean-indexing-of-data-frames" title="Link to this heading"></a></h2>
 <p>Let’s say I wanted the record for participant number 42. I can use Boolean indexing to specify the row. This is accomplished using the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -531,12 +531,12 @@ for OR and <code class="docutils literal notranslate"><span class="pre">~</span>
 <small>shape: (8, 15)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td></tr></thead><tbody><tr><td>93</td><td>&quot;f&quot;</td><td>28</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>67.0</td><td>60.0</td><td>80.0</td><td>60.0</td><td>16</td><td>7</td><td>4</td></tr><tr><td>5</td><td>&quot;f&quot;</td><td>18</td><td>90</td><td>100</td><td>95.0</td><td>76.5</td><td>83.0</td><td>80.0</td><td>null</td><td>80.0</td><td>83.0</td><td>21</td><td>7</td><td>5</td></tr><tr><td>6</td><td>&quot;f&quot;</td><td>28</td><td>95</td><td>80</td><td>87.5</td><td>100.0</td><td>85.0</td><td>94.0</td><td>61.0</td><td>99.0</td><td>65.0</td><td>19</td><td>7</td><td>12</td></tr><tr><td>10</td><td>&quot;f&quot;</td><td>25</td><td>100</td><td>100</td><td>100.0</td><td>90.0</td><td>null</td><td>85.0</td><td>null</td><td>90.0</td><td>null</td><td>17</td><td>10</td><td>11</td></tr><tr><td>44</td><td>&quot;f&quot;</td><td>21</td><td>85</td><td>90</td><td>87.5</td><td>66.0</td><td>29.0</td><td>70.0</td><td>29.0</td><td>67.0</td><td>29.0</td><td>26</td><td>7</td><td>18</td></tr><tr><td>48</td><td>&quot;f&quot;</td><td>23</td><td>90</td><td>85</td><td>87.5</td><td>67.0</td><td>47.0</td><td>69.0</td><td>40.0</td><td>67.0</td><td>40.0</td><td>18</td><td>6</td><td>8</td></tr><tr><td>51</td><td>&quot;f&quot;</td><td>24</td><td>85</td><td>95</td><td>90.0</td><td>97.0</td><td>41.0</td><td>74.0</td><td>73.0</td><td>83.0</td><td>55.5</td><td>29</td><td>1</td><td>7</td></tr><tr><td>67</td><td>&quot;f&quot;</td><td>25</td><td>100</td><td>100</td><td>100.0</td><td>61.5</td><td>null</td><td>58.5</td><td>null</td><td>60.5</td><td>null</td><td>28</td><td>8</td><td>9</td></tr></tbody></table></div></div>
 </div>
 <p>This feature, where the looping is done automatically on Polars objects like data frames, is very powerful and saves us writing lots of lines of code. This example also showed how to use the <code class="docutils literal notranslate"><span class="pre">iter_rows()</span></code> method of a data frame. It is actually rare that you will need to do that, and you should generally avoid it, since it is also slow.</p>
-</div>
-<div class="section" id="Contexts-and-expressions">
-<h2>Contexts and expressions<a class="headerlink" href="#Contexts-and-expressions" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Contexts-and-expressions">
+<h2>Contexts and expressions<a class="headerlink" href="#Contexts-and-expressions" title="Link to this heading"></a></h2>
 <p>We will now be a bit more formal in discussing how to work with Polars data frames. Specifically, Polars features the concepts of <strong>expressions</strong> and <strong>contexts</strong>.</p>
-<div class="section" id="The-filter-context">
-<h3>The filter context<a class="headerlink" href="#The-filter-context" title="Permalink to this heading"></a></h3>
+<section id="The-filter-context">
+<h3>The filter context<a class="headerlink" href="#The-filter-context" title="Link to this heading"></a></h3>
 <p>As an example, let us consider our above task of filtering the data frame to extract females under the age of 21. The syntax was</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="p">))</span>
 </pre></div>
@@ -601,9 +601,9 @@ where the expression gives <code class="docutils literal notranslate"><span clas
 </style>
 <small>shape: (5, 15)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td></tr></thead><tbody><tr><td>3</td><td>&quot;f&quot;</td><td>16</td><td>70</td><td>80</td><td>75.0</td><td>70.0</td><td>57.0</td><td>54.0</td><td>53.0</td><td>57.0</td><td>54.5</td><td>23</td><td>1</td><td>3</td></tr><tr><td>5</td><td>&quot;f&quot;</td><td>18</td><td>90</td><td>100</td><td>95.0</td><td>76.5</td><td>83.0</td><td>80.0</td><td>null</td><td>80.0</td><td>83.0</td><td>21</td><td>7</td><td>5</td></tr><tr><td>58</td><td>&quot;f&quot;</td><td>16</td><td>85</td><td>85</td><td>85.0</td><td>55.0</td><td>30.0</td><td>50.0</td><td>40.0</td><td>52.5</td><td>35.0</td><td>29</td><td>2</td><td>11</td></tr><tr><td>72</td><td>&quot;f&quot;</td><td>18</td><td>80</td><td>75</td><td>77.5</td><td>67.5</td><td>51.5</td><td>66.0</td><td>57.0</td><td>67.0</td><td>53.0</td><td>29</td><td>4</td><td>6</td></tr><tr><td>85</td><td>&quot;f&quot;</td><td>18</td><td>85</td><td>85</td><td>85.0</td><td>93.0</td><td>92.0</td><td>91.0</td><td>89.0</td><td>91.5</td><td>91.0</td><td>25</td><td>4</td><td>21</td></tr></tbody></table></div></div>
 </div>
-</div>
-<div class="section" id="The-selection-context">
-<h3>The selection context<a class="headerlink" href="#The-selection-context" title="Permalink to this heading"></a></h3>
+</section>
+<section id="The-selection-context">
+<h3>The selection context<a class="headerlink" href="#The-selection-context" title="Link to this heading"></a></h3>
 <p>The simplest way we can use an expression is simply to evaluate the expression and give its result as a new data frame. This is the <strong>selection</strong> context, in which we get the output of the expression. It can be invoked with <code class="docutils literal notranslate"><span class="pre">df.select()</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
@@ -765,10 +765,10 @@ added to the far right of the data frame.)</p>
 </style>
 <small>shape: (5, 16)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th><th>insomnia</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td><td>bool</td></tr></thead><tbody><tr><td>8</td><td>&quot;f&quot;</td><td>39</td><td>65</td><td>80</td><td>72.5</td><td>91.0</td><td>90.0</td><td>93.0</td><td>83.5</td><td>93.0</td><td>90.0</td><td>9</td><td>13</td><td>2</td><td>true</td></tr><tr><td>16</td><td>&quot;m&quot;</td><td>42</td><td>90</td><td>90</td><td>90.0</td><td>75.5</td><td>55.5</td><td>70.5</td><td>50.0</td><td>75.0</td><td>50.0</td><td>4</td><td>11</td><td>7</td><td>true</td></tr><tr><td>18</td><td>&quot;f&quot;</td><td>31</td><td>90</td><td>95</td><td>92.5</td><td>89.5</td><td>90.0</td><td>86.0</td><td>81.0</td><td>89.0</td><td>88.0</td><td>10</td><td>9</td><td>3</td><td>true</td></tr><tr><td>22</td><td>&quot;f&quot;</td><td>35</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>71.0</td><td>80.0</td><td>88.0</td><td>80.0</td><td>13</td><td>8</td><td>20</td><td>true</td></tr><tr><td>27</td><td>&quot;f&quot;</td><td>74</td><td>60</td><td>65</td><td>62.5</td><td>68.5</td><td>49.0</td><td>61.0</td><td>49.0</td><td>65.0</td><td>49.0</td><td>13</td><td>9</td><td>12</td><td>true</td></tr></tbody></table></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Polars-selectors">
-<h2>Polars selectors<a class="headerlink" href="#Polars-selectors" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Polars-selectors">
+<h2>Polars selectors<a class="headerlink" href="#Polars-selectors" title="Link to this heading"></a></h2>
 <p>We have seen that we can choose which columns we want to work with in expressions using <code class="docutils literal notranslate"><span class="pre">pl.col()</span></code>. Thus far, we have used a single string as an argument, but <code class="docutils literal notranslate"><span class="pre">pl.col()</span></code> is more capable than that. For example, to select three columns of interest, we can do the following.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
@@ -970,9 +970,9 @@ polars.selectors._selector_proxy_
 polars.expr.expr.Expr
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Computing-summary-statistics">
-<h2>Computing summary statistics<a class="headerlink" href="#Computing-summary-statistics" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-summary-statistics">
+<h2>Computing summary statistics<a class="headerlink" href="#Computing-summary-statistics" title="Link to this heading"></a></h2>
 <p>To demonstrate a use of what we have learned so far, we can compute the mean percent correct for insomniacs and normal sleepers. We can filter the data frame according to the <code class="docutils literal notranslate"><span class="pre">insomnia</span></code> column, select the <code class="docutils literal notranslate"><span class="pre">percent</span> <span class="pre">correct</span></code> column and compute the mean.</p>
 <p>To put them together in a new data frame, we make a dictionary and convert it to a data frame, which is one of the ways to make a Polars data frame. E.g.,</p>
 <div class="nbinput docutils container">
@@ -1052,8 +1052,8 @@ polars.expr.expr.Expr
 <small>shape: (9, 17)</small><table border="1" class="dataframe"><thead><tr><th>statistic</th><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th><th>insomnia</th></tr><tr><td>str</td><td>f64</td><td>str</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>&quot;count&quot;</td><td>102.0</td><td>&quot;102&quot;</td><td>102.0</td><td>102.0</td><td>102.0</td><td>102.0</td><td>102.0</td><td>84.0</td><td>102.0</td><td>93.0</td><td>102.0</td><td>99.0</td><td>102.0</td><td>102.0</td><td>102.0</td><td>102.0</td></tr><tr><td>&quot;null_count&quot;</td><td>0.0</td><td>&quot;0&quot;</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>18.0</td><td>0.0</td><td>9.0</td><td>0.0</td><td>3.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr><tr><td>&quot;mean&quot;</td><td>52.04902</td><td>null</td><td>37.921569</td><td>83.088235</td><td>77.205882</td><td>80.147059</td><td>74.990196</td><td>58.565476</td><td>71.137255</td><td>61.22043</td><td>74.642157</td><td>61.979798</td><td>22.245098</td><td>5.27451</td><td>7.294118</td><td>0.245098</td></tr><tr><td>&quot;std&quot;</td><td>30.020909</td><td>null</td><td>14.02945</td><td>15.09121</td><td>17.569854</td><td>12.047881</td><td>14.165916</td><td>19.560653</td><td>14.987479</td><td>17.671283</td><td>13.619725</td><td>15.92167</td><td>7.547128</td><td>3.404007</td><td>4.426715</td><td>null</td></tr><tr><td>&quot;min&quot;</td><td>1.0</td><td>&quot;f&quot;</td><td>16.0</td><td>35.0</td><td>20.0</td><td>40.0</td><td>29.5</td><td>7.0</td><td>19.0</td><td>17.0</td><td>24.0</td><td>24.5</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr><tr><td>&quot;25%&quot;</td><td>26.0</td><td>null</td><td>26.0</td><td>75.0</td><td>70.0</td><td>72.5</td><td>66.0</td><td>47.0</td><td>64.5</td><td>50.0</td><td>66.0</td><td>51.0</td><td>17.0</td><td>3.0</td><td>4.0</td><td>null</td></tr><tr><td>&quot;50%&quot;</td><td>53.0</td><td>null</td><td>37.0</td><td>90.0</td><td>80.0</td><td>85.0</td><td>75.0</td><td>56.5</td><td>71.5</td><td>61.0</td><td>76.0</td><td>61.5</td><td>24.0</td><td>5.0</td><td>7.0</td><td>null</td></tr><tr><td>&quot;75%&quot;</td><td>78.0</td><td>null</td><td>45.0</td><td>95.0</td><td>90.0</td><td>87.5</td><td>87.0</td><td>73.0</td><td>80.0</td><td>74.0</td><td>82.5</td><td>73.0</td><td>29.0</td><td>7.0</td><td>10.0</td><td>null</td></tr><tr><td>&quot;max&quot;</td><td>103.0</td><td>&quot;m&quot;</td><td>74.0</td><td>100.0</td><td>100.0</td><td>100.0</td><td>100.0</td><td>92.0</td><td>100.0</td><td>100.0</td><td>100.0</td><td>100.0</td><td>32.0</td><td>15.0</td><td>21.0</td><td>1.0</td></tr></tbody></table></div></div>
 </div>
 <p>This gives us a data frame with summary statistics.</p>
-<div class="section" id="Outputting-a-new-CSV-file">
-<h3>Outputting a new CSV file<a class="headerlink" href="#Outputting-a-new-CSV-file" title="Permalink to this heading"></a></h3>
+<section id="Outputting-a-new-CSV-file">
+<h3>Outputting a new CSV file<a class="headerlink" href="#Outputting-a-new-CSV-file" title="Link to this heading"></a></h3>
 <p>Now that we added the insomniac column, we might like to save our data frame as a new CSV that we can reload later. We use <code class="docutils literal notranslate"><span class="pre">df.write_csv()</span></code> for this.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
@@ -1090,10 +1090,10 @@ participant number,gender,age,correct hit percentage,correct reject percentage,p
 </pre></div></div>
 </div>
 <p>Very nice. Notice that by default Polars leaves an empty field for null values, and we do not need the <code class="docutils literal notranslate"><span class="pre">null_values</span></code> kwarg when we load in this CSV file.</p>
-</div>
-</div>
-<div class="section" id="Renaming-columns">
-<h2>Renaming columns<a class="headerlink" href="#Renaming-columns" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Renaming-columns">
+<h2>Renaming columns<a class="headerlink" href="#Renaming-columns" title="Link to this heading"></a></h2>
 <p>You may be annoyed with the rather lengthy syntax of access column names and wish to change them. Actually, you probably do not want to do this. Explicit is better than implicit! And furthermore, high level plotting libraries, as we will soon see, often automatically use column names for axis labels. So, let’s instead lengthen a column name. Say we keep forgetting what ESS stands for an want to rename the ess column to “Epworth Sleepiness Scale.”</p>
 <p>Data frames have a nice <code class="docutils literal notranslate"><span class="pre">rename</span></code> method to do this. To rename the columns, we provide a dictionary where the keys are current column names and the corresponding values are the names we which to check them to. While we are at it, we will choose descriptive names for all three of the sleep quality indices.</p>
 <div class="nbinput docutils container">
@@ -1128,9 +1128,9 @@ participant number,gender,age,correct hit percentage,correct reject percentage,p
 </style>
 <small>shape: (5, 16)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>Sleep Condition Indicator</th><th>Pittsburgh Sleep Quality Index</th><th>Epworth Sleepiness Scale</th><th>insomnia</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td><td>bool</td></tr></thead><tbody><tr><td>8</td><td>&quot;f&quot;</td><td>39</td><td>65</td><td>80</td><td>72.5</td><td>91.0</td><td>90.0</td><td>93.0</td><td>83.5</td><td>93.0</td><td>90.0</td><td>9</td><td>13</td><td>2</td><td>true</td></tr><tr><td>16</td><td>&quot;m&quot;</td><td>42</td><td>90</td><td>90</td><td>90.0</td><td>75.5</td><td>55.5</td><td>70.5</td><td>50.0</td><td>75.0</td><td>50.0</td><td>4</td><td>11</td><td>7</td><td>true</td></tr><tr><td>18</td><td>&quot;f&quot;</td><td>31</td><td>90</td><td>95</td><td>92.5</td><td>89.5</td><td>90.0</td><td>86.0</td><td>81.0</td><td>89.0</td><td>88.0</td><td>10</td><td>9</td><td>3</td><td>true</td></tr><tr><td>22</td><td>&quot;f&quot;</td><td>35</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>71.0</td><td>80.0</td><td>88.0</td><td>80.0</td><td>13</td><td>8</td><td>20</td><td>true</td></tr><tr><td>27</td><td>&quot;f&quot;</td><td>74</td><td>60</td><td>65</td><td>62.5</td><td>68.5</td><td>49.0</td><td>61.0</td><td>49.0</td><td>65.0</td><td>49.0</td><td>13</td><td>9</td><td>12</td><td>true</td></tr></tbody></table></div></div>
 </div>
-</div>
-<div class="section" id="A-note-on-indexing-and-speed">
-<h2>A note on indexing and speed<a class="headerlink" href="#A-note-on-indexing-and-speed" title="Permalink to this heading"></a></h2>
+</section>
+<section id="A-note-on-indexing-and-speed">
+<h2>A note on indexing and speed<a class="headerlink" href="#A-note-on-indexing-and-speed" title="Link to this heading"></a></h2>
 <p>As we have seen Boolean indexing is very convenient and fits nicely into a logical framework which allows us to extract data according to criteria we want. The trade-off is speed. Slicing by Boolean indexing is essentially doing a reverse lookup in a dictionary. We have to loop through all values to find keys that match. This is much slower than directly indexing. Compare the difference in speed for indexing the percent correct by participant number 42 by Boolean indexing versus direct indexing
 (it’s row 54).</p>
 <div class="nbinput docutils container">
@@ -1158,9 +1158,9 @@ Direct indexing:
 </pre></div></div>
 </div>
 <p>The speed difference is stark, differing by two orders of magnitude. For larger data sets, or for analyses that require repeated indexing, this speed consideration may be important. However, Polars does optimization that takes full advantage of parallelization that will accelerate Boolean indexing.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
@@ -1185,8 +1185,8 @@ jupyterlab: 4.2.5
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1200,11 +1200,11 @@ jupyterlab: 4.2.5
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11bebd7c0> 
+   <jinja2.runtime.BlockReference object at 0x11c58b470> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

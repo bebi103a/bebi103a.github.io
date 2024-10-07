@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plots with categorical variables &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -169,8 +169,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Plots-with-categorical-variables">
-<h1>Plots with categorical variables<a class="headerlink" href="#Plots-with-categorical-variables" title="Permalink to this heading"></a></h1>
+  <section id="Plots-with-categorical-variables">
+<h1>Plots with categorical variables<a class="headerlink" href="#Plots-with-categorical-variables" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -523,8 +523,8 @@ function(Bokeh) {
 }(window));
 </script></div>
 </div>
-<hr/><div class="section" id="Types-of-data-for-plots">
-<h2>Types of data for plots<a class="headerlink" href="#Types-of-data-for-plots" title="Permalink to this heading"></a></h2>
+<hr/><section id="Types-of-data-for-plots">
+<h2>Types of data for plots<a class="headerlink" href="#Types-of-data-for-plots" title="Link to this heading"></a></h2>
 <p>Let us first consider the different kinds of data we may encounter as we think about constructing a plot.</p>
 <ul class="simple">
 <li><p><strong>Quantitative</strong> data may have continuously varying (and therefore ordered) values.</p></li>
@@ -538,12 +538,12 @@ function(Bokeh) {
 <p>Note that this kind of plot is commonly encountered in the biological sciences. We repeat a measurement many times for given test conditions and wish to compare the results. The different conditions are the categories, and the axis along which the conditions are represented is called a categorical axis. The quantitative axis contains the result of the measurements from each condition.</p>
 <hr /><p><em>The rest of this lesson is mostly for reference so you can see how to handle categorical axes with Bokeh. In practice, we will mostly be using</em><a class="reference external" href="http://iqplot.github.io/">iqplot</a><em>to do this and it is done for your automatically. You may therefore skip the rest of this notebook if you like.</em></p>
 <p><em>That said, for some plotting applications, you may need to adjust details or do things outside of iqplot’s capabilities, so the contents of this lesson can be useful.</em></p>
-</div>
-<div class="section" id="Making-a-bar-graph-with-Bokeh">
-<h2>Making a bar graph with Bokeh<a class="headerlink" href="#Making-a-bar-graph-with-Bokeh" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Making-a-bar-graph-with-Bokeh">
+<h2>Making a bar graph with Bokeh<a class="headerlink" href="#Making-a-bar-graph-with-Bokeh" title="Link to this heading"></a></h2>
 <p>To demonstrate how to set up a categorical axis with Bokeh, I will make a bar graph of the mean percent correct for insomniacs and normal sleepers. But before I even begin this, I will give you the following piece of advice: <em>Don’t make bar graphs.</em> More on that in a moment.</p>
-<div class="section" id="Setting-up-a-data-frame-for-plotting">
-<h3>Setting up a data frame for plotting<a class="headerlink" href="#Setting-up-a-data-frame-for-plotting" title="Permalink to this heading"></a></h3>
+<section id="Setting-up-a-data-frame-for-plotting">
+<h3>Setting up a data frame for plotting<a class="headerlink" href="#Setting-up-a-data-frame-for-plotting" title="Link to this heading"></a></h3>
 <p>Before making a plot, we need to set up a data frame amenable for the type of plot we want. We start by reading in the data set and computing the <code class="docutils literal notranslate"><span class="pre">'insomnia'</span></code> column, which gives <code class="docutils literal notranslate"><span class="pre">True</span></code>s and <code class="docutils literal notranslate"><span class="pre">False</span></code>s, as we’ve done in the preceding parts of this lesson.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -596,9 +596,9 @@ type of the resulting column (though Polars will attempt to infer it).</p>
 <small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>sleeper</th><th>percent correct</th></tr><tr><td>str</td><td>f64</td></tr></thead><tbody><tr><td>&quot;normal&quot;</td><td>81.461039</td></tr><tr><td>&quot;insomniac&quot;</td><td>76.1</td></tr></tbody></table></div></div>
 </div>
 <p>Now we’re ready to make the bar graph. Note that we now have only two data points that we are showing on the plot. We have decided to throw out a <strong>lot</strong> of information from the data we collected to display only two values. Does this strike you as a terrible idea? It should. <strong>Don’t do this.</strong> We’re just doing it to show how categorical axes are set up using Bokeh.</p>
-</div>
-<div class="section" id="Setting-up-categorical-axes">
-<h3>Setting up categorical axes<a class="headerlink" href="#Setting-up-categorical-axes" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Setting-up-categorical-axes">
+<h3>Setting up categorical axes<a class="headerlink" href="#Setting-up-categorical-axes" title="Link to this heading"></a></h3>
 <p>To set up a categorical axis, you need to specify the <code class="docutils literal notranslate"><span class="pre">x_range</span></code> (or <code class="docutils literal notranslate"><span class="pre">y_range</span></code> if you want the y-axis to be categorical) as a list with the categories you want on the axis when you instantiate the figure. I will make a horizontal bar graph, so I will specify <code class="docutils literal notranslate"><span class="pre">y_range</span></code>. I also want my quantitative axis (x in this case) to go from zero to 100, since it signifies a percent. Also, when I instantiate this figure, because it is not very tall and I do not want the reset tool cut off, I will also
 explicitly set the tools I want in the toolbar.</p>
 <div class="nbinput nblast docutils container">
@@ -740,10 +740,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="Nested-categorical-axes">
-<h2>Nested categorical axes<a class="headerlink" href="#Nested-categorical-axes" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Nested-categorical-axes">
+<h2>Nested categorical axes<a class="headerlink" href="#Nested-categorical-axes" title="Link to this heading"></a></h2>
 <p>We may wish to make a bar graph where we have four bars, normal and insomniac for males and also normal and insomniac for females. To start, we will have to re-make the <code class="docutils literal notranslate"><span class="pre">df_mean</span></code> data frame, now grouping by gender and sleeper. Furthermore, it will be nicer to label the categories as “female” and “male” instead of “f” and “m”.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -895,9 +895,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
@@ -922,8 +922,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -937,11 +937,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11cd01790> 
+   <jinja2.runtime.BlockReference object at 0x120f71af0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

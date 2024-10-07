@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tidy data and split-apply-combine &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -174,8 +174,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Tidy-data-and-split-apply-combine">
-<h1>Tidy data and split-apply-combine<a class="headerlink" href="#Tidy-data-and-split-apply-combine" title="Permalink to this heading"></a></h1>
+  <section id="Tidy-data-and-split-apply-combine">
+<h1>Tidy data and split-apply-combine<a class="headerlink" href="#Tidy-data-and-split-apply-combine" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/gfmt_sleep.csv">Data set download</a></p>
 <hr /><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -188,8 +188,8 @@
 </div>
 </div>
 <hr /><p>We have dipped our toe into Polars to see its power. In this lesson, we will continue to harness the power of Polars to pull out subsets of data we are interested in, and of vital importance, will introduce the concept of <strong>tidy data</strong>. I suspect this will be a demarcation in your life. You will have the times in your life before tidy data and after. Welcome to your bright tomorrow.</p>
-<div class="section" id="Tidy-data">
-<h2>Tidy data<a class="headerlink" href="#Tidy-data" title="Permalink to this heading"></a></h2>
+<section id="Tidy-data">
+<h2>Tidy data<a class="headerlink" href="#Tidy-data" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Hadley_Wickham">Hadley Wickham</a> wrote a <a class="reference external" href="http://dx.doi.org/10.18637/jss.v059.i10">great article</a> in favor of “tidy data.” Tidy data frames follow the rules: 1. Each variable is a column. 2. Each observation is a row. 3. Each type of observation has its own separate data frame.</p>
 <p>This is less pretty to visualize as a table, but we rarely look at data in tables. Indeed, the representation of data which is convenient for visualization is different from that which is convenient for analysis. A tidy data frame is almost always <strong>much</strong> easier to work with than non-tidy formats.</p>
 <p>You may raise some objections about tidy data. Here are a few, and my responses.</p>
@@ -207,9 +207,9 @@ possibility of misinterpretation or mistakes.</p>
 <p><strong>Objection:</strong> Once it’s tidy, we pretty much have to use Boolean indexing to get what we want, and that can be slower than other methods of accessing data. What about performance?</p>
 <p><strong>Response:</strong> See the previous response. Speed of access really only becomes a problem with big, high-throughput data sets. In those cases, there are often many things you need to be clever about beyond organization of your data.</p>
 <p><strong>Conclusion:</strong> I really think that tidying a data set allows for fluid exploration. We will focus on tidy data sets going forward. Bringing untidy data into tidy format can be an annoying challenge that often involves lots of file I/O and text parsing operations. As such, it is wise to arrange your data in tidy format starting at acquisition. If your instrumentation prevents you from doing so, you should develop functions and scripts to parse them and convert them into tidy format.</p>
-</div>
-<div class="section" id="The-data-set">
-<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
+</section>
+<section id="The-data-set">
+<h2>The data set<a class="headerlink" href="#The-data-set" title="Link to this heading"></a></h2>
 <p>We will again use the data set from the <a class="reference external" href="https://doi.org/10.1098/rsos.160321">Beattie, et al. paper</a> on facial matching under sleep deprivation. Let’s load in the original data set and add the column on insomnia as we did in <a class="reference internal" href="intro_to_polars.html"><span class="doc">previous part of this lesson</span></a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -239,9 +239,9 @@ possibility of misinterpretation or mistakes.</p>
 <small>shape: (5, 16)</small><table border="1" class="dataframe"><thead><tr><th>participant number</th><th>gender</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th><th>insomnia</th></tr><tr><td>i64</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>i64</td><td>bool</td></tr></thead><tbody><tr><td>8</td><td>&quot;f&quot;</td><td>39</td><td>65</td><td>80</td><td>72.5</td><td>91.0</td><td>90.0</td><td>93.0</td><td>83.5</td><td>93.0</td><td>90.0</td><td>9</td><td>13</td><td>2</td><td>true</td></tr><tr><td>16</td><td>&quot;m&quot;</td><td>42</td><td>90</td><td>90</td><td>90.0</td><td>75.5</td><td>55.5</td><td>70.5</td><td>50.0</td><td>75.0</td><td>50.0</td><td>4</td><td>11</td><td>7</td><td>true</td></tr><tr><td>18</td><td>&quot;f&quot;</td><td>31</td><td>90</td><td>95</td><td>92.5</td><td>89.5</td><td>90.0</td><td>86.0</td><td>81.0</td><td>89.0</td><td>88.0</td><td>10</td><td>9</td><td>3</td><td>true</td></tr><tr><td>22</td><td>&quot;f&quot;</td><td>35</td><td>100</td><td>75</td><td>87.5</td><td>89.5</td><td>null</td><td>71.0</td><td>80.0</td><td>88.0</td><td>80.0</td><td>13</td><td>8</td><td>20</td><td>true</td></tr><tr><td>27</td><td>&quot;f&quot;</td><td>74</td><td>60</td><td>65</td><td>62.5</td><td>68.5</td><td>49.0</td><td>61.0</td><td>49.0</td><td>65.0</td><td>49.0</td><td>13</td><td>9</td><td>12</td><td>true</td></tr></tbody></table></div></div>
 </div>
 <p>This data set is in tidy format. Each row represents a single test on a single participant. The aspects of that person’s test are given in each column. We already saw the power of having the data in this format when we did Boolean indexing. Now, we will see how this format allows use to easily do an operation we do again and again with data sets, <strong>split-apply-combine</strong>.</p>
-</div>
-<div class="section" id="Split-apply-combine">
-<h2>Split-apply-combine<a class="headerlink" href="#Split-apply-combine" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Split-apply-combine">
+<h2>Split-apply-combine<a class="headerlink" href="#Split-apply-combine" title="Link to this heading"></a></h2>
 <p>Let’s say we want to compute the median percent correct face matchings for subjects with insomnia and the median percent correct face matchings for those without. Ignoring for the second the mechanics of how we would do this with Python, let’s think about it in English. What do we need to do?</p>
 <ol class="arabic simple">
 <li><p><strong>Split</strong> the data set up according to the <code class="docutils literal notranslate"><span class="pre">'insomnia'</span></code> field, i.e., split it up so we have a separate data set for the two classes of subjects, those with insomnia and those without.</p></li>
@@ -251,8 +251,8 @@ possibility of misinterpretation or mistakes.</p>
 <p>We see that the strategy we want is a <strong>split-apply-combine</strong> strategy. This idea was put forward by Hadley Wickham in <a class="reference external" href="http://dx.doi.org/10.18637/jss.v040.i01">this paper</a>. It turns out that this is a strategy we want to use <em>very</em> often. Split the data in terms of some criterion. Apply some function to the split-up data. Combine the results into a new data frame.</p>
 <p>Note that if the data are tidy, this procedure makes a lot of sense. Choose the column or columns you want to use to split by. All rows with like entries in the splitting column(s) are then grouped into a new data set. You can then apply any function you want into these new data sets. You can then combine the results into a new data frame.</p>
 <p>Polars’s split-apply-combine operations are achieved in a <strong>group by/aggregation</strong> context, achieved with <code class="docutils literal notranslate"><span class="pre">df.group_by().agg()</span></code>. You can think of <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> as the splitting part. The apply-combine part is done by passing expressions into <code class="docutils literal notranslate"><span class="pre">agg()</span></code>. The result is a data frame with as many rows as there are groups that we split the data frame into.</p>
-<div class="section" id="Median-percent-correct">
-<h3>Median percent correct<a class="headerlink" href="#Median-percent-correct" title="Permalink to this heading"></a></h3>
+<section id="Median-percent-correct">
+<h3>Median percent correct<a class="headerlink" href="#Median-percent-correct" title="Link to this heading"></a></h3>
 <p>Let’s go ahead and do our first split-apply-combine on this tidy data set. First, we will split the data set up by insomnia condition and then apply a median function.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -374,10 +374,10 @@ possibility of misinterpretation or mistakes.</p>
 </style>
 <small>shape: (4, 16)</small><table border="1" class="dataframe"><thead><tr><th>gender</th><th>insomnia</th><th>participant number</th><th>age</th><th>correct hit percentage</th><th>correct reject percentage</th><th>percent correct</th><th>confidence when correct hit</th><th>confidence incorrect hit</th><th>confidence correct reject</th><th>confidence incorrect reject</th><th>confidence when correct</th><th>confidence when incorrect</th><th>sci</th><th>psqi</th><th>ess</th></tr><tr><td>str</td><td>bool</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>&quot;f&quot;</td><td>true</td><td>46.0</td><td>39.0</td><td>80.0</td><td>75.0</td><td>72.5</td><td>76.5</td><td>73.75</td><td>71.0</td><td>68.5</td><td>77.0</td><td>70.5</td><td>14.0</td><td>9.0</td><td>7.0</td></tr><tr><td>&quot;f&quot;</td><td>false</td><td>58.0</td><td>36.0</td><td>85.0</td><td>80.0</td><td>85.0</td><td>74.0</td><td>55.0</td><td>70.5</td><td>60.0</td><td>74.0</td><td>58.75</td><td>26.0</td><td>4.0</td><td>7.0</td></tr><tr><td>&quot;m&quot;</td><td>false</td><td>41.0</td><td>38.5</td><td>90.0</td><td>80.0</td><td>82.5</td><td>76.0</td><td>57.75</td><td>74.25</td><td>54.75</td><td>76.25</td><td>59.25</td><td>29.0</td><td>3.0</td><td>6.0</td></tr><tr><td>&quot;m&quot;</td><td>true</td><td>55.5</td><td>37.0</td><td>95.0</td><td>82.5</td><td>83.75</td><td>83.75</td><td>55.5</td><td>75.75</td><td>73.25</td><td>81.25</td><td>62.5</td><td>14.0</td><td>9.0</td><td>8.0</td></tr></tbody></table></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Window-functions">
-<h2>Window functions<a class="headerlink" href="#Window-functions" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Window-functions">
+<h2>Window functions<a class="headerlink" href="#Window-functions" title="Link to this heading"></a></h2>
 <p>In the above examples, we split the data frame into groups and applied an aggregating function that gave us back a data frame with as many rows as groups. But what if we do not want to aggregate? For example, say we want to compute the ranking of each participant according to percent correct <em>within each group</em> of insomniacs and normal sleepers. First, let’s see what happens if we use a group by/aggregation context. When we do the grouping, we will retain the order of the entries so that the
 series of ranks that we acquire match the original order in the data frame. We will also use the <code class="docutils literal notranslate"><span class="pre">'ordinal'</span></code> method for ranking, which gives a distinct rank to each entry even in the event of ties.</p>
 <div class="nbinput docutils container">
@@ -537,9 +537,9 @@ series of ranks that we acquire match the original order in the data frame. We w
 <small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>median percent correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>75.0</td></tr><tr><td>false</td><td>85.0</td></tr></tbody></table></div></div>
 </div>
 <p>A group by/aggregation context is preferred in this case. As a loose rule of thumb, use a group by/aggregation context when you want a resulting data frame with the number of rows being equal to the number of groups. Use a window function in a selection context when you want a resulting data frame with the same number of rows as your input data frame.</p>
-</div>
-<div class="section" id="Custom-aggregation-and-window-functions">
-<h2>Custom aggregation and window functions<a class="headerlink" href="#Custom-aggregation-and-window-functions" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Custom-aggregation-and-window-functions">
+<h2>Custom aggregation and window functions<a class="headerlink" href="#Custom-aggregation-and-window-functions" title="Link to this heading"></a></h2>
 <p>Let’s say we want to compute the coefficient of variation (CoV, the standard deviation divided by the mean) of data in columns of groups in the data frame. There is no built-in function in Polars to do this, but we could construct an expression that does it.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -697,9 +697,9 @@ series of ranks that we acquire match the original order in the data frame. We w
 219 μs ± 3.12 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Polars-Structs-and-expressions-using-multiple-columns">
-<h2>Polars Structs and expressions using multiple columns<a class="headerlink" href="#Polars-Structs-and-expressions-using-multiple-columns" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Polars-Structs-and-expressions-using-multiple-columns">
+<h2>Polars Structs and expressions using multiple columns<a class="headerlink" href="#Polars-Structs-and-expressions-using-multiple-columns" title="Link to this heading"></a></h2>
 <p>As discussed earlier, Polars expressions strictly take a series as input and return a series as output. What if we want to perform a calculation that requires two columns? This is where the Polars <strong>Struct</strong> data type comes in. As a simple example, if we cast out whole data frame into a series, we get a series with a <code class="docutils literal notranslate"><span class="pre">struct</span></code> data type.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
@@ -903,9 +903,9 @@ series of ranks that we acquire match the original order in the data frame. We w
 </style>
 <small>shape: (2, 2)</small><table border="1" class="dataframe"><thead><tr><th>insomnia</th><th>confidence when correct</th></tr><tr><td>bool</td><td>f64</td></tr></thead><tbody><tr><td>true</td><td>0.590435</td></tr><tr><td>false</td><td>0.552045</td></tr></tbody></table></div></div>
 </div>
-</div>
-<div class="section" id="Looping-over-a-GroupBy-object">
-<h2>Looping over a GroupBy object<a class="headerlink" href="#Looping-over-a-GroupBy-object" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Looping-over-a-GroupBy-object">
+<h2>Looping over a GroupBy object<a class="headerlink" href="#Looping-over-a-GroupBy-object" title="Link to this heading"></a></h2>
 <p>We sometimes want to loop over the groups of a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object. This often comes up in plotting applications, as we will see in future lessons. As an example, I will compute the median percent correct for female and males, insomniacs and not (which we already computed using <code class="docutils literal notranslate"><span class="pre">describe()</span></code>). In the cell below, note that I used the <code class="docutils literal notranslate"><span class="pre">maintain_order=True</span></code> kwarg to ensure that the order in which I evaluate the groups is the order they first appear in the data frame. This can result in a
 performance hit for larger data sets, since it restricts how Polars can parallelize the calculation, but it is useful to maintain a set order in plotting applications in particular.</p>
 <div class="nbinput docutils container">
@@ -947,9 +947,9 @@ f :  83.75
 m :  83.75
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
@@ -974,8 +974,8 @@ jupyterlab: 4.2.5
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -989,11 +989,11 @@ jupyterlab: 4.2.5
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11b8ee450> 
+   <jinja2.runtime.BlockReference object at 0x120ed1910> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

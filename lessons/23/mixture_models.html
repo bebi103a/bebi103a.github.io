@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>23. Mixture models &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -172,8 +172,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="23.-Mixture-models">
-<h1>23. Mixture models<a class="headerlink" href="#23.-Mixture-models" title="Permalink to this heading"></a></h1>
+  <section id="23.-Mixture-models">
+<h1>23. Mixture models<a class="headerlink" href="#23.-Mixture-models" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -535,8 +535,8 @@ function(Bokeh) {
 </script></div>
 </div>
 <hr><p>In a previous lesson, we explored a Negative-Binomial model for mRNA counts. The data set we used came from <a class="reference external" href="https://doi.org/10.1016/j.molcel.2014.06.029">this paper from the Elowitz lab</a> and featured smFISH performed in 279 cells for the genes <em>rex1</em>, <em>rest</em>, <em>nanog</em>, and <em>prdm14</em>. The data set may be downloaded <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">here</a>.</p>
-<div class="section" id="Multiple-cell-types?">
-<h2>Multiple cell types?<a class="headerlink" href="#Multiple-cell-types?" title="Permalink to this heading"></a></h2>
+<section id="Multiple-cell-types?">
+<h2>Multiple cell types?<a class="headerlink" href="#Multiple-cell-types?" title="Link to this heading"></a></h2>
 <p>While the Negative Binomial model could work for some genes, exploratory data analysis shows an obvious bimodality in the distribution of counts of Rex1 transcripts.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -592,9 +592,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>We can define a cell type by its expression profile. The bimodality of the ECDF suggests that there are more than one cell types present, since the ECDF clearly does not follow a Negative Binomial distribution.</p>
-</div>
-<div class="section" id="A-Negative-Binomial-mixture-model">
-<h2>A Negative Binomial mixture model<a class="headerlink" href="#A-Negative-Binomial-mixture-model" title="Permalink to this heading"></a></h2>
+</section>
+<section id="A-Negative-Binomial-mixture-model">
+<h2>A Negative Binomial mixture model<a class="headerlink" href="#A-Negative-Binomial-mixture-model" title="Link to this heading"></a></h2>
 <p>What is the story for a distribution of mRNA counts coming from more than one cell type? To be concrete, let’s say we ahve two cell types, one with one level of bursty expression of the gene of interest, and another with a different level of bursty expression. We would expect the number of mRNA transcripts to be distributed according to a linear combination of negative binomial distributions. Such a linear combination of distributions is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Mixture_model">mixture
 model</a>. For this mixture model, we can write out the PMF for an individual measurement of <span class="math notranslate nohighlight">\(n\)</span> mRNA transcripts as</p>
 <p><span class="math">\begin{align}
@@ -609,9 +609,9 @@ w\,\frac{(n + \alpha_1 - 1)!}{n!\,(\alpha_1-1)!}\,\left(\frac{\beta_1}{1+\beta_1
 &b_2 = 1/\beta_2.
 \end{align}</span></p>
 <p>(Recall from the last lesson that we are choosing to parametrize the Negative Binomial distributions with the burst size <span class="math notranslate nohighlight">\(b\)</span>, related to <span class="math notranslate nohighlight">\(\beta\)</span> as <span class="math notranslate nohighlight">\(b = 1/\beta\)</span>, so going forward we will use <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span>.)</p>
-</div>
-<div class="section" id="MLE-for-a-mixture-model">
-<h2>MLE for a mixture model<a class="headerlink" href="#MLE-for-a-mixture-model" title="Permalink to this heading"></a></h2>
+</section>
+<section id="MLE-for-a-mixture-model">
+<h2>MLE for a mixture model<a class="headerlink" href="#MLE-for-a-mixture-model" title="Link to this heading"></a></h2>
 <p>Mixture models offer some unique challenges in modeling. They are revealed by looking at the log likelihood, which I write again here for a single measurement <span class="math notranslate nohighlight">\(n\)</span> for clarity.</p>
 <p><span class="math">\begin{align}
 \ell(n\mid \alpha_1, b_1, \alpha_2, b_2, w) = \ln(w\,x_1 + (1-w)x_2),
@@ -620,8 +620,8 @@ w\,\frac{(n + \alpha_1 - 1)!}{n!\,(\alpha_1-1)!}\,\left(\frac{\beta_1}{1+\beta_1
 <p><span class="math">\begin{align}
 x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right)^{\alpha_i}\left(\frac{b_i}{1+b_i}\right)^{n}.
 \end{align}</span></p>
-<div class="section" id="The-log-sum-exp-trick">
-<h3>The log-sum-exp trick<a class="headerlink" href="#The-log-sum-exp-trick" title="Permalink to this heading"></a></h3>
+<section id="The-log-sum-exp-trick">
+<h3>The log-sum-exp trick<a class="headerlink" href="#The-log-sum-exp-trick" title="Link to this heading"></a></h3>
 <p>While the logarithm of a product is conveniently split, we cannot split the logarithm of a sum. If we compute the sum directly, we will get serious underflow errors for parameters for which the terms <span class="math notranslate nohighlight">\(x_1\)</span> or <span class="math notranslate nohighlight">\(x_2\)</span> are small. To compute this is a more numerically stable way, we need to use the <a class="reference external" href="https://en.wikipedia.org/wiki/LogSumExp">log-sum-exp trick</a>. To do this, we re-write the <span class="math notranslate nohighlight">\(x_i\)</span> as <span class="math notranslate nohighlight">\(x_i = \mathrm{e}^{\ln x_i}\)</span>.</p>
 <p><span class="math">\begin{align}
 \ln f(n\mid \alpha_1, b_1, \alpha_2, b_2, w) = \ln(w\,\mathrm{e}^{\ln x_1} + (1-w)\mathrm{e}^{\ln x_2}).
@@ -633,16 +633,16 @@ x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right
 \end{align}</span></p>
 <p>Provided <span class="math notranslate nohighlight">\(w\)</span> is not too close to zero, the argument of the logarithm of the sum is now of order <span class="math notranslate nohighlight">\(w\)</span>. So, when computing the log of the sum of weighted probabilities, we should factor out the largest term and then proceed. This is known as the log-sum-exp trick. Conveniently, this is <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.3.3/reference/generated/scipy.special.logsumexp.html">implemented in Scipy</a> as <code class="docutils literal notranslate"><span class="pre">scipy.special.logsumexp()</span></code>. Be sure to read the docs to understand how this works,
 and we will use it below in our log-likelihood calculation.</p>
-</div>
-<div class="section" id="Model-identifiability">
-<h3>Model identifiability<a class="headerlink" href="#Model-identifiability" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Model-identifiability">
+<h3>Model identifiability<a class="headerlink" href="#Model-identifiability" title="Link to this heading"></a></h3>
 <p>A <strong>nonidentifiable model</strong> is a model for which we cannot unambiguously determine the parameter values. That is, two or more parameter sets are observationally equivalent. This is the case for this mixture model because of <strong>label switching</strong>. In this mixture model, it is arbitrary which <span class="math notranslate nohighlight">\((\alpha, b)\)</span> pair we label as <span class="math notranslate nohighlight">\((\alpha_1, b_1)\)</span> or <span class="math notranslate nohighlight">\((\alpha_2, b_2)\)</span>. We can switch the labels, and also change <span class="math notranslate nohighlight">\(w\)</span> to <span class="math notranslate nohighlight">\(1-w\)</span>, and we have exactly the same log likelihood. You can
 imagine that if we have a mixture of more than two distributions, the label switching problem gets worse, as we can have various combinations of label switching.</p>
 <p>There is no one way to get around this kind of nonidentifiability (or many other kinds of nonidentifiability, for that matter). Since we are finding a maximum likelihood estimate, and the value of the likelihood is identical upon switching labels, we do not really need to worry about it here, though this could become a problem when computing confidence intervals, since we need to do the MLE calculation many times with different bootstrap sample data sets each time. We will proceed to compute the
 confidence interval and check to see if the label-switching nonidentifiability presents itself in the results.</p>
-</div>
-<div class="section" id="The-log-likelihood">
-<h3>The log-likelihood<a class="headerlink" href="#The-log-likelihood" title="Permalink to this heading"></a></h3>
+</section>
+<section id="The-log-likelihood">
+<h3>The log-likelihood<a class="headerlink" href="#The-log-likelihood" title="Link to this heading"></a></h3>
 <p>With these two considerations in mind, let’s code up the log-likelihood.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -672,9 +672,9 @@ confidence interval and check to see if the label-switching nonidentifiability p
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Initial-guess">
-<h3>Initial guess<a class="headerlink" href="#Initial-guess" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Initial-guess">
+<h3>Initial guess<a class="headerlink" href="#Initial-guess" title="Link to this heading"></a></h3>
 <p>The optimization problem is more difficult now, since we have five parameters. We should provide the best initial guesses we can. To come up with guesses, we note in the ECDF that the second inflection point occurs around a value of the ECDF of 0.2. We thus can guess <span class="math notranslate nohighlight">\(w \approx 0.2\)</span>. To get guesses for <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span>, we take the first 20% of the counts and get an MLE using the single-Negative Binomial model. We do the same for the remaining 80% of counts to get guesses
 for <span class="math notranslate nohighlight">\(\alpha_2\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span>. To do this, we need to borrow our MLE function from a previous lesson.</p>
 <div class="nbinput nblast docutils container">
@@ -755,9 +755,9 @@ for <span class="math notranslate nohighlight">\(\alpha_2\)</span> and <span cla
 </pre></div></div>
 </div>
 <p>The guesses seem reasonable, so we will proceed using this method of generating initial guesses.</p>
-</div>
-<div class="section" id="Performing-the-optimization">
-<h3>Performing the optimization<a class="headerlink" href="#Performing-the-optimization" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Performing-the-optimization">
+<h3>Performing the optimization<a class="headerlink" href="#Performing-the-optimization" title="Link to this heading"></a></h3>
 <p>Now we’ll code up a function to generate the initial guess, and then perform the optimization. Note that below I have decreased the tolerance down to <span class="math notranslate nohighlight">\(10^{-6}\)</span>. I found this to be necessary for this problem; the solver would be off by about 5% if I gave it similar, but different, initial guesses. The lower the tolerance, the closer to zero you require the gradient of the log likelihood to be.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -808,9 +808,9 @@ b2 = 31.810367
 w = 0.160422
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Comparison-to-empirical-CDF">
-<h3>Comparison to empirical CDF<a class="headerlink" href="#Comparison-to-empirical-CDF" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Comparison-to-empirical-CDF">
+<h3>Comparison to empirical CDF<a class="headerlink" href="#Comparison-to-empirical-CDF" title="Link to this heading"></a></h3>
 <p>Let’s now see how the CDFs parametrized by the MLE compare with the ECDF. The theoretical CDF for a mixture model is computed from the weights of each distribution in the mixture. If the CDF from the first Negative Binomial distribution is <span class="math notranslate nohighlight">\(F_1(n;\alpha_1^*,b_1^*)\)</span> and that of the second is <span class="math notranslate nohighlight">\(F_2(n;\alpha_2^*,b_2^*)\)</span>, then the theoretical ECDF for the mixture model, parametrized by the MLE, is</p>
 <p><span class="math">\begin{align}
 F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (1-w^*) F_2(n;\alpha_2^*,b_2^*).
@@ -931,9 +931,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>We will implement graphical methods of model assessment later in this lesson, but it is clear from the crude plot above that the Negative Binomial model is not commensurate with the data, but the mixture model is.</p>
-</div>
-<div class="section" id="Confidence-interval-for-the-mixture-model">
-<h3>Confidence interval for the mixture model<a class="headerlink" href="#Confidence-interval-for-the-mixture-model" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Confidence-interval-for-the-mixture-model">
+<h3>Confidence interval for the mixture model<a class="headerlink" href="#Confidence-interval-for-the-mixture-model" title="Link to this heading"></a></h3>
 <p>Let’s now compute a confidence interval for the mixture model. To use <code class="docutils literal notranslate"><span class="pre">bebi103.bootstrap.draw_bs_reps_mle()</span></code>, we need to first write a function to generate data out of the mixture model. To do this, we first draw a random number to see which Negative Binomial distribution to draw the count out of (either the one parametrized with <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span>, or the one parametrized with <span class="math notranslate nohighlight">\(\alpha_2\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span>). We then draw a count out of the distribution we chose.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -1050,10 +1050,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>The corner plot of the confidence region shows that <span class="math notranslate nohighlight">\(\alpha_1^*\)</span> and <span class="math notranslate nohighlight">\(b_1^*\)</span> are strongly correlated, as are <span class="math notranslate nohighlight">\(\alpha_2^*\)</span> and <span class="math notranslate nohighlight">\(b_2^*\)</span>. However, the MLEs of the parameters for the respective Negative Binomials are not correlated with each other.</p>
 <p>We note that because <span class="math notranslate nohighlight">\(w\)</span> is always much smaller than 1/2 and unimodal, we are having problems with the label-switching nonidentifiability.</p>
-</div>
-</div>
-<div class="section" id="A-mixture-model-for-all-cells">
-<h2>A mixture model for all cells<a class="headerlink" href="#A-mixture-model-for-all-cells" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="A-mixture-model-for-all-cells">
+<h2>A mixture model for all cells<a class="headerlink" href="#A-mixture-model-for-all-cells" title="Link to this heading"></a></h2>
 <p>If we assume a Negative Binomial (non-mixture) model for the mRNA transcript counts, we can independently perform maximum likelihood estimates for the burst frequency and burst size for each gene. However, in the mixture model, we do need to take into account the fact that the mRNA counts for the respective genes are measured in the <em>same</em> cells. In our modeling, that is manifest in the parameter <span class="math notranslate nohighlight">\(w\)</span>, which specifies the relative fraction of cell types, being shared among all four genes.
 The generative PMF for a single set of observations <span class="math notranslate nohighlight">\(\mathbf{n} = \{n_\mathrm{Rex1}, n_\mathrm{Rest}, n_\mathrm{Nanog}, n_\mathrm{Prdm14}\}\)</span> is given by</p>
 <p><span class="math">\begin{align}
@@ -1302,8 +1302,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>The mixture model seems to fit all four reasonably well, with the theoretical CDF parametrized by the MLE mostly falling within the 95% confidence interval of the ECDF. (We will explore other ways to visualize and assess models in later lessons.) However, we note that the Rex1 data do see some deviations on the tail of the distribution for small counts.</p>
-<div class="section" id="Confidence-intervals-for-the-mixture-model-for-all-genes">
-<h3>Confidence intervals for the mixture model for all genes<a class="headerlink" href="#Confidence-intervals-for-the-mixture-model-for-all-genes" title="Permalink to this heading"></a></h3>
+<section id="Confidence-intervals-for-the-mixture-model-for-all-genes">
+<h3>Confidence intervals for the mixture model for all genes<a class="headerlink" href="#Confidence-intervals-for-the-mixture-model-for-all-genes" title="Link to this heading"></a></h3>
 <p>We can attempt to compute confidence regions for the MLEs for this model for all four genes. We again start by writing a function to generate the data from the mixture model.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
@@ -1439,14 +1439,14 @@ Cell <span class="ansi-green-fg">In[21], line 18</span>, in <span class="ansi-cy
 <p>We got a runtime error that the solver did not converge. This can happen; finding MLEs for a large number of parameters is very difficult and can often lead to this kind of failure. We will therefore not pursue confidence intervals for this more complicated mixture model.</p>
 <p>That said, given the difficulty in finding MLEs for complicated models, we can’t be too sure that the single maximum likelihood estimate we got for the nineteen parameters of this model is even a good one. This should raise a reg flag for you. <strong>MLEs are very difficult to obtain for high-dimensional models, and when they are obtained, it is very difficult to verify that they do, in fact, give the maximum likelihood estimate.</strong></p>
 <p>We will deal with complex models and ways of investigating the failure modes in finding parameter estimates next term. For now, we will proceed by considering only the single-gene case of Rex1.</p>
-</div>
-</div>
-<div class="section" id="The-expectation-maximization-algorithm">
-<h2>The expectation-maximization algorithm<a class="headerlink" href="#The-expectation-maximization-algorithm" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="The-expectation-maximization-algorithm">
+<h2>The expectation-maximization algorithm<a class="headerlink" href="#The-expectation-maximization-algorithm" title="Link to this heading"></a></h2>
 <p>I close this lesson by briefly mentioning that the <a class="reference external" href="https://en.wikipedia.org/wiki/Expectation–maximization_algorithm">expectation-maximization (EM) algorithm</a> is a commonly used effective algorithm for performing maximum likelihood estimates for mixture models. It alleviates some (but by no means all) of the problems for finding MLEs of complex models. We will not discuss it, but you should be aware of it.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
@@ -1475,8 +1475,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1490,11 +1490,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11ca1af00> 
+   <jinja2.runtime.BlockReference object at 0x11e133ce0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Making a data frame wide &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -171,8 +171,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Making-a-data-frame-wide">
-<h1>Making a data frame wide<a class="headerlink" href="#Making-a-data-frame-wide" title="Permalink to this heading"></a></h1>
+  <section id="Making-a-data-frame-wide">
+<h1>Making a data frame wide<a class="headerlink" href="#Making-a-data-frame-wide" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">Data set download</a></p>
 <hr /><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -530,8 +530,8 @@ function(Bokeh) {
 <hr /><p>We have seen how unpivoting a data frame can bring it to tidy format, but a tall format is often not the only tidy option nor the easiest to work with. As usual, this is best seen by example, and we will use a subset of the <a class="reference external" href="https://towardsdatascience.com/penguins-dataset-overview-iris-alternative-9453bb8c8d95">Palmer penguins data set</a>, which you can download here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv</a>, to demonstrate. The data set consists of measurements of
 three different species of penguins acquired at the <a class="reference external" href="https://en.wikipedia.org/wiki/Palmer_Station">Palmer Station in Antarctica</a>. The measurements were made between 2007 and 2009 by <a class="reference external" href="https://gormankb.github.io/">Kristen Gorman</a>.</p>
 <p>As we work toward getting the data in a useful tidy format, we will learn some additional wrangling techniques.</p>
-<div class="section" id="Exploring-the-data-set">
-<h2>Exploring the data set<a class="headerlink" href="#Exploring-the-data-set" title="Permalink to this heading"></a></h2>
+<section id="Exploring-the-data-set">
+<h2>Exploring the data set<a class="headerlink" href="#Exploring-the-data-set" title="Link to this heading"></a></h2>
 <p>First, let’s take a look at the data set stored in the CSV file.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -559,9 +559,9 @@ bill_depth_mm,bill_length_mm,flipper_length_mm,body_mass_g,bill_depth_mm,bill_le
 </pre></div></div>
 </div>
 <p>We see that we have <em>two</em> header rows. The first gives the species and the second the quantity that is being measured. Apparently, then, each row of data has information for three different penguins, one from each species. This is not a tidy data set!</p>
-</div>
-<div class="section" id="Reading-the-data-set-into-a-Polars-data-frame">
-<h2>Reading the data set into a Polars data frame<a class="headerlink" href="#Reading-the-data-set-into-a-Polars-data-frame" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Reading-the-data-set-into-a-Polars-data-frame">
+<h2>Reading the data set into a Polars data frame<a class="headerlink" href="#Reading-the-data-set-into-a-Polars-data-frame" title="Link to this heading"></a></h2>
 <p>We start by naively reading this data set using <code class="docutils literal notranslate"><span class="pre">pl.read_csv()</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -624,9 +624,9 @@ this on the penguins data set and then load in the result.</p>
 <small>shape: (10, 4)</small><table border="1" class="dataframe"><thead><tr><th>penguin_id</th><th>species</th><th>quantity</th><th>value</th></tr><tr><td>i64</td><td>str</td><td>str</td><td>f64</td></tr></thead><tbody><tr><td>0</td><td>&quot;Gentoo&quot;</td><td>&quot;bill_depth_mm&quot;</td><td>16.3</td></tr><tr><td>0</td><td>&quot;Gentoo&quot;</td><td>&quot;bill_length_mm&quot;</td><td>48.4</td></tr><tr><td>0</td><td>&quot;Gentoo&quot;</td><td>&quot;flipper_length_mm&quot;</td><td>220.0</td></tr><tr><td>0</td><td>&quot;Gentoo&quot;</td><td>&quot;body_mass_g&quot;</td><td>5400.0</td></tr><tr><td>0</td><td>&quot;Adelie&quot;</td><td>&quot;bill_depth_mm&quot;</td><td>18.5</td></tr><tr><td>0</td><td>&quot;Adelie&quot;</td><td>&quot;bill_length_mm&quot;</td><td>36.8</td></tr><tr><td>0</td><td>&quot;Adelie&quot;</td><td>&quot;flipper_length_mm&quot;</td><td>193.0</td></tr><tr><td>0</td><td>&quot;Adelie&quot;</td><td>&quot;body_mass_g&quot;</td><td>3500.0</td></tr><tr><td>0</td><td>&quot;Chinstrap&quot;</td><td>&quot;bill_depth_mm&quot;</td><td>18.3</td></tr><tr><td>0</td><td>&quot;Chinstrap&quot;</td><td>&quot;bill_length_mm&quot;</td><td>47.6</td></tr></tbody></table></div></div>
 </div>
 <p>Notice that we kept the row index in the column <code class="docutils literal notranslate"><span class="pre">'penguin_id'</span></code> to make sure that we didn’t lose track of what penguin each measurement was associated with. Note also that each penguin has a unique identifier <em>when combined with the species</em>. E.g., Adelie penguin with penguin ID 0 has four measurements associated with it.</p>
-</div>
-<div class="section" id="Pivoting-from-tall-to-wide-format">
-<h2>Pivoting from tall to wide format<a class="headerlink" href="#Pivoting-from-tall-to-wide-format" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Pivoting-from-tall-to-wide-format">
+<h2>Pivoting from tall to wide format<a class="headerlink" href="#Pivoting-from-tall-to-wide-format" title="Link to this heading"></a></h2>
 <p>Looking at the melded data frame above, it is very <strong>tall</strong>. Each row only has a single <strong>value</strong>, that is, a single measurement, and every other column in the row is metadata associated with that measurement, specifically which penguin/species and which quantity was being measured.</p>
 <p>While this tall format is tidy, we can imagine using a <strong>wide</strong> format, in which each row is a specific penguin and each column is a quantity measured on that penguin. This is also a tidy format. In some cases, a tall format is more convenient, and in others a wide format is more convenient.</p>
 <p>To convert from a tall to a wide format, we perform a <strong>pivot</strong>. A pivot operation classifies columns of a tall data frame in three ways.</p>
@@ -667,8 +667,8 @@ this on the penguins data set and then load in the result.</p>
 </div>
 <p>Excellent! We now have a wide, but still tidy, data frame.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">'penguin_id'</span></code> column is dispensable, but we will keep it for now, since we will demonstrate a pivot operation from this wide data frame in a moment.</p>
-<div class="section" id="A-couple-of-plots-for-fun">
-<h3>A couple of plots for fun<a class="headerlink" href="#A-couple-of-plots-for-fun" title="Permalink to this heading"></a></h3>
+<section id="A-couple-of-plots-for-fun">
+<h3>A couple of plots for fun<a class="headerlink" href="#A-couple-of-plots-for-fun" title="Link to this heading"></a></h3>
 <p>Now that we’ve done all this work and our data set is tidy, let’s make a plot for fun. First, we’ll plot the ECDFs of the bill lengths.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -796,10 +796,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="An-important-note-about-tidiness">
-<h2>An important note about tidiness<a class="headerlink" href="#An-important-note-about-tidiness" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="An-important-note-about-tidiness">
+<h2>An important note about tidiness<a class="headerlink" href="#An-important-note-about-tidiness" title="Link to this heading"></a></h2>
 <p>It is important to note that there is more than one way to make a data set tidy. In the example of the Palmer penguin data set, we saw two legitimate ways of making the data frame tidy. In our preferred wide version, each row corresponded to a measurement of a single <em>penguin</em>, which had several variables associated with it. In the tall version, each row corresponded to a single <em>feature</em> of a penguin.</p>
 <p>To demonstrate that the tall version is workable, but more cumbersome, we can make the same plots as above. First, we’ll unpivot the data frame to make it tall. We needs to specify which columns as index columns for the unpivot because we want the <code class="docutils literal notranslate"><span class="pre">'penguin_id'</span></code> and <code class="docutils literal notranslate"><span class="pre">'species'</span></code> columns to remain in the tall data frame (which we did not have to do in the previous lesson).</p>
 <div class="nbinput docutils container">
@@ -960,9 +960,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>This works fine, but is more cumbersome. Importantly, we could not use a column data source in the plot to enable display of more data upon hover. The moral of the story is that you should tidy your data, but you should think carefully about in what way you want your data to be tidy.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -989,8 +989,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1004,11 +1004,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 06, 2024.
+      <span class="lastupdated">Last updated on Oct 07, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x11cae3b60> 
+   <jinja2.runtime.BlockReference object at 0x11c607890> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

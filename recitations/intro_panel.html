@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interactive control of graphics with Panel &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
       <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
 
   
@@ -16,13 +15,14 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../homework/05/index.html">5. Nonparametric hacker stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -150,8 +151,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Interactive-control-of-graphics-with-Panel">
-<h1>Interactive control of graphics with Panel<a class="headerlink" href="#Interactive-control-of-graphics-with-Panel" title="Link to this heading"></a></h1>
+  <div class="section" id="Interactive-control-of-graphics-with-Panel">
+<h1>Interactive control of graphics with Panel<a class="headerlink" href="#Interactive-control-of-graphics-with-Panel" title="Permalink to this heading"></a></h1>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -3298,14 +3299,14 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div></div>
 </div>
 <hr /><p><em>Because it is all about interactive plotting that requires a running Python engine, you really should download this notebook and run it on your machine. Note that Panel will not work on Google Colab as of October 2021.</em></p>
-<section id="Dashboarding-with-Panel">
-<h2>Dashboarding with Panel<a class="headerlink" href="#Dashboarding-with-Panel" title="Link to this heading"></a></h2>
+<div class="section" id="Dashboarding-with-Panel">
+<h2>Dashboarding with Panel<a class="headerlink" href="#Dashboarding-with-Panel" title="Permalink to this heading"></a></h2>
 <p>Data dashboards allow you to display your data with interactive controls. The viewer can adjust the controls to change what data you plot, change scales, zoom in on the data, etc. <a class="reference external" href="https://panel.pyviz.org/">Panel</a> is an open-source library that helps you create interactive dashboards, and has lots of useful widgets. Take a look at the Panel <a class="reference external" href="https://panel.pyviz.org/user_guide/index.html">User Guide</a> for more explanation on how to use Panel. You can find some cool examples of apps
 demonstrating Panel features <a class="reference external" href="https://panel.pyviz.org/gallery/index.html">here</a> and a list of possible widgets and panes <a class="reference external" href="https://panel.pyviz.org/reference/index.html">here</a>.</p>
 <p>We will begin our demonstration of use of Panel with….</p>
-</section>
-<section id="A-simple-example">
-<h2>A simple example<a class="headerlink" href="#A-simple-example" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="A-simple-example">
+<h2>A simple example<a class="headerlink" href="#A-simple-example" title="Permalink to this heading"></a></h2>
 <p>As an example of how you can build interactive dashboards, we will start by plotting the PDF of the Normal distribution.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -3443,9 +3444,9 @@ demonstrating Panel features <a class="reference external" href="https://panel.p
 <p>Let’s go through each component. First, we define our widgets, <code class="docutils literal notranslate"><span class="pre">mu_slider</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma_slider</span></code>. When building more complicated dashboards, we can look at the <a class="reference external" href="https://panel.pyviz.org/reference/index.html">Panel documentation</a> to choose which widgets we want to use.</p>
 <p>Next, we define our plotting function, <code class="docutils literal notranslate"><span class="pre">plot_gaussian_pdf()</span></code>. Here we use Holoviews for simplicity. Notice the <code class="docutils literal notranslate"><span class="pre">&#64;pn.depends</span></code> function decorator. This links the input from the widget to the computation in the function, so every time we change the interactive widget, the output of the function updates.</p>
 <p>Finally, we set the layout of our dashboard. We can define rows and columns through <code class="docutils literal notranslate"><span class="pre">pn.Row</span></code> and <code class="docutils literal notranslate"><span class="pre">pn.Column</span></code> respectively. We can set their heights and widths and add spaces through <code class="docutils literal notranslate"><span class="pre">pn.Spacer</span></code>. You may have to play around a bit to get it in the format that looks best to you.</p>
-</section>
-<section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -3475,8 +3476,8 @@ jupyterlab: 3.1.7
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -3487,11 +3488,11 @@ jupyterlab: 3.1.7
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 14, 2024.
+      <span class="lastupdated">Last updated on Oct 16, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x123314140> 
+   <jinja2.runtime.BlockReference object at 0x14760ddf0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

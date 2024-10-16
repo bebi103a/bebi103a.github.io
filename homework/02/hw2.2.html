@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 2.2: A temperature controlled Gal4-UAS system (65 pts) &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -100,6 +100,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/index.html">5. Nonparametric hacker stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -156,8 +157,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Homework-2.2:-A-temperature-controlled-Gal4-UAS-system-(65-pts)">
-<h1>Homework 2.2: A temperature controlled Gal4-UAS system (65 pts)<a class="headerlink" href="#Homework-2.2:-A-temperature-controlled-Gal4-UAS-system-(65-pts)" title="Link to this heading"></a></h1>
+  <div class="section" id="Homework-2.2:-A-temperature-controlled-Gal4-UAS-system-(65-pts)">
+<h1>Homework 2.2: A temperature controlled Gal4-UAS system (65 pts)<a class="headerlink" href="#Homework-2.2:-A-temperature-controlled-Gal4-UAS-system-(65-pts)" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/wang_cool_gal4.xlsx">Dataset download</a></p>
 <hr /><p>One of the students in a previous version of the class, <a class="reference external" href="https://www.hanwanglab.com">Han Wang</a>, published (<a class="reference external" href="https://doi.org/10.1038/nmeth.4109">Wang, H., …, Sternberg, P.W. (2017). cGAL, a temperature-robust GAL4-UAS system for Caenorhabditis elegans, Nat. Methods, 14(2), 145-148</a>) an improved <a class="reference external" href="https://en.wikipedia.org/wiki/GAL4/UAS_system">Gal4/UAS system</a> in <em>C. elegans</em>. Briefly, the Gal4-UAS system was hijacked from budding yeast and incorporated into the genomes of other
 organisms, <em>Drosophila</em> being the first. The idea is to insert the Gal4 gene into the genome such that it is under control of a driver that is native to the organism. When Gal4 is expressed, it binds to UAS (upstream activation sequence) and it is activating, leading to expression of the UAS target gene.</p>
@@ -177,7 +178,7 @@ organisms, <em>Drosophila</em> being the first. The idea is to insert the Gal4 g
 <p>You can download the MS Excel file here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/wang_cool_gal4.xlsx">https://s3.amazonaws.com/bebi103.caltech.edu/data/wang_cool_gal4.xlsx</a>.</p>
 <p><strong>a)</strong> Load and tidy the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Be sure to remove any NaNs.</p>
 <p><strong>b)</strong> Do some exploratory data analysis of the data set. That is, make some instructive plots. Discuss why you chose to visualize the data set the way(s) you did. What can you say about Han’s cool Gal4 just by looking at the plots?</p>
-</section>
+</div>
 
 
            </div>
@@ -191,11 +192,11 @@ organisms, <em>Drosophila</em> being the first. The idea is to insert the Gal4 g
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 14, 2024.
+      <span class="lastupdated">Last updated on Oct 16, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1249ff650> 
+   <jinja2.runtime.BlockReference object at 0x144e4d8e0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

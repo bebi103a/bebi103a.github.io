@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>8. Data file formats &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -16,13 +15,14 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -108,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -163,8 +164,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="8.-Data-file-formats">
-<h1>8. Data file formats<a class="headerlink" href="#8.-Data-file-formats" title="Link to this heading"></a></h1>
+  <div class="section" id="8.-Data-file-formats">
+<h1>8. Data file formats<a class="headerlink" href="#8.-Data-file-formats" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -537,8 +538,8 @@ function(Bokeh) {
 </ol>
 <p>These tips are not immediately helpful for any given file format. To demonstrate how to handle various file formats, I will give a few examples. Ultimately, though, it is your responsibility as an analyst of data to learn and understand the file format to make sure you completely and accurately can conveniently access a data set. I argue further that as a data <em>producer</em>, you are responsible for storing <em>and sharing</em> your data in an open, easily accessible, well-documented file format.</p>
 <p>With that, I proceed to the examples.</p>
-<section id="Reading-data-from-MS-Excel">
-<h2>Reading data from MS Excel<a class="headerlink" href="#Reading-data-from-MS-Excel" title="Link to this heading"></a></h2>
+<div class="section" id="Reading-data-from-MS-Excel">
+<h2>Reading data from MS Excel<a class="headerlink" href="#Reading-data-from-MS-Excel" title="Permalink to this heading"></a></h2>
 <p>You will often find collaborators, and sometimes instruments, provide data in as <a class="reference external" href="https://en.wikipedia.org/wiki/Microsoft_Excel">Microscoft Excel</a> documents. Prior to 2007, the Excel format was proprietary, but now it is open. This has allowed Python developers to write parsers of Excel files.</p>
 <p>Polars can open Excel files with the <code class="docutils literal notranslate"><span class="pre">pl.read_excel()</span></code> function. Provided the Excel file is simple (e.g., does not have weirdly formatted multiple sheets), it more or less operates as expected. You may have to install Excel reader dependencies, though, such as <a class="reference external" href="https://github.com/dilshod/xlsx2csv">xlsx2csv</a> or <a class="reference external" href="https://github.com/dimastbk/python-calamine">calamine</a>.</p>
 <p>However, sometimes we need to open older versions of Excel files. For this, we can use <a class="reference external" href="https://xlrd.readthedocs.io/en/latest/">xlrd</a>, which should be used <em>only</em> for reading old Excel files with <code class="docutils literal notranslate"><span class="pre">.xls</span></code> suffixes. As an example of reading from an old format Excel file, we will open a data set from <a class="reference external" href="https://en.wikipedia.org/wiki/David_Lack">David Lack</a>. The data set, available <a class="reference external" href="https://doi.org/10.5061/dryad.150">from Dryad</a>, and downloadable
@@ -594,9 +595,9 @@ function(Bokeh) {
 <small>shape: (5, 20)</small><table border="1" class="dataframe"><thead><tr><th>Source</th><th>IslandID</th><th>TaxonOrig</th><th>GenusL69</th><th>SpeciesL69</th><th>SubspL69</th><th>SpeciesID</th><th>SubspID</th><th>Sex</th><th>Plumage</th><th>BodyL</th><th>WingL</th><th>TailL</th><th>BeakW</th><th>BeakH</th><th>LBeakL</th><th>UBeakL</th><th>N-UBkL</th><th>TarsusL</th><th>MToeL</th></tr><tr><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>str</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>&quot;Lack CAS&quot;</td><td>&quot;Wlf_Wnm&quot;</td><td>&quot;Geospiza magnirostris&quot;</td><td>&quot;Geospiza&quot;</td><td>&quot;magnirostris&quot;</td><td>null</td><td>&quot;Geo.mag&quot;</td><td>&quot;Geo.mag&quot;</td><td>&quot;M&quot;</td><td>&quot;Black&quot;</td><td>null</td><td>86.0</td><td>null</td><td>null</td><td>&quot;20.7&quot;</td><td>null</td><td>22.8</td><td>15.7</td><td>null</td><td>null</td></tr><tr><td>&quot;Lack CAS&quot;</td><td>&quot;Wlf_Wnm&quot;</td><td>&quot;Geospiza magnirostris&quot;</td><td>&quot;Geospiza&quot;</td><td>&quot;magnirostris&quot;</td><td>null</td><td>&quot;Geo.mag&quot;</td><td>&quot;Geo.mag&quot;</td><td>&quot;M&quot;</td><td>&quot;Black&quot;</td><td>null</td><td>86.0</td><td>null</td><td>null</td><td>&quot;19.5&quot;</td><td>null</td><td>24.3</td><td>16.6</td><td>null</td><td>null</td></tr><tr><td>&quot;Lack CAS&quot;</td><td>&quot;Wlf_Wnm&quot;</td><td>&quot;Geospiza magnirostris&quot;</td><td>&quot;Geospiza&quot;</td><td>&quot;magnirostris&quot;</td><td>null</td><td>&quot;Geo.mag&quot;</td><td>&quot;Geo.mag&quot;</td><td>&quot;M&quot;</td><td>&quot;Black&quot;</td><td>null</td><td>88.0</td><td>null</td><td>null</td><td>null</td><td>null</td><td>23.1</td><td>15.1</td><td>null</td><td>null</td></tr><tr><td>&quot;Lack CAS&quot;</td><td>&quot;Wlf_Wnm&quot;</td><td>&quot;Geospiza magnirostris&quot;</td><td>&quot;Geospiza&quot;</td><td>&quot;magnirostris&quot;</td><td>null</td><td>&quot;Geo.mag&quot;</td><td>&quot;Geo.mag&quot;</td><td>&quot;M&quot;</td><td>&quot;Black&quot;</td><td>null</td><td>84.0</td><td>null</td><td>null</td><td>&quot;20.6&quot;</td><td>null</td><td>22.4</td><td>15.3</td><td>null</td><td>null</td></tr><tr><td>&quot;Lack CAS&quot;</td><td>&quot;Wlf_Wnm&quot;</td><td>&quot;Geospiza magnirostris&quot;</td><td>&quot;Geospiza&quot;</td><td>&quot;magnirostris&quot;</td><td>null</td><td>&quot;Geo.mag&quot;</td><td>&quot;Geo.mag&quot;</td><td>&quot;M&quot;</td><td>&quot;Black&quot;</td><td>null</td><td>86.0</td><td>null</td><td>null</td><td>&quot;21.4&quot;</td><td>null</td><td>23.1</td><td>15.4</td><td>null</td><td>null</td></tr></tbody></table></div></div>
 </div>
 <p>There are several other Excel readers available, as described at <a class="reference external" href="http://www.python-excel.org">http://www.python-excel.org</a>. For more fine-grained control of reading in the data from Excel spreadsheets, you might want to use <code class="docutils literal notranslate"><span class="pre">xlrd</span></code> for older documents, as we have done here, and <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> for newer documents.</p>
-</section>
-<section id="Example:-Flow-cytometry-data">
-<h2>Example: Flow cytometry data<a class="headerlink" href="#Example:-Flow-cytometry-data" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Example:-Flow-cytometry-data">
+<h2>Example: Flow cytometry data<a class="headerlink" href="#Example:-Flow-cytometry-data" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Flow_cytometry">Flow cytometry</a> is a technique in which cells are run single file through a fluid channel and subjected to illumination by a laser. The front and side scatters of the light are measured, as is the fluorscence intensity emitted if a cells contain fluorophores.</p>
 <p>The technique is many decades old. Most often, flow cytometry data are stored in <a class="reference external" href="https://en.wikipedia.org/wiki/Flow_Cytometry_Standard">flow cyometry standard (FCS) format</a>. These are binary files that cannot be directly read in using Pandas. As such, there are a few options we can pursue for reading FCS files and getting them into a format to work with.</p>
 <ol class="arabic simple">
@@ -653,9 +654,9 @@ simple <a class="reference external" href="https://github.com/eyurtsev/fcsparser
 </div>
 <p>thereby eliminating the need for a special parser down the road.</p>
 <p>Note, though, that <strong>you should never delete the raw data file that came from the data source</strong>, even if its format is inconvenient.</p>
-</section>
-<section id="Example:-Electrophysiologial-recordings-of-neurons-in-the-human-brain">
-<h2>Example: Electrophysiologial recordings of neurons in the human brain<a class="headerlink" href="#Example:-Electrophysiologial-recordings-of-neurons-in-the-human-brain" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Example:-Electrophysiologial-recordings-of-neurons-in-the-human-brain">
+<h2>Example: Electrophysiologial recordings of neurons in the human brain<a class="headerlink" href="#Example:-Electrophysiologial-recordings-of-neurons-in-the-human-brain" title="Permalink to this heading"></a></h2>
 <p>As an example of a file format specific to a given field, we will open up an NWB (<a class="reference external" href="https://www.nwb.org">Neurodata Without Borders</a>) file. NWB was created as a standard for neuroscience data so that they may be shared across research groups. This is stated clearly in <a class="reference external" href="https://www.nwb.org/nwb-neurophysiology/">their description of the data standard</a>:</p>
 <p>Neurodata Without Borders (NWB) is a data standard for neurophysiology, providing neuroscientists with a common standard to share, archive, use, and build common analysis tools for neurophysiology data. NWB is designed to store a variety of neurophysiology data, including data from intracellular and extracellular electrophysiology experiments, data from optical physiology experiments, and tracking and stimulus data. The project includes not only the NWB format, but also a broad range of software
 for data standardization and application programming interfaces (APIs) for reading and writing the data as well as high-value data sets that have been translated into the NWB data standard.)</p>
@@ -667,8 +668,8 @@ you do not need to store the data in RAM, but can rapidly access portions of the
 subjects were shown a set of images. They were then shown another set of images, some of which they had already seen. Neuronal spike times were recorded during this process. We will look at a portion of this data set measured from electrodes in the right amygdala and left hippocampus of a single subject, a 31-year-old male. The entire data set is freely available from the <a class="reference external" href="https://gui.dandiarchive.org/#/dandiset/000004/">DANDI archive</a>.</p>
 <p>As we work through this example, note that there are <strong>many</strong> file formats across fields, and this serves as an example of one and how you might navigate the format to pull out what you need for your analysis. I note that prior to writing this section of the lesson, I have never opened an NWB file nor used h5py much at all. I used a skill you will hopefully master: asking the internet for help. I show this and the other examples to illustrate to you that you will encounter file formats you may
 not be familiar with, and you need to be patient and search and read carefully how to use appropriate tools to parse them.</p>
-<section id="Parsing-the-file-with-h5py">
-<h3>Parsing the file with h5py<a class="headerlink" href="#Parsing-the-file-with-h5py" title="Link to this heading"></a></h3>
+<div class="section" id="Parsing-the-file-with-h5py">
+<h3>Parsing the file with h5py<a class="headerlink" href="#Parsing-the-file-with-h5py" title="Permalink to this heading"></a></h3>
 <p>The <a class="reference external" href="https://docs.h5py.org/">h5py package</a> enables opening and navigating HDF5 files. It takes advantage of HDF5’s structure to enable access of the data on disk without copying the whole thing into RAM. We have imported h5py above and can use it to open the file.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -1140,9 +1141,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 </div>
-</section>
-<section id="A-domain-specific-tool">
-<h3>A domain-specific tool<a class="headerlink" href="#A-domain-specific-tool" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="A-domain-specific-tool">
+<h3>A domain-specific tool<a class="headerlink" href="#A-domain-specific-tool" title="Permalink to this heading"></a></h3>
 <p>While directly using h5py works just fine, as we have seen, the neuroscience community has built their own package for handling NWB files, <a class="reference external" href="https://pynwb.readthedocs.io/">pwnwb</a>. You can install it using</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install pynwb
 </pre></div>
@@ -1167,16 +1168,16 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 </div>
 <p>For many data types, domain specific tools exist and can be quite useful. I tend to only use them for parsing, slicing, accessing, and organizing data, but prefer to use my own bespoke methods for analysis.</p>
-</section>
-</section>
-<section id="Use-conda-environments!">
-<h2>Use conda environments!<a class="headerlink" href="#Use-conda-environments!" title="Link to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="Use-conda-environments!">
+<h2>Use conda environments!<a class="headerlink" href="#Use-conda-environments!" title="Permalink to this heading"></a></h2>
 <p>It is fairly common for domain-specific packages, especially for opening proprietary formats, that they have restrictive dependencies, often requiring quite old versions of other packages. As a result, <strong>I advise creating a new conda environment for domain specific file load/converting tasks.</strong> You can use that environment to convert the file format into something more easily readable in your main analysis environment.</p>
-</section>
-<section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
-</section>
-</section>
+</div>
+<div class="section" id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</div>
+</div>
 
 
            </div>
@@ -1190,11 +1191,11 @@ var element = document.currentScript.previousSibling.previousSibling;
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 14, 2024.
+      <span class="lastupdated">Last updated on Oct 16, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1229d1ca0> 
+   <jinja2.runtime.BlockReference object at 0x12783acf0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

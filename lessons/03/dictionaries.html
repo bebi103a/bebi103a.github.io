@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dictionaries &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -16,13 +15,14 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -122,6 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -178,8 +179,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Dictionaries">
-<h1>Dictionaries<a class="headerlink" href="#Dictionaries" title="Link to this heading"></a></h1>
+  <div class="section" id="Dictionaries">
+<h1>Dictionaries<a class="headerlink" href="#Dictionaries" title="Permalink to this heading"></a></h1>
 <hr><p><strong>Dictionaries</strong>, which is Python’s built-in mapping object. A <strong>mapping object</strong> allows an arbitrary collection of objects to be indexed by an arbitrary collection of values. That’s a mouthful. It is easier to understand instead by comparing to a sequence.</p>
 <p>Let’s take a sequence of two strings, say a tuple containing a first and last name.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name = (&#39;jeffrey&#39;, &#39;lebowski&#39;)
@@ -198,8 +199,8 @@
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>oed[&#39;computer&#39;]
 </pre></div>
 </div>
-<section id="Dictionary-syntax">
-<h2>Dictionary syntax<a class="headerlink" href="#Dictionary-syntax" title="Link to this heading"></a></h2>
+<div class="section" id="Dictionary-syntax">
+<h2>Dictionary syntax<a class="headerlink" href="#Dictionary-syntax" title="Permalink to this heading"></a></h2>
 <p>The syntax for creating a dictionary, as usual, is best seen through example.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -312,9 +313,9 @@ Input <span class="ansi-green-fg">In [6]</span>, in <span class="ansi-cyan-fg">&
 <span class="ansi-red-fg">TypeError</span>: unhashable type: &#39;list&#39;
 </pre></div></div>
 </div>
-</section>
-<section id="A-dictionary-use-case-in-bioinformatics">
-<h2>A dictionary use case in bioinformatics<a class="headerlink" href="#A-dictionary-use-case-in-bioinformatics" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="A-dictionary-use-case-in-bioinformatics">
+<h2>A dictionary use case in bioinformatics<a class="headerlink" href="#A-dictionary-use-case-in-bioinformatics" title="Permalink to this heading"></a></h2>
 <p>It might be useful to quickly look up 3-letter amino acid codes. Dictionaries are particularly useful for this.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -443,9 +444,9 @@ Input <span class="ansi-green-fg">In [6]</span>, in <span class="ansi-cyan-fg">&
  &#39;GGG&#39;: &#39;G&#39;}
 </pre></div></div>
 </div>
-</section>
-<section id="A-dictionary-is-an-implementation-of-a-hash-table">
-<h2>A dictionary is an implementation of a hash table<a class="headerlink" href="#A-dictionary-is-an-implementation-of-a-hash-table" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="A-dictionary-is-an-implementation-of-a-hash-table">
+<h2>A dictionary is an implementation of a hash table<a class="headerlink" href="#A-dictionary-is-an-implementation-of-a-hash-table" title="Permalink to this heading"></a></h2>
 <p>It is useful to stop and think about how a dictionary works. Let’s create a dictionary and look at where the values are stored in memory.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -494,9 +495,9 @@ Input <span class="ansi-green-fg">In [6]</span>, in <span class="ansi-cyan-fg">&
 </div>
 <p>Under the hood, Python then converts these integers to integers that could correspond to locations in memory. A collection of elements that can be indexed this way is called a <strong>hash table</strong>. This is a very common data structure in computing. Wikipedia has a <a class="reference external" href="https://en.wikipedia.org/wiki/Hash_table">pretty good discussion on them</a>.</p>
 <p>Given what you know about how dictionaries work, why do you think mutable objects are not acceptable as keys?</p>
-</section>
-<section id="Dictionaries-are-mutable">
-<h2>Dictionaries are mutable<a class="headerlink" href="#Dictionaries-are-mutable" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Dictionaries-are-mutable">
+<h2>Dictionaries are mutable<a class="headerlink" href="#Dictionaries-are-mutable" title="Permalink to this heading"></a></h2>
 <p>Dictionaries are mutable. This means that they can be changed in place. For example, if we want to add an element to a dictionary, we use simple syntax.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
@@ -529,9 +530,9 @@ Input <span class="ansi-green-fg">In [6]</span>, in <span class="ansi-cyan-fg">&
 {&#39;a&#39;: &#39;I was not satisfied with entry a.&#39;, &#39;b&#39;: 7, &#39;c&#39;: 12.6, &#39;d&#39;: &#39;Data analysis is so much fun!&#39;}
 </pre></div></div>
 </div>
-</section>
-<section id="Membership-operators-with-dictionaries">
-<h2>Membership operators with dictionaries<a class="headerlink" href="#Membership-operators-with-dictionaries" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Membership-operators-with-dictionaries">
+<h2>Membership operators with dictionaries<a class="headerlink" href="#Membership-operators-with-dictionaries" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> operators work with dictionaries, but both only query keys and <em>not</em> values. We see this again by example.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -656,9 +657,9 @@ c 3
  &#39;c&#39;: &#39;this will be in the dictionary.&#39;}
 </pre></div></div>
 </div>
-</section>
-<section id="Built-in-functions-for-dictionaries">
-<h2>Built-in functions for dictionaries<a class="headerlink" href="#Built-in-functions-for-dictionaries" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Built-in-functions-for-dictionaries">
+<h2>Built-in functions for dictionaries<a class="headerlink" href="#Built-in-functions-for-dictionaries" title="Permalink to this heading"></a></h2>
 <p>The built-in <code class="docutils literal notranslate"><span class="pre">len()</span></code> function and <code class="docutils literal notranslate"><span class="pre">del</span></code> operation work on dictionaries.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">len(d)</span></code> gives the number of entries in dictionary <code class="docutils literal notranslate"><span class="pre">d</span></code></p></li>
@@ -730,11 +731,15 @@ Input <span class="ansi-green-fg">In [19]</span>, in <span class="ansi-cyan-fg">
 <span class="ansi-red-fg">TypeError</span>: &#39;tuple&#39; object doesn&#39;t support item deletion
 </pre></div></div>
 </div>
-</section>
-<section id="Dictionary-methods">
-<h2>Dictionary methods<a class="headerlink" href="#Dictionary-methods" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Dictionary-methods">
+<h2>Dictionary methods<a class="headerlink" href="#Dictionary-methods" title="Permalink to this heading"></a></h2>
 <p>Dictionaries have several built-in methods in addition to the <code class="docutils literal notranslate"><span class="pre">items()</span></code> you have already seen. Following are a few of them, assuming the dictionary is <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>method</p></th>
 <th class="head"><p>effect</p></th>
@@ -865,9 +870,9 @@ dict_values([1, 2, 4])
 </pre></div></div>
 </div>
 <p>You can get more information about build-in methods from the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">Python documentation</a>.</p>
-</section>
-<section id="Dictionary-comprehensions">
-<h2>Dictionary comprehensions<a class="headerlink" href="#Dictionary-comprehensions" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Dictionary-comprehensions">
+<h2>Dictionary comprehensions<a class="headerlink" href="#Dictionary-comprehensions" title="Permalink to this heading"></a></h2>
 <p>Like lists could be created using list comprehensions, so too can dictionaries be created using dictionary comprehensions. Recall from when we made a dictionary of codon/amino acid codes before that we build them using</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
@@ -906,9 +911,9 @@ amino_acids: FFLLS
 </div>
 </div>
 <p>A dictionary comprehension works analogously to a list comprehension. The only differences are that the dictionary comprehension is enclosed in curly braces and each entry is given by a key and value <em>pair</em> (as opposed to a single entry for a list comprehension) using the syntax <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code>. (The names of the variables can be anything, e.g., <code class="docutils literal notranslate"><span class="pre">k:</span> <span class="pre">v</span></code> is legal.) Of course, the iterators in the dictionary comprehension also need to emit both keys and values as well.</p>
-</section>
-<section id="Using-dictionaries-as-kwargs">
-<h2>Using dictionaries as kwargs<a class="headerlink" href="#Using-dictionaries-as-kwargs" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Using-dictionaries-as-kwargs">
+<h2>Using dictionaries as kwargs<a class="headerlink" href="#Using-dictionaries-as-kwargs" title="Permalink to this heading"></a></h2>
 <p>A nifty feature of dictionaries is that they can be passed into functions as keyword arguments. We covered named keyword arguments in the lesson on functions. In addition to the named keyword arguments, a function can take in arbitrary keyword arguments (<strong>not</strong> arbitrary non-keyword arguments). This is specified in the function definition by including a last argument with a double-asterisk, <code class="docutils literal notranslate"><span class="pre">**</span></code>. The kwargs with the double-asterisk get passed in as a dictionary.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
@@ -976,9 +981,9 @@ amino_acids: FFLLS
 </pre></div></div>
 </div>
 <p>Beautiful! This example is kind of trivial, but you can imagine that it can come in handy, e.g. with large sets of sequence fragments that you read in from a file. Many packages, particularly plotting packages, use <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> extensively.</p>
-</section>
-<section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
@@ -1001,8 +1006,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1016,11 +1021,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 14, 2024.
+      <span class="lastupdated">Last updated on Oct 16, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1260c9fd0> 
+   <jinja2.runtime.BlockReference object at 0x1277c8e30> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

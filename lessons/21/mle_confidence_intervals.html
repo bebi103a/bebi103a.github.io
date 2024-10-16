@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidence region and confidence intervals for a MLE &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -16,13 +15,14 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -111,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -167,8 +168,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Confidence-region-and-confidence-intervals-for-a-MLE">
-<h1>Confidence region and confidence intervals for a MLE<a class="headerlink" href="#Confidence-region-and-confidence-intervals-for-a-MLE" title="Link to this heading"></a></h1>
+  <div class="section" id="Confidence-region-and-confidence-intervals-for-a-MLE">
+<h1>Confidence region and confidence intervals for a MLE<a class="headerlink" href="#Confidence-region-and-confidence-intervals-for-a-MLE" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -530,8 +531,8 @@ function(Bokeh) {
 </script></div>
 </div>
 <hr><p>In our previous lesson on numerical maximum likelihood estimation, we computed an MLE for the parameters of a Negative Binomial model for mRNA counts for Nanog using the <a class="reference external" href="https://doi.org/10.1016/j.molcel.2014.06.029">Singer, et al.</a> dataset. Here, we will compute the MLEs for the other three genes as well and further compute confidence intervals for these MLEs.</p>
-<section id="MLE-for-all-genes">
-<h2>MLE for all genes<a class="headerlink" href="#MLE-for-all-genes" title="Link to this heading"></a></h2>
+<div class="section" id="MLE-for-all-genes">
+<h2>MLE for all genes<a class="headerlink" href="#MLE-for-all-genes" title="Permalink to this heading"></a></h2>
 <p>We start by writing function to compute the maximum likelihood estimate for our model. We have a set of Negative-Binomially distributed i.i.d. counts, parametrized by <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b=1/\beta\)</span>, and we wish to compute the MLE. We worked out the code previously, so we can write the functions here.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -611,9 +612,9 @@ function(Bokeh) {
 </style>
 <small>shape: (8, 3)</small><table border="1" class="dataframe"><thead><tr><th>gene</th><th>parameter</th><th>mle</th></tr><tr><td>str</td><td>str</td><td>f64</td></tr></thead><tbody><tr><td>&quot;Nanog&quot;</td><td>&quot;alpha&quot;</td><td>1.263097</td></tr><tr><td>&quot;Nanog&quot;</td><td>&quot;b&quot;</td><td>69.347842</td></tr><tr><td>&quot;Prdm14&quot;</td><td>&quot;alpha&quot;</td><td>0.552886</td></tr><tr><td>&quot;Prdm14&quot;</td><td>&quot;b&quot;</td><td>8.200636</td></tr><tr><td>&quot;Rest&quot;</td><td>&quot;alpha&quot;</td><td>4.530335</td></tr><tr><td>&quot;Rest&quot;</td><td>&quot;b&quot;</td><td>16.543054</td></tr><tr><td>&quot;Rex1&quot;</td><td>&quot;alpha&quot;</td><td>1.634562</td></tr><tr><td>&quot;Rex1&quot;</td><td>&quot;b&quot;</td><td>84.680915</td></tr></tbody></table></div></div>
 </div>
-</section>
-<section id="Bootstrap-confidence-intervals">
-<h2>Bootstrap confidence intervals<a class="headerlink" href="#Bootstrap-confidence-intervals" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="Bootstrap-confidence-intervals">
+<h2>Bootstrap confidence intervals<a class="headerlink" href="#Bootstrap-confidence-intervals" title="Permalink to this heading"></a></h2>
 <p>Remember that the MLE is a random variable, so we can compute confidence intervals for it. There are several approaches to computing confidence intervals for maximum likelihood estimates. We will explore two methods. They differ in how we use our model to generate bootstrap samples.</p>
 <ol class="arabic simple">
 <li><p>In this case of mRNA counts, the data were generated out of an unknown distribution <span class="math notranslate nohighlight">\(F(n)\)</span>. We do not know what it is, though we <em>model</em> it as Negative Binomial to compute an MLE. (We chould choose other models, some will be closer to <span class="math notranslate nohighlight">\(F(n)\)</span> than others.) To generate a bootstrap sample, we sample out of the empirical distribution <span class="math notranslate nohighlight">\(\hat{F}(n;\mathbf{n})\)</span>. We then use the Negative Binomial model to obtain MLEs for the burst frequency <span class="math notranslate nohighlight">\(\alpha\)</span> and burst size <span class="math notranslate nohighlight">\(b\)</span>.
@@ -622,8 +623,8 @@ These MLEs constitute our bootstrap replicates for the MLE, and we can compute c
 used. It operates under the assumption that our model is indeed a good approximation for the generative distribution.</p></li>
 </ol>
 <p>The first method is nonparametric in that we use the plug-in principle for approximating the generative distribution (and only use the model to compute the statistical functional), so we will refer to it as the nonparametric bootstrap for the MLE, but I have not seen that terminology be widely used, probably because of confusion with the fact that a parametric model is used to compute the MLE.</p>
-<section id="Nonparametric-MLE-confidence-interval">
-<h3>Nonparametric MLE confidence interval<a class="headerlink" href="#Nonparametric-MLE-confidence-interval" title="Link to this heading"></a></h3>
+<div class="section" id="Nonparametric-MLE-confidence-interval">
+<h3>Nonparametric MLE confidence interval<a class="headerlink" href="#Nonparametric-MLE-confidence-interval" title="Permalink to this heading"></a></h3>
 <p>For the nonparametric MLE confidence interval, we simply draw a bootstrap sample out of the original data set, as we have been doing, and then compute the MLE estimates. Let’s do that. We will use <a class="reference external" href="https://tqdm.github.io">TQDM</a> to give us a progress bar, since this calculation takes a few minutes.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -709,9 +710,9 @@ array([[ 1.05756375, 57.16408783],
 </pre></div></div>
 </div>
 <p>So, the confidence interval for <span class="math notranslate nohighlight">\(\alpha\)</span> lies between 1.06 and 1.55, and that for <span class="math notranslate nohighlight">\(b\)</span> lies between 57.1 and 82.3.</p>
-</section>
-<section id="Confidence-regions">
-<h3>Confidence regions<a class="headerlink" href="#Confidence-regions" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="Confidence-regions">
+<h3>Confidence regions<a class="headerlink" href="#Confidence-regions" title="Permalink to this heading"></a></h3>
 <p>The confidence intervals we have just reported are the confidence intervals for the respective parameters, but we really should define a <strong>confidence region</strong>, which is the multidimensional extension of a confidence interval. (A confidence interval is the special case of a confidence region with only one parameter.)</p>
 <p>Indeed, the confidence interval for <span class="math notranslate nohighlight">\(\alpha\)</span> comes from percentiles computed from the probability density function <span class="math notranslate nohighlight">\(f(\alpha^*;\mathbf{n})\)</span>. (Strictly speaking this is a probability mass function in this case because there are a finite number of unique bootstrap samples, but we do not need to worry about that distinction because there are <em>a lot(!)</em> of unique bootstrap samples.) This PDF is computed from the joint PDF of the MLEs as</p>
 <p><span class="math">\begin{align}
@@ -893,9 +894,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</section>
-<section id="Parametric-confidence-intervals">
-<h3>Parametric confidence intervals<a class="headerlink" href="#Parametric-confidence-intervals" title="Link to this heading"></a></h3>
+</div>
+<div class="section" id="Parametric-confidence-intervals">
+<h3>Parametric confidence intervals<a class="headerlink" href="#Parametric-confidence-intervals" title="Permalink to this heading"></a></h3>
 <p>We repeat the calculation for a parametric confidence interval. As we write a function for this, we need to include an <code class="docutils literal notranslate"><span class="pre">mle_fun</span></code> as for <code class="docutils literal notranslate"><span class="pre">draw_bs_reps_mle()</span></code>, but we also need to provide a function that draws new data sets out of the parametric model.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -1055,10 +1056,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>The corner plot is indeed similar to the nonparametric case.</p>
 <p>We could compute confidence intervals for the other genes, but we will not do that here to save time, since each computation takes about three minutes. In the next part of this lesson, we will parallelize the calculations to make them faster.</p>
-</section>
-</section>
-<section id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
@@ -1087,8 +1088,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -1102,11 +1103,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 14, 2024.
+      <span class="lastupdated">Last updated on Oct 16, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1232ebb90> 
+   <jinja2.runtime.BlockReference object at 0x127753a40> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

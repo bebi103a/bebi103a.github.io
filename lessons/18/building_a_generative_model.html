@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Building a generative model &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -111,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/02/index.html">2. Exploratory data analysis II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -167,14 +168,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="building-a-generative-model">
-<h1>Building a generative model<a class="headerlink" href="#building-a-generative-model" title="Link to this heading"></a></h1>
+  <div class="section" id="building-a-generative-model">
+<h1>Building a generative model<a class="headerlink" href="#building-a-generative-model" title="Permalink to this heading"></a></h1>
 <p>The process of model building usually involves starting with a cartoon model, mathematizing it, and the forming that into a statistical model to model noise in measurement. Sometimes this process is very simple, and sometimes it involves careful and difficult modeling.</p>
-<section id="examples-of-generative-models">
-<h2>Examples of generative models<a class="headerlink" href="#examples-of-generative-models" title="Link to this heading"></a></h2>
+<div class="section" id="examples-of-generative-models">
+<h2>Examples of generative models<a class="headerlink" href="#examples-of-generative-models" title="Permalink to this heading"></a></h2>
 <p>It is often easiest to learn from example. I present here some examples of how we might come up with generative models.</p>
-<section id="the-size-of-eggs-laid-by-c-elegans">
-<h3>The size of eggs laid by <em>C. elegans</em><a class="headerlink" href="#the-size-of-eggs-laid-by-c-elegans" title="Link to this heading"></a></h3>
+<div class="section" id="the-size-of-eggs-laid-by-c-elegans">
+<h3>The size of eggs laid by <em>C. elegans</em><a class="headerlink" href="#the-size-of-eggs-laid-by-c-elegans" title="Permalink to this heading"></a></h3>
 <p>The experiment here is repeated measurements of the length of eggs laid by <em>C. elegans</em> worms. We do not pretend to know much about how the process of egg generation sets its length. Surely many processes are involved, and we choose to model the egg length as being Normally distributed, as this story roughly matches what we would expect. We further assume that the length of each egg we measure is independent of all of the other eggs we measure, and further that the distribution we use to describe the egg length of any given egg is the same as any other. That is to say that the egg lengths are <strong>independent and identically distributed</strong>, abbreviated <strong>i.i.d.</strong></p>
 <p>We can then write down the probability density function for the length of egg <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(y_i\)</span>, as</p>
 <div class="math notranslate nohighlight">
@@ -189,18 +190,18 @@ f(y_i; \mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma^2}}\,\mathrm{e}^{-(y_i-\mu)^2/2
 \end{align}\end{split}\]</div>
 <p>The PDF has all of the information for the generative model. Importantly, <strong>the statistical model dictates what parameters you are trying to estimate.</strong> In this case, there are two parameters, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. The generative model tells us that we can infer the characteristic egg length <span class="math notranslate nohighlight">\(\mu\)</span> and the variance, <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
 <p>In this, model, we skipped through the cartoon model, through mathematization, and went directly to the generative statistical model, since the former two models are trivial.</p>
-<section id="short-hand-model-definition">
-<h4>Short-hand model definition<a class="headerlink" href="#short-hand-model-definition" title="Link to this heading"></a></h4>
+<div class="section" id="short-hand-model-definition">
+<h4>Short-hand model definition<a class="headerlink" href="#short-hand-model-definition" title="Permalink to this heading"></a></h4>
 <p>Writing out the mathematical expression for the PDF can be cumbersome, even for a relatively simple model like we have here. In English, the model is, “The egg lengths are i.i.d. and are Normally distributed with mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>.” A shorthand for this is</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 y_i \sim \text{Norm}(\mu, \sigma) \;\forall i.
 \end{align}\]</div>
 <p>This is read just like the English sentence describing the model. The tilde symbol means “is distributed as.”</p>
-</section>
-</section>
-<section id="the-amount-of-time-before-microtubule-catastrophe">
-<h3>The amount of time before microtubule catastrophe<a class="headerlink" href="#the-amount-of-time-before-microtubule-catastrophe" title="Link to this heading"></a></h3>
+</div>
+</div>
+<div class="section" id="the-amount-of-time-before-microtubule-catastrophe">
+<h3>The amount of time before microtubule catastrophe<a class="headerlink" href="#the-amount-of-time-before-microtubule-catastrophe" title="Permalink to this heading"></a></h3>
 <p>In your homework, you have already built a model for the time to microtubule catastrophe. We started with a story: Catatstrophe occurs after the arrival of two different successive Poisson processes. The story here is the cartoon model. You derived the probability distribution function for the time it takes for a single catastrophe.</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -219,17 +220,17 @@ f(\mathbf{t};\beta_1, \beta_2) = \left(\frac{\beta_1 \beta_2}{\beta_2 - \beta_1}
 &amp;t_i - t'_i \sim \text{Expon}(\beta_2) \;\forall i.
 \end{align}\end{split}\]</div>
 <p>Note that this construction of the model has a <strong>latent variable</strong>, <span class="math notranslate nohighlight">\(t_i'\)</span>, a random variable that we can define in the model, but we cannot measure.</p>
-<section id="an-alternative-model-for-microtubule-catastrophe">
-<h4>An alternative model for microtubule catastrophe<a class="headerlink" href="#an-alternative-model-for-microtubule-catastrophe" title="Link to this heading"></a></h4>
+<div class="section" id="an-alternative-model-for-microtubule-catastrophe">
+<h4>An alternative model for microtubule catastrophe<a class="headerlink" href="#an-alternative-model-for-microtubule-catastrophe" title="Permalink to this heading"></a></h4>
 <p>As an alternative model, we may consider the case where catastrophe is itself a Poisson process (or triggered by the arrival of a single Poisson process). In that case, our model is simpler.</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 &amp;t_i \sim \text{Expon}(\beta) \;\forall i.
 \end{align}\]</div>
-</section>
-</section>
-<section id="the-change-in-bacterial-mass-over-time">
-<h3>The change in bacterial mass over time<a class="headerlink" href="#the-change-in-bacterial-mass-over-time" title="Link to this heading"></a></h3>
+</div>
+</div>
+<div class="section" id="the-change-in-bacterial-mass-over-time">
+<h3>The change in bacterial mass over time<a class="headerlink" href="#the-change-in-bacterial-mass-over-time" title="Permalink to this heading"></a></h3>
 <p>You may be familiar with exponential microbial growth. When you put a single cell in growth media, it divides, and then you have two. Those two cells then grow and divide, giving four cells. This continues, and the number of cells grows exponentially with time.</p>
 <p>In an interesting paper (<a class="reference external" href="https://doi.org/10.1073/pnas.1403232111">PNAS, 2014</a>), Iyer-Biswas and coworkers addressed the question of whether or not a <em>single cell</em> exhibits exponential growth (not to be confused with the Exponential <em>distribution</em>). That is, right after a division, does the total mass of a cell grow exponentially before dividing? Even if individual cells grow linearly, in bulk growth will still appear exponential, so we cannot really tell from a growth experiment.</p>
 <p>Their clever experimental set-up allows imaging of single dividing cells in conditions that are identical through time. This is accomplished by taking advantage of a unique morphological feature of <em>Caulobacter</em>. The mother cell is adherent to the a surface through its stalk. Upon division, one of the daughter cells does not have a stalk and is mobile. The system is part of a microfluidic device that gives a constant flow. So, every time a mother cell divides, the un-stalked daughter cell gets washed away. In such a way, the dividing cells are never in a crowded environment and the buffer is always fresh. Using microscopy and image processing, they have many curves measuring the areas of cells in images (assumed to be proportional to the cell mass), starting from a single mother cell with its growth to division, to assess growth models. The data look like this:</p>
@@ -321,8 +322,8 @@ f(\mathbf{t};\beta_1, \beta_2) = \left(\frac{\beta_1 \beta_2}{\beta_2 - \beta_1}
 </html>
 
 </embed><p>We can consider two models for growth of an individual cell, linear growth and exponential growth.</p>
-<section id="linear-growth">
-<h4>Linear growth<a class="headerlink" href="#linear-growth" title="Link to this heading"></a></h4>
+<div class="section" id="linear-growth">
+<h4>Linear growth<a class="headerlink" href="#linear-growth" title="Permalink to this heading"></a></h4>
 <p>We will start with linear growth; stating that the growth is linear is the cartoon model. More precisely, we model bacterial growth as a constant process for each bacterium; it grows at the same rate regardless of bacterial mass. We can mathematize our model as</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -356,9 +357,9 @@ f(\mathbf{a};\mathbf{t},a^0, b, \sigma) = \left(\frac{1}{2\pi\sigma^2}\right)^{n
 \[\begin{align}
 a_i \sim \text{Norm}(a^0 + b t_i, \sigma)\;\forall i.
 \end{align}\]</div>
-</section>
-<section id="exponential-growth">
-<h4>Exponential growth<a class="headerlink" href="#exponential-growth" title="Link to this heading"></a></h4>
+</div>
+<div class="section" id="exponential-growth">
+<h4>Exponential growth<a class="headerlink" href="#exponential-growth" title="Permalink to this heading"></a></h4>
 <p>We can use exactly the same logic as above to write the model for Exponential growth.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -370,19 +371,19 @@ a_i \sim \text{Norm}(a^0 + b t_i, \sigma)\;\forall i.
 \[\begin{align}
 a_i \sim \text{Norm}(a^0 \mathrm{e}^{kt}, \sigma)\;\forall i.
 \end{align}\]</div>
-</section>
-<section id="variate-covariate-models">
-<h4>Variate-covariate models<a class="headerlink" href="#variate-covariate-models" title="Link to this heading"></a></h4>
+</div>
+<div class="section" id="variate-covariate-models">
+<h4>Variate-covariate models<a class="headerlink" href="#variate-covariate-models" title="Permalink to this heading"></a></h4>
 <p>These models for bacterial growth are examples of <strong>variate-covariate models</strong>. The covariate is the time measurements, assumed to be known exactly. The variate, that which varies with the covariate, is the bacterial area. More generally, covariates are measured quantities that affect the measured value of a variate. In the first model, the variate depends linearly on the covariate, and in the second model, the variate depends exponentially on the covariate.</p>
-</section>
-</section>
-</section>
-<section id="important-notes-on-generative-modeling">
-<h2>Important notes on generative modeling<a class="headerlink" href="#important-notes-on-generative-modeling" title="Link to this heading"></a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="important-notes-on-generative-modeling">
+<h2>Important notes on generative modeling<a class="headerlink" href="#important-notes-on-generative-modeling" title="Permalink to this heading"></a></h2>
 <p>In the three example models presented here, we used our best scientific and statistical insights to put forward a generative model. The model for linear growth of bacteria is in some sense “standard,” in that it leads to linear regression, a widely-used statistical tool. Nonetheless, your modeling should be <strong>bespoke</strong>. You should choose models that are appropriate for the experiment and data you are analyzing.</p>
 <p>The bulk of next term is about parametric statistical models, how to build them, how to estimate their parameters, and how to compare them.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -396,11 +397,11 @@ a_i \sim \text{Norm}(a^0 \mathrm{e}^{kt}, \sigma)\;\forall i.
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 14, 2024.
+      <span class="lastupdated">Last updated on Oct 16, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12242d040> 
+   <jinja2.runtime.BlockReference object at 0x1452c8110> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

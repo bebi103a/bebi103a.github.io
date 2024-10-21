@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plug-in estimates &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -161,15 +162,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="plug-in-estimates">
-<h1>Plug-in estimates<a class="headerlink" href="#plug-in-estimates" title="Permalink to this heading"></a></h1>
+  <section id="plug-in-estimates">
+<h1>Plug-in estimates<a class="headerlink" href="#plug-in-estimates" title="Link to this heading"></a></h1>
 <p>When we make measurements, we are observing samples out of an underlying, typically unknown, <strong>generative distribution</strong>. Take as an example measurements of the count of RNA transcripts of a given gene in individual cells. We are likely to observe counts where the probability mass function of the generative distribution are is high and unlikely to observe counts where the PMF of the generative distribution is low.</p>
 <p>If we have a full understanding of the generative distribution, we have learned how the data were generated, and thereby have an understanding of the physical, chemical, or biological phenomena we are studying. <strong>Statistical inference</strong> involves deducing properties of these (unknown) generative distributions.</p>
 <p>In this lecture, we will start with <strong>nonparametric inference</strong>, which is statistical inference where no model is assumed; conclusions are drawn from the data alone. The approach we will take is heavily inspired by Allen Downey’s
 wonderful book, <a class="reference external" href="http://greenteapress.com/thinkstats2/index.html">Think Stats</a> and from
 Larry Wasserman’s book <a class="reference external" href="https://link.springer.com/book/10.1007/978-0-387-21736-9">All of Statistics</a>.</p>
-<div class="section" id="the-plug-in-principle">
-<h2>The plug-in principle<a class="headerlink" href="#the-plug-in-principle" title="Permalink to this heading"></a></h2>
+<section id="the-plug-in-principle">
+<h2>The plug-in principle<a class="headerlink" href="#the-plug-in-principle" title="Link to this heading"></a></h2>
 <p>Let’s first think about how to get an estimate for a parameter
 value, given the data. While what we are about to do is general, for now
 it is useful to have in your mind a concrete example. Imagine we have a
@@ -270,8 +271,8 @@ the two variables <span class="math notranslate nohighlight">\(x\)</span> and <s
 \[\begin{aligned}
    \hat{\rho} = \frac{\sum_i(x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\left(\sum_i(x_i-\bar{x})^2\right)\left(\sum_i(y_i-\bar{y})^2\right)}}.
 \end{aligned}\]</div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -285,11 +286,11 @@ the two variables <span class="math notranslate nohighlight">\(x\)</span> and <s
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x137c43530> 
+   <jinja2.runtime.BlockReference object at 0x161196f30> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

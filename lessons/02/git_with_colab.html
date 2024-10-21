@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using GitHub with Google Colab &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -160,17 +161,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="using-github-with-google-colab">
-<h1>Using GitHub with Google Colab<a class="headerlink" href="#using-github-with-google-colab" title="Permalink to this heading"></a></h1>
+  <section id="using-github-with-google-colab">
+<h1>Using GitHub with Google Colab<a class="headerlink" href="#using-github-with-google-colab" title="Link to this heading"></a></h1>
 <p>Google Colab has convenient Git integration. This will enable you to edit notebooks in Colab and then commit and push changes back to the repository without ever leaving Colab in your browser.</p>
-<div class="section" id="setting-up-github-access-from-colab">
-<h2>Setting up GitHub access from Colab<a class="headerlink" href="#setting-up-github-access-from-colab" title="Permalink to this heading"></a></h2>
+<section id="setting-up-github-access-from-colab">
+<h2>Setting up GitHub access from Colab<a class="headerlink" href="#setting-up-github-access-from-colab" title="Link to this heading"></a></h2>
 <p>In order to access Git repositories, you need to allow Colab to access the repositories. To set this up, make sure you are logged in to your Caltech G-Suite. Then, follow the steps below.</p>
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://colab.research.google.com/">main Google Colab page</a>. You will get a splash page that looks like this.</p></li>
 </ol>
 <blockquote>
-<div><a class="reference internal image-reference" href="../../_images/colab_splash.png"><img alt="Google Colab splash page" class="align-center" src="../../_images/colab_splash.png" style="width: 500px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/colab_splash.png"><img alt="Google Colab splash page" class="align-center" src="../../_images/colab_splash.png" style="width: 500px;" />
+</a>
 <p>Click on the “GitHub” tab of the orange bar.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -178,16 +180,16 @@
 <li><p>An authorization window from GitHub will pop up. (Make sure you are not blocking pop-up windows.) You should authorize Colab to access your repositories.</p></li>
 <li><p>Under where it says “Enter a GitHub URL or search by organization or user,” search for the desired repository name. Underneath the search bar, you will have a pulldown menu of available notebooks. Select the one you want to work on.</p></li>
 </ol>
-</div>
-<div class="section" id="pushing-your-notebook-to-the-repository">
-<h2>Pushing your notebook to the repository<a class="headerlink" href="#pushing-your-notebook-to-the-repository" title="Permalink to this heading"></a></h2>
+</section>
+<section id="pushing-your-notebook-to-the-repository">
+<h2>Pushing your notebook to the repository<a class="headerlink" href="#pushing-your-notebook-to-the-repository" title="Link to this heading"></a></h2>
 <p>After you have made changes to your notebook, you can commit and push them to the repository. To do so from within a Colab notebook, click <code class="docutils literal notranslate"><span class="pre">File</span></code> → <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">a</span> <span class="pre">copy</span> <span class="pre">in</span> <span class="pre">GitHub</span></code>. You will be prompted to add a commit message, and after you click <code class="docutils literal notranslate"><span class="pre">OK</span></code>, the notebook will be pushed to your repository.</p>
-</div>
-<div class="section" id="chrome-plug-in-for-quick-access">
-<h2>Chrome plug-in for quick access<a class="headerlink" href="#chrome-plug-in-for-quick-access" title="Permalink to this heading"></a></h2>
+</section>
+<section id="chrome-plug-in-for-quick-access">
+<h2>Chrome plug-in for quick access<a class="headerlink" href="#chrome-plug-in-for-quick-access" title="Link to this heading"></a></h2>
 <p>If you use Chrome as your browser, there is a convenient <a class="reference external" href="https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo">plug-in called Open in Colab</a> that allows you to open a notebook from any GitHub page in Colab. So, after installing the plugin, if you are on the webpage of your team’s repository, you can click the icon next to the address bar in your Chrome browser and the notebook will open in Colab. You can then proceed to push the notebook back to the repository after making your changes as described above.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -201,11 +203,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x13792a630> 
+   <jinja2.runtime.BlockReference object at 0x161191280> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

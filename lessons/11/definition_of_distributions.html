@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Probability distributions &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -110,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -166,8 +167,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="probability-distributions">
-<h1>Probability distributions<a class="headerlink" href="#probability-distributions" title="Permalink to this heading"></a></h1>
+  <section id="probability-distributions">
+<h1>Probability distributions<a class="headerlink" href="#probability-distributions" title="Link to this heading"></a></h1>
 <p>So far we have talked about probability of events, and we have in mind
 measurements and, in the Bayesian case, parameter values as the events.
 We have a bit of a problem, though, if the sample space consists of real
@@ -192,13 +193,15 @@ P(\text{having outcome that is}\le y) = F(y).
 <strong>cumulative distribution function</strong> (CDF), or just <strong>distribution
 function</strong>. It contains all of the information we need to know about how
 probability is assigned to <span class="math notranslate nohighlight">\(y\)</span>. A CDF for a Normal distribution is shown in the left panel of the figure below.</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <img alt="normal distribution" src="../../_images/normal_height_dist.png" />
-<p class="caption"><span class="caption-text">a) The cumulative distribution function for a Normal distribution
+<figcaption>
+<p><span class="caption-text">a) The cumulative distribution function for a Normal distribution
 that could describe, for example, the heights of men in centimeters
 in a given country. b) The corresponding probability density
-function.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
-</div>
+function.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
 <p>Related to the CDF for a continuous quantity is the <strong>probability
 density function</strong>, or PDF. The PDF is given by the derivative of the
 CDF,</p>
@@ -228,13 +231,15 @@ f(y) = P(y).
 for a discrete distribution are shown in the figure below. In this
 example, <span class="math notranslate nohighlight">\(n\)</span> is the outcome of the roll of a fair die
 (<span class="math notranslate nohighlight">\(n\in\{1,2,3,4,5,6\}\)</span>).</p>
-<div class="figure align-default" id="id4">
+<figure class="align-default" id="id4">
 <img alt="Die roll distribution." src="../../_images/dice_roll_dist.png" />
-<p class="caption"><span class="caption-text">a) The cumulative distribution function for the outcome of a fair
-die roll. b) The corresponding probability mass function.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
-</div>
-<div class="section" id="joint-and-conditional-distributions-and-bayess-theorem-for-pdfs">
-<h2>Joint and conditional distributions and Bayes’s theorem for PDFs<a class="headerlink" href="#joint-and-conditional-distributions-and-bayess-theorem-for-pdfs" title="Permalink to this heading"></a></h2>
+<figcaption>
+<p><span class="caption-text">a) The cumulative distribution function for the outcome of a fair
+die roll. b) The corresponding probability mass function.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="joint-and-conditional-distributions-and-bayess-theorem-for-pdfs">
+<h2>Joint and conditional distributions and Bayes’s theorem for PDFs<a class="headerlink" href="#joint-and-conditional-distributions-and-bayess-theorem-for-pdfs" title="Link to this heading"></a></h2>
 <p>We have defined a CDF as <span class="math notranslate nohighlight">\(F(x)\)</span>, that is, describing a single
 variable <span class="math notranslate nohighlight">\(x\)</span>. We can have <strong>joint distributions</strong> with a CDF
 <span class="math notranslate nohighlight">\(F(x,y)\)</span>, defined as</p>
@@ -262,14 +267,14 @@ f(x\mid y) = \frac{f(x,y)}{f(y)}.
 are conditioning on an event <span class="math notranslate nohighlight">\(y\)</span> that has zero probability. We
 will not carefully derive why this holds, but state it without proof.</p>
 <p>As a consequence, Bayes’s theorem also holds for PDFs, as it does for
-probabilities. <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+probabilities. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
 f(x\mid y) = \frac{f(y\mid x)\,f(x)}{f(y)}.
 \end{aligned}\]</div>
-</div>
-<div class="section" id="change-of-variables-formula-for-continuous-distributions">
-<h2>Change of variables formula for continuous distributions<a class="headerlink" href="#change-of-variables-formula-for-continuous-distributions" title="Permalink to this heading"></a></h2>
+</section>
+<section id="change-of-variables-formula-for-continuous-distributions">
+<h2>Change of variables formula for continuous distributions<a class="headerlink" href="#change-of-variables-formula-for-continuous-distributions" title="Link to this heading"></a></h2>
 <p>As a last note about probability distributions, I discuss the change of variables formula. Say I have a continuous probability distribution with PDF <span class="math notranslate nohighlight">\(f_X(x)\)</span>. I have included the subscript <span class="math notranslate nohighlight">\(X\)</span> to denote that this is a PDF describing the random variable <span class="math notranslate nohighlight">\(X\)</span>. If I wish to change variables to instead get a continuous distribution in <span class="math notranslate nohighlight">\(y=g(x)\)</span>, or <span class="math notranslate nohighlight">\(f_Y(y) = f_Y(g(x))\)</span>, how do I get <span class="math notranslate nohighlight">\(f_Y\)</span>? We must enforce that the distributions be normalized;</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -281,8 +286,8 @@ f(x\mid y) = \frac{f(y\mid x)\,f(x)}{f(y)}.
 f_Y(y) = \left|\frac{\mathrm{d} g^{-1}(y)}{\mathrm{d}y}\right|\,f_X(g^{-1}(y)).
 \end{align}\]</div>
 <p>This is the <strong>change of variables formula</strong>.</p>
-<div class="section" id="an-example-of-change-of-variables">
-<h3>An example of change of variables<a class="headerlink" href="#an-example-of-change-of-variables" title="Permalink to this heading"></a></h3>
+<section id="an-example-of-change-of-variables">
+<h3>An example of change of variables<a class="headerlink" href="#an-example-of-change-of-variables" title="Link to this heading"></a></h3>
 <p>Imagine I have a random variable that is Exponentially distributed, such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -295,9 +300,9 @@ f_Y(y) = \left|\frac{\mathrm{d}}{\mathrm{d}y}\,\frac{y}{a}\right|\,f_X(y/a)
 = \frac{1}{a}\,\beta\,\mathrm{e}^{-\beta y / a}.
 \end{align}\]</div>
 <p>The distribution is again Exponential, but the rate has been rescaled, <span class="math notranslate nohighlight">\(\beta \to \beta/a\)</span>. This makes sense; we have rescaled <span class="math notranslate nohighlight">\(x\)</span> by our change of variables, so the rate should be rescaled accordingly.</p>
-</div>
-<div class="section" id="another-example-of-change-of-variables-the-log-normal-distribution">
-<h3>Another example of change of variables: the Log-Normal distribution<a class="headerlink" href="#another-example-of-change-of-variables-the-log-normal-distribution" title="Permalink to this heading"></a></h3>
+</section>
+<section id="another-example-of-change-of-variables-the-log-normal-distribution">
+<h3>Another example of change of variables: the Log-Normal distribution<a class="headerlink" href="#another-example-of-change-of-variables-the-log-normal-distribution" title="Link to this heading"></a></h3>
 <p>Now imagine I have a random variable that is Normally distributed and I wish to determine how <span class="math notranslate nohighlight">\(y = \mathrm{e}^{x}\)</span> is distributed.</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -311,16 +316,17 @@ f_Y(y) = \left|\frac{\mathrm{d}\,\ln y}{\mathrm{d}y}\right|\,f_X(\ln y)
 \end{align}\]</div>
 <p>which is indeed the PDF of the Log-Normal distribution.</p>
 <hr class="docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>This is very subtle. See Jaynes’s book, <em>Probability: The Logic of
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>This is very subtle. See Jaynes’s book, <em>Probability: The Logic of
 Science</em>, Cambridge University Press, 2003, for more one these
 subtleties.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
+</aside>
+</aside>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -334,11 +340,11 @@ subtleties.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1378b6ed0> 
+   <jinja2.runtime.BlockReference object at 0x13d9c1d90> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

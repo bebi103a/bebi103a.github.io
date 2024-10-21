@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>22. Implementation of MLE for variate-covariate models &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -108,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -163,8 +164,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="22.-Implementation-of-MLE-for-variate-covariate-models">
-<h1>22. Implementation of MLE for variate-covariate models<a class="headerlink" href="#22.-Implementation-of-MLE-for-variate-covariate-models" title="Permalink to this heading"></a></h1>
+  <section id="22.-Implementation-of-MLE-for-variate-covariate-models">
+<h1>22. Implementation of MLE for variate-covariate models<a class="headerlink" href="#22.-Implementation-of-MLE-for-variate-covariate-models" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/good_invitro_droplet_data.csv">Dataset download</a></p>
 <hr><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -607,8 +608,8 @@ var element = document.currentScript.previousSibling.previousSibling;
 </pre></div>
 </div>
 </div>
-<div class="section" id="Performing-MLE-by-direct-numerical-optimization">
-<h2>Performing MLE by direct numerical optimization<a class="headerlink" href="#Performing-MLE-by-direct-numerical-optimization" title="Permalink to this heading"></a></h2>
+<section id="Performing-MLE-by-direct-numerical-optimization">
+<h2>Performing MLE by direct numerical optimization<a class="headerlink" href="#Performing-MLE-by-direct-numerical-optimization" title="Link to this heading"></a></h2>
 <p>We can take the same approach as we did with the mRNA counts from the smFISH experiments. We write a function for the log likelihood and then use numerical optimization to find the parameters.</p>
 <p>The joint probability density function for the data set is the product of the probability densities of Normals. Therefore, the log likelihood is the <em>sum</em> of <em>log</em> probability densities of Normals. We can code that up using the convenient functions in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module.</p>
 <div class="nbinput nblast docutils container">
@@ -734,9 +735,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Of course, we are not using the full generative model here, since we are not using the parameter <span class="math notranslate nohighlight">\(\sigma\)</span>. We will discuss in much more detail in the lesson on model assessment how to visualize the entire generative model as it relates to the measured data.</p>
-</div>
-<div class="section" id="Least-squares">
-<h2>Least squares<a class="headerlink" href="#Least-squares" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Least-squares">
+<h2>Least squares<a class="headerlink" href="#Least-squares" title="Link to this heading"></a></h2>
 <p>We worked out in our lesson on MLE of variate-covariate models that when we have a homoscedastic Normal model for residuals, we may compute the MLE by first minimizing the residual sum of squares and then computing the MLE for the variance of the Normally distributed residuals as <span class="math notranslate nohighlight">\(\sigma^* = \sqrt{\text{RSS}^* / n}\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the total number of data points.</p>
 <p>Conveniently, this is the form of our generative model, so we can split the optimization problem in two parts. First, find the values of parameters <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> that minimize the residual sum of squares. Then, using these values, compute the MLE for <span class="math notranslate nohighlight">\(\sigma\)</span> using the analytical result we have just derived.</p>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Levenberg–Marquardt_algorithm">Levenberg-Marquardt algorithm</a> is a fast, robust algorithm to perform minimization of the RSS. A variant of this is implemented in <code class="docutils literal notranslate"><span class="pre">scipy.optimization.least_squares()</span></code> (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html">docs</a>). To use that algorithm you need to define a function for the residual; that is a function that returns the quantity <span class="math notranslate nohighlight">\(l_i - \mu_i\)</span>. The function has call
@@ -832,9 +833,9 @@ Timing for MLE by least_squares:
 </pre></div></div>
 </div>
 <p>That’s a substantial speed boost of nearly 4×.</p>
-</div>
-<div class="section" id="Confidence-intervals">
-<h2>Confidence intervals<a class="headerlink" href="#Confidence-intervals" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Confidence-intervals">
+<h2>Confidence intervals<a class="headerlink" href="#Confidence-intervals" title="Link to this heading"></a></h2>
 <p>We can now proceed to compute confidence intervals for our parameters. We will do a parametric bootstrap here. We use the generative model parametrized by the MLE to regenerate data sets. For each value of <span class="math notranslate nohighlight">\(d\)</span> (which are fixed), we draw values of <span class="math notranslate nohighlight">\(l\)</span> using the generative distribution). Then we perform MLE of those to get confidence intervals. To use <code class="docutils literal notranslate"><span class="pre">bebi103.draw_bs_reps_mle()</span></code>, then, we just are left to supply the bootstrap sample generating function.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -894,9 +895,9 @@ Timing for MLE by least_squares:
 </pre></div></div>
 </div>
 <p>The confidence intervals are given in each column for <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(\phi\)</span>, and <span class="math notranslate nohighlight">\(\sigma\)</span>, respectively, and are quite tight. This is because we have lots of data points. This does <em>not</em> mean that the data are tightly distributed about the theoretical curve, only that the MLE estimates for the parameters will not vary much if we repeated the experiment and analysis.</p>
-</div>
-<div class="section" id="Other-confidence-intervals">
-<h2>Other confidence intervals<a class="headerlink" href="#Other-confidence-intervals" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Other-confidence-intervals">
+<h2>Other confidence intervals<a class="headerlink" href="#Other-confidence-intervals" title="Link to this heading"></a></h2>
 <p>We have computed parametric confidence intervals by regenerating spindle lengths for each droplet diameter we measured using the generative model parametrized by the MLE. There are many ways to compute confidence intervals for variate-covariate models, including pairs, residual, and wild bootstrap. Briefly, here are the respective techniques.</p>
 <p><strong>Pairs bootstrap</strong>: As we saw when doing nonparametric bootstrap confidence intervals for correlation coefficients, we can apply a similar technique here. We resample the data set as, in this case, pairs of droplet diameters and spindle lengths <span class="math notranslate nohighlight">\((d_i, \ell_i)\)</span>, and compute MLE estimates for the parameters for each bootstrap sample.</p>
 <p><strong>Residual bootstrap</strong>: In residual bootstrap, the <em>residuals</em> are resampled. The procedure goes as follows.</p>
@@ -909,17 +910,17 @@ Timing for MLE by least_squares:
 <li><p>Recompute the MLE for <span class="math notranslate nohighlight">\(\theta\)</span> from this bootstrap sample.</p></li>
 </ol>
 <p><strong>Wild bootstrap</strong>: In wild bootstrap, the residuals are resampled parametrically. If residual <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(\epsilon_i = y_i - \hat{y}_i\)</span>, then a new residual applied to data point <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(\epsilon_i\,v_i\)</span>, where <span class="math notranslate nohighlight">\(v_i\)</span> is drawn from a Normal distribution with mean zero and variance one. Thus, data point <span class="math notranslate nohighlight">\(i\)</span> in the bootstrap sample is <span class="math notranslate nohighlight">\((x_i, \hat{y}_i + \epsilon_i\,v_i)\)</span>. The MLE for <span class="math notranslate nohighlight">\(\theta\)</span> is then computed from this bootstrap sample.</p>
-<div class="section" id="Why-I-do-not-advocate-for-using-these-other-methods">
-<h3>Why I do not advocate for using these other methods<a class="headerlink" href="#Why-I-do-not-advocate-for-using-these-other-methods" title="Permalink to this heading"></a></h3>
+<section id="Why-I-do-not-advocate-for-using-these-other-methods">
+<h3>Why I do not advocate for using these other methods<a class="headerlink" href="#Why-I-do-not-advocate-for-using-these-other-methods" title="Link to this heading"></a></h3>
 <p>Pairs bootstrap is a nonparametric way of getting bootstrap samples, with the bootstrap replicate computed using a parametric inference technique. This can work well if we have a large number of data points <em>and</em> no <em>x</em>-values are severely undersampled in the experiment. This is not always the case, however, though it is in the case of the spindle length data.</p>
 <p>Residual bootstrap implicitly models the residuals of homoscedastic, since any given residual may be applied to any given data point. Again, this is often not the case.</p>
 <p>Wild bootstrap is a twist on residual bootstrap that attempts to model heteroscedasticity. In using wild bootstrap, we have implicitly baked into model that the residual for each data point is normally distributed about the empirical residual with a scale parameter that scales with the size of the empirical residual. This is a way of dealing with heteroscedasticity without seriously considering the variation in measurement in a generative way. But, we really should <em>think generatively</em>. If we
 are going to model, we should model everything. A full generative model, including how we might expect the variability to change as a function of the measured and/or explanatory variables, is preferable.</p>
 <p>For variate-covariate models, I usually prefer to do the parametric bootstrap method we have covered in this lesson. If I have enough well-sampled data points, then pairs bootstrap is a reasonable way to nonparametrically get bootstrap samples to compute a confidence interval. If I am sure of homoscedasticity, residual bootstrap is a good method. I generally shy away from wild bootstrap completely, since I prefer to explicitly model heteroscedasticity.</p>
-</div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
@@ -947,8 +948,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -962,11 +963,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x137d26ab0> 
+   <jinja2.runtime.BlockReference object at 0x13e809a90> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

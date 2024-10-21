@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Methods &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -128,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -184,13 +185,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Methods">
-<h1>Methods<a class="headerlink" href="#Methods" title="Permalink to this heading"></a></h1>
+  <section id="Methods">
+<h1>Methods<a class="headerlink" href="#Methods" title="Link to this heading"></a></h1>
 <hr><p>In the previous lesson, we wrote some functions to parse strings and compute things like reverse complements. This helped us practice using functions and the iteration skills we learned.</p>
 <p>You might think, “Hey, replacing characters in strings sounds like it may be pretty common.” You’d be right. You might also think, “I bet someone, possibly someone who is a really good programmer, already has written code to do this.” You would also be right.</p>
 <p>For common tasks, there are often already methods written by someone smart, and working with strings is no different. In this lesson, we will explore some of the string processing tools that come with Python’s standard library.</p>
-<div class="section" id="Indexing-and-slicing-of-strings">
-<h2>Indexing and slicing of strings<a class="headerlink" href="#Indexing-and-slicing-of-strings" title="Permalink to this heading"></a></h2>
+<section id="Indexing-and-slicing-of-strings">
+<h2>Indexing and slicing of strings<a class="headerlink" href="#Indexing-and-slicing-of-strings" title="Link to this heading"></a></h2>
 <p>Before getting into string methods, we pause to note that indexing and slicing of strings works just as it does for lists and tuples.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -216,12 +217,12 @@ TeDd bds
 .sediba eduD ehT
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Revisiting-previous-examples-using-string-methods">
-<h2>Revisiting previous examples using string methods<a class="headerlink" href="#Revisiting-previous-examples-using-string-methods" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Revisiting-previous-examples-using-string-methods">
+<h2>Revisiting previous examples using string methods<a class="headerlink" href="#Revisiting-previous-examples-using-string-methods" title="Link to this heading"></a></h2>
 <p>We’ll start by revisiting some of the examples we’ve seen so far.</p>
-<div class="section" id="Computing-GC-content">
-<h3>Computing GC content<a class="headerlink" href="#Computing-GC-content" title="Permalink to this heading"></a></h3>
+<section id="Computing-GC-content">
+<h3>Computing GC content<a class="headerlink" href="#Computing-GC-content" title="Link to this heading"></a></h3>
 <p>If you remember from the <a class="reference external" href="l06_iteration.html">iteration lesson</a>, we started by computing the GC content of a nucleic acid sequence. We counted the occurrences of <code class="docutils literal notranslate"><span class="pre">'G'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C'</span></code> in the string using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. We can use the <code class="docutils literal notranslate"><span class="pre">count()</span></code> string method do to this.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -303,9 +304,9 @@ TeDd bds
 0
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Finding-the-index-of-a-start-codon">
-<h3>Finding the index of a start codon<a class="headerlink" href="#Finding-the-index-of-a-start-codon" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Finding-the-index-of-a-start-codon">
+<h3>Finding the index of a start codon<a class="headerlink" href="#Finding-the-index-of-a-start-codon" title="Link to this heading"></a></h3>
 <p>A later task in our lesson in iteration was to find the index of the start codon in an RNA sequence. Let’s do it with another string method.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -360,9 +361,9 @@ TeDd bds
 True
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Finding-the-last-index-of-a-substring">
-<h3>Finding the last index of a substring<a class="headerlink" href="#Finding-the-last-index-of-a-substring" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Finding-the-last-index-of-a-substring">
+<h3>Finding the last index of a substring<a class="headerlink" href="#Finding-the-last-index-of-a-substring" title="Link to this heading"></a></h3>
 <p>Let’s say we wanted to find the last instance of the start codon. We basically want to search from the right. This is exactly what the <code class="docutils literal notranslate"><span class="pre">rfind()</span></code> method does.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -381,9 +382,9 @@ True
 25
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Finding-the-complementary-base">
-<h3>Finding the complementary base<a class="headerlink" href="#Finding-the-complementary-base" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Finding-the-complementary-base">
+<h3>Finding the complementary base<a class="headerlink" href="#Finding-the-complementary-base" title="Link to this heading"></a></h3>
 <p>In our lesson on functions, we wrote a function to compute a complementary base comparing against both the capital and lowercase letter. Here is that function implemented with some handy string methods.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
@@ -440,9 +441,9 @@ True
 &#39;MAKE ME ALL CAPS.&#39;
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Converting-RNA-to-DNA">
-<h3>Converting RNA to DNA<a class="headerlink" href="#Converting-RNA-to-DNA" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Converting-RNA-to-DNA">
+<h3>Converting RNA to DNA<a class="headerlink" href="#Converting-RNA-to-DNA" title="Link to this heading"></a></h3>
 <p>We also updated the complementary base function to account for RNA or DNA. Perhaps an easier way is just to replace all <code class="docutils literal notranslate"><span class="pre">U</span></code>s in an RNA sequence with <code class="docutils literal notranslate"><span class="pre">T</span></code>s to get a DNA sequence. The <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method makes this easy.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -479,10 +480,10 @@ True
 &#39;GACAGACUCCAUGCACGUGGGUAUCAUGUC&#39;
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="The-join()-method">
-<h2>The join() method<a class="headerlink" href="#The-join()-method" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="The-join()-method">
+<h2>The join() method<a class="headerlink" href="#The-join()-method" title="Link to this heading"></a></h2>
 <p>One of the most useful string methods is the <code class="docutils literal notranslate"><span class="pre">join()</span></code> method. Say we have a list of words that we want to craft into a sentence.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
@@ -528,9 +529,9 @@ True
 &#39;The * Dude * abides.&#39;
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="The-format()-method">
-<h2>The format() method<a class="headerlink" href="#The-format()-method" title="Permalink to this heading"></a></h2>
+</section>
+<section id="The-format()-method">
+<h2>The format() method<a class="headerlink" href="#The-format()-method" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">format()</span></code> method is very powerful. We not go over all use cases here, but I’ll show you what I think is most intuitive and commonly used. Again, this is best learned by example.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
@@ -561,10 +562,6 @@ The instructors give us haircuts.
 <p>See the pattern? Given a string, the <code class="docutils literal notranslate"><span class="pre">format()</span></code> method takes kwargs that are themselves strings. Within the string, the name of the kwargs are given in braces. Then, the arguments in the <code class="docutils literal notranslate"><span class="pre">format()</span></code> method inserts the strings at the places delimited by braces.</p>
 <p>Now, what if we want to insert a number into a string? We could convert it to a string, but we should instead use <strong>string conversions</strong>. These are short directives that specify how the number should be represented in a string. A complete list is <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#printf-style-bytes-formatting">here</a>. The table below shows some that are commonly used.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>conversion</p></th>
 <th class="head"><p>description</p></th>
@@ -624,9 +621,9 @@ That rug really tied the room together.
 </pre></div></div>
 </div>
 <p>Note the syntax. In the braces, we specify the name of the kwarg, and then we put a colon followed by the string conversion. Note also that I used double quotes on the outside of the string containing Avogadro’s number so that I could include an apostrophe in the string. Finally, note that we got a subscript zero using the <a class="reference external" href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> character, <code class="docutils literal notranslate"><span class="pre">₀</span></code>.</p>
-</div>
-<div class="section" id="f-strings">
-<h2>f-strings<a class="headerlink" href="#f-strings" title="Permalink to this heading"></a></h2>
+</section>
+<section id="f-strings">
+<h2>f-strings<a class="headerlink" href="#f-strings" title="Link to this heading"></a></h2>
 <p>Though not really a method, this is a convenient place to introduce f-strings. <strong>f-strings</strong> are strings that are prefixed with an <code class="docutils literal notranslate"><span class="pre">f</span></code> or <code class="docutils literal notranslate"><span class="pre">F</span></code> that allow convenient insertion of entries into strings. Here are some examples.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
@@ -664,19 +661,15 @@ Avogadro&#39;s number is approximately 6.022e+23.
 That rug really tied the room together.
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="There-are-many-more-string-methods">
-<h2>There are many more string methods<a class="headerlink" href="#There-are-many-more-string-methods" title="Permalink to this heading"></a></h2>
+</section>
+<section id="There-are-many-more-string-methods">
+<h2>There are many more string methods<a class="headerlink" href="#There-are-many-more-string-methods" title="Link to this heading"></a></h2>
 <p>You can find a complete list of string methods from <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">the Python doc pages</a>. Various methods will come in handy when parsing strings going forward.</p>
-</div>
-<div class="section" id="List-methods">
-<h2>List methods<a class="headerlink" href="#List-methods" title="Permalink to this heading"></a></h2>
+</section>
+<section id="List-methods">
+<h2>List methods<a class="headerlink" href="#List-methods" title="Link to this heading"></a></h2>
 <p>Many Python objects in addition to strings have methods. Lists, for example, have several methods. Imagine the list is called <code class="docutils literal notranslate"><span class="pre">s</span></code>. Here are some list methods.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 74%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>method</p></th>
 <th class="head"><p>effect</p></th>
@@ -736,9 +729,9 @@ That rug really tied the room together.
 </div>
 <p>Notice that the list was changed <em>in place</em>. The methods of lists, which are mutable objects, change the value of the list, with <code class="docutils literal notranslate"><span class="pre">index()</span></code> and <code class="docutils literal notranslate"><span class="pre">count()</span></code> being exceptions from the table above.</p>
 <p>We will use methods over and over again when working with Pandas data frames. They will make data wrangling a whole lot easier!</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
@@ -761,8 +754,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -776,11 +769,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x137817110> 
+   <jinja2.runtime.BlockReference object at 0x13d0caf90> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

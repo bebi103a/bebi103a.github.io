@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manipulating data frames and wrangling data &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -109,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -165,8 +166,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Manipulating-data-frames-and-wrangling-data">
-<h1>Manipulating data frames and wrangling data<a class="headerlink" href="#Manipulating-data-frames-and-wrangling-data" title="Permalink to this heading"></a></h1>
+  <section id="Manipulating-data-frames-and-wrangling-data">
+<h1>Manipulating data frames and wrangling data<a class="headerlink" href="#Manipulating-data-frames-and-wrangling-data" title="Link to this heading"></a></h1>
 <hr /><p>We have already seen how to perform calculations with data frames by:</p>
 <ul class="simple">
 <li><p>Adding a column, computed from other columns if desired.</p></li>
@@ -174,8 +175,8 @@
 <li><p>Using window functions</p></li>
 </ul>
 <p>These methods are useful for wrangling data frames, doing things like unit conversions or computing statistical point estimates. There are plenty of other methods you can find in the <a class="reference external" href="https://docs.pola.rs">Polars documentation</a>. The Polars docs, and questions on <a class="reference external" href="https://stackoverflow.com">Stack Overflow</a> are among your best references for usage.</p>
-<div class="section" id="What's-to-come">
-<h2>What’s to come<a class="headerlink" href="#What's-to-come" title="Permalink to this heading"></a></h2>
+<section id="What's-to-come">
+<h2>What’s to come<a class="headerlink" href="#What's-to-come" title="Link to this heading"></a></h2>
 <p>In the next sections of this lesson, we discuss how to reshape and combine data frames. In these operations, we are not really doing calculations with data, but rather are working to organize our data set into an easily usable, tidy form. We will cover</p>
 <ul class="simple">
 <li><p>Creating a data frame from scratch (as opposed to reading in data from a file)</p></li>
@@ -183,13 +184,13 @@
 <li><p>Reshaping data frames by unpivoting and pivoting.</p></li>
 </ul>
 <p>All of these methods are useful to bring inputted data into formats that are convenient to work with.</p>
-</div>
-<div class="section" id="Polars-documentation">
-<h2>Polars documentation<a class="headerlink" href="#Polars-documentation" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Polars-documentation">
+<h2>Polars documentation<a class="headerlink" href="#Polars-documentation" title="Link to this heading"></a></h2>
 <p>The Pandas documentation is a great resource for learning about these methods. In particular, the <a class="reference external" href="https://docs.pola.rs/user-guide/transformations/">section of the user guide on joining concatenating, unpivoting, and pivoting</a> is very useful. They use very small, contrived data frames to demonstrate the concepts. There are benefits to this approach, certainly, but I find it is often easier to grasp the concepts with real examples. In the following sections of this lesson, we will approach
 these topics with real examples. You can think of the these lessons as valuable introductions and supplements to the official Polars documentation.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -203,11 +204,11 @@ these topics with real examples. You can think of the these lessons as valuable 
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x127e4fec0> 
+   <jinja2.runtime.BlockReference object at 0x161df2210> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Making a data frame tall &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -117,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -173,8 +174,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Making-a-data-frame-tall">
-<h1>Making a data frame tall<a class="headerlink" href="#Making-a-data-frame-tall" title="Permalink to this heading"></a></h1>
+  <section id="Making-a-data-frame-tall">
+<h1>Making a data frame tall<a class="headerlink" href="#Making-a-data-frame-tall" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx">Data set download</a></p>
 <hr/><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -550,8 +551,8 @@ function(Bokeh) {
 <li><p>Parsing column names to extract useful metadata en route to tidy data</p></li>
 <li><p>Performing an unpivot operation to efficiently tidy a data set.</p></li>
 </ul>
-<div class="section" id="The-data-set">
-<h2>The data set<a class="headerlink" href="#The-data-set" title="Permalink to this heading"></a></h2>
+<section id="The-data-set">
+<h2>The data set<a class="headerlink" href="#The-data-set" title="Link to this heading"></a></h2>
 <p>We will use a data set from <a class="reference external" href="http://www.stathlab.caltech.edu">Angela Stathopoulos’s lab</a>, acquired to study morphogen profiles in developing fruit fly embryos. The original paper is <a class="reference external" href="https://doi.org/10.1016/j.devcel.2011.12.007">Reeves, Trisnadi, et al., Dorsal-ventral gene expression in the Drosophila embryo reflects the dynamics and precision of the Dorsal nuclear gradient, Dev. Cell., 22, 544-557, 2012</a>, and the data set may be downloaded here:
 <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx">https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx</a>.</p>
 <p>In this experiment, Reeves, Trisnadi, and coworkers measured expression levels of a fusion of Dorsal, a morphogen transcription factor important in determining the dorsal-ventral axis of the developing organism, and Venus, a yellow fluorescent protein along the dorsal/ventral- (DV) coordinate. They put this construct on the third chromosome, while the wild type <em>dorsal</em> is on the second. Instead of the wild type, they had a homozygous <em>dorsal</em>-null mutant on the second chromosome. The
@@ -563,9 +564,9 @@ Dorsal-Venus construct rescues wild type behavior, so they could use this constr
 <p>To quantify the gradient, Reeves, Trisnadi, and coworkers had to first choose a metric for describing it. They chose to fit the measured profile of fluorescence intensity with a Gaussian peak (plus background) and use the standard deviation of that Gaussian as a metric for the width of the Dorsal gradient.</p>
 <p>In this lesson, we will use the gradient widths as outputted from this procedure. The units of the widths are dimensionless, consistent with the coordinate system shown in the image above. I asked one of the authors for the data sets used in making the figures. She sent me a MS Excel file that had a separate sheet for each of several figures in the paper that I asked about. We will focus on the data used for Fig. 1F of the paper. In this figure, the authors seek to demonstrate that live imaging
 with their Venus-Dorsal construct gives a Dorsal gradient of similar width as would be obtained by fixing wild type cells and doing Dorsal antibody staining (the gold standard). These wild type embryos were analyzed as whole mounts and also as cross sections. They also tried anti-Dorsal staining and anti-Venus staining in the Venus-Dorsal construct. Finally, they also measured gradient widths of a GFP-Dorsal construct that fails to complete development.</p>
-</div>
-<div class="section" id="Loading-in-an-Excel-sheet">
-<h2>Loading in an Excel sheet<a class="headerlink" href="#Loading-in-an-Excel-sheet" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Loading-in-an-Excel-sheet">
+<h2>Loading in an Excel sheet<a class="headerlink" href="#Loading-in-an-Excel-sheet" title="Link to this heading"></a></h2>
 <p>Generally, you should store your data sets in portable formats, like CSV, JSON, XML, HDF5, OME-TIFF, etc., and not proprietary formats. Nonetheless, software like Microsoft Excel is widely used, and you will often receive data sets in this format. Fortunately, Polars can read Excel files, provided they are from fairly recent versions of Excel.</p>
 <p>To read in this data set, we will use <code class="docutils literal notranslate"><span class="pre">pl.read_excel()</span></code>. Importantly, because an Excel document may have many sheets, we need to specify the sheet name we want, in this case <code class="docutils literal notranslate"><span class="pre">'Fig</span> <span class="pre">1F'</span></code>.</p>
 <div class="nbinput docutils container">
@@ -594,9 +595,9 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 </div>
 <p>The data frame is not tidy. Each <em>entry</em> corresponds to one observation, not each row. The column headings contain important metadata, the genotype (wt, dl1/+dl-venus/+, or dl1/+dl-GFP/+) and the method (wholemounts, cross-sections, anti-Dorsal, anti-gfp, Venus (live), and GFP (live)).</p>
 <p>The data set has other issues we need to clean up. The column <code class="docutils literal notranslate"><span class="pre">'anti-gfp</span> <span class="pre">dl1/+dl-venus/+'</span></code> is mislabeled; it should be <code class="docutils literal notranslate"><span class="pre">'anti-Venus</span> <span class="pre">dl1/+dl-venus/+'</span></code>. We would also like to clean up the genotypes, putting in a semicolon to separate the chromosomes. The wild type columns have the genotype first (<code class="docutils literal notranslate"><span class="pre">'wt'</span></code>) followed by the method, whereas the other columns have the method first, followed by genotype.</p>
-</div>
-<div class="section" id="Parsing-the-column-names">
-<h2>Parsing the column names<a class="headerlink" href="#Parsing-the-column-names" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Parsing-the-column-names">
+<h2>Parsing the column names<a class="headerlink" href="#Parsing-the-column-names" title="Link to this heading"></a></h2>
 <p>We will start our process of tidying this data set by changing the column names. They are pretty messy, so this is best done by hand in this case. We will rename the columns with strings where the genotype comes first, followed by the method for measuring the gradient width, separated by an underscore.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -633,9 +634,9 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 </style>
 <small>shape: (5, 8)</small><table border="1" class="dataframe"><thead><tr><th>WT_whole mount</th><th>WT_cross-section</th><th>dl1/+ ; dl-venus/+_anti-Dorsal</th><th>dl1/+ ; dl-venus/+_anti-Venus</th><th>dl1/+ ; dl-venus/+_Venus (live)</th><th>dl1/+ ; dl-gfp/+_anti-Dorsal</th><th>dl1/+ ; dl-gfp/+_anti-GFP</th><th>dl1/+ ; dl-gfp/+_GFP (live)</th></tr><tr><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>0.1288</td><td>0.1327</td><td>0.1482</td><td>0.1632</td><td>0.1666</td><td>0.2248</td><td>0.2389</td><td>0.2412</td></tr><tr><td>0.1554</td><td>0.1457</td><td>0.1503</td><td>0.1671</td><td>0.1753</td><td>0.1891</td><td>0.2035</td><td>0.1942</td></tr><tr><td>0.1306</td><td>0.1447</td><td>0.1577</td><td>0.1704</td><td>0.1705</td><td>0.1705</td><td>0.1943</td><td>0.2186</td></tr><tr><td>0.1413</td><td>0.1282</td><td>0.1711</td><td>0.1779</td><td>null</td><td>0.1735</td><td>0.2</td><td>0.2104</td></tr><tr><td>0.1557</td><td>0.1487</td><td>0.1342</td><td>0.1483</td><td>null</td><td>0.2135</td><td>0.256</td><td>0.2463</td></tr></tbody></table></div></div>
 </div>
-</div>
-<div class="section" id="Unpivot-the-data-frame">
-<h2>Unpivot the data frame<a class="headerlink" href="#Unpivot-the-data-frame" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Unpivot-the-data-frame">
+<h2>Unpivot the data frame<a class="headerlink" href="#Unpivot-the-data-frame" title="Link to this heading"></a></h2>
 <p>When we <strong>unpivot</strong> the data frame, the data within it, called <strong>values</strong>, become a single column. The column names, called <strong>variables</strong> also populate a new column. So, to unpivot it, we need to specify what we want to call the values and what we want to call the variable. The <code class="docutils literal notranslate"><span class="pre">unpivot()</span></code> method does the rest!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -667,9 +668,9 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 </div>
 <p>Nice! We now have a tidy data frame. Note that we also dropped the null values, since the nulls from the original columns come along for the ride when unpivoting.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">df.unpivot()</span></code> has other options. For example, you can specify columns that do not comprise data, but should still be included in the unpivoted data frame using the <code class="docutils literal notranslate"><span class="pre">id_vars</span></code> keyword argument. That does not apply to this data frame, but comes up often. As a final comment, note that unpivoting is sometimes called <strong>melting</strong>, as it is when using Pandas.</p>
-</div>
-<div class="section" id="Splitting-the-genotype_method-column">
-<h2>Splitting the genotype_method column<a class="headerlink" href="#Splitting-the-genotype_method-column" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Splitting-the-genotype_method-column">
+<h2>Splitting the genotype_method column<a class="headerlink" href="#Splitting-the-genotype_method-column" title="Link to this heading"></a></h2>
 <p>Now our goal is to convert the <code class="docutils literal notranslate"><span class="pre">'genotype_method'</span></code> column into a two columns, one encoding genotype and the other the method. To do this, we first use Polars’s string methods to split the entries in the column at the underscore. This gives a series of list data types. We then convert the list to a struct, where the fields are the column labels we want when we split the column into two, in this case <code class="docutils literal notranslate"><span class="pre">'genotype'</span></code> and <code class="docutils literal notranslate"><span class="pre">'method'</span></code>. Finally, we can unnest the column with our structs.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -701,8 +702,8 @@ with their Venus-Dorsal construct gives a Dorsal gradient of similar width as wo
 <small>shape: (5, 3)</small><table border="1" class="dataframe"><thead><tr><th>genotype</th><th>method</th><th>gradient width</th></tr><tr><td>str</td><td>str</td><td>f64</td></tr></thead><tbody><tr><td>&quot;WT&quot;</td><td>&quot;whole mount&quot;</td><td>0.1288</td></tr><tr><td>&quot;WT&quot;</td><td>&quot;whole mount&quot;</td><td>0.1554</td></tr><tr><td>&quot;WT&quot;</td><td>&quot;whole mount&quot;</td><td>0.1306</td></tr><tr><td>&quot;WT&quot;</td><td>&quot;whole mount&quot;</td><td>0.1413</td></tr><tr><td>&quot;WT&quot;</td><td>&quot;whole mount&quot;</td><td>0.1557</td></tr></tbody></table></div></div>
 </div>
 <p>Looking at the data frame above, it is very <strong>tall</strong>. Each row only has a single <strong>value</strong>, that is, a single measurement, and every other column in the row is metadata associated with that measurement, specifically which penguin/species and which quantity was being measured. Unpivoting operations generally make data frames taller, with more rows before unpivoting.</p>
-<div class="section" id="Using-the-data-frame">
-<h3>Using the data frame<a class="headerlink" href="#Using-the-data-frame" title="Permalink to this heading"></a></h3>
+<section id="Using-the-data-frame">
+<h3>Using the data frame<a class="headerlink" href="#Using-the-data-frame" title="Link to this heading"></a></h3>
 <p>Let’s make a plot like Fig. 1F of the <a class="reference external" href="https://doi.org/10.1016/j.devcel.2011.12.007">Reeves, Trisnadi, et al. paper</a>, but not with boxes, rather as a strip plot.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -761,10 +762,10 @@ var element = document.currentScript.previousSibling.previousSibling;
 })(window);
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -790,8 +791,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -805,11 +806,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1453d67e0> 
+   <jinja2.runtime.BlockReference object at 0x161194f50> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

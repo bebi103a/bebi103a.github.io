@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Merging and concatenating data frames &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -122,6 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -178,8 +179,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Merging-and-concatenating-data-frames">
-<h1>Merging and concatenating data frames<a class="headerlink" href="#Merging-and-concatenating-data-frames" title="Permalink to this heading"></a></h1>
+  <section id="Merging-and-concatenating-data-frames">
+<h1>Merging and concatenating data frames<a class="headerlink" href="#Merging-and-concatenating-data-frames" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip">Data set download</a></p>
 <hr/><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -534,15 +535,15 @@ function(Bokeh) {
 </script></div>
 </div>
 <hr /><p>It often happens that experiments consist of multiple data files that need to be brought together into a single data frame to work with in exploratory data analysis and subsequent analyses. Through its concatenation and merging capabilities, Polars provides powerful tools for handling this sort of data.</p>
-<div class="section" id="The-frog-tongue-strike-data-set">
-<h2>The frog tongue strike data set<a class="headerlink" href="#The-frog-tongue-strike-data-set" title="Permalink to this heading"></a></h2>
+<section id="The-frog-tongue-strike-data-set">
+<h2>The frog tongue strike data set<a class="headerlink" href="#The-frog-tongue-strike-data-set" title="Link to this heading"></a></h2>
 <p>As usual, we will work with a real data set to learn about concatenation and merging of data frames. The data set we will use comes from a fun paper about the adhesive properties of frog tongues. The reference is <a class="reference external" href="https://dx.doi.org/10.1038%2Fsrep05225">Kleinteich and Gorb, Tongue adhesion in the horned frog Ceratophrys sp., Sci. Rep., 4, 5225, 2014</a>. You might also want to check out a <em>New York Times</em> feature on the paper
 <a class="reference external" href="http://www.nytimes.com/2014/08/25/science/a-frog-thats-a-living-breathing-pac-man.html">here</a>.</p>
 <p>In this paper, the authors investigated various properties of the adhesive characteristics of the tongues of horned frogs when they strike prey. The authors had a striking pad connected to a cantilever to measure forces. They also used high speed cameras to capture the strike and record relevant data.</p>
 <p>To get an idea of the experimental set up, you can check out this movie, kindly sent to me by Thomas Kleinteich. If video does not play in your browser, you may download it <a class="reference external" href="kleinteich_frog_strike.mp4">here</a>.</p>
 <div style="width: 400px; margin: auto;"><video width="400px" src="kleinteich_frog_strike.mp4" controls><p>Your browser does not support display of this video.</p>
-</video></div><div class="section" id="The-data-files">
-<h3>The data files<a class="headerlink" href="#The-data-files" title="Permalink to this heading"></a></h3>
+</video></div><section id="The-data-files">
+<h3>The data files<a class="headerlink" href="#The-data-files" title="Link to this heading"></a></h3>
 <p>I pulled data files from the <a class="reference external" href="https://dx.doi.org/10.1038%2Fsrep05225">Kleinteich and Gorb paper</a>. You can download the data files here: <a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip">https://s3.amazonaws.com/bebi103.caltech.edu/data/frog_strikes.zip</a>.</p>
 <p>There are four files, one for each of the four frogs, labeled with IDs I, II, III, and IV, that were studied. To see the format of the files, we can look at the content of the file for frog I. You can use</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>head -n 20 ../data/frog_strikes_I.csv
@@ -580,10 +581,10 @@ date,trial number,impact force (mN),impact time (ms),impact force / body weight,
 </div>
 <p>The first lines all begin with <code class="docutils literal notranslate"><span class="pre">#</span></code> signs, signifying that they are comments. They do give important information about the frog, though.</p>
 <p>The first line after the comments are the headers, giving the column names for the data frame we will load.</p>
-</div>
-</div>
-<div class="section" id="Concatenating-data-frames">
-<h2>Concatenating data frames<a class="headerlink" href="#Concatenating-data-frames" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Concatenating-data-frames">
+<h2>Concatenating data frames<a class="headerlink" href="#Concatenating-data-frames" title="Link to this heading"></a></h2>
 <p>We would like to have all of the data frames be together in one data frame so we can conveniently do things like make plots comparing the four frogs. Let’s read in the data sets and make a list of data frames.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -692,12 +693,12 @@ Unique IDs: [&#39;IV&#39;, &#39;III&#39;, &#39;I&#39;, &#39;II&#39;]
 </pre></div></div>
 </div>
 <p>Check!</p>
-</div>
-<div class="section" id="Creating-a-DataFrame-from-scratch">
-<h2>Creating a DataFrame from scratch<a class="headerlink" href="#Creating-a-DataFrame-from-scratch" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Creating-a-DataFrame-from-scratch">
+<h2>Creating a DataFrame from scratch<a class="headerlink" href="#Creating-a-DataFrame-from-scratch" title="Link to this heading"></a></h2>
 <p>Looking back at the <a class="reference external" href="#The-data-files">headers of the original data files</a>, we see that there is information present in the header that we would like to have in our data frame. For example, it would be nice to know if each strike came from an adult or juvenile. Or what the snout-vent length was. Working toward the goal of including this in our data frame, we will first construct a new data frame containing information about each frog.</p>
-<div class="section" id="Data-frames-from-dictionaries">
-<h3>Data frames from dictionaries<a class="headerlink" href="#Data-frames-from-dictionaries" title="Permalink to this heading"></a></h3>
+<section id="Data-frames-from-dictionaries">
+<h3>Data frames from dictionaries<a class="headerlink" href="#Data-frames-from-dictionaries" title="Link to this heading"></a></h3>
 <p>One way do create this new data frame is to first construct a dictionary with the respective fields. Since these data sets are small, we can look at the files and make the dictionary by hand.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -741,9 +742,9 @@ Unique IDs: [&#39;IV&#39;, &#39;III&#39;, &#39;I&#39;, &#39;II&#39;]
 <small>shape: (4, 5)</small><table border="1" class="dataframe"><thead><tr><th>ID</th><th>age</th><th>SVL (mm)</th><th>body weight (g)</th><th>species</th></tr><tr><td>str</td><td>str</td><td>i64</td><td>f64</td><td>str</td></tr></thead><tbody><tr><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>63</td><td>63.1</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;II&quot;</td><td>&quot;adult&quot;</td><td>70</td><td>72.7</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;III&quot;</td><td>&quot;juvenile&quot;</td><td>28</td><td>12.7</td><td>&quot;cranwelli&quot;</td></tr><tr><td>&quot;IV&quot;</td><td>&quot;juvenile&quot;</td><td>31</td><td>12.7</td><td>&quot;cranwelli&quot;</td></tr></tbody></table></div></div>
 </div>
 <p>Nice!</p>
-</div>
-<div class="section" id="Data-frames-from-numpy-arrays">
-<h3>Data frames from numpy arrays<a class="headerlink" href="#Data-frames-from-numpy-arrays" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Data-frames-from-numpy-arrays">
+<h3>Data frames from numpy arrays<a class="headerlink" href="#Data-frames-from-numpy-arrays" title="Link to this heading"></a></h3>
 <p>Sometimes the data sets are not small enough to construct a dictionary by hand. Oftentimes, we have a two-dimensional array of data that we want to make into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. As an example, let’s say we have a Numpy array where the first column is snout vent length and the second is weight.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -795,9 +796,9 @@ array([[63. , 63.1],
 <small>shape: (4, 2)</small><table border="1" class="dataframe"><thead><tr><th>SVL (mm)</th><th>weight (g)</th></tr><tr><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>63.0</td><td>63.1</td></tr><tr><td>70.0</td><td>72.7</td></tr><tr><td>28.0</td><td>12.7</td></tr><tr><td>31.0</td><td>12.7</td></tr></tbody></table></div></div>
 </div>
 <p>That also works. Generally, any two-dimensional Numpy array can be converted into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in this way. You just need to supply column names.</p>
-</div>
-<div class="section" id="Programmatically-creating-a-data-frame">
-<h3>Programmatically creating a data frame<a class="headerlink" href="#Programmatically-creating-a-data-frame" title="Permalink to this heading"></a></h3>
+</section>
+<section id="Programmatically-creating-a-data-frame">
+<h3>Programmatically creating a data frame<a class="headerlink" href="#Programmatically-creating-a-data-frame" title="Link to this heading"></a></h3>
 <p>Hand-entering data should be minimized. The information about each frog were hand-entered once by the experimenter. We should not hand-enter them again. We therefore should parse the comment lines of input files to get the pertinent information.</p>
 <p>Note, though, that in the case of a single experiment with only four data sets, hand entering might be faster and indeed less error prone than doing it programmatically. We should definitely do it programmatically if we have a large number of data files or will ever do an experiment with the same file format again.</p>
 <p>So, let’s programmatically parse the files. We start by writing a function to parse the metadata from a single file. Recall that the comment lines look like this:</p>
@@ -919,10 +920,10 @@ array([[63. , 63.1],
 </style>
 <small>shape: (4, 5)</small><table border="1" class="dataframe"><thead><tr><th>ID</th><th>age</th><th>SVL (mm)</th><th>body weight (g)</th><th>species</th></tr><tr><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td></tr></thead><tbody><tr><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;II&quot;</td><td>&quot;adult&quot;</td><td>&quot;70&quot;</td><td>&quot;72.7&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;III&quot;</td><td>&quot;juvenile&quot;</td><td>&quot;28&quot;</td><td>&quot;12.7&quot;</td><td>&quot;cranwelli&quot;</td></tr><tr><td>&quot;IV&quot;</td><td>&quot;juvenile&quot;</td><td>&quot;31&quot;</td><td>&quot;12.7&quot;</td><td>&quot;cranwelli&quot;</td></tr></tbody></table></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Joining-DataFrames">
-<h2>Joining DataFrames<a class="headerlink" href="#Joining-DataFrames" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Joining-DataFrames">
+<h2>Joining DataFrames<a class="headerlink" href="#Joining-DataFrames" title="Link to this heading"></a></h2>
 <p>We want to add the information about the frogs into our main data frame, <code class="docutils literal notranslate"><span class="pre">df</span></code>, that we have been working with. Specifically, for each row of the data frame, we also want to include the frog’s age, snout-vent length, body weight, and species. So, we want to take the data frame with all of the information about the tongue strikes and combine it with the data frame containing information about each frog. This combining of data frames is a <strong>join operation</strong>. In this case, we join on the <code class="docutils literal notranslate"><span class="pre">'ID'</span></code>
 column, since the value of the that column in each data frame indicates the frog we are talking about.</p>
 <p>To perform a join operation we use the <code class="docutils literal notranslate"><span class="pre">df.join()</span></code> method (or <code class="docutils literal notranslate"><span class="pre">df.join_asof()</span></code> method for approximate matches). Its default join strategy is an <strong>inner join</strong>, in which the entries of a given row are included in the joined data frame if and only if the entry <code class="docutils literal notranslate"><span class="pre">'ID'</span></code> column of the respective frames match. You can read more about available join strategies in <a class="reference external" href="https://docs.pola.rs/user-guide/transformations/joins/">the documentation</a>.</p>
@@ -952,9 +953,9 @@ column, since the value of the that column in each data frame indicates the frog
 <small>shape: (5, 19)</small><table border="1" class="dataframe"><thead><tr><th>date</th><th>trial number</th><th>impact force (mN)</th><th>impact time (ms)</th><th>impact force / body weight</th><th>adhesive force (mN)</th><th>time frog pulls on target (ms)</th><th>adhesive force / body weight</th><th>adhesive impulse (N-s)</th><th>total contact area (mm2)</th><th>contact area without mucus (mm2)</th><th>contact area with mucus / contact area without mucus</th><th>contact pressure (Pa)</th><th>adhesive strength (Pa)</th><th>ID</th><th>age</th><th>SVL (mm)</th><th>body weight (g)</th><th>species</th></tr><tr><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>f64</td><td>i64</td><td>i64</td><td>f64</td><td>i64</td><td>i64</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td></tr></thead><tbody><tr><td>&quot;2013_02_26&quot;</td><td>3</td><td>1205</td><td>46</td><td>1.95</td><td>-785</td><td>884</td><td>1.27</td><td>-0.29</td><td>387</td><td>70</td><td>0.82</td><td>3117</td><td>-2030</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_02_26&quot;</td><td>4</td><td>2527</td><td>44</td><td>4.08</td><td>-983</td><td>248</td><td>1.59</td><td>-0.181</td><td>101</td><td>94</td><td>0.07</td><td>24923</td><td>-9695</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>1</td><td>1745</td><td>34</td><td>2.82</td><td>-850</td><td>211</td><td>1.37</td><td>-0.157</td><td>83</td><td>79</td><td>0.05</td><td>21020</td><td>-10239</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>2</td><td>1556</td><td>41</td><td>2.51</td><td>-455</td><td>1025</td><td>0.74</td><td>-0.17</td><td>330</td><td>158</td><td>0.52</td><td>4718</td><td>-1381</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr><tr><td>&quot;2013_03_01&quot;</td><td>3</td><td>493</td><td>36</td><td>0.8</td><td>-974</td><td>499</td><td>1.57</td><td>-0.423</td><td>245</td><td>216</td><td>0.12</td><td>2012</td><td>-3975</td><td>&quot;I&quot;</td><td>&quot;adult&quot;</td><td>&quot;63&quot;</td><td>&quot;63.1&quot;</td><td>&quot;cross&quot;</td></tr></tbody></table></div></div>
 </div>
 <p>Note that the entries for the added columns were repeated appropriately, e.g., body weight column had 63 for every row corresponding to frog I.</p>
-</div>
-<div class="section" id="At-long-last,-a-plot!">
-<h2>At long last, a plot!<a class="headerlink" href="#At-long-last,-a-plot!" title="Permalink to this heading"></a></h2>
+</section>
+<section id="At-long-last,-a-plot!">
+<h2>At long last, a plot!<a class="headerlink" href="#At-long-last,-a-plot!" title="Link to this heading"></a></h2>
 <p>While the purpose of this part of the lesson was to learn how to concatenate and merge data frames, going through all of that wrangling effort would somehow be unsatisfying if we we didn’t generate a plot. Let’s compare the impact force on a per-mass basis for each frog.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
@@ -1014,9 +1015,9 @@ var element = document.currentScript.previousSibling.previousSibling;
 </script></div>
 </div>
 <p>Apparently Frog III consistently packs a powerful punch, er…. tongue, for its body weight.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
@@ -1043,8 +1044,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1058,11 +1059,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1277c71d0> 
+   <jinja2.runtime.BlockReference object at 0x16119f020> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

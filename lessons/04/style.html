@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4. Style &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -108,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -163,8 +164,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="4.-Style">
-<h1>4. Style<a class="headerlink" href="#4.-Style" title="Permalink to this heading"></a></h1>
+  <section id="4.-Style">
+<h1>4. Style<a class="headerlink" href="#4.-Style" title="Link to this heading"></a></h1>
 <hr /><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -185,17 +186,17 @@
 <p>(We will talk about how to make beautiful plots like the one here when we talk about data visualization.)</p>
 <p>The same arguments about style are true for code. Style matters! We already discussed how important documentation is, but having a well-defined style also helps keep your code clean, easy to read, and therefore easier to debug and share.</p>
 <p><em>Note</em>: If you want to explore the data set of the Keeling Curve, you can get the data from the Muana Loa Observatory <a class="reference external" href="https://scrippsco2.ucsd.edu/data/atmospheric_co2/mlo.html">here</a>.</p>
-<div class="section" id="Coding-style-in-general-and-Future-You">
-<h2>Coding style in general and Future You<a class="headerlink" href="#Coding-style-in-general-and-Future-You" title="Permalink to this heading"></a></h2>
+<section id="Coding-style-in-general-and-Future-You">
+<h2>Coding style in general and Future You<a class="headerlink" href="#Coding-style-in-general-and-Future-You" title="Link to this heading"></a></h2>
 <p>The book, <a class="reference external" href="http://shop.oreilly.com/product/9780596802301.do">The Art of Readable Code</a> by Boswell and Foucher is a treasure trove of tips about writing well-styled code. At the beginning of their book, they state <strong>the Fundamental Theorem of Readability</strong>.</p>
 <blockquote>
 <div><p>Code should be written to minimize the time it would take for someone else to understand it.</p>
 </div></blockquote>
 <p>This is in general good advice, and this is the essential motivation for using the suggestions in PEP8. Before we dive into PEP8, I want to introduce you to the most important person in the world, Future You. When you are writing code, the person at the front of your mind should be Future You. You <em>really</em> want to make that person happy. Because as far as coding goes, Future You is really someone else, and you want to minimize the time it takes for Future You to understand what Present You
 (a.k.a. you) did.</p>
-</div>
-<div class="section" id="PEP-8">
-<h2>PEP 8<a class="headerlink" href="#PEP-8" title="Permalink to this heading"></a></h2>
+</section>
+<section id="PEP-8">
+<h2>PEP 8<a class="headerlink" href="#PEP-8" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a> was the benevolent dictator for life (<a class="reference external" href="https://en.wikipedia.org/wiki/Benevolent_dictator_for_life">BDFL</a>) of Python. He <a class="reference external" href="https://www.mail-archive.com/python-committers&#64;python.org/msg05628.html">stepped down in July of 2018</a>. Until that time, to get new features or other enhancements into the language, Guido either wrote or (usually) considered a <a class="reference external" href="https://www.python.org/dev/peps/">Python Enhancement Proposal</a>, or a
 <strong>PEP</strong>. Each PEP is carefully reviewed, and often there are many iterations with the PEP’s author(s). Ultimately, Guido decided if the PEP becomes part of the Python language. Now, that decision is made by the <a class="reference external" href="https://www.python.org/dev/peps/pep-8016/">Python Steering Council</a>, which consists of five members.</p>
 <p>Perhaps the best-known PEPs are <strong>PEP 8</strong> and PEP 20. This lesson is about PEP 8, but we’ll pause for a moment to look at PEP 20 to understand why PEP 8 is important. PEP 20 is “The Zen of Python.” You can see its text by running <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">this</span></code>.</p>
@@ -238,9 +239,9 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <p>These are good ideas for coding practice in general. Importantly, beautiful, simple, readable code is a goal of a programmer, or any scientist writing code. That’s where PEP 8 comes in. PEP 8 is the <strong>Python Style Guide</strong>, written by Guido, Barry Warsaw, and Nick Coghlan. You can read its full text in the <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">Python PEP index</a>, and I recommend you do that.</p>
 <p>Some people recommend following PEP 8 to the letter, but a prevailing opinion is that PEP 8 should serve as a guide, and its rules may be bent or broken if that aids clarity. Even if you view them as guidelines, you should only stray from them when it is really necessary. Trust me; my life got much better after I started following PEP 8’s rules.</p>
 <p>Note, though, that your code will work just fine if you break PEP 8’s rules.</p>
-</div>
-<div class="section" id="Key-points-of-PEP-8">
-<h2>Key points of PEP 8<a class="headerlink" href="#Key-points-of-PEP-8" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Key-points-of-PEP-8">
+<h2>Key points of PEP 8<a class="headerlink" href="#Key-points-of-PEP-8" title="Link to this heading"></a></h2>
 <p>PEP 8 is extensive, but here are some key points for you to keep in mind as you are being style-conscious.</p>
 <ul class="simple">
 <li><p>Variable names need to be descriptive.</p></li>
@@ -262,9 +263,9 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <li><p>Put all import statements at the top of the file, importing from one module per line.</p></li>
 </ul>
 <p>Perhaps the rule that is bent the most is the line width rule (but do not break the line width rule for doc strings!). Sometimes, it is better to avoid a line break for clarity, but very long lines are a big no-no!</p>
-</div>
-<div class="section" id="Some-examples-of-PEP-8-ified-code">
-<h2>Some examples of PEP 8-ified code<a class="headerlink" href="#Some-examples-of-PEP-8-ified-code" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Some-examples-of-PEP-8-ified-code">
+<h2>Some examples of PEP 8-ified code<a class="headerlink" href="#Some-examples-of-PEP-8-ified-code" title="Link to this heading"></a></h2>
 <p>Let’s now look at some examples of code adhering to PEP 8 and code that does not. We’ll start with some code we used before to find start codons.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -418,14 +419,14 @@ The start codon starts at index 10
 (3.0, -1.5)
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Line-breaks">
-<h2>Line breaks<a class="headerlink" href="#Line-breaks" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Line-breaks">
+<h2>Line breaks<a class="headerlink" href="#Line-breaks" title="Link to this heading"></a></h2>
 <p>PEP 8 does not comment extensively on line breaks. I have found that choosing how to do line breaks is often one of the more challenging aspects of making readable code. The Boswell and Foucher book spends lots of space discussing it. There are lots of considerations for choosing line breaks. One of my favorite discussions on this is <a class="reference external" href="http://treyhunner.com/2017/07/craft-your-python-like-poetry/">this blog post from Trey Hunner</a>. It’s definitely worth a read, and is about as concise as
 anything I could put here in this lesson.</p>
-</div>
-<div class="section" id="Black">
-<h2>Black<a class="headerlink" href="#Black" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Black">
+<h2>Black<a class="headerlink" href="#Black" title="Link to this heading"></a></h2>
 <p>I have found <a class="reference external" href="https://black.readthedocs.io/">Black</a> to be a very useful tool for style. It’s self-ascribed adjective is “uncompromising.” Black does not pay any attention at all to the formatting you chose, but will apply its style to your code. It adheres quite closely to PEP 8, with one of the most notable differences being a default line width of 88 characters. Code that is formatted using Black is said to be “blackened.”</p>
 <p>The Black package is installable with conda, and you should have it already installed. There are several packages for using Black in Jupyter notebooks. I prefer blackcellmagic, which you should also have installed. <em>Note, though, that Black and blackcellmagic will not work in Google Colab.</em></p>
 <p>To use Black to format a cell after installing <code class="docutils literal notranslate"><span class="pre">blackcellmagic</span></code>, you simply put <code class="docutils literal notranslate"><span class="pre">%%black</span></code> at the top of the cell. Of course, you have to first load the Black extension using <code class="docutils literal notranslate"><span class="pre">%load_ext</span> <span class="pre">blackcellmagic</span></code>, which I did in the import cell at the top of this notebook.</p>
@@ -507,13 +508,13 @@ The start codon starts at index 10
 </pre></div></div>
 </div>
 <p>Black liked must of what we did, but it changed the spacing in our slicing of <code class="docutils literal notranslate"><span class="pre">seq</span></code>. I personally do not like this choice by Black, but <a class="reference external" href="https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#slices">Black is strictly adhering to PEP 8 on this</a>. So, I’ll accept it.</p>
-</div>
-<div class="section" id="This-is-really-important.">
-<h2>This is really important.<a class="headerlink" href="#This-is-really-important." title="Permalink to this heading"></a></h2>
+</section>
+<section id="This-is-really-important.">
+<h2>This is really important.<a class="headerlink" href="#This-is-really-important." title="Link to this heading"></a></h2>
 <p>I want to reiterate how important this is. Most programmers follow these rules closely, but most scientists do not. I can’t tell you how many software packages written by scientists that I have encountered and found to be almost completely unreadable. Many of your colleagues will pay little attention to style. <strong>You should.</strong> For all that is good in the world, Future You’s well-being depends on it.</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
@@ -538,8 +539,8 @@ jupyterlab: 3.4.4
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -553,11 +554,11 @@ jupyterlab: 3.4.4
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x137abd3a0> 
+   <jinja2.runtime.BlockReference object at 0x13d5b1610> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

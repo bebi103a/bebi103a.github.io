@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model comparison with the AIC &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
       <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
 
   
@@ -15,14 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -111,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -167,8 +168,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="Model-comparison-with-the-AIC">
-<h1>Model comparison with the AIC<a class="headerlink" href="#Model-comparison-with-the-AIC" title="Permalink to this heading"></a></h1>
+  <section id="Model-comparison-with-the-AIC">
+<h1>Model comparison with the AIC<a class="headerlink" href="#Model-comparison-with-the-AIC" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">mRNA count dataset download</a></p>
 <p><a class="reference external" href="https://s3.amazonaws.com/bebi103.caltech.edu/data/good_invitro_droplet_data.csv">Spindle length dataset download</a></p>
 <hr><div class="nbinput docutils container">
@@ -540,8 +541,8 @@ function(Bokeh) {
 w_i = \frac{\mathrm{e}^{-(\text{AIC}_i - \text{AIC}_\mathrm{max})/2}}{\sum_j\mathrm{e}^{-(\text{AIC}_j - \text{AIC}_\mathrm{max})/2}}.
 \end{align}</span></p>
 <p>To begin, we will use the AIC to compare a single Negative Binomial model to a mixture of two Negative Binomials for smFISH data from Singer, et al.</p>
-<div class="section" id="AIC-for-mRNA-counts">
-<h2>AIC for mRNA counts<a class="headerlink" href="#AIC-for-mRNA-counts" title="Permalink to this heading"></a></h2>
+<section id="AIC-for-mRNA-counts">
+<h2>AIC for mRNA counts<a class="headerlink" href="#AIC-for-mRNA-counts" title="Link to this heading"></a></h2>
 <p>Let us now compare the single Negative Binomial to the mixture model for mRNA counts. We again need our functions for computing the MLE and computing the log-likelihood from previous lessons.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -861,14 +862,14 @@ var element = document.currentScript.previousSibling.previousSibling;
 </div>
 <p>Rex1 clearly is bimodal, and Nanog appears to have a second inflection point where the ECDF reaches a value of about 0.4, which is what we see in the MLE estimates in the mixture model. Rest and Prdm14 both appear to be unimodal, agreeing with what we saw with the AIC analysis.</p>
 <p>Note that this underscores something we’ve been stressing all term. You should do good exploratory data analysis first, and the EDA often tells much of the story!</p>
-<div class="section" id="Caveat">
-<h3>Caveat<a class="headerlink" href="#Caveat" title="Permalink to this heading"></a></h3>
+<section id="Caveat">
+<h3>Caveat<a class="headerlink" href="#Caveat" title="Link to this heading"></a></h3>
 <p>Remember, though, that we did <em>not</em> take into account that the measurements of the four genes were done in the same cells. We modeled that when we presented the mixture models at the beginning of this lesson. The analysis of a more complicated model with MLE proved to be out of reach due to computational difficulty. So, we should not make strong conclusions about what the relative quality of the mixture of single Negative Binomial models mean in this context. We will address these kinds of
 modeling issues in the sequel of this course.</p>
-</div>
-</div>
-<div class="section" id="AIC-for-the-spindle-model">
-<h2>AIC for the spindle model<a class="headerlink" href="#AIC-for-the-spindle-model" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="AIC-for-the-spindle-model">
+<h2>AIC for the spindle model<a class="headerlink" href="#AIC-for-the-spindle-model" title="Link to this heading"></a></h2>
 <p>We can do a similar analysis for the two competing models for mitotic spindle size. We need our functions from earlier.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -1010,9 +1011,9 @@ modeling issues in the sequel of this course.</p>
 </pre></div></div>
 </div>
 <p>Model 1 is completely out of the question, with a tiny Akaike weight!</p>
-</div>
-<div class="section" id="Computing-environment">
-<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="Computing-environment">
+<h2>Computing environment<a class="headerlink" href="#Computing-environment" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
@@ -1041,8 +1042,8 @@ jupyterlab: 4.0.13
 
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1056,11 +1057,11 @@ jupyterlab: 4.0.13
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x1378d4740> 
+   <jinja2.runtime.BlockReference object at 0x13ecb30e0> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

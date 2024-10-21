@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes on our basic Python programming review &mdash; BE/Bi 103 a  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3356d8fa" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -112,6 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../homework/03/index.html">3. Wrangling, EDA III, and probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/04/index.html">4. Working with probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../homework/05/index.html">5. Nonparametric hacker stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../homework/06/index.html">6. Maximum likelihood estimation I</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul>
@@ -168,19 +169,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="notes-on-our-basic-python-programming-review">
-<h1>Notes on our basic Python programming review<a class="headerlink" href="#notes-on-our-basic-python-programming-review" title="Permalink to this heading"></a></h1>
-<div class="section" id="a-note-to-those-new-to-programming-python">
-<h2>A note to those new to programming/Python<a class="headerlink" href="#a-note-to-those-new-to-programming-python" title="Permalink to this heading"></a></h2>
+  <section id="notes-on-our-basic-python-programming-review">
+<h1>Notes on our basic Python programming review<a class="headerlink" href="#notes-on-our-basic-python-programming-review" title="Link to this heading"></a></h1>
+<section id="a-note-to-those-new-to-programming-python">
+<h2>A note to those new to programming/Python<a class="headerlink" href="#a-note-to-those-new-to-programming-python" title="Link to this heading"></a></h2>
 <p>The contents of Lesson 3 (all 12 parts of it!) are by far the longest lesson in the course. This first lesson is meant to help get you up to speed with some of the main ideas in Python programming to help make the rest of the class proceed more smoothly. It may take you a while to read/work through the lesson. Please be patient. Also do not worry if you do not have full mastery of everything. The concepts will be reinforced during the course.</p>
 <p>If you are a complete beginner with Python, but have experience programming, you should be able to work through these lessons, learn some of the syntax and principles of the language, and be fine for this course. You may need to put in a little more work in the beginning to get up to speed, though.</p>
 <p>If you are a complete beginner with programming in general, the learning curve you will need to climb is <em>very</em> steep. I would recommend instead taking my <a class="reference external" href="https://justinbois.github.io/bootcamp/2022/">Introduction to Programming in the Biological Sciences Bootcamp</a> in the summer and enrolling in this course in the next academic year.</p>
-</div>
-<div class="section" id="a-note-to-pythonistas">
-<h2>A note to Pythonistas<a class="headerlink" href="#a-note-to-pythonistas" title="Permalink to this heading"></a></h2>
+</section>
+<section id="a-note-to-pythonistas">
+<h2>A note to Pythonistas<a class="headerlink" href="#a-note-to-pythonistas" title="Link to this heading"></a></h2>
 <p>You may already be an excellent Python programmer. Or you may have taken the <a class="reference external" href="https://justinbois.github.io/bootcamp/2021/">Introduction to Programming in the Biological Sciences Bootcamp</a> with me. You may find this lesson to be review. Former bootcampers will even find some identical text to what we did in the bootcamp. I encourage you to still read carefully and to help your teammates for whom this is new with their work. This will help further cement these foundational skills for you.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -194,11 +195,11 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Oct 16, 2024.
+      <span class="lastupdated">Last updated on Oct 20, 2024.
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x12783acf0> 
+   <jinja2.runtime.BlockReference object at 0x127d60110> 
 
 <p>© 2019–2024 Justin Bois and BE/Bi 103 a course staff. With the exception of pasted graphics, where the source is noted, this work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License CC-BY 4.0</a>. All code contained herein is licensed under an <a rel="license" href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 

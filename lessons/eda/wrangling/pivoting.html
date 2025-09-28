@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>16&nbsp; Making a data frame wide – BE/Bi 103 a 2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../lessons/eda/eda_lesson_exercise.html" rel="next">
+<link href="../../../lessons/eda/wrangling/unpivoting.html" rel="prev">
+<link href="../../../logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/eda/exploratory_data_analysis.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="../../../lessons/eda/wrangling/pivoting.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../"></a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the course</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course logistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../policies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course policies</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/what_are_we_doing/what_are_we_doing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What are we doing?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/eda/exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/intro_to_polars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data frames and Polars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/tidy_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tidy data and split-apply-combine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/styling_data_frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Styling data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/polars_for_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data display</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting_with_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Making plots with Bokeh</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting_smooth_curves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Plotting smooth curves</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/categorical_axes_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plots with categorical variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/visualizing_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/iqplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">High level plotting with iqplot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/styling_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Styling Bokeh plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/manipulating_data_frames_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Manipulating data frames and wrangling data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/merging_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Merging and concatenating data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/unpivoting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/pivoting.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/eda_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">EDA lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/probability_and_sampling/probability_and_sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability: The foundation for generative modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/definition_and_interpretation_of_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Probability: definitions and interpretations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/random_number_generation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Random number generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/rng_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Random number generation using Numpy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/luria_delbruck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Simulating the Luria-Delbrück distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/probability_and_sampling_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Probability and sampling lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Homework</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/plotting_an_elephant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.1: Plotting an elephant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/penguins_split_apply_combine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.2: Palmer penguins and split-apply-combine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/mt_ecdf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.1: Microtubule catastrophe and ECDFs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/cool_gal4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Computing</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/setting_up_python_computing_environment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuring your computer to use Python for scientific computing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/hello_world.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Hello, world.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/variables_operators_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Variables, operators, and types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/lists_and_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Lists and tuples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/intro_to_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Introduction to functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/string_methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">String methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Dictionaries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/comprehensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Comprehensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/packages_and_modules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Packages and modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/exceptions_and_error_handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Errors and exception handling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/file_io.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">File I/O</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/intro_to_numpy_and_scipy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Introduction to Numpy and Scipy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">In this section</h2>
+   
+  <ul>
+  <li><a href="#exploring-the-data-set" id="toc-exploring-the-data-set" class="nav-link active" data-scroll-target="#exploring-the-data-set"><span class="header-section-number">16.1</span> Exploring the data set</a></li>
+  <li><a href="#reading-the-data-set-into-a-polars-data-frame" id="toc-reading-the-data-set-into-a-polars-data-frame" class="nav-link" data-scroll-target="#reading-the-data-set-into-a-polars-data-frame"><span class="header-section-number">16.2</span> Reading the data set into a Polars data frame</a></li>
+  <li><a href="#pivoting-from-tall-to-wide-format" id="toc-pivoting-from-tall-to-wide-format" class="nav-link" data-scroll-target="#pivoting-from-tall-to-wide-format"><span class="header-section-number">16.3</span> Pivoting from tall to wide format</a>
+  <ul class="collapse">
+  <li><a href="#a-couple-of-plots-for-fun" id="toc-a-couple-of-plots-for-fun" class="nav-link" data-scroll-target="#a-couple-of-plots-for-fun"><span class="header-section-number">16.3.1</span> A couple of plots for fun</a></li>
+  </ul></li>
+  <li><a href="#an-important-note-about-tidiness" id="toc-an-important-note-about-tidiness" class="nav-link" data-scroll-target="#an-important-note-about-tidiness"><span class="header-section-number">16.4</span> An important note about tidiness</a></li>
+  <li><a href="#computing-environment" id="toc-computing-environment" class="nav-link" data-scroll-target="#computing-environment"><span class="header-section-number">16.5</span> Computing environment</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/eda/exploratory_data_analysis.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="../../../lessons/eda/wrangling/pivoting.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2025/blob/main/pivoting.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2025/refs/heads/main/pivoting.ipynb">Download notebook</a></p>
+<p><a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">Data set download</a></p>
+<hr>
+<div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars iqplot bebi103 iqplot watermark"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    process <span class="op">=</span> subprocess.Popen(cmd.split(), stdout<span class="op">=</span>subprocess.PIPE, stderr<span class="op">=</span>subprocess.PIPE)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    stdout, stderr <span class="op">=</span> process.communicate()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="cell-2" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bebi103</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iqplot</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+    <style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="ffa1f309-ab79-4dbd-b98a-db704d19e1e5">Loading BokehJS ...</span>
+    </div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById("ffa1f309-ab79-4dbd-b98a-db704d19e1e5");
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.8.0.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {display_loaded(error);throw error;
+      }if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("ffa1f309-ab79-4dbd-b98a-db704d19e1e5")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+</div>
+<hr>
+<p>We have seen how unpivoting a data frame can bring it to tidy format, but a tall format is often not the only tidy option nor the easiest to work with. As usual, this is best seen by example, and we will use a subset of the <a href="https://towardsdatascience.com/penguins-dataset-overview-iris-alternative-9453bb8c8d95">Palmer penguins data set</a>, which you can download here: <a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv">https://s3.amazonaws.com/bebi103.caltech.edu/data/penguins_subset.csv</a>, to demonstrate. The data set consists of measurements of three different species of penguins acquired at the <a href="https://en.wikipedia.org/wiki/Palmer_Station">Palmer Station in Antarctica</a>. The measurements were made between 2007 and 2009 by <a href="https://gormankb.github.io/">Kristen Gorman</a>.</p>
+<p>As we work toward getting the data in a useful tidy format, we will learn some additional wrangling techniques.</p>
+<section id="exploring-the-data-set" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="exploring-the-data-set"><span class="header-section-number">16.1</span> Exploring the data set</h2>
+<p>First, let’s take a look at the data set stored in the CSV file.</p>
+<div id="cell-5" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head ..<span class="op">/</span>data<span class="op">/</span>penguins_subset.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gentoo,Gentoo,Gentoo,Gentoo,Adelie,Adelie,Adelie,Adelie,Chinstrap,Chinstrap,Chinstrap,Chinstrap
+bill_depth_mm,bill_length_mm,flipper_length_mm,body_mass_g,bill_depth_mm,bill_length_mm,flipper_length_mm,body_mass_g,bill_depth_mm,bill_length_mm,flipper_length_mm,body_mass_g
+16.3,48.4,220.0,5400.0,18.5,36.8,193.0,3500.0,18.3,47.6,195.0,3850.0
+15.8,46.3,215.0,5050.0,16.9,37.0,185.0,3000.0,16.7,42.5,187.0,3350.0
+14.2,47.5,209.0,4600.0,19.5,42.0,200.0,4050.0,16.6,40.9,187.0,3200.0
+15.7,48.7,208.0,5350.0,18.3,42.7,196.0,4075.0,20.0,52.8,205.0,4550.0
+14.1,48.7,210.0,4450.0,18.0,35.7,202.0,3550.0,18.7,45.4,188.0,3525.0
+15.0,49.6,216.0,4750.0,19.1,39.8,184.0,4650.0,18.2,49.6,193.0,3775.0
+15.7,49.3,217.0,5850.0,18.4,40.8,195.0,3900.0,17.5,48.5,191.0,3400.0
+15.2,49.2,221.0,6300.0,18.4,36.6,184.0,3475.0,18.2,49.2,195.0,4400.0</code></pre>
+</div>
+</div>
+<p>We see that we have <em>two</em> header rows. The first gives the species and the second the quantity that is being measured. Apparently, then, each row of data has information for three different penguins, one from each species. This is not a tidy data set!</p>
+</section>
+<section id="reading-the-data-set-into-a-polars-data-frame" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="reading-the-data-set-into-a-polars-data-frame"><span class="header-section-number">16.2</span> Reading the data set into a Polars data frame</h2>
+<p>We start by naively reading this data set using <code>pl.read_csv()</code>.</p>
+<div id="cell-8" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(os.path.join(data_path, <span class="st">"penguins_subset.csv"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 12)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Gentoo</th>
+<th data-quarto-table-cell-role="th">Gentoo_duplicated_0</th>
+<th data-quarto-table-cell-role="th">Gentoo_duplicated_1</th>
+<th data-quarto-table-cell-role="th">Gentoo_duplicated_2</th>
+<th data-quarto-table-cell-role="th">Adelie</th>
+<th data-quarto-table-cell-role="th">Adelie_duplicated_0</th>
+<th data-quarto-table-cell-role="th">Adelie_duplicated_1</th>
+<th data-quarto-table-cell-role="th">Adelie_duplicated_2</th>
+<th data-quarto-table-cell-role="th">Chinstrap</th>
+<th data-quarto-table-cell-role="th">Chinstrap_duplicated_0</th>
+<th data-quarto-table-cell-role="th">Chinstrap_duplicated_1</th>
+<th data-quarto-table-cell-role="th">Chinstrap_duplicated_2</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>str</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"bill_depth_mm"</td>
+<td>"bill_length_mm"</td>
+<td>"flipper_length_mm"</td>
+<td>"body_mass_g"</td>
+<td>"bill_depth_mm"</td>
+<td>"bill_length_mm"</td>
+<td>"flipper_length_mm"</td>
+<td>"body_mass_g"</td>
+<td>"bill_depth_mm"</td>
+<td>"bill_length_mm"</td>
+<td>"flipper_length_mm"</td>
+<td>"body_mass_g"</td>
+</tr>
+<tr class="even">
+<td>"16.3"</td>
+<td>"48.4"</td>
+<td>"220.0"</td>
+<td>"5400.0"</td>
+<td>"18.5"</td>
+<td>"36.8"</td>
+<td>"193.0"</td>
+<td>"3500.0"</td>
+<td>"18.3"</td>
+<td>"47.6"</td>
+<td>"195.0"</td>
+<td>"3850.0"</td>
+</tr>
+<tr class="odd">
+<td>"15.8"</td>
+<td>"46.3"</td>
+<td>"215.0"</td>
+<td>"5050.0"</td>
+<td>"16.9"</td>
+<td>"37.0"</td>
+<td>"185.0"</td>
+<td>"3000.0"</td>
+<td>"16.7"</td>
+<td>"42.5"</td>
+<td>"187.0"</td>
+<td>"3350.0"</td>
+</tr>
+<tr class="even">
+<td>"14.2"</td>
+<td>"47.5"</td>
+<td>"209.0"</td>
+<td>"4600.0"</td>
+<td>"19.5"</td>
+<td>"42.0"</td>
+<td>"200.0"</td>
+<td>"4050.0"</td>
+<td>"16.6"</td>
+<td>"40.9"</td>
+<td>"187.0"</td>
+<td>"3200.0"</td>
+</tr>
+<tr class="odd">
+<td>"15.7"</td>
+<td>"48.7"</td>
+<td>"208.0"</td>
+<td>"5350.0"</td>
+<td>"18.3"</td>
+<td>"42.7"</td>
+<td>"196.0"</td>
+<td>"4075.0"</td>
+<td>"20.0"</td>
+<td>"52.8"</td>
+<td>"205.0"</td>
+<td>"4550.0"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Ooof! This is nasty. The second header row is included with the data, which results in inferring every column data type to be a string. Polars only allows for a single header row, so we cannot load this data set.</p>
+<p>This is a fairly common occurrence with human-made tabular data. Researchers will have <strong>hierarchical column headings</strong>. In this case, the first header row is species and the second is the quantity that is being measured for the respective species. (Note that I did this intentionally for instructional purposes; this is not what the original penguins data set had.)</p>
+<p>To convert this type of structure into a tidy format, we can perform an unpivoting operation where each of the levels of the hierarchical column headings become rows. Polars will not do this for you, since it forbids hierarchical column headings (hierarchical indexing is not a good idea, in my opinion, so I see why Polars forbids it). I therefore wrote a function for the bebi103 package that takes a CSV file, possibly with a hierarchical index, and unpivots it to give a new CSV file. We can use this on the penguins data set and then load in the result.</p>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bebi103.utils.unpivot_csv(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(data_path, <span class="st">"penguins_subset.csv"</span>), </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    os.path.join(data_path, <span class="st">"penguins_tall.csv"</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    header_names<span class="op">=</span>[<span class="st">'species'</span>, <span class="st">'quantity'</span>],</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    retain_row_index<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    row_index_name<span class="op">=</span><span class="st">'penguin_id'</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    force_overwrite<span class="op">=</span><span class="va">True</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(os.path.join(data_path, <span class="st">"penguins_tall.csv"</span>))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (10, 4)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">penguin_id</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+<td>str</td>
+<td>str</td>
+<td>f64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>"Gentoo"</td>
+<td>"bill_depth_mm"</td>
+<td>16.3</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>"Gentoo"</td>
+<td>"bill_length_mm"</td>
+<td>48.4</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>"Gentoo"</td>
+<td>"flipper_length_mm"</td>
+<td>220.0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>"Gentoo"</td>
+<td>"body_mass_g"</td>
+<td>5400.0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>"Adelie"</td>
+<td>"bill_depth_mm"</td>
+<td>18.5</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>"Adelie"</td>
+<td>"bill_length_mm"</td>
+<td>36.8</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>"Adelie"</td>
+<td>"flipper_length_mm"</td>
+<td>193.0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>"Adelie"</td>
+<td>"body_mass_g"</td>
+<td>3500.0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>"Chinstrap"</td>
+<td>"bill_depth_mm"</td>
+<td>18.3</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>"Chinstrap"</td>
+<td>"bill_length_mm"</td>
+<td>47.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Notice that we kept the row index in the column <code>'penguin_id'</code> to make sure that we didn’t lose track of what penguin each measurement was associated with. Note also that each penguin has a unique identifier <em>when combined with the species</em>. E.g., Adelie penguin with penguin ID 0 has four measurements associated with it.</p>
+</section>
+<section id="pivoting-from-tall-to-wide-format" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="pivoting-from-tall-to-wide-format"><span class="header-section-number">16.3</span> Pivoting from tall to wide format</h2>
+<p>Looking at the melded data frame above, it is very <strong>tall</strong>. Each row only has a single <strong>value</strong>, that is, a single measurement, and every other column in the row is metadata associated with that measurement, specifically which penguin/species and which quantity was being measured.</p>
+<p>While this tall format is tidy, we can imagine using a <strong>wide</strong> format, in which each row is a specific penguin and each column is a quantity measured on that penguin. This is also a tidy format. In some cases, a tall format is more convenient, and in others a wide format is more convenient.</p>
+<p>To convert from a tall to a wide format, we perform a <strong>pivot</strong>. A pivot operation classifies columns of a tall data frame in three ways.</p>
+<ul>
+<li>The column(s) we pivot <strong>on</strong> gets converted into column <em>headings</em> of the pivoted data frame.</li>
+<li>The <strong>value</strong> column’s entries get populated under the new column headings determined by the <strong>on</strong> column.</li>
+<li>The <strong>index</strong> column(s) are essentially along for the ride. They are retained as columns. If the index columns are not unique, then you need to specify an aggregating operation that will be applied to the values associated with rows that have like entries in the index column(s).</li>
+</ul>
+<p>Let us now perform the pivot. We want <code>'quantity'</code> as the “on” column, since it takes a column or columns of a data frame and converts them to column headings. In this case, the value column is <code>'value'</code>, and <code>'penguin_id'</code> and <code>'species'</code> columns are the index columns. They uniquely define a penguin, so we do not need to provide any aggregating function.</p>
+<div id="cell-13" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.pivot(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    on<span class="op">=</span><span class="st">'quantity'</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">'penguin_id'</span>, <span class="st">'species'</span>], </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">'value'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 6)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">penguin_id</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+<td>str</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>"Gentoo"</td>
+<td>16.3</td>
+<td>48.4</td>
+<td>220.0</td>
+<td>5400.0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>"Adelie"</td>
+<td>18.5</td>
+<td>36.8</td>
+<td>193.0</td>
+<td>3500.0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>"Chinstrap"</td>
+<td>18.3</td>
+<td>47.6</td>
+<td>195.0</td>
+<td>3850.0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>"Gentoo"</td>
+<td>15.8</td>
+<td>46.3</td>
+<td>215.0</td>
+<td>5050.0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>"Adelie"</td>
+<td>16.9</td>
+<td>37.0</td>
+<td>185.0</td>
+<td>3000.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Excellent! We now have a wide, but still tidy, data frame.</p>
+<p>The <code>'penguin_id'</code> column is dispensable, but we will keep it for now, since we will demonstrate a pivot operation from this wide data frame in a moment.</p>
+<section id="a-couple-of-plots-for-fun" class="level3" data-number="16.3.1">
+<h3 data-number="16.3.1" class="anchored" data-anchor-id="a-couple-of-plots-for-fun"><span class="header-section-number">16.3.1</span> A couple of plots for fun</h3>
+<p>Now that we’ve done all this work and our data set is tidy, let’s make a plot for fun. First, we’ll plot the ECDFs of the bill lengths.</p>
+<div id="cell-16" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    iqplot.ecdf(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>df,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        cats<span class="op">=</span><span class="st">'species'</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        q<span class="op">=</span><span class="st">'bill_length_mm'</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        x_axis_label<span class="op">=</span><span class="st">'bill length (mm)'</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        frame_width<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+
+  <div id="dc61a149-7ccf-4b11-8dd5-b9275a740add" data-root-id="p1008" style="display: contents;"></div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+(function(root) {
+  function embed_document(root) {
+  const docs_json = {"1828ef7c-f057-4bf9-8fa3-c41529d4d1a9":{"version":"3.8.0","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1127","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1128"}}},"roots":[{"type":"object","name":"Figure","id":"p1008","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1009"},"y_range":{"type":"object","name":"DataRange1d","id":"p1010"},"x_scale":{"type":"object","name":"LinearScale","id":"p1017"},"y_scale":{"type":"object","name":"LinearScale","id":"p1018"},"title":{"type":"object","name":"Title","id":"p1015"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1048","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1042","attributes":{"selected":{"type":"object","name":"Selection","id":"p1043","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1044"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/43SWw3CQBBGYQTUAAYwsAb6wB0MYAADGEAABooADGAAAUUABjCAAcocsidpssnOy5c03ck/s5vSUKd5m/4++6H2i+y1G+qgxyjlnMZ/ncZvN5386jFyssxGn6Txua2XHEqOesmp5Kw3+rw0+rw19tqsisa5adnoM1P2pOyhXu5Zudey7EmZW5ljnSV3WXKXJZfyDuslt0bOs0bfizKX8g6UOTXO9co73lTLnpS9KPekzFGWOUY22yx9lb4aa78rfXbZ+P7RL+W6DlRABAAA"},"shape":[136],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1XRyUmDUQBF4XRgB3ZgB0IKsAM7sAM70JVL3bkzSxeiLlyIaBAJIpo4z4nzHDuQ9w6ci3fzQUj+/72TRoON1s01/7uoC/NlLeXzZe11y1aU763rZN2G8rtN/R2WbSnP2da11bK28txdna7bU97T0fG6feW9B0qFQ+UccdAvO1LO1dX2TllPOeextpbKTpRzn+rsTNmZco9znaq7UO51qRN1V8o9r3Ws7ka5962O1N0pHe6Vc0S6RM7VVzpFzjlQukXO/aB0jNzjUekaudeT0jlyz2ele+TeL8r/EOnwqnSIdIh0eFM6RDq8Kx0iHT6UDpEOn0qHSIcvpUOkw7fSIdLhR+kQ6TBs/gHaIvU9QAQAAA=="},"shape":[136],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1049","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1050"}}},"glyph":{"type":"object","name":"Line","id":"p1045","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b3","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1046","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b3","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1047","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b3","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1057","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1051","attributes":{"selected":{"type":"object","name":"Selection","id":"p1052","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1053"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1058","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1059"}}},"glyph":{"type":"object","name":"Ray","id":"p1054","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#1f77b3"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1055","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1056","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1066","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1060","attributes":{"selected":{"type":"object","name":"Selection","id":"p1061","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1062"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1067","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1068"}}},"glyph":{"type":"object","name":"Ray","id":"p1063","attributes":{"x":{"type":"value","value":55.9},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#1f77b3"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1064","attributes":{"x":{"type":"value","value":55.9},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1065","attributes":{"x":{"type":"value","value":55.9},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1075","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1069","attributes":{"selected":{"type":"object","name":"Selection","id":"p1070","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1071"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/53SWw3CQBCF4RWAAQxgoAbK/QUDGKiBGkAABkAAOiqgCMAABjBAe/5kD9lkkg3z8iWbbmd2ZlKaYmjb9GtaZ5/jFAur49bq/GR1frH32xyFr9hmjo+ljk2o7i3r7eZYWeVpYnlnLO+2ynO2ytNZ+hJLn6yuPepljrGqc7T03eo/73qZk2VPttXqXh9LXwoHyztiqdOSd5dlLyx7YZmzZc6WuVrqtvru+r+8szDtQ9k7S12WvYqlL4csfbPkOWa/Q5/7eEAEAAA="},"shape":[136],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1XRyUmDUQBF4XRgB3ZgB0IKsAM7sAM70JVL3bkzSxeiLlyIaBAJIpo4z4nzHDuQ9w6ci3fzQUj+/72TRoON1s01/7uoC/NlLeXzZe11y1aU763rZN2G8rtN/R2WbSnP2da11bK28txdna7bU97T0fG6feW9B0qFQ+UccdAvO1LO1dX2TllPOeextpbKTpRzn+rsTNmZco9znaq7UO51qRN1V8o9r3Ws7ka5962O1N0pHe6Vc0S6RM7VVzpFzjlQukXO/aB0jNzjUekaudeT0jlyz2ele+TeL8r/EOnwqnSIdIh0eFM6RDq8Kx0iHT6UDpEOn0qHSIcvpUOkw7fSIdLhR+kQ6TBs/gHaIvU9QAQAAA=="},"shape":[136],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1076","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1077"}}},"glyph":{"type":"object","name":"Line","id":"p1072","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#ff7e0e","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1073","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#ff7e0e","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1074","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#ff7e0e","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1084","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1078","attributes":{"selected":{"type":"object","name":"Selection","id":"p1079","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1080"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1085","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1086"}}},"glyph":{"type":"object","name":"Ray","id":"p1081","attributes":{"x":{"type":"value","value":33.5},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#ff7e0e"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1082","attributes":{"x":{"type":"value","value":33.5},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1083","attributes":{"x":{"type":"value","value":33.5},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1093","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1087","attributes":{"selected":{"type":"object","name":"Selection","id":"p1088","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1089"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1094","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1095"}}},"glyph":{"type":"object","name":"Ray","id":"p1090","attributes":{"x":{"type":"value","value":46.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#ff7e0e"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1091","attributes":{"x":{"type":"value","value":46.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1092","attributes":{"x":{"type":"value","value":46.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1102","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1096","attributes":{"selected":{"type":"object","name":"Selection","id":"p1097","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1098"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/43SWw3CQBBGYQRgAAMYqIE+cL8IqAEMYAAbIAADGKgAEIABDGAAOifZQzaZhHn5kiYzu/Nvm+Zbx1nb/NrMi6Oh2tzLeSiN773yfZEax9yUPn3ch9Loe+bGnLfGnNGyGHPGGn0TZe9c9taYs9OY0+khSslZY86pslf2rhyvityj8pRL7hrXuirnKucqOWv0vZSc10XuqeScG3Omyl655K7kruSeyzvkkpuS0//yXyu5Kjkq/62S4+ZvybGyU/ZW7qH0bYu8q3LOvvgBHp+UJ0AEAAA="},"shape":[136],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1XRyUmDUQBF4XRgB3ZgB0IKsAM7sAM70JVL3bkzSxeiLlyIaBAJIpo4z4nzHDuQ9w6ci3fzQUj+/72TRoON1s01/7uoC/NlLeXzZe11y1aU763rZN2G8rtN/R2WbSnP2da11bK28txdna7bU97T0fG6feW9B0qFQ+UccdAvO1LO1dX2TllPOeextpbKTpRzn+rsTNmZco9znaq7UO51qRN1V8o9r3Ws7ka5962O1N0pHe6Vc0S6RM7VVzpFzjlQukXO/aB0jNzjUekaudeT0jlyz2ele+TeL8r/EOnwqnSIdIh0eFM6RDq8Kx0iHT6UDpEOn0qHSIcvpUOkw7fSIdLhR+kQ6TBs/gHaIvU9QAQAAA=="},"shape":[136],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1103","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1104"}}},"glyph":{"type":"object","name":"Line","id":"p1099","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#2ba02b","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1100","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#2ba02b","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1101","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#2ba02b","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1111","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1105","attributes":{"selected":{"type":"object","name":"Selection","id":"p1106","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1107"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1112","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1113"}}},"glyph":{"type":"object","name":"Ray","id":"p1108","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#2ba02b"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1109","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1110","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1120","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1114","attributes":{"selected":{"type":"object","name":"Selection","id":"p1115","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1116"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1121","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1122"}}},"glyph":{"type":"object","name":"Ray","id":"p1117","attributes":{"x":{"type":"value","value":58.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#2ba02b"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1118","attributes":{"x":{"type":"value","value":58.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1119","attributes":{"x":{"type":"value","value":58.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1016","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1029"},{"type":"object","name":"WheelZoomTool","id":"p1030","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1031","attributes":{"dimensions":"both","overlay":{"type":"object","name":"BoxAnnotation","id":"p1032","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1038","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1037","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1039"},{"type":"object","name":"ResetTool","id":"p1040"},{"type":"object","name":"HelpTool","id":"p1041"}]}},"toolbar_location":"above","left":[{"type":"object","name":"LinearAxis","id":"p1024","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1025","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1026"},"axis_label":"ECDF","major_label_policy":{"type":"object","name":"AllLabels","id":"p1027"}}}],"right":[{"type":"object","name":"Legend","id":"p1123","attributes":{"location":"center","click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p1124","attributes":{"label":{"type":"value","value":"Gentoo"},"renderers":[{"id":"p1048"},{"id":"p1066"},{"id":"p1057"}]}},{"type":"object","name":"LegendItem","id":"p1125","attributes":{"label":{"type":"value","value":"Adelie"},"renderers":[{"id":"p1075"},{"id":"p1093"},{"id":"p1084"}]}},{"type":"object","name":"LegendItem","id":"p1126","attributes":{"label":{"type":"value","value":"Chinstrap"},"renderers":[{"id":"p1102"},{"id":"p1120"},{"id":"p1111"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1020","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1021"},"axis_label":"bill length (mm)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1022"}}}],"center":[{"type":"object","name":"Grid","id":"p1023","attributes":{"axis":{"id":"p1019"}}},{"type":"object","name":"Grid","id":"p1028","attributes":{"dimension":1,"axis":{"id":"p1024"}}}],"frame_width":400,"frame_height":275}}]}};
+  const render_items = [{"docid":"1828ef7c-f057-4bf9-8fa3-c41529d4d1a9","roots":{"p1008":"dc61a149-7ccf-4b11-8dd5-b9275a740add"},"root_ids":["p1008"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+</div>
+<p>We can also plot bill length versus flipper length to see if we can see a difference among the species. It is also useful to have a hover tool that shows bill depth and body mass.</p>
+<div id="cell-18" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bokeh.plotting.figure(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    frame_width<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    frame_height<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    x_axis_label<span class="op">=</span><span class="st">"bill length (mm)"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    y_axis_label<span class="op">=</span><span class="st">"flipper length (mm)"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    toolbar_location<span class="op">=</span><span class="st">"above"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    tooltips<span class="op">=</span>[(<span class="st">'bill depth'</span>, <span class="st">'@bill_depth_mm'</span>), (<span class="st">'body mass'</span>, <span class="st">'@body_mass_g'</span>)]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Build legend as we populate glyphs</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>legend_items <span class="op">=</span> []</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> color, ((species,), sub_df) <span class="kw">in</span> <span class="bu">zip</span>(bokeh.palettes.Category10_3, df.group_by(<span class="st">"species"</span>)):</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    glyph <span class="op">=</span> p.scatter(</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        source<span class="op">=</span>sub_df.to_dict(), x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"flipper_length_mm"</span>, color<span class="op">=</span>color</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    legend_items.append((species, [glyph]))</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Place legend</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>legend <span class="op">=</span> bokeh.models.Legend(items<span class="op">=</span>legend_items, location<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>p.add_layout(legend, <span class="st">"right"</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>p.legend.click_policy <span class="op">=</span> <span class="st">"hide"</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+
+  <div id="f37112ae-cb42-4739-9de4-db50540d5346" data-root-id="p1135" style="display: contents;"></div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+(function(root) {
+  function embed_document(root) {
+  const docs_json = {"a277cacd-a923-43fc-938f-e62b3c52515d":{"version":"3.8.0","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1210","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1211"}}},"roots":[{"type":"object","name":"Figure","id":"p1135","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1136"},"y_range":{"type":"object","name":"DataRange1d","id":"p1137"},"x_scale":{"type":"object","name":"LinearScale","id":"p1144"},"y_scale":{"type":"object","name":"LinearScale","id":"p1145"},"title":{"type":"object","name":"Title","id":"p1142"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1179","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1170","attributes":{"selected":{"type":"object","name":"Selection","id":"p1171","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1172"},"data":{"type":"map","entries":[["penguin_id",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3Dh1YBUAAA0FcSMrKTrOxdRggh/v+f3HvODSGEBx+N+GTUZ2PGTfhi0pRpM76aNWfegkVLln2z4rtVP6xZt2HTlp+27di1Z9+BQ0eOnTh15twvv124dOXaHzdu3fnr3oNH/zx59uK/V2/eAdbKGTkQAQAA"},"shape":[68],"dtype":"int32","order":"little"}],["species",{"type":"ndarray","array":["Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo"],"shape":[68],"dtype":"object","order":"little"}],["bill_depth_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/11RWxGEMAzExlnou3MGIgAdpwMboAk8cXSzYZr87CTNPtpe57/WJsf+VJXfqKRY5TsqyTKq2BxYbI69Zj2QfTTe9fidUZE6Uf2D6TAPsLi9Ovtsuv9pyg9On/non22fOXHO3Nlhtx56yt/TfJ+Ve8wdTZf555784PSL8l8fnoPP9wzuv94cuF9X/WQ6fAeg1+/u37Pc8iew4SACAAA="},"shape":[68],"dtype":"float64","order":"little"}],["bill_length_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1VRURWDMAxEAAYwMAM10I81bQEDGMAABiYAA0wABmagAjYBMzADMzDKXcPIT16Sy/UuNSZHsGOOi7dVjuTtfdliCJpfzxzErewvgXhBfwx2pzMe+J5z6zmP2HsL+hXrwWFvYj8V/gOH+RX50YK/jshzBO7G9yfHd6Puo27B2xQ91Dl35PPqB336rlv1gSznvOHhW6jbq37sl7vJ+Z49dayOeOpOTvehN6hu+BHVCx+OfO585+bQjToqn/n/9+0Oe/nt1Nfe/oj9AcKVGlAgAgAA"},"shape":[68],"dtype":"float64","order":"little"}],["flipper_length_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/3WQ0Q3AIAhEGcVRGMVvZQhHYRRG6ShtU86Ea/TnBT3gPJHnrKkv5BofW1KSijp1LelJ9MesurDar1kH5lnd46BVP3t+1h0+rFLoH/Cj5NdZx/uIeIe/oDyUfGEO56ns65C30/6TrtP97rPKdsqBfP70Q2/WdjhtIAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}],["body_mass_g",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/2NgAAKJrQ4gimHXZgj9YyOEfrYFQidB+X2bIPStbRB6zg4I3QHVV7AdQsdA1a2AqjsG1R8ANc8Azfw76yD0m82o+rZA5ddB3acFNbdmK6q9TWjqYOIwvgvUPK+tqObCzIH5B2Y/zJ+Cm1DNgbn7E1ScZQOEztiA6o58NHNg9pzZgOpvmDkwc2HhDPMnLLxg8XEAKv4Pas6UjajhHQa19wHUPli8qmxGDQeYP2H+hrkDpo97M9xfAML2qsMgAgAA"},"shape":[68],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1180","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1181"}}},"glyph":{"type":"object","name":"Scatter","id":"p1176","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"},"hatch_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1177","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#1f77b4"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1178","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#1f77b4"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1191","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1182","attributes":{"selected":{"type":"object","name":"Selection","id":"p1183","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1184"},"data":{"type":"map","entries":[["penguin_id",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3Dh1YBUAAA0FcSMrKTrOxdRggh/v+f3HvODSGEBx+N+GTUZ2PGTfhi0pRpM76aNWfegkVLln2z4rtVP6xZt2HTlp+27di1Z9+BQ0eOnTh15twvv124dOXaHzdu3fnr3oNH/zx59uK/V2/eAdbKGTkQAQAA"},"shape":[68],"dtype":"int32","order":"little"}],["species",{"type":"ndarray","array":["Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie"],"shape":[68],"dtype":"object","order":"little"}],["bill_depth_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/3VQURFDIQzDxlQMCvuvgOl4OrDBbDwbbzamY4yU9OBu/ekF0qRNCL2q6PGrT9QwcNb31espwEH01XrdMniHsOPdeVMnj0r2bnqX4ep64BXywRPzn/OJPuiGm3BPzO0+kRh8vw/9wf3WfWTbO3IP+GX+4173mz7LXPV8Vp3Ee4btWYhX3bLlK1sekblBR/7kteXfXG/6TQy9u34BesbHXyACAAA="},"shape":[68],"dtype":"float64","order":"little"}],["bill_length_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1VRXRnCMAycgBrAAAZmIP0bLxiYgRqYAQRgYAhABwKGAAzUwAywNZf0S17uy0/vLmkpZwQazngAh0yv9YgZ+PPUxmpkLIm+2xH3wOjQvyad575g4v4b/B+8eyard0F9izZ30K1BcTxjFz7RlTzquza3AHfxKXve1Afrdl+Nb83qm/2gPosO4W7e3o/gb+k87Gfi+tj3YB9e9+Y8KJq7Ub8f8wa9k+zJPoDkVc/csWS7t8M/EP6pTuD39AcBBFkhIAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}],["flipper_length_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/3VRwQ2EMAzzKIySUfohV5giozBKR+kohyAWigX9WE5rx0mB8yzdcOHvRmw3RtYtOfK+9cqpb+JzJM6sT+GRfND3gx9e+1jWY619h/r2qh/ib9R55aBOOCQHfaBze52X97bXvOFVNz/2MCVnY15/f7+ID4SzP/8ndN/Pnv/2+92JIAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}],["body_mass_g",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/2NgAIKI1Q4giqFgOYResh5CX4PSe6DyWpsgdMU6CK22GpVOWQmh56yA0AxQvgPUHJ1VELp6I4Rm2QChZ21A1fcDKn8Cqv8cVNxnLao4TP0ZqH6YP2Dyj6Dqg9ZA6CtQ/22AimdA9R1ahWo+zP/LN6GGy5dVqLQC1FwpqL4JUHGXZRD6xRpUf8LC4ddKVHmYPli4wsRh9tStRfWv3XJU9bD4gbmnBUqvWIbqHpg/YeENcwcs/GDxZbYBHl4AFGUI6iACAAA="},"shape":[68],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1192","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1193"}}},"glyph":{"type":"object","name":"Scatter","id":"p1188","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#ff7f0e"},"fill_color":{"type":"value","value":"#ff7f0e"},"hatch_color":{"type":"value","value":"#ff7f0e"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1189","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#ff7f0e"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#ff7f0e"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#ff7f0e"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1190","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#ff7f0e"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#ff7f0e"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#ff7f0e"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1203","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1194","attributes":{"selected":{"type":"object","name":"Selection","id":"p1195","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1196"},"data":{"type":"map","entries":[["penguin_id",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3Dh1YBUAAA0FcSMrKTrOxdRggh/v+f3HvODSGEBx+N+GTUZ2PGTfhi0pRpM76aNWfegkVLln2z4rtVP6xZt2HTlp+27di1Z9+BQ0eOnTh15twvv124dOXaHzdu3fnr3oNH/zx59uK/V2/eAdbKGTkQAQAA"},"shape":[68],"dtype":"int32","order":"little"}],["species",{"type":"ndarray","array":["Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap"],"shape":[68],"dtype":"object","order":"little"}],["bill_depth_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/21R0RWAIAhsjbZQYQAGaA7naI1aozVsjeYohdMnL358wHF34F2+2JJQjSvIedQIsrRgq1ufktb3OOcLWZ10fgUfS25Bcjed6PjBQ4p7DFeGnp/Xlw0X5zn0i/Fe5PwN/5OfFfrwR50He/k+cu/7f082ntDvCX7VH3itG39Gjn9JfR53Rh0+Fc99b/Dh3vANv8Cpnrv7k+QF/lcljCACAAA="},"shape":[68],"dtype":"float64","order":"little"}],["bill_length_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/12RXRXCMAyFK2AGMICBGsgD9GeAgBqYAQzMxhCAgRmYACYAAzMwA5z23mTnkJeepDfpd9P1UyOKqyFX8TWeFxla9MjnIGvTJeqSvKYaiboM3Z5x73o70Reg/wbOj5a39nfmybmnbPXWf8/Ghz6tk3vpod/I5x7QlYNHOTE/gsOrX9YL543qL1iO93VPfL87ODGXvsdo/e3+TN2gvNyXJ8fO/Uz0V7i3ju8u0fS6H9R1H+pbOW685/9smgfzC05yzPnPFzldlB/NABM8IAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}],["flipper_length_mm",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/21QwQ0AIQhjFEdxFF+iTuEojsIojnKXk5rQnJ8GKKVW5H2lZflQI65+cHqdnLfB8zqPg+b81GM/t7gvLe6jX7DnuHiu/3rwaahr1Ls6nf7nvEl+5oh6+IeQjindxVxjTugvyhdz49yRMyHfQ07XN/kTx93jfFLezM/16j6F6Ia+IAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}],["body_mass_g",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/2NgAAKRdQ4gikFnFYRmWAmhj22E0F2rIXTdWgg9AarOACrPsgFC34Gas2Q9hD6wCVW/whoILbEUQresQaVh+jZA7fFZi8qHua8OTXwK1B3boOa8QDPPDOq+pI2o9sHcswfqvhNQf59B8w+MjliNai4sHGD2fUHjp6xENbcFTRym7h3U3BXLILQU1F+/oOoq1qGajx4PMH/A1MHcDwsfh/Wo7oeFE3q8wcyDuQ8YbgDVzptFIAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1204","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1205"}}},"glyph":{"type":"object","name":"Scatter","id":"p1200","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#2ca02c"},"fill_color":{"type":"value","value":"#2ca02c"},"hatch_color":{"type":"value","value":"#2ca02c"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1201","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#2ca02c"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#2ca02c"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#2ca02c"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1202","attributes":{"x":{"type":"field","field":"bill_length_mm"},"y":{"type":"field","field":"flipper_length_mm"},"line_color":{"type":"value","value":"#2ca02c"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#2ca02c"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#2ca02c"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1143","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1156"},{"type":"object","name":"WheelZoomTool","id":"p1157","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1158","attributes":{"dimensions":"both","overlay":{"type":"object","name":"BoxAnnotation","id":"p1159","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1165","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1164","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1166"},{"type":"object","name":"ResetTool","id":"p1167"},{"type":"object","name":"HelpTool","id":"p1168"},{"type":"object","name":"HoverTool","id":"p1169","attributes":{"renderers":"auto","tooltips":[["bill depth","@bill_depth_mm"],["body mass","@body_mass_g"]],"sort_by":null}}]}},"toolbar_location":"above","left":[{"type":"object","name":"LinearAxis","id":"p1151","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1152","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1153"},"axis_label":"flipper length (mm)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1154"}}}],"right":[{"type":"object","name":"Legend","id":"p1206","attributes":{"location":"center","click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p1207","attributes":{"label":{"type":"value","value":"Gentoo"},"renderers":[{"id":"p1179"}]}},{"type":"object","name":"LegendItem","id":"p1208","attributes":{"label":{"type":"value","value":"Adelie"},"renderers":[{"id":"p1191"}]}},{"type":"object","name":"LegendItem","id":"p1209","attributes":{"label":{"type":"value","value":"Chinstrap"},"renderers":[{"id":"p1203"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1146","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1147","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1148"},"axis_label":"bill length (mm)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1149"}}}],"center":[{"type":"object","name":"Grid","id":"p1150","attributes":{"axis":{"id":"p1146"}}},{"type":"object","name":"Grid","id":"p1155","attributes":{"dimension":1,"axis":{"id":"p1151"}}}],"frame_width":300,"frame_height":300}}]}};
+  const render_items = [{"docid":"a277cacd-a923-43fc-938f-e62b3c52515d","roots":{"p1135":"f37112ae-cb42-4739-9de4-db50540d5346"},"root_ids":["p1135"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="an-important-note-about-tidiness" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="an-important-note-about-tidiness"><span class="header-section-number">16.4</span> An important note about tidiness</h2>
+<p>It is important to note that there is more than one way to make a data set tidy. In the example of the Palmer penguin data set, we saw two legitimate ways of making the data frame tidy. In our preferred wide version, each row corresponded to a measurement of a single <em>penguin</em>, which had several variables associated with it. In the tall version, each row corresponded to a single <em>feature</em> of a penguin.</p>
+<p>To demonstrate that the tall version is workable, but more cumbersome, we can make the same plots as above. First, we’ll unpivot the data frame to make it tall. We need to specify which columns as index columns for the unpivot because we want the <code>'penguin_id'</code> and <code>'species'</code> columns to remain in the tall data frame (which we did not have to do in the previous lesson).</p>
+<div id="cell-20" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.unpivot(index<span class="op">=</span>[<span class="st">"penguin_id"</span>, <span class="st">"species"</span>])</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 4)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">penguin_id</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">variable</th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+<td>str</td>
+<td>str</td>
+<td>f64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>"Gentoo"</td>
+<td>"bill_depth_mm"</td>
+<td>16.3</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>"Adelie"</td>
+<td>"bill_depth_mm"</td>
+<td>18.5</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>"Chinstrap"</td>
+<td>"bill_depth_mm"</td>
+<td>18.3</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>"Gentoo"</td>
+<td>"bill_depth_mm"</td>
+<td>15.8</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>"Adelie"</td>
+<td>"bill_depth_mm"</td>
+<td>16.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Plotting the ECDFs is not really a problem with this form of the data frame. We just need to use a filter context to pull out the bill length rows.</p>
+<div id="cell-22" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    iqplot.ecdf(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>df.<span class="bu">filter</span>(pl.col(<span class="st">'variable'</span>) <span class="op">==</span> <span class="st">'bill_length_mm'</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        q<span class="op">=</span><span class="st">"value"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        cats<span class="op">=</span><span class="st">"species"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        frame_width<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        x_axis_label<span class="op">=</span><span class="st">"bill length (mm)"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+
+  <div id="c3d7cee5-6873-4eb5-9941-079f6f266ddb" data-root-id="p1227" style="display: contents;"></div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+(function(root) {
+  function embed_document(root) {
+  const docs_json = {"204e5cba-0e31-4b11-9489-ff1e188db8f0":{"version":"3.8.0","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1346","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1347"}}},"roots":[{"type":"object","name":"Figure","id":"p1227","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1228"},"y_range":{"type":"object","name":"DataRange1d","id":"p1229"},"x_scale":{"type":"object","name":"LinearScale","id":"p1236"},"y_scale":{"type":"object","name":"LinearScale","id":"p1237"},"title":{"type":"object","name":"Title","id":"p1234"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1267","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1261","attributes":{"selected":{"type":"object","name":"Selection","id":"p1262","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1263"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/43SWw3CQBBGYQTUAAYwsAb6wB0MYAADGEAABooADGAAAUUABjCAAcocsidpssnOy5c03ck/s5vSUKd5m/4++6H2i+y1G+qgxyjlnMZ/ncZvN5386jFyssxGn6Txua2XHEqOesmp5Kw3+rw0+rw19tqsisa5adnoM1P2pOyhXu5Zudey7EmZW5ljnSV3WXKXJZfyDuslt0bOs0bfizKX8g6UOTXO9co73lTLnpS9KPekzFGWOUY22yx9lb4aa78rfXbZ+P7RL+W6DlRABAAA"},"shape":[136],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1XRyUmDUQBF4XRgB3ZgB0IKsAM7sAM70JVL3bkzSxeiLlyIaBAJIpo4z4nzHDuQ9w6ci3fzQUj+/72TRoON1s01/7uoC/NlLeXzZe11y1aU763rZN2G8rtN/R2WbSnP2da11bK28txdna7bU97T0fG6feW9B0qFQ+UccdAvO1LO1dX2TllPOeextpbKTpRzn+rsTNmZco9znaq7UO51qRN1V8o9r3Ws7ka5962O1N0pHe6Vc0S6RM7VVzpFzjlQukXO/aB0jNzjUekaudeT0jlyz2ele+TeL8r/EOnwqnSIdIh0eFM6RDq8Kx0iHT6UDpEOn0qHSIcvpUOkw7fSIdLhR+kQ6TBs/gHaIvU9QAQAAA=="},"shape":[136],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1268","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1269"}}},"glyph":{"type":"object","name":"Line","id":"p1264","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b3","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1265","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b3","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1266","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b3","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1276","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1270","attributes":{"selected":{"type":"object","name":"Selection","id":"p1271","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1272"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1277","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1278"}}},"glyph":{"type":"object","name":"Ray","id":"p1273","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#1f77b3"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1274","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1275","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1285","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1279","attributes":{"selected":{"type":"object","name":"Selection","id":"p1280","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1281"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1286","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1287"}}},"glyph":{"type":"object","name":"Ray","id":"p1282","attributes":{"x":{"type":"value","value":55.9},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#1f77b3"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1283","attributes":{"x":{"type":"value","value":55.9},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1284","attributes":{"x":{"type":"value","value":55.9},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1294","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1288","attributes":{"selected":{"type":"object","name":"Selection","id":"p1289","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1290"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/53SWw3CQBCF4RWAAQxgoAbK/QUDGKiBGkAABkAAOiqgCMAABjBAe/5kD9lkkg3z8iWbbmd2ZlKaYmjb9GtaZ5/jFAur49bq/GR1frH32xyFr9hmjo+ljk2o7i3r7eZYWeVpYnlnLO+2ynO2ytNZ+hJLn6yuPepljrGqc7T03eo/73qZk2VPttXqXh9LXwoHyztiqdOSd5dlLyx7YZmzZc6WuVrqtvru+r+8szDtQ9k7S12WvYqlL4csfbPkOWa/Q5/7eEAEAAA="},"shape":[136],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1XRyUmDUQBF4XRgB3ZgB0IKsAM7sAM70JVL3bkzSxeiLlyIaBAJIpo4z4nzHDuQ9w6ci3fzQUj+/72TRoON1s01/7uoC/NlLeXzZe11y1aU763rZN2G8rtN/R2WbSnP2da11bK28txdna7bU97T0fG6feW9B0qFQ+UccdAvO1LO1dX2TllPOeextpbKTpRzn+rsTNmZco9znaq7UO51qRN1V8o9r3Ws7ka5962O1N0pHe6Vc0S6RM7VVzpFzjlQukXO/aB0jNzjUekaudeT0jlyz2ele+TeL8r/EOnwqnSIdIh0eFM6RDq8Kx0iHT6UDpEOn0qHSIcvpUOkw7fSIdLhR+kQ6TBs/gHaIvU9QAQAAA=="},"shape":[136],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1295","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1296"}}},"glyph":{"type":"object","name":"Line","id":"p1291","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#ff7e0e","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1292","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#ff7e0e","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1293","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#ff7e0e","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1303","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1297","attributes":{"selected":{"type":"object","name":"Selection","id":"p1298","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1299"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1304","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1305"}}},"glyph":{"type":"object","name":"Ray","id":"p1300","attributes":{"x":{"type":"value","value":33.5},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#ff7e0e"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1301","attributes":{"x":{"type":"value","value":33.5},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1302","attributes":{"x":{"type":"value","value":33.5},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1312","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1306","attributes":{"selected":{"type":"object","name":"Selection","id":"p1307","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1308"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1313","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1314"}}},"glyph":{"type":"object","name":"Ray","id":"p1309","attributes":{"x":{"type":"value","value":46.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#ff7e0e"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1310","attributes":{"x":{"type":"value","value":46.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1311","attributes":{"x":{"type":"value","value":46.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1321","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1315","attributes":{"selected":{"type":"object","name":"Selection","id":"p1316","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1317"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/43SWw3CQBBGYQRgAAMYqIE+cL8IqAEMYAAbIAADGKgAEIABDGAAOifZQzaZhHn5kiYzu/Nvm+Zbx1nb/NrMi6Oh2tzLeSiN773yfZEax9yUPn3ch9Loe+bGnLfGnNGyGHPGGn0TZe9c9taYs9OY0+khSslZY86pslf2rhyvityj8pRL7hrXuirnKucqOWv0vZSc10XuqeScG3Omyl655K7kruSeyzvkkpuS0//yXyu5Kjkq/62S4+ZvybGyU/ZW7qH0bYu8q3LOvvgBHp+UJ0AEAAA="},"shape":[136],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1XRyUmDUQBF4XRgB3ZgB0IKsAM7sAM70JVL3bkzSxeiLlyIaBAJIpo4z4nzHDuQ9w6ci3fzQUj+/72TRoON1s01/7uoC/NlLeXzZe11y1aU763rZN2G8rtN/R2WbSnP2da11bK28txdna7bU97T0fG6feW9B0qFQ+UccdAvO1LO1dX2TllPOeextpbKTpRzn+rsTNmZco9znaq7UO51qRN1V8o9r3Ws7ka5962O1N0pHe6Vc0S6RM7VVzpFzjlQukXO/aB0jNzjUekaudeT0jlyz2ele+TeL8r/EOnwqnSIdIh0eFM6RDq8Kx0iHT6UDpEOn0qHSIcvpUOkw7fSIdLhR+kQ6TBs/gHaIvU9QAQAAA=="},"shape":[136],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1322","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1323"}}},"glyph":{"type":"object","name":"Line","id":"p1318","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#2ba02b","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1319","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#2ba02b","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1320","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#2ba02b","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1330","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1324","attributes":{"selected":{"type":"object","name":"Selection","id":"p1325","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1326"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1331","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1332"}}},"glyph":{"type":"object","name":"Ray","id":"p1327","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#2ba02b"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1328","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1329","attributes":{"x":{"type":"value","value":40.9},"y":{"type":"value","value":0},"angle":{"type":"value","value":3.141592653589793},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1339","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1333","attributes":{"selected":{"type":"object","name":"Selection","id":"p1334","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1335"},"data":{"type":"map"}}},"view":{"type":"object","name":"CDSView","id":"p1340","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1341"}}},"glyph":{"type":"object","name":"Ray","id":"p1336","attributes":{"x":{"type":"value","value":58.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#2ba02b"},"line_width":{"type":"value","value":2}}},"nonselection_glyph":{"type":"object","name":"Ray","id":"p1337","attributes":{"x":{"type":"value","value":58.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":2}}},"muted_glyph":{"type":"object","name":"Ray","id":"p1338","attributes":{"x":{"type":"value","value":58.0},"y":{"type":"value","value":1},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1235","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1248"},{"type":"object","name":"WheelZoomTool","id":"p1249","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1250","attributes":{"dimensions":"both","overlay":{"type":"object","name":"BoxAnnotation","id":"p1251","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1257","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1256","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1258"},{"type":"object","name":"ResetTool","id":"p1259"},{"type":"object","name":"HelpTool","id":"p1260"}]}},"toolbar_location":"above","left":[{"type":"object","name":"LinearAxis","id":"p1243","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1244","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1245"},"axis_label":"ECDF","major_label_policy":{"type":"object","name":"AllLabels","id":"p1246"}}}],"right":[{"type":"object","name":"Legend","id":"p1342","attributes":{"location":"center","click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p1343","attributes":{"label":{"type":"value","value":"Gentoo"},"renderers":[{"id":"p1267"},{"id":"p1285"},{"id":"p1276"}]}},{"type":"object","name":"LegendItem","id":"p1344","attributes":{"label":{"type":"value","value":"Adelie"},"renderers":[{"id":"p1294"},{"id":"p1312"},{"id":"p1303"}]}},{"type":"object","name":"LegendItem","id":"p1345","attributes":{"label":{"type":"value","value":"Chinstrap"},"renderers":[{"id":"p1321"},{"id":"p1339"},{"id":"p1330"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1238","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1239","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1240"},"axis_label":"bill length (mm)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1241"}}}],"center":[{"type":"object","name":"Grid","id":"p1242","attributes":{"axis":{"id":"p1238"}}},{"type":"object","name":"Grid","id":"p1247","attributes":{"dimension":1,"axis":{"id":"p1243"}}}],"frame_width":400,"frame_height":275}}]}};
+  const render_items = [{"docid":"204e5cba-0e31-4b11-9489-ff1e188db8f0","roots":{"p1227":"c3d7cee5-6873-4eb5-9941-079f6f266ddb"},"root_ids":["p1227"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+</div>
+<p>Making the scatter plot, however, is much more difficult and involves a lot of filtering by hand.</p>
+<div id="cell-24" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up figure</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bokeh.plotting.figure(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    frame_width<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    frame_height<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    x_axis_label<span class="op">=</span><span class="st">"bill length (mm)"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    y_axis_label<span class="op">=</span><span class="st">"flipper length (mm)"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    toolbar_location<span class="op">=</span><span class="st">"above"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Expressions for filtering</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>bill_length <span class="op">=</span> pl.col(<span class="st">'variable'</span>) <span class="op">==</span> <span class="st">"bill_length_mm"</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>flipper_length <span class="op">=</span> pl.col(<span class="st">'variable'</span>) <span class="op">==</span> <span class="st">"flipper_length_mm"</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Build legend as we populate glyphs</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>legend_items <span class="op">=</span> []</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> color, ((species,), sub_df) <span class="kw">in</span> <span class="bu">zip</span>(bokeh.palettes.Category10_3, df.group_by(<span class="st">'species'</span>)):</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Slice out bill and flipper lengths for species</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    bill <span class="op">=</span> sub_df.<span class="bu">filter</span>(bill_length).get_column(<span class="st">'value'</span>).to_numpy()</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    flipper <span class="op">=</span> sub_df.<span class="bu">filter</span>(flipper_length).get_column(<span class="st">'value'</span>).to_numpy()</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Populate glyph</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    glyph <span class="op">=</span> p.scatter(bill, flipper, color<span class="op">=</span>color)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    legend_items.append((species, [glyph]))</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Build and place legend</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>legend <span class="op">=</span> bokeh.models.Legend(items<span class="op">=</span>legend_items, location<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>p.add_layout(legend, <span class="st">"right"</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>p.legend.click_policy <span class="op">=</span> <span class="st">"hide"</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+
+  <div id="f5cba77f-93fb-4e68-a986-4d8d841b0169" data-root-id="p1354" style="display: contents;"></div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+(function(root) {
+  function embed_document(root) {
+  const docs_json = {"d48dd3db-fc9d-4e32-ac2e-d78ed2b04d94":{"version":"3.8.0","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1419","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1420"}}},"roots":[{"type":"object","name":"Figure","id":"p1354","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1355"},"y_range":{"type":"object","name":"DataRange1d","id":"p1356"},"x_scale":{"type":"object","name":"LinearScale","id":"p1363"},"y_scale":{"type":"object","name":"LinearScale","id":"p1364"},"title":{"type":"object","name":"Title","id":"p1361"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1394","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1388","attributes":{"selected":{"type":"object","name":"Selection","id":"p1389","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1390"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/12RXRXCMAyFK2AGMICBGsgD9GeAgBqYAQzMxhCAgRmYACYAAzMwA5z23mTnkJeepDfpd9P1UyOKqyFX8TWeFxla9MjnIGvTJeqSvKYaiboM3Z5x73o70Reg/wbOj5a39nfmybmnbPXWf8/Ghz6tk3vpod/I5x7QlYNHOTE/gsOrX9YL543qL1iO93VPfL87ODGXvsdo/e3+TN2gvNyXJ8fO/Uz0V7i3ju8u0fS6H9R1H+pbOW685/9smgfzC05yzPnPFzldlB/NABM8IAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/21QwQ0AIQhjFEdxFF+iTuEojsIojnKXk5rQnJ8GKKVW5H2lZflQI65+cHqdnLfB8zqPg+b81GM/t7gvLe6jX7DnuHiu/3rwaahr1Ls6nf7nvEl+5oh6+IeQjindxVxjTugvyhdz49yRMyHfQ07XN/kTx93jfFLezM/16j6F6Ia+IAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1395","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1396"}}},"glyph":{"type":"object","name":"Scatter","id":"p1391","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"},"hatch_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1392","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#1f77b4"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1393","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#1f77b4"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1403","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1397","attributes":{"selected":{"type":"object","name":"Selection","id":"p1398","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1399"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1VRXRnCMAycgBrAAAZmIP0bLxiYgRqYAQRgYAhABwKGAAzUwAywNZf0S17uy0/vLmkpZwQazngAh0yv9YgZ+PPUxmpkLIm+2xH3wOjQvyad575g4v4b/B+8eyard0F9izZ30K1BcTxjFz7RlTzquza3AHfxKXve1Afrdl+Nb83qm/2gPosO4W7e3o/gb+k87Gfi+tj3YB9e9+Y8KJq7Ub8f8wa9k+zJPoDkVc/csWS7t8M/EP6pTuD39AcBBFkhIAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/3VRwQ2EMAzzKIySUfohV5giozBKR+kohyAWigX9WE5rx0mB8yzdcOHvRmw3RtYtOfK+9cqpb+JzJM6sT+GRfND3gx9e+1jWY619h/r2qh/ib9R55aBOOCQHfaBze52X97bXvOFVNz/2MCVnY15/f7+ID4SzP/8ndN/Pnv/2+92JIAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1404","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1405"}}},"glyph":{"type":"object","name":"Scatter","id":"p1400","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#ff7f0e"},"fill_color":{"type":"value","value":"#ff7f0e"},"hatch_color":{"type":"value","value":"#ff7f0e"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1401","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#ff7f0e"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#ff7f0e"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#ff7f0e"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1402","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#ff7f0e"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#ff7f0e"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#ff7f0e"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1412","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1406","attributes":{"selected":{"type":"object","name":"Selection","id":"p1407","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1408"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/1VRURWDMAxEAAYwMAM10I81bQEDGMAABiYAA0wABmagAjYBMzADMzDKXcPIT16Sy/UuNSZHsGOOi7dVjuTtfdliCJpfzxzErewvgXhBfwx2pzMe+J5z6zmP2HsL+hXrwWFvYj8V/gOH+RX50YK/jshzBO7G9yfHd6Puo27B2xQ91Dl35PPqB336rlv1gSznvOHhW6jbq37sl7vJ+Z49dayOeOpOTvehN6hu+BHVCx+OfO585+bQjToqn/n/9+0Oe/nt1Nfe/oj9AcKVGlAgAgAA"},"shape":[68],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/3WQ0Q3AIAhEGcVRGMVvZQhHYRRG6ShtU86Ea/TnBT3gPJHnrKkv5BofW1KSijp1LelJ9MesurDar1kH5lnd46BVP3t+1h0+rFLoH/Cj5NdZx/uIeIe/oDyUfGEO56ns65C30/6TrtP97rPKdsqBfP70Q2/WdjhtIAIAAA=="},"shape":[68],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1413","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1414"}}},"glyph":{"type":"object","name":"Scatter","id":"p1409","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#2ca02c"},"fill_color":{"type":"value","value":"#2ca02c"},"hatch_color":{"type":"value","value":"#2ca02c"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1410","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#2ca02c"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#2ca02c"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#2ca02c"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1411","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":{"type":"value","value":"#2ca02c"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#2ca02c"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#2ca02c"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1362","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1375"},{"type":"object","name":"WheelZoomTool","id":"p1376","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1377","attributes":{"dimensions":"both","overlay":{"type":"object","name":"BoxAnnotation","id":"p1378","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1384","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1383","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1385"},{"type":"object","name":"ResetTool","id":"p1386"},{"type":"object","name":"HelpTool","id":"p1387"}]}},"toolbar_location":"above","left":[{"type":"object","name":"LinearAxis","id":"p1370","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1371","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1372"},"axis_label":"flipper length (mm)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1373"}}}],"right":[{"type":"object","name":"Legend","id":"p1415","attributes":{"location":"center","click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p1416","attributes":{"label":{"type":"value","value":"Chinstrap"},"renderers":[{"id":"p1394"}]}},{"type":"object","name":"LegendItem","id":"p1417","attributes":{"label":{"type":"value","value":"Adelie"},"renderers":[{"id":"p1403"}]}},{"type":"object","name":"LegendItem","id":"p1418","attributes":{"label":{"type":"value","value":"Gentoo"},"renderers":[{"id":"p1412"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1365","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1366","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1367"},"axis_label":"bill length (mm)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1368"}}}],"center":[{"type":"object","name":"Grid","id":"p1369","attributes":{"axis":{"id":"p1365"}}},{"type":"object","name":"Grid","id":"p1374","attributes":{"dimension":1,"axis":{"id":"p1370"}}}],"frame_width":300,"frame_height":300}}]}};
+  const render_items = [{"docid":"d48dd3db-fc9d-4e32-ac2e-d78ed2b04d94","roots":{"p1354":"f5cba77f-93fb-4e68-a986-4d8d841b0169"},"root_ids":["p1354"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+</div>
+<p>This works fine, but is more cumbersome. Importantly, we could not use a column data source in the plot to enable display of more data upon hover. The moral of the story is that you should tidy your data, but you should think carefully about in what way you want your data to be tidy.</p>
+</section>
+<section id="computing-environment" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">16.5</span> Computing environment</h2>
+<div id="cell-27" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,pandas,bokeh,iqplot,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Python implementation: CPython
+Python version       : 3.13.7
+IPython version      : 9.5.0
+
+numpy     : 2.2.6
+pandas    : 2.3.2
+bokeh     : 3.8.0
+iqplot    : 0.3.7
+jupyterlab: 4.4.7
+</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bebi103a\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../lessons/eda/wrangling/unpivoting.html" class="pagination-link" aria-label="Making a data frame tall">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../lessons/eda/eda_lesson_exercise.html" class="pagination-link" aria-label="EDA lesson exercises">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">EDA lesson exercises</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><em>BE/Bi 103 a 2025</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

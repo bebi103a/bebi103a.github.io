@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>15&nbsp; Making a data frame tall – BE/Bi 103 a 2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../lessons/eda/wrangling/pivoting.html" rel="next">
+<link href="../../../lessons/eda/wrangling/merging_dataframes.html" rel="prev">
+<link href="../../../logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../custom.css">
+</head>
+
+<body class="nav-sidebar floating slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/eda/exploratory_data_analysis.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="../../../lessons/eda/wrangling/unpivoting.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../"></a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the course</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course logistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../policies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course policies</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/what_are_we_doing/what_are_we_doing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What are we doing?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/eda/exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/intro_to_polars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data frames and Polars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/tidy_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tidy data and split-apply-combine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/styling_data_frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Styling data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/polars_for_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data display</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting_with_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Making plots with Bokeh</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting_smooth_curves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Plotting smooth curves</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/categorical_axes_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plots with categorical variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/visualizing_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/iqplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">High level plotting with iqplot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/styling_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Styling Bokeh plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/manipulating_data_frames_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Manipulating data frames and wrangling data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/merging_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Merging and concatenating data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/unpivoting.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/pivoting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/eda_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">EDA lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/probability_and_sampling/probability_and_sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability: The foundation for generative modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/definition_and_interpretation_of_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Probability: definitions and interpretations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/random_number_generation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Random number generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/rng_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Random number generation using Numpy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/luria_delbruck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Simulating the Luria-Delbrück distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/probability_and_sampling_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Probability and sampling lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Homework</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/plotting_an_elephant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.1: Plotting an elephant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/penguins_split_apply_combine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.2: Palmer penguins and split-apply-combine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/mt_ecdf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.1: Microtubule catastrophe and ECDFs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/cool_gal4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Computing</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/setting_up_python_computing_environment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuring your computer to use Python for scientific computing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/hello_world.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Hello, world.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/variables_operators_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Variables, operators, and types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/lists_and_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Lists and tuples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/intro_to_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Introduction to functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/string_methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">String methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Dictionaries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/comprehensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Comprehensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/packages_and_modules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Packages and modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/exceptions_and_error_handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Errors and exception handling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/file_io.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">File I/O</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/intro_to_numpy_and_scipy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Introduction to Numpy and Scipy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">In this section</h2>
+   
+  <ul>
+  <li><a href="#the-data-set" id="toc-the-data-set" class="nav-link active" data-scroll-target="#the-data-set"><span class="header-section-number">15.1</span> The data set</a></li>
+  <li><a href="#loading-in-an-excel-sheet" id="toc-loading-in-an-excel-sheet" class="nav-link" data-scroll-target="#loading-in-an-excel-sheet"><span class="header-section-number">15.2</span> Loading in an Excel sheet</a></li>
+  <li><a href="#parsing-the-column-names" id="toc-parsing-the-column-names" class="nav-link" data-scroll-target="#parsing-the-column-names"><span class="header-section-number">15.3</span> Parsing the column names</a></li>
+  <li><a href="#unpivot-the-data-frame" id="toc-unpivot-the-data-frame" class="nav-link" data-scroll-target="#unpivot-the-data-frame"><span class="header-section-number">15.4</span> Unpivot the data frame</a></li>
+  <li><a href="#splitting-the-genotype_method-column" id="toc-splitting-the-genotype_method-column" class="nav-link" data-scroll-target="#splitting-the-genotype_method-column"><span class="header-section-number">15.5</span> Splitting the genotype_method column</a>
+  <ul class="collapse">
+  <li><a href="#using-the-data-frame" id="toc-using-the-data-frame" class="nav-link" data-scroll-target="#using-the-data-frame"><span class="header-section-number">15.5.1</span> Using the data frame</a></li>
+  </ul></li>
+  <li><a href="#computing-environment" id="toc-computing-environment" class="nav-link" data-scroll-target="#computing-environment"><span class="header-section-number">15.6</span> Computing environment</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/eda/exploratory_data_analysis.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="../../../lessons/eda/wrangling/unpivoting.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2025/blob/main/unpivoting.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2025/refs/heads/main/unpivoting.ipynb">Download notebook</a></p>
+<p><a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx">Data set download</a></p>
+<hr>
+<div id="cell-1" class="cell" data-nbsphinx="hide" data-tags="[]" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars iqplot watermark"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    process <span class="op">=</span> subprocess.Popen(cmd.split(), stdout<span class="op">=</span>subprocess.PIPE, stderr<span class="op">=</span>subprocess.PIPE)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    stdout, stderr <span class="op">=</span> process.communicate()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="cell-2" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iqplot</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+    <style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="c87cca68-57c0-4cdb-bbe1-b5a1b74c142c">Loading BokehJS ...</span>
+    </div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById("c87cca68-57c0-4cdb-bbe1-b5a1b74c142c");
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.8.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.8.0.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {display_loaded(error);throw error;
+      }if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("c87cca68-57c0-4cdb-bbe1-b5a1b74c142c")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+</div>
+<hr>
+<p>In this part of the lesson, we will perform some wrangling on a data set that involves:</p>
+<ul>
+<li>Using Polars’s <code>read_excel()</code> function to read in data from an MS Excel spreadsheet</li>
+<li>Parsing column names to extract useful metadata en route to tidy data</li>
+<li>Performing an unpivot operation to efficiently tidy a data set.</li>
+</ul>
+<section id="the-data-set" class="level2 page-columns page-full" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="the-data-set"><span class="header-section-number">15.1</span> The data set</h2>
+<p>We will use a data set from <a href="http://www.stathlab.caltech.edu">Angela Stathopoulos’s lab</a>, acquired to study morphogen profiles in developing fruit fly embryos. The original paper is <a href="https://doi.org/10.1016/j.devcel.2011.12.007">Reeves, Trisnadi, et al., Dorsal-ventral gene expression in the <em>Drosophila</em> embryo reflects the dynamics and precision of the Dorsal nuclear gradient, <em>Dev. Cell.</em>, <strong>22</strong>, 544-557, 2012</a>, and the data set may be downloaded here: <a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx">https://s3.amazonaws.com/bebi103.caltech.edu/data/Reeves2012_data.xlsx</a>.</p>
+<p>In this experiment, Reeves, Trisnadi, and coworkers measured expression levels of a fusion of Dorsal, a morphogen transcription factor important in determining the dorsal-ventral axis of the developing organism, and Venus, a yellow fluorescent protein along the dorsal/ventral– (DV) coordinate. They put this construct on the third chromosome, while wild type <em>dorsal</em> is on the second. Instead of the wild type, they had a homozygous <em>dorsal</em>-null mutant on the second chromosome. The Dorsal-Venus construct rescues wild type behavior, so they could use this construct to study Dorsal gradients.</p>
+<p>Dorsal shows higher expression on the ventral side of the organism, thus giving a <em>gradient</em> in expression from dorsal to ventral which can be ascertained by the spatial distribution of Venus fluorescence intensity.</p>
+<p>This can be seen in the image below, which is a cross-section of a fixed embryo with anti-Dorsal staining. The bottom of the image is the ventral side and the top is the dorsal side of the embryo. The DV coordinate system is defined by the yellow line. The image is adapted from the Reeves, Trisnadi, et al.&nbsp;paper.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="DV_coord.png" class="img-fluid figure-img" style="width:50.0%" alt="Image of a Dorsal gradient"></p>
+<figcaption class="margin-caption">Fluorescently labeled Dorsal in a cross-section of a <em>Drosophila</em> embryo. Adapted from Reeves, Trisnadi, et al., <em>Dev. Cell.</em>, 2012.</figcaption>
+</figure>
+</div>
+<p><em>A quick note on nomenclature:</em> Dorsal (capital D) is the name of the protein product of the gene <em>dorsal</em> (italicized). The dorsal (adjective) side of the embryo is its back. The ventral side is its belly. Dorsal is expressed more strongly on the <em>ventral side</em> of the developing embryo. This can be confusing.</p>
+<p>To quantify the gradient, Reeves, Trisnadi, and coworkers had to first choose a metric for describing it. They chose to fit the measured profile of fluorescence intensity with a Gaussian peak (plus background) and use the standard deviation of that Gaussian as a metric for the width of the Dorsal gradient.</p>
+<p>In this lesson, we will use the gradient widths as outputted from this procedure. The units of the widths are dimensionless, consistent with the coordinate system shown in the image above. I asked one of the authors for the data sets used in making the figures. She sent me a MS Excel file that had a separate sheet for each of several figures in the paper that I asked about. We will focus on the data used for Fig. 1F of the paper. In this figure, the authors seek to demonstrate that live imaging with their Venus-Dorsal construct gives a Dorsal gradient of similar width as would be obtained by fixing wild type cells and doing Dorsal antibody staining (the gold standard). These wild type embryos were analyzed as whole mounts and also as cross-sections. They also tried anti-Dorsal staining and anti-Venus staining in the Venus-Dorsal construct. Finally, they also measured gradient widths of a GFP-Dorsal construct that fails to complete development.</p>
+</section>
+<section id="loading-in-an-excel-sheet" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="loading-in-an-excel-sheet"><span class="header-section-number">15.2</span> Loading in an Excel sheet</h2>
+<p>Generally, you should store your data sets in portable formats, like CSV, JSON, XML, HDF5, OME-TIFF, etc., and not proprietary formats. Nonetheless, software like Microsoft Excel is widely used, and you will often receive data sets in this format. Fortunately, Polars can read Excel files, provided they are from fairly recent versions of Excel.</p>
+<p>To read in this data set, we will use <code>pl.read_excel()</code>. Importantly, because an Excel document may have many sheets, we need to specify the sheet name we want, in this case <code>'Fig 1F'</code>.</p>
+<div id="cell-6" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_excel(os.path.join(data_path, <span class="st">"Reeves2012_data.xlsx"</span>), sheet_name<span class="op">=</span><span class="st">"Fig 1F"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 8)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">wt wholemounts</th>
+<th data-quarto-table-cell-role="th">wt cross-sections</th>
+<th data-quarto-table-cell-role="th">anti-Dorsal dl1/+dl-venus/+</th>
+<th data-quarto-table-cell-role="th">anti-gfp dl1/+dl-venus/+</th>
+<th data-quarto-table-cell-role="th">Venus (live) dl1/+dl-venus/+</th>
+<th data-quarto-table-cell-role="th">anti-Dorsal dl1/+dl-GFP/+</th>
+<th data-quarto-table-cell-role="th">anti-gfp dl1/+dl-GFP/+</th>
+<th data-quarto-table-cell-role="th">GFP (live) dl1/+dl-GFP/+</th>
+</tr>
+<tr class="even">
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1288</td>
+<td>0.1327</td>
+<td>0.1482</td>
+<td>0.1632</td>
+<td>0.1666</td>
+<td>0.2248</td>
+<td>0.2389</td>
+<td>0.2412</td>
+</tr>
+<tr class="even">
+<td>0.1554</td>
+<td>0.1457</td>
+<td>0.1503</td>
+<td>0.1671</td>
+<td>0.1753</td>
+<td>0.1891</td>
+<td>0.2035</td>
+<td>0.1942</td>
+</tr>
+<tr class="odd">
+<td>0.1306</td>
+<td>0.1447</td>
+<td>0.1577</td>
+<td>0.1704</td>
+<td>0.1705</td>
+<td>0.1705</td>
+<td>0.1943</td>
+<td>0.2186</td>
+</tr>
+<tr class="even">
+<td>0.1413</td>
+<td>0.1282</td>
+<td>0.1711</td>
+<td>0.1779</td>
+<td>null</td>
+<td>0.1735</td>
+<td>0.2</td>
+<td>0.2104</td>
+</tr>
+<tr class="odd">
+<td>0.1557</td>
+<td>0.1487</td>
+<td>0.1342</td>
+<td>0.1483</td>
+<td>null</td>
+<td>0.2135</td>
+<td>0.256</td>
+<td>0.2463</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>The data frame is not tidy. Each <em>entry</em> corresponds to one observation, not each row. The column headings contain important metadata, the genotype (wt, dl1/+dl-venus/+, or dl1/+dl-GFP/+) and the method (wholemounts, cross-sections, anti-Dorsal, anti-gfp, Venus (live), and GFP (live)).</p>
+<p>The data set has other issues we need to clean up. The column <code>'anti-gfp dl1/+dl-venus/+'</code> is mislabeled; it should be <code>'anti-Venus dl1/+dl-venus/+'</code>. We would also like to clean up the genotypes, putting in a semicolon to separate the chromosomes. The wild type columns have the genotype first (<code>'wt'</code>) followed by the method, whereas the other columns have the method first, followed by genotype.</p>
+</section>
+<section id="parsing-the-column-names" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="parsing-the-column-names"><span class="header-section-number">15.3</span> Parsing the column names</h2>
+<p>We will start our process of tidying this data set by changing the column names. They are pretty messy, so this is best done by hand in this case. We will rename the columns with strings where the genotype comes first, followed by the method for measuring the gradient width, separated by an underscore.</p>
+<div id="cell-9" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>col_names <span class="op">=</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'wt wholemounts'</span>: <span class="st">'WT_whole mount'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'wt cross-sections'</span>: <span class="st">'WT_cross-section'</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'anti-Dorsal dl1/+dl-venus/+'</span>: <span class="st">'dl1/+ ; dl-venus/+_anti-Dorsal'</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'anti-gfp dl1/+dl-venus/+'</span>: <span class="st">'dl1/+ ; dl-venus/+_anti-Venus'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Venus (live)  dl1/+dl-venus/+'</span>: <span class="st">'dl1/+ ; dl-venus/+_Venus (live)'</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'anti-Dorsal  dl1/+dl-GFP/+'</span>: <span class="st">'dl1/+ ; dl-gfp/+_anti-Dorsal'</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'anti-gfp  dl1/+dl-GFP/+ '</span>: <span class="st">'dl1/+ ; dl-gfp/+_anti-GFP'</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GFP (live)  dl1/+dl-GFP/+'</span>: <span class="st">'dl1/+ ; dl-gfp/+_GFP (live)'</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(col_names)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 8)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">WT_whole mount</th>
+<th data-quarto-table-cell-role="th">WT_cross-section</th>
+<th data-quarto-table-cell-role="th">dl1/+ ; dl-venus/+_anti-Dorsal</th>
+<th data-quarto-table-cell-role="th">dl1/+ ; dl-venus/+_anti-Venus</th>
+<th data-quarto-table-cell-role="th">dl1/+ ; dl-venus/+_Venus (live)</th>
+<th data-quarto-table-cell-role="th">dl1/+ ; dl-gfp/+_anti-Dorsal</th>
+<th data-quarto-table-cell-role="th">dl1/+ ; dl-gfp/+_anti-GFP</th>
+<th data-quarto-table-cell-role="th">dl1/+ ; dl-gfp/+_GFP (live)</th>
+</tr>
+<tr class="even">
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1288</td>
+<td>0.1327</td>
+<td>0.1482</td>
+<td>0.1632</td>
+<td>0.1666</td>
+<td>0.2248</td>
+<td>0.2389</td>
+<td>0.2412</td>
+</tr>
+<tr class="even">
+<td>0.1554</td>
+<td>0.1457</td>
+<td>0.1503</td>
+<td>0.1671</td>
+<td>0.1753</td>
+<td>0.1891</td>
+<td>0.2035</td>
+<td>0.1942</td>
+</tr>
+<tr class="odd">
+<td>0.1306</td>
+<td>0.1447</td>
+<td>0.1577</td>
+<td>0.1704</td>
+<td>0.1705</td>
+<td>0.1705</td>
+<td>0.1943</td>
+<td>0.2186</td>
+</tr>
+<tr class="even">
+<td>0.1413</td>
+<td>0.1282</td>
+<td>0.1711</td>
+<td>0.1779</td>
+<td>null</td>
+<td>0.1735</td>
+<td>0.2</td>
+<td>0.2104</td>
+</tr>
+<tr class="odd">
+<td>0.1557</td>
+<td>0.1487</td>
+<td>0.1342</td>
+<td>0.1483</td>
+<td>null</td>
+<td>0.2135</td>
+<td>0.256</td>
+<td>0.2463</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="unpivot-the-data-frame" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="unpivot-the-data-frame"><span class="header-section-number">15.4</span> Unpivot the data frame</h2>
+<p>When we <strong>unpivot</strong> the data frame, the data within it, called <strong>values</strong>, become a single column. The column names, called <strong>variables</strong> also populate a new column. So, to unpivot it, we need to specify what we want to call the values and what we want to call the variable. The <code>unpivot()</code> method does the rest!</p>
+<div id="cell-11" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.unpivot(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    variable_name<span class="op">=</span><span class="st">'genotype_method'</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">'gradient width'</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>).drop_nulls()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">genotype_method</th>
+<th data-quarto-table-cell-role="th">gradient width</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>f64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"WT_whole mount"</td>
+<td>0.1288</td>
+</tr>
+<tr class="even">
+<td>"WT_whole mount"</td>
+<td>0.1554</td>
+</tr>
+<tr class="odd">
+<td>"WT_whole mount"</td>
+<td>0.1306</td>
+</tr>
+<tr class="even">
+<td>"WT_whole mount"</td>
+<td>0.1413</td>
+</tr>
+<tr class="odd">
+<td>"WT_whole mount"</td>
+<td>0.1557</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Nice! We now have a tidy data frame. Note that we also dropped the null values, since the nulls from the original columns come along for the ride when unpivoting.</p>
+<p>Note that <code>df.unpivot()</code> has other options. For example, you can specify columns that do not comprise data, but should still be included in the unpivoted data frame using the <code>id_vars</code> keyword argument. That does not apply to this data frame, but comes up often. As a final comment, note that unpivoting is sometimes called <strong>melting</strong>, as it is when using Pandas.</p>
+</section>
+<section id="splitting-the-genotype_method-column" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="splitting-the-genotype_method-column"><span class="header-section-number">15.5</span> Splitting the genotype_method column</h2>
+<p>Now our goal is to convert the <code>'genotype_method'</code> column into two columns, one encoding genotype and the other the method. To do this, we first use Polars’s string methods to split the entries in the column at the underscore. This gives a series of list data types. We then convert the list to a struct, where the fields are the column labels we want when we split the column into two, in this case <code>'genotype'</code> and <code>'method'</code>. Finally, we can unnest the column with our structs.</p>
+<div id="cell-14" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'genotype_method'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.split(<span class="st">'_'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">list</span>.to_struct(fields<span class="op">=</span>[<span class="st">'genotype'</span>, <span class="st">'method'</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>).unnest(<span class="st">'genotype_method'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 3)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">genotype</th>
+<th data-quarto-table-cell-role="th">method</th>
+<th data-quarto-table-cell-role="th">gradient width</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>str</td>
+<td>f64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"WT"</td>
+<td>"whole mount"</td>
+<td>0.1288</td>
+</tr>
+<tr class="even">
+<td>"WT"</td>
+<td>"whole mount"</td>
+<td>0.1554</td>
+</tr>
+<tr class="odd">
+<td>"WT"</td>
+<td>"whole mount"</td>
+<td>0.1306</td>
+</tr>
+<tr class="even">
+<td>"WT"</td>
+<td>"whole mount"</td>
+<td>0.1413</td>
+</tr>
+<tr class="odd">
+<td>"WT"</td>
+<td>"whole mount"</td>
+<td>0.1557</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Looking at the data frame above, it is very <strong>tall</strong>. Each row only has a single <strong>value</strong>, that is, a single measurement, and every other column in the row is metadata associated with that measurement, specifically the genotype and method. Unpivoting operations generally make data frames taller, with more rows than before unpivoting.</p>
+<section id="using-the-data-frame" class="level3" data-number="15.5.1">
+<h3 data-number="15.5.1" class="anchored" data-anchor-id="using-the-data-frame"><span class="header-section-number">15.5.1</span> Using the data frame</h3>
+<p>Let’s make a plot like Fig. 1F of the <a href="https://doi.org/10.1016/j.devcel.2011.12.007">Reeves, Trisnadi, et al.&nbsp;paper</a>, but not with boxes, rather as a strip plot.</p>
+<div id="cell-17" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    q<span class="op">=</span><span class="st">'gradient width'</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    cats<span class="op">=</span>[<span class="st">'genotype'</span>, <span class="st">'method'</span>],</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    color_column<span class="op">=</span><span class="st">'genotype'</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    spread<span class="op">=</span><span class="st">"jitter"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    frame_height<span class="op">=</span><span class="dv">350</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    frame_width<span class="op">=</span><span class="dv">450</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+
+  <div id="f01ec857-f89d-4698-a40a-cf12802f2c4b" data-root-id="p1009" style="display: contents;"></div>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/javascript">
+(function(root) {
+  function embed_document(root) {
+  const docs_json = {"4123e804-06eb-4c5c-99e6-43fcde4f5b67":{"version":"3.8.0","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1084","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1085"}}},"roots":[{"type":"object","name":"Figure","id":"p1009","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1011"},"y_range":{"type":"object","name":"FactorRange","id":"p1008","attributes":{"factors":[["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","Venus (live)"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","GFP (live)"],["WT","whole mount"],["WT","cross-section"]]}},"x_scale":{"type":"object","name":"LinearScale","id":"p1018"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1019"},"title":{"type":"object","name":"Title","id":"p1016"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1053","attributes":{"name":"hover_glyphs","data_source":{"type":"object","name":"ColumnDataSource","id":"p1044","attributes":{"selected":{"type":"object","name":"Selection","id":"p1045","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1046"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3DBzcWAAAAwK+ipKJIiSJJ0aaEKESloYUo7VIaKCWKRGkjkVA0UKLkL7p77wKBQGCOc51nkMHOd4EhLjTURS52iWGGu9RlRhjpcqNc4UqjXWWMsa52jXHGu9YE15noepPc4EaTTXGTm93iVre53R2mmuZOd5nubjPMNMs9ZpvjXveZa5757rfAQg940EMWedgjHvWYxR73hCc95WlLLLXMM5Zb4VnPWel5L3jRS172ile95nWrvOFNq73lbe941xprrfOe9633gQ9t8JGNNvnYJzbb4lNbfWab7T73hR2+9JWvfeNb3/neTrvs9oM9frTXPj/Z72cHHHTIL3512BG/+d0f/nTUMcf95W8n/OOkU/71n9P+d8ZZAhSL/8ACAAA="},"shape":[176],"dtype":"int32","order":"little"}],["genotype",{"type":"ndarray","array":["WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT"],"shape":[176],"dtype":"object","order":"little"}],["method",{"type":"ndarray","array":["whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","whole mount","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section","cross-section"],"shape":[176],"dtype":"object","order":"little"}],["gradient width",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/z2UfTSWZxzHlYYKK5M5bEv0gjIvp7Yl+q6s1oz0rmS9qXPMKrXehGUlL2ENlUJHmmSW0Kk4Tg/u+7pfJCWh2ZPyMmQtnN5QxHZd98l9//c893M91/f3/X6+P8gPrx8N5/DG+XH+tHYBf0o7Zv9czEG7cb/PJ2YEyf7DHgPdAtjbyAwJA91Pubk2BL8tKno5VM/hZJ/exjNeEmbGmGmr+wXojo2bHNBD0Bpqmv91K0F+0ZYIrTuPCU+KC3Q7NdBRHg7GZU6p9uYSDp/yiN/eKSAqvObqul4ej3GhucxYgwd5A/47JBnpq89duvxXOfRMTCE/lNC/r+XsxGwJF3a5j2vI4qD/zGzJsrccPMMiHb0uEvSdfnQiJorAaHdefGMgh8XT9o1OMxDwdM/1SYNVZarun9h1JQR1TS3jT+QSvDXf02DygkemheOjqXo80lLZw+NKeVeG2ywR1ttDQrNnCfiSyTsrYO3vc+7MW8pj+sr3spJdeZSuSJlyfB+PzsHc57XeBPOafX45vZPg2s39ZecsKrDh25v67umSep4eGuV9VILXxXFUIgFTqxPMw6o2eKN+NY/L3zftjjsuwkYZTIan4WhqMa/6adTikJj5msdQzKvGhsMCClg8dwgWs/FCeByeTqJzfAnih7b1t2/msfX2d1SBhJDxU20PJfDQuh+kI5TCYvkDy/DNVC9VY+RTjvUL5/+jzSNoZrYc4WE91Ecd56GrHBQR/CyqchXPYemWCWvnXuPgtvRekv+wAFdFqIhI7tb5RUUC7o8NpJYR1ZdJCZ7/jpnNq/4nOh9wmDJZhLiQTUoQ0ONHb6a+G1hmbLATEO1Xp2kzlaB8rRWxau/U0/8lluHI3xVnbqRwOP+aASuq87oogMroonR6hgmgMK5syxbQGMcM4GHXbUSJI+hnuE4S0W76cWUHRJgoguV3fMiojq2lRAgwpNMv/0aCa3JVxJJyCTRECoaMShano4TwzS6rnez5d9yWwKbxzaEgDf1fmsIfdyVcunt/TZejoHK+YkbmscJWHpq9J8zHrJHhphgjqXOfYdj6CaClC/J+KWO9Ap4IZ4O8j/y2CqAwUalEvWfkfZZNyduYVwI+P7ZgU0cNQUeNNf0FwSZW3yAJ/lYLngfcltRcwlgtQ0WwlAf8S3HVkBWFg2RV+GNgkoQn09mNBHb+v5JeW1Hla+JnTDGPddFf0BUhwsCdNbMUSi08NCovl+b7Umk0F2UxaCBe+XRn1igRdd4MGBFt2emiVSHBmM4EWxoJGrJYkQW1xyPcfFh8T6dp9Mg+EBGT43vLReShz+JLIFDWVo0Apd6WMpirxg4EgUnd4ZgjQ6nlKAmpN1IS3w+V1b3xonDZD2kHRDjZ535Q8xWHGawmtyjvrK4mAno9lQlxqp4J4dBny4zgVB5GPuccrLBzTRYwU1k4kronR3pgNljVUykQ+BSc3BYbIGG4PoRayyFi0HVXdSxRufsf7cNLlYAFAAA="},"shape":[176],"dtype":"float64","order":"little"}],["cat",{"type":"ndarray","array":[["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","whole mount"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"],["WT","cross-section"]],"shape":[176],"dtype":"object","order":"little"}],["__label",{"type":"ndarray","array":["WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT","WT"],"shape":[176],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1054","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1055"}}},"glyph":{"type":"object","name":"Scatter","id":"p1050","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"type":"object","name":"Jitter","id":"p1043","attributes":{"width":0.1,"distribution":"normal","range":{"id":"p1008"}}}},"line_color":{"type":"value","value":"#1f77b3"},"fill_color":{"type":"value","value":"#1f77b3"},"hatch_color":{"type":"value","value":"#1f77b3"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1051","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b3"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#1f77b3"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1052","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#1f77b3"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b3"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#1f77b3"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1065","attributes":{"name":"hover_glyphs","data_source":{"type":"object","name":"ColumnDataSource","id":"p1056","attributes":{"selected":{"type":"object","name":"Selection","id":"p1057","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1058"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3DiRKBUAAAwEdRrqiU4/9/T8hNaGd2DyGExqMnz7ZevHrz7sOnL99+7Pz6828Y4NDI2JFjE1MnTp05d2Hm0pW5haVrK2s3bt25twc01yABuAAAAA=="},"shape":[46],"dtype":"int32","order":"little"}],["genotype",{"type":"ndarray","array":["dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+"],"shape":[46],"dtype":"object","order":"little"}],["method",{"type":"ndarray","array":["anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","anti-GFP","GFP (live)","GFP (live)","GFP (live)","GFP (live)","GFP (live)","GFP (live)"],"shape":[46],"dtype":"object","order":"little"}],["gradient width",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/9vDKiRif+yMfZvFtaO5Jifsc5//Xvnx0lH7jIlva+xNj9m3i9089z34tH3owRVL/BxO2xdfF/rkeP6YfdmDOYJL9560B+lq2H7CPiX2jhtzxWn7FeGnjI5sPGeft5hxD6vQGXs31VKmWRyn7Z1lXj8yk7pgb/RsneqT5mP2sief2i+5f8z+9ELXbZ//HrGfuXvaBP6qY/YRK0zPWvsBzQ17o79b/bj9neuNxW5Tztnbm8bt8uQ5ZW9dcK7j0r0T9rNmgsBJ+z9A1/omXbC32Rs0TbHvrH3u0X+bqj+dsF8/JbUjOfaMfaEt1/XFBWftaxKNQg20Ltq/i3Kye3Hzgn0Yn+6mue/P26+7EV/mL3fO/sqsZ7LLX1ywz1DKqahaesb+vn/v9Dyh0/b5H1pPhhw8YV/U1ffkk/wp+9+n35087HTWnpmzSz753SmoP87Zb+YpXNN9+4T95lfFW0V/n4bLe85tUDvUdt7eKeHpBaXbJ+0BwS/AGHABAAA="},"shape":[46],"dtype":"float64","order":"little"}],["cat",{"type":"ndarray","array":[["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-Dorsal"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","anti-GFP"],["dl1/+ ; dl-gfp/+","GFP (live)"],["dl1/+ ; dl-gfp/+","GFP (live)"],["dl1/+ ; dl-gfp/+","GFP (live)"],["dl1/+ ; dl-gfp/+","GFP (live)"],["dl1/+ ; dl-gfp/+","GFP (live)"],["dl1/+ ; dl-gfp/+","GFP (live)"]],"shape":[46],"dtype":"object","order":"little"}],["__label",{"type":"ndarray","array":["dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+","dl1/+ ; dl-gfp/+"],"shape":[46],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1066","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1067"}}},"glyph":{"type":"object","name":"Scatter","id":"p1062","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#ff7e0e"},"fill_color":{"type":"value","value":"#ff7e0e"},"hatch_color":{"type":"value","value":"#ff7e0e"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1063","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#ff7e0e"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#ff7e0e"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1064","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#ff7e0e"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#ff7e0e"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#ff7e0e"},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1077","attributes":{"name":"hover_glyphs","data_source":{"type":"object","name":"ColumnDataSource","id":"p1068","attributes":{"selected":{"type":"object","name":"Selection","id":"p1069","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1070"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/w3DgxEDAQAAsN9/mtq2bdtDNLlLKAiCsBGjxoybMGnKtBmz5sxbsGjJshWr1qzbsGnLth279uw7cOjIsROnzpy7cOnKtRu37tx78OjJsxev3rz78OnLtx+//vwDCidxiPQAAAA="},"shape":[61],"dtype":"int32","order":"little"}],["genotype",{"type":"ndarray","array":["dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+"],"shape":[61],"dtype":"object","order":"little"}],["method",{"type":"ndarray","array":["anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Dorsal","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","anti-Venus","Venus (live)","Venus (live)","Venus (live)"],"shape":[61],"dtype":"object","order":"little"}],["gradient width",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAC/5tjvGiL+Y9D9mdivU+w2x62t1L2qm7WP2I/30bnyqxnR+1Zj/YblusetF8RfsroyMZj9rnPf6/8eOmofWSbxbWjuUfsmSu4VTTqjtgXnOu4dO/BYftCW67riwuO2tfftK2MWHHU/uvt643Fbkfst4r+Pv3u5GF7VbbGqc7dR+w7voAkjtmf/x78eOnsI/YZm18VbxU9bO+zjMtNtfSQ/bob8WX+csfsA7Nnlc9ZdNh+4/4382x0jth7gy0+ai8VeEu6JvGQveuND1+8Io/Zb9LLW8y456i9+M1zQBOP2oNsyXl+2J7Rt4XXfz3Qvtaoy3seH7H3Xz8ltSP5qP2T5nlnV50/an9rza+Y3KPH7FWm/59Q9/uQff+TT/KX8o/b/7YC+eiYva6i/JecsKP2SQIRlltOHLPfsZ75eY/GUXs2IRH7Y3cQ4kLNB04tdD1m3yWf/C7K6Zh9fiMLMOSO2yeDA+IEXJ1LZv6H1pOI8PqX+v1J4sJjcH/1eL1iMRE8Zs+0hxVkg32MguPH5DNH7bO1v02/O/m4fdaekskSLMfswdGieNz+pYfef8W/x+yNnq1TfdJ8zH7p3oPiasFH7Rkm1gG9gIgvAHu713foAQAA"},"shape":[61],"dtype":"float64","order":"little"}],["cat",{"type":"ndarray","array":[["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Dorsal"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","anti-Venus"],["dl1/+ ; dl-venus/+","Venus (live)"],["dl1/+ ; dl-venus/+","Venus (live)"],["dl1/+ ; dl-venus/+","Venus (live)"]],"shape":[61],"dtype":"object","order":"little"}],["__label",{"type":"ndarray","array":["dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+","dl1/+ ; dl-venus/+"],"shape":[61],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1078","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1079"}}},"glyph":{"type":"object","name":"Scatter","id":"p1074","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#2ba02b"},"fill_color":{"type":"value","value":"#2ba02b"},"hatch_color":{"type":"value","value":"#2ba02b"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1075","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#2ba02b"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#2ba02b"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1076","attributes":{"x":{"type":"field","field":"gradient width"},"y":{"type":"field","field":"cat","transform":{"id":"p1043"}},"line_color":{"type":"value","value":"#2ba02b"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#2ba02b"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#2ba02b"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1017","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1030"},{"type":"object","name":"WheelZoomTool","id":"p1031","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1032","attributes":{"dimensions":"both","overlay":{"type":"object","name":"BoxAnnotation","id":"p1033","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1039","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1038","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1040"},{"type":"object","name":"ResetTool","id":"p1041"},{"type":"object","name":"HelpTool","id":"p1042"}]}},"toolbar_location":"above","left":[{"type":"object","name":"CategoricalAxis","id":"p1025","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1026"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1027"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1028"}}}],"right":[{"type":"object","name":"Legend","id":"p1080","attributes":{"location":"center","title":"genotype","click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p1081","attributes":{"label":{"type":"value","value":"WT"},"renderers":[{"id":"p1053"}]}},{"type":"object","name":"LegendItem","id":"p1082","attributes":{"label":{"type":"value","value":"dl1/+ ; dl-gfp/+"},"renderers":[{"id":"p1065"}]}},{"type":"object","name":"LegendItem","id":"p1083","attributes":{"label":{"type":"value","value":"dl1/+ ; dl-venus/+"},"renderers":[{"id":"p1077"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1020","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1021","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1022"},"axis_label":"gradient width","major_label_policy":{"type":"object","name":"AllLabels","id":"p1023"}}}],"center":[{"type":"object","name":"Grid","id":"p1024","attributes":{"axis":{"id":"p1020"}}},{"type":"object","name":"Grid","id":"p1029","attributes":{"dimension":1,"axis":{"id":"p1025"},"grid_line_color":null}}],"frame_width":450,"frame_height":350}}]}};
+  const render_items = [{"docid":"4123e804-06eb-4c5c-99e6-43fcde4f5b67","roots":{"p1009":"f01ec857-f89d-4698-a40a-cf12802f2c4b"},"root_ids":["p1009"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="computing-environment" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">15.6</span> Computing environment</h2>
+<div id="cell-19" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p polars,bokeh,iqplot,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Python implementation: CPython
+Python version       : 3.13.7
+IPython version      : 9.5.0
+
+polars    : 1.33.1
+bokeh     : 3.8.0
+iqplot    : 0.3.7
+jupyterlab: 4.4.7
+</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bebi103a\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../lessons/eda/wrangling/merging_dataframes.html" class="pagination-link" aria-label="Merging and concatenating data frames">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Merging and concatenating data frames</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../lessons/eda/wrangling/pivoting.html" class="pagination-link" aria-label="Making a data frame wide">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><em>BE/Bi 103 a 2025</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix D — Introduction to LaTeX – BE/Bi 103 a 2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../appendices/python_basics/hello_world.html" rel="next">
+<link href="../../appendices/notebooks_and_latex/intro_to_jupyterlab.html" rel="prev">
+<link href="../../logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../appendices/notation.html">Appendices</a></li><li class="breadcrumb-item"><a href="../../appendices/python_basics/setting_up_python_computing_environment.html">Computing</a></li><li class="breadcrumb-item"><a href="../../appendices/notebooks_and_latex/intro_to_latex.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to LaTeX</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../"></a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the course</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course logistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../policies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course policies</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/what_are_we_doing/what_are_we_doing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What are we doing?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../lessons/eda/exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/polars/intro_to_polars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data frames and Polars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/polars/tidy_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tidy data and split-apply-combine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/polars/styling_data_frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Styling data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/polars/polars_for_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/plotting/plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data display</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/plotting/plotting_with_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Making plots with Bokeh</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/plotting/plotting_smooth_curves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Plotting smooth curves</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/plotting/categorical_axes_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plots with categorical variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/plotting/visualizing_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/plotting/iqplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">High level plotting with iqplot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/plotting/styling_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Styling Bokeh plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/wrangling/manipulating_data_frames_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Manipulating data frames and wrangling data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/wrangling/merging_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Merging and concatenating data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/wrangling/unpivoting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/wrangling/pivoting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/eda/eda_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">EDA lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../lessons/probability_and_sampling/probability_and_sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability: The foundation for generative modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/probability_and_sampling/definition_and_interpretation_of_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Probability: definitions and interpretations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/probability_and_sampling/probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/probability_and_sampling/random_number_generation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Random number generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/probability_and_sampling/rng_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Random number generation using Numpy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/probability_and_sampling/luria_delbruck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Simulating the Luria-Delbrück distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/probability_and_sampling/probability_and_sampling_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Probability and sampling lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Homework</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../homework/plotting_an_elephant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.1: Plotting an elephant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../homework/penguins_split_apply_combine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.2: Palmer penguins and split-apply-combine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../homework/mt_ecdf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.1: Microtubule catastrophe and ECDFs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../homework/cool_gal4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Computing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/setting_up_python_computing_environment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuring your computer to use Python for scientific computing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/notebooks_and_latex/intro_to_jupyterlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Introduction to JupyterLab</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/notebooks_and_latex/intro_to_latex.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to LaTeX</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/hello_world.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Hello, world.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/variables_operators_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Variables, operators, and types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/lists_and_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Lists and tuples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/intro_to_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Introduction to functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/string_methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">String methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Dictionaries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/comprehensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Comprehensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/packages_and_modules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Packages and modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/exceptions_and_error_handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Errors and exception handling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/file_io.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">File I/O</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../appendices/python_basics/intro_to_numpy_and_scipy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">P</span>&nbsp; <span class="chapter-title">Introduction to Numpy and Scipy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">In this section</h2>
+   
+  <ul>
+  <li><a href="#basic-inline-latex" id="toc-basic-inline-latex" class="nav-link active" data-scroll-target="#basic-inline-latex"><span class="header-section-number">D.1</span> Basic inline LaTeX</a></li>
+  <li><a href="#displaying-equations-on-separate-lines" id="toc-displaying-equations-on-separate-lines" class="nav-link" data-scroll-target="#displaying-equations-on-separate-lines"><span class="header-section-number">D.2</span> Displaying equations on separate lines</a></li>
+  <li><a href="#fractions-and-an-example-of-fine-tuning" id="toc-fractions-and-an-example-of-fine-tuning" class="nav-link" data-scroll-target="#fractions-and-an-example-of-fine-tuning"><span class="header-section-number">D.3</span> Fractions (and an example of fine-tuning)</a></li>
+  <li><a href="#grouping-operators-and-more-fine-tuning" id="toc-grouping-operators-and-more-fine-tuning" class="nav-link" data-scroll-target="#grouping-operators-and-more-fine-tuning"><span class="header-section-number">D.4</span> Grouping operators (and more fine-tuning)</a></li>
+  <li><a href="#matrices-and-arrays" id="toc-matrices-and-arrays" class="nav-link" data-scroll-target="#matrices-and-arrays"><span class="header-section-number">D.5</span> Matrices and arrays</a></li>
+  <li><a href="#useful-latex-symbols-for-bebi-103" id="toc-useful-latex-symbols-for-bebi-103" class="nav-link" data-scroll-target="#useful-latex-symbols-for-bebi-103"><span class="header-section-number">D.6</span> Useful LaTeX symbols for BE/Bi 103</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../appendices/notation.html">Appendices</a></li><li class="breadcrumb-item"><a href="../../appendices/python_basics/setting_up_python_computing_environment.html">Computing</a></li><li class="breadcrumb-item"><a href="../../appendices/notebooks_and_latex/intro_to_latex.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to LaTeX</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Appendix D — Introduction to LaTeX</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2025/blob/main/intro_to_latex.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2025/refs/heads/main/intro_to_latex.ipynb">Download notebook</a></p>
+<p>In this tutorial, you will learn some of the basics on how to use <span class="math inline">\(\LaTeX\)</span> to display equations in Jupyter notebooks. For looking up symbols you may need, you can use any of the many <a href="http://users.dickinson.edu/~richesod/latex/latexcheatsheet.pdf">cheat sheets</a> you can find by asking Google. I have provided a few that will come up often in this course at the <a href="#Useful-LaTeX-symbols-for-BE/Bi-103">end of this lesson</a>.</p>
+<p>In this lesson, whenever a LaTeX expression is shown, the raw Markdown/LaTeX is shown beneath it. (The word LaTeX is generally stylized as <span class="math inline">\(\LaTeX\)</span>, but I get tired of reading that, so going forward, I will just write “LaTeX.”)</p>
+<section id="basic-inline-latex" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="basic-inline-latex"><span class="header-section-number">D.1</span> Basic inline LaTeX</h2>
+<p>To embed LaTeX within text, simply encapsulate the LaTeX portions in dollar signs (<code>$</code>). MathJax takes care of the rest. As an example, consider the sentence below and the markdown/LaTeX code to render it.</p>
+<p>Einstein told us that <span class="math inline">\(E = mc^2\)</span>.</p>
+<pre><code>Einstein told us that $E = mc^2$.</code></pre>
+<p>Notice how the equation is properly rendered, with mathematical variables in italics. Note also how <code>^2</code> was used to raise to a power. If the power has more than one character in it, it should be enclosed in braces (<code>{}</code>). In fact, braces are used to generally group symbols in LaTeX.</p>
+<p>Euler told us that <span class="math inline">\(\mathrm{e}^{i \pi} - 1 = 0\)</span>.</p>
+<pre><code>Euler told us that $\mathrm{e}^{i \pi} - 1 = 0$.</code></pre>
+<p>Aside from the grouping braces, there are several other syntactical items of note. First, notice that I made the special character <span class="math inline">\(\pi\)</span> with <code>\pi</code>. In general, a backward slash precedes special symbols or commands in LaTeX. If we want another Greek letter, like <span class="math inline">\(\theta\)</span>, we use <code>\theta</code>. Now, also note that I used “<code>\mathrm{e}</code>” for the base of the natural logarithm. I was signaling to LaTeX that I wanted the character written in Roman font, and not italics, so I used <code>\mathrm</code>. Anything in the braces following the function <code>\mathrm</code> is rendered in Roman font. Note the difference.</p>
+<p>This is <span class="math inline">\(e\)</span>. This is <span class="math inline">\(\mathrm{e}\)</span></p>
+<pre><code>This is $e$. This is $\mathrm{e}$.</code></pre>
+<p>Now, back to grouping things in braces. We can do similar groupings using braces with with subscripts.</p>
+<p>The dot product of two <span class="math inline">\(n\)</span>-vectors is <span class="math inline">\(\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i\)</span>.</p>
+<pre><code>The dot product of two $n$-vectors is $\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i$.</code></pre>
+<p>Here, I have used <code>$\mathbf{a}$</code> to make the character <code>a</code> boldface, denoting a vector. Note that we denote subscripts with an underscore. Notice also that the bounds of the sum use the same underscore and caret notation as for subscripts and superscripts.</p>
+</section>
+<section id="displaying-equations-on-separate-lines" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="displaying-equations-on-separate-lines"><span class="header-section-number">D.2</span> Displaying equations on separate lines</h2>
+<p>The bounds on the summation in the above example may look a little funny to you because they are not above and below the summation symbol. This is because this particular equation is written inline. If we had separated it from the text, it renders differently.</p>
+<p>We can make an equation appear centered on a new line, like</p>
+<p><span class="math display">\[\begin{align}
+\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i.
+\end{align}\]</span></p>
+<pre><code>We can make an equation appear centered on a new line, like
+
+\begin{align}
+    \mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i.
+\end{align}</code></pre>
+<p>The <code>align</code> environment in LaTeX specifies that you want centered equations, separated from the text. It is called <code>align</code> because it allows you to align the equations. You separate lines in the equations with a double backslash (<code>//</code>). Insert an ampersand (<code>&amp;</code>) in each line at the alignment point. All equations will be aligned at the location of the ampersand symbols (and, of course, the ampersands will not appear in the rendered equations).</p>
+<p>For a three-vector consisting of <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> components,</p>
+<p><span class="math display">\[\begin{align}
+\mathbf{a} \cdot \mathbf{b} &amp;= \sum_{i=1}^n a_i b_i \\
+&amp;= a_x b_x + a_y b_y + a_z b_z.
+\end{align}\]</span></p>
+<pre><code>For a three-vector consisting of $x$, $y$, and $z$ components,
+
+\begin{align}
+    \mathbf{a} \cdot \mathbf{b} &amp;= \sum_{i=1}^n a_i b_i \\
+    &amp;= a_x b_x + a_y b_y + a_z b_z.
+\end{align}</code></pre>
+<p>Note that I always put an extra blank line before the <code>\begin{align}</code> statement. This is not necessary, but I think things look better with the extra space.</p>
+</section>
+<section id="fractions-and-an-example-of-fine-tuning" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="fractions-and-an-example-of-fine-tuning"><span class="header-section-number">D.3</span> Fractions (and an example of fine-tuning)</h2>
+<p>To display fractional quantities, we use the <code>\frac{}{}</code> command. <code>\frac</code> is always followed by two sets of braces; the numerator is contained in the first, and the denominator is contained in the second. As an example, we can write an equation you will become intimately familiar with if you take the second term of this course,</p>
+<p><span class="math display">\[\begin{align}
+P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)}
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)}
+\end{align}</code></pre>
+<p>The right hand side has a nicely-formatted fraction. I did a little extra fine-tuning in this equation. I’ll show the equation again without the fine-tuning, which used the <code>\mid</code> and <code>\,</code> commands.</p>
+<p><span class="math display">\[\begin{align}
+P(A | B) = \frac{P(B | A) P(A)}{P(B)}.
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    P(A | B) = \frac{P(B | A) P(A)}{P(B)}.
+\end{align}</code></pre>
+<p>First, the <code>\mid</code> command should be used in conditional probabilities. Just using a vertical bar (<code>|</code>) results in crowding. Similarly, I used the <code>\,</code> command to insert a little extra space between the two probabilities in the numerator. This makes the equation a bit easier to read. This <code>\,</code> operator is especially important when defining integrals. We can put a little space between the <span class="math inline">\(\mathrm{d}x\)</span> and the integrand.</p>
+<p><span class="math display">\[\begin{align}
+\text{good: } &amp;\int_0^{2\pi} \mathrm{d}x \, \sin x. \\[1em]
+\text{bad: } &amp;\int_0^{2\pi} \mathrm{d}x \sin x.
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    \text{good: } &amp;\int_0^{2\pi} \mathrm{d}x \, \sin x. \\[1em]
+    \text{bad: } &amp;\int_0^{2\pi} \mathrm{d}x \sin x.
+\end{align}</code></pre>
+<p>Note that I inserted extra space after the new line. Specifically, <code>\\[1em]</code> instructs LaTeX to insert a space equation to the width of an M character between the equations. I often do this to keep things clear.</p>
+<p>It is also very important to note that I used <span class="math inline">\(\sin\)</span> and not <span class="math inline">\(sin\)</span>. Mathematical functions should be in Roman font and are invoked with a backslash. Otherwise, the characters are interpreted as separate variables. To be clear:</p>
+<p><span class="math display">\[\begin{align}
+\text{good: } &amp;\sin x. \\[1em]
+\text{bad: } &amp; sin x.
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    \text{good: } &amp;\sin x. \\[1em]
+    \text{bad: } &amp; sin x.
+\end{align}</code></pre>
+<p>Finally, notice that I was able to put text in the equation like this: <code>\text{good: }</code>.</p>
+</section>
+<section id="grouping-operators-and-more-fine-tuning" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="grouping-operators-and-more-fine-tuning"><span class="header-section-number">D.4</span> Grouping operators (and more fine-tuning)</h2>
+<p>Compare the following equations.</p>
+<p><span class="math display">\[\begin{align}
+\text{good: } &amp;\sum_{i=1}^n i^3 = \left(\sum_{i=1}^n i\right)^2. \\[1em]
+\text{bad: }  &amp;\sum_{i=1}^n i^3 = (\sum_{i=1}^n i)^2.
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    \text{good: } &amp;\sum_{i=1}^n i^3 = \left(\sum_{i=1}^n i\right)^2. \\[1em]
+    \text{bad: }  &amp;\sum_{i=1}^n i^3 = (\sum_{i=1}^n i)^2.
+\end{align}</code></pre>
+<p>In the second equation, I did not use the <code>\left(</code> and <code>\right)</code> construction for parentheses and the result looks pretty awful. In LaTeX, the height of anything that is encapsulated by <code>\left(</code> and <code>\right)</code> scales the parentheses appropriately. You can use <code>\left</code> and <code>\right</code> with many symbols. An important example is <code>\left\{</code>. Note that to display braces in an equation, you have to use <code>\{</code> because just a plain brace (<code>{</code>) has a different meaning.</p>
+<p>(By the way, that equation is true, and pretty amazing. It says that the sum of the first <span class="math inline">\(n\)</span> <em>cubes</em> of integers is equal to the sum of the first <span class="math inline">\(n\)</span> integers <em>squared</em>!)</p>
+<p>Finally, if you use <code>\left.</code> or <code>\right.</code>, LaTeX will simply scale the opposite symbol to match the height of the text, but will suppress printing the other. For example,</p>
+<p><span class="math display">\[\begin{align}
+\left. \frac{1}{x + 2} \right|_0^2 = -\frac{1}{4}.
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    \left. \frac{1}{x + 2} \right|_0^2 = -\frac{1}{4}.
+\end{align}</code></pre>
+<p>This is also useful if you are going to use <code>/</code> for a division operation. Compare the following.</p>
+<p><span class="math display">\[\begin{align}
+\text{good: } &amp; \left. x^2 \middle/ y^2 \right. \\[1em]
+\text{bad: } &amp; x^2 / y^2
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    \text{good: } &amp; \left. x^2 \middle/ y^2 \right. \\[1em]
+    \text{bad: } &amp; x^2 / y^2
+\end{align}</code></pre>
+<p>Here, we used the <code>\middle</code> operator to scale the length of the division sign.</p>
+</section>
+<section id="matrices-and-arrays" class="level2" data-number="D.5">
+<h2 data-number="D.5" class="anchored" data-anchor-id="matrices-and-arrays"><span class="header-section-number">D.5</span> Matrices and arrays</h2>
+<p>On occasion, you’ll need to express matrices. This is most easily done using the <code>pmatrix</code> environment. For example, a covariance matrix for two variables might be written as</p>
+<p><span class="math display">\[\begin{align}
+\sigma^2 = \begin{pmatrix}
+\sigma_1^2 &amp; \sigma_{12} \\
+\sigma_{12} &amp; \sigma_2^2
+\end{pmatrix}.
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    \sigma^2 = \begin{pmatrix}
+    \sigma_1^2 &amp; \sigma_{12} \\
+    \sigma_{12} &amp; \sigma_2^2 
+    \end{pmatrix}.
+\end{align}</code></pre>
+<p>Once in the <code>pmatrix</code> environment, each row has entries separated by an ampersand. The row ends with a <code>\\</code>. Each row must have the same number of entries.</p>
+<p>You may also need to represent an values stacked on top of each other. For example, we might specify a piecewise linear function like this.</p>
+<p><span class="math display">\[\begin{align}
+\text{rectifier}(x) = \left\{
+\begin{array}{cl}
+0 &amp; x \le 0 \\
+x &amp; x &gt; 0.
+\end{array}
+\right.
+\end{align}\]</span></p>
+<pre><code>\begin{align}
+    \text{rectifier}(x) = \left\{
+    \begin{array}{cl}
+    0 &amp; x \le 0 \\
+    x &amp; x &gt; 0.
+    \end{array}
+    \right.
+\end{align}</code></pre>
+<p>The <code>array</code> environment allows arrays of text. The <code>{cl}</code> after <code>\begin{array}</code> indicates that two columns are wanted, with the first column being centered and the second being left-aligned. If we chose instead <code>{lr}</code>, the first column is left-aligned and the second column is right-aligned.</p>
+</section>
+<section id="useful-latex-symbols-for-bebi-103" class="level2" data-number="D.6">
+<h2 data-number="D.6" class="anchored" data-anchor-id="useful-latex-symbols-for-bebi-103"><span class="header-section-number">D.6</span> Useful LaTeX symbols for BE/Bi 103</h2>
+<p>Following is a list of some symbols you may find useful in this class.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>LaTeX</th>
+<th style="text-align: center;">symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\approx</code></td>
+<td style="text-align: center;"><span class="math inline">\(\approx\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\sim</code></td>
+<td style="text-align: center;"><span class="math inline">\(\sim\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\propto</code></td>
+<td style="text-align: center;"><span class="math inline">\(\propto\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\le</code></td>
+<td style="text-align: center;"><span class="math inline">\(\le\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>ge</code></td>
+<td style="text-align: center;"><span class="math inline">\(\ge\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\pm</code></td>
+<td style="text-align: center;"><span class="math inline">\(\pm\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\in</code></td>
+<td style="text-align: center;"><span class="math inline">\(\in\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\ln</code></td>
+<td style="text-align: center;"><span class="math inline">\(\ln\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\exp</code></td>
+<td style="text-align: center;"><span class="math inline">\(\exp\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\prod_{i\in D}</code></td>
+<td style="text-align: center;"><span class="math inline">\({\displaystyle \prod_{i\in D}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\sum_{i\in D}</code></td>
+<td style="text-align: center;"><span class="math inline">\({\displaystyle \sum_{i\in D}}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\frac{\partial f}{\partial x}</code></td>
+<td style="text-align: center;"><span class="math inline">\({\displaystyle \frac{\partial f}{\partial x}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\sqrt{x}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt{x}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\bar{x}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\langle x \rangle</code></td>
+<td style="text-align: center;"><span class="math inline">\(\langle x \rangle\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\left\langle \frac{x}{y} \right\rangle</code></td>
+<td style="text-align: center;"><span class="math inline">\(\left\langle \frac{x}{y} \right\rangle\)</span></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bebi103a\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../appendices/notebooks_and_latex/intro_to_jupyterlab.html" class="pagination-link" aria-label="Introduction to JupyterLab">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Introduction to JupyterLab</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../appendices/python_basics/hello_world.html" class="pagination-link" aria-label="Hello, world.">
+        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Hello, world.</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><em>BE/Bi 103 a 2025</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

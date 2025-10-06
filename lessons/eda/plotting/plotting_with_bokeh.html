@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -70,14 +70,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-236d90495073fb2ac8939117e3e83141.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-8b050a7f4e1f1dd4af2b4d23fb288ab7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -123,7 +124,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -166,7 +167,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../../"></a> 
@@ -448,6 +450,18 @@ window.Quarto = {
  <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/beetle_hypnotists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.1: Beetle hypnotists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/marginal_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.2: A marginal distribution</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -617,7 +631,7 @@ window.Quarto = {
 <div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars watermark"</span></span>
@@ -625,11 +639,11 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    stdout, stderr <span class="op">=</span> process.communicate()</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="cell-2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.special</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -638,7 +652,7 @@ window.Quarto = {
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.plotting</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable viewing Bokeh plots in the notebook</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
     <style>
         .bk-notebook-logo {
@@ -975,11 +989,11 @@ function(Bokeh) {
 <h2 data-number="7.1" class="anchored" data-anchor-id="high-level-and-low-level-plotting-packages"><span class="header-section-number">7.1</span> High-level and low-level plotting packages</h2>
 <p>As a demonstration of what I mean by high-level and low-level plotting packages, let us first think about one of our tasks we did with Polars with the facial matching data set. We computed the median percent correct for those with and without insomnia. Here’s the code to do it.</p>
 <div id="cell-4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> os.path.join(data_path, <span class="st">"gfmt_sleep.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> os.path.join(data_path, <span class="st">"gfmt_sleep.csv"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(fname, null_values<span class="op">=</span><span class="st">"*"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns((pl.col(<span class="st">'sci'</span>) <span class="op">&lt;=</span> <span class="dv">16</span>).alias(<span class="st">"insomnia"</span>))</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df.group_by(<span class="st">"insomnia"</span>).agg(pl.col(<span class="st">'percent correct'</span>).median())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df.group_by(<span class="st">"insomnia"</span>).agg(pl.col(<span class="st">'percent correct'</span>).median())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
@@ -989,15 +1003,15 @@ function(Bokeh) {
 }
 </style>
 <small>shape: (2, 2)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">insomnia</th>
 <th data-quarto-table-cell-role="th">percent correct</th>
 </tr>
 <tr class="even">
-<th>bool</th>
-<th>f64</th>
+<td>bool</td>
+<td>f64</td>
 </tr>
 </thead>
 <tbody>
@@ -1015,7 +1029,7 @@ function(Bokeh) {
 </div>
 </div>
 <p>Literally just a few lines of code. Now what if we tried to do it without Polars? I won’t even go through the many lines of code necessary to read in the data. Consider just this one line.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.group_by(<span class="st">"insomnia"</span>).agg(pl.col(<span class="st">'percent correct'</span>).median())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.group_by(<span class="st">"insomnia"</span>).agg(pl.col(<span class="st">'percent correct'</span>).median())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>There are elementary tasks that go into it if we were to code it up without using Polars’s delicious functionality. We can loop over the rows in the data frame with a <code>for</code> loop, check to see what the value of the <code>insomnia</code> column is with an <code>if</code> statement, put the value in the <code>percent correct</code> field into an appropriate array based on whether or not the subject suffers from insomnia, and then, given those arrays, sort them and pull out the middle value. Under the hood, all of those steps take place, but because we use Polars’s <strong>high-level functionality</strong>, those details are invisible to us, and glad we are of that.</p>
 <p>Now, say we want to make a plot of some data. You can imagine that there are many many steps to building that. One way you could build a plot is to hand-generate an <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG file</a> that is a set of specifications for lines and circles and text and whatnot that comprises a plot. (I have actually done this before, writing a C program that hand-generated SVG, and it was paaaaainful.) That would be a very <strong>low-level</strong> way of generating a plot. Plotting libraries in Python usually take care of the rendering part for you, either rendering the plot as SVG, PDF, PNG, or other formats, including interactive ones that use <a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a> and <a href="https://en.wikipedia.org/wiki/Canvas_element">HTML Canvas</a> that can be viewed in a browser. The plotting libraries then vary in their level of abstraction from the data set.</p>
 <p>Lower-level plotting libraries typically are more customizable, but require more <a href="https://en.wikipedia.org/wiki/Boilerplate_code">boilerplate code</a> to get your data plotted and are therefore more cumbersome. Higher-level plotting libraries aim to make it easier to move directly from a data frame to a plot. Because of this streamlining, though, they are often more difficult to customize.</p>
@@ -1041,7 +1055,7 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 <li>We will discuss at least one higher-level package, <a href="https://iqplot.github.io/">iqplot</a>, in short order, discussed in the <a href="../../../lessons/eda/plotting/iqplot.html">next part of this lesson</a>.</li>
 </ol>
 <p>Importantly, note that Bokeh’s submodules often have to be explicitly imported, as we did in the code cell at the top of this notebook. Not also that if you want your plots to be viewable (and interactive) in the notebook, you need to execute</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>at the top of the notebook (as we have done). Finally, note that we also have to have installed the Bokeh JupyterLab extension.</p>
 </section>
 <section id="bokehs-grammar-and-our-first-plot-with-bokeh" class="level2" data-number="7.3">
@@ -1094,13 +1108,13 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 </ol>
 <p>(Almost) all of this is accomplished in Bokeh by making a call to <code>bokeh.plotting.figure()</code> with the appropriate keyword arguments.</p>
 <div id="cell-10" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure, stored in variable `p`</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure, stored in variable `p`</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bokeh.plotting.figure(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    frame_width<span class="op">=</span><span class="dv">400</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    frame_height<span class="op">=</span><span class="dv">300</span>,</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    x_axis_label<span class="op">=</span><span class="st">'confidence when correct'</span>,</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    y_axis_label<span class="op">=</span><span class="st">'condifence when incorrect'</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>There are many more keyword attributes you can assign, including <a href="https://bokeh.pydata.org/en/latest/docs/reference/models/plots.html#bokeh.models.plots.Plot">all of those listed in the Bokeh Plot class</a> and <a href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh.plotting.figure.Figure">the additional ones listed in the Bokeh Figure class</a>.</p>
 <ol start="2" type="1">
@@ -1110,16 +1124,16 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 </ol>
 <p>Steps 3 and 4 are accomplished by calling one of the <strong>glyph methods</strong> of the Bokeh <code>Figure</code> instance, <code>p</code>. Since we are choosing dots, the appropriate method is <code>p.scatter()</code>, and we use the <code>source</code>, <code>x</code>, and <code>y</code> kwargs to specify the positions of the glyphs.</p>
 <div id="cell-12" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p.scatter(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p.scatter(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    source<span class="op">=</span>df.to_dict(),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'confidence when correct'</span>,</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'confidence when incorrect'</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that the source must be a <code>ColumnDataSource</code>, a special Bokeh class. If we pass in a dictionary (or Polars data frame) for the source keyword argument, Bokeh converts it to a <code>ColumnDataSource</code>. Therefore, we use the <code>to_dict()</code> method to convert the Polars data frame to a dictionary.</p>
 <p>Now that we have built the plot, we can render it in the notebook using <code>bokeh.io.show()</code>.</p>
 <div id="cell-14" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="a8136f3c-c9fe-420f-8a0d-a03fe4373d36" data-root-id="p1062" style="display: contents;"></div>
@@ -1179,7 +1193,7 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 </ol>
 <p>We can loop through the data frame grouped by <code>'insomnia'</code> and populate the glyphs as we go along.</p>
 <div id="cell-19" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For convenience</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For convenience</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"confidence when correct"</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"confidence when incorrect"</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1203,7 +1217,7 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        legend_label<span class="op">=</span>category,</span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="aff3cef4-e6a5-4ade-ad17-ec24737f7070" data-root-id="p1123" style="display: contents;"></div>
@@ -1239,10 +1253,10 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 </div>
 <p>We got the plot we wanted, but the legend is clashing with the data. Fortunately, Bokeh allows us to set attributes of the figure whenever we like. (We will further discuss styling Bokeh plots in a future lesson.) We can therefore set the legend position to be in the upper left corner. We will also set the <code>click_policy</code> for the legend to be <code>'hide'</code>, which will hide glyphs if you click the legend, which can be convenient for viewing cluttered plots (though this one is not cluttered, really).</p>
 <div id="cell-21" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p.legend.location <span class="op">=</span> <span class="st">'top_left'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p.legend.location <span class="op">=</span> <span class="st">'top_left'</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>p.legend.click_policy <span class="op">=</span> <span class="st">'hide'</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="afdd37e9-23c4-49e8-8646-4628f3fc4137" data-root-id="p1123" style="display: contents;"></div>
@@ -1282,7 +1296,7 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 <p>Bokeh’s interactivity is one of its greatest strengths. While we are plotting confidences when correct and incorrect, we have colored with insomniac status. We might also like to have access to other information in our (tidy) data source if we hover over a glyph. Let’s say we want to know the participant number, gender, and age of each participant. We can tell Bokeh to give us this information by adding <strong>tooltips</strong> when we instantiate the figure.</p>
 <p>The syntax for a tooltip is a list of 2-tuples, where each tuple represents the tooltip you want. The first entry in the tuple is the label and the second is the column from the data source that has the values. The second entry must be preceded with an <code>@</code> symbol signifying that it is a field in the data source and not field that is intrinsic to the plot, which is preceded with a <code>$</code> sign. If there are spaces in the column heading, enclose the column name in braces. (See the <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html#basic-tooltips">documentation for tooltip specification</a> for more information.)</p>
 <div id="cell-23" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For convenience</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For convenience</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"confidence when correct"</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"confidence when incorrect"</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1314,7 +1328,7 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>p.legend.location <span class="op">=</span> <span class="st">"top_left"</span></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>p.legend.click_policy <span class="op">=</span> <span class="st">"hide"</span></span>
 <span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="b63062b5-316a-40b7-b98f-de5157e992e7" data-root-id="p1244" style="display: contents;"></div>
@@ -1355,9 +1369,9 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 <p>To save as a PNG for quick use, you can click the disk icon in the tool bar.</p>
 <p>To save to SVG, you first change the output backend to <code>'svg'</code> and then you can click the disk icon again, and you will get an SVG rendering of the plot. After saving the SVG, you should change the output backend back to <code>'canvas'</code> because it has much better in-browser performance.</p>
 <div id="cell-25" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'svg'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'svg'</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="e31d2fce-ac8e-4e59-90bd-beb3731972be" data-root-id="p1244" style="display: contents;"></div>
@@ -1394,20 +1408,20 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 <p>Now, click the disk icon in the plot above to save it.</p>
 <p>After saving, we should switch back to canvas.</p>
 <div id="cell-27" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'canvas'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'canvas'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can also save the figure programmatically using the <code>bokeh.io.export_svgs()</code> function. This requires additional installations, so we will not do it here, but show the code to do it. Again, this will only work if the output backed is <code>'svg'</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'svg'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'svg'</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>bokeh.io.export_svgs(p, filename<span class="op">=</span><span class="st">'insomniac_confidence_correct.svg'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'canvas'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'canvas'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Finally, to save as HTML, you can use the <code>bokeh.io.save()</code> function. This saves your plot as a standalone HTML page. Note that the <code>title</code> kwarg is not the title of the plot, but the title of the web page that will appear on your Browser tab.</p>
 <div id="cell-29" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.save(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.save(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    p, </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    filename<span class="op">=</span><span class="st">'insomniac_confidence_correct.html'</span>, </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Bokeh plot'</span>,</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    resources<span class="op">=</span>bokeh.resources.CDN,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The resulting HTML page has all of the interactivity of the plot and you can, for example, email it to your collaborators for them to explore.</p>
 </section>
@@ -1416,8 +1430,8 @@ Figure&nbsp;7.1: Routes to making a plot, copyright PyViz authors.
 <div id="cell-32" class="cell" data-tags="[&quot;hide-input&quot;]" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p polars,bokeh,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p polars,bokeh,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
@@ -1486,13 +1500,14 @@ jupyterlab: 4.3.6
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

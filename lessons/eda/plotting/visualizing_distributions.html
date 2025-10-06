@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -70,14 +70,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-236d90495073fb2ac8939117e3e83141.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-8b050a7f4e1f1dd4af2b4d23fb288ab7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -123,7 +124,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -166,7 +167,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../../"></a> 
@@ -448,6 +450,18 @@ window.Quarto = {
  <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/beetle_hypnotists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.1: Beetle hypnotists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/marginal_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.2: A marginal distribution</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -616,7 +630,7 @@ window.Quarto = {
 <div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars iqplot watermark"</span></span>
@@ -624,17 +638,17 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    stdout, stderr <span class="op">=</span> process.communicate()</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="cell-2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iqplot</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
     <style>
         .bk-notebook-logo {
@@ -971,7 +985,7 @@ function(Bokeh) {
 <p>Here, we will investigate how to make plots to investigate properties about the (unknown) generative distribution of a set of repeated measurements. We will use the <a href="https://iqplot.github.io/">iqplot</a> to make the plots, but will withhold dwelling on its syntax until the next notebook of this lesson. Instead, we will make a given plot and then discuss how it helps us visualize the underlying generative probability distribution of a data set.</p>
 <p>We will continue using the facial recognition data set. We will make the usual adjustments by adding an <code>'insomnia'</code> column and also a <code>'sleeper'</code> column that more meaningfully indicates where the subject is an insomniac or a normal sleeper (with the words “normal” or “insomniac” instead of <code>True</code> and <code>False</code>).</p>
 <div id="cell-4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> os.path.join(data_path, <span class="st">"gfmt_sleep.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> os.path.join(data_path, <span class="st">"gfmt_sleep.csv"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    pl.read_csv(fname, null_values<span class="op">=</span><span class="st">"*"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    .with_columns(</span>
@@ -983,7 +997,7 @@ function(Bokeh) {
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look as a reminder</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
@@ -993,7 +1007,7 @@ function(Bokeh) {
 }
 </style>
 <small>shape: (5, 17)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">participant number</th>
@@ -1015,23 +1029,23 @@ function(Bokeh) {
 <th data-quarto-table-cell-role="th">sleeper</th>
 </tr>
 <tr class="even">
-<th>i64</th>
-<th>str</th>
-<th>i64</th>
-<th>i64</th>
-<th>i64</th>
-<th>f64</th>
-<th>f64</th>
-<th>f64</th>
-<th>f64</th>
-<th>f64</th>
-<th>f64</th>
-<th>f64</th>
-<th>i64</th>
-<th>i64</th>
-<th>i64</th>
-<th>bool</th>
-<th>str</th>
+<td>i64</td>
+<td>str</td>
+<td>i64</td>
+<td>i64</td>
+<td>i64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>f64</td>
+<td>i64</td>
+<td>i64</td>
+<td>i64</td>
+<td>bool</td>
+<td>str</td>
 </tr>
 </thead>
 <tbody>
@@ -1140,14 +1154,14 @@ function(Bokeh) {
 <p>We saw in the previous part of the lesson that bar graphs throw out most of the information present in a data set. They only give an approximation of the mean of the generative distribution and nothing else. We can instead report more information.</p>
 <p>A box-and-whisker plot, also just called a box plot is a better option than a bar graph. Indeed, it was invented by John Tukey himself. Instead of condensing your measurements into one value (or two, if you include an error bar) like in a bar graph, you condense them into at least five. It is easier to describe a box plot if you have one to look at.</p>
 <div id="cell-6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.box(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.box(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    df,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"percent correct"</span>,</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    cats<span class="op">=</span>[<span class="st">"gender"</span>, <span class="st">"sleeper"</span>],</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    box_kwargs<span class="op">=</span><span class="bu">dict</span>(fill_color<span class="op">=</span><span class="st">"#1f77b4"</span>),</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="be1e976d-1d42-4bad-800a-3bd0f758e6d4" data-root-id="p1004" style="display: contents;"></div>
@@ -1185,10 +1199,10 @@ function(Bokeh) {
 <p>So, box-and-whisker plots give much more information than a bar plot. They give a reasonable summary of how data are distributed by providing quantiles.</p>
 <p>Not to draw our focus away from visualizing how a data set is distributed, going forward in this notebook, we will not split the data set by gender and sleep preference, but will instead look at the entire data set. Here is a box plot for that.</p>
 <div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.box(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.box(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p.yaxis.visible <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="d770c8b5-66c1-454b-b9bd-c1d40acc4087" data-root-id="p1090" style="display: contents;"></div>
@@ -1231,10 +1245,10 @@ function(Bokeh) {
 <h2 data-number="10.3" class="anchored" data-anchor-id="strip-plots"><span class="header-section-number">10.3</span> Strip plots</h2>
 <p>One convenient way to plot all of your data is a <strong>strip plot</strong>. In a strip plot, every point is plotted.</p>
 <div id="cell-11" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p.yaxis.visible <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="b312fa07-48f8-4339-9c51-4d8ff221ca31" data-root-id="p1179" style="display: contents;"></div>
@@ -1270,10 +1284,10 @@ function(Bokeh) {
 </div>
 <p>An obvious problem with this plot is that the data points overlap. We can get around this issue by adding a jitter to the plot. Instead of lining all of the data points up exactly in line with the category, we randomly “jitter” the points about the centerline, of course while maintaining their position along the quantitative axis.</p>
 <div id="cell-13" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>, spread<span class="op">=</span><span class="st">"jitter"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>, spread<span class="op">=</span><span class="st">"jitter"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p.yaxis.visible <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="aa2ac517-42a6-46ff-b91b-31c0a42c7a6f" data-root-id="p1228" style="display: contents;"></div>
@@ -1309,10 +1323,10 @@ function(Bokeh) {
 </div>
 <p>Alternatively, we can deterministically spread the points in a <strong>swarm plot</strong>, where the glyphs are positioned so as not to overlap, but retain the same position along the quantitative axis.</p>
 <div id="cell-15" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>, spread<span class="op">=</span><span class="st">"swarm"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(df, <span class="st">"percent correct"</span>, frame_height<span class="op">=</span><span class="dv">100</span>, spread<span class="op">=</span><span class="st">"swarm"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p.yaxis.visible <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="b284bcca-f0d4-4e69-b1cb-981140944ab0" data-root-id="p1278" style="display: contents;"></div>
@@ -1352,9 +1366,9 @@ function(Bokeh) {
 <h2 data-number="10.4" class="anchored" data-anchor-id="spike-plots"><span class="header-section-number">10.4</span> Spike plots</h2>
 <p>The swarm plot above essentially provides a count of the number of times a given measurement was observed. Because of the nature of the GFMT, the percent correct values are discrete, coming in 2.5% increments. When we have discrete values like that, a <strong>spike plot</strong> serves to provide the counts of each measurement value.</p>
 <div id="cell-18" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.spike(df, <span class="st">"percent correct"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.spike(df, <span class="st">"percent correct"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="ed1d14ae-6e98-4516-8f73-d33dbcdf0dce" data-root-id="p1327" style="display: contents;"></div>
@@ -1391,7 +1405,7 @@ function(Bokeh) {
 <p>Each spike rises to the number of times a given value was measured.</p>
 <p>Spike plots fail, however, when the measurements do not take on discrete values. To demonstrate, we will add random noise to the percent correct data and try replotting. (We will learn about random number generation with NumPy in a future lesson. For now, this is for purposes of discussing plotting options.)</p>
 <div id="cell-20" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a bit of noise to the % correct measurements so they are no longer discrete</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a bit of noise to the % correct measurements so they are no longer discrete</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1407,7 +1421,7 @@ function(Bokeh) {
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.strip(df, <span class="st">"percent correct with noise"</span>, frame_height<span class="op">=</span><span class="dv">100</span>, spread<span class="op">=</span><span class="st">"swarm"</span>)</span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>p.yaxis.visible <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="ddfa8c53-07b9-4a45-bf75-e46f9b98905a" data-root-id="p1392" style="display: contents;"></div>
@@ -1443,9 +1457,9 @@ function(Bokeh) {
 </div>
 <p>We can still roughly make out how the data are distributed in the swarm plot, but the spike plot adds little beyond what we would see with a strip plot sans swarm or jitter.</p>
 <div id="cell-22" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.spike(df, <span class="st">"percent correct with noise"</span>, frame_height<span class="op">=</span><span class="dv">100</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.spike(df, <span class="st">"percent correct with noise"</span>, frame_height<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="f48ca0a7-3b49-48f4-a687-3692c630ecc6" data-root-id="p1441" style="display: contents;"></div>
@@ -1485,9 +1499,9 @@ function(Bokeh) {
 <p>If we do not have discrete data, we can instead use a <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a>. A histogram is constructed by dividing the measurement values into bins and then counting how many measurements fall into each bin. The bins are then displayed graphically.</p>
 <p>A problem with histograms is that they require a choice of binning. Different choices of bins can lead to qualitatively different appearances of the plot. One choice of number of bins is the <a href="https://en.wikipedia.org/wiki/Freedman–Diaconis_rule">Freedman-Diaconis rule</a>, which serves to minimize the integral of the squared difference between the (unknown) underlying probability density function and the histogram. This is the default of iqplot.</p>
 <div id="cell-24" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.histogram(df, <span class="st">"percent correct with noise"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.histogram(df, <span class="st">"percent correct with noise"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="c5324b0c-56a2-4ac7-9e5b-339d7133c3b3" data-root-id="p1506" style="display: contents;"></div>
@@ -1527,8 +1541,8 @@ function(Bokeh) {
 <h2 data-number="10.6" class="anchored" data-anchor-id="ecdfs"><span class="header-section-number">10.6</span> ECDFs</h2>
 <p>Histograms are typically used to display how data are distributed. As an example I will generate Normally distributed data and plot the histogram.</p>
 <div id="cell-27" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">500</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(iqplot.histogram(x, rug<span class="op">=</span><span class="va">False</span>, style<span class="op">=</span><span class="st">"step_filled"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">500</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(iqplot.histogram(x, rug<span class="op">=</span><span class="va">False</span>, style<span class="op">=</span><span class="st">"step_filled"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="ac4162fa-be84-4bb4-9fd1-734b997dc0d5" data-root-id="p1581" style="display: contents;"></div>
@@ -1583,7 +1597,7 @@ f(x) = \frac{\mathrm{d}F}{\mathrm{d}x}.
 </div>
 <p>Now that we know what an ECDF is, we can plot it.</p>
 <div id="cell-29" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(iqplot.ecdf(x, style<span class="op">=</span><span class="st">'dots'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(iqplot.ecdf(x, style<span class="op">=</span><span class="st">'dots'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="d605235c-9c3e-4bda-bc3c-404c8bc5b62d" data-root-id="p1635" style="display: contents;"></div>
@@ -1619,7 +1633,7 @@ f(x) = \frac{\mathrm{d}F}{\mathrm{d}x}.
 </div>
 <p>Each dot in the ECDF is a single data point that we measured. Given the above definition of the ECDF, it is defined for all real <span class="math inline">\(x\)</span>. So, formally, the ECDF is a continuous function (with discontinuous derivatives at each data point). So, it could be plotted like a staircase according to the formal definition.</p>
 <div id="cell-31" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(iqplot.ecdf(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(iqplot.ecdf(x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="b8094040-1da2-4052-a112-b7a90e605129" data-root-id="p1684" style="display: contents;"></div>
@@ -1656,10 +1670,10 @@ f(x) = \frac{\mathrm{d}F}{\mathrm{d}x}.
 <p>Either method of plotting is fine; there is not any less information in one than the other.</p>
 <p>Let us now plot the percent correct data as an ECDF, both with dots and as a staircase. Visualizing it this way helps highlight the relationship between the dots and the staircase.</p>
 <div id="cell-33" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(df, <span class="st">"percent correct"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(df, <span class="st">"percent correct"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(df, <span class="st">"percent correct"</span>, p<span class="op">=</span>p, style<span class="op">=</span><span class="st">'dots'</span>, marker_kwargs<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"orange"</span>))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="de58b073-e795-4d1c-bf25-91a83e4bb7fa" data-root-id="p1747" style="display: contents;"></div>
@@ -1698,8 +1712,8 @@ f(x) = \frac{\mathrm{d}F}{\mathrm{d}x}.
 <section id="computing-environment" class="level2" data-number="10.7">
 <h2 data-number="10.7" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">10.7</span> Computing environment</h2>
 <div id="cell-36" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,polars,bokeh,iqplot,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,polars,bokeh,iqplot,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
 Python version       : 3.13.7
@@ -1769,13 +1783,14 @@ jupyterlab: 4.4.7
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

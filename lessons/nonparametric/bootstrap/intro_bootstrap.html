@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -70,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-236d90495073fb2ac8939117e3e83141.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-8b050a7f4e1f1dd4af2b4d23fb288ab7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -124,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -167,8 +166,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../../"></a> 
@@ -632,7 +630,7 @@ window.Quarto = {
 <div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars iqplot bebi103 watermark"</span></span>
@@ -641,11 +639,11 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-2" class="cell" data-tags="[]" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numba</span>
@@ -655,7 +653,7 @@ window.Quarto = {
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bebi103</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
     <style>
         .bk-notebook-logo {
@@ -996,12 +994,12 @@ function(Bokeh) {
 <p>(Do you see a trend here? If you want people to think deeply about your results, explore them, learn from them, in general further science with them, <em>make your data publicly available.</em> Strongly encourage the members of your lab to do the same.)</p>
 <p>We will look at the sperm quality of drone bees using <a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/bee_sperm.csv">this data set</a>. First, let’s load in the data set and check it out.</p>
 <div id="cell-5" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(data_path, <span class="st">"bee_sperm.csv"</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    null_values<span class="op">=</span>[<span class="st">"NO SPERM"</span>, <span class="st">"No Sperm"</span>],</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    comment_prefix<span class="op">=</span><span class="st">"#"</span>,</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
@@ -1011,7 +1009,7 @@ function(Bokeh) {
 }
 </style>
 <small>shape: (5, 18)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Specimen</th>
@@ -1034,24 +1032,24 @@ function(Bokeh) {
 <th data-quarto-table-cell-role="th">Dead Sperm Millions</th>
 </tr>
 <tr class="even">
-<td>i64</td>
-<td>str</td>
-<td>str</td>
-<td>i64</td>
-<td>str</td>
-<td>i64</td>
-<td>i64</td>
-<td>i64</td>
-<td>i64</td>
-<td>i64</td>
-<td>f64</td>
-<td>f64</td>
-<td>i64</td>
-<td>i64</td>
-<td>i64</td>
-<td>f64</td>
-<td>f64</td>
-<td>f64</td>
+<th>i64</th>
+<th>str</th>
+<th>str</th>
+<th>i64</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+<th>f64</th>
+<th>f64</th>
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
 </tr>
 </thead>
 <tbody>
@@ -1162,9 +1160,9 @@ function(Bokeh) {
 </div>
 <p>We are interested in the number of alive sperm in the samples. Let’s first explore the data by making ECDFs for the two groups we will compare, those treated with pesticide (“Pesticide”) and those that are not (“Control”).</p>
 <div id="cell-7" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(df, q<span class="op">=</span><span class="st">"Alive Sperm Millions"</span>, cats<span class="op">=</span><span class="st">"Treatment"</span>)</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(df, q<span class="op">=</span><span class="st">"Alive Sperm Millions"</span>, cats<span class="op">=</span><span class="st">"Treatment"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="c1def257-bbb1-4fb7-9f5f-9458d79dcb82" data-root-id="p1003" style="display: contents;"></div>
@@ -1204,7 +1202,7 @@ function(Bokeh) {
 <h2 data-number="27.2" class="anchored" data-anchor-id="bootstrap-samples-and-ecdfs"><span class="header-section-number">27.2</span> Bootstrap samples and ECDFs</h2>
 <p>To address this question, we can generate bootstrap samples from the experimental data and make lots of ECDFs. We can then plot them all to see how the ECDF might vary. Recall that a bootstrap sample from a data set of <span class="math inline">\(n\)</span> repeated measurements is generated by drawing <span class="math inline">\(n\)</span> data points out of the original data set with replacement. The <code>rng.choice()</code> function enables random draws of elements out of an array. Let’s generate 100 bootstrap samples and plot their ECDFs to visualize how our data set might change as we repeat the experiment.</p>
 <div id="cell-10" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up Numpy arrays for convenience (also much better performance)</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> df.partition_by(<span class="st">'Treatment'</span>, as_dict<span class="op">=</span><span class="va">True</span>)</span>
@@ -1226,7 +1224,7 @@ function(Bokeh) {
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    p.scatter(np.sort(bs_ctrl), ctrl_ecdf, color<span class="op">=</span>bokeh.palettes.Category10_3[<span class="dv">0</span>], alpha<span class="op">=</span><span class="fl">0.02</span>)</span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    p.scatter(np.sort(bs_pest), pest_ecdf, color<span class="op">=</span>bokeh.palettes.Category10_3[<span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.02</span>)</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="fe62c29d-e8c4-4218-803f-e7b5906c7a5d" data-root-id="p1003" style="display: contents;"></div>
@@ -1267,14 +1265,14 @@ function(Bokeh) {
 <p>We can make sampling faster (though note that the slowness in generating the above plot is not in resampling, but in adding glyphs to the plot) by employing <strong>just-in-time compilation</strong>, wherein the Python code is compiled at runtime into machine code. This results in a substantial speed boost. <a href="http://numba.pydata.org">Numba</a> is a powerful tool for this purpose, and we will use it. Bear in mind, though, that not all Python code is Numba-able. In order to just-in-time compile a function, we need to decorate its definition with the <code>@numba.njit</code> decorator, which tells the Python interpreter to use Numba to just-in-time compile the function. Note that Numba works on basic Python objects like tuples and Numpy arrays, so be sure to pass Numpy arrays into the respective functions.</p>
 <p>Random number generation is supported, and instances of Numpy’s generators can be passed into Numba’d functions. However, to avoid always having to pass in an instance of a Numpy RNG into Numba functions, we will use Numpy’s old interface to the the Mersenne Twister bit generator, which uses a syntax like <code>np.random.normal()</code>.</p>
 <div id="cell-13" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.njit</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.njit</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_bs_sample(data):</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Draw a bootstrap sample from a 1D data set."""</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.choice(data, size<span class="op">=</span><span class="bu">len</span>(data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.choice(data, size<span class="op">=</span><span class="bu">len</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s quickly quantify the speed boost. Before we do the timing, we will run the Numba’d version once to give it a chance to do the JIT compilation.</p>
 <div id="cell-15" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run once to JIT</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run once to JIT</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>draw_bs_sample(alive_ctrl)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Using the Numpy default RNG (PCG64):'</span>)</span>
@@ -1284,7 +1282,7 @@ function(Bokeh) {
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit np.random.choice(alive_ctrl, size<span class="op">=</span><span class="bu">len</span>(alive_ctrl))</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Using a Numba'd Mersenne Twister:"</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit draw_bs_sample(alive_ctrl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit draw_bs_sample(alive_ctrl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Using the Numpy default RNG (PCG64):
 4.33 μs ± 10.6 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
@@ -1309,13 +1307,13 @@ Using a Numba'd Mersenne Twister:
 </ol>
 <p>A key step here is computing the bootstrap replicate. We will write a function to draw bootstrap replicates of a statistic of interest. To do so, we pass in a function, which we will call <code>stat_fun</code>. Because we do not know what function we will pass in, we cannot just-in-time compile this functions.</p>
 <div id="cell-18" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_bs_reps(data, stat_fun, size<span class="op">=</span><span class="dv">1</span>):</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_bs_reps(data, stat_fun, size<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Draw boostrap replicates computed with stat_fun from 1D data set."""</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([stat_fun(draw_bs_sample(data)) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(size)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([stat_fun(draw_bs_sample(data)) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(size)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will also write a few functions for commonly computed statistics, which enables us to use Numba to greatly speed up the process of generating bootstrap replicates. Note that in our decorator, we use the <code>parallel=True</code> keyword argument. Within the <code>for</code> loop to compute the bootstrap replicates, as use <code>numba.prange()</code> as a drop-in replacement for <code>range()</code>. When we do it this way, Numba automatically parallelizes the calculation across available CPUs.</p>
 <div id="cell-20" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.njit</span>(parallel<span class="op">=</span><span class="va">True</span>)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.njit</span>(parallel<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_bs_reps_mean(data, size<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Draw boostrap replicates of the mean from 1D data set."""</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> np.empty(size)</span>
@@ -1339,26 +1337,26 @@ Using a Numba'd Mersenne Twister:
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> np.empty(size)</span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> numba.prange(size):</span>
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        out[i] <span class="op">=</span> np.std(draw_bs_sample(data))</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s get bootstrap replicates for the mean of each of the two treatments.</p>
 <div id="cell-22" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bs_reps_mean_ctrl <span class="op">=</span> draw_bs_reps_mean(alive_ctrl, size<span class="op">=</span><span class="dv">10000</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>bs_reps_mean_pest <span class="op">=</span> draw_bs_reps_mean(alive_pest, size<span class="op">=</span><span class="dv">10000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bs_reps_mean_ctrl <span class="op">=</span> draw_bs_reps_mean(alive_ctrl, size<span class="op">=</span><span class="dv">10000</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>bs_reps_mean_pest <span class="op">=</span> draw_bs_reps_mean(alive_pest, size<span class="op">=</span><span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.</code></pre>
 </div>
 </div>
 <p>We can now compute the confidence intervals by computing the percentiles using the <code>np.percentile()</code> function.</p>
 <div id="cell-24" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% confidence intervals</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% confidence intervals</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mean_ctrl_conf_int <span class="op">=</span> np.percentile(bs_reps_mean_ctrl, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mean_pest_conf_int <span class="op">=</span> np.percentile(bs_reps_mean_pest, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"""</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="st">Mean alive sperm count 95</span><span class="sc">% c</span><span class="st">onf int control (millions):   [</span><span class="sc">{0:.2f}</span><span class="st">, </span><span class="sc">{1:.2f}</span><span class="st">]</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="st">Mean alive sperm count 95</span><span class="sc">% c</span><span class="st">onf int treatment (millions): [</span><span class="sc">{2:.2f}</span><span class="st">, </span><span class="sc">{3:.2f}</span><span class="st">]</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>.<span class="bu">format</span>(<span class="op">*</span>(<span class="bu">tuple</span>(mean_ctrl_conf_int) <span class="op">+</span> <span class="bu">tuple</span>(mean_pest_conf_int))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>.<span class="bu">format</span>(<span class="op">*</span>(<span class="bu">tuple</span>(mean_ctrl_conf_int) <span class="op">+</span> <span class="bu">tuple</span>(mean_pest_conf_int))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Mean alive sperm count 95% conf int control (millions):   [1.67, 2.07]
@@ -1370,12 +1368,12 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.50]
 <h3 data-number="27.4.1" class="anchored" data-anchor-id="display-of-confidence-intervals"><span class="header-section-number">27.4.1</span> Display of confidence intervals</h3>
 <p>While the textual confidence intervals shown above are useful, it is often desired to display confidence intervals graphically. The <a href="https://bebi103.github.io/">bebi103 package</a> has a utility to do this. It requires as input a list of dictionaries where each dictionary contains an estimate, a confidence interval, and a label.</p>
 <div id="cell-26" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>summaries <span class="op">=</span> [</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>summaries <span class="op">=</span> [</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">dict</span>(label<span class="op">=</span><span class="st">"control"</span>, estimate<span class="op">=</span>np.mean(alive_ctrl), conf_int<span class="op">=</span>mean_ctrl_conf_int),</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">dict</span>(label<span class="op">=</span><span class="st">"treated"</span>, estimate<span class="op">=</span>np.mean(alive_pest), conf_int<span class="op">=</span>mean_pest_conf_int),</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bebi103.viz.confints(summaries, x_axis_label<span class="op">=</span><span class="st">"alive sperm (millions)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bebi103.viz.confints(summaries, x_axis_label<span class="op">=</span><span class="st">"alive sperm (millions)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="c52a8b2e-f6cb-4347-af94-0301d3046aea" data-root-id="p3302" style="display: contents;"></div>
@@ -1415,7 +1413,7 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.50]
 <p>We can also use the bootstrap replicates to plot the probability distribution of mean alive sperm count. <em>Remember</em>: This is not a confidence interval on a parameter value. That does not make sense in frequentist statistics, and furthermore we have not assumed any parametric model. It is the confidence interval describing what we would get as a plug-in estimate for the mean if we did the experiment over and over again.</p>
 <p>When we plot the ECDF of the bootstrap replicates, we will thin them so as not to choke the browser with too many points. Since we will do this again, we write a quick function to do it.</p>
 <div id="cell-28" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_bs_reps_ecdf(ctrl, pest, q, thin<span class="op">=</span><span class="dv">1</span>, <span class="op">**</span>kwargs):</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_bs_reps_ecdf(ctrl, pest, q, thin<span class="op">=</span><span class="dv">1</span>, <span class="op">**</span>kwargs):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Make plot of bootstrap ECDFs for control and pesticide treatment."""</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    x_ctrl <span class="op">=</span> np.sort(ctrl)[::thin]</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    x_pest <span class="op">=</span> np.sort(pest)[::thin]</span>
@@ -1438,7 +1436,7 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.50]
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    bs_reps_mean_ctrl, bs_reps_mean_pest, <span class="st">"mean alive sperm (millions)"</span>, thin<span class="op">=</span><span class="dv">50</span></span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="a190c4ca-68d9-41e6-b031-b3eeefd34e49" data-root-id="p3375" style="display: contents;"></div>
@@ -1475,7 +1473,7 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.50]
 <p>These are both nice, Normal distributions with almost no overlap in the tails. We also saw in the computation of the 95% confidence intervals above that there is no overlap. This is expected, the mean alive sperm count should be Normally distributed as per the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a>.</p>
 <p>We can do the same procedure for other statistical quantities that do not follow the central limit theorem. The procedure is exactly the same. We will do it for the median.</p>
 <div id="cell-30" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the bootstrap replicates</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the bootstrap replicates</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>bs_reps_median_ctrl <span class="op">=</span> draw_bs_reps_median(alive_ctrl, size<span class="op">=</span><span class="dv">10000</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>bs_reps_median_pest <span class="op">=</span> draw_bs_reps_median(alive_pest, size<span class="op">=</span><span class="dv">10000</span>)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1497,7 +1495,7 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.50]
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Show both plots</span></span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column([p_conf_int, bokeh.models.Spacer(height<span class="op">=</span><span class="dv">50</span>), p]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column([p_conf_int, bokeh.models.Spacer(height<span class="op">=</span><span class="dv">50</span>), p]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="f966ba2e-a1df-4233-81fc-4ff36594ef1f" data-root-id="p3633" style="display: contents;"></div>
@@ -1538,8 +1536,8 @@ Mean alive sperm count 95% conf int treatment (millions): [1.11, 1.50]
 <section id="computing-environment" class="level2" data-number="27.5">
 <h2 data-number="27.5" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">27.5</span> Computing environment</h2>
 <div id="cell-33" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,polars,numba,bokeh,iqplot,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,polars,numba,bokeh,iqplot,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
 Python version       : 3.13.5
@@ -1610,14 +1608,13 @@ jupyterlab: 4.4.5
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

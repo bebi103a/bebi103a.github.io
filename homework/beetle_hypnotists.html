@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-236d90495073fb2ac8939117e3e83141.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8b050a7f4e1f1dd4af2b4d23fb288ab7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -135,8 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../"></a> 
@@ -581,15 +579,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><em>This problem is worth 70 points.</em></p>
-<p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2025/blob/main/beetle_hypnotists.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2025/refs/heads/main/beetle_hypnotists.ipynb">Download notebook</a></p>
 <p><a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ant_joint_locations.zip">Data set download</a></p>
 <hr>
 <p>The <a href="https://www.beetles.caltech.edu">Parker lab</a> at Caltech studies rove beetles that can infiltrate ant colonies. In one of their experiments, they place a rove beetle and an ant in a circular area and track the movements of the ants. They do this by using a <a href="https://en.wikipedia.org/wiki/Deep_learning">deep learning</a> algorithm to identify the head, thorax, abdomen, and right and left antennae. While deep learning applied to biological images is a beautiful and useful topic, we will not cover it in this course (be on the lookout for future courses that do!). We will instead work with a data set that is the output of the deep learning algorithm.</p>
 <p>For the experiment you are considering in this problem, an ant and a beetle were placed in a circular arena and recorded with video at a frame rate of 28 frames per second. The positions of the body parts of the ant were tracked throughout the video recording. You can download the data set <a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/ant_joint_locations.zip">here</a>. <em>Hint</em>: As of October 2025, Polars does not natively open ZIP files. In order to open them, you can use built-in utilities in the Python standard library and send bytes directly to <code>pl.read_csv()</code>. For this file, it would look something like this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io, os, zipfile</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io, os, zipfile</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> zipfile.ZipFile(os.path.join(data_path, <span class="st">'ant_joint_locations.zip'</span>)) <span class="im">as</span> fz:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> fz.<span class="bu">open</span>(<span class="st">'ant_joint_locations.csv'</span>) <span class="im">as</span> f:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.read_csv(io.BytesIO(f.read()), comment_prefix<span class="op">=</span><span class="st">'#'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.read_csv(io.BytesIO(f.read()), comment_prefix<span class="op">=</span><span class="st">'#'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To save you from having to unzip and read the comments for the data file, here they are:</p>
 <pre><code># This data set was kindly donated by Julian Wagner from Joe Parker's lab at 
 # Caltech. In the experiment, an ant and a beetle were placed in a circular
@@ -674,14 +671,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

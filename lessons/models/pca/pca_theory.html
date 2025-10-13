@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>46&nbsp; Principal component analysis – BE/Bi 103 a 2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../lessons/models/pca/pca_implementation.html" rel="next">
+<link href="../../../lessons/models/variate_covariate/variate_covariate_implementation.html" rel="prev">
+<link href="../../../logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/models/oft_encountered_models.html">Oft encountered models</a></li><li class="breadcrumb-item"><a href="../../../lessons/models/pca/pca_theory.html"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Principal component analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../"></a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the course</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course logistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../policies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course policies</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/what_are_we_doing/what_are_we_doing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What are we doing?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/eda/exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/intro_to_polars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data frames and Polars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/tidy_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tidy data and split-apply-combine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/styling_data_frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Styling data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/polars/polars_for_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data display</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting_with_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Making plots with Bokeh</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/plotting_smooth_curves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Plotting smooth curves</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/categorical_axes_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plots with categorical variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/visualizing_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/iqplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">High level plotting with iqplot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/plotting/styling_bokeh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Styling Bokeh plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/manipulating_data_frames_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Manipulating data frames and wrangling data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/merging_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Merging and concatenating data frames</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/unpivoting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/wrangling/pivoting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/eda/eda_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">EDA lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/probability_and_sampling/probability_and_sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability: The foundation for generative modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/definition_and_interpretation_of_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Probability: definitions and interpretations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/random_number_generation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Random number generation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/rng_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Random number generation using Numpy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/luria_delbruck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Simulating the Luria-Delbrück distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/probability_and_sampling/probability_and_sampling_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Probability and sampling lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/nonparametric/nonparametric_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nonparametric inference and confidence intervals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nonparametric/plugin/point_estimates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Plug-in estimates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nonparametric/plugin/bias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bias</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nonparametric/plugin/confidence_intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence intervals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nonparametric/bootstrap/intro_bootstrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Performing bootstrap calculations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nonparametric/bootstrap/pairs_bootstrap_correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Pairs bootstrap and correlation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nonparametric/nonparametric_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Nonparametric inference lesson exercise</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/nhst/intro_nhst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Null hypothesis significance testing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nhst/nhst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Null hypothesis significance testing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nhst/opinions_about_nhst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Comments and opinions on NHST</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nhst/hacker_nhst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Hacker’s approach to NHST</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/nhst/nhst_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">NHST lesson exercises</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/modeling/why_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generative modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/modeling/statistical_modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Statistical modeling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/modeling/building_a_generative_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Building a generative model</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/mle/intro_mle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parameter estimation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/mle/method_of_moments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Method of moments</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/mle/mle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Maximum likelihood estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/mle/numerical_mle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Numerical maximum likelihood estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/mle/mle_confidence_intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Confidence regions and confidence intervals for a MLE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/mle/parallel_conf_ints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Parallel bootstrap calculations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/models/oft_encountered_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Oft encountered models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/models/mixture_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Mixture models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/models/variate_covariate/intro_variate_covariate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Variate-covariate models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/models/variate_covariate/model_building.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Building a variate-covariate model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/models/variate_covariate/mle_for_variate_covariate_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Maximum likelihood estimation for variate-covariate models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/models/variate_covariate/variate_covariate_implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Implementation of MLE for variate-covariate models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/models/pca/pca_theory.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Principal component analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/models/pca/pca_implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Implementation of PCA</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/model_assessment/intro_model_assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model assessment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/model_assessment/graphical_model_assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">Graphical model assessment</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/model_assessment/information_criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Model comparison with the Akaike information criterion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/model_assessment/implementation_of_graphical_model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">Graphical model assessment for univariate models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/model_assessment/predictive_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">Graphical model assessment: Predictive regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/model_assessment/aic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Model comparison with the AIC</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../lessons/statistical_watchouts/statistical_watchouts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical watchouts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/statistical_watchouts/olkin_petkau_zidek.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">The Olkin-Petkau-Zidek example of MLE fragility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/statistical_watchouts/nonidentifiable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">Nonidentifiable models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lessons/statistical_watchouts/dancing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">Dancing statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Homework</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/plotting_an_elephant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.1: Plotting an elephant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/penguins_split_apply_combine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 1.2: Palmer penguins and split-apply-combine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/mt_ecdf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.1: Microtubule catastrophe and ECDFs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/cool_gal4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/beetle_hypnotists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.1: Beetle hypnotists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/marginal_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.2: A marginal distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/normal_approximations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 4.1: Normal approximations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/simulating_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 4.2: Simulating distributions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Computing</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/setting_up_python_computing_environment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuring your computer to use Python for scientific computing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/notebooks_and_latex/intro_to_jupyterlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Introduction to JupyterLab</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/notebooks_and_latex/intro_to_latex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to LaTeX</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/hello_world.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Hello, world.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/variables_operators_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Variables, operators, and types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/lists_and_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Lists and tuples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/intro_to_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Introduction to functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/string_methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">String methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Dictionaries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/comprehensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Comprehensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/packages_and_modules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Packages and modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/exceptions_and_error_handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Errors and exception handling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/file_io.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">File I/O</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../appendices/python_basics/intro_to_numpy_and_scipy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">P</span>&nbsp; <span class="chapter-title">Introduction to Numpy and Scipy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">In this section</h2>
+   
+  <ul>
+  <li><a href="#the-problem-of-pca" id="toc-the-problem-of-pca" class="nav-link active" data-scroll-target="#the-problem-of-pca"><span class="header-section-number">46.1</span> The problem of PCA</a></li>
+  <li><a href="#toward-building-a-pca-model-factor-analysis" id="toc-toward-building-a-pca-model-factor-analysis" class="nav-link" data-scroll-target="#toward-building-a-pca-model-factor-analysis"><span class="header-section-number">46.2</span> Toward building a PCA model: Factor analysis</a>
+  <ul class="collapse">
+  <li><a href="#linear-hmathbfztheta" id="toc-linear-hmathbfztheta" class="nav-link" data-scroll-target="#linear-hmathbfztheta"><span class="header-section-number">46.2.1</span> Linear <span class="math inline">\(h(\mathbf{z};\theta)\)</span></a></li>
+  <li><a href="#i.i.d.-normally-distributed-data-points" id="toc-i.i.d.-normally-distributed-data-points" class="nav-link" data-scroll-target="#i.i.d.-normally-distributed-data-points"><span class="header-section-number">46.2.2</span> i.i.d. Normally distributed data points</a></li>
+  <li><a href="#a-diagonal-covariance-matrix" id="toc-a-diagonal-covariance-matrix" class="nav-link" data-scroll-target="#a-diagonal-covariance-matrix"><span class="header-section-number">46.2.3</span> A diagonal covariance matrix</a></li>
+  <li><a href="#modeling-the-latent-variables" id="toc-modeling-the-latent-variables" class="nav-link" data-scroll-target="#modeling-the-latent-variables"><span class="header-section-number">46.2.4</span> Modeling the latent variables</a></li>
+  <li><a href="#restrictions-on-the-loading-matrix" id="toc-restrictions-on-the-loading-matrix" class="nav-link" data-scroll-target="#restrictions-on-the-loading-matrix"><span class="header-section-number">46.2.5</span> Restrictions on the loading matrix</a></li>
+  </ul></li>
+  <li><a href="#probabilistic-pca" id="toc-probabilistic-pca" class="nav-link" data-scroll-target="#probabilistic-pca"><span class="header-section-number">46.3</span> Probabilistic PCA</a>
+  <ul class="collapse">
+  <li><a href="#maximum-likelihood-for-ppca" id="toc-maximum-likelihood-for-ppca" class="nav-link" data-scroll-target="#maximum-likelihood-for-ppca"><span class="header-section-number">46.3.1</span> Maximum likelihood for PPCA</a></li>
+  <li><a href="#recognition-distribution-for-ppca" id="toc-recognition-distribution-for-ppca" class="nav-link" data-scroll-target="#recognition-distribution-for-ppca"><span class="header-section-number">46.3.2</span> Recognition distribution for PPCA</a></li>
+  </ul></li>
+  <li><a href="#pca-as-a-limit-of-ppca" id="toc-pca-as-a-limit-of-ppca" class="nav-link" data-scroll-target="#pca-as-a-limit-of-ppca"><span class="header-section-number">46.4</span> PCA as a limit of PPCA</a>
+  <ul class="collapse">
+  <li><a href="#centering-and-scaling-the-interpretation-of-hatmathsfsigma-and-maximal-variance" id="toc-centering-and-scaling-the-interpretation-of-hatmathsfsigma-and-maximal-variance" class="nav-link" data-scroll-target="#centering-and-scaling-the-interpretation-of-hatmathsfsigma-and-maximal-variance"><span class="header-section-number">46.4.1</span> Centering and scaling, the interpretation of <span class="math inline">\(\hat{\mathsf{\Sigma}}\)</span>, and maximal variance</a></li>
+  <li><a href="#prescription-for-pca" id="toc-prescription-for-pca" class="nav-link" data-scroll-target="#prescription-for-pca"><span class="header-section-number">46.4.2</span> Prescription for PCA</a></li>
+  <li><a href="#sec-nonidentifiability-of-pca" id="toc-sec-nonidentifiability-of-pca" class="nav-link" data-scroll-target="#sec-nonidentifiability-of-pca"><span class="header-section-number">46.4.3</span> Nonidentifiability of PCA</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/models/oft_encountered_models.html">Oft encountered models</a></li><li class="breadcrumb-item"><a href="../../../lessons/models/pca/pca_theory.html"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Principal component analysis</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-pca-theory" class="quarto-section-identifier"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Principal component analysis</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2025/blob/main/pca_theory.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2025/refs/heads/main/pca_theory.ipynb">Download notebook</a></p>
+<section id="the-problem-of-pca" class="level2" data-number="46.1">
+<h2 data-number="46.1" class="anchored" data-anchor-id="the-problem-of-pca"><span class="header-section-number">46.1</span> The problem of PCA</h2>
+<p>We often obtain high-dimensional data sets, in which each observation has many dimensions. In the parlance of practitioners of machine learning, each multidimensional observation is called a <strong>sample</strong> and each dimension is called a <strong>feature</strong>. We will use the observation/dimension and sample/feature nomenclature interchangeably. Considering the Palmer’s penguin data set, each observation (sample) is a penguin, and the dimensions (features) are bill depth, bill length, flipper length, and body mass.</p>
+<p>The features, though many, may be related. We can imagine that there are unobservable variables, called <strong>latent variables</strong> at play the influence many features. For example, consider the four features of the penguin. They could all scale with the caloric intake of the penguins, in which case the latent variable of caloric intake could use used to predict all four of the features; it is responsible for most of the variation in what is observed.</p>
+<p>Let us now formalize this. Let <span class="math inline">\(\mathbf{y}\in \mathbb{R}^D\)</span> be a set of observable features. There are <span class="math inline">\(D\)</span> of them. In the case of the penguins, <span class="math inline">\(D = 4\)</span>. Let <span class="math inline">\(\mathbf{z} \in \mathbb{R}^L\)</span> be the set of latent variables that influence the observations. Typically, <span class="math inline">\(L &lt; D\)</span> and often <span class="math inline">\(L \ll D\)</span>, and, as such, if we can infer the latent variable <span class="math inline">\(\mathbf{z}\)</span>, we say we have achieved <strong>dimensionality reduction</strong>. Specifically, we define a model for <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(\mathbf{y} = h(\mathbf{z};\theta)\)</span>, where <span class="math inline">\(\theta\)</span> is some set of parameters. So, to achieve dimensionality reduction, we want to find a function <span class="math inline">\(h(\mathbf{z};\theta)\)</span> that most faithfully reproduces the observed <span class="math inline">\(\mathbf{y}\)</span>.</p>
+</section>
+<section id="toward-building-a-pca-model-factor-analysis" class="level2" data-number="46.2">
+<h2 data-number="46.2" class="anchored" data-anchor-id="toward-building-a-pca-model-factor-analysis"><span class="header-section-number">46.2</span> Toward building a PCA model: Factor analysis</h2>
+<p>As we build our model of how the data <span class="math inline">\(\mathbf{y}\)</span> are generated from the latent variables <span class="math inline">\(z\)</span>, we make a series of modeling decisions, many of which are intentionally chosen to be simplifying.</p>
+<section id="linear-hmathbfztheta" class="level3" data-number="46.2.1">
+<h3 data-number="46.2.1" class="anchored" data-anchor-id="linear-hmathbfztheta"><span class="header-section-number">46.2.1</span> Linear <span class="math inline">\(h(\mathbf{z};\theta)\)</span></h3>
+<p>As is commonly done, we will restrict the functions <span class="math inline">\(h(\mathbf{z};\theta)\)</span> we choose to be linear functions. Further, we stipulate that <span class="math inline">\(h(\mathbf{z};\theta)\)</span> serves to orthogonally project <span class="math inline">\(\mathbf{z}\)</span> onto <span class="math inline">\(\mathbf{y}\)</span>.</p>
+<p><span class="math display">\[\begin{align}
+h(\mathbf{z};\mathsf{W}, \boldsymbol{\mu}) = \mathsf{W}\cdot \mathbf{z} + \boldsymbol{\mu},
+\end{align}
+\]</span></p>
+<p>where the parameters <span class="math inline">\(\theta\)</span> are given by the <span class="math inline">\(D \times L\)</span> matrix <span class="math inline">\(\mathsf{W}\)</span>, commonly referred to as a <strong>loading matrix</strong>, and <span class="math inline">\(\boldsymbol{\mu}\)</span>, which is an additive term that sets the value of <span class="math inline">\(\mathbf{y}\)</span> when <span class="math inline">\(\mathbf{z} = 0\)</span>.</p>
+</section>
+<section id="i.i.d.-normally-distributed-data-points" class="level3" data-number="46.2.2">
+<h3 data-number="46.2.2" class="anchored" data-anchor-id="i.i.d.-normally-distributed-data-points"><span class="header-section-number">46.2.2</span> i.i.d. Normally distributed data points</h3>
+<p>In addition to choosing a linear function <span class="math inline">\(h(\mathbf{z};\mathsf{W}, \boldsymbol{\mu})\)</span>, we assume an i.i.d. Normal generative model,</p>
+<p><span class="math display">\[\begin{align}
+\mathbf{y}_i  \sim \text{Norm}(\mathsf{W}\cdot \mathbf{z}_i + \boldsymbol{\mu}, \mathsf{\Psi})\;\forall i,
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(\mathsf{\Psi}\)</span> is a <span class="math inline">\(D\times D\)</span> covariance matrix describing how the observed data vary from the linear model.</p>
+</section>
+<section id="a-diagonal-covariance-matrix" class="level3" data-number="46.2.3">
+<h3 data-number="46.2.3" class="anchored" data-anchor-id="a-diagonal-covariance-matrix"><span class="header-section-number">46.2.3</span> A diagonal covariance matrix</h3>
+<p>We typically take <span class="math inline">\(\mathsf{\Psi}\)</span> to be diagonal; the residuals of the observations are modeled to be uncorrelated (though the observations are correlated through the latent variables <span class="math inline">\(\mathbf{z}\)</span>). We therefore will define the vector <span class="math inline">\(\boldsymbol{\sigma}\)</span> to be the diagonal elements of <span class="math inline">\(\mathsf{\Psi}\)</span> such that <span class="math inline">\(\Psi = \text{diag}(\boldsymbol{\sigma}^2)\)</span>, where <span class="math inline">\(\boldsymbol{\sigma}^2\)</span> denotes element-wise squaring of the elements of <span class="math inline">\(\boldsymbol{\sigma}\)</span>.</p>
+</section>
+<section id="modeling-the-latent-variables" class="level3" data-number="46.2.4">
+<h3 data-number="46.2.4" class="anchored" data-anchor-id="modeling-the-latent-variables"><span class="header-section-number">46.2.4</span> Modeling the latent variables</h3>
+<p>The latent variables, though unmeasured, are still random variables, as they vary meaningfully from experiment to experiment. As such, we need to specify a generative model for them. We take the latent variables to be <span class="math inline">\(L\)</span>-variate Normally distributed. &nbsp; <span class="math display">\[\begin{align}
+\mathbf{z}_i  \sim \text{Norm}(\boldsymbol{\mu}_0, \mathsf{\Sigma}_0)\;\forall i.
+\end{align}\]</span></p>
+<p>Note that since we are using a linear model and <span class="math inline">\(\mathbf{z}_i\)</span> gets transformed according to <span class="math inline">\(\mathsf{W}\cdot \mathbf{z}_i + \boldsymbol{\mu}\)</span>, we can absorb <span class="math inline">\(\boldsymbol{\mu}_0\)</span> and <span class="math inline">\(\mathsf{\Sigma}_0\)</span> into <span class="math inline">\(\mathsf{W}\)</span> and <span class="math inline">\(\boldsymbol{\mu}\)</span>. Absorbing these as described, we can write</p>
+<p><span class="math display">\[\begin{align}
+\mathbf{z}_i \sim \text{Norm}(\mathbf{0}, \mathsf{I})\;\forall i,
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(\mathsf{I}\)</span> is the <span class="math inline">\(L\times L\)</span> identity matrix. Our model is then</p>
+<p><span class="math display">\[\begin{align}
+&amp;\mathsf{\Psi} = \text{diag}(\boldsymbol{\sigma}^2) \\[1em]
+&amp;\mathbf{z}_i \sim \text{Norm}(\mathbf{0}, \mathsf{I})\;\forall i, \\[1em]
+&amp;\mathbf{y}_i  \sim \text{Norm}(\mathsf{W}\cdot \mathbf{z}_i + \boldsymbol{\mu}, \mathsf{\Psi})\; \forall i
+\end{align}
+\]</span></p>
+</section>
+<section id="restrictions-on-the-loading-matrix" class="level3" data-number="46.2.5">
+<h3 data-number="46.2.5" class="anchored" data-anchor-id="restrictions-on-the-loading-matrix"><span class="header-section-number">46.2.5</span> Restrictions on the loading matrix</h3>
+<p>We will not go into too much detail here, but in general the loading matrix is nonidentifiable. There are several approaches to deal with the nonidentifiability, with a popular one being to enforce that the loading matrix <span class="math inline">\(\mathsf{W}\)</span> is semiorthogonal and unitary such that the columns are orthonormal vectors and <span class="math inline">\(\mathsf{W}^\mathsf{T}\cdot \mathsf{W} = \mathsf{I}\)</span>, the identity matrix. If <span class="math inline">\(\mathbf{w}_j\)</span> is a column of <span class="math inline">\(\mathsf{W}\)</span>, then</p>
+<p><span class="math display">\[\begin{align}
+\mathbf{w}_j^\mathsf{T}\cdot \mathbf{w}_k = \delta_{jk},
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(\delta_{jk}\)</span> is the Kronecker delta, which is equal to one when <span class="math inline">\(j = k\)</span> and zero otherwise.</p>
+<p>For clarity and for reference, the dimensionality of the variables are shown in the table below. The index <span class="math inline">\(i\)</span> indexes data points, and there are <span class="math inline">\(N\)</span> of them.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 20%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Variable</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\boldsymbol{\mu}\)</span></td>
+<td style="text-align: left;">location parameter of measurements</td>
+<td style="text-align: left;"><span class="math inline">\(D\)</span>-vector</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathsf{W}\)</span></td>
+<td style="text-align: left;">loading matrix</td>
+<td style="text-align: left;"><span class="math inline">\(D \times L\)</span> semiorthogonal unitary matrix</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\boldsymbol{\sigma}\)</span></td>
+<td style="text-align: left;">standard deviation for each measurement</td>
+<td style="text-align: left;">positive <span class="math inline">\(D\)</span>-vector</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathsf{\Psi}\)</span></td>
+<td style="text-align: left;">matrix representation of <span class="math inline">\(\boldsymbol{\sigma}^2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(D \times D\)</span> nonnegative diagonal matrix</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">$_i $</td>
+<td style="text-align: left;">Latent variable for datum <span class="math inline">\(i\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(L\)</span>-vector</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">$_i $</td>
+<td style="text-align: left;">Datum <span class="math inline">\(i\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(D\)</span>-vector</td>
+</tr>
+</tbody>
+</table>
+<p>The model described above is often referred to as a <strong>factor analysis model</strong>. We have already made simplifications to a latent variable model, namely that dependence of the observations on the latent variables is linear with a semiorthogonal unitary loading matrix, that both the observations and the latent variables are Normally distributed, and that multivariate Normal distribution of the observations has a diagonal covariance matrix.</p>
+</section>
+</section>
+<section id="probabilistic-pca" class="level2" data-number="46.3">
+<h2 data-number="46.3" class="anchored" data-anchor-id="probabilistic-pca"><span class="header-section-number">46.3</span> Probabilistic PCA</h2>
+<p>We consider first the special case where each entry in <span class="math inline">\(\boldsymbol{\sigma}\)</span> is the same, say <span class="math inline">\(\sigma\)</span>. In that case, <span class="math inline">\(\mathsf{\Psi} = \sigma\mathsf{I}\)</span>. We further restrict <span class="math inline">\(\mathsf{W}\)</span> to have orthonormal columns. The assumption here is that each data point is drawn from a Normal distribution with the same variance, but with mean <span class="math inline">\(\mathsf{W}\cdot \mathbf{z}_i + \boldsymbol{\mu}\)</span>. This special case is called <strong>probabilistic principle component analysis (PPCA)</strong>.</p>
+<p>The full model is</p>
+<p><span class="math display">\[\begin{align}
+&amp;\mathbf{z}_i \sim \text{Norm}(\mathbf{0}, \mathsf{I})\;\forall i, \\[1em]
+&amp;\mathbf{y}_i \sim \text{Norm}(\mathsf{W}\cdot \mathbf{z}_i + \boldsymbol{\mu}, \sigma^2 \mathsf{I})\; \forall i
+\end{align}
+\]</span></p>
+<p>Probabilistic PCA is a reasonable model; it assumes that each data point results from a linear combination of the latent variables and is uncorrelated with all other data points (except through the latent variables) with homoscedasticity.</p>
+<section id="maximum-likelihood-for-ppca" class="level3" data-number="46.3.1">
+<h3 data-number="46.3.1" class="anchored" data-anchor-id="maximum-likelihood-for-ppca"><span class="header-section-number">46.3.1</span> Maximum likelihood for PPCA</h3>
+<p>PPCA has an added advantage that the maximum likelihood estimates for <span class="math inline">\(\boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathsf{W}\)</span>, and <span class="math inline">\(\sigma\)</span> may be computed analytically. The result is</p>
+<p><span id="eq-ppca-map-sigma"><span class="math display">\[\begin{align}
+&amp;\boldsymbol{\mu}_\mathrm{MLE} = \bar{\mathbf{y}},\\[1em]
+&amp;\mathsf{W}_\mathrm{MLE} = \mathsf{U}\cdot(\mathsf{\Lambda} - \sigma^2\mathsf{I})^{\frac{1}{2}} \\[1em]
+&amp;\sigma_\mathrm{MLE}^2 = \frac{1}{D - L}\sum_{j=L+1}^D \lambda_j,
+\end{align}
+\tag{46.1}\]</span></span></p>
+<p>where <span class="math inline">\(=(\lambda_1, \ldots, \lambda_D)\)</span> are the eigenvalues of the <strong>empirical covariance matrix</strong> (the plug-in estimate for the covariance moatrix),</p>
+<p><span class="math display">\[\begin{align}
+\hat{\mathsf{\Sigma}} = \frac{1}{N}\sum_{i=1}^N(\mathbf{y}_i - \bar{y})\cdot(\mathbf{y}_i - \bar{y})^\mathsf{T},
+\end{align}\]</span></p>
+<p>ordered from largest to smallest, <span class="math inline">\(\mathsf{\Lambda} = \text{diag}((\lambda_1, \ldots, \lambda_L))\)</span>, and <span class="math inline">\(\mathsf{U}\)</span> is a matrix whose columns are the eigenvectors corresponding to eigenvalues <span class="math inline">\(\lambda_1, \ldots, \lambda_L\)</span>.</p>
+</section>
+<section id="recognition-distribution-for-ppca" class="level3" data-number="46.3.2">
+<h3 data-number="46.3.2" class="anchored" data-anchor-id="recognition-distribution-for-ppca"><span class="header-section-number">46.3.2</span> Recognition distribution for PPCA</h3>
+<p>Though we have MLEs for <span class="math inline">\(\boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathsf{W}\)</span>, and <span class="math inline">\(\sigma\)</span>, we still do not know how these relate to the latent variables <span class="math inline">\(\mathbf{z}\)</span>. We seek a <strong>regonition distribution</strong> for <span class="math inline">\(\mathbf{z}_i\)</span>, <span class="math inline">\(f(\mathbf{z}_i \mid \mathbf{y}_i)\)</span>. This is the distribution of the latent parameters conditioned on the high-dimensional measurements <span class="math inline">\(\mathbf{y}_i\)</span>. To find it, we can use Bayes’s theorem.</p>
+<p><span class="math display">\[\begin{align}
+f(\mathbf{z}_i \mid \mathbf{y}_i) = \frac{f(\mathbf{y}_i\mid  \mathbf{z}_i)\,f(\mathbf{z}_i)}{f(\mathbf{y}_i)}.
+\end{align}
+\]</span></p>
+<p>Because the denominator has no <span class="math inline">\(\mathbf{z}_i\)</span>-dependence, it is a normalization constant. The recognition distribution is then a product of two Normal distributions, since</p>
+<p><span class="math display">\[\begin{align}
+&amp;\mathbf{y}_i \mid \mathbf{z}_i \sim \text{Norm}(\mathsf{W}\cdot \mathbf{z}_i + \boldsymbol{\mu}, \mathsf{\Psi}),\\[1em]
+&amp;\mathbf{z}_i \sim \text{Norm}(\mathbf{0}, \mathsf{I}).
+\end{align}
+\]</span></p>
+<p>After some algebraic grunge, we can work out that the recognition distribution parametrized by the MLE values of <span class="math inline">\(\boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathsf{W}\)</span>, and <span class="math inline">\(\sigma\)</span> is given by</p>
+<p><span id="eq-ppca-1"><span class="math display">\[\begin{align}
+\mathbf{z}_i\mid \mathbf{y}_i \sim \text{Norm}(\boldsymbol{\mu}_{\mathbf{z}\mid\mathbf{y}_i}, \mathsf{\Sigma}_{\mathbf{z}}),
+\end{align}
+\tag{46.2}\]</span></span></p>
+<p>where</p>
+<p><span id="eq-ppca-2"><span class="math display">\[\begin{align}
+\mathsf{\Sigma}_{\mathbf{z}} = \sigma_\mathrm{MLE}^2\,(\sigma_\mathrm{MLE}^{2}\,\mathsf{I} + \mathsf{W}_\mathrm{MLE}^\mathsf{T}\cdot\mathsf{W}_\mathrm{MLE})^{-1}
+\end{align}
+\tag{46.3}\]</span></span></p>
+<p>and</p>
+<p><span id="eq-ppca-3"><span class="math display">\[\begin{align}
+\boldsymbol{\mu}_{\mathbf{z}\mid\mathbf{y}_i} = (\sigma_\mathrm{MLE}^{2}\,\mathsf{I} + \mathsf{W}_\mathrm{MLE}^\mathsf{T}\cdot\mathsf{W}_\mathrm{MLE})^{-1}\cdot\mathsf{W}_\mathrm{MLE}^\mathsf{T}\cdot(\mathbf{y_i - \boldsymbol{\mu}_\mathrm{MLE}}).
+\end{align}
+\tag{46.4}\]</span></span></p>
+<p>The “probabilistic” part of the name probabilistic PCA comes from the fact that we write a probability distribution for the latent parameters, which is given by equations <a href="#eq-ppca-1" class="quarto-xref"><span>46.2</span></a>, <a href="#eq-ppca-2" class="quarto-xref"><span>46.3</span></a>, and <a href="#eq-ppca-3" class="quarto-xref"><span>46.4</span></a>, above.</p>
+</section>
+</section>
+<section id="pca-as-a-limit-of-ppca" class="level2" data-number="46.4">
+<h2 data-number="46.4" class="anchored" data-anchor-id="pca-as-a-limit-of-ppca"><span class="header-section-number">46.4</span> PCA as a limit of PPCA</h2>
+<p>Consider now the limit of PPCA where <span class="math inline">\(\sigma\)</span> goes to zero. That is, we consider the limit where there is no noise in the measured data. The scale parameter of the recognition distribution vanishes and the location parameter becomes</p>
+<p><span id="eq-pca-latent-variable-estimate"><span class="math display">\[\begin{align}
+\boldsymbol{\mu}_{\mathbf{z}\mid\mathbf{y}_i} = (\mathsf{W}_\mathrm{MLE}^\mathsf{T}\cdot\mathsf{W}_\mathrm{MLE})^{-1}\cdot\mathsf{W}_\mathrm{MLE}^\mathsf{T}\cdot(\mathbf{y_i - \bar{\mathbf{y}}}),
+\end{align}
+\tag{46.5}\]</span></span></p>
+<p>with the MLE for the loading matrix given by</p>
+<p><span class="math display">\[\begin{align}
+\mathsf{W}_\mathrm{MLE} = \mathsf{U}\cdot\mathsf{\Lambda}^{\frac{1}{2}}.
+\end{align}
+\]</span></p>
+<p>Note that because the scale parameter of the recognition distribution is artificially set to zero in the PCA model, <span class="math inline">\(\boldsymbol{\mu}_{\mathbf{z}\mid\mathbf{y}_i}\)</span> is our estimate for <span class="math inline">\(\mathbf{z}_i\)</span>. In this setting, we refer to the estimate of the latent variables <span class="math inline">\(\mathbf{z}_i\)</span> as the <strong>principal components</strong>. We could get confidence regions for the principal components by bootstrapping, but that is seldom done. After all, we artifically set <span class="math inline">\(\sigma = 0\)</span> to get the principal component. Instead of bootstrapping, we could just perform PPCA and get the distribution of the latent parameter values. Though it is important to note that these are themselves functions of the MLE of the parameters <span class="math inline">\(\boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathsf{W}\)</span>, and <span class="math inline">\(\sigma\)</span>.</p>
+<p>As a final note, looking at the form of our estimate of the latent variables given in <a href="#eq-pca-latent-variable-estimate" class="quarto-xref">Equation&nbsp;<span>46.5</span></a>, we see that it is the solution to the least squares problem</p>
+<p><span class="math display">\[\begin{align}
+\mathbf{z}_i = \text{arg min}_{\mathbf{z}_i} \left\lVert (\mathbf{y}_i - \bar{\mathbf{y}}_i) - \mathsf{W}_\mathrm{MLE}\cdot\mathbf{z}_i\right\rVert_2^2.
+\end{align}
+\]</span></p>
+<p>The squared two-norm in the above equation is sometimes referred to as a <strong>loss function</strong>. The goal of PCA is to find <span class="math inline">\(\mathsf{W}_\mathrm{MLE}\)</span> and <span class="math inline">\(\mathbf{z}_i\)</span> that minimize it, as we have just shown. The idea is that the optimal projection of <span class="math inline">\(\mathbf{z}_i\)</span> onto <span class="math inline">\(\mathbf{y}_i\)</span> is the one that minimizes the difference (with the mean subtracted off).</p>
+<section id="centering-and-scaling-the-interpretation-of-hatmathsfsigma-and-maximal-variance" class="level3" data-number="46.4.1">
+<h3 data-number="46.4.1" class="anchored" data-anchor-id="centering-and-scaling-the-interpretation-of-hatmathsfsigma-and-maximal-variance"><span class="header-section-number">46.4.1</span> Centering and scaling, the interpretation of <span class="math inline">\(\hat{\mathsf{\Sigma}}\)</span>, and maximal variance</h3>
+<p>Assume for a moment that the mean of <span class="math inline">\(\mathbf{y}\)</span> is zero,</p>
+<p><span class="math display">\[\begin{align}
+\bar{\mathbf{y}} = \frac{1}{N}\sum_{i=1}^N \mathbf{y}_i = \mathbf{0},
+\end{align}
+\]</span></p>
+<p>and the variance of each of the <span class="math inline">\(D\)</span> entries in <span class="math inline">\(\mathbf{y}\)</span> is one,</p>
+<p><span class="math display">\[\begin{align}
+s_j = \frac{1}{N}\sum_{i=1}^N (y_{i,j} - \bar{y}_j)^2 = \frac{1}{N}\sum_{i=1}^N y_{i,j}^2 = 1\;\forall j\in[1, D].
+\end{align}
+\]</span></p>
+<p>We can always <strong>center and scale</strong> our data such that they have a mean of 0 and a variance of 1 by subtracting the plug-in estimate for the mean from every data point and dividing the result by the plug-in estimate for the standard deviation.</p>
+<p>In that case, the entries of <span class="math inline">\(\hat{\mathsf{\Sigma}}\)</span> are</p>
+<p><span id="eq-pca-plugin-covariance"><span class="math display">\[\begin{align}
+\hat{\Sigma}_{jk} = \frac{1}{N}\sum_{i=1}^N y_{ij}\, y_{ik} = \frac{1}{N}\sum_{i=1}^N (y_{ij} - \bar{y_j})(y_{ik} - \bar{y_k}),
+\end{align}
+\tag{46.6}\]</span></span></p>
+<p>which we recognize as the elements of the empirical covariance matrix (or, equivalently, since the diagonal entries are all one, an empirical correlation matrix). Thus, <span class="math inline">\(\hat{\mathsf{\Sigma}}\)</span> is the plug-in estimate for the covariance matrix when using centered-and-scaled data.</p>
+<p>Consider a principal component <span class="math inline">\(z_{ij}\)</span>. The plug-in estimate for the variance of this is</p>
+<p><span class="math display">\[\begin{align}
+\widehat{\mathbb{V}(z_{ij})} = \frac{1}{N}\sum_{i=1}^N z_{ij}^2 - \left(\frac{1}{N}\sum_{i=1}^Nz_{ij}\right)^2.
+\end{align}
+\]</span></p>
+<p>Let us compute the first moment.</p>
+<p><span class="math display">\[\begin{align}
+\frac{1}{N}\sum_{i=1}^Nz_{ij} = \frac{1}{N}\sum_{i=1}^N \mathbf{w}_{j}^\mathsf{T} \cdot \mathbf{y}_i = \mathbf{w}_{j}^\mathsf{T}\cdot\left(\frac{1}{N}\sum_{i=1}^N \mathbf{y}_i\right) = 0,
+\end{align}\]</span></p>
+<p>where we have recognized the average in parentheses to be zero since the data are centered. Therefore, the plug-in estimate for the variance is</p>
+<p><span class="math display">\[\begin{align}
+\widehat{\mathbb{V}(z_{ij})} = \frac{1}{N}\sum_{i=1}^N z_{ij}^2 = \frac{1}{N}\sum_{i=1}^N \frac{1}{N}\sum_{i=1}^N(\mathbf{y}_i^\mathsf{T}\cdot\mathbf{w}_j)^2.
+\end{align}\]</span></p>
+<p>This is a quadratic form involving the covariance matrix <span class="math inline">\(\hat{\mathsf{\Sigma}}\)</span>.</p>
+<p><span class="math display">\[\begin{align}
+\widehat{\mathbb{V}(z_{ij})} = \mathbf{w}_j^\mathsf{T}\cdot\hat{\mathsf{\Sigma}}\cdot\mathbf{w}_j.
+\end{align}\]</span></p>
+<p>Recall that the loss function is</p>
+<p><span class="math display">\[\begin{align}
+\text{loss}(\mathsf{W}) = \frac{1}{N}\sum_{i=1}^N \mathbf{y}_i^\mathsf{T}\cdot\mathbf{y}_i - \sum_{j=1}^L \mathbf{w}_j^\mathsf{T}\cdot\hat{\mathsf{\Sigma}}\cdot\mathbf{w}_j
+= \text{constant} - \widehat{\mathbb{V}(z_{ij})}.
+\end{align}\]</span></p>
+<p>Therefore, finding the transformation <span class="math inline">\(\mathbf{w}_j\)</span> that minimizes the loss function is the same as finding the transformation that maximizes the variance of the projection. This is why the principal components are often referred to as the directions that have maximal variance.</p>
+<p>As a final note, I mention that it is important to center and scale the data set before performing PCA because given directions may have high variance just because of the scaling of the measurement. This is generally not the variance we wish to interpret.</p>
+</section>
+<section id="prescription-for-pca" class="level3" data-number="46.4.2">
+<h3 data-number="46.4.2" class="anchored" data-anchor-id="prescription-for-pca"><span class="header-section-number">46.4.2</span> Prescription for PCA</h3>
+<p>Following the above analysis, we arrive at a prescription for PCA. After choosing the number of principal components <span class="math inline">\(L\)</span>, do the following.</p>
+<ol type="1">
+<li>Center and scale the data set by subtracting the mean and dividing by the standard deviation along each dimension.</li>
+<li>Compute the empirical covariance matrix.</li>
+<li>Compute the first <span class="math inline">\(L\)</span> eigenvalues and eigenvectors.</li>
+<li>Construct the loading matrix <span class="math inline">\(\mathsf{W}\)</span> from the eigenvectors corresponding to the <span class="math inline">\(L\)</span> largest eigenvalues.</li>
+<li>The principal components are <span class="math inline">\(\mathbf{z}_i = \mathbf{W}^\mathsf{T} \cdot \mathbf{y}_i \;\forall i\)</span>.</li>
+</ol>
+</section>
+<section id="sec-nonidentifiability-of-pca" class="level3" data-number="46.4.3">
+<h3 data-number="46.4.3" class="anchored" data-anchor-id="sec-nonidentifiability-of-pca"><span class="header-section-number">46.4.3</span> Nonidentifiability of PCA</h3>
+<p>The loading matrix <span class="math inline">\(\mathsf{W}\)</span> is comprised of the eigenvectors of the empirical covariance matrix and therefore the columns are orthogonal, since the covariance matrix is symmetric. However, any of these eigenvectors can be multiplied by a scalar (which is true in general for an eigenvector; if <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector of <span class="math inline">\(\mathsf{A}\)</span>, then so is <span class="math inline">\(\alpha \mathbf{v}\)</span> for real <span class="math inline">\(\alpha \ne 0\)</span>.) We can insist that the columns of <span class="math inline">\(\mathsf{W}\)</span> for an <em>orthonormal</em> basis, such that the magnitude of each eigenvector is 1, which is what is commonly done. However, any given column of <span class="math inline">\(\mathsf{W}\)</span> may be multiplied by <span class="math inline">\(-1\)</span>, still resulting in a nonidentifiability. We therefore cannot <em>uniquely</em> find a loading matrix <span class="math inline">\(\mathsf{W}\)</span> and therefore a unique set of principal components.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bebi103a\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../lessons/models/variate_covariate/variate_covariate_implementation.html" class="pagination-link" aria-label="Implementation of MLE for variate-covariate models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Implementation of MLE for variate-covariate models</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../lessons/models/pca/pca_implementation.html" class="pagination-link" aria-label="Implementation of PCA">
+        <span class="nav-page-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Implementation of PCA</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><em>BE/Bi 103 a 2025</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

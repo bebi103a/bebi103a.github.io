@@ -679,6 +679,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">HW 5.2: Wrangling and hacker stats with Darwin’s finches</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/bootstrapping_with_bootstrapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 6.1: Bootstrapping theory with… bootstrapping!</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/heavy_tails_and_outliers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 7.1: Heavy-tailed distributions and outliers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/mt_mle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 7.2: MLE of microtubule catastrophe data</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1953,12 +1971,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>false</td>
-<td>85.0</td>
-</tr>
-<tr class="even">
 <td>true</td>
 <td>75.0</td>
+</tr>
+<tr class="even">
+<td>false</td>
+<td>85.0</td>
 </tr>
 </tbody>
 </table>
@@ -1999,12 +2017,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>false</td>
-<td>85.0</td>
-</tr>
-<tr class="even">
 <td>true</td>
 <td>75.0</td>
+</tr>
+<tr class="even">
+<td>false</td>
+<td>85.0</td>
 </tr>
 </tbody>
 </table>
@@ -2300,24 +2318,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.corrcoef(x[mask], y[mask])[<span class="dv">0</span>, <span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now we want to compute the bivariate correlation coefficient for confidence when correct and confidence when incorrect for insomniacs and for normal sleepers. In our call to <code>agg()</code>, we use <code>pl.struct</code> to generate a series of data type <code>struct</code> containing the columns we need for the calculation of the correlation coefficient. We then use <code>map_elements()</code> to use the above function to do the calculation.</p>
+<p>Now we want to compute the bivariate correlation coefficient for confidence when correct and confidence when incorrect for insomniacs and for normal sleepers. In our call to <code>agg()</code>, we use <code>pl.struct</code> to generate a series of data type <code>struct</code> containing the columns we need for the calculation of the correlation coefficient. We then use <code>map_batches()</code> to use the above function to do the calculation.</p>
 <div id="cell-49" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    df</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    .group_by(<span class="st">'insomnia'</span>, maintain_order<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        pl.struct([<span class="st">'confidence when correct'</span>, <span class="st">'confidence when incorrect'</span>])</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        .map_elements(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        .map_batches(</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">lambda</span> s:</span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>            bivariate_corr(</span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                s.struct.field(<span class="st">'confidence when correct'</span>).to_numpy(), </span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                s.struct.field(<span class="st">'confidence when incorrect'</span>).to_numpy()</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>            ), </span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>           return_dtype<span class="op">=</span><span class="bu">float</span>, returns_scalar<span class="op">=</span><span class="va">True</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        .alias(<span class="st">'bivariate correlation'</span>)</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>           return_dtype<span class="op">=</span><span class="bu">float</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>           returns_scalar<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        .alias(<span class="st">'bivariate correlation'</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div><style>
 .dataframe > thead > tr,
@@ -2401,10 +2420,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group_name, sub_df <span class="kw">in</span> df.group_by([<span class="st">'gender'</span>, <span class="st">'insomnia'</span>]):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(group_name, <span class="st">": "</span>, sub_df[<span class="st">"percent correct"</span>].median())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>('m', True) :  83.75
-('f', False) :  85.0
+<pre><code>('f', True) :  72.5
+('m', True) :  83.75
 ('m', False) :  82.5
-('f', True) :  72.5</code></pre>
+('f', False) :  85.0</code></pre>
 </div>
 </div>
 <p>By using the <code>GroupBy</code> object as an iterator, it yields the name of the group (which I assigned as <code>group_name</code>) and the corresponding sub-data frame (which I assigned <code>sub_df</code>). Note that the group name is <em>always</em> given as a tuple, even when only grouping by a single column.</p>
@@ -2424,12 +2443,12 @@ False :  85.0</code></pre>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,polars,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
-Python version       : 3.13.5
-IPython version      : 9.4.0
+Python version       : 3.13.7
+IPython version      : 9.5.0
 
 numpy     : 2.2.6
-polars    : 1.31.0
-jupyterlab: 4.4.5
+polars    : 1.33.1
+jupyterlab: 4.4.9
 </code></pre>
 </div>
 </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Polars for Pandas users – BE/Bi 103 a 2025</title>
+<title>41&nbsp; MLE lesson exercises – BE/Bi 103 a 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,65 +20,30 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../lessons/eda/plotting/plotting.html" rel="next">
-<link href="../../../lessons/eda/polars/styling_data_frames.html" rel="prev">
-<link href="../../../logo.png" rel="icon" type="image/png">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../lessons/models/oft_encountered_models.html" rel="next">
+<link href="../../lessons/mle/parallel_conf_ints.html" rel="prev">
+<link href="../../logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-da61f9a05e9cefe097d79e8430a73dd4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7c1dcb25931f0f6f86a40129f542609a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,12 +71,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../../custom.css">
+<link rel="stylesheet" href="../../custom.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -123,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/eda/exploratory_data_analysis.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="../../../lessons/eda/polars/polars_for_pandas.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/mle/intro_mle.html">Parameter estimation</a></li><li class="breadcrumb-item"><a href="../../lessons/mle/mle_lesson_exercise.html"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">MLE lesson exercises</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -137,12 +99,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../../"></a> 
+      <a href="../../"></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -154,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About the course</span></a>
   </div>
 </li>
@@ -169,13 +131,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../policies.html" class="sidebar-item-text sidebar-link">
+  <a href="../../policies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course policies</span></a>
   </div>
 </li>
@@ -183,13 +145,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/what_are_we_doing/what_are_we_doing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/what_are_we_doing/what_are_we_doing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What are we doing?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/eda/exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/eda/exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploratory data analysis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -198,97 +160,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/polars/intro_to_polars.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/polars/intro_to_polars.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data frames and Polars</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/polars/tidy_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/polars/tidy_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tidy data and split-apply-combine</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/polars/styling_data_frames.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/polars/styling_data_frames.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Styling data frames</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/polars/polars_for_pandas.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../lessons/eda/polars/polars_for_pandas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/plotting/plotting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/plotting/plotting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data display</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/plotting/plotting_with_bokeh.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/plotting/plotting_with_bokeh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Making plots with Bokeh</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/plotting/plotting_smooth_curves.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/plotting/plotting_smooth_curves.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Plotting smooth curves</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/plotting/categorical_axes_bokeh.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/plotting/categorical_axes_bokeh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plots with categorical variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/plotting/visualizing_distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/plotting/visualizing_distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualizing distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/plotting/iqplot.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/plotting/iqplot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">High level plotting with iqplot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/plotting/styling_bokeh.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/plotting/styling_bokeh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Styling Bokeh plots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/wrangling/manipulating_data_frames_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/wrangling/manipulating_data_frames_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Manipulating data frames and wrangling data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/wrangling/merging_dataframes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/wrangling/merging_dataframes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Merging and concatenating data frames</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/wrangling/unpivoting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/wrangling/unpivoting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Making a data frame tall</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/wrangling/pivoting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/wrangling/pivoting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Making a data frame wide</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/eda/eda_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/eda/eda_lesson_exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">EDA lesson exercises</span></span></a>
   </div>
 </li>
@@ -296,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/probability_and_sampling/probability_and_sampling.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/probability_and_sampling/probability_and_sampling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probability: The foundation for generative modeling</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -305,37 +267,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/probability_and_sampling/definition_and_interpretation_of_probability.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/probability_and_sampling/definition_and_interpretation_of_probability.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Probability: definitions and interpretations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/probability_and_sampling/probability_distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/probability_and_sampling/probability_distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/probability_and_sampling/random_number_generation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/probability_and_sampling/random_number_generation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Random number generation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/probability_and_sampling/rng_with_numpy.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/probability_and_sampling/rng_with_numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Random number generation using Numpy</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/probability_and_sampling/luria_delbruck.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/probability_and_sampling/luria_delbruck.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Simulating the Luria-Delbrück distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/probability_and_sampling/probability_and_sampling_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/probability_and_sampling/probability_and_sampling_lesson_exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Probability and sampling lesson exercises</span></span></a>
   </div>
 </li>
@@ -343,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/nonparametric/nonparametric_inference.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/nonparametric/nonparametric_inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Nonparametric inference and confidence intervals</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -352,37 +314,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nonparametric/plugin/point_estimates.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nonparametric/plugin/point_estimates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Plug-in estimates</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nonparametric/plugin/bias.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nonparametric/plugin/bias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bias</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nonparametric/plugin/confidence_intervals.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nonparametric/plugin/confidence_intervals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nonparametric/bootstrap/intro_bootstrap.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nonparametric/bootstrap/intro_bootstrap.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Performing bootstrap calculations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nonparametric/bootstrap/pairs_bootstrap_correlation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nonparametric/bootstrap/pairs_bootstrap_correlation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Pairs bootstrap and correlation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nonparametric/nonparametric_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nonparametric/nonparametric_lesson_exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Nonparametric inference lesson exercise</span></span></a>
   </div>
 </li>
@@ -390,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/nhst/intro_nhst.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/nhst/intro_nhst.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Null hypothesis significance testing</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -399,25 +361,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nhst/nhst.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nhst/nhst.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Null hypothesis significance testing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nhst/opinions_about_nhst.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nhst/opinions_about_nhst.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Comments and opinions on NHST</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nhst/hacker_nhst.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nhst/hacker_nhst.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Hacker’s approach to NHST</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/nhst/nhst_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/nhst/nhst_lesson_exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">NHST lesson exercises</span></span></a>
   </div>
 </li>
@@ -425,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/modeling/why_models.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/modeling/why_models.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Generative modeling</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -434,13 +396,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/modeling/statistical_modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/modeling/statistical_modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Statistical modeling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/modeling/building_a_generative_model.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/modeling/building_a_generative_model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Building a generative model</span></span></a>
   </div>
 </li>
@@ -448,7 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/mle/intro_mle.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/mle/intro_mle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Parameter estimation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -457,37 +419,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/mle/method_of_moments.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/mle/method_of_moments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Method of moments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/mle/mle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/mle/mle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Maximum likelihood estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/mle/numerical_mle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/mle/numerical_mle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Numerical maximum likelihood estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/mle/mle_confidence_intervals.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/mle/mle_confidence_intervals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Confidence regions and confidence intervals for a MLE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/mle/parallel_conf_ints.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/mle/parallel_conf_ints.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Parallel bootstrap calculations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/mle/mle_lesson_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/mle/mle_lesson_exercise.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">MLE lesson exercises</span></span></a>
   </div>
 </li>
@@ -495,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/models/oft_encountered_models.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/models/oft_encountered_models.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Oft encountered models</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -504,43 +466,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/models/mixture_models.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/models/mixture_models.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Mixture models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/models/variate_covariate/intro_variate_covariate.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/models/variate_covariate/intro_variate_covariate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Variate-covariate models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/models/variate_covariate/model_building.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/models/variate_covariate/model_building.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Building a variate-covariate model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/models/variate_covariate/mle_for_variate_covariate_models.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/models/variate_covariate/mle_for_variate_covariate_models.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Maximum likelihood estimation for variate-covariate models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/models/variate_covariate/variate_covariate_implementation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/models/variate_covariate/variate_covariate_implementation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Implementation of MLE for variate-covariate models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/models/pca/pca_theory.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/models/pca/pca_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Principal component analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/models/pca/pca_implementation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/models/pca/pca_implementation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">Implementation of PCA</span></span></a>
   </div>
 </li>
@@ -548,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/model_assessment/intro_model_assessment.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/model_assessment/intro_model_assessment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model assessment</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -557,31 +519,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/model_assessment/graphical_model_assessment.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/model_assessment/graphical_model_assessment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Graphical model assessment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/model_assessment/information_criteria.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/model_assessment/information_criteria.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">Model comparison with the Akaike information criterion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/model_assessment/implementation_of_graphical_model_selection.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/model_assessment/implementation_of_graphical_model_selection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">Graphical model assessment for univariate models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/model_assessment/predictive_regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/model_assessment/predictive_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Graphical model assessment: Predictive regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/model_assessment/aic.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/model_assessment/aic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Model comparison with the AIC</span></span></a>
   </div>
 </li>
@@ -589,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../lessons/statistical_watchouts/statistical_watchouts.html" class="sidebar-item-text sidebar-link">
+            <a href="../../lessons/statistical_watchouts/statistical_watchouts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistical watchouts</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -598,19 +560,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/statistical_watchouts/olkin_petkau_zidek.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/statistical_watchouts/olkin_petkau_zidek.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">The Olkin-Petkau-Zidek example of MLE fragility</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/statistical_watchouts/nonidentifiable.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/statistical_watchouts/nonidentifiable.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">Nonidentifiable models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lessons/statistical_watchouts/dancing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/statistical_watchouts/dancing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Dancing statistics</span></span></a>
   </div>
 </li>
@@ -627,79 +589,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/plotting_an_elephant.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/plotting_an_elephant.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 1.1: Plotting an elephant</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/penguins_split_apply_combine.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/penguins_split_apply_combine.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 1.2: Palmer penguins and split-apply-combine</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/mt_ecdf.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/mt_ecdf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 2.1: Microtubule catastrophe and ECDFs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/cool_gal4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/cool_gal4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/beetle_hypnotists.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/beetle_hypnotists.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 3.1: Beetle hypnotists</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/marginal_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/marginal_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 3.2: A marginal distribution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/normal_approximations.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/normal_approximations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 4.1: Normal approximations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/simulating_distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/simulating_distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 4.2: Simulating distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/mt_catastrophe_nonparam_conf_int.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/mt_catastrophe_nonparam_conf_int.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 5.1: Confidence intervals for microtubule catastrophe</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/hacker_stats_with_finches.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/hacker_stats_with_finches.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 5.2: Wrangling and hacker stats with Darwin’s finches</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/bootstrapping_with_bootstrapping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/bootstrapping_with_bootstrapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 6.1: Bootstrapping theory with… bootstrapping!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/heavy_tails_and_outliers.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/heavy_tails_and_outliers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 7.1: Heavy-tailed distributions and outliers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../homework/mt_mle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../homework/mt_mle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 7.2: MLE of microtubule catastrophe data</span></a>
   </div>
 </li>
@@ -716,7 +678,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/notation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/notation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
   </div>
 </li>
@@ -731,91 +693,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/setting_up_python_computing_environment.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/setting_up_python_computing_environment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuring your computer to use Python for scientific computing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/notebooks_and_latex/intro_to_jupyterlab.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/notebooks_and_latex/intro_to_jupyterlab.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Introduction to JupyterLab</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/notebooks_and_latex/intro_to_latex.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/notebooks_and_latex/intro_to_latex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to LaTeX</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/hello_world.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/hello_world.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Hello, world.</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/variables_operators_types.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/variables_operators_types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Variables, operators, and types</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/lists_and_tuples.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/lists_and_tuples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Lists and tuples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/iteration.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/iteration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/intro_to_functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/intro_to_functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Introduction to functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/string_methods.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/string_methods.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">String methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/dictionaries.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/dictionaries.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Dictionaries</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/comprehensions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/comprehensions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Comprehensions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/packages_and_modules.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/packages_and_modules.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Packages and modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/exceptions_and_error_handling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/exceptions_and_error_handling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Errors and exception handling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/file_io.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/file_io.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">File I/O</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../appendices/python_basics/intro_to_numpy_and_scipy.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendices/python_basics/intro_to_numpy_and_scipy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">P</span>&nbsp; <span class="chapter-title">Introduction to Numpy and Scipy</span></span></a>
   </div>
 </li>
@@ -833,20 +795,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In this section</h2>
    
   <ul>
-  <li><a href="#a-sample-data-frame" id="toc-a-sample-data-frame" class="nav-link active" data-scroll-target="#a-sample-data-frame"><span class="header-section-number">5.1</span> A sample data frame</a></li>
-  <li><a href="#from-polars-to-pandas-and-from-pandas-to-polars" id="toc-from-polars-to-pandas-and-from-pandas-to-polars" class="nav-link" data-scroll-target="#from-polars-to-pandas-and-from-pandas-to-polars"><span class="header-section-number">5.2</span> From Polars to Pandas and from Pandas to Polars</a></li>
-  <li><a href="#pandas-and-polars-for-common-tasks" id="toc-pandas-and-polars-for-common-tasks" class="nav-link" data-scroll-target="#pandas-and-polars-for-common-tasks"><span class="header-section-number">5.3</span> Pandas and Polars for common tasks</a></li>
-  <li><a href="#hierarchical-indexes" id="toc-hierarchical-indexes" class="nav-link" data-scroll-target="#hierarchical-indexes"><span class="header-section-number">5.4</span> Hierarchical indexes</a></li>
-  <li><a href="#computing-environment" id="toc-computing-environment" class="nav-link" data-scroll-target="#computing-environment"><span class="header-section-number">5.5</span> Computing environment</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link active" data-scroll-target="#exercise-1"><span class="header-section-number">41.1</span> Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">41.2</span> Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">41.3</span> Exercise 3</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lessons/eda/exploratory_data_analysis.html">Exploratory data analysis</a></li><li class="breadcrumb-item"><a href="../../../lessons/eda/polars/polars_for_pandas.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/mle/intro_mle.html">Parameter estimation</a></li><li class="breadcrumb-item"><a href="../../lessons/mle/mle_lesson_exercise.html"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">MLE lesson exercises</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-polars-for-pandas" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Polars for Pandas users</span></span></h1>
+<h1 class="title"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">MLE lesson exercises</span></h1>
 </div>
 
 
@@ -863,617 +823,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2025/blob/main/polars_for_pandas.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2025/refs/heads/main/polars_for_pandas.ipynb">Download notebook</a></p>
+<p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2025/blob/main/mle_lesson_exercise.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2025/refs/heads/main/mle_lesson_exercise.ipynb">Download notebook</a></p>
 <hr>
-<div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars watermark"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    process <span class="op">=</span> subprocess.Popen(cmd.split(), stdout<span class="op">=</span>subprocess.PIPE, stderr<span class="op">=</span>subprocess.PIPE)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    stdout, stderr <span class="op">=</span> process.communicate()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<div id="cell-2" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<hr>
-<p>As of September 2025, <a href="https://pandas.pydata.org/">Pandas</a> is far and away the most widely used data frame package for Python. We are using Polars primarily because, in my opinion, the API is more intuitive and therefore easier for beginners and experts alike to use. It is also faster, sometimes much faster. It is, however, important to know about Pandas and how to use it because many of your colleagues use it and many packages you may use do, too.</p>
-<p>Therefore, in this part of the lesson, I discuss how to convert a Polars data frame to Pandas, and vice versa. I also provide syntax for doing common tasks in Polars and Pandas. It is also worth reading the <a href="https://docs.pola.rs/user-guide/migration/pandas/">section of the Polars user guide comparing Pandas and Polars</a>.</p>
-<section id="a-sample-data-frame" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="a-sample-data-frame"><span class="header-section-number">5.1</span> A sample data frame</h2>
-<p>For ease of discussion and comparison, we will use a simple data frame that has two categorical columns, <code>'c1'</code>, and <code>'c2'</code>, two quantitative columns as floats, <code>'q1'</code>, and <code>'q2'</code>, and a column, <code>'i1'</code> of integer values. It also has an identity column, a unique identifier for each row that is useful when converting the data frame to tall format. Note that <code>'q1'</code> has a null value and <code>'q2'</code> has a NaN value.</p>
-<div id="cell-5" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span><span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>)),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    c1<span class="op">=</span>[<span class="st">'a'</span>]<span class="op">*</span><span class="dv">4</span> <span class="op">+</span> [<span class="st">'b'</span>]<span class="op">*</span><span class="dv">4</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    c2<span class="op">=</span>[<span class="st">'c'</span>, <span class="st">'d'</span>] <span class="op">*</span> <span class="dv">4</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    q1<span class="op">=</span>[<span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.1</span>, <span class="va">None</span>, <span class="fl">2.9</span>, <span class="fl">1.7</span>, <span class="fl">3.0</span>, <span class="fl">7.3</span>],</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    q2<span class="op">=</span>[<span class="fl">4.5</span>, <span class="fl">2.3</span>, np.nan, <span class="fl">1.1</span>, <span class="fl">7.8</span>, <span class="fl">2.3</span>, <span class="fl">1.1</span>, <span class="fl">0.8</span>],</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    i1<span class="op">=</span>[<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.DataFrame(data)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<div><style>
-.dataframe > thead > tr,
-.dataframe > tbody > tr {
-  text-align: right;
-  white-space: pre-wrap;
-}
-</style>
-<small>shape: (8, 6)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">c1</th>
-<th data-quarto-table-cell-role="th">c2</th>
-<th data-quarto-table-cell-role="th">q1</th>
-<th data-quarto-table-cell-role="th">q2</th>
-<th data-quarto-table-cell-role="th">i1</th>
-</tr>
-<tr class="even">
-<td>i64</td>
-<td>str</td>
-<td>str</td>
-<td>f64</td>
-<td>f64</td>
-<td>i64</td>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>"a"</td>
-<td>"c"</td>
-<td>1.1</td>
-<td>4.5</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>"a"</td>
-<td>"d"</td>
-<td>2.2</td>
-<td>2.3</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>"a"</td>
-<td>"c"</td>
-<td>3.1</td>
-<td>NaN</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>"a"</td>
-<td>"d"</td>
-<td>null</td>
-<td>1.1</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>"b"</td>
-<td>"c"</td>
-<td>2.9</td>
-<td>7.8</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>"b"</td>
-<td>"d"</td>
-<td>1.7</td>
-<td>2.3</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>"b"</td>
-<td>"c"</td>
-<td>3.0</td>
-<td>1.1</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>"b"</td>
-<td>"d"</td>
-<td>7.3</td>
-<td>0.8</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<section id="exercise-1" class="level2" data-number="41.1">
+<h2 data-number="41.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">41.1</span> Exercise 1</h2>
+<p>Why is the likelihood function not a probability?</p>
+<p><br></p>
 </section>
-<section id="from-polars-to-pandas-and-from-pandas-to-polars" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="from-polars-to-pandas-and-from-pandas-to-polars"><span class="header-section-number">5.2</span> From Polars to Pandas and from Pandas to Polars</h2>
-<p>If you have a Polars data frame, you can directly convert it to a Pandas data frame using the <code>to_pandas()</code>, method. Let’s do that for our data frame.</p>
-<div id="cell-7" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.to_pandas()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">c1</th>
-<th data-quarto-table-cell-role="th">c2</th>
-<th data-quarto-table-cell-role="th">q1</th>
-<th data-quarto-table-cell-role="th">q2</th>
-<th data-quarto-table-cell-role="th">i1</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>1</td>
-<td>a</td>
-<td>c</td>
-<td>1.1</td>
-<td>4.5</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>2</td>
-<td>a</td>
-<td>d</td>
-<td>2.2</td>
-<td>2.3</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>3</td>
-<td>a</td>
-<td>c</td>
-<td>3.1</td>
-<td>NaN</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>4</td>
-<td>a</td>
-<td>d</td>
-<td>NaN</td>
-<td>1.1</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>5</td>
-<td>b</td>
-<td>c</td>
-<td>2.9</td>
-<td>7.8</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
-<td>6</td>
-<td>b</td>
-<td>d</td>
-<td>1.7</td>
-<td>2.3</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">6</th>
-<td>7</td>
-<td>b</td>
-<td>c</td>
-<td>3.0</td>
-<td>1.1</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">7</th>
-<td>8</td>
-<td>b</td>
-<td>d</td>
-<td>7.3</td>
-<td>0.8</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>Note that the null value becomes a NaN. All missing data in Pandas are NaN. (Well, not really. You can have an <code>object</code> data type for a column that permits <code>None</code> values. However, when Pandas reads in data, when there are missing data, it assigns it to be NaN by default.)</p>
-<p>Note also that Pandas has an index displayed on the left side of the data frame. In general, we will not use Pandas indexes.</p>
-<p>Similarly, if you have a data frame in Pandas, you can convert it to a Polars data frame using the <code>pl.from_pandas()</code> function.</p>
-<div id="cell-9" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pl.from_pandas(pd.DataFrame(data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<div><style>
-.dataframe > thead > tr,
-.dataframe > tbody > tr {
-  text-align: right;
-  white-space: pre-wrap;
-}
-</style>
-<small>shape: (8, 6)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">c1</th>
-<th data-quarto-table-cell-role="th">c2</th>
-<th data-quarto-table-cell-role="th">q1</th>
-<th data-quarto-table-cell-role="th">q2</th>
-<th data-quarto-table-cell-role="th">i1</th>
-</tr>
-<tr class="even">
-<td>i64</td>
-<td>str</td>
-<td>str</td>
-<td>f64</td>
-<td>f64</td>
-<td>i64</td>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>"a"</td>
-<td>"c"</td>
-<td>1.1</td>
-<td>4.5</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>"a"</td>
-<td>"d"</td>
-<td>2.2</td>
-<td>2.3</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>"a"</td>
-<td>"c"</td>
-<td>3.1</td>
-<td>null</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>"a"</td>
-<td>"d"</td>
-<td>null</td>
-<td>1.1</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>"b"</td>
-<td>"c"</td>
-<td>2.9</td>
-<td>7.8</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>"b"</td>
-<td>"d"</td>
-<td>1.7</td>
-<td>2.3</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>"b"</td>
-<td>"c"</td>
-<td>3.0</td>
-<td>1.1</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>"b"</td>
-<td>"d"</td>
-<td>7.3</td>
-<td>0.8</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<section id="exercise-2" class="level2" data-number="41.2">
+<h2 data-number="41.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">41.2</span> Exercise 2</h2>
+<p>When is maximum likelihood estimation a <em>constrained</em> optimization problem? How can you handle constraints when using BFGS? How about when using Powell’s method?</p>
+<p><br></p>
 </section>
-<section id="pandas-and-polars-for-common-tasks" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="pandas-and-polars-for-common-tasks"><span class="header-section-number">5.3</span> Pandas and Polars for common tasks</h2>
-<p>Below is a table listing common tasks with data frame done using Polars and Pandas.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 33%">
-<col style="width: 28%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Description</th>
-<th>Pandas</th>
-<th>Polars</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Convert dictionary to df</td>
-<td><code>pd.DataFrame(data)</code></td>
-<td><code>pl.DataFrame(data)</code></td>
-</tr>
-<tr class="even">
-<td>Make 2D Numpy array into df</td>
-<td><code>pd.DataFrame(my_ar, columns=['col1', 'col2', 'col3'])</code></td>
-<td><code>pl.DataFrame(my_ar, schema=['col1', 'col2', 'col3'], orient='row')</code></td>
-</tr>
-<tr class="odd">
-<td>Read from CSV</td>
-<td><code>pd.read_csv(file_name)</code></td>
-<td><code>pl.read_csv(file_name)</code></td>
-</tr>
-<tr class="even">
-<td>Lazily read CSV</td>
-<td>—</td>
-<td><code>pl.scan_csv(file_name)</code></td>
-</tr>
-<tr class="odd">
-<td>Read from Excel</td>
-<td><code>pd.read_excel(file_name)</code></td>
-<td><code>pl.read_excel(file_name)</code></td>
-</tr>
-<tr class="even">
-<td>Read from JSON</td>
-<td><code>pd.read_json(file_name)</code></td>
-<td><code>pl.read_json(file_name)</code></td>
-</tr>
-<tr class="odd">
-<td>Read from HDF5</td>
-<td><code>pd.read_hdf(file_name)</code></td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>Write CSV</td>
-<td><code>df.to_csv(fname, index=False)</code></td>
-<td><code>df.write_csv(fname)</code></td>
-</tr>
-<tr class="odd">
-<td>Rename columns</td>
-<td><code>df.rename(columns={'c1': 'cat1', 'c2': 'cat2'})</code></td>
-<td><code>df.rename({'c1': 'cat1', 'c2': 'cat2'})</code></td>
-</tr>
-<tr class="even">
-<td>Get column <code>'q1'</code> as series</td>
-<td><code>df['q1']</code> or <code>df.get_column('q1')</code> or <code>df.loc[:,'q1']</code></td>
-<td><code>df['q1']</code> or <code>df.get_column('q1')</code></td>
-</tr>
-<tr class="odd">
-<td>Get column <code>'q1'</code> as data frame</td>
-<td><code>df[['q1']]</code> or <code>df.loc[:,['q1']]</code></td>
-<td><code>df.select('q1')</code></td>
-</tr>
-<tr class="even">
-<td>Get columns <code>'c1'</code> and <code>'q2'</code></td>
-<td><code>df[['c1', 'q2']]</code> or <code>df.loc[:, ['c1', 'q2']]</code></td>
-<td><code>df.select('c1', 'q2')</code></td>
-</tr>
-<tr class="odd">
-<td>Get columns containing floats</td>
-<td><code>df.select_dtypes(float)</code></td>
-<td><code>df.select(cs.float())</code></td>
-</tr>
-<tr class="even">
-<td>Get row <code>4</code></td>
-<td><code>df.loc[4, :]</code></td>
-<td><code>df.row(4)</code> or <code>df.row(4, named=True)</code></td>
-</tr>
-<tr class="odd">
-<td>Get row <code>4</code> as data frame</td>
-<td><code>df.loc[[4], :]</code></td>
-<td><code>df[4]</code></td>
-</tr>
-<tr class="even">
-<td>Get row where <code>i1</code> is <code>2</code></td>
-<td><code>df.loc[df['i1']==2, :]</code></td>
-<td><code>df.row(by_predicate=pl.col('i1')==2)</code> or <code>df.filter(pl.col('i1')==2)</code></td>
-</tr>
-<tr class="odd">
-<td>Sub df with rows where <code>c1</code> is <code>'a'</code></td>
-<td><code>df.loc[df['c1']=='a', :]</code></td>
-<td><code>df.filter(pl.col('c1')=='a')</code></td>
-</tr>
-<tr class="even">
-<td>Sub df where <code>c1</code> is <code>'a'</code> and <code>c2</code> is <code>'d'</code></td>
-<td><code>df.loc[(df['c1']=='a') &amp; (df['c2']=='d'), :]</code></td>
-<td><code>df.filter((pl.col('c1')=='a') &amp; (pl.col('c2')=='d'))</code></td>
-</tr>
-<tr class="odd">
-<td>Iterate over columns of df</td>
-<td><code>for col, s in df.items()</code></td>
-<td><code>for s in df</code></td>
-</tr>
-<tr class="even">
-<td>Iterate over rows of df</td>
-<td><code>for row_ind, row in df.iterrows()</code></td>
-<td><code>for r in df.iter_rows(named=True)</code></td>
-</tr>
-<tr class="odd">
-<td>Group by single column</td>
-<td><code>df.groupby('c1')</code></td>
-<td><code>df.group_by('c1')</code></td>
-</tr>
-<tr class="even">
-<td>Group by maintaining order</td>
-<td><code>df.groupby('c1', sort=False)</code></td>
-<td><code>df.group_by('c1', maintain_order=True)</code></td>
-</tr>
-<tr class="odd">
-<td>Group by multiple columns</td>
-<td><code>df.groupby(['c1', 'c2'])</code></td>
-<td><code>df.group_by(['c1', 'c2'])</code></td>
-</tr>
-<tr class="even">
-<td>Iterate over groups</td>
-<td><code>for group, subdf in df.groupby('c1')</code></td>
-<td><code>for (group,), subdf in df.group_by('c1')</code></td>
-</tr>
-<tr class="odd">
-<td>Iterate over nested groups</td>
-<td><code>for (g1, g2), subdf in df.groupby(['c1', 'c2'])</code></td>
-<td><code>for (g1, g2), subdf in df.group_by(['c1', 'c2'])</code></td>
-</tr>
-<tr class="even">
-<td>Group by and apply mean¹</td>
-<td><code>df.groupby('c1').mean(numeric_only=True)</code></td>
-<td><code>df.group_by('c1').mean()</code></td>
-</tr>
-<tr class="odd">
-<td>Group by and apply median to one column</td>
-<td><code>df.groupby('c1')['q1'].median()</code></td>
-<td><code>df.group_by('c1').agg(pl.col('q1').median())</code></td>
-</tr>
-<tr class="even">
-<td>Group by and apply mean to two columns</td>
-<td><code>df.groupby('c1')[['q1', 'q2']].mean()</code></td>
-<td><code>df.group_by('c1').agg(pl.col('q1', 'q2').mean())</code></td>
-</tr>
-<tr class="odd">
-<td>Group by and apply custom func to col²</td>
-<td><code>df.groupby('c1')['q1'].apply(my_fun)</code></td>
-<td><code>df.group_by('c1').agg(pl.col('q1').map_batches(my_fun, return_dtype=float, returns_scalar=True))</code></td>
-</tr>
-<tr class="even">
-<td>Group by and apply custom func to 2 cols³</td>
-<td><code>df.groupby('c1')[['q1', 'q2']].apply(my_fun)</code></td>
-<td><code>df.group_by('c1').agg(pl.struct(['q1', 'q2']).map_batches(my_fun, return_dtype=float, returns_scalar=True))</code></td>
-</tr>
-<tr class="odd">
-<td>Group by and rank within each group</td>
-<td><code>df.groupby('c1')['q1'].rank()</code></td>
-<td><code>df.select(pl.col('q1').rank().over('c1'))</code></td>
-</tr>
-<tr class="even">
-<td>Convert to tall format</td>
-<td><code>df.melt(value_name='value', var_name='var', id_vars='id')</code></td>
-<td><code>df.unpivot(value_name='value', variable_name='var', index='id')</code></td>
-</tr>
-<tr class="odd">
-<td>Pivot tall result above</td>
-<td><code>df_tall.pivot(columns='var', index='id').reset_index()</code></td>
-<td><code>df_tall.pivot(on='var', index='id')</code></td>
-</tr>
-<tr class="even">
-<td>Select columns with string in name</td>
-<td><code>df.filter(regex='q')</code> or <code>df[df.columns[df.columns.str.contains('q')]]</code></td>
-<td><code>df.select(cs.contains('q'))</code></td>
-</tr>
-<tr class="odd">
-<td>Add column of zeros to data frame</td>
-<td><code>df['new_col'] = 0</code> or <code>df.assign(new_col=0)</code></td>
-<td><code>df.with_columns(pl.lit(0).alias('new_col'))</code></td>
-</tr>
-<tr class="even">
-<td>Add a Numpy array as column</td>
-<td><code>df['new_col'] = my_array</code> or <code>df.assign(new_col=my_array)</code></td>
-<td><code>df.with_columns(pl.Series(my_array).alias('new_col'))</code></td>
-</tr>
-<tr class="odd">
-<td>Multiply two columns; make new column</td>
-<td><code>df['q1q2'] = df['q1'] * df['q2']</code> or <code>df.assign(q1q2=df['q1'] * df['q2']</code></td>
-<td><code>df.with_columns((pl.col('q1') * pl.col('q2')).alias('q1q2'))</code></td>
-</tr>
-<tr class="even">
-<td>Apply a function to each row making new col⁴</td>
-<td><code>df.assign(new_col=my_fun)</code></td>
-<td><code>df.with_columns(pl.struct(pl.all()).map_elements(my_fun, return_dtype=float).alias('new_col'))</code></td>
-</tr>
-<tr class="odd">
-<td>Drop rows with missing data</td>
-<td><code>df.dropna()</code></td>
-<td><code>df.drop_nulls()</code></td>
-</tr>
-<tr class="even">
-<td>Sort according to a column</td>
-<td><code>df.sort_values(by='i1')</code></td>
-<td><code>df.sort(by='i1')</code></td>
-</tr>
-<tr class="odd">
-<td>Inner join two data frames⁵</td>
-<td><code>pd.merge(df, df2, on=shared_columns)</code></td>
-<td><code>df.join(df2, on=shared_columns)</code></td>
-</tr>
-<tr class="even">
-<td>Concatenate data frames vertically</td>
-<td><code>pd.concat((df, df2))</code></td>
-<td><code>pl.concat((df, df2), how='diagonal')</code></td>
-</tr>
-<tr class="odd">
-<td>Concatenate data frames horizontally</td>
-<td><code>pd.concat((df, df2), axis=1)</code></td>
-<td><code>pl.concat((df, df2), how='horizontal')</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Footnotes</strong></p>
-<ol type="1">
-<li>Note that in Pandas, NaNs are omitted from calculations like means. In Polars, NaNs <em>are included</em>, and the result will be NaN. However, <code>null</code>s are not included.</li>
-<li>For Pandas, the function <code>my_fun</code> must take an <code>array_like</code> data type (list, Numpy array, Pandas Series, etc.) as input. For Polars, the function <code>my_fun</code> must take a Polars Series as input. It is wise to specify the data type of the output of the function (shown as <code>float</code> in the above example, but can be whatever type <code>my_fun</code> returns). A Pandas example: <code>my_fun = lambda x: np.sum(np.sin(x))</code>. A Polars example: <code>my_fun = lambda s: s.exp().sum()</code>.</li>
-<li>For Pandas, the function must take a Pandas DataFrame as an argument. For Polars, it must take a Polars Series with a struct data type. A Pandas example: <code>my_fun = lambda df: (np.sin(df['q1']) * df['q2']).sum()</code>. A Polars example: <code>my_fun = lambda s: (s.struct.field('q1').sin() * s.struct.field('q2')).sum()</code></li>
-<li>For Pandas, <code>my_fun</code> must take as its argument a Pandas Series with an index containing the names of the columns of the original data frame. For Polars, <code>my_fun</code> must take as its argument a dictionary with keys given by the names of the columns of the original data frame. The functions may then have the same syntax (though possibly with different type hints). An example: <code>my_fun = lambda r: r['i1'] * np.sin(r['q2'])</code>. However, note that in Polars, a <code>null</code> value is treated as <code>None</code>, which means you cannot apply a function to it, multiply by it, etc.</li>
-<li>For Polars, the <code>on</code> kwarg for <code>df.join()</code> is required. With Pandas, which columns to join on are inferred based on like-names of columns.</li>
-</ol>
-</section>
-<section id="hierarchical-indexes" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="hierarchical-indexes"><span class="header-section-number">5.4</span> Hierarchical indexes</h2>
-<p>Pandas supports hierarchical indexes, called <code>MultiIndex</code>es. This is not supported by Polars. Polars will not read a CSV file with hierarchical indexes. If you have a data set in a CSV file with hierarchical indexes, you can convert it to a CSV file in tall format where the <code>MultiIndex</code> has been converted to columns using the <code>bebi103.utils.unpivot_csv()</code> function. This operation is akin to a <code>df.melt()</code> operation on a data frame with a hierarchical index. You can then read the converted CSV file into Polars and begin working with it.</p>
-</section>
-<section id="computing-environment" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">5.5</span> Computing environment</h2>
-<div id="cell-14" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,pandas,polars,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Python implementation: CPython
-Python version       : 3.13.7
-IPython version      : 9.5.0
-
-numpy     : 2.2.6
-pandas    : 2.3.2
-polars    : 1.33.1
-jupyterlab: 4.4.7
-</code></pre>
-</div>
-</div>
+<section id="exercise-3" class="level2" data-number="41.3">
+<h2 data-number="41.3" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">41.3</span> Exercise 3</h2>
+<p>Write down any questions or points of confusion that you have.</p>
 
 
 </section>
@@ -1881,13 +1245,13 @@ jupyterlab: 4.4.7
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../lessons/eda/polars/styling_data_frames.html" class="pagination-link" aria-label="Styling data frames">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Styling data frames</span></span>
+      <a href="../../lessons/mle/parallel_conf_ints.html" class="pagination-link" aria-label="Parallel bootstrap calculations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Parallel bootstrap calculations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../lessons/eda/plotting/plotting.html" class="pagination-link" aria-label="Data display">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data display</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../lessons/models/oft_encountered_models.html" class="pagination-link" aria-label="Oft encountered models">
+        <span class="nav-page-text">Oft encountered models</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

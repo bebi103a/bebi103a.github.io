@@ -3294,6 +3294,28 @@
     ]
   },
   {
+    "objectID": "homework/mt_ecdf.html",
+    "href": "homework/mt_ecdf.html",
+    "title": "HW 2.1: Microtubule catastrophe and ECDFs",
+    "section": "",
+    "text": "This problem is a team problem.\nThis problem is worth 35 points.\nData set download\n\nAn ECDF evaluated at point x is defined as\nECDF(x) = fraction of data points ≤ x.\nThe ECDF is defined on the entire real number line, with \\(\\mathrm{ECDF}(x\\to-\\infty) = 0\\) and \\(\\mathrm{ECDF}(x\\to\\infty) = 1\\). However, the ECDF is often plotted as discrete points, \\(\\{(x_i, y_i)\\}\\), where for point \\(i\\), \\(x_i\\) is the value of the measured quantity and \\(y_i\\) is \\(\\mathrm{ECDF}(x_i)\\). For example, if I have a set of measured data with values (1.1, –6.7, 2.3, 9.8, 2.3), the points on the ECDF plot are\n\n\n\nx\ny\n\n\n\n\n–6.7\n0.2\n\n\n1.1\n0.4\n\n\n2.3\n0.6\n\n\n2.3\n0.8\n\n\n9.8\n1.0\n\n\n\nIn this problem, you will use you newly acquired skills using Numpy and Bokeh to compute ECDFs from a real data set and plot them.\nGardner, Zanic, and coworkers investigated the dynamics of microtubule catastrophe, the switching of a microtubule from a growing to a shrinking state. In particular, they were interested in the time between the start of growth of a microtubule and the catastrophe event. They monitored microtubules by using tubulin (the monomer that comprises a microtubule) that was labeled with a fluorescent marker. As a control to make sure that fluorescent labels and exposure to laser light did not affect the microtubule dynamics, they performed a similar experiment using differential interference contrast (DIC) microscopy. They measured the time until catastrophe with labeled and unlabeled tubulin.\nWe will look at the data used to generate Fig. 2a of their paper. In the end, you will generate a plot similar to that figure.\na) Write a function with the call signature ecdfvals(data), which takes a one-dimensional Numpy array (or Polars Series; the same construction of your function should work for both) of data and returns the x and y values for plotting the ECDF in the “dots” style, as in Fig. 2a of the Gardner, Zanic, et al. paper. As a reminder,\n\nECDF(x) = fraction of data points ≤ x.\n\nWhen you write this function, you may only use base Python and the standard library, in addition to Numpy and Polars.\nb) Use the ecdfvals() function that you wrote to plot the ECDFs shown in Fig. 2a of the Gardner, Zanic, et al. paper. By looking this plot, do you think that the fluorescent labeling makes a difference in the onset of catastrophe? (We will do a more careful statistical inference later in the course, but for now, does it pass the eye test? Eye tests are an important part of EDA, but certainly not an end point.) You can access the data set here: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv",
+    "crumbs": [
+      "Homework",
+      "HW 2.1: Microtubule catastrophe and ECDFs"
+    ]
+  },
+  {
+    "objectID": "homework/cool_gal4.html",
+    "href": "homework/cool_gal4.html",
+    "title": "HW 2.2: EDA for a temperature controlled Gal4-UAS system",
+    "section": "",
+    "text": "This problem is worth 65 points.\nDataset download\n\nOne of my former students, Han Wang, published (Wang, H., …, Sternberg, P.W. (2017). cGAL, a temperature-robust GAL4-UAS system for Caenorhabditis elegans, Nat. Methods, 14(2), 145-148) an improved Gal4/UAS system in C. elegans. Briefly, the Gal4-UAS system was hijacked from budding yeast and incorporated into the genomes of other organisms, Drosophila being the first. The idea is to insert the Gal4 gene into the genome such that it is under control of a driver that is native to the organism. When Gal4 is expressed, it binds to UAS (upstream activation sequence) and it is activating, leading to expression of the UAS target gene.\nIn the paper, Han used the system with UAS activating production of green fluorescent protein (GFP). The Gal4 production is driven by Pmyo-2, which is only expressed in the pharynx of the worm.\nThe Gal4/UAS system typically works only at high temperatures. This does not work as well in worms that are stored at lower temperatures. Han therefore engineered a “cool” Gal4, which works at lower temperatures. To test how the new system worked, he measured the GFP fluorescence signal in the pharynx of worms.\nHe generously donated his data set for us to work with. He sent me a MS Excel file with the data, along with some comments via email. Here is what he said in that email about the data set (verbatim):\n\nSC (orignal Gal4)\nSK (cool Gal4)\nm3 Pmyo-2::GFP fusion (control; measure of driver expression)\n15 20 and 25 at the end for the name of each column shows the experimental temperature.\n\nYou can download the MS Excel file here: https://s3.amazonaws.com/bebi103.caltech.edu/data/wang_cool_gal4.xlsx.\na) Load and tidy the DataFrame. Be sure to remove any NaNs.\nb) Do some exploratory data analysis of the data set. That is, make some instructive plots. Discuss why you chose to visualize the data set the way(s) you did. What can you say about Han’s cool Gal4 just by looking at the plots?",
+    "crumbs": [
+      "Homework",
+      "HW 2.2: EDA for a temperature controlled Gal4-UAS system"
+    ]
+  },
+  {
     "objectID": "appendices/notation.html",
     "href": "appendices/notation.html",
     "title": "Appendix A — Notation",

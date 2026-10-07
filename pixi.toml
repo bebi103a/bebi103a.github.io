@@ -43,7 +43,6 @@ scikit-learn = ">=1.7.1,<2"
 scipy = ">=1.16.0,<2"
 seaborn = ">=0.13.2,<0.14"
 selenium = ">=4.34.2,<5"
-setuptools = ">=80.9.0,<81"
 statsmodels = ">=0.14.5,<0.15"
 sympy = ">=1.14.0,<2"
 toolz = ">=1.0.0,<2"
@@ -66,7 +65,6 @@ black = ">=25.1.0, <26"
 blackcellmagic = ">=0.0.2, <0.0.3"
 build = ">=1.2.2.post1, <2"
 cmdstanpy = ">=1.2.5, <2"
-commonmark = ">=0.9.1, <0.10"
 daft-pgm = ">=0.1.4, <0.2"
 great-tables = ">=0.18.0, <0.19"
 h5pyd = ">=0.21.0, <0.22"
@@ -76,7 +74,6 @@ jupytext = ">=1.17.2, <2"
 jupyter-cache = ">=1.0.1, <2"
 jupyterlab = "*"
 jupyter-bokeh = ">=4.0.5, <5"
-jupyterlab-quarto = ">=0.3.5, <0.4"
 jupyterlab-spellchecker = ">=0.8.4, <0.9"
 markdown-it-py = "*"
 marimo = ">=0.14.13, <0.15"
@@ -95,3 +92,13 @@ default_width = "full"
 [tool.marimo.runtime]
 autorun_on_startup = false
 on_cell_change = "lazy"
+
+[feature.dev.dependencies]
+setuptools = ">=80.9.0,<81"
+
+[feature.dev.pypi-dependencies]
+jupyterlab-quarto = ">=0.3.5, <0.4"
+commonmark = ">=0.9.1, <0.10"
+
+[environments]
+dev = ["dev"]

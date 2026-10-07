@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>42&nbsp; Mixture models – BE/Bi 103 a 2026</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -64,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -80,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aced932c6eb97d642153b8e218288f9f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ce48a3f02a1a94fca2583af14ebdcdba.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-063ac7c83bb43962cac3e16e79c6af26.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7169de792ddd8a904faef6c72a318f4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,12 +105,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -129,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -172,8 +166,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../"></a> 
@@ -872,7 +865,7 @@ window.Quarto = {
 <p><a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/singer_transcript_counts.csv">Dataset download</a></p>
 <hr>
 <div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars iqplot bebi103 watermark"</span></span>
@@ -881,10 +874,10 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-2" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> multiprocessing</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
@@ -897,7 +890,7 @@ window.Quarto = {
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iqplot</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
     <style>
         .bk-notebook-logo {
@@ -1235,13 +1228,13 @@ function(Bokeh) {
 <h2 data-number="42.1" class="anchored" data-anchor-id="multiple-cell-types"><span class="header-section-number">42.1</span> Multiple cell types?</h2>
 <p>While the Negative Binomial model could work for some genes, exploratory data analysis shows an obvious bimodality in the distribution of counts of Rex1 transcripts.</p>
 <div id="cell-5" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(os.path.join(data_path, <span class="st">"singer_transcript_counts.csv"</span>), comment_prefix<span class="op">=</span><span class="st">"#"</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(os.path.join(data_path, <span class="st">"singer_transcript_counts.csv"</span>), comment_prefix<span class="op">=</span><span class="st">"#"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df, q<span class="op">=</span><span class="st">"Rex1"</span>, x_axis_label<span class="op">=</span><span class="st">"Rex1 mRNA count"</span>, conf_int<span class="op">=</span><span class="va">True</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="fa2c431a-3412-41be-a8d8-152747f5a2f0" data-root-id="p1002" style="display: contents;"></div>
@@ -1325,7 +1318,7 @@ x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right
 <h3 data-number="42.3.3" class="anchored" data-anchor-id="the-log-likelihood"><span class="header-section-number">42.3.3</span> The log-likelihood</h3>
 <p>With these two considerations in mind, let’s code up the log-likelihood.</p>
 <div id="cell-12" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_mix(alpha1, b1, alpha2, b2, w, n):</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_mix(alpha1, b1, alpha2, b2, w, n):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Log-likeihood of binary Negative Binomial mixture model."""</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Enforce w as a probability</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">or</span> w <span class="op">&gt;</span> <span class="dv">1</span>:</span>
@@ -1345,14 +1338,14 @@ x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># log-likelihood for each measurement</span></span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    log_likes <span class="op">=</span> scipy.special.logsumexp(np.vstack([logx1, logx2]), axis<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span>lse_coeffs)</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(log_likes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(log_likes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="initial-guess" class="level3" data-number="42.3.4">
 <h3 data-number="42.3.4" class="anchored" data-anchor-id="initial-guess"><span class="header-section-number">42.3.4</span> Initial guess</h3>
 <p>The optimization problem is more difficult now, since we have five parameters. We should provide the best initial guesses we can. To come up with guesses, we note in the ECDF that the second inflection point occurs around a value of the ECDF of 0.2. We thus can guess <span class="math inline">\(w \approx 0.2\)</span>. To get guesses for <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(b_1\)</span>, we take the first 20% of the counts and get an MLE using the single-Negative Binomial model. We do the same for the remaining 80% of counts to get guesses for <span class="math inline">\(\alpha_2\)</span> and <span class="math inline">\(b_2\)</span>. To do this, we need to borrow our MLE function from a previous lesson.</p>
 <div id="cell-14" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_iid_nbinom(params, n):</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_iid_nbinom(params, n):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Log likelihood for i.i.d. NBinom measurements, parametrized</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">    by alpha, b=1/beta."""</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    alpha, b <span class="op">=</span> params</span>
@@ -1379,11 +1372,11 @@ x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> res.success:</span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res.x</span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">'Convergence failed with message'</span>, res.message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">'Convergence failed with message'</span>, res.message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now write a function to get an initial guess of the <span class="math inline">\(\alpha\)</span>’s and <span class="math inline">\(b\)</span>’s.</p>
 <div id="cell-16" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initial_guess_mix(n, w_guess):</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initial_guess_mix(n, w_guess):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate initial guess for mixture model."""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    n_low <span class="op">=</span> n[n <span class="op">&lt;</span> np.percentile(n, <span class="dv">100</span> <span class="op">*</span> w_guess)]</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    n_high <span class="op">=</span> n[n <span class="op">&gt;=</span> np.percentile(n, <span class="dv">100</span> <span class="op">*</span>  w_guess)]</span>
@@ -1391,18 +1384,18 @@ x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    alpha1, b1 <span class="op">=</span> mle_iid_nbinom(n_low)</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    alpha2, b2 <span class="op">=</span> mle_iid_nbinom(n_high)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> alpha1, b1, alpha2, b2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> alpha1, b1, alpha2, b2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s give it a test run.</p>
 <div id="cell-18" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the values for Rex1</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the values for Rex1</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> df[<span class="st">'Rex1'</span>].to_numpy()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Guess for w</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>w_guess <span class="op">=</span> <span class="fl">0.2</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate initial guess</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>initial_guess_mix(n, w_guess)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>initial_guess_mix(n, w_guess)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>(2.2311645373503657, 8.87458109227595, 6.5393762491360174, 25.47713821741079)</code></pre>
 </div>
@@ -1413,7 +1406,7 @@ x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right
 <h3 data-number="42.3.5" class="anchored" data-anchor-id="performing-the-optimization"><span class="header-section-number">42.3.5</span> Performing the optimization</h3>
 <p>Now we’ll code up a function to generate the initial guess, and then perform the optimization. Note that below I have decreased the tolerance down to <span class="math inline">\(10^{-6}\)</span>. I found this to be necessary for this problem; the solver would be off by about 5% if I gave it similar, but different, initial guesses. The lower the tolerance, the closer to zero you require the gradient of the log likelihood to be.</p>
 <div id="cell-21" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mle_mix(n, w_guess):</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mle_mix(n, w_guess):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Obtain MLE estimate for parameters for binary mixture </span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    of Negative Binomials."""</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> warnings.catch_warnings():</span>
@@ -1430,14 +1423,14 @@ x_i = \frac{(n + \alpha_i - 1)!}{n!\,(\alpha_i-1)!}\,\left(\frac{1}{1+b_i}\right
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> res.success:</span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res.x</span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">'Convergence failed with message'</span>, res.message)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">'Convergence failed with message'</span>, res.message)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s get our MLE!</p>
 <div id="cell-23" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>popt <span class="op">=</span> mle_mix(n, w_guess)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>popt <span class="op">=</span> mle_mix(n, w_guess)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check out optimal parameters</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'α1 = </span><span class="sc">{0:f}</span><span class="ch">\n</span><span class="st">b1 = </span><span class="sc">{1:f}</span><span class="ch">\n</span><span class="st">α2 = </span><span class="sc">{2:f}</span><span class="ch">\n</span><span class="st">b2 = </span><span class="sc">{3:f}</span><span class="ch">\n</span><span class="st">w = </span><span class="sc">{4:f}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="op">*</span>popt))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'α1 = </span><span class="sc">{0:f}</span><span class="ch">\n</span><span class="st">b1 = </span><span class="sc">{1:f}</span><span class="ch">\n</span><span class="st">α2 = </span><span class="sc">{2:f}</span><span class="ch">\n</span><span class="st">b2 = </span><span class="sc">{3:f}</span><span class="ch">\n</span><span class="st">w = </span><span class="sc">{4:f}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="op">*</span>popt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>α1 = 3.497007
 b1 = 4.104918
@@ -1454,7 +1447,7 @@ w = 0.160422</code></pre>
 F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (1-w^*) F_2(n;\alpha_2^*,b_2^*).
 \end{align}\]</span></p>
 <div id="cell-25" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unpack parameters</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unpack parameters</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>alpha1_mle, b1_mle, alpha2_mle, b2_mle, w_mle <span class="op">=</span> popt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>n_theor <span class="op">=</span> np.arange(<span class="dv">0</span>, n.<span class="bu">max</span>()<span class="op">+</span><span class="dv">1</span>)</span>
@@ -1465,7 +1458,7 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>n_plot, cdf_plot <span class="op">=</span> bebi103.viz.cdf_to_staircase(n_theor, cdf_theor)</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>p.line(n_plot, cdf_plot, line_color<span class="op">=</span><span class="st">'orange'</span>, line_width<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="f3d3df34-5e23-4cae-9bb9-65b1ba1c7a7b" data-root-id="p1002" style="display: contents;"></div>
@@ -1502,7 +1495,7 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 <p>Alternatively, and in fact better, we can make a predictive ECDF plot. We will not do that here, as predictive ECDFs are covered in future lessons.</p>
 <p>We can, for comparison, also add the theoretical CDF for the Negative Binomial (non-mixture) model.</p>
 <div id="cell-27" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alpha_mle, b_mle <span class="op">=</span> mle_iid_nbinom(n)</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alpha_mle, b_mle <span class="op">=</span> mle_iid_nbinom(n)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>cdf_theor <span class="op">=</span> st.nbinom.cdf(n_theor, alpha_mle, <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> b_mle))</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1510,7 +1503,7 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>n_plot, cdf_plot <span class="op">=</span> bebi103.viz.cdf_to_staircase(n_theor, cdf_theor)</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>p.line(n_plot, cdf_plot, line_color<span class="op">=</span><span class="st">'tomato'</span>, line_width<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="eaa69623-e971-4b41-8e47-175b415dba9b" data-root-id="p1002" style="display: contents;"></div>
@@ -1550,7 +1543,7 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 <h3 data-number="42.3.7" class="anchored" data-anchor-id="confidence-interval-for-the-mixture-model"><span class="header-section-number">42.3.7</span> Confidence interval for the mixture model</h3>
 <p>Let’s now compute a confidence interval for the mixture model. To use <code>bebi103.bootstrap.draw_bs_reps_mle()</code>, we need to first write a function to generate data out of the mixture model. To do this, we first draw a random number to see which Negative Binomial distribution to draw the count out of (either the one parametrized with <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(b_1\)</span>, or the one parametrized with <span class="math inline">\(\alpha_2\)</span> and <span class="math inline">\(b_2\)</span>). We then draw a count out of the distribution we chose.</p>
 <div id="cell-30" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_mix(params, size, rng):</span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_mix(params, size, rng):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate data for the mixture model."""</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    alpha1, b1, alpha2, b2, w <span class="op">=</span> params</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -1563,11 +1556,11 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>            n[i] <span class="op">=</span> rng.negative_binomial(alpha2, <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>b2))</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now that we have this function in hand, we can generate our bootstrap samples (in parallel). This can take a while.</p>
 <div id="cell-32" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bs_reps <span class="op">=</span> bebi103.bootstrap.draw_bs_reps_mle(</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bs_reps <span class="op">=</span> bebi103.bootstrap.draw_bs_reps_mle(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    mle_mix,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    gen_mix,</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    n,</span>
@@ -1575,11 +1568,11 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    gen_args<span class="op">=</span>(),</span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">10_000</span>,</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=</span><span class="dv">9</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now that we have the bootstrap samples, we can compute our confidence intervals by taking percentiles. The columns are respectively for <span class="math inline">\(\alpha_1^*\)</span>, <span class="math inline">\(b_1^*\)</span>, <span class="math inline">\(\alpha_2^*\)</span>, <span class="math inline">\(b_2^*\)</span>, and <span class="math inline">\(w^*\)</span>.</p>
 <div id="cell-34" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.percentile(bs_reps, [<span class="fl">2.5</span>, <span class="fl">97.5</span>], axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.percentile(bs_reps, [<span class="fl">2.5</span>, <span class="fl">97.5</span>], axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>array([[ 2.00339497,  1.5458858 ,  4.16832771, 25.1146269 ,  0.11619696],
        [ 8.41091976,  8.45923126,  6.45015086, 38.94580183,  0.20824756]])</code></pre>
@@ -1587,7 +1580,7 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 </div>
 <p>We can visualize the confidence region with a corner plot.</p>
 <div id="cell-36" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Package replicates in data frame for plotting</span></span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Package replicates in data frame for plotting</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_res <span class="op">=</span> pl.DataFrame(data<span class="op">=</span>bs_reps, schema<span class="op">=</span>[<span class="st">"α1*"</span>, <span class="st">"b1*"</span>, <span class="st">"α2*"</span>, <span class="st">"b2*"</span>, <span class="st">"w*"</span>])</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bebi103.viz.corner(</span>
@@ -1595,7 +1588,7 @@ F(n;\alpha_1^*, b_1^*, \alpha_2^*, b_2^*, w^*) = w^* F_1(n;\alpha_1^*,b_1^*) + (
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    parameters<span class="op">=</span>[<span class="st">"α1*"</span>, <span class="st">"b1*"</span>, <span class="st">"α2*"</span>, <span class="st">"b2*"</span>, <span class="st">"w*"</span>],</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="b838484f-24aa-4852-a898-0bc090b1cffd" data-root-id="p3294" style="display: contents;"></div>
@@ -1645,7 +1638,7 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 \end{align}\]</span></p>
 <p>where <span class="math inline">\(i\)</span> indexes the distribution of the mixture and <span class="math inline">\(j\)</span> indexes the gene. We can code up the log likelihood of this by modifying our original <code>log_like_mix()</code> function to take in arrays.</p>
 <div id="cell-39" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_mix_all(alpha1, b1, alpha2, b2, w, n):</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_mix_all(alpha1, b1, alpha2, b2, w, n):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Log-likelihood of a mixuture model for</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">    all genes. Here, `alpha1`, `b1`, `alpha2`, and `b2` are</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">    all length 4 arrays, and `n` is 279 by 4. The</span></span>
@@ -1669,11 +1662,11 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># log-likelihood for each measurement</span></span>
 <span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    log_likes <span class="op">=</span> scipy.special.logsumexp(np.vstack([logx1, logx2]), axis<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span>lse_coeffs)</span>
 <span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(log_likes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(log_likes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The initial guess for this model is also a bit more challenging. While we can see immediately from the Rex1 counts that the lower mRNA counts account for about 20% of the cells, this is not obvious in the others. We can, however label a “pseudo cell type” for each row of the data frame; if the Rex1 expression is below the percentile corresponding to our guess for the value of <span class="math inline">\(w\)</span>, we consider this one part of the mixture, and if it is above, it is part of the other.</p>
 <div id="cell-41" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initial_guess_mix_all(df, w_guess):</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initial_guess_mix_all(df, w_guess):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    pseudo_cell_type <span class="op">=</span> df[<span class="st">"Rex1"</span>] <span class="op">&lt;</span> np.percentile(df[<span class="st">"Rex1"</span>], <span class="dv">100</span><span class="op">*</span>w_guess)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> []</span>
@@ -1688,19 +1681,19 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        guess <span class="op">+=</span> [alpha1, b1, alpha2, b2]</span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> guess <span class="op">+</span> [w_guess]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> guess <span class="op">+</span> [w_guess]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For speed later when we use bootstrap methods to compute the confidence intervals, we will compute this initial guess once and use it over and over to save on the four optimizations that are necessary to compute the initial guess.</p>
 <div id="cell-43" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>params_0 <span class="op">=</span> initial_guess_mix_all(df, <span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>params_0 <span class="op">=</span> initial_guess_mix_all(df, <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Also for speed, we should extract the counts from the data frame as a Numpy array.</p>
 <div id="cell-45" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> df.to_numpy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> df.to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can write a function to perform the MLE. First, we need to write a function to compute the negative log likelihood, including unpacking the 17 parameters.</p>
 <div id="cell-47" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neg_log_like_all(params, n):</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neg_log_like_all(params, n):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Negative log-likelihood.</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
@@ -1711,11 +1704,11 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    b2 <span class="op">=</span> params[<span class="dv">3</span><span class="op">*</span>n_genes:<span class="dv">4</span><span class="op">*</span>n_genes]</span>
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> params[<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>log_like_mix_all(alpha1, b1, alpha2, b2, w, n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>log_like_mix_all(alpha1, b1, alpha2, b2, w, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, we can perform the optimization. Because we will use bootstrapping in a moment to compute confidence intervals for the parameters, we will encapsulate the MLE calculation in a function.</p>
 <div id="cell-49" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mle_mix_all(n, params_0):</span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mle_mix_all(n, params_0):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Obtain MLE estimate for parameters for binary mixture </span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">    of Negative Binomials."""</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> warnings.catch_warnings():</span>
@@ -1732,11 +1725,11 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> res.success:</span>
 <span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res.x</span>
 <span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">'Convergence failed with message'</span>, res.message)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">'Convergence failed with message'</span>, res.message)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s do it!</p>
 <div id="cell-51" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mle <span class="op">=</span> mle_mix_all(n, params_0)</span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mle <span class="op">=</span> mle_mix_all(n, params_0)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Put in a data frame for ease of reference</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>df_mle <span class="op">=</span> pl.DataFrame(</span>
@@ -1746,7 +1739,7 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>df_mle <span class="op">=</span> df_mle.with_columns(parameter<span class="op">=</span>pl.Series([<span class="st">"alpha1"</span>, <span class="st">"b1"</span>, <span class="st">"alpha2"</span>, <span class="st">"b2"</span>, <span class="st">"w"</span>]))</span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the results</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>df_mle</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>df_mle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div><style>
 .dataframe > thead > tr,
@@ -1756,7 +1749,7 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 }
 </style>
 <small>shape: (5, 5)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Rex1</th>
@@ -1766,11 +1759,11 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <th data-quarto-table-cell-role="th">parameter</th>
 </tr>
 <tr class="even">
-<td>f64</td>
-<td>f64</td>
-<td>f64</td>
-<td>f64</td>
-<td>str</td>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>str</th>
 </tr>
 </thead>
 <tbody>
@@ -1816,7 +1809,7 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 </div>
 <p>The MLEs converged on <span class="math inline">\(w \approx 0.7\)</span>, which corresponds to <span class="math inline">\(w \approx 0.3\)</span> from before (we encountered label switching in this optimization). We can do a quick graphical assessment of the model.</p>
 <div id="cell-53" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_theor_cdf(gene, p):</span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_theor_cdf(gene, p):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Add a theoretical CDF to plot"""</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    n_theor <span class="op">=</span> np.arange(<span class="dv">0</span>, df[gene].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    w, alpha1, alpha2, b1, b2 <span class="op">=</span> [</span>
@@ -1852,7 +1845,7 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>    plots[i] <span class="op">=</span> plot_theor_cdf(gene, plots[i])</span>
 <span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Show them as a grid</span></span>
-<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.gridplot(plots, ncols<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.gridplot(plots, ncols<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="c56661b0-faa9-46e6-81f2-98a9efc87fd1" data-root-id="p2416" style="display: contents;"></div>
@@ -1891,7 +1884,7 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <h3 data-number="42.4.1" class="anchored" data-anchor-id="confidence-intervals-for-the-mixture-model-for-all-genes"><span class="header-section-number">42.4.1</span> Confidence intervals for the mixture model for all genes</h3>
 <p>We can attempt to compute confidence regions for the MLEs for this model for all four genes. We again start by writing a function to generate the data from the mixture model.</p>
 <div id="cell-56" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_mix_all(params, size, rng):</span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_mix_all(params, size, rng):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate data for the mixture model."""</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    alpha1 <span class="op">=</span> params[:<span class="dv">4</span>]</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    b1 <span class="op">=</span> params[<span class="dv">4</span>:<span class="dv">8</span>]</span>
@@ -1908,11 +1901,11 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
 <span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>            n[i] <span class="op">=</span> rng.negative_binomial(alpha2, <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> b2))</span>
 <span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now draw our bootstrap replicates. I will only draw a few replicates for now, though, and the reason will be clear when we see the result.</p>
 <div id="cell-58" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>bs_mle_reps <span class="op">=</span> bebi103.bootstrap.draw_bs_reps_mle(</span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>bs_mle_reps <span class="op">=</span> bebi103.bootstrap.draw_bs_reps_mle(</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    mle_mix_all,</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    gen_mix_all,</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    n,</span>
@@ -1920,7 +1913,7 @@ x_{ij} = \frac{(n + \alpha_{ij} - 1)!}{n!\,(\alpha_{ij}-1)!}\,\left(\frac{1}{1+b
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    gen_args<span class="op">=</span>(),</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
@@ -2020,8 +2013,8 @@ Cell <span class="ansi-green-fg">In[21], line 18</span>, in <span class="ansi-cy
 <section id="computing-environment" class="level2" data-number="42.6">
 <h2 data-number="42.6" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">42.6</span> Computing environment</h2>
 <div id="cell-62" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,polars,scipy,bokeh,iqplot,bebi103,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,polars,scipy,bokeh,iqplot,bebi103,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
 Python version       : 3.12.3
@@ -2093,14 +2086,13 @@ jupyterlab: 4.0.13
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>56&nbsp; The Olkin-Petkau-Zidek example of MLE fragility – BE/Bi 103 a 2026</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -80,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aced932c6eb97d642153b8e218288f9f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ce48a3f02a1a94fca2583af14ebdcdba.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-063ac7c83bb43962cac3e16e79c6af26.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7169de792ddd8a904faef6c72a318f4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -126,7 +120,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -169,8 +163,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../"></a> 
@@ -850,10 +843,10 @@ window.Quarto = {
 
 <p><a href="https://colab.research.google.com/github/bebi103a/bebi103a_notebooks_2026/blob/main/olkin_petkau_zidek.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab" title="Open in Google Colab"></a> | <a href="https://raw.githubusercontent.com/bebi103a/bebi103a_notebooks_2026/refs/heads/main/olkin_petkau_zidek.ipynb">Download notebook</a></p>
 <div id="e121995a-db28-4656-b343-bc2ba95c4ea2" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> st</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.special</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.optimize</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.optimize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p>In 1981, <a href="https://doi.org/10.1080/01621459.1981.10477697">Olkin, Petkau, and Zidek</a> demonstrated an example in which MLE estimates can very wildly with only small changes in the data. Here, we will work through their example.</p>
@@ -883,7 +876,7 @@ window.Quarto = {
 <p>is maximal.</p>
 <p>Computing the MLE for a discrete parameter can be a bit tricky. We could take the approach of exhaustively enumerating the log likelihood for many values of <span class="math inline">\(N\)</span> and then selecting the value of <span class="math inline">\(N\)</span> that give the largest log likelihood. Here is an implementation of that.</p>
 <div id="0551a4e5-ad48-441c-8508-0dd0cef34704" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mle_exhaustive(n, N_min<span class="op">=</span><span class="va">None</span>, N_max<span class="op">=</span><span class="dv">1000</span>):</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mle_exhaustive(n, N_min<span class="op">=</span><span class="va">None</span>, N_max<span class="op">=</span><span class="dv">1000</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Compute MLE for N and theta."""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Values of N we will enumerate</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> np.arange(np.<span class="bu">max</span>(n) <span class="cf">if</span> N_min <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> N_min, N_max<span class="op">+</span><span class="dv">1</span>)</span>
@@ -903,14 +896,14 @@ window.Quarto = {
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    N_mle <span class="op">=</span> N[i_mle]</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    theta_mle <span class="op">=</span> np.mean(n) <span class="op">/</span> N_mle</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> N_mle, theta_mle</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> N_mle, theta_mle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s put our function to use and compute the MLE!</p>
 <div id="f6309687-e856-4ef7-b85c-ac3d576f95a1" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed data</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> np.array([<span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">27</span>])</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mle_exhaustive(n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mle_exhaustive(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>(np.int64(99), np.float64(0.2181818181818182))</code></pre>
 </div>
@@ -918,10 +911,10 @@ window.Quarto = {
 <p>We get <span class="math inline">\(N^* = 99\)</span> and <span class="math inline">\(\theta^* = 0.22\)</span>.</p>
 <p>But now, let’s say that the final measurement has 28 positive results instead of 27. That’s a change of a single positive result in just one of the five experiments. Now let’s compute the MLE for this new data set.</p>
 <div id="f5e2e281-7276-445b-af01-548a159af405" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed data</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed data</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> np.array([<span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">28</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mle_exhaustive(n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mle_exhaustive(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>(np.int64(191), np.float64(0.11413612565445026))</code></pre>
 </div>
@@ -941,7 +934,7 @@ h(N) = \ln \Gamma(N+1) - \bar{n}\,\ln N + (N-\bar{n}) \ln\left(1-\frac{\bar{n}}{
 \end{align}\]</span></p>
 <p>Our strategy to find <span class="math inline">\(N^*\)</span> is to solve the above root finding problem for continuous <span class="math inline">\(N\)</span>, and then find which integer <span class="math inline">\(N\)</span> on either side of the root gives the maximal log likelihood. Note that in the limit of <span class="math inline">\(N\to \infty\)</span>, <span class="math inline">\(\mathrm{d}h/\mathrm{d}N = 0\)</span>. A finite root may not exist, meaning that the MLE is <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(\theta = 0\)</span>. In this limit, the number of positive results are Poisson distributed (the <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(\theta \to 0\)</span> limit where <span class="math inline">\(N\theta\)</span> remains finite). In this case, the MLE for <span class="math inline">\(N\theta\)</span> is <span class="math inline">\(\bar{n}\)</span>. We will not include those results in our bootstrap samples.</p>
 <div id="9c3a5dac-a2be-44d6-9223-9ec7d9a8ed9f" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dh_dN(N, n):</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dh_dN(N, n):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return dh/dN for root finding problem."""</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    sum_term <span class="op">=</span> np.mean(scipy.special.polygamma(<span class="dv">0</span>, N <span class="op">-</span> n <span class="op">+</span> <span class="dv">1</span>))</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.log(<span class="dv">1</span> <span class="op">-</span> np.mean(n) <span class="op">/</span> N) <span class="op">+</span> scipy.special.polygamma(<span class="dv">0</span>, N <span class="op">+</span> <span class="dv">1</span>) <span class="op">-</span> sum_term</span>
@@ -953,11 +946,11 @@ h(N) = \ln \Gamma(N+1) - \bar{n}\,\ln N + (N-\bar{n}) \ln\left(1-\frac{\bar{n}}{
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        root <span class="op">=</span> scipy.optimize.brentq(dh_dN, np.<span class="bu">max</span>(n)<span class="op">+</span><span class="dv">1</span>, N_max, args<span class="op">=</span>(n,))</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> mle_exhaustive(n, N_min<span class="op">=</span><span class="bu">int</span>(root), N_max<span class="op">=</span><span class="bu">int</span>(root)<span class="op">+</span><span class="dv">1</span>)</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (np.nan, np.nan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (np.nan, np.nan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s now compute the bootstrap replicates.</p>
 <div id="791623aa-badf-449d-9836-765d485f48e2" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed data</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed data</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> np.array([<span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">27</span>])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get MLE</span></span>
@@ -965,25 +958,25 @@ h(N) = \ln \Gamma(N+1) - \bar{n}\,\ln N + (N-\bar{n}) \ln\left(1-\frac{\bar{n}}{
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Parametric bootstrap</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>bs_reps <span class="op">=</span> np.array([mle(rng.binomial(N, theta, size<span class="op">=</span><span class="bu">len</span>(n))) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100_000</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>bs_reps <span class="op">=</span> np.array([mle(rng.binomial(N, theta, size<span class="op">=</span><span class="bu">len</span>(n))) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100_000</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s first check what fraction of the bootstrap replicates had <span class="math inline">\(N\to\infty\)</span>.</p>
 <div id="7c250f78-20a7-44e4-8e27-e9c167778a07" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(np.isnan(bs_reps[:,<span class="dv">0</span>])) <span class="op">/</span> <span class="bu">len</span>(bs_reps)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(np.isnan(bs_reps[:,<span class="dv">0</span>])) <span class="op">/</span> <span class="bu">len</span>(bs_reps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>np.float64(0.24876)</code></pre>
 </div>
 </div>
 <p>Wow. Nearly 25% of the bootstrap replicates had <span class="math inline">\(N\to\infty\)</span>, such that we can’t even compute an MLE for the Binomial model. Now, computing a confidence interval with the samples where an MLE exists, first for <span class="math inline">\(N\)</span>.</p>
 <div id="cbcfc638-c777-438c-b5b8-b5cd324b6ed3" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.percentile(bs_reps[<span class="op">~</span>np.isnan(bs_reps[:, <span class="dv">0</span>]), <span class="dv">0</span>], [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.percentile(bs_reps[<span class="op">~</span>np.isnan(bs_reps[:, <span class="dv">0</span>]), <span class="dv">0</span>], [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([ 24., 489.])</code></pre>
 </div>
 </div>
 <p>And now for theta.</p>
 <div id="bfa13165-fe2b-4283-afb0-09f51baa367c" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.percentile(bs_reps[<span class="op">~</span>np.isnan(bs_reps[:, <span class="dv">1</span>]), <span class="dv">1</span>], [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.percentile(bs_reps[<span class="op">~</span>np.isnan(bs_reps[:, <span class="dv">1</span>]), <span class="dv">1</span>], [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([0.04429224, 0.85      ])</code></pre>
 </div>
@@ -992,8 +985,8 @@ h(N) = \ln \Gamma(N+1) - \bar{n}\,\ln N + (N-\bar{n}) \ln\left(1-\frac{\bar{n}}{
 <section id="computing-environment" class="level2" data-number="56.1">
 <h2 data-number="56.1" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">56.1</span> Computing environment</h2>
 <div id="d2afda26-e264-4dcb-a647-a0e359fc4ecb" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
 Python version       : 3.13.5
@@ -1061,14 +1054,13 @@ jupyterlab: 4.4.5
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

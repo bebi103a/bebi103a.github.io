@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>38&nbsp; Numerical maximum likelihood estimation – BE/Bi 103 a 2026</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -64,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -80,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aced932c6eb97d642153b8e218288f9f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ce48a3f02a1a94fca2583af14ebdcdba.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-063ac7c83bb43962cac3e16e79c6af26.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7169de792ddd8a904faef6c72a318f4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,12 +105,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -129,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -172,8 +166,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../"></a> 
@@ -867,7 +860,7 @@ window.Quarto = {
 <div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars iqplot bebi103 watermark"</span></span>
@@ -876,11 +869,11 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-2" class="cell" data-tags="[]" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -894,7 +887,7 @@ window.Quarto = {
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.plotting</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
     <style>
         .bk-notebook-logo {
@@ -1239,11 +1232,11 @@ function(Bokeh) {
 <h2 data-number="38.2" class="anchored" data-anchor-id="exploratory-data-analysis"><span class="header-section-number">38.2</span> Exploratory data analysis</h2>
 <p>We first load in the data set and generate ECDFs for the mRNA counts for each of the four genes.</p>
 <div id="cell-6" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load DataFrame</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load DataFrame</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(os.path.join(data_path, <span class="st">'singer_transcript_counts.csv'</span>), comment_prefix<span class="op">=</span><span class="st">'#'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
@@ -1253,7 +1246,7 @@ function(Bokeh) {
 }
 </style>
 <small>shape: (5, 4)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Rex1</th>
@@ -1262,10 +1255,10 @@ function(Bokeh) {
 <th data-quarto-table-cell-role="th">Prdm14</th>
 </tr>
 <tr class="even">
-<td>i64</td>
-<td>i64</td>
-<td>i64</td>
-<td>i64</td>
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
 </tr>
 </thead>
 <tbody>
@@ -1306,7 +1299,7 @@ function(Bokeh) {
 </div>
 <p>Each of the 279 rows has the mRNA counts for each of the four genes. There may be multiple cell types present, and we do now know how many there are. Our aim here is not to find how many cell types there are, but to demonstrate how MLE works. Nonetheless, we should have some idea of the properties of the data set we are exploring. We can start by plotting ECDFs for each of the four genes. It is useful to have the gene names around for iteration here, and throughout the lesson.</p>
 <div id="cell-8" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>genes <span class="op">=</span> [<span class="st">"Nanog"</span>, <span class="st">"Prdm14"</span>, <span class="st">"Rest"</span>, <span class="st">"Rex1"</span>]</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>genes <span class="op">=</span> [<span class="st">"Nanog"</span>, <span class="st">"Prdm14"</span>, <span class="st">"Rest"</span>, <span class="st">"Rex1"</span>]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plots <span class="op">=</span> [</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    iqplot.ecdf(</span>
@@ -1320,7 +1313,7 @@ function(Bokeh) {
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> gene <span class="kw">in</span> genes</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.gridplot(plots, ncols<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.gridplot(plots, ncols<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="f1fd1dbd-f2ab-414c-ae79-3a85d95b6d5b" data-root-id="p1258" style="display: contents;"></div>
@@ -1357,15 +1350,15 @@ function(Bokeh) {
 <p>Note the difference in the x-axis scales. Clearly, <em>prdm14</em> has far fewer mRNA copies than the other genes. The presence of two inflection points in the Rex1 EDCF implies bimodality, leading us to suspect that there may be two cell types, or at least more than one cell type. We can plot all pairwise combinations of gene counts to explore further.</p>
 <p>For visualizing the data, it will be useful to have labels for the cells so we can compare expression levels in all four cells at one. We will label them according to the Rex1 levels.</p>
 <div id="cell-10" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add cell label, ranked lowest to highest in Rex1 expression</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add cell label, ranked lowest to highest in Rex1 expression</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns(pl.col(<span class="st">'Rex1'</span>).rank(method<span class="op">=</span><span class="st">'dense'</span>).alias(<span class="st">'cell'</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add colors for plotting, using quantitative to color conversion in bebi103 package</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns(pl.Series(name<span class="op">=</span><span class="st">'color'</span>, values<span class="op">=</span>bebi103.viz.q_to_color(df[<span class="st">"cell"</span>], bokeh.palettes.Viridis256)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns(pl.Series(name<span class="op">=</span><span class="st">'color'</span>, values<span class="op">=</span>bebi103.viz.q_to_color(df[<span class="st">"cell"</span>], bokeh.palettes.Viridis256)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will now look at all of the pair-wise plots of mRNA expression. We color the dots according to cell ID, with cell 1 having the lowest count of Rex1 mRNA and the last cell having the highest.</p>
 <div id="cell-12" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pairwise_plot(df, gene1, gene2):</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pairwise_plot(df, gene1, gene2):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> bokeh.plotting.figure(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        frame_height<span class="op">=</span><span class="dv">150</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        frame_width<span class="op">=</span><span class="dv">150</span>,</span>
@@ -1382,7 +1375,7 @@ function(Bokeh) {
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    pairwise_plot(df, gene1, gene2) <span class="cf">for</span> gene1, gene2 <span class="kw">in</span> itertools.combinations(genes, <span class="dv">2</span>)</span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.gridplot(plots, ncols<span class="op">=</span><span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.gridplot(plots, ncols<span class="op">=</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="fa8478af-4ce8-4acd-a6a7-d18d8b15cfd7" data-root-id="p1551" style="display: contents;"></div>
@@ -1477,7 +1470,7 @@ L(\alpha, b;\mathbf{n}) = \prod_i\frac{\Gamma(n_i+\alpha)}{\Gamma(\alpha)n!}\lef
 \end{align}\]</span></p>
 <p>where “s.t.” is read “subject to.” If we explicitly consider the constraints, we are performing a <strong>constrained optimization problem</strong>. Constrained optimization is often considerably more challenging than unconstrained optimization. There are ways around simple positivity constraints such as the ones here. We can instead define new variables <span class="math inline">\(\xi_\alpha = \ln \alpha\)</span> and <span class="math inline">\(\xi_b = \ln b\)</span>, and write the log-likelihood in terms of these variables instead. We then find minimizing <span class="math inline">\(\xi_\alpha\)</span> and <span class="math inline">\(\xi_b\)</span> and convert them to <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> by exponentiation after performing the minimization calculation.</p>
 <p>Numerical optimization is implemented in the <code>scipy.optimize</code> submodule (<a href="https://docs.scipy.org/doc/scipy/reference/optimize.html">docs</a>). Most of the functionality you need is in the <code>scipy.optimize.minimize()</code> function. To use the function to find minimizers of an objective function, the standard call signature is</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scipy.optimize.minimize(fun, x0, args<span class="op">=</span>(), method<span class="op">=</span><span class="st">'BFGS'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scipy.optimize.minimize(fun, x0, args<span class="op">=</span>(), method<span class="op">=</span><span class="st">'BFGS'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>fun</code> argument is a function with call signature <code>fun(x, *args)</code>, where <code>x</code> is the variables used in the optimization. In the case of MLE, the function is the negative log-likelihood function, <code>x</code> is always an array of the parameter values we are trying to estimate, and the remaining arguments are additional arguments passed into the likelihood function, which always include the measured data. Importantly, we have to provide a guess as to which values of the parameters are optimal. This is passed as an array <code>x0</code>. The kwarg <code>args</code> specifies which additional arguments are to be passed to <code>fun()</code>. <strong>Note that</strong> <code>args</code> <strong>must be a tuple</strong>. Finally, the <code>method</code> keyword argument specifies which numerical optimization method to use, the default being the <a href="https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm">Broyden–Fletcher–Goldfarb–Shanno algorithm</a>. This is a good algorithm but does compute derivatives, so it is only useful if the parameter values can take on any real value.</p>
 <p>I have omitted the <code>bounds</code> keyword argument here because we will not usually use them, as we will either do the logarithm trick above, or use <a href="https://en.wikipedia.org/wiki/Powell%27s_method">Powell’s method</a>, which does not required calculation of derivatives (so we may therefore have discontinuities in the objective function and set the value of the objective function to be infinity for disallowed parameter values).</p>
 </section>
@@ -1495,7 +1488,7 @@ L(\alpha, b;\mathbf{n}) = \prod_i\frac{\Gamma(n_i+\alpha)}{\Gamma(\alpha)n!}\lef
 \end{align}\]</span></p>
 <p>We can compute the estimates from the plug-in values.</p>
 <div id="cell-18" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the values for Nanog</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the values for Nanog</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> df.get_column(<span class="st">'Nanog'</span>).to_numpy()</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute</span></span>
@@ -1503,7 +1496,7 @@ L(\alpha, b;\mathbf{n}) = \prod_i\frac{\Gamma(n_i+\alpha)}{\Gamma(\alpha)n!}\lef
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>alpha_mom <span class="op">=</span> np.mean(n) <span class="op">/</span> b_mom</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"α_mom = </span><span class="sc">{</span>alpha_mom<span class="sc">}</span><span class="ch">\n</span><span class="ss">b_mom = </span><span class="sc">{</span>b_mom<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"α_mom = </span><span class="sc">{</span>alpha_mom<span class="sc">}</span><span class="ch">\n</span><span class="ss">b_mom = </span><span class="sc">{</span>b_mom<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>α_mom = 1.7700110004078886
 b_mom = 49.569381904553985</code></pre>
@@ -1514,7 +1507,7 @@ b_mom = 49.569381904553985</code></pre>
 <h4 data-number="38.4.2.1" class="anchored" data-anchor-id="solving-with-the-bfgs-algorithm"><span class="header-section-number">38.4.2.1</span> Solving with the BFGS algorithm</h4>
 <p>We will now solve the minimization problem using the BFGS algorithm, specifying the parameters using logarithms to make sure that the problem is completely unconstrained. First, we have to write a function for the log-likelihood matching the required function signature of the input <code>fun</code> to <code>scipy.optimize.minimize()</code>. Note that we do not have to hand-code the log-likelihood. The <code>scipy.stats</code> module has functions to compute the log-PDF/log-PMF for many distributions. We just need to check the <a href="https://distribution-explorer.github.io/">Distribution Explorer</a> to ensure we use the parametrization that the <code>scipy.stats</code> module requires. In this case, it expects parameters <code>alpha</code> and <code>1/1+b</code>.</p>
 <div id="cell-21" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_iid_nbinom_log_params(log_params, n):</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_iid_nbinom_log_params(log_params, n):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Log likelihood for i.i.d. NBinom measurements with </span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">    input being logarithm of parameters.</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
@@ -1536,11 +1529,11 @@ b_mom = 49.569381904553985</code></pre>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    alpha <span class="op">=</span> np.exp(log_alpha)</span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.exp(log_b)</span>
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(st.nbinom.logpmf(n, alpha, <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>b)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(st.nbinom.logpmf(n, alpha, <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>b)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With the log likelihood specified, we simply use <code>-log_like_iid_nbinom_params()</code> as our objective function, which we can succinctly code up as an anonymous (lambda) function. Let’s perform the optimization for the <em>nanog</em> gene and look at the result.</p>
 <div id="cell-23" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve, making sure to use log parameters</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve, making sure to use log parameters</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> scipy.optimize.minimize(</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    fun<span class="op">=</span><span class="kw">lambda</span> log_params, n: <span class="op">-</span>log_like_iid_nbinom_log_params(log_params, n),</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    x0<span class="op">=</span>np.array([np.log(alpha_mom), np.log(b_mom)]),</span>
@@ -1548,7 +1541,7 @@ b_mom = 49.569381904553985</code></pre>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">'BFGS'</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>  message: Desired error not necessarily achieved due to precision loss.
   success: False
@@ -1565,10 +1558,10 @@ b_mom = 49.569381904553985</code></pre>
 </div>
 <p>The result returned by <code>scipy.optimize.minimize()</code> is an <code>OptimizeResult</code> object that has several attributes about how the optimization calculation went, including if it was successful. Importantly, the optimal log-parameter values are in the array <code>x</code>. We can extract them and exponentiate them to get the MLE.</p>
 <div id="cell-25" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alpha_mle, b_mle <span class="op">=</span> np.exp(res.x)</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alpha_mle, b_mle <span class="op">=</span> np.exp(res.x)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"α: "</span>, alpha_mle)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"b: "</span>, b_mle)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"b: "</span>, b_mle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>α:  1.263433985420747
 b:  69.44437003467432</code></pre>
@@ -1580,18 +1573,18 @@ b:  69.44437003467432</code></pre>
 <h4 data-number="38.4.2.2" class="anchored" data-anchor-id="solving-using-powells-method"><span class="header-section-number">38.4.2.2</span> Solving using Powell’s method</h4>
 <p>As an alternative to the BFGS method, we can use Powell’s method. This has the advantage that we do not have to use derivatives in the optimization, so we do not have to use logarithms of the parameters. We do, however, need to specify that the log-likelihood is minus infinity for disallowed parameter values.</p>
 <div id="cell-28" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_iid_nbinom(params, n):</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_like_iid_nbinom(params, n):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Log likelihood for i.i.d. NBinom measurements."""</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    alpha, b <span class="op">=</span> params</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> alpha <span class="op">&lt;=</span> <span class="dv">0</span> <span class="kw">or</span> b <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span>np.inf</span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(st.nbinom.logpmf(n, alpha, <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>b)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(st.nbinom.logpmf(n, alpha, <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>b)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We take a similar approach to solving using Powell’s method. This time, we will catch warnings because the solver will stumble into regions where the log-likelihood is minus infinity. We know this to be the case, as we designed it that way, so we will suppress the warnings to keep our notebook clean. We will tighten the tolerance on the solver using the <code>tol</code> keyword argument to insist on very small gradients when finding the minimum. This results in a more accurate MLE at the cost of more computational effort.</p>
 <div id="cell-30" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> warnings.catch_warnings():</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> warnings.catch_warnings():</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    warnings.simplefilter(<span class="st">"ignore"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> scipy.optimize.minimize(</span>
@@ -1608,7 +1601,7 @@ b:  69.44437003467432</code></pre>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">'Convergence failed with message'</span>, res.message)</span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"α: "</span>, alpha_mle)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"b: "</span>, b_mle)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"b: "</span>, b_mle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>α:  1.2634329776733069
 b:  69.44440337333538</code></pre>
@@ -1622,7 +1615,7 @@ b:  69.44440337333538</code></pre>
 <h2 data-number="38.5" class="anchored" data-anchor-id="the-likelihood-function"><span class="header-section-number">38.5</span> The likelihood function</h2>
 <p>To help give a picture of what the likelihood function looks like, and what the optimizer is doing, we can plot it. In this case, we have two parameters, so we can make a contour plot. We first compute the log-likelihood for various values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(b\)</span>.</p>
 <div id="cell-33" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha and b values for plotting</span></span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alpha and b values for plotting</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">100</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.linspace(<span class="dv">50</span>, <span class="dv">90</span>, <span class="dv">100</span>)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1630,17 +1623,17 @@ b:  69.44440337333538</code></pre>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>log_like <span class="op">=</span> np.empty((<span class="dv">100</span>, <span class="dv">100</span>))</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j, alpha_val <span class="kw">in</span> <span class="bu">enumerate</span>(alpha):</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, b_val <span class="kw">in</span> <span class="bu">enumerate</span>(b):</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        log_like[i, j] <span class="op">=</span> log_like_iid_nbinom((alpha_val, b_val), n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        log_like[i, j] <span class="op">=</span> log_like_iid_nbinom((alpha_val, b_val), n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Remember that the likelihood function is not a probability distribution, so it is not normalized. When we exponentiate the log-likelihood, we may get values close to zero, or very large. It is therefore a good idea to first subtract the maximal value of all computed log-likelihoods. This has the effect of multiplying the likelihood function by a constant.</p>
 <div id="cell-35" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>like <span class="op">=</span> np.exp(log_like <span class="op">-</span> log_like.<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>like <span class="op">=</span> np.exp(log_like <span class="op">-</span> log_like.<span class="bu">max</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can make a contour plot using the <code>bebi103.viz.contour()</code> function.</p>
 <div id="cell-37" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bebi103.viz.contour(alpha, b, like, overlaid<span class="op">=</span><span class="va">True</span>, x_axis_label<span class="op">=</span><span class="st">"α*"</span>, y_axis_label<span class="op">=</span><span class="st">"b*"</span>)</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bebi103.viz.contour(alpha, b, like, overlaid<span class="op">=</span><span class="va">True</span>, x_axis_label<span class="op">=</span><span class="st">"α*"</span>, y_axis_label<span class="op">=</span><span class="st">"b*"</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="c5744132-b533-434b-bab5-b5724ab9407a" data-root-id="p1584" style="display: contents;"></div>
@@ -1680,7 +1673,7 @@ b:  69.44440337333538</code></pre>
 <h2 data-number="38.6" class="anchored" data-anchor-id="a-quick-visualization"><span class="header-section-number">38.6</span> A quick visualization</h2>
 <p>We can do a quick visualization of our MLE to see if the model holds up. We will talk more about graphical tests of model predictive accuracy in coming lessons, but for now, we will simply overlay the theoretical CDF parametrized by the MLE. We can conveniently use the <code>scipy.stats</code> module to generate the CDF. It is probably overkill, since we have such a wide range of mRNA counts, but we will take care to make sure we plot the theoretical CDF as a staircase, since it is for a discrete distribution.</p>
 <div id="cell-40" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(data<span class="op">=</span>df[<span class="st">'Nanog'</span>], q<span class="op">=</span><span class="st">'Nanog'</span>, conf_int<span class="op">=</span><span class="va">True</span>)</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(data<span class="op">=</span>df[<span class="st">'Nanog'</span>], q<span class="op">=</span><span class="st">'Nanog'</span>, conf_int<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>n_theor <span class="op">=</span> np.arange(<span class="dv">0</span>, df[<span class="st">'Nanog'</span>].<span class="bu">max</span>()<span class="op">+</span><span class="dv">1</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>cdf_theor <span class="op">=</span> st.nbinom.cdf(n_theor, alpha_mle, <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>b_mle))</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1694,7 +1687,7 @@ b:  69.44440337333538</code></pre>
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>n_plot[<span class="dv">1</span>::<span class="dv">2</span>] <span class="op">=</span> n_theor</span>
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>p.line(n_plot, cdf_plot, line_color<span class="op">=</span><span class="st">'orange'</span>, line_width<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="b2544da0-7594-4055-b6bd-ec44436641cb" data-root-id="p1650" style="display: contents;"></div>
@@ -1733,8 +1726,8 @@ b:  69.44440337333538</code></pre>
 <section id="computing-environment" class="level2" data-number="38.7">
 <h2 data-number="38.7" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">38.7</span> Computing environment</h2>
 <div id="cell-43" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,polars,bokeh,iqplot,bebi103,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,polars,bokeh,iqplot,bebi103,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
 Python version       : 3.13.5
@@ -1806,14 +1799,13 @@ jupyterlab: 4.4.5
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

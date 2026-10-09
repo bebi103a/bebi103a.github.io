@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.23">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>58&nbsp; Dancing statistics – BE/Bi 103 a 2026</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -58,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ce48a3f02a1a94fca2583af14ebdcdba.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-176b38be48070efe3d434d0a95bef3fe.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-7169de792ddd8a904faef6c72a318f4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-99d3399eddcf07149b67a9f1fe8b573c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,12 +108,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -123,7 +126,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -166,7 +169,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../"></a> 
@@ -688,6 +692,18 @@ window.Quarto = {
  <span class="menu-text">HW 2.2: EDA for a temperature controlled Gal4-UAS system</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../homework/beetle_hypnotists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.1: Beetle hypnotists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../homework/marginal_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 3.2: A marginal distribution</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -862,7 +878,7 @@ window.Quarto = {
 <div id="cell-1" class="cell" data-nbsphinx="hidden" data-tags="[]" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, sys, subprocess</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade polars iqplot bebi103 watermark"</span></span>
@@ -871,11 +887,11 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="cell-2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> st</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numba</span>
@@ -888,7 +904,7 @@ window.Quarto = {
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.plotting</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
     <style>
         .bk-notebook-logo {
@@ -1232,15 +1248,15 @@ Prober lab fish
 <p>Among other sleep properties, they measured the mean rest bout length on the sixth night, comparing wild type larvae to the homozygous mutant. A rest bout is defined as a period of time in which the fish does not move. The length of a rest bout is just the amount of time the fish is still. We are primarily interested in the <em>difference</em> in the mean bout lengths between the two genotypes. The processed data are found <a href="https://s3.amazonaws.com/bebi103.caltech.edu/data/mean_rest_bouts.csv">here</a>.</p>
 <p>Let’s load the data.</p>
 <div id="cell-4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(os.path.join(data_path, <span class="st">'mean_rest_bouts.csv'</span>), comment_prefix<span class="op">=</span><span class="st">'#'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull out wild type and mutant and drop NAs</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'genotype'</span>).is_in([<span class="st">'wt'</span>, <span class="st">'mut'</span>])).drop_nulls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'genotype'</span>).is_in([<span class="st">'wt'</span>, <span class="st">'mut'</span>])).drop_nulls()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s look at these data with an ECDF.</p>
 <div id="cell-6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    df,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    cats<span class="op">=</span><span class="st">"genotype"</span>,</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    q<span class="op">=</span><span class="st">"mean_rest_bout_length"</span>,</span>
@@ -1248,7 +1264,7 @@ Prober lab fish
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    x_axis_label<span class="op">=</span><span class="st">"mean rest bout length (min)"</span>,</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="b2183009-adb0-4372-a59e-1b8fb7215420" data-root-id="p1003" style="display: contents;"></div>
@@ -1284,7 +1300,7 @@ Prober lab fish
 </div>
 <p>The distribution for the mutant appears to be shifted to the left of the wild type, meaning that the mutant has shorted rest bouts. Let’s add 95% confidence intervals to the plot to see how the ECDFs might change if we did the experiment again.</p>
 <div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> iqplot.ecdf(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    df,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    cats<span class="op">=</span><span class="st">"genotype"</span>,</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    q<span class="op">=</span><span class="st">"mean_rest_bout_length"</span>,</span>
@@ -1293,7 +1309,7 @@ Prober lab fish
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    conf_int<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="f8be8101-ef92-4b09-857c-71fdb1b5a0a6" data-root-id="p1098" style="display: contents;"></div>
@@ -1341,12 +1357,12 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 <h2 data-number="58.2" class="anchored" data-anchor-id="estimates-of-the-difference-of-means-and-cohens-d"><span class="header-section-number">58.2</span> Estimates of the difference of means and Cohen’s d</h2>
 <p>First, we will compute nonparametric estimates from the data. We will estimate the difference in the mean bout length and Cohen’s d.&nbsp;For speed, we save the two data sets as NumPy arrays.</p>
 <div id="cell-12" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>wt <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'genotype'</span>) <span class="op">==</span> <span class="st">'wt'</span>)[<span class="st">'mean_rest_bout_length'</span>].to_numpy()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mut <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'genotype'</span>) <span class="op">==</span> <span class="st">'mut'</span>)[<span class="st">'mean_rest_bout_length'</span>].to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>wt <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'genotype'</span>) <span class="op">==</span> <span class="st">'wt'</span>)[<span class="st">'mean_rest_bout_length'</span>].to_numpy()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mut <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'genotype'</span>) <span class="op">==</span> <span class="st">'mut'</span>)[<span class="st">'mean_rest_bout_length'</span>].to_numpy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, we’ll write some functions to conveniently generate bootstrap replicates and do our hypothesis tests. These borrow heavily from the lessons on hacker stats.</p>
 <div id="cell-14" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.jit</span>(nopython<span class="op">=</span><span class="va">True</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.jit</span>(nopython<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cohen_d(x, y, return_abs<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Cohen's d for two data sets."""</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> x.mean() <span class="op">-</span> y.mean()</span>
@@ -1420,16 +1436,16 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 <span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> np.empty(size)</span>
 <span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
 <span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>        out[i] <span class="op">=</span> t_stat(draw_bs_sample(x), draw_bs_sample(y))</span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can compute the replicates. First, let’s look at the means and their respective confidence intervals.</p>
 <div id="cell-16" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wt_reps <span class="op">=</span> draw_bs_reps_mean(wt)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mut_reps <span class="op">=</span> draw_bs_reps_mean(mut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wt_reps <span class="op">=</span> draw_bs_reps_mean(wt)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mut_reps <span class="op">=</span> draw_bs_reps_mean(mut)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And from these, compute the 95% confidence interval.</p>
 <div id="cell-18" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wt_mean_conf_int <span class="op">=</span> np.percentile(wt_reps, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wt_mean_conf_int <span class="op">=</span> np.percentile(wt_reps, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mut_mean_conf_int <span class="op">=</span> np.percentile(mut_reps, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>summaries <span class="op">=</span> [</span>
@@ -1441,7 +1457,7 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bebi103.viz.confints(summaries, x_axis_label<span class="op">=</span><span class="st">'mean rest bout lengths (min)'</span>)</span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="a8fc8dff-56bd-4572-b8a8-27aa4cda84b6" data-root-id="p1211" style="display: contents;"></div>
@@ -1478,14 +1494,14 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 <p>There is some overlap in the confidence interval, though wild type tend to have longer rest bouts. Just looking at these numbers, we may not be all that certain that there is a discernible difference between wild type and mutant.</p>
 <p>Now, let’s look at the <em>difference</em> in the mean rest bout lengths, which we define as <span class="math inline">\(\delta = \bar{x}_\mathrm{wt} - \bar{x}_\mathrm{mut}\)</span>.</p>
 <div id="cell-20" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reps <span class="op">=</span> draw_bs_reps_diff_mean(wt, mut)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reps <span class="op">=</span> draw_bs_reps_diff_mean(wt, mut)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>diff_mean_conf_int <span class="op">=</span> np.percentile(reps, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"δ = WT - MUT:  [</span><span class="sc">{1:.2f}</span><span class="st">, </span><span class="sc">{0:.2f}</span><span class="st">, </span><span class="sc">{2:.2f}</span><span class="st">] minutes"</span>.<span class="bu">format</span>(</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        np.mean(wt) <span class="op">-</span> np.mean(mut), <span class="op">*</span><span class="bu">tuple</span>(diff_mean_conf_int)</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>δ = WT - MUT:  [-0.06, 0.31, 0.66] minutes</code></pre>
 </div>
@@ -1493,14 +1509,14 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 <p>As we might expect, on the tail end of the confidence interval for the difference of means, we see that the mutant might actually have longer rest bouts that wild type.</p>
 <p>Finally, lets compute the Cohen’s d to check the effect size.</p>
 <div id="cell-22" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>reps <span class="op">=</span> draw_bs_reps_cohen_d(wt, mut)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>reps <span class="op">=</span> draw_bs_reps_cohen_d(wt, mut)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cohen_d_conf_int <span class="op">=</span> np.percentile(reps, [<span class="fl">2.5</span>, <span class="fl">97.5</span>])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"WT - MUT Cohen's d:  [</span><span class="sc">{1:.2f}</span><span class="st">, </span><span class="sc">{0:.2f}</span><span class="st">, </span><span class="sc">{2:.2f}</span><span class="st">]"</span>.<span class="bu">format</span>(</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        cohen_d(wt, mut), <span class="op">*</span><span class="bu">tuple</span>(cohen_d_conf_int)</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>WT - MUT Cohen's d:  [-0.08, 0.54, 1.43]</code></pre>
 </div>
@@ -1517,7 +1533,7 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 </ul>
 <p>We can then perform a bootstrap hypothesis test.</p>
 <div id="cell-25" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.jit</span>(nopython<span class="op">=</span><span class="va">True</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.jit</span>(nopython<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cohen_nhst(wt, mut, size<span class="op">=</span><span class="dv">100000</span>):</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Perform hypothesis test assuming equal means, using</span></span>
@@ -1533,14 +1549,14 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute p-value</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(reps <span class="op">&gt;=</span> cohen_d(wt, mut)) <span class="op">/</span> <span class="bu">len</span>(reps)</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Cohen's d p-value:"</span>, cohen_nhst(wt, mut))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Cohen's d p-value:"</span>, cohen_nhst(wt, mut))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d p-value: 0.06688</code></pre>
 </div>
 </div>
 <p>We get a p-value of about 0.07, which, if we use the typical bright line p-value for statistical significance, we would say that this difference is not statistically significant. We could also test what would happen if we used a different test statistic, like the difference of means.</p>
 <div id="cell-27" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shift data sets so that they have the same mean.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shift data sets so that they have the same mean.</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>wt_shifted <span class="op">=</span> wt <span class="op">-</span> np.mean(wt) <span class="op">+</span> np.mean(np.concatenate((wt, mut)))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mut_shifted <span class="op">=</span> mut <span class="op">-</span> np.mean(mut) <span class="op">+</span> np.mean(np.concatenate((wt, mut)))</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1550,7 +1566,7 @@ d = \frac{|\bar{x} - \bar{y}|}{\sqrt{\left.(n_x \hat{\sigma}_x^2 + n_y \hat{\sig
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute p-value</span></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>p_val <span class="op">=</span> np.<span class="bu">sum</span>(reps <span class="op">&gt;=</span> np.mean(wt) <span class="op">-</span> np.mean(mut)) <span class="op">/</span> <span class="bu">len</span>(reps)</span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Difference of means p-value:'</span>, p_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Difference of means p-value:'</span>, p_val)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Difference of means p-value: 0.04077</code></pre>
 </div>
@@ -1568,20 +1584,20 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 </ul>
 <p>This is implemented as <code>scipy.stats.ttest_ind()</code> using the kwarg <code>equal_var=False</code>. We divide by two to get the one-tailed test. Note that Welch’s t-test is not exact, but is asymptotically exact for large sample sizes.</p>
 <div id="cell-29" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Welch's p-value:"</span>, st.ttest_ind(wt, mut, equal_var<span class="op">=</span><span class="va">False</span>)[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Welch's p-value:"</span>, st.ttest_ind(wt, mut, equal_var<span class="op">=</span><span class="va">False</span>)[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Welch's p-value: 0.05254200490883057</code></pre>
 </div>
 </div>
 <p>Here, we are just above the bright line value of 0.05. We can perform a similar hypothesis test without the Normal assumption using the same test statistic as in the Welch’s test.</p>
 <div id="cell-31" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw replicates of t statistic</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw replicates of t statistic</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>reps <span class="op">=</span> draw_bs_reps_t(wt_shifted, mut_shifted, size<span class="op">=</span><span class="dv">100000</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute p-value</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>p_val <span class="op">=</span> np.<span class="bu">sum</span>(reps <span class="op">&gt;=</span> t_stat(wt, mut)) <span class="op">/</span> <span class="bu">len</span>(reps)</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Welch's t-test without Normal assumption p-value:"</span>, p_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Welch's t-test without Normal assumption p-value:"</span>, p_val)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Welch's t-test without Normal assumption p-value: 0.06416</code></pre>
 </div>
@@ -1593,13 +1609,13 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <li>At least as extreme as : difference of means is greater than what was observed.</li>
 </ul>
 <div id="cell-33" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw permutation replicates</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw permutation replicates</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>reps <span class="op">=</span> draw_perm_reps_t(wt, mut, size<span class="op">=</span><span class="dv">100000</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute p-value</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>p_val <span class="op">=</span> np.<span class="bu">sum</span>(reps <span class="op">&gt;=</span> t_stat(wt, mut)) <span class="op">/</span> <span class="bu">len</span>(reps)</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Permutation test p-value:"</span>, p_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Permutation test p-value:"</span>, p_val)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Permutation test p-value: 0.04999</code></pre>
 </div>
@@ -1610,7 +1626,7 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <h2 data-number="58.4" class="anchored" data-anchor-id="model-comparison"><span class="header-section-number">58.4</span> Model comparison</h2>
 <p>As an alternative to NHST, we can ask a similar (but different) question. We can <em>compare</em> two generative models. In one model, wild type and mutant sleep mean bout lengths come from the same Normal distribution. In the other, they come from different Normal distributions. We can compute an AIC for each model and then the Akaike weight for the first model (that they come from the same Normal distribution). Again, we can use the convenient feature that for Normal distributions, the MLE is given by the plug-in estimates for the parameters.</p>
 <div id="cell-36" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> akaike_weight(wt, mut):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> akaike_weight(wt, mut):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Compute the Akaike weight for model 1"""</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    x_concat <span class="op">=</span> np.concatenate((wt, mut))</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    mu_1 <span class="op">=</span> np.mean(x_concat)</span>
@@ -1631,11 +1647,11 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>(aic_1 <span class="op">-</span> aic_max) <span class="op">/</span> <span class="dv">2</span>) <span class="op">/</span> (</span>
 <span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        np.exp(<span class="op">-</span>(aic_1 <span class="op">-</span> aic_max) <span class="op">/</span> <span class="dv">2</span>) <span class="op">+</span> np.exp(<span class="op">-</span>(aic_2 <span class="op">-</span> aic_max) <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we have this function, we can compute the Akaike weight for this data set.</p>
 <div id="cell-38" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>akaike_weight(wt, mut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>akaike_weight(wt, mut)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>np.float64(0.598909687738875)</code></pre>
 </div>
@@ -1648,7 +1664,7 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <p>The idea here is that if the data are indeed Gaussian distributed, we are looking at data that could plausibly be generated in an identical experiment.</p>
 <p>First, we’ll write a function to generate new data and use it to generate 500 new data sets.</p>
 <div id="cell-41" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> new_data(mu, sigma, n):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> new_data(mu, sigma, n):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate new data"""</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.maximum(np.random.normal(mu, sigma, n), <span class="fl">0.01</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1663,11 +1679,11 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate new data</span></span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>new_wt <span class="op">=</span> [new_data(mu_wt, sigma_wt, <span class="bu">len</span>(wt)) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_new_data)]</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>new_mut <span class="op">=</span> [new_data(mu_mut, sigma_mut, <span class="bu">len</span>(mut)) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_new_data)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>new_mut <span class="op">=</span> [new_data(mu_mut, sigma_mut, <span class="bu">len</span>(mut)) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_new_data)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can do the calculations. First, we’ll compute the confidence intervals for <span class="math inline">\(\delta\)</span>.</p>
 <div id="cell-43" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up arrays for storing results</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up arrays for storing results</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>conf_int <span class="op">=</span> np.empty((n_new_data, <span class="dv">2</span>))</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>delta <span class="op">=</span> np.empty(n_new_data)</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1684,14 +1700,14 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>df_res <span class="op">=</span> pl.DataFrame(</span>
 <span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    schema<span class="op">=</span>[<span class="st">"conf_low"</span>, <span class="st">"conf_high"</span>, <span class="st">"delta"</span>],</span>
 <span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>np.hstack((conf_int, delta.reshape(n_new_data, <span class="dv">1</span>))),</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>500it [00:02, 198.75it/s]</code></pre>
 </div>
 </div>
 <p>Next, we can do some null hypothesis significance testing. We will compute three p-values, our custom bootstraped p-value with Cohen’s d, the p-value from a permutaiton test, and a p-value from Welch’s t-test. Remember, with our custom bootstrapped p-value, the hypothesis is that the mutant and wild type sleep bout lengths were drawn out of distributions of the same mean (and no other assumptions). The test statistic is Cohen’s d.&nbsp;The hypothesis in the permutation test is that the two data sets are identically distributed. The hypothesis in Welch’s t-test is that the mutant and wild type were drawn from Normal distributions with the same mean, but with difference variances. The test statistic is a t-statistic, defined above.</p>
 <div id="cell-45" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up arrays for storing results</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up arrays for storing results</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>cohen_p <span class="op">=</span> np.empty(n_new_data)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>perm_test_p <span class="op">=</span> np.empty(n_new_data)</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>welch_p <span class="op">=</span> np.empty(n_new_data)</span>
@@ -1714,24 +1730,24 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    pl.Series(cohen_p).alias(<span class="st">"cohen_p"</span>),</span>
 <span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    pl.Series(perm_test_p).alias(<span class="st">"perm_p"</span>),</span>
 <span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    pl.Series(welch_p).alias(<span class="st">"welch_p"</span>),</span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>500it [00:45, 11.11it/s]</code></pre>
 </div>
 </div>
 <p>Finally, we can compute the Akaike weights for all of our generated data sets.</p>
 <div id="cell-47" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_res <span class="op">=</span> df_res.with_columns(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_res <span class="op">=</span> df_res.with_columns(</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    pl.Series(</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        [akaike_weight(wt_data, mut_data) <span class="cf">for</span> wt_data, mut_data <span class="kw">in</span> <span class="bu">zip</span>(new_wt, new_mut)]</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    ).alias(<span class="st">"akaike_weight"</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="dancing-confidence-intervals" class="level3" data-number="58.5.1">
 <h3 data-number="58.5.1" class="anchored" data-anchor-id="dancing-confidence-intervals"><span class="header-section-number">58.5.1</span> Dancing confidence intervals(?)</h3>
 <p>To visualize the results, we’ll plot the confidence intervals. We’ll plot the confidence interval as a bar, and then the bounds of the credible region as dots. For ease of viewing, we will only plot 100 of these and will sort them by the plug-in estimate for δ.</p>
 <div id="cell-49" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose 100 and sort by delta for easy display</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose 100 and sort by delta for easy display</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df_res_sorted <span class="op">=</span> df_res.sample(<span class="dv">100</span>).sort(by<span class="op">=</span><span class="st">'delta'</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up figure</span></span>
@@ -1747,7 +1763,7 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>p.xaxis.visible <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>p.xgrid.visible <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="d1667b8f-a854-4268-bf4d-199406e1fa7b" data-root-id="p1284" style="display: contents;"></div>
@@ -1787,7 +1803,7 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <h3 data-number="58.5.2" class="anchored" data-anchor-id="dancing-p-values"><span class="header-section-number">58.5.2</span> Dancing: p-values</h3>
 <p>Now, let’s look at the p-values and the Akaike weights.</p>
 <div id="cell-52" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bokeh.plotting.figure(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bokeh.plotting.figure(</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    x_axis_type<span class="op">=</span><span class="st">"log"</span>,</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    y_axis_type<span class="op">=</span><span class="st">"log"</span>,</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    x_axis_label<span class="op">=</span><span class="st">"Welch's p-value"</span>,</span>
@@ -1819,7 +1835,7 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>p.legend.location <span class="op">=</span> <span class="st">"bottom_right"</span></span>
-<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="d38bc840-b38c-43ef-a4fe-d88e33494e73" data-root-id="p1338" style="display: contents;"></div>
@@ -1862,7 +1878,7 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <h3 data-number="58.5.3" class="anchored" data-anchor-id="the-effect-of-sample-size-on-dancing"><span class="header-section-number">58.5.3</span> The effect of sample size on dancing</h3>
 <p>The zebrafish sleep experiment had only about 20 samples, so maybe larger sample sizes will result in less extreme dancing of p-values. Let’s do a numerical experiment to look at that. We will take 15, 20, 50, and 100 samples for our experimental “repeats” and investigate how the p-value varies. For speed, we will only compute the p-value from Welch’s t-test, which we showed previously to track closely with our custom p-values.</p>
 <div id="cell-55" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>n_new_data <span class="op">=</span> <span class="dv">1000</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>n_new_data <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>]</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>p_vals <span class="op">=</span> np.empty((n_new_data, <span class="bu">len</span>(n_samples)))</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>akaike_weights <span class="op">=</span> np.empty((n_new_data, <span class="bu">len</span>(n_samples)))</span>
@@ -1876,14 +1892,14 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute p-values and Akaikie weights</span></span>
 <span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>        p_vals[i,j] <span class="op">=</span> st.ttest_ind(new_wt, new_mut, equal_var<span class="op">=</span><span class="va">False</span>)[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>        akaike_weights[i, j] <span class="op">=</span> akaike_weight(new_wt, new_mut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>        akaike_weights[i, j] <span class="op">=</span> akaike_weight(new_wt, new_mut)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>100%|██████████████████████████████████████████████████████| 1000/1000 [00:01&lt;00:00, 704.11it/s]</code></pre>
 </div>
 </div>
 <p>Let’s look at the ECDFs of p-values and Akaike weights.</p>
 <div id="cell-57" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make tidy data frames for convenient plotting</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make tidy data frames for convenient plotting</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df_p <span class="op">=</span> pl.DataFrame(data<span class="op">=</span>p_vals, schema<span class="op">=</span>[<span class="st">"n = "</span> <span class="op">+</span> <span class="bu">str</span>(n) <span class="cf">for</span> n <span class="kw">in</span> n_samples])</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>df_p <span class="op">=</span> df_p.unpivot(variable_name<span class="op">=</span><span class="st">"n"</span>, value_name<span class="op">=</span><span class="st">"p"</span>)</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>df_akaike <span class="op">=</span> pl.DataFrame(</span>
@@ -1918,7 +1934,7 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>p2.legend.location <span class="op">=</span> <span class="st">"top_left"</span></span>
 <span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>p1.x_range <span class="op">=</span> p2.x_range</span>
 <span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column(p1, p2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column(p1, p2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
   <div id="a7af27f0-e741-45ad-bb1f-7e1bcbc5c8a1" data-root-id="p1705" style="display: contents;"></div>
@@ -1963,8 +1979,8 @@ T = \frac{\bar{x}_w - \bar{x}_m}{\sqrt{\hat{\sigma}_w^2/n_w + \hat{\sigma}_m^2/n
 <section id="computing-environment" class="level2" data-number="58.7">
 <h2 data-number="58.7" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">58.7</span> Computing environment</h2>
 <div id="cell-61" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,polars,numba,tqdm,bokeh,iqplot,bebi103,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,polars,numba,tqdm,bokeh,iqplot,bebi103,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
 Python version       : 3.13.5
@@ -2038,13 +2054,14 @@ jupyterlab: 4.4.5
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

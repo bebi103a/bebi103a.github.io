@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.7.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>49&nbsp; Implementation of PCA – BE/Bi 103 a 2026</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-176b38be48070efe3d434d0a95bef3fe.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ce48a3f02a1a94fca2583af14ebdcdba.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-99d3399eddcf07149b67a9f1fe8b573c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-7169de792ddd8a904faef6c72a318f4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,12 +105,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -126,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -169,8 +166,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../../logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../../"></a> 
@@ -704,6 +700,18 @@ window.Quarto = {
  <span class="menu-text">HW 3.2: A marginal distribution</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/normal_approximations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 4.1: Normal approximations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../homework/simulating_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HW 4.2: Simulating distributions</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -874,7 +882,7 @@ window.Quarto = {
 <div id="cb0f8f87" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab setup ------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, shutil, sys, subprocess, urllib.request</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"google.colab"</span> <span class="kw">in</span> sys.modules:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmd <span class="op">=</span> <span class="st">"pip install --upgrade watermark"</span></span>
@@ -883,11 +891,11 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"https://s3.amazonaws.com/bebi103.caltech.edu/data/"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    data_path <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="163b1d32-6dea-41e7-b620-211eae489815" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.io</span>
@@ -900,7 +908,7 @@ window.Quarto = {
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.io</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bokeh.plotting</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
     <style>
         .bk-notebook-logo {
@@ -1241,12 +1249,12 @@ function(Bokeh) {
 <h2 data-number="49.2" class="anchored" data-anchor-id="loading-older-style-mat-files"><span class="header-section-number">49.2</span> Loading older-style MAT files</h2>
 <p>Scipy offers a convenient interface for loading in older versions of MAT files via its <code>scipy.io.loadmat()</code> function. Let us put it to use and see what is in the file.</p>
 <div id="2ae270c7" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> scipy.io.loadmat(</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> scipy.io.loadmat(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(data_path, <span class="st">'hypothalamus_calcium_imaging_remedios_et_al.mat'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at what is in the Python variable `data`</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>{'__header__': b'MATLAB 5.0 MAT-file, Platform: PCWIN64, Created on: Mon Jun 27 10:14:33 2022',
  '__version__': '1.0',
@@ -1277,16 +1285,16 @@ function(Bokeh) {
 </ul>
 <p>We can pop those data out.</p>
 <div id="7212ed2e" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>neural_data <span class="op">=</span> data.pop(<span class="st">'neural_data'</span>) <span class="co"># Row is time, column is neuron</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>neural_data <span class="op">=</span> data.pop(<span class="st">'neural_data'</span>) <span class="co"># Row is time, column is neuron</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sex_vector <span class="op">=</span> data.pop(<span class="st">'sex_vector'</span>).squeeze()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>attack_vector <span class="op">=</span> data.pop(<span class="st">'attack_vector'</span>).squeeze()</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up time points</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(neural_data.shape[<span class="dv">1</span>]) <span class="op">/</span> <span class="dv">30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(neural_data.shape[<span class="dv">1</span>]) <span class="op">/</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can construct a visualization.</p>
 <div id="0bfb4e44" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kwargs for plotting</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kwargs for plotting</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>kwargs <span class="op">=</span> <span class="bu">dict</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x_interpixel_distance<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">30</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    y_interpixel_distance<span class="op">=</span><span class="dv">1</span>,</span>
@@ -1330,7 +1338,7 @@ function(Bokeh) {
 <span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>p_sex.x_range <span class="op">=</span> p_neuron.x_range</span>
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plots together</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column(p_sex, p_attack, p_neuron))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column(p_sex, p_attack, p_neuron))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="c3d36c96-35e2-4153-b9b0-21860557dcc0" data-root-id="p1145" style="display: contents;"></div>
@@ -1370,15 +1378,15 @@ function(Bokeh) {
 <p>For each time point, we have 115 neuron measurements. In our notation, the observed neuronal activity at time point <span class="math inline">\(i\)</span> is a <span class="math inline">\(D = 115\)</span> dimensional vector <span class="math inline">\(\mathbf{y}_i\)</span>. We assume there are only <span class="math inline">\(L = 2\)</span> latent variables responsible for the observed neuronal activity.</p>
 <p>To start, we can center and scale the data. We will also transpose the neural data so that it has dimension <span class="math inline">\(N\times D\)</span> for ease in comparing to the above theoretical results.</p>
 <div id="7d21831c" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> neural_data.T</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Center data set by subtracting the mean from each time point and dividing by the standard deviation</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> (y <span class="op">-</span> np.mean(y, axis<span class="op">=</span><span class="dv">0</span>)) <span class="op">/</span> np.std(y, axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> (y <span class="op">-</span> np.mean(y, axis<span class="op">=</span><span class="dv">0</span>)) <span class="op">/</span> np.std(y, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now carry out the prescription of PCA. We are hoping to visualize the trajectory of the neuronal activity of the mouse on a 2D plot, so we will specify that there are <span class="math inline">\(L = 2\)</span> latent variables (principal componenents).</p>
 <div id="28bd63a4-f481-4d06-8690-fa87f4fc791b" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two principle components</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two principle components</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the plugin estimate for the covariance matrix</span></span>
@@ -1395,11 +1403,11 @@ function(Bokeh) {
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> eigenvectors[:, idx][:, :L]</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute principal components</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.dot(W.T, y.T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.dot(W.T, y.T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will plot the visualization of the principal components in a moment, but for now, we will take the opportunity to compute the fraction of the variance that each principal component contributes. Given that the eigenvalues are the eigenvalues of the covariance matrix, each eigenvalue gives the scale of the variance along the given eigenvector. Thus, the fraction of the total variance that runs along principal component <span class="math inline">\(j\)</span> is <span class="math inline">\(\lambda_j / \sum_{j=1}^L \lambda_j\)</span>.</p>
 <div id="17ecfc04-aae5-4e2a-a6b4-fe0072f88910" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lam <span class="op">/</span> eigenvalues.<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lam <span class="op">/</span> eigenvalues.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([0.22153642, 0.15257567])</code></pre>
 </div>
@@ -1407,7 +1415,7 @@ function(Bokeh) {
 <p>Evidently, the first two principal components account for nearly 40% of the total variance.</p>
 <p>Now, we will proceed to plot the principal components. We will plot them against each other and color the glyphs by time or by sex of the presented mouse. We will also plot each of the two principal components vs time.</p>
 <div id="c4dfb084" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> bokeh.plotting.figure(</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> bokeh.plotting.figure(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    frame_height<span class="op">=</span><span class="dv">350</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    frame_width<span class="op">=</span><span class="dv">350</span>,</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    x_axis_label<span class="op">=</span><span class="st">"PC 1"</span>,</span>
@@ -1457,7 +1465,7 @@ function(Bokeh) {
 <span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>        bokeh.layouts.row(p1, bokeh.layouts.column(bokeh.models.Div(text<span class="op">=</span><span class="st">"Color by"</span>), color_selector)),</span>
 <span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>        p2</span>
 <span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="ce2d7ecd-99b9-479f-9143-eb10453bc0f1" data-root-id="p1257" style="display: contents;"></div>
@@ -1501,7 +1509,7 @@ function(Bokeh) {
 \]</span></p>
 <p>We can directly compute this and compare to the measured signal.</p>
 <div id="95318151" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the reconstruction</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the reconstruction</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> np.dot(W, z)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncenter and unscale the reconstruction</span></span>
@@ -1526,7 +1534,7 @@ function(Bokeh) {
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>p_neuron.yaxis.major_label_text_font_size <span class="op">=</span> <span class="st">'0pt'</span></span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>p_hat.yaxis.major_label_text_font_size <span class="op">=</span> <span class="st">'0pt'</span></span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column(p_neuron, p_hat))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(bokeh.layouts.column(p_neuron, p_hat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
   <div id="e44f9b9b-5f9c-4ddd-8dbe-caaebbb02ec9" data-root-id="p1361" style="display: contents;"></div>
@@ -1590,13 +1598,13 @@ function(Bokeh) {
 <h2 data-number="49.5" class="anchored" data-anchor-id="sec-pca-sklean"><span class="header-section-number">49.5</span> Principal component analysis using scikit-learn</h2>
 <p>Scikit-learn implements PCA using the aforementioned randomized SVD algorithm. A PCA instance is instantiated using <code>sklearn.decomposition.PCA()</code>, with <span class="math inline">\(L\)</span>, the number of components, provided.</p>
 <div id="ea925ebe-1a2e-4ef1-932f-e993b6495f97" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PCA object</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> sklearn.decomposition.PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PCA object</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> sklearn.decomposition.PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As usual with the scikit-learn API, we call the <code>fit()</code> method to perform PCA. The input data is expected to be <span class="math inline">\(N\times D\)</span>, as we have defined for <span class="math inline">\(\mathsf{Y}\)</span> above and as we have stored in the variable <span class="math inline">\(y\)</span>.</p>
 <div id="cddaef93" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the fit</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pca.fit(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the fit</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pca.fit(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <style>#sk-container-id-1 {
   /* Definition of color scheme common for light and dark mode */
@@ -2080,7 +2088,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             <details>
                 <summary>Parameters</summary>
                 
-<table class="parameters-table caption-top table table-sm table-striped small">
+<table class="parameters-table caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="user-set odd">
 <td><em></em></td>
@@ -2179,7 +2187,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 <p>We got a couple of warnings encountered during some of the matrix calculations, but the PCA fit was accomplished. We can extract the columns of the loading matrix <span class="math inline">\(\mathsf{W}\)</span> using the <code>components_</code> attribute. Here, I will show that we get the same result as we did for the eigenvalue-based calculation we did above, which should be the case potentially up to a multiplicative constant of <span class="math inline">\(-1\)</span>.</p>
 <div id="32a1326c" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.isclose(np.<span class="bu">abs</span>(pca.components_ <span class="op">/</span> W.T), <span class="dv">1</span>).<span class="bu">all</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.isclose(np.<span class="bu">abs</span>(pca.components_ <span class="op">/</span> W.T), <span class="dv">1</span>).<span class="bu">all</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>np.True_</code></pre>
 </div>
@@ -2197,16 +2205,16 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <h2 data-number="49.6" class="anchored" data-anchor-id="sec-center-scale-sklearn"><span class="header-section-number">49.6</span> Centering and scaling with scikit-learn</h2>
 <p>As a final note, I’ll mention that scikit-learn offers automated centering and scaling. A <code>StandardScaler</code> instance is instantiated and “fit” based on the data set.</p>
 <div id="5de837de" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> sklearn.preprocessing.StandardScaler().fit(neural_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> sklearn.preprocessing.StandardScaler().fit(neural_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With the scaler in place, the data may be scaled and unscaled.</p>
 <div id="c25af2e7" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> scaler.transform(neural_data)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>original_data <span class="op">=</span> scaler.inverse_transform(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> scaler.transform(neural_data)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>original_data <span class="op">=</span> scaler.inverse_transform(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can automate the PCA process to get reconstructed data as follows. (We will silence warnings just for aesthetic purposes of these notes. In general, it is a bad idea to silence warnings in your workflow unless you <em>really</em> know what you are doing.)</p>
 <div id="9dc71d8e" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> warnings.catch_warnings():</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> warnings.catch_warnings():</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    warnings.simplefilter(<span class="st">"ignore"</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    scaler <span class="op">=</span> sklearn.preprocessing.StandardScaler().fit(neural_data)</span>
@@ -2214,14 +2222,14 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    pca <span class="op">=</span> sklearn.decomposition.PCA(n_components<span class="op">=</span><span class="dv">2</span>).fit(y)</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> pca.transform(y)</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    reconstructed_neural_data <span class="op">=</span> scaler.inverse_transform(pca.inverse_transform(z))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    reconstructed_neural_data <span class="op">=</span> scaler.inverse_transform(pca.inverse_transform(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="computing-environment" class="level2" data-number="49.7">
 <h2 data-number="49.7" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">49.7</span> Computing environment</h2>
 <div id="fbf67d1b" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,sklearn,bokeh,bebi103,jupyterlab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p numpy,scipy,sklearn,bokeh,bebi103,jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Python implementation: CPython
 Python version       : 3.13.7
@@ -2292,14 +2300,13 @@ jupyterlab: 4.4.9
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
